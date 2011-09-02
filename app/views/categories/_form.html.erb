@@ -23,6 +23,10 @@
     <%= f.label :parent_id %><br />
     <%= f.select :parent_id, Category.all.collect{|c| [c.name, c.id]}, { :include_blank => true } %>
   </div>
+  <div class="field">
+    <%= f.label :permalink %><br />
+    <%= f.text_field :permalink %>
+  <div/>
   <div class="actions">
     <%= f.submit %>
   </div>
