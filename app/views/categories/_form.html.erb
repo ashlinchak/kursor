@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :parent_id %><br />
-    <%= f.select :parent_id, Category.all.collect{|c| [c.name, c.id]}, { :include_blank => true } %>
+    <%= f.select :parent_id, Category.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' } %>
   </div>
   <div class="field">
     <%= f.label :permalink %><br />
