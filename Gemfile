@@ -21,7 +21,7 @@ gem 'jquery-rails'
 
 gem 'haml'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 
 # Use unicorn as the web server
 # gem 'unicorn'
