@@ -1,10 +1,12 @@
 =breadcrumbs_for_category category
 %h2= category.name
 .description= category.description
+= image_tag category.cat_image.url(:thumb)
 
 %ul
   - category.children.each do |child|
     %li= link_to child.name, child
+
 
 %h3 Вхождения:
 %ul

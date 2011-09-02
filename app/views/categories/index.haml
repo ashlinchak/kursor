@@ -2,7 +2,9 @@
   %div
     %h3= link_to category.name, category
     .description= category.description
-    %ul
-      - category.children.each do |child|
-        %li= link_to child.name, child
+    = image_tag category.cat_image.url(:thumb)
+
+    %p
+      Subcategories:
+      = category.children.size
 = link_to 'New Category', new_category_path
