@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110825190229) do
+ActiveRecord::Schema.define(:version => 20110902153220) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -19,6 +20,10 @@ ActiveRecord::Schema.define(:version => 20110825190229) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cat_image_file_name"
+    t.string   "cat_image_content_type"
+    t.integer  "cat_image_file_size"
+    t.datetime "cat_image_updated_at"
   end
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
