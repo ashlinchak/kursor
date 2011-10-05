@@ -24,15 +24,29 @@
   = csrf_meta_tags
 %body
   #page
-    %header
-      %h1#logo
+    %header.container
+      %h1#logo.ir
         = link_to 'Kursor.ua', root_url
-      %p#description
-        образовательный портал №1 в Украине!..
-    #main
+      %nav
+        %ul.clearfix
+          %li
+            %a{:href=>"#"}  Курсы
+          %li
+            %a{:href=>"#"}  Школы
+          %li
+            %a{:href=>"#"}  ЗНО
+          %li
+            %a{:href=>"#"}  ВУЗы
+          %li
+            %a{:href=>"#"}  Репетиторы
+          %li
+            %a{:href=>"#"}  Автошколы
+          %li
+            %a{:href=>"#"}  Новости
+    #main.container
       .flash= render 'shared/flash_messages'
       = yield
 
-    %footer
-      Created by JTK & MGVLT =)
+    %footer.container
+      Created by JTK &amp; MGVLT =)
   = javascript_include_tag "application"
