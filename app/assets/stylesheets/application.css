@@ -8,6 +8,7 @@
 */
 
 body{
+<<<<<<< HEAD
   background: #f7f7f7 url(bg_body.jpg);
   color: #666666;
 }
@@ -36,6 +37,10 @@ header nav ul{
 }
 
 header nav ul li{
+=======
+    background: #e0e0e0;
+    font-size: 14px;
+>>>>>>> 2a68f9b356b581fa68d72a0b716968477caf92f0
 }
 
 header nav a {
