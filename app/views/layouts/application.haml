@@ -29,18 +29,9 @@
         = link_to 'Kursor.ua', root_url
       %nav
         %ul.clearfix
-          %li
-            %a{:href=>"#"}  Курсы
-          %li
-            %a{:href=>"#"}  Школы
-          %li
-            %a{:href=>"#"}  ЗНО
-          %li
-            %a{:href=>"#"}  ВУЗы
-          %li
-            %a{:href=>"#"}  Репетиторы
-          %li
-            %a{:href=>"#"}  Автошколы
+          - categories.each do |item|
+            %li
+              = link_to item.name, item
           %li
             %a{:href=>"#"}  Новости
     #main.container

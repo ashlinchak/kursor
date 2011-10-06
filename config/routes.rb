@@ -1,4 +1,6 @@
 Kursor::Application.routes.draw do
+  resources :users
+
   resources :providers
 
   resources :categories

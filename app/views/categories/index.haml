@@ -1,12 +1,13 @@
-.column.span-14
+.column.span-14.border
   - categories.each do |category|
-    %div
+    %div.category-item
       %h3= link_to category.name, category
       .description= category.description
       %ul
         - category.children.each do |child|
           %li= link_to child.name, child
-  = link_to 'New Category', new_category_path
+  %hr
+    = link_to 'New Category', new_category_path
 
 .column.span-10.last
   sdfsdf

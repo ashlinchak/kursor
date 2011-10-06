@@ -10,20 +10,21 @@ gem 'sqlite3'
 gem 'json'
 
 gem 'rmagick'
-
 gem "paperclip", "~> 2.3"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails', "~> 3.1.0"
-#  gem 'coffee-rails', "~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
+  gem 'haml-rails'
 end
 
 gem 'jquery-rails'
-
 gem 'haml'
+
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 #gem 'therubyracer'
 

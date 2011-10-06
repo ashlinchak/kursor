@@ -94,3 +94,10 @@ h1#logo {
 .ir {
   text-indent: -9999px;
 }
+
+
+.category-item {
+  float: left;
+  width: 33.33%;
+  min-height: 10em;
+}
