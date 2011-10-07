@@ -45,10 +45,5 @@ class CategoriesController < ApplicationController
   end
   helper_method :category
 
-  def categories
-    #@categories = Category.all
-    @categories = Category.roots
-  end
-  helper_method :categories
 
 end

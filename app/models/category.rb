@@ -6,8 +6,6 @@ class Category < ActiveRecord::Base
 
   has_many :providers
 
-
-
   validates_presence_of :name, :description, :permalink
 
   scope :roots, where(:parent_id => nil)

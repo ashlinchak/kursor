@@ -1,0 +1,7 @@
+%h2= @news.title
+.date= l @news.created_at, :format => :short
+.body= raw @news.body
+%hr/
+= link_to 'Edit', edit_news_path(@news)
+\|
+= link_to 'Back', news_index_path

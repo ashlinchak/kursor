@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111006081615) do
+ActiveRecord::Schema.define(:version => 20111007095333) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20111006081615) do
   end
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "providers", :force => true do |t|
     t.string   "name"

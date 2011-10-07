@@ -32,8 +32,8 @@
           - categories.each do |item|
             %li
               = link_to item.name, item
-          %li
-            %a{:href=>"#"}  Новости
+          %li= link_to 'Новости', news_index_path
+          %li= link_to 'Контакты', '#'
     #main.container
       .flash= render 'shared/flash_messages'
       = yield

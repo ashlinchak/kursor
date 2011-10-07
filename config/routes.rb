@@ -1,4 +1,6 @@
 Kursor::Application.routes.draw do
+  resources :news
+
   resources :users
 
   resources :providers
