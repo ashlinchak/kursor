@@ -47,10 +47,10 @@ header nav a {
   border-radius: 1em;
   color: #187bb3;
   float : left;
-  font-size: 1em;
+  /*font-size: 1em;*/
   font-weight: bold;
   line-height: 2;
-  padding: 0 1.3em;
+  padding: 0 1em;
   margin: 0 3px 0 0;
   text-decoration: none;
 }
@@ -61,16 +61,29 @@ header nav a.active {
   border-color: #1872a8;
   color: #fff;
 }
-
+/* FOOTER */
 footer {
   background: #f0f0f0;
+  padding: 0 1.3em;
 }
 
+footer .footer-categories {
+  border-bottom: 1px solid #e7e7e7;
+  margin: 0 -1.3em;
+  padding: 1.3em;
+}
+
+footer .copyright {
+  background: #f7f7f7;
+  margin: 0 -1.3em;
+  padding: 1.3em;
+}
+/* MAIN */
 #main{
   background: #fff;
   border: 1px solid #e4e4e4;
   border-bottom: 1px solid #efefef;
-  border-radius: 1em 1em 0 0;
+  border-radius: 0.8em 0.8em 0 0;
   /*margin: 0 auto;*/
   padding:  1.3em;
   /*width: 950px;*/
@@ -91,17 +104,30 @@ h1#logo {
 
 
 /* UTILS */
+/* image replacement */
 .ir {
   text-indent: -9999px;
 }
 
+/* list without bullets */
+.no-bullets{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+/* CATEGORY */
 .category-item {
   float: left;
   width: 33.33%;
   min-height: 10em;
 }
 
+.category-item ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 /* NEWS */
 .news-list {
   list-style: none;

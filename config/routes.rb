@@ -1,4 +1,7 @@
 Kursor::Application.routes.draw do
+
+  match '/home' => "home#index"
+
   resources :news
 
   resources :users
@@ -7,7 +10,7 @@ Kursor::Application.routes.draw do
 
   resources :categories
 
-  root :to => 'categories#index'
+  root :to => 'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

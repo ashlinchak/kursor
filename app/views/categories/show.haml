@@ -1,18 +1,19 @@
-=breadcrumbs_for_category category
-%h2= category.name
-.description= category.description
--#= image_tag category.cat_image.url(:thumb)
+.column.span-20.prepend-4
+  =breadcrumbs_for_category category
+  %h2= category.name
+  .description= category.description
 
-%ul
-  - category.children.each do |child|
-    %li= link_to child.name, child
+  %ul
+    - category.children.each do |child|
+      %li= link_to child.name, child
 
 
-%h3 Вхождения:
-%ul
-  - category.providers.each do |provider|
-    %li= link_to provider.name, provider_path(provider)
+  %h3 Вхождения:
+  %ul
+    - category.providers.each do |provider|
+      %li= link_to provider.name, provider_path(provider)
 
+%hr/
 = link_to 'Edit', edit_category_path(category)
 \|
 = link_to 'Back', categories_path
