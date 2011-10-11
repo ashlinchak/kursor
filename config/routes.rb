@@ -1,5 +1,11 @@
 Kursor::Application.routes.draw do
 
+  resources :info
+
+  match '/login' => 'sessions#new',       :as => :login
+  match '/logout' => 'sessions#destroy',  :as => :logout
+  resources :sessions, :only => :create
+
   match '/home' => "home#index"
 
   resources :news
@@ -11,6 +17,12 @@ Kursor::Application.routes.draw do
   resources :categories
 
   root :to => 'home#index'
+
+  namespace :admin do
+    resources :users
+    resources :info
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

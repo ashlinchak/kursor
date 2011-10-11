@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111008181707) do
+ActiveRecord::Schema.define(:version => 20111011075657) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(:version => 20111008181707) do
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
 
+  create_table "infos", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "permalink"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -46,6 +55,16 @@ ActiveRecord::Schema.define(:version => 20111008181707) do
   end
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "email"

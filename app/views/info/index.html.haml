@@ -1,0 +1,9 @@
+%h1 Info Pages
+
+%ul
+  - info_pages.each do |info|
+    %li
+      %h3= info.title
+%hr
+
+= link_to 'New Info', new_info_path

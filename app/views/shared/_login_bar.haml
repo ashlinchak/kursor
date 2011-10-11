@@ -1,0 +1,9 @@
+.login-bar
+  - if authenticated?
+    = current_user
+    \|
+    = link_to t(:'sessions.destroy.title'), logout_url
+  - else
+    = link_to t(:'sessions.create.title'), login_url
+    \|
+    = link_to t(:'users.create.title'), new_user_url

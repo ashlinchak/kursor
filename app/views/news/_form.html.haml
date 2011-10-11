@@ -1,11 +1,6 @@
 = form_for @news do |f|
-  -if @news.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@news.errors.count, "error")} prohibited this news from being saved:"
-      %ul
-        - @news.errors.full_messages.each do |msg|
-          %li= msg
 
+  = render :partial => 'shared/form_errors', :locals => { :object => @news }
   .field
     = f.text_field :title
   .field

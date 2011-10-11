@@ -30,6 +30,21 @@ header {
 
 }
 
+/* LOGO */
+
+h1#logo, h1#logo a {
+  display: block;
+  float : left;
+  height: 90px;
+  margin: 0;
+  width: 242px;
+}
+
+h1#logo {
+  background: transparent url(logo.png) no-repeat left top;
+}
+
+
 header nav ul{
   margin: 0 0 5px 0;
   padding: 0;
@@ -61,6 +76,17 @@ header nav a.active {
   border-color: #1872a8;
   color: #fff;
 }
+
+.login-bar {
+  color: #f0f0f0;
+  float: right;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.login-bar a{
+  color: #f0f0f0;
+}
 /* FOOTER */
 footer {
   background: #f0f0f0;
@@ -87,19 +113,6 @@ footer .copyright {
   /*margin: 0 auto;*/
   padding:  1.3em;
   /*width: 950px;*/
-}
-
-/* LOGO */
-
-h1#logo, h1#logo a {
-  display: block;
-  height: 90px;
-  margin: 0;
-  width: 242px;
-}
-
-h1#logo {
-  background: transparent url(logo.png) no-repeat left top;
 }
 
 

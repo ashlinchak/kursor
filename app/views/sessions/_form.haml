@@ -1,0 +1,11 @@
+= form_for(guest, :url => { :controller => :sessions, :action => :create }) do |f|
+  .field
+    = f.label :email
+  .field
+    = f.text_field :email
+  .field
+    = f.label :password
+  .field
+    = f.password_field :password
+  .actions
+    = f.submit t(:'sessions.create.button')

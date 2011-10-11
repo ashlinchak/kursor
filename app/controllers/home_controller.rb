@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   private
 
   def news
-    @news = News.all
+    @news = News.all.reverse
   end
   helper_method :news
 

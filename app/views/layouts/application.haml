@@ -27,13 +27,14 @@
     %header.container
       %h1#logo.ir
         = link_to 'Kursor.ua', root_url
-      %nav
+      = render :partial => 'shared/login_bar'
+      %nav.clear
         %ul.clearfix
           - categories.each do |item|
             %li
               = link_to item.name, item
           %li= link_to 'Новости', news_index_path
-          %li= link_to 'Контакты', '#'
+          %li= link_to 'Контакты', '/info/contacts'
     #main.container
       .flash= render 'shared/flash_messages'
       = yield

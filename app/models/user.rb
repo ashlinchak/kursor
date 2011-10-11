@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :password
+  has_one :administrator
 
   before_save :encrypt_password
 
@@ -7,6 +8,10 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, :on => :create
   validates_presence_of   :email
   validates_uniqueness_of :email
+
+  def to_s
+    email
+  end
 
   def encrypt_password
     if password.present?
@@ -21,5 +26,11 @@ class User < ActiveRecord::Base
       user
     end
   end
+
+  def administrator?
+    !!administrator
+  end
+
+
 
 end
