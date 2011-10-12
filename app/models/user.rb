@@ -1,16 +1,21 @@
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password, :password_confirmation
   has_one :administrator
+  has_one :provider
 
   before_save :encrypt_password
 
   validates_presence_of     :password, :password_confirmation, :on => :create
-  validates_confirmation_of :password, :on => :create
+  validates_confirmation_of :password
   validates_presence_of   :email
   validates_uniqueness_of :email
 
   def to_s
     email
+  end
+
+  def as_json options ={}
+    super(:only => [:email, :is_active])
   end
 
   def encrypt_password

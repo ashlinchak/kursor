@@ -10,7 +10,9 @@ Kursor::Application.routes.draw do
 
   resources :news
 
-  resources :users
+  resources :users, :except => [:show, :edit, :destroy]
+  match '/my_profile' => 'users#my_profile', :as => :my_profile
+  match '/my_profile/edit' => 'users#edit',  :as => :edit_profile
 
   resources :providers
 

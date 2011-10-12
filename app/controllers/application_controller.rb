@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def categories
-    @categories = Category.roots
+  def root_categories
+    @root_categories = Category.roots
   end
-  helper_method :categories
+  helper_method :root_categories
 
   def current_user
     @current_user ||= User.find(session[:user_id])

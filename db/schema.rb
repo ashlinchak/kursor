@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111011075657) do
+ActiveRecord::Schema.define(:version => 20111011193057) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(:version => 20111011075657) do
   end
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+
+  create_table "cities", :force => true do |t|
+    t.integer "region_id",                :null => false
+    t.string  "name",       :limit => 50
+    t.string  "phone_code", :limit => 7
+  end
+
+  add_index "cities", ["id"], :name => "sqlite_autoindex_cities_1", :unique => true
 
   create_table "infos", :force => true do |t|
     t.string   "title"
@@ -52,9 +60,16 @@ ActiveRecord::Schema.define(:version => 20111011075657) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"
+
+  create_table "regions", :force => true do |t|
+    t.string "name", :limit => 50
+  end
+
+  add_index "regions", ["id"], :name => "sqlite_autoindex_regions_1", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

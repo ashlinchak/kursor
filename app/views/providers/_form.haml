@@ -1,29 +1,16 @@
 = form_for(provider) do |f|
-  - if provider.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(provider.errors.count, "error")
-        prohibited this provider from being saved:
-
-      %ul
-        -provider.errors.full_messages.each do |msg|
-          %li= msg
-
+  = render :partial => "shared/form_errors", :locals => { :object => provider }
   .field
     = f.label :name
-    %br/
+  .field
     = f.text_field :name
   .field
     = f.label :description
-    %br/
+  .field
     = f.text_area :description
   .field
     = f.label :category
-    %br/
-    = f.select :category_id, Category.all.collect{|c| [c.name, c.id]}
   .field
-    = f.label :permalink
-    %br/
-    = f.text_field :permalink
+    = f.select :category_id, root_categories.collect{|c| [c.name, c.id]}
   .actions
     = f.submit

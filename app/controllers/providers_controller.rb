@@ -21,7 +21,7 @@ class ProvidersController < ApplicationController
 
   def update
     if provider.update_attributes(params[:provider])
-      redirect_to @provider, :notice => 'Provider was successfully updated.'
+      redirect_to provider, :notice => 'Provider was successfully updated.'
     else
       render :action => "edit"
     end

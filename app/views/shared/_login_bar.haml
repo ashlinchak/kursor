@@ -1,6 +1,6 @@
 .login-bar
   - if authenticated?
-    = current_user
+    = link_to current_user, my_profile_path
     \|
     = link_to t(:'sessions.destroy.title'), logout_url
   - else

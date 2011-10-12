@@ -4,6 +4,7 @@ class Category < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Category'
   has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
 
+  has_many :categorizings, :dependent => :destroy
   has_many :providers
 
   validates_presence_of :name, :description, :permalink
