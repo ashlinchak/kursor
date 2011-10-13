@@ -3,6 +3,7 @@ class Provider < ActiveRecord::Base
   belongs_to :user
 
   has_many :categorizings, :dependent => :destroy
+  has_many :categories, :through => :categorizings
 
   before_save :generate_permalink
 
@@ -15,9 +16,11 @@ class Provider < ActiveRecord::Base
   end
 
   def category_ids=(ids)
-    ids.each do |category_id|
-      self.categorizings.build(:category_id => category_id)
-    end
+    #categories = self.categories
+    #ids.each do |category_id|
+      #self.categorizings.build(:category_id => category_id)
+    #end
+    self.categories = Category.find(ids)
   end
 
   def generate_permalink
