@@ -11,7 +11,9 @@
 $(document).ready(function(){
 
   $('.provider-categories input[type=radio]').click(function(){
-    $(this).closest('.provider-categories').find('.provider-category').removeClass('active');
+    var category = $(this).closest('.provider-categories').find('.provider-category');
+    category.removeClass('active');
+    category.find('.field input:checked').attr('checked', false);
     $(this).closest('.provider-category').addClass('active');
   });
 

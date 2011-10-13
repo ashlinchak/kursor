@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111011193729) do
+ActiveRecord::Schema.define(:version => 20111013184050) do
+
+  create_table "address_cities", :force => true do |t|
+    t.string  "name"
+    t.integer "region_id"
+  end
+
+  add_index "address_cities", ["region_id"], :name => "index_address_cities_on_region_id"
+
+  create_table "address_countries", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "address_regions", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"

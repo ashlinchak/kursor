@@ -1,0 +1,20 @@
+= form_for info_page, :url => { :controller => 'admin/info'} do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => info_page }
+  .field
+    = f.label :title
+  .field
+    = f.text_field :title
+  .field
+    = f.label :body
+  .field
+    = f.text_area :body
+  .field
+    = f.label :permalink
+  .field
+    = f.text_field :permalink
+  .field
+    = f.label :parent_id
+  .field
+    = f.select :parent_id, info_pages, :include_blank => true
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,8 @@
+%table
+  %thead
+    %th Title
+  - info_pages.each do |info_page|
+    %tr
+      %td= link_to info_page.title, admin_info_path(info_page)
+%hr/
+= link_to 'New', new_admin_info_path
