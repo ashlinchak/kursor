@@ -10,8 +10,8 @@
 
   %h3 Вхождения:
   %ul
-    - category.providers.each do |provider|
-      %li= link_to provider.name, provider_path(provider)
+    - category.categorizings.each do |categorizing|
+      %li= link_to categorizing.provider.name, provider_path(categorizing.provider.permalink)
 
 %hr/
 = link_to 'Edit', edit_category_path(category)

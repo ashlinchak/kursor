@@ -12,8 +12,9 @@ class ProvidersController < ApplicationController
   end
 
   def create
+    provider.user = current_user
     if provider.save
-      redirect_to provider, :notice => 'Provider was successfully created.'
+      redirect_to provider_path(provider.permalink), :notice => 'Provider was successfully created.'
     else
       render :action => "new"
     end

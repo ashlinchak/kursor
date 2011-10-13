@@ -1,8 +1,10 @@
 %h3
-  = link_to provider.category, category_path(provider.category) if provider.category
-  >
+  = link_to( provider.category, category_path(provider.category) ) if provider.category
+  &gt;
   = provider.name
 .description= provider.description
-
+.categories
+  - provider.categorizings.each do |categorizing|
+    = link_to categorizing, category_path(categorizing.category.permalink)
 = link_to 'Edit', edit_provider_path(provider)
 = link_to 'Back', providers_path

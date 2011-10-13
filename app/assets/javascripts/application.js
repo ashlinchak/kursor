@@ -7,3 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+
+  $('.provider-categories input[type=radio]').click(function(){
+    $(this).closest('.provider-categories').find('.provider-category').removeClass('active');
+    $(this).closest('.provider-category').addClass('active');
+  });
+
+});

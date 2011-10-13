@@ -1,3 +1,16 @@
 // Place all the styles related to the providers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.provider-category {
+  .field{
+    display: none;
+    margin-left: 1em;
+  }
+}
+
+.provider-category.active {
+  .field{
+    display: block;
+  }
+}
