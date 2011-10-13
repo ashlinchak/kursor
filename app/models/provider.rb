@@ -10,6 +10,10 @@ class Provider < ActiveRecord::Base
     permalink
   end
 
+  def to_s
+    name
+  end
+
   def category_ids=(ids)
     ids.each do |category_id|
       self.categorizings.build(:category_id => category_id)
