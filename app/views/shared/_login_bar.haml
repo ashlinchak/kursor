@@ -3,6 +3,8 @@
     = link_to current_user, my_profile_path
     \|
     = link_to t(:'sessions.destroy.title'), logout_url
+    - if authorized?
+      = link_to 'admin', admin_users_path
   - else
     = link_to t(:'sessions.create.title'), login_url
     \|

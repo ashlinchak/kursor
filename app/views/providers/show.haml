@@ -1,3 +1,5 @@
+.image-container
+  = image_tag provider.logo_url(:thumb).to_s
 %h3
   = link_to( provider.category, category_path(provider.category) ) if provider.category
   &gt;

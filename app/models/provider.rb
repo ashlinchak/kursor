@@ -7,6 +7,8 @@ class Provider < ActiveRecord::Base
 
   before_save :generate_permalink
 
+  mount_uploader :logo, ProviderLogoUploader
+
   def to_param
     permalink
   end
@@ -16,10 +18,6 @@ class Provider < ActiveRecord::Base
   end
 
   def category_ids=(ids)
-    #categories = self.categories
-    #ids.each do |category_id|
-      #self.categorizings.build(:category_id => category_id)
-    #end
     self.categories = Category.find(ids)
   end
 

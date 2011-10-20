@@ -6,10 +6,8 @@
       %ul
         - category.children.each do |child|
           %li= link_to child.name, child
+  %hr
+    = link_to 'New Category', new_category_path
 
-.column.span-5.border
-  - news.each do |item|
-    %ul.home-news.no-bullets
-      %li
-        .date= l item.created_at, :format => :short
-        = link_to item.title, news_path(item)
+.column.span-10.last
+  sdfsdf

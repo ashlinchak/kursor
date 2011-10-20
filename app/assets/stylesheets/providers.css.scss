@@ -14,3 +14,16 @@
     display: block;
   }
 }
+
+.image-container {
+  background: #eee;
+  border: 1px solid #ccc;
+  //float: right;
+  float: left;
+  padding: .5em;
+  margin-right: 1em;
+}
+
+.image-container img{
+  display: block;
+}

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessor :password, :password_confirmation
-  has_one :administrator
-  has_one :provider
+  attr_accessor :password, :password_confirmation, :provider_attributes
+  has_one :administrator, :dependent => :destroy
+  has_one :provider, :dependent => :destroy
 
   before_save :encrypt_password
 
@@ -10,10 +10,13 @@ class User < ActiveRecord::Base
   validates_presence_of   :email
   validates_uniqueness_of :email
 
+  accepts_nested_attributes_for :provider
+
   def to_s
     email
   end
 
+  # overriding default json fields
   def as_json options ={}
     super(:only => [:email, :is_active])
   end

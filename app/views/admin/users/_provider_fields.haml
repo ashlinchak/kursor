@@ -1,0 +1,28 @@
+.fields
+  = f.label :name
+.fields
+  = f.text_field :name
+.fields
+  = f.label :logo
+.fields
+  -if user.provider && user.provider.logo?
+    = image_tag(user.provider.logo_url( :thumb ))
+    %br/
+  = f.file_field :logo
+  = f.hidden_field :logo_cache
+.fields
+  = f.label :description
+.fields
+  = f.text_area  :description
+.field.provider-categories
+  = f.label :category
+  - root_categories.each do |c|
+    .field.provider-category
+      = f.radio_button :category_id, c.id
+      = f.label "category_id_#{c.id}", c.name
+      .field
+        - c.children.each do |ch|
+          = check_box_tag 'user[provider_attributes][category_ids][]', ch.id, ( :checked if user.provider.categories.include? ch )
+          = ch.name
+-#.fields
+  -#= f.text_field :category_id

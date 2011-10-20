@@ -1,4 +1,5 @@
 class Admin::InfoController < ApplicationController
+  layout 'admin'
 
   before_filter :require_authorization
 

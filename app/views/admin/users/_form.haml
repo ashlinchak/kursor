@@ -1,0 +1,20 @@
+= form_for(user, :url => ( user.new_record? ? admin_users_path : admin_user_path(user) ), :multipart => true ) do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => user }
+  %fieldset
+    .field
+      = f.label :email
+    .field
+      = f.text_field :email
+    .field
+      = f.label :password
+    .field
+      = f.password_field :password
+    .field
+      = f.label :password_confirmation
+    .field
+      = f.password_field :password_confirmation
+  %fieldset
+    = f.fields_for :provider do |p|
+      = render :partial => 'provider_fields', :locals => { :f => p }
+  .actions
+    = f.submit
