@@ -22,6 +22,7 @@ gem 'haml'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
+gem 'therubyracer'
 # Use unicorn as the web server
 # gem 'unicorn'
 
