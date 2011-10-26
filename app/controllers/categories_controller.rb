@@ -13,34 +13,34 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def new
-  end
+  #def new
+  #end
 
-  def edit
-  end
+  #def edit
+  #end
 
-  def create
-    if category.save
-      redirect_to category, :notice => 'Category was successfully created.'
-    else
-      render :action => "new"
-    end
-    p "category.errors #{category.errors.inspect}"
-  end
+  #def create
+    #if category.save
+      #redirect_to category, :notice => 'Category was successfully created.'
+    #else
+      #render :action => "new"
+    #end
+    #p "category.errors #{category.errors.inspect}"
+  #end
 
-  def update
-    if category.update_attributes(params[:category])
-      redirect_to @category, :notice => 'Category was successfully updated.'
-    else
-      render :action => "edit"
-    end
-  end
+  #def update
+    #if category.update_attributes(params[:category])
+      #redirect_to @category, :notice => 'Category was successfully updated.'
+    #else
+      #render :action => "edit"
+    #end
+  #end
 
-  def destroy
-    category.destroy
+  #def destroy
+    #category.destroy
 
-    redirect_to categories_url
-  end
+    #redirect_to categories_url
+  #end
 
   private
 

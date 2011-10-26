@@ -24,5 +24,3 @@
         - c.children.each do |ch|
           = check_box_tag 'user[provider_attributes][category_ids][]', ch.id, ( :checked if user.provider.categories.include? ch )
           = ch.name
--#.fields
-  -#= f.text_field :category_id
