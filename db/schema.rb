@@ -54,14 +54,6 @@ ActiveRecord::Schema.define(:version => 20111020195142) do
   add_index "categorizings", ["category_id"], :name => "index_categorizings_on_category_id"
   add_index "categorizings", ["provider_id"], :name => "index_categorizings_on_provider_id"
 
-  create_table "cities", :force => true do |t|
-    t.integer "region_id",                :null => false
-    t.string  "name",       :limit => 50
-    t.string  "phone_code", :limit => 7
-  end
-
-  add_index "cities", ["id"], :name => "sqlite_autoindex_cities_1", :unique => true
-
   create_table "infos", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -90,12 +82,6 @@ ActiveRecord::Schema.define(:version => 20111020195142) do
   end
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"
-
-  create_table "regions", :force => true do |t|
-    t.string "name", :limit => 50
-  end
-
-  add_index "regions", ["id"], :name => "sqlite_autoindex_regions_1", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
