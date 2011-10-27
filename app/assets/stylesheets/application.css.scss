@@ -8,7 +8,7 @@
 */
 
 body{
-  background: #f7f7f7 url(bg_body.jpg);
+  background: #f7f7f7 image_url('bg_body.jpg');
   color: #666666;
 }
 
@@ -23,7 +23,7 @@ h3, h3 a {
 }
 
 #page {
-  background: transparent url(bg_header_shadow.png) repeat-x 0 0;
+  background: transparent  image_url('bg_header_shadow.png') repeat-x 0 0;
 }
 
 header {
@@ -41,7 +41,7 @@ h1#logo, h1#logo a {
 }
 
 h1#logo {
-  background: transparent url(logo.png) no-repeat left top;
+  background: transparent image_url('logo.png') no-repeat left top;
 }
 
 
@@ -57,7 +57,7 @@ header nav ul li{
 }
 
 header nav a {
-  background: #fff url(bg_top_nav_item.jpg) repeat-x left bottom;
+  background: #fff image_url('bg_top_nav_item.jpg') repeat-x left bottom;
   border: 2px solid #dfdfdf;
   border-radius: 1em;
   color: #187bb3;
