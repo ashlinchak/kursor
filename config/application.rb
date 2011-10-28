@@ -6,7 +6,9 @@ require 'rails/all'
 # current environment and also include :assets gems if in development
 # or test environments.
 if defined?(Bundler)
-  Bundler.require *Rails.groups(:assets)
+  # If you precompile assets before deploying to production, use this line
+  #Bundler.require *Rails.groups(:assets)
+  # If you want your assets lazily compiled in production, use this line
   Bundler.require(:default, :assets, Rails.env)
 end
 
