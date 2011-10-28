@@ -8,7 +8,7 @@
 */
 
 body{
-  background: #f7f7f7 image_url('bg_body.jpg');
+  background: #f7f7f7 url('bg_body.jpg');
   color: #666666;
 }
 
@@ -23,7 +23,7 @@ h3, h3 a {
 }
 
 #page {
-  background: transparent  image_url('bg_header_shadow.png') repeat-x 0 0;
+  background: transparent  url('bg_header_shadow.png') repeat-x 0 0;
 }
 
 header {
