@@ -17,7 +17,7 @@ Kursor::Application.configure do
 
   config.assets.compile = true
 
-  config.assets.compile = true
+  config.assets.digest = true
 
   # Specifies the header that your server uses for sending files
   # (comment out if your front-end server doesn't support this)
