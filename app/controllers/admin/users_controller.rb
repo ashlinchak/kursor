@@ -11,6 +11,7 @@ class Admin::UsersController < ApplicationController
 
   def create
     if user.save
+      UserMailer.registration_confirmation(user).deliver
       redirect_to admin_users_path, :notice => 'Done!'
     else
       render :new

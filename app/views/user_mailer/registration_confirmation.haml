@@ -1,0 +1,10 @@
+%h3
+  Congratulations,
+  = @user
+  ,
+%p You've been successfully registered!
+- if @user.provider
+  %p Your service profile added:
+  %p= @user.provider
+
+%p= link_to 'View Profile', provider_url(@user.provider, :host => "kursor.org.ua")

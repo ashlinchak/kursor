@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def create
     if user.save
+      UserMailer.registration_confirmation(user).deliver
       redirect_to user, :notice => 'User was successfully created.'
     else
       render :action => "new"
