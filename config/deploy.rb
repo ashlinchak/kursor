@@ -18,8 +18,8 @@ set :user, "root"
 set :port, 3764
 
 set :deploy_to, "/var/www/rails_apps/#{application}"
-set :deploy_via, :copy
-
+#set :deploy_via, :copy
+#set :deploy_via, :remote_cache
 #set :use_sudo, false
 
 set :normalize_asset_timestamps, false
@@ -28,7 +28,8 @@ set :normalize_asset_timestamps, false
 
 set :scm, :git
 set :scm_verbose, true
-set :repository,  "~/projects/#{application}/.git"
+#set :repository,  "~/projects/#{application}/.git"
+set :repository,  "git@github.com:ivankukobko/Kursor-Online-catalog.git"
 #set :branch, "master"
 
 # VPS
