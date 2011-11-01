@@ -1,3 +1,23 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.entries {
+    margin: 0;
+    padding: 0;
+    .list-provider{
+        background: #f8f8f8;
+        border-top: 1px dashed #d6d6d6;
+        border-bottom: 1px dashed #d6d6d6;
+        list-style : none;
+        margin-bottom: 1em;
+        padding: 1em;
+
+        .image-container {
+            float: right;
+        }
+
+        h4 a{
+            color: #1a7bb0;
+        }
+    }
+}

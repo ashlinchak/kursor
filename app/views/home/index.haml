@@ -8,8 +8,16 @@
           %li= link_to child.name, child
 
 .column.span-5.border
+  %h2 Recently joined
+  - providers.each do |item|
+    %ul.home-providers.no-bullets
+      %li
+        %h4= link_to item.name, provider_path(item)
+        .decription= item.description
+.column.span-5.last
+  %h2 News
   - news.each do |item|
     %ul.home-news.no-bullets
       %li
         .date= l item.created_at, :format => :short
-        = link_to item.title, news_path(item)
+        %h4= link_to item.title, news_path(item)

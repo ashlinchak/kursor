@@ -1,9 +1,10 @@
 Kursor::Application.routes.draw do
 
   namespace :admin do
-    resources :users
-    resources :info
     resources :categories
+    resources :info
+    resources :news
+    resources :users
   end
 
   resources :info
@@ -14,9 +15,9 @@ Kursor::Application.routes.draw do
 
   match '/home' => "home#index"
 
-  resources :news
+  resources :news, :only => [:index, :show]
 
-  resources :users, :except => [:show, :edit, :destroy]
+  resources :users, :except => [ :edit, :destroy]
   match '/my_profile' => 'users#my_profile', :as => :my_profile
   match '/my_profile/edit' => 'users#edit',  :as => :edit_profile
 

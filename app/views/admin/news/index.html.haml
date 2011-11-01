@@ -1,0 +1,17 @@
+%h2 News
+%table
+  %thead
+    %th{:width => 100} Date
+    %th Title
+    %th{:width => 100} Actions
+  %tbody
+    - for news in @news
+      %tr
+        %td= l news.created_at, :format => :short
+        %td= link_to news.title, admin_news_path(news)
+        %td
+          = link_to 'Edit', edit_admin_news_path(news)
+          \|
+          = link_to 'Delete', admin_news_path(news), :method => :delete
+
+= link_to 'New News', new_admin_news_path

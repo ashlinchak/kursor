@@ -1,15 +1,17 @@
 .column.span-20.prepend-4
   =breadcrumbs_for_category category
-  %h2= category.name
+  %h3= category.name
   .description= category.description
 
   %ul
     - category.children.each do |child|
       %li= link_to child.name, child
 
-
-  %h3 Вхождения:
-  %ul
-    - category.categorizings.each do |categorizing|
-      %li= link_to categorizing.provider.name, provider_path(categorizing.provider.permalink)
+  %ul.entries
+    - if category.root?
+      - for provider in category.providers
+        = render :partial => 'categories/provider', :locals => { :provider => provider }
+    -else
+      - category.categorizings.each do |categorizing|
+        %li.clearfix.list-provider= link_to categorizing.provider.name, provider_path(categorizing.provider.permalink)
 

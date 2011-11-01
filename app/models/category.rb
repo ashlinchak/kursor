@@ -19,4 +19,8 @@ class Category < ActiveRecord::Base
   def to_s
     name
   end
+
+  def root?
+    parent_id.nil?
+  end
 end

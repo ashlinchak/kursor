@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_filter :require_authentication, :except => [:show]
 
   def my_profile
-    render :show
+    #render :show
+    redirect_to user_path( current_user )
   end
 
   def index
@@ -13,14 +14,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  #def show
-    #respond_to do |format|
-      #format.html
-      #format.json { render :json => user }
-    #end
-  #end
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render :json => user }
+    end
+  end
 
   def new
     if authenticated?
