@@ -37,6 +37,9 @@
       = yield
 
     %footer.container
-      .copyright.clear
-        Created by JTK &amp; MGVLT =)
+      .copyright.clear.clearfix
+        .column.span-20.border.copyright-text
+          Copyright &copy; 2011
+        .column.span-4.last
+          = link_to 'kursor.ua', root_url
   = javascript_include_tag "application"
