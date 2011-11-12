@@ -1,0 +1,6 @@
+= form_tag '/activations', :method => :post do |f|
+  .fields
+    = label_tag :email
+  .fields
+    = text_field_tag :email
+    = submit_tag t(:'user_activation.title')

@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   helper_method :news
 
   def providers
-    @providers = Provider.all.reverse
+    @providers = Provider.approved.reverse
   end
   helper_method :providers
 

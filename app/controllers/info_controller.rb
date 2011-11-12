@@ -21,7 +21,7 @@ class InfoController < ApplicationController
 
   def info_page
     @info_page ||= if params[:id]
-      Info.find_by_permalink params[:id]
+      Info.find_by_permalink! params[:id]
     else
       Info.new params[:info]
     end

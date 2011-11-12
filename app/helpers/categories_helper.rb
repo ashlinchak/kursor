@@ -1,5 +1,4 @@
 module CategoriesHelper
-
   def breadcrumbs_for_category category
     result = ''
     if !category.parent.nil?

@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
 
-  before_filter :require_authentication, :except => [:show]
+  before_filter :require_authentication, :except => [:new, :create, :show]
 
   def my_profile
-    #render :show
     redirect_to user_path( current_user )
   end
 

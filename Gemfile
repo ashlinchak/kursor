@@ -25,6 +25,9 @@ gem 'therubyracer'
 # Deploy with Capistrano
 gem 'capistrano'
 
+gem 'russian'
+gem 'ukrainian'
+
 # To use debugger
 # gem 'ruby-debug'
 

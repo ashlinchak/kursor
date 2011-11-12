@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111020195142) do
+ActiveRecord::Schema.define(:version => 20111111223226) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(:version => 20111020195142) do
   create_table "address_countries", :force => true do |t|
     t.string "name"
   end
+
+  create_table "address_locations", :force => true do |t|
+    t.integer  "city_id"
+    t.string   "street"
+    t.string   "building"
+    t.string   "apartment"
+    t.integer  "addresable_id"
+    t.string   "addresable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "address_locations", ["city_id"], :name => "index_address_locations_on_city_id"
 
   create_table "address_regions", :force => true do |t|
     t.string "name"
@@ -79,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20111020195142) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "logo"
+    t.boolean  "is_approved", :default => false
   end
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"
@@ -92,6 +106,16 @@ ActiveRecord::Schema.define(:version => 20111020195142) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "user_activations", :force => true do |t|
+    t.string   "token"
+    t.datetime "expire_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_activations", ["user_id"], :name => "index_user_activations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

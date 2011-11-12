@@ -3,8 +3,52 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .home-providers, .home-news{
-    border-bottom: 1px dashed #d6d6d6;
-    h4 {
-        margin: 0
+  margin: 0 6px;
+
+  li{
+    border-bottom: 1px solid #d6d6d6;
+    margin: .5em 0;
+    padding: 3px;
+  }
+
+  h3 {
+    font-size: 1em;
+    font-style: normal;
+    font-weight: bold;
+    margin: 0;
+    a{
+      text-decoration: none;
     }
+  }
+  .date{
+    float: left;
+  }
+}
+.home-categories{
+  border: 1px solid #e4e4e4;
+  border-radius: 1em;
+  padding: 1em;
+}
+.home-column{
+  background: transparent url(asset_path('bg_home_column00.gif', image)) repeat-y 0 0;
+  border-left: 1px solid #ededed;
+  float: left;
+  width: 194px;
+  //margin: 0 3px;
+  h2{
+    background: #438bbe;
+    border: 1px solid #fff;
+    border-radius: 1em 1em 0 0;
+    box-shadow: 0 0 2px #bfdbe7;
+    color: #fff;
+    font-size: 1.1em;
+    line-height: 1.75em;
+    margin: 0 3px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #246e84;
+    text-transform: uppercase;
+  }
+  h2.title-news{
+    background: #00c292;
+  }
 }

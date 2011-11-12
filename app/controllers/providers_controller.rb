@@ -35,7 +35,7 @@ class ProvidersController < ApplicationController
 
   def provider
     @provider ||= if params[:id]
-      Provider.find_by_permalink(params[:id])
+      Provider.find(params[:id])
     else params[:provider]
       Provider.new(params[:provider])
     end

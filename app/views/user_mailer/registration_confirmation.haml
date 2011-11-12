@@ -3,8 +3,10 @@
   = @user
   ,
 %p You've been successfully registered!
-- if @user.provider
-  %p Your service profile added:
-  %p= @user.provider
-
-%p= link_to 'View Profile', provider_url(@user.provider, :host => "kursor.org.ua")
+-#- if @user.provider
+-#  %p Your service profile added:
+-#  %p= @user.provider
+- if @user.user_activation
+  %p Follow the link below to activate your account:
+  %p= link_to perform_activation_url( @user.user_activation, :host => "kursor.org.ua" ), perform_activation_url( @user.user_activation, :host => "kursor.org.ua" )
+%p= link_to 'View Profile', user_url(@user, :host => "kursor.org.ua")

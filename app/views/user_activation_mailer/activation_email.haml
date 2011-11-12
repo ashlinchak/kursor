@@ -1,0 +1,8 @@
+%h3
+  Good day,
+  %strong= @user
+  ,
+%p You requested activation link for your account. If you didn't &mdash; please, ignore this email.
+- if @user.user_activation
+  %p Follow the link below:
+  %p= link_to perform_activation_url( @user.user_activation, :host => "kursor.org.ua" ), perform_activation_url( @user.user_activation, :host => "kursor.org.ua" )

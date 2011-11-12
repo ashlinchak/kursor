@@ -2,11 +2,13 @@
   %thead
     %th Email
     %th Provider
+    %th{ :width => 100 } Active?
     %th{ :width => 100 } Actions
   - users.each do |u|
     %tr
       %td= link_to u.email, edit_admin_user_path( u )
       %td= link_to u.provider, provider_path( u.provider ) if u.provider
+      %td= u.is_active?
       %td= link_to 'Delete', admin_user_path(u), :method => :delete
 %hr/
 = link_to 'Add user', new_admin_user_path

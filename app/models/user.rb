@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation, :provider_attributes
+
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
+  has_one :user_activation, :dependent => :destroy
 
   before_save :encrypt_password
+  after_create :generate_activation
 
   validates_presence_of     :password, :password_confirmation, :on => :create
   validates_confirmation_of :password
@@ -39,6 +42,9 @@ class User < ActiveRecord::Base
     !!administrator
   end
 
+  def generate_activation
+    self.create_user_activation
+  end
 
 
 end

@@ -17,10 +17,10 @@ a {
 }
 
 
-h3, h3 a {
-  color: #00c191;
-  font-style: italic;
-}
+//h3, h3 a {
+  //color: #00c191;
+  //font-style: italic;
+//}
 
 #page {
   background: transparent  image_url('bg_header_shadow.png') repeat-x 0 0;
@@ -135,23 +135,43 @@ footer {
   padding: 0;
 }
 .error, .success, .notice{
-    border: 1px solid;
-    padding: 1em;
+  border: 1px solid;
+  padding: 1em;
 }
 .error {
-    background: #fff6f7;
-    border-color: #ff999a;
-    color: #fe0000;
+  background: #fff6f7;
+  border-color: #ff999a;
+  color: #fe0000;
 }
+
 .success {
-    background: #f3faf2;
-    border-color: #ff999a;
-    color: #009800;
+  background: #f3faf2;
+  border-color: #99d69a;
+  color: #009800;
 }
+
 .notice {
-    background: #fffdf6;
-    border-color: #ffe699;
-    color: #febf00;
+  background: #fffdf6;
+  border-color: #ffe699;
+  color: #febf00;
+}
+
+div.error{
+  background-image: url( asset_path('webdev-icons/action_delete.gif', image) );
+}
+
+div.success{
+  background-image: url( asset_path('webdev-icons/action_check.gif', image) );
+}
+
+div.notice {
+  background-image: url( asset_path('webdev-icons/file.gif', image) );
+}
+
+div.error, div.success, div.notice{
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
+  padding-left: 2em;
 }
 /* /UTILS */
 
@@ -182,6 +202,10 @@ input[type=button], input[type=submit], button{
 input[type=button]:hover, input[type=submit]:hover, button:hover,
 input[type=button]:active, input[type=submit]:active, button:active{
     background: #4082b2;
+}
+
+textarea{
+    height: 120px;
 }
 /* /FORMS */
 

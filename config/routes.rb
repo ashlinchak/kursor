@@ -9,9 +9,13 @@ Kursor::Application.routes.draw do
 
   resources :info
 
-  match '/login' => 'sessions#new',       :as => :login
-  match '/logout' => 'sessions#destroy',  :as => :logout
+  match '/login' => 'sessions#new',      :as => :login
+  match '/logout' => 'sessions#destroy', :as => :logout
   resources :sessions, :only => :create
+
+  resources :activations, :only => [:new, :create] do
+    get 'perform', :on => :member
+  end
 
   match '/home' => "home#index"
 

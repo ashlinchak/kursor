@@ -9,3 +9,5 @@
     = f.password_field :password
   .actions
     = f.submit t(:'sessions.create.button')
+    or
+    = link_to 'activate your account', new_activation_url

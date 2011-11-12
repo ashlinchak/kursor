@@ -9,6 +9,7 @@ class Category < ActiveRecord::Base
   #has_many :categories, :through => :categorizings
 
   validates_presence_of :name, :description, :permalink
+  validate :name, :uniqueness => true
 
   scope :roots, where(:parent_id => nil)
 

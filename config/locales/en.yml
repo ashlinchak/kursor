@@ -22,3 +22,11 @@ en:
       title: 'Register'
     create:
       title: 'Register'
+
+  user_activation:
+    title: 'Request activation link'
+    create:
+      success: 'Activation link successfully sent to your email'
+      error: 'Sorry, but user with specified email not found'
+    errors:
+      user_inactive: 'Sorry, but You need to activate Your account. Check Your email for activation link or request a new one.'

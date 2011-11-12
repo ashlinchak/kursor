@@ -54,13 +54,15 @@ class ApplicationController < ActionController::Base
 
   def require_authentication
     unless authenticated?
-      redirect_to login_url, :notice => 'Login required'
+      flash[:error] = 'Login required'
+      redirect_to login_url
     end
   end
 
   def require_authorization
     unless authorized?
-      redirect_to root_url, :notice => 'Admin required'
+      flash[:error] = 'Admin required'
+      redirect_to root_url
     end
   end
 

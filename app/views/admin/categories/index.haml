@@ -9,7 +9,7 @@
       -#.description= category.description
       %td
         - category.children.each do |child|
-          %li= link_to child.name, child
+          %li= link_to child.name, edit_admin_category_path( child )
       %td
         = link_to 'Edit', edit_admin_category_path( category )
         \|

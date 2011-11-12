@@ -1,23 +1,26 @@
-.column.span-14.border
-  - root_categories.each do |category|
-    %div.category-item
-      %h3= link_to category.name, category
-      -#.description= category.description
-      %ul
-        - category.children.each do |child|
-          %li= link_to child.name, child
+.column.span-14
+  .home-categories.clearfix
+    - root_categories.each do |category|
+      %div.category-item
+        %h3= link_to category.name, category
+        -#.description= category.description
+        %ul
+          - category.children.each do |child|
+            %li= link_to child.name, child
 
-.column.span-5.border
-  %h2 Recently joined
-  - providers.each do |item|
+.column.span-10.last
+  .home-column
+    %h2 С нами уже
     %ul.home-providers.no-bullets
-      %li
-        %h4= link_to item.name, provider_path(item)
-        .decription= item.description
-.column.span-5.last
-  %h2 News
-  - news.each do |item|
+      - providers.each do |item|
+        %li
+          %h3= link_to item.name, provider_path(item)
+          .decription= item.description
+
+  .home-column
+    %h2.title-news Новости
     %ul.home-news.no-bullets
-      %li
-        .date= l item.created_at, :format => :short
-        %h4= link_to item.title, news_path(item)
+      - news.each do |item|
+        %li
+          .date= item.created_at.strftime("%d:%m:%y")
+          %h3= link_to item.title, news_path(item)
