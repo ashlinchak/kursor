@@ -7,7 +7,7 @@
     - for region in regions
       %li= link_to region.name, '#'
 
-  %ul.categories
+  %ul.categories.clearfix
     - for child in category.children
       %li
         %h3= link_to child, child
