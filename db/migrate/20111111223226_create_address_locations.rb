@@ -5,7 +5,7 @@ class CreateAddressLocations < ActiveRecord::Migration
       t.string :street
       t.string :building
       t.string :apartment
-      t.references :addresable, :polymorphic => true
+      t.references :addressable, :polymorphic => true
 
       t.timestamps
     end

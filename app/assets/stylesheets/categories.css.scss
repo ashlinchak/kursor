@@ -1,9 +1,23 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+a{
+  color: #1a7ab6;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00c290;
+  text-decoration: underline;
+}
+
+ul.entries, ul.regions, ul.categories, ul.categories ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .entries {
-    margin: 0;
-    padding: 0;
     .list-provider{
         background: #f8f8f8;
         border-top: 1px dashed #d6d6d6;
@@ -20,4 +34,33 @@
             color: #1a7bb0;
         }
     }
+}
+ul.regions{
+  border-top: 1px dashed #d6d6d6;
+  border-bottom: 1px dashed #d6d6d6;
+  padding: 1em;
+  font-size: 1.1em;
+  li {
+    display: block;
+    float: left;
+    width: 50%;
+  }
+}
+
+ul.categories{
+  li{
+    float: left;
+    width: 33%;
+
+    li{
+      background: url(asset_path('bg_bullet00.png', image)) no-repeat 0 50%;
+      float: none;
+      width: 100%;
+
+      a{
+        display: inline-block;
+        margin-left: 1em;
+      }
+    }
+  }
 }

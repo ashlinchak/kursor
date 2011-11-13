@@ -28,10 +28,11 @@
       = render :partial => 'shared/login_bar'
       %nav.clear
         %ul.clearfix
-          %li= link_to 'Users', admin_users_path
-          %li= link_to 'Categories', admin_categories_path
-          %li= link_to 'News', admin_news_index_path
-          %li= link_to 'Info pages', admin_info_index_path
+          %li= link_to t(:'site.back_to_site'), root_url
+          %li= link_to t(:'admin.nav.users'), admin_users_path
+          %li= link_to t(:'admin.nav.categories'), admin_categories_path
+          %li= link_to t(:'admin.nav.news'), admin_news_index_path
+          %li= link_to t(:'admin.nav.info_pages'), admin_info_index_path
     #main.container
       .flash= render 'shared/flash_messages'
       = yield

@@ -15,7 +15,8 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     if category.save
-      redirect_to admin_categories_path, :notice => 'Category was successfully created.'
+      flash[:success] = 'category was successfully created.'
+      redirect_to admin_categories_path
     else
       render :action => "new"
     end
@@ -23,7 +24,8 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     if category.update_attributes(params[:category])
-      redirect_to admin_categories_path, :notice => 'Category was successfully updated.'
+      flash[:success] = 'Category was successfully updated.'
+      redirect_to admin_categories_path
     else
       render :action => "edit"
     end

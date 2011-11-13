@@ -5,6 +5,15 @@
   &gt;
   = provider.name
 .description= provider.description
+.location
+  = provider.location.city.region.name
+  ,
+  = provider.location.city.name
+  = provider.location.street
+  ,
+  = provider.location.building
+  ,
+  = provider.location.apartment
 .categories
   - provider.categorizings.each do |categorizing|
     = link_to categorizing, category_path(categorizing.category.permalink)

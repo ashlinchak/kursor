@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20111111223226) do
     t.string   "street"
     t.string   "building"
     t.string   "apartment"
-    t.integer  "addresable_id"
-    t.string   "addresable_type"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

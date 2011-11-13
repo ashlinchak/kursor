@@ -1,11 +1,21 @@
 .column.span-20.prepend-4
   =breadcrumbs_for_category category
   %h3= category.name
-  .description= category.description
+  -#.description= category.description
 
-  %ul
-    - category.children.each do |child|
-      %li= link_to child.name, child
+  %ul.regions.clearfix
+    - for region in regions
+      %li= link_to region.name, '#'
+
+  %ul.categories
+    - for child in category.children
+      %li
+        %h3= link_to child, child
+        - if child.children
+          %ul.children-categories
+            - for child in child.children
+              %li= link_to child, child
+
 
   %ul.entries
     - if category.root?

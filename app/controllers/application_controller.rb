@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :root_categories
 
+  def regions
+    @regions ||= Address::Region.all
+  end
+  helper_method :regions
+
   def current_user
     @current_user ||= User.find(session[:user_id])
   rescue

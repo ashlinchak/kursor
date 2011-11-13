@@ -6,6 +6,7 @@ en:
   site:
     errors:
       error_404: 'Page not found'
+    back_to_site: 'Return to site'
 
   sessions:
     create:
@@ -30,3 +31,12 @@ en:
       error: 'Sorry, but user with specified email not found'
     errors:
       user_inactive: 'Sorry, but You need to activate Your account. Check Your email for activation link or request a new one.'
+
+  admin:
+    nav:
+      users: 'Users'
+      categories: 'Categories'
+      news: 'News'
+      info_pages: 'Info pages'
+
+

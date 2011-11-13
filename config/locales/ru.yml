@@ -3,6 +3,7 @@ ru:
   site:
     errors:
       error_404: 'Page not found'
+    back_to_site: 'Вернуться на сайт'
 
   sessions:
     create:
@@ -27,3 +28,11 @@ ru:
       error: 'Простите, но пользователь с указанным имейлом не найден'
     errors:
       user_inactive: 'Sorry, but You need to activate Your account. Check Your email for activation link or request a new one.'
+
+  admin:
+    nav:
+      users: 'Пользователи'
+      categories: 'Категории'
+      news: 'Новости'
+      info_pages: 'Инфо страницы'
+

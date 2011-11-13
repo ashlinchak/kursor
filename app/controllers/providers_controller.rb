@@ -6,9 +6,11 @@ class ProvidersController < ApplicationController
   end
 
   def new
+    provider.build_location
   end
 
   def edit
+    provider.build_location unless provider.location
   end
 
   def create

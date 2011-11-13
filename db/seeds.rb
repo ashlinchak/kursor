@@ -62,3 +62,8 @@ Address::City.create([
   {:name => 'Николаев', :region=> Address::Region.find_by_name('Николаевская область')},
   {:name => 'Одесса', :region=> Address::Region.find_by_name('Одесская область')}
 ])
+
+Info.create([
+  { :title => 'О проекте', :body => 'Инфа о проекте...', :permalink => 'about' },
+  { :title => 'Контакты', :body => 'Контактные сведения...', :permalink => 'contacts' }
+])
