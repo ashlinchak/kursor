@@ -23,5 +23,5 @@
         = render :partial => 'categories/provider', :locals => { :provider => provider }
     -else
       - category.categorizings.each do |categorizing|
-        %li.clearfix.list-provider= link_to categorizing.provider.name, provider_path(categorizing.provider)
+        = render :partial => 'categories/provider', :locals => { :provider => categorizing.provider }
 
