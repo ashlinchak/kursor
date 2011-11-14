@@ -2,5 +2,5 @@
 -if category.children
   %ul
     - for category in category.children
-      %li= link_to category.name, '#' #edit_admin_category_path( category )
+      %li= link_to category.name, edit_admin_category_path( category )
       = render :partial => 'category', :collection => category.children

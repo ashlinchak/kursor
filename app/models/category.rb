@@ -1,5 +1,4 @@
 class Category < ActiveRecord::Base
-  #has_attached_file :cat_image, :styles => { :thumb => "100x100" }
 
   belongs_to :parent, :class_name => 'Category'
   has_many :children, :class_name => 'Category', :foreign_key => 'parent_id'
