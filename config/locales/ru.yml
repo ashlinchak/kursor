@@ -40,3 +40,26 @@ ru:
       news: 'Новости'
       info_pages: 'Инфо страницы'
 
+  activerecord:
+    models:
+      user: 'Пользователь'
+      news: 'Новость'
+      category: 'Категория'
+      provider: 'Учебное заведение'
+    attributes:
+      category:
+        name: 'Название'
+        description: 'Описание'
+        parent_id: 'Родительская категория'
+        permalink: 'Прямая ссылка'
+
+      user:
+        email: 'Эл. почта'
+        password: 'Пароль'
+        password_confirmation: 'Повторите пароль'
+      provider:
+        name: 'Название'
+        is_approved: 'Проверен'
+        logo: 'Логотип'
+        description: 'Подробное описание'
+        category: 'Категория'
