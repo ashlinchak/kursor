@@ -21,6 +21,10 @@ ru:
     create:
       title: 'Register'
 
+  news:
+    title: 'Новости'
+    back_to_list: 'Вернуться к списку новостей'
+
   user_activation:
     title: 'Получить ссылку активации'
     create:

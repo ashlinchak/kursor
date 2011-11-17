@@ -2,7 +2,10 @@
   .image-container
     = image_tag provider.logo_url(:thumb)
   %h4= link_to provider.name, provider_path(provider)
-  .description= provider.description
+  - if provider.location
+    .address= provider.location.city
+  .description= markdown provider.description
+
   %ul
     - for categoring in provider.categorizings
       %li= link_to categoring, category_path(categoring.category)

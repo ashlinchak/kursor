@@ -1,3 +1,36 @@
 // Place all the styles related to the News controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.news-list, .news-details{
+  .date{
+    color: #888;
+    font-style: italic;
+  }
+}
+.news-list{
+
+  li{
+    border-bottom: 1px dashed #d6d6d6;
+    margin-bottom: 1em;
+
+    h4{
+      margin-bottom: .5em;
+    }
+  }
+}
+
+.news-details{
+  border-bottom: 1px dashed #d6d6d6;
+  color: #878787;
+
+  h3{
+    color: #0c9;
+    font-style: italic;
+  }
+  .date{
+    color: #888;
+    font-style: italic;
+  }
+}
+
+

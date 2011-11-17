@@ -18,6 +18,12 @@
   = f.label :description
 .fields
   = f.text_area  :description
+.field
+  = f.fields_for :location do |l|
+    = l.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}
+    = l.text_field :street
+    = l.text_field :building, :size => 4
+    = l.text_field :apartment, :size => 4
 .field.provider-categories
   = f.label :category
   - root_categories.each do |c|

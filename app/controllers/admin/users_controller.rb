@@ -6,7 +6,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def new
-    user.build_provider unless user.provider
+    user.build_provider
+    user.provider.build_location
   end
 
   def create
@@ -20,6 +21,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     user.build_provider unless user.provider
+    user.provider.build_location unless user.provider.location
   end
 
   def update

@@ -24,6 +24,10 @@ en:
     create:
       title: 'Register'
 
+  news:
+    title: 'Новости'
+    back_to_list: 'Back to news list'
+
   user_activation:
     title: 'Request activation link'
     create:
