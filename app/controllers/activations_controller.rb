@@ -20,13 +20,19 @@ class ActivationsController < ApplicationController
 
   def perform
     if user_activation = UserActivation.find_by_token( params[:id] )
-      if user = user_activation
+      if user = user_activation.user
         user.is_active = true
         user.save
         flash[:success] = t(:'user_activation.perform.success')
-        redirect_to my_profile_path
+        redirect_to user
       end
+      flash[:error] = t(:'user_activation.user_not_found')
+      redirect_to root_path
+    else
+      flash[:error] = t(:'user_activation.not_found')
+      redirect_to :action => :create
     end
+
   end
 
 end
