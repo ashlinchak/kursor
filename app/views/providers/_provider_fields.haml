@@ -1,0 +1,40 @@
+.field
+  = f.label :name
+.field
+  = f.text_field :name
+.field
+  = f.label :description
+.field
+  = f.text_area :description
+= f.fields_for :location do |l|
+  .field
+    = f.label :location
+  .field
+    = f.label :city
+  .field
+    = l.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, { :prompt => 'Choose or enter your city' }, { :class => 'select-city' }
+    = l.text_field :custom_city, :class => 'custom-city'
+  .field
+    = f.label :address
+  .field
+    = l.text_field :street
+    = l.text_field :building, :size => 4
+    = l.text_field :apartment, :size => 4
+
+.field
+  = f.label :contacts
+= f.fields_for :contacts do |c|
+  .field
+    = render :partial => 'contact_fields', :locals => { :f => c }
+.fields= link_to_add_fields "Add contact", f, :contacts
+
+.field.provider-categories
+  = f.label :category
+  - root_categories.each do |c|
+    .field.provider-category
+      = f.radio_button :category_id, c.id
+      = f.label "category_id_#{c.id}", c.name
+      .field
+        - c.children.each do |ch|
+          = check_box_tag 'provider[category_ids][]', ch.id, ( :checked if provider.categories.include? ch )
+          = ch.name

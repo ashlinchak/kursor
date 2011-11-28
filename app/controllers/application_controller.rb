@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def root_categories
-    @root_categories = Category.roots
+    @root_categories ||= Category.roots
   end
   helper_method :root_categories
 

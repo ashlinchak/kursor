@@ -5,5 +5,6 @@
   = link_to 'Add provider', new_provider_path
 - else
   = link_to user.provider, user.provider
-%hr/
--#= link_to 'Edit', edit_profile_url
+- if user === current_user
+  %hr/
+  = link_to 'Edit', edit_profile_url

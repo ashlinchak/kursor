@@ -1,30 +1,5 @@
 = form_for(provider) do |f|
   = render :partial => "shared/form_errors", :locals => { :object => provider }
-  .field
-    = f.label :name
-  .field
-    = f.text_field :name
-  .field
-    = f.label :description
-  .field
-    = f.text_area :description
-  .field
-    = f.label :location
-  .field
-    = f.fields_for :location do |l|
-      = l.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}
-      = l.text_field :street
-      = l.text_field :building, :size => 4
-      = l.text_field :apartment, :size => 4
-  .field.provider-categories
-    = f.label :category
-    - root_categories.each do |c|
-      .field.provider-category
-        = f.radio_button :category_id, c.id
-        = f.label "category_id_#{c.id}", c.name
-        .field
-          - c.children.each do |ch|
-            = check_box_tag 'provider[category_ids][]', ch.id, ( :checked if provider.categories.include? ch )
-            = ch.name
+  = render :partial => 'provider_fields', :locals => { :f => f }
   .actions
     = f.submit

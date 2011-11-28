@@ -2,24 +2,35 @@ ru:
 
   site:
     errors:
-      error_404: 'Page not found'
+      error_404: 'Страница не найдена'
     back_to_site: 'Вернуться на сайт'
+    actions:
+      new: 'Добавить'
+      edit: 'Изменить'
+      destroy: 'Удалить'
+
+  home:
+    titles:
+      recent_providers: 'С нами уже'
+      news: 'Новости'
 
   sessions:
     create:
-      title: 'Login'
-      button: 'Login'
-      success: 'Successfully logged in!'
-      error: 'Bad login/password combination'
+      title: 'Войти'
+      button: 'Войти'
+      success: 'Вход успешно выполнен!'
+      error: 'Неправильный логин/пароль'
     destroy:
-      title: 'Logout'
-      success: 'Logged out. Bye-bye!'
+      title: 'Выйти'
+      success: 'Вы успешно вышли!'
 
   users:
     new:
-      title: 'Register'
+      title: 'Зарегистрироваться'
     create:
-      title: 'Register'
+      title: 'Зарегистрироваться'
+    edit:
+      title: 'Изменить настройки пользователя'
 
   news:
     title: 'Новости'
@@ -46,6 +57,7 @@ ru:
       news: 'Новость'
       category: 'Категория'
       provider: 'Учебное заведение'
+      location: 'Местоположение'
     attributes:
       category:
         name: 'Название'
@@ -63,3 +75,4 @@ ru:
         logo: 'Логотип'
         description: 'Подробное описание'
         category: 'Категория'
+        location: 'Местоположение'

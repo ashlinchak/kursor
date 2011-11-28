@@ -1,22 +1,36 @@
+- if provider.user === current_user
+  = link_to t(:'site.actions.edit'), edit_provider_path(provider)
+  %hr
+
 .image-container
   = image_tag provider.logo_url(:thumb).to_s
 %h3
   = link_to( provider.category, category_path(provider.category) ) if provider.category
-  &gt;
+  \/
   = provider.name
 .description= markdown provider.description
 - if provider.location
   .location
-    = provider.location.city.region.name
+    - if provider.location.city
+      = provider.location.city.region
+      ,
+      = provider.location.city
+    - else
+      = provider.location.custom_city
     ,
-    = provider.location.city.name
     = provider.location.street
     ,
     = provider.location.building
     ,
+    офис
     = provider.location.apartment
+  .contacts
+    %ul
+      - for contact in provider.contacts.by_type do
+        %li
+          %span{ :class => "icon-#{Contact::CONTACT_TYPES[contact.contact_type_id].capitalize}" }
+            = contact.value
 .categories
   - provider.categorizings.each do |categorizing|
-    = link_to categorizing, category_path(categorizing.category.permalink)
--#= link_to 'Edit', edit_provider_path(provider)
--#= link_to 'Back', providers_path
+    = link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
+

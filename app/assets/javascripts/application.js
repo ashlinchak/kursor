@@ -10,6 +10,7 @@
 
 $(document).ready(function(){
 
+  // TODO: refactor this method to prevent categories unchecking
   $('.provider-categories input[type=radio]').click(function(){
     var category = $(this).closest('.provider-categories').find('.provider-category');
     category.removeClass('active');
@@ -17,4 +18,25 @@ $(document).ready(function(){
     $(this).closest('.provider-category').addClass('active');
   });
 
+  $('.select-city').bind('click change keyup blur load', function(){
+    if ( $(this).val() == '' ){
+      $('.custom-city').show();
+    } else {
+      $('.custom-city').hide();
+    }
+
+  });
+
 });
+
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".field").fadeOut();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  $(link).parent().before(content.replace(regexp, new_id));
+}
+

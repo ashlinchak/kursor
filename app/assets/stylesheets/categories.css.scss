@@ -3,13 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 a{
   color: #1a7ab6;
-  text-decoration: none;
+  //text-decoration: none;
 }
 
-a:hover {
-  color: #00c290;
-  text-decoration: underline;
-}
+//a:hover {
+  //color: #00c290;
+  //text-decoration: underline;
+//}
 
 ul.entries, ul.regions, ul.categories, ul.categories ul{
   list-style: none;
@@ -30,9 +30,9 @@ ul.entries, ul.regions, ul.categories, ul.categories ul{
             float: right;
         }
 
-        h4 a{
-            color: #1a7bb0;
-        }
+        //h4 a{
+            //color: #1a7bb0;
+        //}
     }
 }
 ul.regions{
@@ -44,6 +44,9 @@ ul.regions{
     display: block;
     float: left;
     width: 50%;
+    span{
+      color: #ccc;
+    }
   }
 }
 
