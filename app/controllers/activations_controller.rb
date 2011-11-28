@@ -19,7 +19,7 @@ class ActivationsController < ApplicationController
   end
 
   def perform
-    if user_activation = UserActivation.find( params[:id] )
+    if user_activation = UserActivation.find_by_token( params[:id] )
       if user = user_activation
         user.is_active = true
         user.save
