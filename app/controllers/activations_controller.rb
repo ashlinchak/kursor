@@ -23,7 +23,10 @@ class ActivationsController < ApplicationController
       if user = user_activation.user
         user.is_active = true
         user.save
+        user_activation.destroy
         flash[:success] = t(:'user_activation.perform.success')
+        # logging in activated user
+        self.current_user = user
         redirect_to user
       else
         flash[:error] = t(:'user_activation.user_not_found')
