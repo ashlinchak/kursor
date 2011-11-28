@@ -19,6 +19,14 @@ class ActivationsController < ApplicationController
   end
 
   def perform
+    if user_activation = UserActivation.find( params[:id] )
+      if user = user_activation
+        user.is_active = true
+        user.save
+        flash[:success] = t(:'user_activation.perform.success')
+        redirect_to user
+      end
+    end
   end
 
 end
