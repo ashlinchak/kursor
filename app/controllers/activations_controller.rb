@@ -25,14 +25,14 @@ class ActivationsController < ApplicationController
         user.save
         flash[:success] = t(:'user_activation.perform.success')
         redirect_to user
+      else
+        flash[:error] = t(:'user_activation.user_not_found')
+        redirect_to root_path
       end
-      flash[:error] = t(:'user_activation.user_not_found')
-      redirect_to root_path
     else
       flash[:error] = t(:'user_activation.not_found')
       redirect_to :action => :create
     end
-
   end
 
 end
