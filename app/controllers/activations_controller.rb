@@ -24,7 +24,7 @@ class ActivationsController < ApplicationController
         user.is_active = true
         user.save
         flash[:success] = t(:'user_activation.perform.success')
-        redirect_to user
+        redirect_to my_profile_path
       end
     end
   end
