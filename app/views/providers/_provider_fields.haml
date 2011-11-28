@@ -25,16 +25,7 @@
   = f.label :contacts
 = f.fields_for :contacts do |c|
   .field
-    = render :partial => 'contact_fields', :locals => { :f => c }
+    = render :partial => 'contacts/contact_fields', :locals => { :f => c }
 .fields= link_to_add_fields "Add contact", f, :contacts
 
-.field.provider-categories
-  = f.label :category
-  - root_categories.each do |c|
-    .field.provider-category
-      = f.radio_button :category_id, c.id
-      = f.label "category_id_#{c.id}", c.name
-      .field
-        - c.children.each do |ch|
-          = check_box_tag 'provider[category_ids][]', ch.id, ( :checked if provider.categories.include? ch )
-          = ch.name
+= render :partial => '/providers/category_fields', :locals => { :f => f, :provider => provider }
