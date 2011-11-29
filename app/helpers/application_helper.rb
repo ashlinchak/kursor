@@ -17,6 +17,11 @@ module ApplicationHelper
   end
 
   def format_location location
-    "#{location.city}, #{location.street}, #{location.building}, оф. #{location.apartment}"
+    result = ""
+    result << "#{location.city}" if location.city
+    result << ", #{location.street}" if location.street
+    result << ", #{location.building}" if location.building
+    result << ", оф. #{location.apartment}" if location.apartment
+    result
   end
 end
