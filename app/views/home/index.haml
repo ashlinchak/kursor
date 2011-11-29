@@ -12,7 +12,7 @@
       - providers.each do |item|
         %li
           %h3= link_to item.name, provider_path(item)
-          .decription= excerpt(item.description, '', :radius => 48)
+          -#.decription= excerpt(item.description, '', :radius => 48)
 
   .home-column
     %h2.title-news= t(:'home.titles.news')
