@@ -1,5 +1,5 @@
 = form_for(provider) do |f|
   = render :partial => "shared/form_errors", :locals => { :object => provider }
-  = render :partial => 'provider_fields', :locals => { :f => f }
+  = render :partial => 'provider_fields', :locals => { :f => f, :provider => provider }
   .actions
     = f.submit

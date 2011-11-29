@@ -10,13 +10,10 @@
 
 $(document).ready(function(){
 
-  // TODO: refactor this method to prevent categories unchecking
-  $('.provider-categories input[type=radio]').click(function(){
-    var category = $(this).closest('.provider-categories').find('.provider-category');
-    category.removeClass('active');
-    category.find('.field input:checked').attr('checked', false);
-    $(this).closest('.provider-category').addClass('active');
+  $('.provider-categories select').bind('click change keyup blur', function(){
+    show_sub_categories(this);
   });
+  show_sub_categories($('.provider-categories select'));
 
   $('.select-city').bind('click change keyup blur load', function(){
     if ( $(this).val() == '' ){
@@ -28,6 +25,12 @@ $(document).ready(function(){
   });
 
 });
+
+function show_sub_categories(parent) {
+  var category = $("#child-of-" + $(parent).val());
+  $('.provider-category').removeClass('active');
+  category.addClass('active');
+}
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");

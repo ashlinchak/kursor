@@ -1,10 +1,9 @@
 .field.provider-categories
   = f.label :category
+  = f.select :category_id, root_categories.collect{|c| [ c, c.id ] }
   - root_categories.each do |c|
-    .field.provider-category
-      = f.radio_button :category_id, c.id
-      = f.label "category_id_#{c.id}", c.name
+    .field.provider-category{ :id => "child-of-#{c.id}"}
+      -#= f.radio_button :category_id, c.id
+      -#= f.label "category_id_#{c.id}", c.name
       .field
-        - c.children.each do |ch|
-          = check_box_tag 'user[provider_attributes][category_ids][]', ch.id, ( :checked if provider.categories.include? ch )
-          = ch.name
+        = render :partial => '/providers/sub_category_fields', :locals => { :c => c, :provider => provider }
