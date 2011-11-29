@@ -1,9 +1,9 @@
 - if provider.user === current_user
   = link_to t(:'site.actions.edit'), edit_provider_path(provider)
   %hr
-
-.image-container
-  = image_tag provider.logo_url(:thumb).to_s
+- if provider.logo_url
+  .image-container
+    = image_tag provider.logo_url(:thumb).to_s
 %h3
   = link_to( provider.category, category_path(provider.category) ) if provider.category
   \/

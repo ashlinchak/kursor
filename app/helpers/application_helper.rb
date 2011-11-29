@@ -15,4 +15,8 @@ module ApplicationHelper
     end
     link_to_function(name, ("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
+
+  def format_location location
+    "#{location.city}, #{location.street}, #{location.building}, оф. #{location.apartment}"
+  end
 end

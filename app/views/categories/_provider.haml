@@ -1,10 +1,14 @@
 %li.clearfix.list-provider
-  .image-container
-    = image_tag provider.logo_url(:thumb)
+  -if provider.logo_url
+    .image-container
+      = image_tag provider.logo_url(:thumb)
   %h4= link_to provider.name, provider_path(provider)
   - if provider.location
-    .address= provider.location.city
-  .description= markdown provider.description
+    .address
+      %strong Адрес:
+      = format_location provider.location
+      -#= "#{provider.location.city}, #{provider.location.street}, #{provider.location.building}, оф. #{provider.location.apartment}"
+    -#.contacts= provider.contacts.collect{|c| c.value }
 
   %ul
     - for categoring in provider.categorizings
