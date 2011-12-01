@@ -27,7 +27,8 @@ module ApplicationHelper
 
   def contact_value contact
     if contact.contact_type.to_sym == :url
-      link_to contact.value, contact.value, :rel => 'nofollow'
+      url = "http://#{contact.value.gsub(/http:\/\//,'')}"
+      link_to url, url, :rel => 'nofollow'
     elsif contact.contact_type.to_sym == :email
       link_to contact.value, "mailto:#{contact.value}"
     else
