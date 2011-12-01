@@ -50,6 +50,8 @@ ru:
       categories: 'Категории'
       news: 'Новости'
       info_pages: 'Инфо страницы'
+    users:
+      generate_credentials: 'Сгенерировать случайный логин/пароль'
 
   activerecord:
     models:
