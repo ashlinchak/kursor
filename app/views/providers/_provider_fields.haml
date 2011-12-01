@@ -12,7 +12,7 @@
   .field
     = f.label :city
   .field
-    = l.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, { :prompt => 'Choose or enter your city' }, { :class => 'select-city' }
+    = l.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, { :prompt => 'Choose or enter your city', :include_blank => true }, { :class => 'select-city' }
     = l.text_field :custom_city, :class => 'custom-city'
   .field
     = f.label :address

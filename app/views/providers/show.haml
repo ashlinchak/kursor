@@ -19,8 +19,8 @@
   - if provider.location
     .location
       %h4 Address
-      - if provider.location.city
-        = "#{provider.location.city.region}, "
+      - if !provider.location.custom_city.blank?
+        -#= "#{provider.location.city.region}, "
         = "#{provider.location.custom_city}, "
       - else
         = "#{provider.location.city}, "

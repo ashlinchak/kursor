@@ -19,7 +19,7 @@ $(document).ready(function(){
     if ( $(this).val() == '' ){
       $('.custom-city').show();
     } else {
-      $('.custom-city').hide();
+      $('.custom-city').hide().val('');
     }
 
   });
