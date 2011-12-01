@@ -4,5 +4,6 @@
 jQuery ->
   $('.default-credentials').click ->
     username = $('input[name=current_user]').val()
-    time = new Date()
-    $('input#user_email, input#user_password, input#user_password_confirmation').val( username + time.getTime() )
+    date = new Date()
+    time = date.getTime()
+    $('input#user_email, input#user_password, input#user_password_confirmation').val( username + time + '@kursor.org.ua' )
