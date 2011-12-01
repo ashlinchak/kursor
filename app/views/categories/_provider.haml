@@ -9,7 +9,7 @@
       = format_location provider.location
       -#= "#{provider.location.city}, #{provider.location.street}, #{provider.location.building}, оф. #{provider.location.apartment}"
     -#.contacts= provider.contacts.collect{|c| c.value }
-
-  %ul
-    - for categoring in provider.categorizings
-      %li= link_to categoring, category_path(categoring.category)
+  .categories
+    %ul
+      - for categoring in provider.categorizings
+        %li= link_to categoring, category_path(categoring.category), :class => 'link-icon icon-arrow'

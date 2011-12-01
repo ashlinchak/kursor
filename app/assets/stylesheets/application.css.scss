@@ -216,7 +216,7 @@ textarea{
   padding: 0;
 }
 /* ICONS */
-.link-icon {
+.link-icon, .span-icon{
   background-repeat: no-repeat;
   background-position: 0 50%;
   display: inline-block;
@@ -227,5 +227,36 @@ textarea{
 .icon-arrow{
   background-image: url(asset_path('bg_bullet00.png', image));
 }
+
+.icon-phone{
+  background-image: url(asset_path('contact-icons/phone.png', image));
+  padding-left: 1.5em;
+}
+
+.icon-email{
+  background-image: url(asset_path('contact-icons/mail.png', image));
+  padding-left: 1.5em;
+}
+
+.icon-skype{
+  background-image: url(asset_path('contact-icons/skype.png', image));
+  padding-left: 1.5em;
+}
+
+.icon-url{
+  background-image: url(asset_path('contact-icons/web.png', image));
+  padding-left: 1.5em;
+}
+
+.icon-icq{
+  background-image: url(asset_path('contact-icons/icq.png', image));
+  padding-left: 1.5em;
+}
+
+.icon-msn{
+  background-image: url(asset_path('contact-icons/msn.png', image));
+  padding-left: 1.5em;
+}
+
 /* /ICONS */
 

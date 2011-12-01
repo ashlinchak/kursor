@@ -25,6 +25,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+    # trick to delete unchecked categories
+    params[:user][:provider_attributes][:category_ids] ||= []
     if user.update_attributes(params[:user])
       redirect_to admin_users_path, :notice => 'Done!'
     else

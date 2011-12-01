@@ -3,7 +3,5 @@
   = f.select :category_id, root_categories.collect{|c| [ c, c.id ] }
   - root_categories.each do |c|
     .field.provider-category{ :id => "child-of-#{c.id}"}
-      -#= f.radio_button :category_id, c.id
-      -#= f.label "category_id_#{c.id}", c.name
       .field
-        = render :partial => '/providers/sub_category_fields', :locals => { :c => c, :provider => provider }
+        = render :partial => 'sub_category_fields', :locals => { :c => c, :provider => provider }

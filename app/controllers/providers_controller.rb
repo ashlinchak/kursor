@@ -23,6 +23,7 @@ class ProvidersController < ApplicationController
   end
 
   def update
+    params[:provider][:category_ids] ||= []
     if provider.update_attributes(params[:provider])
       redirect_to provider, :notice => 'Provider was successfully updated.'
     else

@@ -1,36 +1,37 @@
 - if provider.user === current_user
   = link_to t(:'site.actions.edit'), edit_provider_path(provider)
   %hr
-- if provider.logo_url
-  .image-container
-    = image_tag provider.logo_url(:thumb).to_s
-%h3
-  = link_to( provider.category, category_path(provider.category) ) if provider.category
-  \/
-  = provider.name
-.description= markdown provider.description
-- if provider.location
-  .location
-    - if provider.location.city
-      = provider.location.city.region
-      ,
-      = provider.location.city
-    - else
-      = provider.location.custom_city
-    ,
-    = provider.location.street
-    ,
-    = provider.location.building
-    ,
-    офис
-    = provider.location.apartment
-  .contacts
-    %ul
-      - for contact in provider.contacts.by_type do
-        %li
-          %span{ :class => "icon-#{Contact::CONTACT_TYPES[contact.contact_type_id].capitalize}" }
-            = contact.value
-.categories
-  - provider.categorizings.each do |categorizing|
-    = link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
-
+= link_to( provider.category, category_path(provider.category) ) if provider.category
+%hr
+.column.span-16
+  - if provider.logo_url
+    .image-container
+      = image_tag provider.logo_url(:thumb).to_s
+  %h1= provider.name
+  .description= markdown provider.description
+.column.span-8.last
+  .categories
+    - if provider.categorizings.size > 0
+      %h4 Categories
+      %ul
+        - for categorizing in provider.categorizings do
+          %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
+  - if provider.location
+    .location
+      %h4 Address
+      - if provider.location.city
+        = "#{provider.location.city.region}, "
+        = "#{provider.location.custom_city}, "
+      - else
+        = "#{provider.location.city}, "
+      = "#{provider.location.street}, "
+      = "#{provider.location.building.chomp}, "
+      офис
+      = provider.location.apartment
+  - if provider.contacts.size > 0
+    .contacts
+      %h4 Contacts
+      %ul
+        - for contact in provider.contacts.by_type do
+          %li
+            %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact

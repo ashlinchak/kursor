@@ -28,7 +28,7 @@ class Provider < ActiveRecord::Base
   end
 
   def category_ids=(ids)
-    self.categories = Category.find(ids)
+    self.categories = Category.find(ids)# || []
   end
 
   def generate_permalink
