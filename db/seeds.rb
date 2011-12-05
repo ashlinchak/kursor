@@ -6,18 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-Category.create([
-  {:name => 'Курсы',      :description => 'Различные обучающие курсы', :permalink => 'courses'},
-  {:name => 'Школы',      :description => 'Образовательные частные и государственные школы', :permalink => 'schools'},
-  {:name => 'ЗНО',        :description => 'Различные ЗНО', :permalink => 'zno'},
-  {:name => 'ВУЗы',       :description => 'Частные и государственные ВУЗы', :permalink => 'high-schools'},
-  {:name => 'Репетиторы', :description => 'Репетиторы и частные преподаватели', :permalink => 'teachers'},
-  {:name => 'Автошколы',  :description => 'Школы вождения, экстремального вождения', :permalink => 'auto-schools'}
-])
-
-User.create( :email => 'ivan.kukobko@gmail.com', :password => '111111', :password_confirmation => '111111' )
-
 admin = User.create( :email => 'admin@kursor.ua', :password => 'admin', :password_confirmation => 'admin' )
+
 Administrator.create( :user => admin )
 
 Address::Region.create([
@@ -60,10 +50,19 @@ Address::City.create([
   {:name => 'Луганск', :region=> Address::Region.find_by_name('Луганская область')},
   {:name => 'Львов', :region=> Address::Region.find_by_name('Льовская область')},
   {:name => 'Николаев', :region=> Address::Region.find_by_name('Николаевская область')},
-  {:name => 'Одесса', :region=> Address::Region.find_by_name('Одесская область')}
-])
-
-Info.create([
-  { :title => 'О проекте', :body => 'Инфа о проекте...', :permalink => 'about' },
-  { :title => 'Контакты', :body => 'Контактные сведения...', :permalink => 'contacts' }
+  {:name => 'Одесса', :region=> Address::Region.find_by_name('Одесская область')},
+  {:name => 'Симферополь', :region=> Address::Region.find_by_name('АР Крым')},
+  {:name => 'Луцк', :region=> Address::Region.find_by_name('Волынская область')},
+  {:name => 'Симферополь', :region=> Address::Region.find_by_name('')},
+  {:name => 'Ужгород', :region=> Address::Region.find_by_name('Закарпатская область')},
+  {:name => 'Полтава', :region=> Address::Region.find_by_name('Полтавская область')},
+  {:name => 'Ровно', :region=> Address::Region.find_by_name('Ровенская область')},
+  {:name => 'Сумы', :region=> Address::Region.find_by_name('Сумская область')},
+  {:name => 'Тернополь', :region=> Address::Region.find_by_name('Тернопольская область')},
+  {:name => 'Харьков', :region=> Address::Region.find_by_name('Харьковская область')},
+  {:name => 'Херсон', :region=> Address::Region.find_by_name('Херсонская область')},
+  {:name => 'Хмельницкий', :region=> Address::Region.find_by_name('Хмельницкая область')},
+  {:name => 'Черкассы', :region=> Address::Region.find_by_name('Черкасская область')},
+  {:name => 'Чернигов', :region=> Address::Region.find_by_name('Черниговская область')},
+  {:name => 'Черновцы', :region=> Address::Region.find_by_name('Черновицкая область')}
 ])
