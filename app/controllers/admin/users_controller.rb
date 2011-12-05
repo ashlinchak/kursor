@@ -6,7 +6,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def new
-    user.build_provider unless user.provider
+    user.build_provider
+    user.provider.build_location
   end
 
   def create
@@ -20,9 +21,12 @@ class Admin::UsersController < ApplicationController
 
   def edit
     user.build_provider unless user.provider
+    user.provider.build_location unless user.provider.location
   end
 
   def update
+    # trick to delete unchecked categories
+    params[:user][:provider_attributes][:category_ids] ||= []
     if user.update_attributes(params[:user])
       redirect_to admin_users_path, :notice => 'Done!'
     else

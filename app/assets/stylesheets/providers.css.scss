@@ -28,3 +28,23 @@
 .image-container img{
   display: block;
 }
+
+.description {
+  font-size: 120%;
+}
+
+.location, .contacts, .categories {
+  margin-bottom: 2em;
+
+  ul{
+    margin: 0 0 1em 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+.contacts {
+  li{
+    border-bottom: 1px solid #ccc;
+    padding: .5em;
+  }
+}

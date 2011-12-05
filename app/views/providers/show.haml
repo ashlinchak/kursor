@@ -1,22 +1,53 @@
-.image-container
-  = image_tag provider.logo_url(:thumb).to_s
-%h3
-  = link_to( provider.category, category_path(provider.category) ) if provider.category
-  &gt;
-  = provider.name
-.description= provider.description
-- if provider.location
-  .location
-    = provider.location.city.region.name
-    ,
-    = provider.location.city.name
-    = provider.location.street
-    ,
-    = provider.location.building
-    ,
-    = provider.location.apartment
-.categories
-  - provider.categorizings.each do |categorizing|
-    = link_to categorizing, category_path(categorizing.category.permalink)
--#= link_to 'Edit', edit_provider_path(provider)
-= link_to 'Back', providers_path
+- if provider.user === current_user
+  = link_to t(:'site.actions.edit'), edit_provider_path(provider)
+  %hr
+= link_to( provider.category, category_path(provider.category) ) if provider.category
+%hr
+.column.span-16
+  - if provider.logo_url
+    .image-container
+      = image_tag provider.logo_url(:thumb).to_s
+  %h1= provider.name
+  .description= markdown provider.description
+.column.span-8.last
+  .categories
+    - if provider.categorizings.size > 0
+      %h4 Categories
+      %ul
+        - for categorizing in provider.categorizings do
+          %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
+  - if provider.location
+    .location
+      %h4 Address
+      - if !provider.location.custom_city.blank?
+        -#= "#{provider.location.city.region}, "
+        = "#{provider.location.custom_city}, "
+      - else
+        = "#{provider.location.city}, "
+      = "#{provider.location.street}, "
+      = "#{provider.location.building.chomp}, "
+      офис
+      = provider.location.apartment
+  - if provider.contacts.size > 0
+    .contacts
+      %h4 Contacts
+      %ul
+        - for contact in provider.contacts.by_type do
+          %li
+            %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+
+  - if provider.filials.size > 0
+    %h4 Filials
+    %ul
+      - for filial in provider.filials do
+        %li
+          .location
+            - if !provider.location.custom_city.blank?
+              -#= "#{provider.location.city.region}, "
+              = "#{provider.location.custom_city}, "
+            - else
+              = "#{provider.location.city}, "
+            = "#{provider.location.street}, "
+            = "#{provider.location.building.chomp}, "
+            офис
+            = provider.location.apartment

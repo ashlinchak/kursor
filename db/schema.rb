@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111111223226) do
+ActiveRecord::Schema.define(:version => 20111202173846) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20111111223226) do
     t.string   "addressable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "custom_city"
+    t.string   "custom_region"
   end
 
   add_index "address_locations", ["city_id"], :name => "index_address_locations_on_city_id"
@@ -66,6 +68,24 @@ ActiveRecord::Schema.define(:version => 20111111223226) do
 
   add_index "categorizings", ["category_id"], :name => "index_categorizings_on_category_id"
   add_index "categorizings", ["provider_id"], :name => "index_categorizings_on_provider_id"
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "contact_type_id"
+    t.integer  "provider_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["provider_id"], :name => "index_contacts_on_provider_id"
+
+  create_table "filials", :force => true do |t|
+    t.integer  "provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "filials", ["provider_id"], :name => "index_filials_on_provider_id"
 
   create_table "infos", :force => true do |t|
     t.string   "title"

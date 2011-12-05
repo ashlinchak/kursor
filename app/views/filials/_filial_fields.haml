@@ -1,0 +1,5 @@
+.fields
+  -# TODO: research nested associations building
+  = f.fields_for( f.object.location || f.object.class.reflect_on_association(:location).klass.new ) do |l|
+    = render :partial => 'providers/location_fields', :locals => { :f => l }
+  = link_to_remove_fields "[X]", f

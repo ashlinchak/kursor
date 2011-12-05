@@ -1,8 +1,15 @@
 %li.clearfix.list-provider
-  .image-container
-    = image_tag provider.logo_url(:thumb)
+  -if provider.logo_url
+    .image-container
+      = image_tag provider.logo_url(:thumb)
   %h4= link_to provider.name, provider_path(provider)
-  .description= provider.description
-  %ul
-    - for categoring in provider.categorizings
-      %li= link_to categoring, category_path(categoring.category)
+  - if provider.location
+    .address
+      %strong Адрес:
+      = format_location provider.location
+      -#= "#{provider.location.city}, #{provider.location.street}, #{provider.location.building}, оф. #{provider.location.apartment}"
+    -#.contacts= provider.contacts.collect{|c| c.value }
+  .categories
+    %ul
+      - for categoring in provider.categorizings
+        %li= link_to categoring, category_path(categoring.category), :class => 'link-icon icon-arrow'

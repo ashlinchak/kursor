@@ -3,24 +3,21 @@
     - root_categories.each do |category|
       %div.category-item
         %h3= link_to category.name, category
-        -#.description= category.description
-        %ul
-          - category.children.each do |child|
-            %li= link_to child.name, child
+        .description= category.description
 
 .column.span-10.last
   .home-column
-    %h2 С нами уже
+    %h2= t(:'home.titles.recent_providers')
     %ul.home-providers.no-bullets
       - providers.each do |item|
         %li
           %h3= link_to item.name, provider_path(item)
-          .decription= item.description
+          -#.decription= excerpt(item.description, '', :radius => 48)
 
   .home-column
-    %h2.title-news Новости
+    %h2.title-news= t(:'home.titles.news')
     %ul.home-news.no-bullets
       - news.each do |item|
         %li
-          .date= item.created_at.strftime("%d:%m:%y")
+          .date= item.created_at.strftime("%d.%m.%y")
           %h3= link_to item.title, news_path(item)

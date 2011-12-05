@@ -10,11 +10,36 @@
 
 $(document).ready(function(){
 
-  $('.provider-categories input[type=radio]').click(function(){
-    var category = $(this).closest('.provider-categories').find('.provider-category');
-    category.removeClass('active');
-    category.find('.field input:checked').attr('checked', false);
-    $(this).closest('.provider-category').addClass('active');
+  $('.provider-categories select').bind('click change keyup blur', function(){
+    show_sub_categories(this);
+  });
+  show_sub_categories($('.provider-categories select'));
+
+  $('.select-city').bind('click change keyup blur load', function(){
+    if ( $(this).val() == '' ){
+      $('.custom-city').show();
+    } else {
+      $('.custom-city').hide().val('');
+    }
+
   });
 
 });
+
+function show_sub_categories(parent) {
+  var category = $("#child-of-" + $(parent).val());
+  $('.provider-category').removeClass('active');
+  category.addClass('active');
+}
+
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").fadeOut();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  $(link).parent().before(content.replace(regexp, new_id));
+}
+

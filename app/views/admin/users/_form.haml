@@ -13,8 +13,14 @@
       = f.label :password_confirmation
     .field
       = f.password_field :password_confirmation
+    .field
+      = button_tag t(:'admin.users.generate_credentials'), :type => :button, :class => 'default-credentials'
+      %input{ :name => 'current_user', :value => "#{current_user.to_s.split('@')[0]}", :type => :hidden }
   %fieldset
     = f.fields_for :provider do |p|
-      = render :partial => 'provider_fields', :locals => { :f => p }
+      .fields
+        = p.label :is_approved
+        = p.check_box :is_approved
+      = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
   .actions
     = f.submit

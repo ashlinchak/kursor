@@ -4,7 +4,6 @@ gem 'rails', '3.1.0'
 gem 'mysql2'
 gem 'json'
 
-#gem 'rmagick'
 gem 'mini_magick'
 gem 'carrierwave'
 
@@ -14,6 +13,7 @@ gem 'sass-rails', "~> 3.1.0"
 gem 'coffee-rails', "~> 3.1.0"
 gem 'uglifier'
 gem 'haml-rails'
+gem 'redcarpet'
 
 gem 'jquery-rails'
 gem 'haml'

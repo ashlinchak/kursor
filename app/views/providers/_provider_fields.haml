@@ -1,0 +1,27 @@
+.field
+  = f.label :name
+.field
+  = f.text_field :name
+.field
+  = f.label :description
+.field
+  = f.text_area :description
+%fieldset
+  %legend Address
+  = f.fields_for :location do |l|
+    = render :partial => 'providers/location_fields', :locals => { :f => l }
+%fieldset
+  %legend Filials
+  = f.fields_for :filials do |fi|
+    = render :partial => 'filials/filial_fields', :locals => { :f => fi }
+  .fields= link_to_add_fields "Add filial", f, :filials
+
+
+.field
+  = f.label :contacts
+= f.fields_for :contacts do |c|
+  .fields
+    = render :partial => 'contacts/contact_fields', :locals => { :f => c }
+.fields= link_to_add_fields "Add contact", f, :contacts
+
+= render :partial => '/providers/category_fields', :locals => { :f => f, :provider => provider }

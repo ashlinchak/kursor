@@ -1,5 +1,4 @@
-= form_for @news do |f|
-
+= form_for (@news, :url => ( @news.new_record? ? admin_news_index_path : admin_news_path(@news) ) ) do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => @news }
   .field
     = f.text_field :title

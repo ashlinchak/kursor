@@ -12,5 +12,7 @@
     = f.label :password_confirmation
   .field
     = f.password_field :password_confirmation
+  -#= fields_for :provider do |p|
+    -#= render :partial => 'providers/provider_fields', :locals => { :f => p }
   .actions
     = f.submit

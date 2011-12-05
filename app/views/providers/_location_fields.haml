@@ -1,0 +1,13 @@
+-#.field
+  -#= builder.label :location
+.field
+  = f.label :city
+.field
+  = f.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, { :prompt => 'Choose or enter city', :include_blank => true }, { :class => 'select-city' }
+  = f.text_field :custom_city, :class => 'custom-city'
+.field
+  = f.label :address
+.field
+  = f.text_field :street
+  = f.text_field :building, :size => 4
+  = f.text_field :apartment, :size => 4

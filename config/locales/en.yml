@@ -7,6 +7,15 @@ en:
     errors:
       error_404: 'Page not found'
     back_to_site: 'Return to site'
+    actions:
+      new: 'New'
+      edit: 'Edit'
+      destroy: 'Destroy'
+
+  home:
+    titles:
+      recent_providers: 'Recently joined'
+      news: 'News'
 
   sessions:
     create:
@@ -23,6 +32,12 @@ en:
       title: 'Register'
     create:
       title: 'Register'
+    edit:
+      title: 'Edit your profile'
+
+  news:
+    title: 'Новости'
+    back_to_list: 'Back to news list'
 
   user_activation:
     title: 'Request activation link'

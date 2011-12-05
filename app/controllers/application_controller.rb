@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::RedirectBackError,  :with => :render_404
   rescue_from ActionController::RoutingError,       :with => :render_404
-  rescue_from ActiveRecord::RecordNotFound,         :with => :render_404
+  #rescue_from ActiveRecord::RecordNotFound,         :with => :render_404
 
   protected
 
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def root_categories
-    @root_categories = Category.roots
+    @root_categories ||= Category.roots
   end
   helper_method :root_categories
 
