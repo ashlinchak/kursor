@@ -35,3 +35,19 @@
         - for contact in provider.contacts.by_type do
           %li
             %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+
+  - if provider.filials.size > 0
+    %h4 Filials
+    %ul
+      - for filial in provider.filials do
+        %li
+          .location
+            - if !provider.location.custom_city.blank?
+              -#= "#{provider.location.city.region}, "
+              = "#{provider.location.custom_city}, "
+            - else
+              = "#{provider.location.city}, "
+            = "#{provider.location.street}, "
+            = "#{provider.location.building.chomp}, "
+            офис
+            = provider.location.apartment

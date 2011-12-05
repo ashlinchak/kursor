@@ -3,12 +3,12 @@
   %h3= category.name
   -#.description= category.description
 
-  %ul.regions.clearfix
-    - for region in regions
-      %li
-        = link_to region.name, '#'
-        - if region.locations.size > 0
-          %span= region.locations.size.to_s
+  -#%ul.regions.clearfix
+    -#- for region in regions
+      -#%li
+        -#= link_to region.name, '#'
+        -#- if region.locations.size > 0
+          -#%span= region.locations.size.to_s
   %ul.categories.clearfix
     - for child in category.children
       %li

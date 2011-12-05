@@ -6,25 +6,21 @@
   = f.label :description
 .field
   = f.text_area :description
-= f.fields_for :location do |l|
-  .field
-    = f.label :location
-  .field
-    = f.label :city
-  .field
-    = l.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, { :prompt => 'Choose or enter your city', :include_blank => true }, { :class => 'select-city' }
-    = l.text_field :custom_city, :class => 'custom-city'
-  .field
-    = f.label :address
-  .field
-    = l.text_field :street
-    = l.text_field :building, :size => 4
-    = l.text_field :apartment, :size => 4
+%fieldset
+  %legend Address
+  = f.fields_for :location do |l|
+    = render :partial => 'providers/location_fields', :locals => { :f => l }
+%fieldset
+  %legend Filials
+  = f.fields_for :filials do |fi|
+    = render :partial => 'filials/filial_fields', :locals => { :f => fi }
+  .fields= link_to_add_fields "Add filial", f, :filials
+
 
 .field
   = f.label :contacts
 = f.fields_for :contacts do |c|
-  .field
+  .fields
     = render :partial => 'contacts/contact_fields', :locals => { :f => c }
 .fields= link_to_add_fields "Add contact", f, :contacts
 

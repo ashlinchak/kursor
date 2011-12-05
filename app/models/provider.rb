@@ -5,11 +5,13 @@ class Provider < ActiveRecord::Base
   has_many :categorizings, :dependent => :destroy
   has_many :categories, :through => :categorizings
 
-  has_many :contacts
+  has_many :filials, :dependent => :destroy
+  accepts_nested_attributes_for :filials, :reject_if => :all_blank, :allow_destroy => true
 
-  #has_one :addressable
   has_one :location, :as => :addressable, :class_name => 'Address::Location', :dependent => :destroy
   accepts_nested_attributes_for :location
+
+  has_many :contacts
   accepts_nested_attributes_for :contacts, :allow_destroy => true
 
   before_save :generate_permalink

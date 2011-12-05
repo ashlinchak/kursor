@@ -1,4 +1,7 @@
 class ProvidersController < ApplicationController
+
+  before_filter :require_authentication, :except => [:index, :show]
+
   def index
   end
 
@@ -7,6 +10,8 @@ class ProvidersController < ApplicationController
 
   def new
     provider.build_location
+    provider.build_filials
+    provider.filials.build_location
   end
 
   def edit
@@ -23,6 +28,7 @@ class ProvidersController < ApplicationController
   end
 
   def update
+    # trick to delete unchecked categories
     params[:provider][:category_ids] ||= []
     if provider.update_attributes(params[:provider])
       redirect_to provider, :notice => 'Provider was successfully updated.'
