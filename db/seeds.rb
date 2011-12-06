@@ -48,12 +48,10 @@ Address::City.create([
   {:name => 'Ивано-Франковск', :region=> Address::Region.find_by_name('Ивано-Франковская область') },
   {:name => 'Кировоград', :region=> Address::Region.find_by_name('Кировоградская область') },
   {:name => 'Луганск', :region=> Address::Region.find_by_name('Луганская область')},
-  {:name => 'Львов', :region=> Address::Region.find_by_name('Льовская область')},
+  {:name => 'Львов', :region=> Address::Region.find_by_name('Львовская область')},
   {:name => 'Николаев', :region=> Address::Region.find_by_name('Николаевская область')},
   {:name => 'Одесса', :region=> Address::Region.find_by_name('Одесская область')},
-  {:name => 'Симферополь', :region=> Address::Region.find_by_name('АР Крым')},
   {:name => 'Луцк', :region=> Address::Region.find_by_name('Волынская область')},
-  {:name => 'Симферополь', :region=> Address::Region.find_by_name('')},
   {:name => 'Ужгород', :region=> Address::Region.find_by_name('Закарпатская область')},
   {:name => 'Полтава', :region=> Address::Region.find_by_name('Полтавская область')},
   {:name => 'Ровно', :region=> Address::Region.find_by_name('Ровенская область')},
@@ -65,4 +63,7 @@ Address::City.create([
   {:name => 'Черкассы', :region=> Address::Region.find_by_name('Черкасская область')},
   {:name => 'Чернигов', :region=> Address::Region.find_by_name('Черниговская область')},
   {:name => 'Черновцы', :region=> Address::Region.find_by_name('Черновицкая область')}
+  {:name => 'Симферополь', :region=> Address::Region.find_by_name('АР Крым')},
+  {:name => 'Севастополь', :region=> Address::Region.find_by_name('АР Крым')},
+  {:name => 'Ялта', :region=> Address::Region.find_by_name('АР Крым')}
 ])
