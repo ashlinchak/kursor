@@ -14,6 +14,13 @@ ru:
       recent_providers: 'С нами уже'
       news: 'Новости'
 
+  providers:
+    description:
+      visit_website_for_more_info: 'Точную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте'
+
+
+
+
   sessions:
     create:
       title: 'Войти'
