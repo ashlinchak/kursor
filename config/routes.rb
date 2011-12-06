@@ -27,7 +27,7 @@ Kursor::Application.routes.draw do
 
   resources :providers
 
-  resources :categories, :only => [:index, :show]
+  resources :categories, :only => [:show]
 
   root :to => 'home#index'
 
