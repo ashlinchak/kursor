@@ -8,9 +8,8 @@
     .image-container
       = image_tag provider.logo_url(:thumb).to_s
   %h1= provider.name
-  - if provider.description
-    .description= markdown provider.description
-  - else
+  .description= markdown provider.description
+  - if provider.description.blank?
     %p= t(:'providers.description.visit_website_for_more_info')
 .column.span-8.last
   .categories
