@@ -8,8 +8,10 @@
     .image-container
       = image_tag provider.logo_url(:thumb).to_s
   %h1= provider.name
-  .description= markdown provider.description
-  %p= t(:'providers.description.visit_website_for_more_info')
+  - if provider.description
+    .description= markdown provider.description
+  - else
+    %p= t(:'providers.description.visit_website_for_more_info')
 .column.span-8.last
   .categories
     - if provider.categorizings.size > 0

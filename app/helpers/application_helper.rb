@@ -29,7 +29,7 @@ module ApplicationHelper
     if contact.contact_type.to_sym == :url
       cleaned = contact.value.gsub(/http:\/\//,'')
       url = "http://#{cleaned}"
-      link_to cleaned, url, :rel => 'nofollow'
+      link_to cleaned, url, :rel => 'nofollow', :target => '_blank'
     elsif contact.contact_type.to_sym == :email
       link_to contact.value, "mailto:#{contact.value}"
     else
