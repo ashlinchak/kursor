@@ -91,3 +91,9 @@ ru:
         description: 'Подробное описание'
         category: 'Категория'
         location: 'Местоположение'
+
+  views:
+    pagination:
+      previous: "&laquo; Previous"
+      next: "Next &raquo;"
+      truncate: "..."

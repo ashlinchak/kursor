@@ -1,7 +1,10 @@
 module ApplicationHelper
   def markdown(text)
     options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
-    Redcarpet.new(text, *options).to_html.html_safe
+    #Redcarpet.new(text, *options).to_html.html_safe
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+        :autolink => true, :space_after_headers => true)
+    markdown.render(text).html_safe
   end
 
   def link_to_remove_fields(name, f)
