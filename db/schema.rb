@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111202173846) do
+ActiveRecord::Schema.define(:version => 20111206202404) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20111202173846) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contactable_id"
+    t.string   "contactable_type"
   end
 
   add_index "contacts", ["provider_id"], :name => "index_contacts_on_provider_id"

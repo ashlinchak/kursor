@@ -4,59 +4,36 @@ class Admin::InfoController < ApplicationController
   before_filter :require_authorization
 
   def index
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => info_pages }
-    end
   end
 
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => info_page }
-    end
   end
 
   def new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => info_page }
-    end
   end
 
   def edit
   end
 
   def create
-    respond_to do |format|
-      if info_page.save
-        format.html { redirect_to info_page, :notice => 'Info was successfully created.' }
-        format.json { render :json => info_page, :status => :created, :location => info_page }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => info_page.errors, :status => :unprocessable_entity }
-      end
+    if info_page.save
+      redirect_to info_page, :notice => 'Info was successfully created.'
+    else
+      render :action => "new"
     end
   end
 
   def update
-    respond_to do |format|
-      if info_page.update_attributes(params[:info])
-        format.html { redirect_to info_page, :notice => 'Info was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => info_page.errors, :status => :unprocessable_entity }
-      end
+    if info_page.update_attributes(params[:info])
+      redirect_to info_page, :notice => 'Info was successfully updated.'
+    else
+      render :action => "edit"
     end
   end
 
   def destroy
     info_page.destroy
-    respond_to do |format|
-      format.html { redirect_to infos_url }
-      format.json { head :ok }
-    end
+    redirect_to admin_infos_url
   end
 
   def info_pages

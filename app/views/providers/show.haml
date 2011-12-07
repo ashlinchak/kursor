@@ -44,12 +44,20 @@
       - for filial in provider.filials do
         %li
           .location
-            - if !provider.location.custom_city.blank?
+            - if !filial.location.custom_city.blank?
               -#= "#{provider.location.city.region}, "
-              = "#{provider.location.custom_city}, "
+              = "#{filial.location.custom_city}, "
             - else
-              = "#{provider.location.city}, "
-            = "#{provider.location.street}, "
-            = "#{provider.location.building.chomp}, "
+              = "#{filial.location.city}, "
+            = "#{filial.location.street}, "
+            = "#{filial.location.building.chomp}, "
             офис
-            = provider.location.apartment
+            = filial.location.apartment
+
+
+            - if filial.contacts.size > 0
+              .contacts
+                %ul
+                  - for contact in filial.contacts.by_type do
+                    %li
+                      %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact

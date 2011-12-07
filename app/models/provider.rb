@@ -11,7 +11,7 @@ class Provider < ActiveRecord::Base
   has_one :location, :as => :addressable, :class_name => 'Address::Location', :dependent => :destroy
   accepts_nested_attributes_for :location
 
-  has_many :contacts
+  has_many :contacts, :as => :contactable, :dependent => :destroy
   accepts_nested_attributes_for :contacts, :allow_destroy => true
 
   before_save :generate_permalink

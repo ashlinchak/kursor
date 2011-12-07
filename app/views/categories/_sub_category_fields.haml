@@ -1,5 +1,6 @@
 -if c.children.size > 0
   %fieldset
+    -#= fields_for
     - for ch in c.children do
       = check_box_tag 'user[provider_attributes][category_ids][]', ch.id, ( :checked if provider.categories.include? ch )
       = ch.name

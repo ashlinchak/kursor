@@ -35,7 +35,7 @@ class Admin::CategoriesController < ApplicationController
     unless (category.children.size > 0) || (category.providers.size > 0)
       category.destroy
     else
-      flash[:error] = 'Can\' delete non-empty category'
+      flash[:error] = 'Can\'t delete non-empty category'
     end
     redirect_to admin_categories_path
   end

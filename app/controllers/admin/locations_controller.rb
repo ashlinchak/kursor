@@ -15,7 +15,7 @@ class Admin::LocationsController < ApplicationController
 
   def create
     if location.save
-      redirect_to admin_categories_path, :notice => 'Category was successfully created.'
+      redirect_to admin_categories_path, :notice => 'Location was successfully created.'
     else
       render :action => "new"
     end
@@ -23,7 +23,7 @@ class Admin::LocationsController < ApplicationController
 
   def update
     if location.update_attributes(params[:location])
-      redirect_to admin_categories_path, :notice => 'Category was successfully updated.'
+      redirect_to admin_categories_path, :notice => 'Location was successfully updated.'
     else
       render :action => "edit"
     end
@@ -37,20 +37,14 @@ class Admin::LocationsController < ApplicationController
 
   private
 
-  def categories
-    @categories = if params[:id]
-    else
-      root_categories
-    end
+  def locations
+    @locations = []
   end
+  helper_method :locations
 
-  def category
-    @category = if params[:id]
-      Category.find_by_permalink(params[:id])
-    else
-      Category.new(params[:category])
-    end
+  def location
+    @location = {}
   end
-  helper_method :category
+  helper_method :location
 
 end

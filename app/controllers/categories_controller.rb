@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
       root_categories
     end
   end
+  helper_method :categories
 
   def category
     @category = if params[:id]

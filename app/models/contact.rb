@@ -1,6 +1,5 @@
 class Contact < ActiveRecord::Base
-  belongs_to :provider
-  belongs_to :contact_type
+  belongs_to :contactable, :polymorphic => true
 
   scope :by_type, order(:contact_type_id)
 

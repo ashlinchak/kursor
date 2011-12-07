@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :provider
 
+  default_scope order('created_at DESC')
+
+  paginates_per 50
+
   def to_s
     email
   end

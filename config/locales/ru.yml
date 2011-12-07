@@ -59,6 +59,12 @@ ru:
       info_pages: 'Инфо страницы'
     users:
       generate_credentials: 'Сгенерировать случайный логин/пароль'
+      create:
+        success: 'Пользователь успешно добавлен!'
+      update:
+        success: 'Пользователь успешно сохранен!'
+      destroy:
+        success: 'Пользователь успешно удален!'
 
   activerecord:
     models:

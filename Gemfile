@@ -18,6 +18,8 @@ gem 'redcarpet'
 gem 'jquery-rails'
 gem 'haml'
 
+gem 'kaminari'
+
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 gem 'therubyracer'

@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
   def create
     if user.save
       UserMailer.registration_confirmation(user).deliver
-      redirect_to admin_users_path, :notice => 'Done!'
+      redirect_to admin_users_path, :notice => t(:'admin.users.create.success')
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Admin::UsersController < ApplicationController
     # trick to delete unchecked categories
     params[:user][:provider_attributes][:category_ids] ||= []
     if user.update_attributes(params[:user])
-      redirect_to admin_users_path, :notice => 'Done!'
+      redirect_to admin_users_path, :notice => t(:'admin.users.update.success')
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     if user.destroy
-      flash[:notice] = 'Done!'
+      flash[:notice] = t(:'admin.users.destroy.success')
     else
       flash[:notice] = 'Error...'
     end
@@ -44,7 +44,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def users
-    @users ||= User.all.reverse
+    @users ||= User.page params[:page]
   end
   helper_method :users
 
