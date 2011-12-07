@@ -7,8 +7,12 @@
     .address
       %strong Адрес:
       = format_location provider.location
-      -#= "#{provider.location.city}, #{provider.location.street}, #{provider.location.building}, оф. #{provider.location.apartment}"
-    -#.contacts= provider.contacts.collect{|c| c.value }
+  - if provider.contacts.size > 0
+    .contacts
+      %ul
+        - for contact in provider.contacts.by_type do
+          %li
+            %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
   .categories
     %ul
       - for categoring in provider.categorizings
