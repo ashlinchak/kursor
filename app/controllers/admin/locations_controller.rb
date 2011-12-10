@@ -1,6 +1,8 @@
 class Admin::LocationsController < ApplicationController
   layout 'admin'
 
+  before_filter :require_authorization
+
   def index
   end
 
@@ -38,13 +40,8 @@ class Admin::LocationsController < ApplicationController
   private
 
   def locations
-    @locations = []
+    @locations ||= Address::Region.all
   end
   helper_method :locations
-
-  def location
-    @location = {}
-  end
-  helper_method :location
 
 end

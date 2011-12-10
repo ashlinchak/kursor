@@ -1,0 +1,14 @@
+%p.notice= t(:'admin.locations.tips.main_tip')
+%table
+  %thead
+    %th= t(:'admin.locations.headers.region')
+    %th= t(:'admin.locations.headers.cities')
+  - locations.each do |location|
+    %tr
+      %td
+        = location.name
+      %td
+        %ul
+          - location.cities.each do |city|
+            %li= city.name
+%hr/
