@@ -5,6 +5,7 @@ Kursor::Application.routes.draw do
     resources :info
     resources :news
     resources :users
+    resources :custom_fields
   end
 
   resources :info

@@ -33,7 +33,7 @@
   font-size: 120%;
 }
 
-.location, .contacts, .categories {
+.location, .contacts, .categories, .custom-fields{
   margin-bottom: 2em;
 
   ul{
@@ -42,9 +42,20 @@
     list-style: none;
   }
 }
-.contacts {
+.contacts, .custom-fields {
   li{
     border-bottom: 1px solid #ccc;
     padding: .5em;
+  }
+}
+.custom-fields{
+  ul {
+    background-color: #f8f8f8;
+    border-top: 1px solid #ccc;
+  }
+  span{
+    color: #222;
+    display: inline-block;
+    width: 40%;
   }
 }

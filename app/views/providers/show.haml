@@ -8,6 +8,13 @@
     .image-container
       = image_tag provider.logo_url(:thumb).to_s
   %h1= provider.name
+  .custom-fields
+    - if provider.custom_field_bindings.size > 0
+      %ul
+        - for field in provider.custom_field_bindings do
+          %li
+            %span= field.custom_field.name
+            = field.value
   .description= markdown provider.description
   - if provider.description.blank?
     %p= t(:'providers.description.visit_website_for_more_info')

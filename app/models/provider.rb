@@ -14,6 +14,10 @@ class Provider < ActiveRecord::Base
   has_many :contacts, :as => :contactable, :dependent => :destroy
   accepts_nested_attributes_for :contacts, :allow_destroy => true
 
+  has_many :custom_field_bindings, :dependent => :destroy
+  has_many :custom_fields, :through => :custom_field_bindings
+  accepts_nested_attributes_for :custom_field_bindings, :reject_if => lambda { |b| b[:value].blank? }
+
   before_save :generate_permalink
 
   mount_uploader :logo, ProviderLogoUploader

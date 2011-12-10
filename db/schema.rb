@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206202404) do
+ActiveRecord::Schema.define(:version => 20111210233023) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -81,6 +81,23 @@ ActiveRecord::Schema.define(:version => 20111206202404) do
 
   add_index "contacts", ["provider_id"], :name => "index_contacts_on_provider_id"
 
+  create_table "custom_field_bindings", :force => true do |t|
+    t.integer  "custom_field_id"
+    t.integer  "provider_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "custom_field_bindings", ["custom_field_id"], :name => "index_custom_field_bindings_on_custom_field_id"
+  add_index "custom_field_bindings", ["provider_id"], :name => "index_custom_field_bindings_on_provider_id"
+
+  create_table "custom_fields", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "filials", :force => true do |t|
     t.integer  "provider_id"
     t.datetime "created_at"
@@ -114,7 +131,8 @@ ActiveRecord::Schema.define(:version => 20111206202404) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "logo"
-    t.boolean  "is_approved", :default => false
+    t.boolean  "is_approved",    :default => false
+    t.text     "description_uk"
   end
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"

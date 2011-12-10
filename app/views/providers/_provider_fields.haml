@@ -3,10 +3,20 @@
     = f.label :name
   .field
     = f.text_field :name
+  %fieldset
+    %legend Custom fields
+    = f.fields_for :custom_field_bindings do |b|
+      = render :partial => 'custom_field_bindings/custom_field_binding_fields', :locals => { :f => b }
+    .fields= link_to_add_fields "Add custom field", f, :custom_field_bindings
+
   .field
     = f.label :description
   .field
     = f.text_area :description
+  .field
+    = f.label :description_uk
+  .field
+    = f.text_area :description_uk
   %fieldset
     %legend Address
     = f.fields_for :location do |l|
