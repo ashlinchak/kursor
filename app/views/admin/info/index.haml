@@ -1,8 +1,10 @@
 %table
   %thead
     %th Title
+    %th{:width=> '60'} Actions
   - info_pages.each do |info_page|
     %tr
       %td= link_to info_page.title, admin_info_path(info_page)
+      %td= link_to 'Delete', admin_info_path(info_page), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
 %hr/
 = link_to 'New', new_admin_info_path

@@ -22,38 +22,36 @@ h3 {
 }
 
 #page {
-  background: transparent  image_url('bg_header_shadow.png') repeat-x 0 0;
+  //background: transparent  image_url('bg_header_shadow.png') repeat-x 0 0;
 }
 
 header {
 
-    /* LOGO */
+  /* LOGO */
+  h1#logo, h1#logo a {
+    display: block;
+    float : left;
+    height: 90px;
+    margin: 0;
+    width: 242px;
+  }
 
-    h1#logo, h1#logo a {
-      display: block;
-      float : left;
-      height: 90px;
-      margin: 0;
-      width: 242px;
-    }
+  h1#logo {
+    background: transparent image_url('logo.png') no-repeat left top;
+  }
 
-    h1#logo {
-      background: transparent image_url('logo.png') no-repeat left top;
-    }
-
-
-    nav ul{
+  nav {
+    ul{
       margin: 0 0 5px 0;
       padding: 0;
       list-style: none;
-    }
 
-    nav ul li{
+      li{
         background: #e0e0e0;
         font-size: 14px;
+      }
     }
-
-    nav a {
+    a {
       background: #fff image_url('bg_top_nav_item.jpg') repeat-x left bottom;
       border: 2px solid #dfdfdf;
       border-radius: 1em;
@@ -67,47 +65,46 @@ header {
       text-decoration: none;
     }
 
-    nav a:hover,
-    nav a.active {
+    a:hover,
+    a.active {
       background: #1879b0;
       border-color: #1872a8;
       color: #fff;
       text-decoration: none;
     }
+  }
 
-    .login-bar {
+  .login-bar {
+    color: #f0f0f0;
+    float: right;
+    font-weight: bold;
+    margin-top: 1em;
+    a{
       color: #f0f0f0;
-      float: right;
-      font-weight: bold;
-      margin-top: 1em;
     }
-
-    .login-bar a{
-      color: #f0f0f0;
-    }
-
+  }
 }
 
 /* FOOTER */
 footer {
-    background: #f0f0f0;
-    padding: 0 1.3em;
+  background: #f0f0f0;
+  padding: 0 1.3em;
 
-    .footer-categories {
-      border-bottom: 1px solid #e7e7e7;
-      margin: 0 -1.3em;
-      padding: 1.3em;
+  .footer-categories {
+    border-bottom: 1px solid #e7e7e7;
+    margin: 0 -1.3em;
+    padding: 1.3em;
+  }
+
+  .copyright {
+    background: #f7f7f7;
+    margin: 0 -1.3em;
+    padding: 1.3em;
+
+    .copyright-text {
+      text-align: right;
     }
-
-    .copyright {
-      background: #f7f7f7;
-      margin: 0 -1.3em;
-      padding: 1.3em;
-
-        .copyright-text {
-            text-align: right;
-        }
-    }
+  }
 }
 
 /* MAIN */
@@ -116,9 +113,7 @@ footer {
   border: 1px solid #e4e4e4;
   border-bottom: 1px solid #efefef;
   border-radius: 0.8em 0.8em 0 0;
-  /*margin: 0 auto;*/
   padding:  1.3em;
-  /*width: 950px;*/
 }
 
 
@@ -178,34 +173,36 @@ div.error, div.success, div.notice{
 /* FORMS */
 input[type=text], input[type=password], input[type=email],
 input[type=url], input.text, input.title, textarea{
-    background: #fff;
-    border: 1px solid #c2d1e6;
-}
-input[type=text], input[type=password], input[type=email],
-input[type=url], input.text, input.title {
-    height: 1.5em;
-    margin: .25em 0;
+  background: #fff;
+  border: 1px solid #c2d1e6;
 }
 
-input[type=button], input[type=submit], button{
-    border: 1px solid #fff;
-    background: #00be8e;
-    border-radius: 1em 1em 1em 1em;
-    box-shadow: 0 0 2px #555;
-    color: #fff;
-    cursor: pointer;
-    height: 2em;
-    letter-spacing: -1px;
-    text-transform: uppercase;
-    padding: 0 1em;
+input[type=text], input[type=password], input[type=email],
+input[type=url], input.text, input.title {
+  height: 1.5em;
+  margin: .25em 0;
 }
+
+input[type=button], input[type=submit], button {
+  border: 1px solid #fff;
+  background: #00be8e;
+  border-radius: 1em 1em 1em 1em;
+  box-shadow: 0 0 2px #555;
+  color: #fff;
+  cursor: pointer;
+  height: 2em;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  padding: 0 1em;
+}
+
 input[type=button]:hover, input[type=submit]:hover, button:hover,
-input[type=button]:active, input[type=submit]:active, button:active{
-    background: #4082b2;
+input[type=button]:active, input[type=submit]:active, button:active {
+  background: #4082b2;
 }
 
 textarea{
-    height: 120px;
+  height: 120px;
 }
 /* /FORMS */
 
@@ -215,6 +212,7 @@ textarea{
   margin: 0;
   padding: 0;
 }
+
 /* ICONS */
 .link-icon, .span-icon{
   background-repeat: no-repeat;
@@ -226,6 +224,16 @@ textarea{
 
 .icon-arrow{
   background-image: url(asset_path('bg_bullet00.png', image));
+}
+
+.icon-delete{
+  background-image: url(asset_path('webdev-icons/action_delete.gif', image));
+  padding-left: 1.5em;
+}
+
+.icon-edit{
+  background-image: url(asset_path('webdev-icons/reply.gif', image));
+  padding-left: 1.5em;
 }
 
 .icon-phone{

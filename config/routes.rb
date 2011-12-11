@@ -9,6 +9,7 @@ Kursor::Application.routes.draw do
     resources :locations
   end
 
+  resources :search
   resources :info
 
   match '/login' => 'sessions#new',      :as => :login

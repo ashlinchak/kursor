@@ -10,6 +10,8 @@
 
 $(document).ready(function(){
 
+  $('html').removeClass('no-js');
+
   $('.provider-categories select').bind('click change keyup blur', function(){
     show_sub_categories(this);
   });

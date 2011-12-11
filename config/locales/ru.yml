@@ -17,9 +17,8 @@ ru:
   providers:
     description:
       visit_website_for_more_info: 'Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте'
-
-
-
+    custom_fields:
+      address: 'Адрес'
 
   sessions:
     create:

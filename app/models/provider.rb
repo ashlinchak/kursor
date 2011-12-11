@@ -1,3 +1,5 @@
+#require 'lib/searchable'
+
 class Provider < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
@@ -24,9 +26,10 @@ class Provider < ActiveRecord::Base
 
   scope :approved, where( :is_approved => true )
 
+  searchable_by :name
+
   def to_param
     "#{id}-#{permalink}"
-    #"#{permalink}"
   end
 
   def to_s

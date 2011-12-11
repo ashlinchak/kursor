@@ -47,6 +47,10 @@ en:
     errors:
       user_inactive: 'Sorry, but You need to activate Your account. Check Your email for activation link or request a new one.'
 
+  providers:
+    custom_fields:
+      address: 'Address'
+
   admin:
     nav:
       users: 'Users'

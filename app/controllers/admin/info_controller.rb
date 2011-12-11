@@ -17,7 +17,8 @@ class Admin::InfoController < ApplicationController
 
   def create
     if info_page.save
-      redirect_to info_page, :notice => 'Info was successfully created.'
+      flash[:notice] = 'Info was successfully created.'
+      redirect_to admin_info_path(info_page)
     else
       render :action => "new"
     end
@@ -25,7 +26,8 @@ class Admin::InfoController < ApplicationController
 
   def update
     if info_page.update_attributes(params[:info])
-      redirect_to info_page, :notice => 'Info was successfully updated.'
+      flash[:notice] = 'Info was successfully updated.'
+      redirect_to admin_info_path(info_page)
     else
       render :action => "edit"
     end
@@ -33,7 +35,8 @@ class Admin::InfoController < ApplicationController
 
   def destroy
     info_page.destroy
-    redirect_to admin_infos_url
+    flash[:notice] = 'Info was successfully destroyed.'
+    redirect_to admin_info_index_url
   end
 
   def info_pages
