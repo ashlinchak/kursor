@@ -2,7 +2,7 @@
 
 class Provider < ActiveRecord::Base
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, :touch => true
 
   has_many :categorizings, :dependent => :destroy
   has_many :categories, :through => :categorizings
