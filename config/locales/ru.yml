@@ -8,6 +8,8 @@ ru:
       new: 'Добавить'
       edit: 'Изменить'
       destroy: 'Удалить'
+    nav:
+      search: 'Поиск'
 
   home:
     titles:
@@ -21,7 +23,7 @@ ru:
       address: 'Адрес'
 
   search:
-    results_found: '%{num} results found'
+    results_found: 'Найдено результатов: %{num}'
 
   sessions:
     create:
@@ -60,6 +62,7 @@ ru:
       news: 'Новости'
       info_pages: 'Инфо страницы'
       locations: 'Локации'
+      custom_fields: 'Спец. поля'
     users:
       generate_credentials: 'Сгенерировать случайный логин/пароль'
       create:
@@ -74,6 +77,12 @@ ru:
         region: 'Область'
       tips:
         main_tip: 'На этой странице можно посмотреть какие города уже есть в базе данных. Скоро появится возможность добавлять новые города с привязкой к области'
+    custom_fields:
+      headers:
+        custom_field_name: 'Имя'
+        custom_filed_uses: 'Задействовано'
+      buttons:
+        create_custom_field: 'Создать поле'
 
   activerecord:
     models:
@@ -103,6 +112,6 @@ ru:
 
   views:
     pagination:
-      previous: "&laquo; Previous"
-      next: "Next &raquo;"
+      previous: "&laquo; Пред."
+      next: "След. &raquo;"
       truncate: "..."

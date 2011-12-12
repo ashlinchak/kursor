@@ -1,8 +1,10 @@
 %table
   %thead
-    %th Name
+    %th= t(:'admin.custom_fields.headers.custom_field_name')
+    %th= t(:'admin.custom_fields.headers.custom_filed_uses')
   - for field in custom_fields do
     %tr
       %td= link_to field.name, edit_admin_custom_field_path(field)
+      %td
 %hr/
-= link_to 'New', new_admin_custom_field_path
+= link_to t(:'admin.custom_fields.buttons.create_custom_field'), new_admin_custom_field_path
