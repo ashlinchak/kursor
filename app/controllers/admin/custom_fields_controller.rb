@@ -1,6 +1,4 @@
-class Admin::CustomFieldsController < ApplicationController
-  layout 'admin'
-  before_filter :require_authorization
+class Admin::CustomFieldsController < Admin::DashboardController
 
   def index
   end

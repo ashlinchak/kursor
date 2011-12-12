@@ -20,6 +20,9 @@ ru:
     custom_fields:
       address: 'Адрес'
 
+  search:
+    results_found: '%{num} results found'
+
   sessions:
     create:
       title: 'Войти'

@@ -1,6 +1,4 @@
-class Admin::NewsController < ApplicationController
-  layout 'admin'
-  before_filter :require_authorization
+class Admin::NewsController < Admin::DashboardController
 
   def index
     @news = News.all

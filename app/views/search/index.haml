@@ -2,7 +2,7 @@
   = text_field_tag 'q', params[:q], :size => '100'
   = button_tag 'Search'
 -if !search_results.empty?
-  = "#{search_results.size} items found"
+  = t :'search.results_found', :num => search_results.size
   %hr/
   %ul
     - for item in search_results

@@ -1,5 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  layout 'admin'
+class Admin::CategoriesController < Admin::DashboardController
 
   def index
   end

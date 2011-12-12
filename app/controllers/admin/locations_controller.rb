@@ -1,4 +1,4 @@
-class Admin::LocationsController < ApplicationController
+class Admin::LocationsController < Admin::DashboardController
   layout 'admin'
 
   before_filter :require_authorization

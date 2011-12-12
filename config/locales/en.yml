@@ -51,6 +51,9 @@ en:
     custom_fields:
       address: 'Address'
 
+  search:
+    results_found: '%{num} results found'
+
   admin:
     nav:
       users: 'Users'

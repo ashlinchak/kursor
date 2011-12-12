@@ -1,6 +1,4 @@
-class Admin::UsersController < ApplicationController
-  layout 'admin'
-  before_filter :require_authorization
+class Admin::UsersController < Admin::DashboardController
 
   def index
   end
