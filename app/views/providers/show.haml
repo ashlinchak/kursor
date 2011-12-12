@@ -47,7 +47,7 @@
         - for filial in provider.filials do
           %li
             .location
-              = address_value provider.location
+              = address_value filial.location
 
             - if filial.contacts.size > 0
               .contacts

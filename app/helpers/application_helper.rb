@@ -46,9 +46,9 @@ module ApplicationHelper
       "#{location.custom_city.strip}, " :
       "#{location.city}, " ) +
     "#{location.street.strip}, " +
-    "#{location.building.strip}, " +
-    'офис ' +
-    location.apartment.strip
+    "#{location.building.strip}" +
+    ( !location.apartment.strip.blank? ?
+     ', офис ' + location.apartment.strip : '' )
   end
 
 end
