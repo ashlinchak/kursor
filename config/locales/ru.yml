@@ -18,7 +18,7 @@ ru:
 
   providers:
     description:
-      visit_website_for_more_info: 'Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте'
+      visit_website_for_more_info: 'Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте.'
     custom_fields:
       address: 'Адрес'
 
@@ -63,7 +63,10 @@ ru:
       info_pages: 'Инфо страницы'
       locations: 'Локации'
       custom_fields: 'Спец. поля'
+      custom_flags: 'Спец. флаги'
     users:
+      headers:
+        title: 'Пользователи / Провайдеры'
       generate_credentials: 'Сгенерировать случайный логин/пароль'
       create:
         success: 'Пользователь успешно добавлен!'
@@ -71,18 +74,31 @@ ru:
         success: 'Пользователь успешно сохранен!'
       destroy:
         success: 'Пользователь успешно удален!'
+      actions:
+        create_user: 'Создать пользователя'
+    info_pages:
+      title: 'Информационные страницы'
+    news:
+      title: 'Новости'
+    categories:
+      title: 'Категории'
     locations:
       headers:
+        title: 'Локации'
         cities: 'Населенные пункты'
         region: 'Область'
-      tips:
-        main_tip: 'На этой странице можно посмотреть какие города уже есть в базе данных. Скоро появится возможность добавлять новые города с привязкой к области'
     custom_fields:
       headers:
+        title: 'Специльные поля'
         custom_field_name: 'Имя'
         custom_filed_uses: 'Задействовано'
       buttons:
-        create_custom_field: 'Создать поле'
+        create_custom_field: 'Добавить новое поле'
+    custom_flags:
+      headers:
+        title: 'Специальные флаги'
+      buttons:
+        create_custom_flag: '+ Добавить новый флаг'
 
   activerecord:
     models:

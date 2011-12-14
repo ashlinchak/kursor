@@ -1,8 +1,11 @@
+%h2= t(:'admin.categories.title')
+%p= link_to 'Add Category', new_admin_category_path, :class => 'link-icon icon-add'
+%hr/
 %table
   %thead
     %th Title
     %th Children
-    %th{ :width => '100' } Actions
+    %th{ :width => '130' } Actions
   - root_categories.each do |category|
     %tr
       %td= link_to category.name, category
@@ -12,8 +15,7 @@
           %ul
             = render :partial => 'category', :collection => category.children
       %td
-        = link_to 'Edit', edit_admin_category_path( category )
-        \|
-        = link_to 'Delete', admin_category_path( category ), :method => :delete, :confirm => 'Are you sure?'
-%hr
-  = link_to 'New Category', new_admin_category_path
+        = link_to 'Edit', edit_admin_category_path( category ), :class => 'link-icon icon-edit'
+        = link_to 'Delete', admin_category_path( category ), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+%hr/
+%p= link_to 'Add Category', new_admin_category_path, :class => 'link-icon icon-add'

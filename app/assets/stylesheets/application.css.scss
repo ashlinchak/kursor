@@ -236,6 +236,13 @@ textarea{
   padding-left: 1.5em;
 }
 
+.icon-add{
+  background-image: url(asset_path('webdev-icons/action_add.gif', image));
+  padding-left: 1.5em;
+}
+
+
+
 .icon-phone{
   background-image: url(asset_path('contact-icons/phone.png', image));
   padding-left: 1.5em;
@@ -265,6 +272,7 @@ textarea{
   background-image: url(asset_path('contact-icons/msn.png', image));
   padding-left: 1.5em;
 }
+
 
 /* /ICONS */
 
