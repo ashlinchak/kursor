@@ -33,7 +33,7 @@
   font-size: 120%;
 }
 
-.location, .contacts, .categories, .custom-fields{
+.location, .contacts, .categories, .custom-fields, .custom-flags {
   margin-bottom: 2em;
 
   ul{
@@ -42,13 +42,13 @@
     list-style: none;
   }
 }
-.contacts, .custom-fields {
+.contacts, .custom-fields, .custom-flags {
   li{
     border-bottom: 1px solid #ccc;
     padding: .5em;
   }
 }
-.custom-fields{
+.custom-fields, .custom-flags {
   ul {
     background-color: #f8f8f8;
     border-top: 1px solid #ccc;
@@ -59,3 +59,14 @@
     width: 40%;
   }
 }
+
+.custom-flags {
+  span{
+    width: 80%;
+  }
+}
+
+//.custom-fields, .custom-flags {
+  //width: 50%;
+  //float: left;
+//}

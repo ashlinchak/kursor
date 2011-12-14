@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  custom_flag: 
+  provider: 
+  value: false
+
+two:
+  custom_flag: 
+  provider: 
+  value: false

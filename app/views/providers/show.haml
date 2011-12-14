@@ -24,6 +24,7 @@
           %li
             %span= t(:'providers.custom_fields.address')
             = address_value provider.location
+
   .description= markdown provider.description
   - if provider.description.blank?
     %p= t(:'providers.description.visit_website_for_more_info')
@@ -35,6 +36,14 @@
         - for categorizing in provider.categorizings do
           %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
 
+  .custom-flags
+    - if provider.custom_flag_bindings.size > 0
+      %ul
+        - for field in provider.custom_flag_bindings do
+          %li
+            %span= field.custom_flag.name
+            = check_box_tag 'flag', '', field.value, :disabled => true
+  %hr/
   - if provider.contacts.size > 0
     .contacts
       %h3 Contacts

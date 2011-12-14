@@ -1,8 +1,6 @@
-#require 'lib/searchable'
-
 class Provider < ActiveRecord::Base
   belongs_to :category
-  belongs_to :user, :touch => true
+  belongs_to :user
 
   has_many :categorizings, :dependent => :destroy
   has_many :categories, :through => :categorizings
@@ -20,16 +18,19 @@ class Provider < ActiveRecord::Base
   has_many :custom_fields, :through => :custom_field_bindings
   accepts_nested_attributes_for :custom_field_bindings, :reject_if => lambda { |b| b[:value].blank? }
 
+  has_many :custom_flag_bindings, :dependent => :destroy
+  has_many :custom_flags, :through => :custom_flag_bindings
+  accepts_nested_attributes_for :custom_flag_bindings, :reject_if => lambda { |b| b[:value].blank? }
+
   before_save :generate_permalink
 
   mount_uploader :logo, ProviderLogoUploader
 
   scope :approved, where( :is_approved => true )
 
-  searchable_by :name
-
   def to_param
     "#{id}-#{permalink}"
+    #"#{permalink}"
   end
 
   def to_s

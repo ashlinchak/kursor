@@ -6,6 +6,7 @@ Kursor::Application.routes.draw do
     resources :news
     resources :users
     resources :custom_fields
+    resources :custom_flags
     resources :locations
   end
 

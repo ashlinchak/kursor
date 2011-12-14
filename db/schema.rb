@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111210233023) do
+ActiveRecord::Schema.define(:version => 20111214183543) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -93,6 +93,23 @@ ActiveRecord::Schema.define(:version => 20111210233023) do
   add_index "custom_field_bindings", ["provider_id"], :name => "index_custom_field_bindings_on_provider_id"
 
   create_table "custom_fields", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "custom_flag_bindings", :force => true do |t|
+    t.integer  "custom_flag_id"
+    t.integer  "provider_id"
+    t.boolean  "value",          :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "custom_flag_bindings", ["custom_flag_id"], :name => "index_custom_flag_bindings_on_custom_flag_id"
+  add_index "custom_flag_bindings", ["provider_id"], :name => "index_custom_flag_bindings_on_provider_id"
+
+  create_table "custom_flags", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

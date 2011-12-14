@@ -9,6 +9,12 @@
       = render :partial => 'custom_field_bindings/custom_field_binding_fields', :locals => { :f => b }
     .fields= link_to_add_fields "Add custom field", f, :custom_field_bindings
 
+  %fieldset
+    %legend Custom flags
+    = f.fields_for :custom_flag_bindings do |b|
+      = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
+    .fields= link_to_add_fields "Add custom flag", f, :custom_flag_bindings
+
   .field
     = f.label :description
   .field
