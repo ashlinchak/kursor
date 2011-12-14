@@ -1,4 +1,5 @@
 %p.notice= t(:'admin.locations.tips.main_tip')
+%p= link_to '+ Add Location', new_admin_location_path
 %table
   %thead
     %th= t(:'admin.locations.headers.region')
@@ -7,8 +8,12 @@
     %tr
       %td
         = location.name
+        \/
+        %b= location.id.to_s
+
       %td
         %ul
           - location.cities.each do |city|
-            %li= city.name
+            %li
+              = city.name
 %hr/
