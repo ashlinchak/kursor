@@ -17,7 +17,7 @@ class Admin::LocationsController < Admin::DashboardController
 
   def create
     if location.save
-      redirect_to admin_categories_path, :notice => 'Location was successfully created.'
+      redirect_to admin_locations_path, :notice => 'Location was successfully created.'
     else
       render :action => "new"
     end
@@ -25,7 +25,7 @@ class Admin::LocationsController < Admin::DashboardController
 
   def update
     if location.update_attributes(params[:location])
-      redirect_to admin_categories_path, :notice => 'Location was successfully updated.'
+      redirect_to admin_location_path, :notice => 'Location was successfully updated.'
     else
       render :action => "edit"
     end
@@ -34,14 +34,21 @@ class Admin::LocationsController < Admin::DashboardController
   def destroy
     category.destroy
 
-    redirect_to admin_categories_path
+    redirect_to admin_locations_path
   end
-
-  private
 
   def locations
     @locations ||= Address::Region.all
   end
   helper_method :locations
+
+  def location
+    @location ||= if params[:id]
+      Address::City.find params[:id]
+    else
+      Address::City.new params[:location]
+    end
+  end
+  helper_method :location
 
 end
