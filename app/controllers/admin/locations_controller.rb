@@ -16,7 +16,7 @@ class Admin::LocationsController < Admin::DashboardController
   end
 
   def create
-    if location.save
+    if city.save
       redirect_to admin_locations_path, :notice => 'Location was successfully created.'
     else
       render :action => "new"
@@ -24,7 +24,7 @@ class Admin::LocationsController < Admin::DashboardController
   end
 
   def update
-    if location.update_attributes(params[:location])
+    if city.update_attributes(params[:location])
       redirect_to admin_location_path, :notice => 'Location was successfully updated.'
     else
       render :action => "edit"
@@ -37,18 +37,18 @@ class Admin::LocationsController < Admin::DashboardController
     redirect_to admin_locations_path
   end
 
-  def locations
-    @locations ||= Address::Region.all
+  def regions
+    @regions ||= Address::Region.all
   end
-  helper_method :locations
+  helper_method :regions
 
-  def location
-    @location ||= if params[:id]
+  def city
+    @city ||= if params[:id]
       Address::City.find params[:id]
     else
-      Address::City.new params[:location]
+      Address::City.new params[:address_city]
     end
   end
-  helper_method :location
+  helper_method :city
 
 end
