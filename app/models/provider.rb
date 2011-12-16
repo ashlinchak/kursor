@@ -26,6 +26,8 @@ class Provider < ActiveRecord::Base
 
   mount_uploader :logo, ProviderLogoUploader
 
+  searchable_by :name
+
   scope :approved, where( :is_approved => true )
 
   def to_param

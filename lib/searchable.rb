@@ -7,8 +7,7 @@ module Searchable
   end
 
   def search(query, fields=nil, options={})
-    with_scope :find => {
-            :conditions => search_conditions(query, fields)} do
+    with_scope :find => { :conditions => search_conditions(query, fields)} do
       find :all, options
     end
   end
@@ -24,7 +23,7 @@ module Searchable
     count = 1
     # to keep count on the symbols and OR fragments
     words.each do |word|
-      like_frags = [fields].flatten.map { |f| "LOWER(#{f}) LIKE :word#{count}" }
+      like_frags = [fields].flatten.map{ |f| "LOWER(#{f}) LIKE :word#{count}" }
       or_frags << "(#{like_frags.join(" OR ")})"
       binds["word#{count}".to_sym] = "%#{word.to_s.downcase}%"
       count += 1
