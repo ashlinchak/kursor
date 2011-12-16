@@ -1,13 +1,15 @@
-= form_for(guest, :url => { :controller => :sessions, :action => :create }) do |f|
-  .field
-    = f.label :email
-  .field
-    = f.text_field :email
-  .field
-    = f.label :password
-  .field
-    = f.password_field :password
-  .actions
-    = f.submit t(:'sessions.create.button')
-    or
-    = link_to 'activate your account', new_activation_url
+%fieldset
+  %legend Login
+  = form_for(guest, :url => { :controller => :sessions, :action => :create }) do |f|
+    .field
+      = f.label :email
+    .field
+      = f.text_field :email
+    .field
+      = f.label :password
+    .field
+      = f.password_field :password
+    .actions
+      = f.submit t(:'sessions.create.button')
+      or
+      = link_to 'activate your account', new_activation_url
