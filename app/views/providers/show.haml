@@ -1,7 +1,5 @@
-- if provider.user === current_user
-  = link_to t(:'site.actions.edit'), edit_provider_path(provider), :class => 'link-icon icon-edit'
 - if current_user
-  - if current_user.administrator?
+  - if ( provider.user === current_user ) || current_user.administrator?
     = link_to t(:'site.actions.edit'), edit_provider_path(provider), :class => 'link-icon icon-edit'
 %hr
 = link_to( provider.category, category_path(provider.category) ) if provider.category

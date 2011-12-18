@@ -22,7 +22,7 @@
   /[if IE]
     %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
   = csrf_meta_tags
-%body
+%body.admin
   #page
     %header.container
       = render :partial => 'shared/login_bar'

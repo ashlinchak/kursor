@@ -1,12 +1,12 @@
 %form{ :action => '/search', :method => :get }
   = text_field_tag 'q', params[:q], :size => '100'
   = button_tag 'Search'
--unless search_results.empty?
+-if !search_results.empty?
   = t :'search.results_found', :num => search_results.size
   %hr/
   %ul
     - for item in search_results
       %li= link_to item, item
--else (search_results.empty? && params[:q])
+-elsif (search_results.empty? && params[:q])
   %h3= t :'search.not_found'
 

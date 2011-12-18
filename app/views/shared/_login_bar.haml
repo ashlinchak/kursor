@@ -4,6 +4,8 @@
     - if authorized?
       \|
       = link_to 'Admin', admin_users_path
+      \|
+      = link_to 'Search', search_index_path
     \|
     = link_to t(:'sessions.destroy.title'), logout_url
   - else

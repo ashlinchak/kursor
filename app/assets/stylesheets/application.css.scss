@@ -63,6 +63,7 @@ header {
       padding: 0 1em;
       margin: 0 3px 0 0;
       text-decoration: none;
+
     }
 
     a:hover,
@@ -85,6 +86,9 @@ header {
   }
 }
 
+body.admin nav ul li {
+  font-size: 12px;
+}
 /* FOOTER */
 footer {
   background: #f0f0f0;
