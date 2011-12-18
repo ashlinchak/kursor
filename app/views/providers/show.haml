@@ -14,16 +14,16 @@
       = image_tag provider.logo_url(:thumb).to_s
   %h1= provider.name
   .custom-fields
-    - if provider.custom_field_bindings.size > 0
-      %ul
-        - for field in provider.custom_field_bindings do
+    %ul
+      - if provider.custom_fields.size > 0
+        - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
           %li
-            %span= field.custom_field.name
-            = field.value
-        - if provider.location
-          %li
-            %span= t(:'providers.custom_fields.address')
-            = address_value provider.location
+            %span= f.name
+            = f.value
+      - if provider.location
+        %li
+          %span= t(:'providers.custom_fields.address')
+          = address_value provider.location
 
   .description= markdown provider.description
   - if provider.description.blank?
@@ -39,7 +39,7 @@
   .custom-flags
     - if provider.custom_flag_bindings.size > 0
       %ul
-        - for field in provider.custom_flag_bindings do
+        - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
           %li
             %span= field.custom_flag.name
             = check_box_tag 'flag', '', field.value, :disabled => true

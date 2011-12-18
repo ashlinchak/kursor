@@ -3,11 +3,14 @@
 %hr/
 %table
   %thead
+    %th{:style => 'width: 6px;' }= 0
     %th= t(:'admin.custom_fields.headers.custom_field_name')
-    %th= t(:'admin.custom_fields.headers.custom_filed_uses')
-  - for field in custom_fields do
-    %tr
-      %td= link_to field.name, edit_admin_custom_field_path(field)
-      %td
+    %th{:style => 'width: 60px;'}= t(:'admin.custom_fields.headers.custom_field_uses')
+  %tbody.sort-custom_fields.sortable
+    - for field in custom_fields do
+      %tr{ :style => 'width: 100%;', :id => "sorted-item_#{field.id}", :class => 'custom_field'}
+        %td.drag-handle |:|
+        %td= link_to field, edit_admin_custom_field_path(field)
+        %td= link_to '[X]', admin_custom_field_path(field), :method => :destroy, :confirm => 'Are you sure?'
 %hr/
 %p= link_to t(:'admin.custom_fields.buttons.create_custom_field'), new_admin_custom_field_path, :class => 'link-icon icon-add'

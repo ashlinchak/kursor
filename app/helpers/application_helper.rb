@@ -41,14 +41,16 @@ module ApplicationHelper
   end
 
   def address_value location
-    # "#{provider.location.city.region}, "
-    ( !location.custom_city.strip.blank? ?
-      "#{location.custom_city.strip}, " :
-      "#{location.city}, " ) +
-    "#{location.street.strip}, " +
-    "#{location.building.strip}" +
-    ( !location.apartment.strip.blank? ?
-     ', офис ' + location.apartment.strip : '' )
+    if location
+      # "#{provider.location.city.region}, "
+      ( !location.custom_city.blank? ?
+        "#{location.custom_city.strip}, " :
+        "#{location.city}, " ) +
+      "#{location.street.strip}, " +
+      "#{location.building.strip}" +
+      ( !location.apartment.blank? ?
+       ', офис ' + location.apartment : '' )
+    end
   end
 
 end

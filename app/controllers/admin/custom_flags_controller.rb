@@ -33,6 +33,16 @@ class Admin::CustomFlagsController < Admin::DashboardController
     redirect_to admin_custom_flags_path
   end
 
+  def sort
+    params[:'sorted-item'].each_with_index do |item, index|
+      todo_item = ::CustomFlag.find(item)
+      todo_item.update_attribute :position, index
+    end if params[:'sorted-item']
+    render :nothing => true
+  end
+
+  private
+
   def custom_flags
     @custom_flags ||= ::CustomFlag.all
   end

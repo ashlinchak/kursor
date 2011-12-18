@@ -5,8 +5,12 @@ Kursor::Application.routes.draw do
     resources :info
     resources :news
     resources :users
-    resources :custom_fields
-    resources :custom_flags
+    resources :custom_fields do
+      post 'sort', :on => :collection
+    end
+    resources :custom_flags do
+      post 'sort', :on => :collection
+    end
     resources :locations
   end
 

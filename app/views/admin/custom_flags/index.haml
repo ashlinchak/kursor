@@ -5,9 +5,11 @@
   %thead
     %th= t(:'admin.custom_fields.headers.custom_field_name')
     %th= t(:'admin.custom_fields.headers.custom_filed_uses')
-  - for field in custom_flags do
-    %tr
-      %td= link_to field.name, edit_admin_custom_flag_path(field)
-      %td
+  %tbody.sort-custom_flags.sortable
+    - for field in custom_flags do
+      %tr{ :style => 'width: 100%;', :id => "sorted-item_#{field.id}", :class => 'custom_flag'}
+        %td.drag-handle |:|
+        %td= link_to field, edit_admin_custom_flag_path(field)
+        %td= link_to '[X]', admin_custom_flag_path(field), :method => :destroy, :confirm => 'Are you sure?'
 %hr/
 %p= link_to t(:'admin.custom_flags.buttons.create_custom_flag'), new_admin_custom_flag_path, :class => 'link-icon icon-add'

@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
 
 $(document).ready(function(){
@@ -24,6 +25,24 @@ $(document).ready(function(){
       $('.custom-city').hide().val('');
     }
 
+  });
+
+  $('.sortable').sortable({
+    axis : 'y',
+    items : 'tr',
+    containment : 'parent',
+    handle: '.drag-handle',
+    update : function(event, ui){
+      var self = this;
+      var sortedItems = $(self).sortable('serialize', { key: 'sorted-item[]' })
+      console.log(sortedItems);
+      $.ajax({
+        url : '/admin/'+ $(ui.item).attr('class') +'s/sort',
+        type: 'post',
+        dataType: 'script',
+        data : sortedItems//,
+      });
+    }
   });
 
 });
