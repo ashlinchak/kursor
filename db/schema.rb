@@ -152,7 +152,6 @@ ActiveRecord::Schema.define(:version => 20111222104131) do
     t.string   "logo"
     t.boolean  "is_approved",    :default => false
     t.text     "description_uk"
-    t.text     "basic_info"
     t.text     "more_info"
     t.text     "documents_info"
   end
