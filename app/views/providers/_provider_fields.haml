@@ -1,49 +1,53 @@
 .column.span-12
-  .field
-    = f.label :name
-  .field
-    = f.text_field :name
   %fieldset
-    %legend Custom fields
+    .field
+      = f.label :name
+    .field
+      = f.text_field :name, :size => '147'
+.column.span-12
+  %fieldset
+    %legend= t(:'admin.custom_fields.headers.title')
     = f.fields_for :custom_field_bindings do |b|
       = render :partial => 'custom_field_bindings/custom_field_binding_fields', :locals => { :f => b }
     .fields= link_to_add_fields "Add custom field", f, :custom_field_bindings
-
+.column.span-12.last
   %fieldset
-    %legend Custom flags
+    %legend= t(:'admin.custom_flags.headers.title')
     = f.fields_for :custom_flag_bindings do |b|
       = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
     .fields= link_to_add_fields "Add custom flag", f, :custom_flag_bindings
-
-  .field
-    = f.label :description
-  .field
-    = f.text_area :description
-  .field
-    = f.label :description_uk
-  .field
-    = f.text_area :description_uk
+.column.span-12
   %fieldset
-    %legend Address
+    %legend= t(:'admin.users.legends.address')
     = f.fields_for :location do |l|
       = render :partial => 'providers/location_fields', :locals => { :f => l }
 .column.span-12.last
-%hr/
-.column.span-12
   %fieldset
-    %legend Contacts
+    %legend= t(:'admin.users.legends.contacts')
     = f.fields_for :contacts do |c|
       .fields
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
     .fields= link_to_add_fields "Add contact", f, :contacts
-
+.column.span-12
+  %fieldset
+    .field
+      = f.label :description
+    .field
+      = f.text_area :description
 .column.span-12.last
   %fieldset
-    %legend Filials
+    .field
+      = f.label :description_uk
+    .field
+      = f.text_area :description_uk
+
+.column.span-12
+  %fieldset
+    %legend= t(:'admin.users.legends.filials')
     = f.fields_for :filials do |fi|
       = render :partial => 'filials/filial_fields', :locals => { :f => fi }
     .fields= link_to_add_fields "Add filial", f, :filials
 %hr/
 %fieldset
-  %legend Categories
+  %legend= t(:'admin.users.legends.categories')
   = render :partial => '/providers/category_fields', :locals => { :f => f, :provider => provider }

@@ -3,8 +3,9 @@
 %hr/
 %table
   %thead
+    %th{:style => 'width: 6px;' }
     %th= t(:'admin.custom_fields.headers.custom_field_name')
-    %th= t(:'admin.custom_fields.headers.custom_filed_uses')
+    %th{:style => 'width: 60px;'}
   %tbody.sort-custom_flags.sortable
     - for field in custom_flags do
       %tr{ :style => 'width: 100%;', :id => "sorted-item_#{field.id}", :class => 'custom_flag'}

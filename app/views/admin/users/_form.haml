@@ -4,15 +4,15 @@
     .field
       = f.label :email
     .field
-      = f.text_field :email
+      = f.text_field :email, :size => '45'
     .field
       = f.label :password
     .field
-      = f.password_field :password
+      = f.password_field :password, :size => '45'
     .field
       = f.label :password_confirmation
     .field
-      = f.password_field :password_confirmation
+      = f.password_field :password_confirmation, :size => '45'
     .field
       = button_tag t(:'admin.users.generate_credentials'), :type => :button, :class => 'default-credentials'
       %input{ :name => 'current_user', :value => "#{current_user.to_s.split('@')[0]}", :type => :hidden }

@@ -67,6 +67,11 @@ ru:
     users:
       headers:
         title: 'Пользователи / Провайдеры'
+      legends:
+        address: 'Основной адрес'
+        contacts: 'Контакты'
+        filials: 'Филиалы'
+        categories: 'Категории'
       generate_credentials: 'Сгенерировать случайный логин/пароль'
       create:
         success: 'Пользователь успешно добавлен!'
@@ -122,7 +127,8 @@ ru:
         name: 'Название'
         is_approved: 'Проверен'
         logo: 'Логотип'
-        description: 'Подробное описание'
+        description: 'Описание на русском'
+        description_uk: 'Описание на украинском'
         category: 'Категория'
         location: 'Местоположение'
 
