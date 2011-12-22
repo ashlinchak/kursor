@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111218103250) do
+ActiveRecord::Schema.define(:version => 20111222104131) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -152,6 +152,9 @@ ActiveRecord::Schema.define(:version => 20111218103250) do
     t.string   "logo"
     t.boolean  "is_approved",    :default => false
     t.text     "description_uk"
+    t.text     "basic_info"
+    t.text     "more_info"
+    t.text     "documents_info"
   end
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"

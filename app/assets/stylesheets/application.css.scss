@@ -206,7 +206,9 @@ input[type=button]:active, input[type=submit]:active, button:active {
 }
 
 textarea{
+  display: block;
   height: 120px;
+  max-width: 100%;
 }
 /* /FORMS */
 

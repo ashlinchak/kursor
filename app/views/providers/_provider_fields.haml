@@ -28,19 +28,36 @@
       .fields
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
     .fields= link_to_add_fields "Add contact", f, :contacts
-.column.span-24
+.column.span-12
   %fieldset
-    .field
-      = f.label :description
+    %legend= f.label :description
     .field
       = f.text_area :description
-.column.span-24
+.column.span-12.last
   %fieldset
-    .field
-      = f.label :description_uk
+    %legend= f.label :description_uk
     .field
       = f.text_area :description_uk
+%hr/
+.column.span-12
+  %fieldset
+    %legend= f.label :basic_info
+    .field
+      = f.text_area :basic_info
 
+.column.span-12.last
+  %fieldset
+    %legend= f.label :more_info
+    .field
+      = f.text_area :more_info
+
+.column.span-12
+  %fieldset
+    %legend= f.label :documents_info
+    .field
+      = f.text_area :documents_info
+
+%hr/
 .column.span-12
   %fieldset
     %legend= t(:'admin.users.legends.filials')

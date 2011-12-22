@@ -26,6 +26,15 @@
   .description= markdown provider.description
   - if provider.description.blank?
     %p= t(:'providers.description.visit_website_for_more_info')
+  - if provider.basic_info
+    %h3 Основная  информация
+    .basic-info= markdown provider.basic_info
+  - if provider.more_info
+    %h3 Дополнительная информация
+    .more-info= markdown provider.more_info
+  - if provider.documents_info
+    %h3 Документы для поступления
+    .documents-info= markdown provider.documents_info
 .column.span-8.last
   .categories
     - if provider.categorizings.size > 0
