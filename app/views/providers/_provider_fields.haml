@@ -28,13 +28,13 @@
       .fields
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
     .fields= link_to_add_fields "Add contact", f, :contacts
-.column.span-12
+.column.span-24
   %fieldset
     .field
       = f.label :description
     .field
       = f.text_area :description
-.column.span-12.last
+.column.span-24
   %fieldset
     .field
       = f.label :description_uk
