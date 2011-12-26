@@ -62,6 +62,8 @@
       %ul
         - for filial in provider.filials do
           %li
+            -if filial.name.present?
+              %h4= filial.name
             .location
               = address_value filial.location
 
