@@ -49,9 +49,21 @@
 
 .column.span-12.last
   %fieldset
+    %legend= f.label :more_info_uk
+    .field
+      = f.text_area :more_info_uk
+
+.column.span-12
+  %fieldset
     %legend= f.label :documents_info
     .field
       = f.text_area :documents_info
+
+.column.span-12.last
+  %fieldset
+    %legend= f.label :documents_info_uk
+    .field
+      = f.text_area :documents_info_uk
 
 %hr/
 .column.span-12

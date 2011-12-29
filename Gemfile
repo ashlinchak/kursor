@@ -9,10 +9,12 @@ gem 'carrierwave'
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails', "~> 3.1.0"
-gem 'coffee-rails', "~> 3.1.0"
-gem 'uglifier'
-gem 'haml-rails'
+group :assets do
+  gem 'sass-rails', "~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+  gem 'haml-rails'
+end
 gem 'redcarpet'
 
 gem 'jquery-rails'
