@@ -13,10 +13,20 @@ $(document).ready(function(){
 
   $('html').removeClass('no-js');
 
-  $('.provider-categories select').bind('click change keyup blur', function(){
-    show_sub_categories(this);
-  });
-  show_sub_categories($('.provider-categories select'));
+  //$('.provider-categories select').bind('click change keyup blur', function(){
+    //show_categories(this);
+  //});
+  //show_categories($('.provider-categories select'));
+
+  //$('input.category-sub-parent').each(function(){
+    //show_sub_categories(this);
+  //});
+
+  //$('.category-sub-parent').change(function(){
+    //show_sub_categories(this);
+  //});
+
+
 
   $('.select-city').bind('click change keyup blur load', function(){
     if ( $(this).val() == '' ){
@@ -47,11 +57,20 @@ $(document).ready(function(){
 
 });
 
-function show_sub_categories(parent) {
-  var category = $("#child-of-" + $(parent).val());
-  $('.provider-category').removeClass('active');
-  category.addClass('active');
-}
+//function show_categories(parent) {
+  //var category = $("#child-of-" + $(parent).val());
+  //$('.provider-category').removeClass('active');
+  //category.addClass('active');
+//}
+
+//function show_sub_categories(parent){
+  //var category_id = $(parent).val();
+  //if ( $(parent).is('input:checked') ) {
+    //$('#sub-children-of-' + category_id).slideDown();
+  //} else {
+    //$('#sub-children-of-' + category_id).slideUp();
+  //}
+//}
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
