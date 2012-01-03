@@ -14,18 +14,18 @@ jQuery ->
   $('.category-sub-parent').change ->
     show_sub_categories(@)
 
-  show_categories = (parent) ->
-    category = $("#child-of-" + $(parent).val())
-    $('.provider-category').removeClass('active')
-    category.addClass('active')
+show_categories = (parent) ->
+  category = $("#child-of-" + $(parent).val())
+  $('.provider-category').removeClass('active')
+  category.addClass('active')
 
 
-  show_sub_categories = (parent) ->
-    category_id = $(parent).val()
-    if ( $(parent).is('input:checked') )
-      $('#sub-children-of-' + category_id).slideDown()
-    else
-      $('#sub-children-of-' + category_id).slideUp()
+show_sub_categories = (parent) ->
+  category_id = $(parent).val()
+  if ( $(parent).is('input:checked') )
+    $('#sub-children-of-' + category_id).slideDown()
+  else
+    $('#sub-children-of-' + category_id).slideUp()
 
 #function show_categories(parent) {
   #var category = $("#child-of-" + $(parent).val());
