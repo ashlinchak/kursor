@@ -1,7 +1,7 @@
 jQuery ->
-  $('.provider-categories select').bind('click change keyup blur', ->
-    show_sub_categories(@)
-  )
+  #$('.provider-categories select').bind('click change keyup blur', ->
+    #show_sub_categories(@)
+  #)
 
   $('.provider-categories select').bind('click change keyup blur', ->
     show_categories(@)
