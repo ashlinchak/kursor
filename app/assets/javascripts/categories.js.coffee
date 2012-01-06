@@ -8,11 +8,12 @@ jQuery ->
   )
   show_categories($('.provider-categories select'))
 
+  $('input.category-sub-parent').change ->
+    show_sub_categories(@)
+
   $('input.category-sub-parent').each ->
     show_sub_categories(@)
 
-  $('.category-sub-parent').change ->
-    show_sub_categories(@)
 
 show_categories = (parent) ->
   category = $("#child-of-" + $(parent).val())
