@@ -1,6 +1,7 @@
 - if current_user
   - if ( provider.user === current_user ) || current_user.administrator?
     = link_to t(:'site.actions.edit'), edit_provider_path(provider), :class => 'link-icon icon-edit'
+    Delete (not working now)
 %hr
 = link_to( provider.category, category_path(provider.category) ) if provider.category
 &gt;
@@ -10,6 +11,11 @@
   - if provider.logo_url
     .image-container
       = image_tag provider.logo_url(:thumb).to_s
+  .update-info
+    %strong
+      Последнее изменение:
+    = time_ago_in_words(provider.updated_at)
+    назад
   %h1= provider.name
   .custom-fields
     %ul
@@ -26,10 +32,10 @@
   .description= markdown provider.description
   - if provider.description.blank?
     %p= t(:'providers.description.visit_website_for_more_info')
-  - if provider.more_info
+  - if !provider.more_info.blank?
     %h3 Дополнительная информация
     .more-info= markdown provider.more_info
-  - if provider.documents_info
+  - if !provider.documents_info.blank?
     %h3 Документы для поступления
     .documents-info= markdown provider.documents_info
 .column.span-8.last

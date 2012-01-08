@@ -1,6 +1,6 @@
 .field.provider-categories
   = f.label :category
-  = f.select :category_id, root_categories.collect{|c| [ c, c.id ] }
+  = f.select :category_id, root_categories.collect{|c| [ c, c.id ] }, :prompt => t(:'admin.users.selectors.select_category')
   - root_categories.each do |c|
     .field.provider-category{ :id => "child-of-#{c.id}"}
       .field
