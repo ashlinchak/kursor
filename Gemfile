@@ -34,6 +34,8 @@ gem 'ukrainian'
 
 gem 'backup'
 
+gem 'whenever', :require => false
+
 # To use debugger
 # gem 'ruby-debug'
 
