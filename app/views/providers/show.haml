@@ -7,75 +7,76 @@
 &gt;
 = link_to provider
 %hr
-.column.span-16
-  - if provider.logo_url
-    .image-container
-      = image_tag provider.logo_url(:thumb).to_s
-  .update-info
-    %strong
-      Последнее изменение:
-    = time_ago_in_words(provider.updated_at)
-    назад
-  %h1= provider.name
-  .custom-fields
-    %ul
-      - if provider.custom_fields.size > 0
-        - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
-          %li
-            %span= f.name
-            = f.value
-      - if provider.location
-        %li
-          %span= t(:'providers.custom_fields.address')
-          = address_value provider.location
-
-  .description= markdown provider.description
-  - if provider.description.blank?
-    %p= t(:'providers.description.visit_website_for_more_info')
-  - if !provider.more_info.blank?
-    %h3 Дополнительная информация
-    .more-info= markdown provider.more_info
-  - if !provider.documents_info.blank?
-    %h3 Документы для поступления
-    .documents-info= markdown provider.documents_info
-.column.span-8.last
-  .categories
-    - if provider.categorizings.size > 0
-      %h3 Categories
+.row
+  .span12
+    - if provider.logo_url
+      .image-container
+        = image_tag provider.logo_url(:thumb).to_s
+    .update-info
+      %strong
+        Последнее изменение:
+      = time_ago_in_words(provider.updated_at)
+      назад
+    %h1= provider.name
+    .custom-fields
       %ul
-        - for categorizing in provider.categorizings do
-          %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
-
-  .custom-flags
-    - if provider.custom_flag_bindings.size > 0
-      %ul
-        - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
+        - if provider.custom_fields.size > 0
+          - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
+            %li
+              %span= f.name
+              = f.value
+        - if provider.location
           %li
-            %span= field.custom_flag.name
-            = check_box_tag 'flag', '', field.value, :disabled => true
-  %hr/
-  - if provider.contacts.size > 0
-    .contacts
-      %h3 Contacts
-      %ul
-        - for contact in provider.contacts.by_type do
-          %li
-            %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+            %span= t(:'providers.custom_fields.address')
+            = address_value provider.location
 
-  - if provider.filials.size > 0
-    .filials
-      %h3 Filials
-      %ul
-        - for filial in provider.filials do
-          %li
-            -if filial.name.present?
-              %h4= filial.name
-            .location
-              = address_value filial.location
+    .description= markdown provider.description
+    - if provider.description.blank?
+      %p= t(:'providers.description.visit_website_for_more_info')
+    - if !provider.more_info.blank?
+      %h3 Дополнительная информация
+      .more-info= markdown provider.more_info
+    - if !provider.documents_info.blank?
+      %h3 Документы для поступления
+      .documents-info= markdown provider.documents_info
+  .span4
+    .categories
+      - if provider.categorizings.size > 0
+        %h3 Categories
+        %ul
+          - for categorizing in provider.categorizings do
+            %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
 
-            - if filial.contacts.size > 0
-              .contacts
-                %ul
-                  - for contact in filial.contacts.by_type do
-                    %li
-                      %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+    .custom-flags
+      - if provider.custom_flag_bindings.size > 0
+        %ul
+          - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
+            %li
+              %span= field.custom_flag.name
+              = check_box_tag 'flag', '', field.value, :disabled => true
+    %hr/
+    - if provider.contacts.size > 0
+      .contacts
+        %h3 Contacts
+        %ul
+          - for contact in provider.contacts.by_type do
+            %li
+              %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+
+    - if provider.filials.size > 0
+      .filials
+        %h3 Filials
+        %ul
+          - for filial in provider.filials do
+            %li
+              -if filial.name.present?
+                %h4= filial.name
+              .location
+                = address_value filial.location
+
+              - if filial.contacts.size > 0
+                .contacts
+                  %ul
+                    - for contact in filial.contacts.by_type do
+                      %li
+                        %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact

@@ -2,31 +2,21 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require blueprint/screen
+ //*= require blueprint/screen
+ *= require twitter/bootstrap/bootstrap.min
  *= require_self
  *= require_tree .
 */
 
 body{
-  background: #f7f7f7 image_url('bg_body.jpg');
-  color: #666666;
-}
-
-a {
-  color: #0c9;
-}
-
-h3 {
-  color: #00c191;
-  font-style: italic;
 }
 
 #page {
-  //background: transparent  image_url('bg_header_shadow.png') repeat-x 0 0;
 }
 
 header {
-
+  min-height: 50px;
+  padding-top: 3em;
   /* LOGO */
   h1#logo, h1#logo a {
     display: block;
@@ -41,38 +31,6 @@ header {
   }
 
   nav {
-    ul{
-      margin: 0 0 5px 0;
-      padding: 0;
-      list-style: none;
-
-      li{
-        background: #e0e0e0;
-        font-size: 14px;
-      }
-    }
-    a {
-      background: #fff image_url('bg_top_nav_item.jpg') repeat-x left bottom;
-      border: 2px solid #dfdfdf;
-      border-radius: 1em;
-      color: #187bb3;
-      float : left;
-      /*font-size: 1em;*/
-      font-weight: bold;
-      line-height: 2;
-      padding: 0 1em;
-      margin: 0 3px 0 0;
-      text-decoration: none;
-
-    }
-
-    a:hover,
-    a.active {
-      background: #1879b0;
-      border-color: #1872a8;
-      color: #fff;
-      text-decoration: none;
-    }
   }
 
   .login-bar {
@@ -80,9 +38,6 @@ header {
     float: right;
     //font-weight: bold;
     margin-top: 1em;
-    a{
-      //color: #f0f0f0;
-    }
   }
 }
 
@@ -113,7 +68,8 @@ footer {
 
 /* MAIN */
 #main{
-  background: #fff;
+  //background: #fff;
+  background: #f0f0f0;
   border: 1px solid #e4e4e4;
   border-bottom: 1px solid #efefef;
   border-radius: 0.8em 0.8em 0 0;
@@ -133,77 +89,38 @@ footer {
   margin: 0;
   padding: 0;
 }
-.error, .success, .notice{
-  border: 1px solid;
-  padding: 1em;
-}
-.error {
-  background: #fff6f7;
-  border-color: #ff999a;
-  color: #fe0000;
-}
-
-.success {
-  background: #f3faf2;
-  border-color: #99d69a;
-  color: #009800;
-}
-
-.notice {
-  background: #fffdf6;
-  border-color: #ffe699;
-  color: #febf00;
-}
-
-div.error{
-  background-image: url( asset_path('webdev-icons/action_delete.gif', image) );
-}
-
-div.success{
-  background-image: url( asset_path('webdev-icons/action_check.gif', image) );
-}
-
-div.notice {
-  background-image: url( asset_path('webdev-icons/file.gif', image) );
-}
-
-div.error, div.success, div.notice{
-  background-repeat: no-repeat;
-  background-position: 4px 50%;
-  padding-left: 2em;
-}
 /* /UTILS */
 
 /* FORMS */
-input[type=text], input[type=password], input[type=email],
-input[type=url], input.text, input.title, textarea{
-  background: #fff;
-  border: 1px solid #c2d1e6;
-}
+//input[type=text], input[type=password], input[type=email],
+//input[type=url], input.text, input.title, textarea{
+  //background: #fff;
+  //border: 1px solid #c2d1e6;
+//}
 
-input[type=text], input[type=password], input[type=email],
-input[type=url], input.text, input.title {
-  height: 1.5em;
-  margin: .25em 0;
-}
+//input[type=text], input[type=password], input[type=email],
+//input[type=url], input.text, input.title {
+  //height: 1.5em;
+  //margin: .25em 0;
+//}
 
-input[type=button], input[type=submit], button {
-  border: 1px solid #fff;
-  background: #00be8e;
-  border-radius: 1em 1em 1em 1em;
-  box-shadow: 0 0 2px #555;
-  color: #fff;
-  cursor: pointer;
-  height: 2em;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  padding: 0 1em;
-}
+//input[type=button], input[type=submit], button {
+  //border: 1px solid #fff;
+  //background: #00be8e;
+  //border-radius: 1em 1em 1em 1em;
+  //box-shadow: 0 0 2px #555;
+  //color: #fff;
+  //cursor: pointer;
+  //height: 2em;
+  //letter-spacing: -1px;
+  //text-transform: uppercase;
+  //padding: 0 1em;
+//}
 
-input[type=button]:hover, input[type=submit]:hover, button:hover,
-input[type=button]:active, input[type=submit]:active, button:active {
-  background: #4082b2;
-}
+//input[type=button]:hover, input[type=submit]:hover, button:hover,
+//input[type=button]:active, input[type=submit]:active, button:active {
+  //background: #4082b2;
+//}
 
 textarea{
   display: block;

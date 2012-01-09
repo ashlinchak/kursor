@@ -1,4 +1,4 @@
 .fields
-  = f.select :contact_type_id, Contact::CONTACT_TYPES.collect{|ct| [ct.capitalize, Contact::CONTACT_TYPES.index(ct)]}, :include_blank => true
+  = f.select :contact_type_id, Contact::CONTACT_TYPES.collect{|ct| [ct.capitalize, Contact::CONTACT_TYPES.index(ct)]}, { :include_blank => true }, :class => 'mini'
   = f.text_field :value
   = link_to_remove_fields "[X]", f
