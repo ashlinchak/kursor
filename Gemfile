@@ -33,7 +33,6 @@ gem 'russian'
 gem 'ukrainian'
 
 gem 'backup'
-gem 'dropbox'
 
 # To use debugger
 # gem 'ruby-debug'

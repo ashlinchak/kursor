@@ -1,9 +1,6 @@
 - if current_user
   - if ( provider.user === current_user ) || current_user.administrator?
     = link_to t(:'site.actions.edit'), edit_provider_path(provider), :class => 'link-icon icon-edit'
-  - if current_user.administrator?
-    = link_to 'Delete', provider.user, :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
-    not working
 %hr
 = link_to( provider.category, category_path(provider.category) ) if provider.category
 &gt;
@@ -40,6 +37,9 @@
   - if !provider.documents_info.blank?
     %h3= t(:'providers.documents_info')
     .documents-info= markdown provider.documents_info
+  - if current_user.administrator?
+    = link_to t(:'site.actions.destroy_user'), admin_user_path(provider.user), :method => :delete, :confirm => 'Внимание! Это действие полностью удалит этого провайдера и юзера из базы данных! Восстановить будет нельзя! Вы уверены в своем действии?', :class => 'link-icon icon-delete'
+
 .column.span-8.last
   .categories
     - if provider.categorizings.size > 0
@@ -81,3 +81,4 @@
                   - for contact in filial.contacts.by_type do
                     %li
                       %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+

@@ -8,6 +8,7 @@ ru:
       new: 'Добавить'
       edit: 'Изменить'
       destroy: 'Удалить'
+      destroy_user: 'Удалить этот провайдер'
     nav:
       search: 'Поиск'
 

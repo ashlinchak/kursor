@@ -46,6 +46,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user.destroy
+    redirect_to providers_url
+  end
+
   def users
     @users ||= User.all
   end
