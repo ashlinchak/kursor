@@ -21,6 +21,9 @@ ru:
       visit_website_for_more_info: 'Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте.'
     custom_fields:
       address: 'Адрес'
+    categories: 'Категории'
+    more_info: 'Дополнительная информация'
+    documents_info: 'Информация для поступления'
 
   search:
     results_found: 'Найдено результатов: %{num}'

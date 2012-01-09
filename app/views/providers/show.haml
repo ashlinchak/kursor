@@ -1,7 +1,9 @@
 - if current_user
   - if ( provider.user === current_user ) || current_user.administrator?
     = link_to t(:'site.actions.edit'), edit_provider_path(provider), :class => 'link-icon icon-edit'
-    Delete (not working now)
+  - if current_user.administrator?
+    = link_to 'Delete', provider.user, :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+    not working
 %hr
 = link_to( provider.category, category_path(provider.category) ) if provider.category
 &gt;
@@ -33,15 +35,15 @@
   - if provider.description.blank?
     %p= t(:'providers.description.visit_website_for_more_info')
   - if !provider.more_info.blank?
-    %h3 Дополнительная информация
+    %h3= t(:'providers.more_info')
     .more-info= markdown provider.more_info
   - if !provider.documents_info.blank?
-    %h3 Документы для поступления
+    %h3= t(:'providers.documents_info')
     .documents-info= markdown provider.documents_info
 .column.span-8.last
   .categories
     - if provider.categorizings.size > 0
-      %h3 Categories
+      %h3= t(:'providers.categories')
       %ul
         - for categorizing in provider.categorizings do
           %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
