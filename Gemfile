@@ -32,6 +32,8 @@ gem 'therubyracer'
 gem 'russian'
 gem 'ukrainian'
 
+gem 'backup'
+
 # To use debugger
 # gem 'ruby-debug'
 
