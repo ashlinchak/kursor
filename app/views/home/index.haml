@@ -1,23 +1,24 @@
-.column.span-14
-  .home-categories.clearfix
-    - root_categories.each do |category|
-      %div.category-item
-        %h3= link_to category.name, category
-        .description= category.description
+.row
+  .span10
+    .home-categories.clearfix
+      - root_categories.each do |category|
+        %div.category-item
+          %h3= link_to category.name, category
+          .description= category.description
 
-.column.span-10.last
-  .home-column
-    %h2= t(:'home.titles.recent_providers')
-    %ul.home-providers.no-bullets
-      - providers.each do |item|
-        %li
-          %h3= link_to item.name, provider_path(item)
-          -#.decription= excerpt(item.description, '', :radius => 48)
+  .span6
+    .home-column
+      %h2= t(:'home.titles.recent_providers')
+      %ul.home-providers.no-bullets
+        - providers.each do |item|
+          %li
+            %h3= link_to item.name, provider_path(item)
+            -#.decription= excerpt(item.description, '', :radius => 48)
 
-  .home-column
-    %h2.title-news= t(:'home.titles.news')
-    %ul.home-news.no-bullets
-      - news.each do |item|
-        %li
-          .date= item.created_at.strftime("%d.%m.%y")
-          %h3= link_to item.title, news_path(item)
+    .home-column
+      %h2.title-news= t(:'home.titles.news')
+      %ul.home-news.no-bullets
+        - news.each do |item|
+          %li
+            .date= item.created_at.strftime("%d.%m.%y")
+            %h3= link_to item.title, news_path(item)

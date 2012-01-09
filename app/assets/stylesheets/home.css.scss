@@ -33,11 +33,11 @@
   }
 }
 .home-categories{
-  background: #fafafa;
-  border: 1px solid #e4e4e4;
-  border-radius: 1em;
-  box-shadow: 1px 1px 8px #f0f0f0;
-  padding: 1em;
+  //background: #fafafa;
+  //border: 1px solid #e4e4e4;
+  //border-radius: 1em;
+  //box-shadow: 1px 1px 8px #f0f0f0;
+  //padding: 1em;
   h3 {
     font-size: 1.5em;
     font-style: italic;
@@ -61,10 +61,10 @@
 
 }
 .home-column{
-  background: transparent url(asset_path('bg_home_column00.gif', image)) repeat-y 0 0;
+  //background: transparent url(asset_path('bg_home_column00.gif', image)) repeat-y 0 0;
   border-left: 1px solid #ededed;
   float: left;
-  width: 190px;
+  width: 165px;
   margin: 1em 2px 0;
   min-height: 400px;
 
