@@ -64,6 +64,7 @@ ru:
       users: 'Пользователи'
       categories: 'Категории'
       news: 'Новости'
+      postings: 'Статьи'
       info_pages: 'Инфо страницы'
       locations: 'Локации'
       custom_fields: 'Спец. поля'
@@ -71,6 +72,12 @@ ru:
     users:
       headers:
         title: 'Пользователи / Провайдеры'
+        user: 'Пользователь'
+        provider: 'Провайдер'
+        created_at: 'Создан'
+        updated_at: 'Обновлен'
+        active: 'Активирован?'
+        actions: 'Действия'
       legends:
         address: 'Основной адрес'
         contacts: 'Контакты'
