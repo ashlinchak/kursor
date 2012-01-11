@@ -29,6 +29,7 @@ Kursor::Application.routes.draw do
   match '/home' => "home#index"
 
   resources :news, :only => [:index, :show]
+  resources :postings, :only => [:index, :show]
 
   resources :users, :except => [ :edit, :destroy]
   match '/my_profile' => 'users#my_profile', :as => :my_profile

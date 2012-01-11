@@ -1,0 +1,7 @@
+%h1= posting.title
+%blockquote.excerpt= markdown posting.excerpt
+.body= markdown posting.body
+.user-bar
+  = posting.user
+  |
+  = l posting.created_at, :format => :long

@@ -8,6 +8,7 @@
               %li
                 = link_to item.name, item
             %li= link_to 'Новости', news_index_path
+            %li= link_to 'Статьи', postings_path
             %li= link_to 'Контакты', '/info/contacts'
           %ul.nav.secondary-nav
             %li{ :class => 'dropdown', :'data-dropdown' => 'dropdown' }

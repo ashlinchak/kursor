@@ -1,0 +1,9 @@
+%h1 Postings
+%ul#postings
+  - for posting in postings do
+    %li
+      %h4= link_to posting.title, posting
+      .user-bar
+        = posting.user
+        |
+        = l posting.created_at, :format => :long
