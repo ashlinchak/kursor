@@ -1,3 +1,4 @@
 - flash.each do |name, msg|
-  %div{ :class => "flash_message #{name}" }
+  %div{ :class => "flash_message alert-message #{name}", :'data-alert' => 'alert' }
+    %a.close{ :href => '#'} x
     = msg

@@ -1,0 +1,16 @@
+.topbar-wrapper
+  .topbar
+    .topbar-inner
+      %nav.clear
+        .container
+          %ul.nav
+            - root_categories.each do |item|
+              %li
+                = link_to item.name, item
+            %li= link_to 'Новости', news_index_path
+            %li= link_to 'Контакты', '/info/contacts'
+          %ul.nav.secondary-nav
+            %li{ :class => 'dropdown', :'data-dropdown' => 'dropdown' }
+              %a{ :href => '#', :class => 'dropdown-toggle' } Login
+              %ul.dropdown-menu
+                = render :partial => 'shared/login_bar'

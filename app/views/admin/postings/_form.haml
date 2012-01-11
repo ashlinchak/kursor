@@ -1,0 +1,15 @@
+= form_for (posting, :url => ( posting.new_record? ? admin_postings_path : admin_posting_path(poting) ), :html => {:class => 'form-stacked'} ) do |f|
+  .row
+    = render :partial => 'shared/form_errors', :locals => { :object => posting }
+    .field.clearfix
+      = f.label :title
+      = f.text_field :title, :class => 'span16'
+    .field.clearfix
+      = f.label :excerpt
+      = f.text_area :excerpt, :class => 'span16'
+    .field.clearfix
+      = f.label :body
+      = f.text_area :body, :class => 'span16'
+  .actions
+    = f.submit :class => 'btn'
+

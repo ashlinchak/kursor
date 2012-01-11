@@ -1,0 +1,17 @@
+%h1 Postings
+%table
+  %thead
+    %tr
+      %th Title
+      %th User
+      %th Date
+      %th Actions
+  %tbody
+    - for posting in postings do
+      %tr
+        %td= link_to posting.title, admin_posting_path(posting)
+        %td= posting.user
+        %td= posting.created_at
+        %td [=] [X]
+%hr
+= link_to 'New', new_admin_posting_path

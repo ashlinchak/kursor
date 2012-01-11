@@ -2,22 +2,18 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- //*= require blueprint/screen
+ // require blueprint/screen
  *= require twitter/bootstrap/bootstrap.min
  *= require_self
  *= require_tree .
 */
-
-body{
-}
-
-#page {
-}
-
-header {
-  min-height: 50px;
+#page{
   padding-top: 3em;
-  /* LOGO */
+}
+header {
+  //min-height: 50px;
+  margin-top: 4em;
+
   h1#logo, h1#logo a {
     display: block;
     float : left;
@@ -28,16 +24,6 @@ header {
 
   h1#logo {
     background: transparent image_url('logo.png') no-repeat left top;
-  }
-
-  nav {
-  }
-
-  .login-bar {
-    //color: #f0f0f0;
-    float: right;
-    //font-weight: bold;
-    margin-top: 1em;
   }
 }
 
@@ -93,36 +79,6 @@ footer {
 /* /UTILS */
 
 /* FORMS */
-//input[type=text], input[type=password], input[type=email],
-//input[type=url], input.text, input.title, textarea{
-  //background: #fff;
-  //border: 1px solid #c2d1e6;
-//}
-
-//input[type=text], input[type=password], input[type=email],
-//input[type=url], input.text, input.title {
-  //height: 1.5em;
-  //margin: .25em 0;
-//}
-
-//input[type=button], input[type=submit], button {
-  //border: 1px solid #fff;
-  //background: #00be8e;
-  //border-radius: 1em 1em 1em 1em;
-  //box-shadow: 0 0 2px #555;
-  //color: #fff;
-  //cursor: pointer;
-  //height: 2em;
-  //letter-spacing: -1px;
-  //text-transform: uppercase;
-  //padding: 0 1em;
-//}
-
-//input[type=button]:hover, input[type=submit]:hover, button:hover,
-//input[type=button]:active, input[type=submit]:active, button:active {
-  //background: #4082b2;
-//}
-
 textarea{
   display: block;
   height: 120px;

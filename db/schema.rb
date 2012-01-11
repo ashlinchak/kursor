@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229142004) do
+ActiveRecord::Schema.define(:version => 20120110215933) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -141,6 +141,17 @@ ActiveRecord::Schema.define(:version => 20111229142004) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "postings", :force => true do |t|
+    t.string   "title"
+    t.text     "excerpt"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postings", ["user_id"], :name => "index_postings_on_user_id"
 
   create_table "providers", :force => true do |t|
     t.string   "name"

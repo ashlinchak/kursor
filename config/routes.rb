@@ -4,6 +4,7 @@ Kursor::Application.routes.draw do
     resources :categories
     resources :info
     resources :news
+    resources :postings
     resources :users
     resources :custom_fields do
       post 'sort', :on => :collection
