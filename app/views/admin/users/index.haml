@@ -3,12 +3,14 @@
 %hr/
 %table
   %thead
-    %th Email
-    %th Provider
-    %th Created at
-    %th Updated at
-    %th{ :width => 100 } Active?
-    %th{ :width => 100 } Actions
+    %th= t(:'admin.users.headers.user')
+    %th= t(:'admin.users.headers.provider')
+    %th= t(:'admin.users.headers.created_at')
+    %th= t(:'admin.users.headers.updated_at')
+    %th{ :width => 100 }
+      = t(:'admin.users.headers.active')
+    %th{ :width => 100 }
+      = t(:'admin.users.headers.actions')
   - for u in users do
     %tr
       %td= link_to u.email, edit_admin_user_path( u )
