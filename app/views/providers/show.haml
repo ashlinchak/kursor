@@ -40,7 +40,7 @@
       .documents-info= markdown provider.documents_info
     - if current_user.administrator?
       %hr/
-      = link_to t(:'site.actions.destroy_user'), admin_user_path(provider.user), :method => :delete, :confirm => 'Внимание! Это действие полностью удалит этого провайдера и связанного с ним пользователя из базы данных! Восстановить будет нельзя! Вы уверены в своем действии?', :class => 'link-icon icon-delete'
+      = link_to t(:'site.actions.destroy_user'), admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
 
   .span4
     .categories
@@ -68,7 +68,7 @@
 
     - if provider.filials.size > 0
       .filials
-        %h3 Filials
+        %h3= t(:'providers.filials')
         %ul
           - for filial in provider.filials do
             %li

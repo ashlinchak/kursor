@@ -23,6 +23,7 @@ ru:
     custom_fields:
       address: 'Адрес'
     categories: 'Категории'
+    filials: 'Филиалы'
     more_info: 'Дополнительная информация'
     documents_info: 'Информация для поступления'
 
@@ -78,6 +79,7 @@ ru:
         updated_at: 'Обновлен'
         active: 'Активирован?'
         actions: 'Действия'
+        no_provider: 'Провайдер не создан'
       legends:
         address: 'Основной адрес'
         contacts: 'Контакты'
@@ -92,11 +94,14 @@ ru:
         success: 'Пользователь успешно удален!'
       actions:
         create_user: 'Создать пользователя'
+        delete_user: 'Удалить'
       location:
         city: 'Город'
       selectors:
         choose_city: 'Выберите город'
         select_category: 'Выберите категорию'
+      confirms:
+        user_destroy: 'Внимание! Вы собираетесь удалить Пользователя и его Провайдера! Отменить действие будет невозможно! Продолжить?'
     info_pages:
       title: 'Информационные страницы'
     news:

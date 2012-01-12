@@ -14,11 +14,23 @@
   - for u in users do
     %tr
       %td= link_to u.email, edit_admin_user_path( u )
-      %td= link_to u.provider, provider_path( u.provider ) if u.provider
+      %td
+        - if u.provider
+          = link_to u.provider, provider_path( u.provider ), :target => "_blank"
+        - else
+          = t(:'admin.users.headers.no_provider')
       %td= l u.created_at, :format => :short
-      %td= l u.updated_at, :format => :short
-      %td= u.is_active?
-      %td= link_to 'Delete', admin_user_path(u), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+      %td
+        - if u.provider
+          = l u.provider.updated_at, :format => :short
+        - else
+          \-
+      %td
+        - if u.is_active?
+          +
+        - else
+          -
+      %td= link_to t(:'admin.users.actions.delete_user'), admin_user_path(u), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
 .page_navigation.clear= paginate users
 %hr/
 %p= link_to t(:'admin.users.actions.create_user'), new_admin_user_path, :class => 'link-icon icon-add'
