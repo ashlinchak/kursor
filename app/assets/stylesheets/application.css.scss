@@ -7,23 +7,63 @@
  *= require_self
  *= require_tree .
 */
-#page{
-  padding-top: 3em;
+
+body {
+  background: #fbfbfb !important;
 }
+
 header {
   //min-height: 50px;
-  margin-top: 4em;
+  padding-top: 1em;
 
   h1#logo, h1#logo a {
     display: block;
     float : left;
-    height: 90px;
+    height: 92px;
     margin: 0;
-    width: 242px;
+    width: 285px;
   }
 
   h1#logo {
-    background: transparent image_url('logo.png') no-repeat left top;
+    background: transparent image_url('logo.jpg') no-repeat left top;
+    margin-left: 6px;
+    margin-bottom: 10px;
+  }
+
+  nav{
+    background: #ebebeb;
+    border-radius: 0 0 6px 6px;
+    clear: both;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+
+    ul{
+      background: #1a7db8;
+      clear: both;
+      list-style: none;
+      margin:0;
+      padding:0 6px;
+      li{
+        float: left;
+      }
+    }
+    ul:after{
+      content: '';
+      clear: both;
+      display:block;
+    }
+    a{
+      border-right: 1px solid #1b76ab;
+      border-left: 1px solid #1985c3;
+      color: #fff;
+      display: inline-block;
+      margin: 0;
+      padding: .5em 1em;
+    }
+    li.active, a:hover{
+      color: #000;
+      background: #ebebeb;
+    }
   }
 }
 

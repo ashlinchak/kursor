@@ -1,3 +1,6 @@
 %h1= posting.title
 %blockquote.excerpt= markdown posting.excerpt
 .body= markdown posting.body
+.images
+  - for image in posting.images do
+    = image_tag image.src_url(:thumb).to_s

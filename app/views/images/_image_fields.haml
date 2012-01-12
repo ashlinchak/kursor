@@ -1,0 +1,7 @@
+.image-field
+  = image_tag f.object.src_url(:thumb).to_s
+  = f.file_field :src
+  = f.hidden_field :src_cache
+  = f.check_box :_destroy
+  [X]
+
