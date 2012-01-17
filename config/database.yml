@@ -31,7 +31,7 @@ production:
   database: kursor_production
   pool: 5
   username: root
-  password: '123456'
-  #socket: /var/lib/mysql/mysql.sock
+  password: "123456"
   socket: /var/run/mysqld/mysqld.sock
+  #socket: /var/lib/mysql/mysql.sock
 
