@@ -49,7 +49,7 @@ module ApplicationHelper
       "#{location.street.strip}, " +
       "#{location.building.strip}" +
       ( !location.apartment.blank? ?
-       ', офис ' + location.apartment : '' )
+       ', room ' + location.apartment : '' )
     end
   end
 
