@@ -147,8 +147,6 @@ GEM
     uglifier (1.2.1)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    ukrainian (2.6.0)
-      i18n
     whenever (0.7.2)
       activesupport (>= 2.3.4)
       chronic (~> 0.6.3)
@@ -175,5 +173,4 @@ DEPENDENCIES
   sass-rails (~> 3.1.0)
   therubyracer
   uglifier
-  ukrainian
   whenever

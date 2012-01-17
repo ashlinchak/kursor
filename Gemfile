@@ -30,7 +30,7 @@ gem 'therubyracer'
 gem 'capistrano'
 
 gem 'russian'
-gem 'ukrainian'
+#gem 'ukrainian'
 
 gem 'backup'
 
