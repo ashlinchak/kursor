@@ -24,7 +24,7 @@ module ApplicationHelper
     result << "#{location.city}" if location.city
     result << ", #{location.street}" if location.street
     result << ", #{location.building}" if location.building
-    result << ", оф. #{location.apartment}" if location.apartment
+    result << ", apt. #{location.apartment}" if location.apartment
     result
   end
 
