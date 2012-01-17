@@ -2,160 +2,160 @@ ru:
 
   site:
     errors:
-      error_404: 'Страница не найдена'
-    back_to_site: 'Вернуться на сайт'
+      error_404: "Страница не найдена"
+    back_to_site: "Вернуться на сайт"
     actions:
-      new: 'Добавить'
-      edit: 'Изменить'
-      destroy: 'Удалить'
-      destroy_user: 'Удалить этот провайдер'
+      new: "Добавить"
+      edit: "Изменить"
+      destroy: "Удалить"
+      destroy_user: "Удалить этот провайдер"
     nav:
-      search: 'Поиск'
+      search: "Поиск"
 
   home:
     titles:
-      recent_providers: 'С нами уже'
-      news: 'Новости'
+      recent_providers: "С нами уже"
+      news: "Новости"
 
   providers:
     description:
-      visit_website_for_more_info: 'Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте.'
+      visit_website_for_more_info: "Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте."
     custom_fields:
-      address: 'Адрес'
-    categories: 'Категории'
-    filials: 'Филиалы'
-    more_info: 'Дополнительная информация'
-    documents_info: 'Информация для поступления'
+      address: "Адрес"
+    categories: "Категории"
+    filials: "Филиалы"
+    more_info: "Дополнительная информация"
+    documents_info: "Информация для поступления"
 
   search:
-    results_found: 'Найдено результатов: %{num}'
+    results_found: "Найдено результатов: %{num}"
 
   sessions:
     create:
-      title: 'Войти'
-      button: 'Войти'
-      success: 'Вход успешно выполнен!'
-      error: 'Неправильный логин/пароль'
+      title: "Войти"
+      button: "Войти"
+      success: "Вход успешно выполнен!"
+      error: "Неправильный логин/пароль"
     destroy:
-      title: 'Выйти'
-      success: 'Вы успешно вышли!'
+      title: "Выйти"
+      success: "Вы успешно вышли!"
 
   users:
     new:
-      title: 'Зарегистрироваться'
+      title: "Зарегистрироваться"
     create:
-      title: 'Зарегистрироваться'
+      title: "Зарегистрироваться"
     edit:
-      title: 'Изменить настройки пользователя'
+      title: "Изменить настройки пользователя"
 
   news:
-    title: 'Новости'
-    back_to_list: 'Вернуться к списку новостей'
+    title: "Новости"
+    back_to_list: "Вернуться к списку новостей"
 
   user_activation:
-    title: 'Получить ссылку активации'
+    title: "Получить ссылку активации"
     create:
-      success: 'Ссылка активации отправлена вам на имейл'
-      error: 'Простите, но пользователь с указанным имейлом не найден'
+      success: "Ссылка активации отправлена вам на имейл"
+      error: "Простите, но пользователь с указанным имейлом не найден"
     errors:
-      user_inactive: 'Sorry, but You need to activate Your account. Check Your email for activation link or request a new one.'
+      user_inactive: "Sorry, but You need to activate Your account. Check Your email for activation link or request a new one."
 
   admin:
     nav:
-      users: 'Пользователи'
-      categories: 'Категории'
-      news: 'Новости'
-      postings: 'Статьи'
-      info_pages: 'Инфо страницы'
-      locations: 'Локации'
-      custom_fields: 'Спец. поля'
-      custom_flags: 'Спец. флаги'
+      users: "Пользователи"
+      categories: "Категории"
+      news: "Новости"
+      postings: "Статьи"
+      info_pages: "Инфо страницы"
+      locations: "Локации"
+      custom_fields: "Спец. поля"
+      custom_flags: "Спец. флаги"
     users:
       headers:
-        title: 'Пользователи / Провайдеры'
-        user: 'Пользователь'
-        provider: 'Провайдер'
-        created_at: 'Создан'
-        updated_at: 'Обновлен'
-        active: 'Активирован?'
-        actions: 'Действия'
-        no_provider: 'Провайдер не создан'
+        title: "Пользователи / Провайдеры"
+        user: "Пользователь"
+        provider: "Провайдер"
+        created_at: "Создан"
+        updated_at: "Обновлен"
+        active: "Активирован?"
+        actions: "Действия"
+        no_provider: "Провайдер не создан"
       legends:
-        address: 'Основной адрес'
-        contacts: 'Контакты'
-        filials: 'Филиалы'
-        categories: 'Категории'
-      generate_credentials: 'Сгенерировать случайный логин/пароль'
+        address: "Основной адрес"
+        contacts: "Контакты"
+        filials: "Филиалы"
+        categories: "Категории"
+      generate_credentials: "Сгенерировать случайный логин/пароль"
       create:
-        success: 'Пользователь успешно добавлен!'
+        success: "Пользователь успешно добавлен!"
       update:
-        success: 'Пользователь успешно сохранен!'
+        success: "Пользователь успешно сохранен!"
       destroy:
-        success: 'Пользователь успешно удален!'
+        success: "Пользователь успешно удален!"
       actions:
-        create_user: 'Создать пользователя'
-        delete_user: 'Удалить'
+        create_user: "Создать пользователя"
+        delete_user: "Удалить"
       location:
-        city: 'Город'
+        city: "Город"
       selectors:
-        choose_city: 'Выберите город'
-        select_category: 'Выберите категорию'
+        choose_city: "Выберите город"
+        select_category: "Выберите категорию"
       confirms:
-        user_destroy: 'Внимание! Вы собираетесь удалить Пользователя и его Провайдера! Отменить действие будет невозможно! Продолжить?'
+        user_destroy: "Внимание! Вы собираетесь удалить Пользователя и его Провайдера! Отменить действие будет невозможно! Продолжить?"
     info_pages:
-      title: 'Информационные страницы'
+      title: "Информационные страницы"
     news:
-      title: 'Новости'
+      title: "Новости"
     categories:
-      title: 'Категории'
+      title: "Категории"
     locations:
       headers:
-        title: 'Локации'
-        cities: 'Населенные пункты'
-        region: 'Область'
+        title: "Локации"
+        cities: "Населенные пункты"
+        region: "Область"
     custom_fields:
       headers:
-        title: 'Специльные поля'
-        custom_field_name: 'Имя'
-        custom_filed_uses: 'Задействовано'
+        title: "Специльные поля"
+        custom_field_name: "Имя"
+        custom_filed_uses: "Задействовано"
       buttons:
-        create_custom_field: 'Добавить новое поле'
+        create_custom_field: "Добавить новое поле"
     custom_flags:
       headers:
-        title: 'Специальные флаги'
+        title: "Специальные флаги"
       buttons:
-        create_custom_flag: '+ Добавить новый флаг'
+        create_custom_flag: "+ Добавить новый флаг"
 
   activerecord:
     models:
-      user: 'Пользователь'
-      news: 'Новость'
-      category: 'Категория'
-      provider: 'Учебное заведение'
-      location: 'Местоположение'
+      user: "Пользователь"
+      news: "Новость"
+      category: "Категория"
+      provider: "Учебное заведение"
+      location: "Местоположение"
     attributes:
       category:
-        name: 'Название'
-        description: 'Описание'
-        parent_id: 'Родительская категория'
-        permalink: 'Прямая ссылка'
+        name: "Название"
+        description: "Описание"
+        parent_id: "Родительская категория"
+        permalink: "Прямая ссылка"
 
       user:
-        email: 'Эл. почта'
-        password: 'Пароль'
-        password_confirmation: 'Повторите пароль'
+        email: "Эл. почта"
+        password: "Пароль"
+        password_confirmation: "Повторите пароль"
       provider:
-        name: 'Название'
-        is_approved: 'Проверен'
-        logo: 'Логотип'
-        description: 'Описание на русском'
-        description_uk: 'Описание на украинском'
-        more_info: 'Дополнительная информация (на русском)'
-        more_info_uk: 'Дополнительная информация (на украинском)'
-        documents_info: 'Информация для поступления (на русском)'
-        documents_info_uk: 'Информация для поступления (на украинском)'
-        category: 'Категория'
-        location: 'Местоположение'
+        name: "Название"
+        is_approved: "Проверен"
+        logo: "Логотип"
+        description: "Описание на русском"
+        description_uk: "Описание на украинском"
+        more_info: "Дополнительная информация (на русском)"
+        more_info_uk: "Дополнительная информация (на украинском)"
+        documents_info: "Информация для поступления (на русском)"
+        documents_info_uk: "Информация для поступления (на украинском)"
+        category: "Категория"
+        location: "Местоположение"
 
   views:
     pagination:

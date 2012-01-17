@@ -2,28 +2,28 @@ uk:
 
   site:
     errors:
-      error_404: 'Page not found'
+      error_404: "Page not found"
 
   sessions:
     create:
-      title: 'Login'
-      button: 'Login'
-      success: 'Successfully logged in!'
-      error: 'Bad login/password combination'
+      title: "Login"
+      button: "Login"
+      success: "Successfully logged in!"
+      error: "Bad login/password combination"
     destroy:
-      title: 'Logout'
-      success: 'Logged out. Bye-bye!'
+      title: "Logout"
+      success: "Logged out. Bye-bye!"
 
   users:
     new:
-      title: 'Register'
+      title: "Register"
     create:
-      title: 'Register'
+      title: "Register"
 
   user_activation:
-    title: 'Отримати посилання'
+    title: "Отримати посилання"
     create:
-      success: 'Ссылка активации отправлена вам на имейл'
-      error: 'Простите, но пользователь с указанным имейлом не найден'
+      success: "Ссылка активации отправлена вам на имейл"
+      error: "Простите, но пользователь с указанным имейлом не найден"
     errors:
-      user_inactive: 'Sorry, but You need to activate Your account. Check Your email for activation link or request a new one.'
+      user_inactive: "Sorry, but You need to activate Your account. Check Your email for activation link or request a new one."
