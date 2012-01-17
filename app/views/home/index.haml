@@ -1,10 +1,21 @@
 .row
   .span10
-    .home-categories.clearfix
-      - root_categories.each do |category|
-        %div.category-item
-          %h3= link_to category.name, category
-          .description= category.description
+    %ul.home-postings
+      - recent_postings.each do |posting|
+        %li
+          %article.posting
+            .image= image_tag posting.images.last.src_url(:thumb).to_s
+            %h3= link_to posting.title, posting
+            .excerpt= posting.excerpt
+            .date
+              = time_ago_in_words posting.created_at
+              назад
+
+    -#.home-categories.clearfix
+      -#- root_categories.each do |category|
+        -#%div.category-item
+          -#%h3= link_to category.name, category
+          -#.description= category.description
 
   .span6
     .home-column

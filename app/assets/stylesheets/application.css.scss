@@ -2,19 +2,24 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- // require blueprint/screen
  *= require twitter/bootstrap/bootstrap.min
  *= require_self
  *= require_tree .
 */
 
+
+
+
+
+
 body {
-  background: #fbfbfb !important;
+  background: #fbfbfb;
 }
 
 header {
-  //min-height: 50px;
+  min-height: 50px;
   padding-top: 1em;
+  position: relative;
 
   h1#logo, h1#logo a {
     display: block;
@@ -63,6 +68,23 @@ header {
     li.active, a:hover{
       color: #000;
       background: #ebebeb;
+    }
+  }
+  ul.login-nav{
+    list-style: none;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: .5em;
+
+    li{
+      border-left: 1px solid;
+      display: inline;
+      padding-left: .5em;
+    }
+    li:first-child{
+      border-left: none;
+      padding-left: 0;
     }
   }
 }

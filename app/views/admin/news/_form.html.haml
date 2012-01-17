@@ -1,8 +1,14 @@
-= form_for (@news, :url => ( @news.new_record? ? admin_news_index_path : admin_news_path(@news) ) ) do |f|
-  = render :partial => 'shared/form_errors', :locals => { :object => @news }
-  .field
-    = f.text_field :title
-  .field
-    = f.text_area :body
+= form_for (@news, :url => ( @news.new_record? ? admin_news_index_path : admin_news_path(@news) ), :html => {:class => 'form-stacked'} ) do |f|
+  .row
+    = render :partial => 'shared/form_errors', :locals => { :object => @news }
+    .field.clearfix
+      = f.text_field :title, :class => 'span16'
+    .field.clearfix
+      = f.text_area :body, :class => 'span16'
+    = f.fields_for :images do |image|
+      = render :partial => 'images/image_fields', :locals => { :f => image }
+    .fields= link_to_add_fields "Add image", f, :images
   .actions
     = f.submit
+    or
+    = link_to 'Cancel', admin_postings_path

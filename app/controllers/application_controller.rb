@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :regions
 
+  def recent_postings
+    @recent_postings ||= Posting.recent
+  end
+  helper_method :recent_postings
+
   def current_user
     @current_user ||= User.find(session[:user_id])
   rescue

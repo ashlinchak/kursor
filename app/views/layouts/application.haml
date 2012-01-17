@@ -24,12 +24,12 @@
   = csrf_meta_tags
 %body
   #page
-    %header
-      .container
-        %h1#logo.ir
-          = link_to 'Kursor.ua', root_url
-        = render :partial => 'shared/top_nav'
-        -#= render :partial => 'shared/login_bar'
+    %header.container
+      -#.container
+      %h1#logo.ir
+        = link_to 'Kursor.ua', root_url
+      = render :partial => 'shared/top_nav'
+      = render :partial => 'shared/login_bar'
 
     #main.container
       .flash= render 'shared/flash_messages'

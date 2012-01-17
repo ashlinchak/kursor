@@ -3,7 +3,8 @@
 .body= markdown posting.body
 .images
   - for image in posting.images do
-    = image_tag image.src_url(:thumb).to_s
+    =link_to image.src_url(:large) do
+      = image_tag image.src_url(:thumb).to_s
 .user-bar
   = posting.user
   |

@@ -1,3 +1,27 @@
 // Place all the styles related to the postings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.home-postings{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.posting {
+  .image{
+    float: left;
+    margin-right: 1em;
+  }
+}
+
+.images{
+  border: 1px solid #ebebeb;
+  a{
+    display: inline-block;
+
+    img{
+      border: 1px solid;
+      //border: none;
+      display: block;
+    }
+  }
+}

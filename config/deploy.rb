@@ -13,9 +13,9 @@ require "bundler/capistrano"
 
 set :application, "kursor"
 set :user, "root"
-set :port, 3764
+#set :port, 3764
 
-set :deploy_to, "/var/www/rails_apps/#{application}"
+set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :copy
 
 set :normalize_asset_timestamps, false
@@ -30,10 +30,10 @@ set :repository,  "~/projects/#{application}/.git"
 
 # VPS
 
-role :web, "91.223.223.87"
-role :app, "91.223.223.87"
-role :db,  "91.223.223.87", :primary => true
-role :db,  "91.223.223.87"
+role :web, "85.25.100.135"
+role :app, "85.25.100.135"
+role :db,  "85.25.100.135", :primary => true
+role :db,  "85.25.100.135"
 
 # Passenger
 
@@ -47,12 +47,49 @@ namespace :deploy do
  end
 end
 
+# ==============================
+# Uploads
+# ==============================
 
-after "deploy:symlink", "deploy:update_crontab"
+namespace :uploads do
 
-namespace :deploy do
-  desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
+  desc <<-EOD
+    Creates the upload folders unless they exist
+    and sets the proper upload permissions.
+  EOD
+  task :setup, :except => { :no_release => true } do
+    dirs = uploads_dirs.map { |d| File.join(shared_path, d) }
+    run "#{try_sudo} mkdir -p #{dirs.join(' ')} && #{try_sudo} chmod g+w #{dirs.join(' ')}"
   end
+
+  desc <<-EOD
+    [internal] Creates the symlink to uploads shared folder
+    for the most recently deployed version.
+  EOD
+  task :symlink, :except => { :no_release => true } do
+    run "rm -rf #{release_path}/public/uploads"
+    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+  end
+
+  desc <<-EOD
+    [internal] Computes uploads directory paths
+    and registers them in Capistrano environment.
+  EOD
+  task :register_dirs do
+    set :uploads_dirs,    %w(uploads uploads/avatar)
+    set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
+  end
+
+  after       "deploy:finalize_update", "uploads:symlink"
+  on :start,  "uploads:register_dirs"
+
 end
+
+#after "deploy:symlink", "deploy:update_crontab"
+
+#namespace :deploy do
+  #desc "Update the crontab file"
+  #task :update_crontab, :roles => :db do
+    #run "cd #{release_path} && whenever --update-crontab #{application}"
+  #end
+#end

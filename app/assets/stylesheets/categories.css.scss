@@ -17,23 +17,24 @@ ul.entries, ul.regions, ul.categories, ul.categories ul{
   margin: 0 0 2em 0;
 }
 
-.entries {
-    .list-provider{
-        background: #f8f8f8;
-        border-top: 1px dashed #d6d6d6;
-        border-bottom: 1px dashed #d6d6d6;
-        list-style : none;
-        margin-bottom: 1em;
-        padding: 1em;
+ul.entries {
+  clear: both;
+  .list-provider{
+    background: #f8f8f8;
+    border-top: 1px dashed #d6d6d6;
+    border-bottom: 1px dashed #d6d6d6;
+    list-style : none;
+    margin-bottom: 1em;
+    padding: 1em;
 
-        .image-container {
-            float: right;
-        }
-
-        //h4 a{
-            //color: #1a7bb0;
-        //}
+    .image-container {
+      float: right;
     }
+
+    //h4 a{
+      //color: #1a7bb0;
+    //}
+  }
 }
 ul.regions{
   border-top: 1px dashed #d6d6d6;

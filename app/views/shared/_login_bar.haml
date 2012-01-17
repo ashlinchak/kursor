@@ -1,9 +1,10 @@
-- if authenticated?
-  %li= link_to current_user, my_profile_path
-  - if authorized?
-    %li= link_to 'Admin', admin_users_path
-    %li= link_to 'Search', search_index_path
-    %li= link_to t(:'sessions.destroy.title'), logout_url
-- else
-  %li= link_to t(:'sessions.create.title'), login_url
-  %li= link_to t(:'users.create.title'), new_user_url
+%ul.login-nav
+  - if authenticated?
+    %li= link_to current_user, my_profile_path
+    - if authorized?
+      %li= link_to 'Admin', admin_users_path
+      %li= link_to 'Search', search_index_path
+      %li= link_to t(:'sessions.destroy.title'), logout_url
+  - else
+    %li= link_to t(:'sessions.create.title'), login_url
+    %li= link_to t(:'users.create.title'), new_user_url
