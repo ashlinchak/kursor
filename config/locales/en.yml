@@ -6,16 +6,32 @@ en:
   site:
     errors:
       error_404: 'Page not found'
-    back_to_site: 'Return to site'
+    back_to_site: 'Return to front'
     actions:
       new: 'New'
       edit: 'Edit'
       destroy: 'Destroy'
+      destroy_user: 'Destroy this user'
+    nav:
+      search: 'Search'
 
   home:
     titles:
       recent_providers: 'Recently joined'
       news: 'News'
+
+  providers:
+    description:
+      visit_website_for_more_info: 'To Specify detailed information, please contact by phone or on website'
+    custom_fields:
+      address: 'Address'
+    categories: 'Categories'
+    filials: 'Filials'
+    more_info: 'Additional information'
+    documents_info: 'Information for entry'
+
+  search:
+    results_found: '%{num} results found'
 
   sessions:
     create:
@@ -36,7 +52,7 @@ en:
       title: 'Edit your profile'
 
   news:
-    title: 'Новости'
+    title: 'News'
     back_to_list: 'Back to news list'
 
   user_activation:
@@ -47,12 +63,12 @@ en:
     errors:
       user_inactive: 'Sorry, but You need to activate Your account. Check Your email for activation link or request a new one.'
 
+
   providers:
     custom_fields:
       address: 'Address'
 
-  search:
-    results_found: '%{num} results found'
+
 
   admin:
     nav:
@@ -60,5 +76,100 @@ en:
       categories: 'Categories'
       news: 'News'
       info_pages: 'Info pages'
+      locations: 'Locations'
+      custom_fields: 'Custom fields'
+      custom_flags: 'Custom flags'
+    users:
+      headers:
+        title: 'Users'
+        user: 'User'
+        provider: 'Provider'
+        created_at: 'Created at'
+        updated_at: 'Updated at'
+        active: 'Activated?'
+        actions: 'Actions'
+        no_provider: 'No provider'
+      legends:
+        address: 'Address'
+        contacts: 'Contacts'
+        filials: 'Filials'
+        categories: 'Categories'
+      generate_credentials: 'Generate random login/password'
+      create:
+        success: 'The user successfully created!'
+      update:
+        success: 'The user successfully updated!'
+      destroy:
+        success: 'The user successfully destroyed!'
+      actions:
+        create_user: 'Create user'
+        delete_user: 'Destroy'
+      location:
+        city: 'City'
+      selectors:
+        choose_city: 'Select city'
+        select_category: 'Select category'
+      confirms:
+        user_destroy: 'Attention! This action will destroy the User and his Provider! It is impossible to undo! Proceed?'
+    info_pages:
+      title: 'Static pages'
+    news:
+      title: 'News'
+    categories:
+      title: 'Categories'
+    locations:
+      headers:
+        title: 'Locations'
+        cities: 'Cities'
+        region: 'Region'
+    custom_fields:
+      headers:
+        title: 'Custom fields'
+        custom_field_name: 'Field name'
+        custom_filed_uses: 'Usages'
+      buttons:
+        create_custom_field: 'Add custom field'
+    custom_flags:
+      headers:
+        title: 'Custom flags'
+      buttons:
+        create_custom_flag: 'Add custom flag'
+
+  activerecord:
+    models:
+      user: 'User'
+      news: 'News'
+      category: 'Category'
+      provider: 'Provider'
+      location: 'Location'
+    attributes:
+      category:
+        name: 'Name'
+        description: 'Description'
+        parent_id: 'Parent category'
+        permalink: 'Permalink'
+
+      user:
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Password confirm'
+      provider:
+        name: 'Name'
+        is_approved: 'Is approved?'
+        logo: 'Logo'
+        description: 'Description in russian'
+        description_uk: 'Description in ukrainian'
+        more_info: 'Additioanl information (in russian)'
+        more_info_uk: 'Additional information (in ukrainian)'
+        documents_info: 'Information for entry (in russian)'
+        documents_info_uk: 'Information for entry (in ukrainian)'
+        category: 'Category'
+        location: 'Location'
+
+  views:
+    pagination:
+      previous: '&laquo; Prev.'
+      next: 'Next. &raquo;'
+      truncate: '...'
 
 

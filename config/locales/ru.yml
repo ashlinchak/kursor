@@ -58,7 +58,7 @@ ru:
       success: "Ссылка активации отправлена вам на имейл"
       error: "Простите, но пользователь с указанным имейлом не найден"
     errors:
-      user_inactive: "Sorry, but You need to activate Your account. Check Your email for activation link or request a new one."
+      user_inactive: "Извините, но Вам нужно активировать Ваш аккаунт. Проверьте Ваш Email на наличие письма со ссылкой активации или сделайте запрос на новую."
 
   admin:
     nav:
@@ -124,7 +124,7 @@ ru:
       headers:
         title: "Специальные флаги"
       buttons:
-        create_custom_flag: "+ Добавить новый флаг"
+        create_custom_flag: "Добавить новый флаг"
 
   activerecord:
     models:
