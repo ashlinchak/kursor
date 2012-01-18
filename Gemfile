@@ -32,9 +32,11 @@ gem 'capistrano'
 gem 'russian'
 #gem 'ukrainian'
 
-gem 'backup'
+gem 'backup', :require => false
 
 gem 'whenever', :require => false
+
+gem 'mail', :require => false
 
 # To use debugger
 # gem 'ruby-debug'
