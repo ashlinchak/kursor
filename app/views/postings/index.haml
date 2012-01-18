@@ -2,12 +2,13 @@
 %ul#postings
   - for posting in postings do
     %li
-      - if !posting.images.empty?
-        .image
-          = image_tag posting.images.last.src_url(:thumb).to_s
+      %article.posting
+        - if !posting.images.empty?
+          .image
+            = image_tag posting.images.last.src_url(:thumb).to_s
 
-      %h4= link_to posting.title, posting
-      .user-bar
-        = posting.user
-        |
-        = l posting.created_at, :format => :long
+        %h4= link_to posting.title, posting
+        .user-bar
+          = posting.user
+          |
+          = l posting.created_at, :format => :long

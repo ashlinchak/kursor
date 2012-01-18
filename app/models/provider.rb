@@ -27,6 +27,7 @@ class Provider < ActiveRecord::Base
   mount_uploader :logo, ProviderLogoUploader
 
   searchable_by :name
+  paginates_per 30
 
   scope :approved, where( :is_approved => true )
 

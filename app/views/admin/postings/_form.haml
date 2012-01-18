@@ -1,4 +1,4 @@
-= form_for (posting, :url => ( posting.new_record? ? admin_postings_path : admin_posting_path(posting) ), :html => {:class => 'form-stacked'} ) do |f|
+= form_for posting, :url => ( posting.new_record? ? admin_postings_path : admin_posting_path(posting) ), :html => {:class => 'form-stacked'} do |f|
   .row
     = render :partial => 'shared/form_errors', :locals => { :object => posting }
     .field.clearfix

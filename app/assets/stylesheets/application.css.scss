@@ -37,13 +37,14 @@ header {
 
   nav{
     background: #ebebeb;
-    border-radius: 0 0 6px 6px;
+    border-radius: 6px 6px 6px 6px;
     clear: both;
     padding-bottom: 6px;
     text-transform: uppercase;
 
     ul{
       background: #1a7db8;
+      border-radius: 6px 6px 0 0;
       clear: both;
       list-style: none;
       margin:0;
