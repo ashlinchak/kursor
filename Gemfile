@@ -3,7 +3,9 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'mysql2'
 gem 'json'
-
+gem 'jquery-rails'
+gem 'haml'
+gem 'redcarpet'
 gem 'mini_magick'
 gem 'carrierwave'
 
@@ -15,28 +17,22 @@ group :assets do
   gem 'uglifier'
   gem 'haml-rails'
 end
-gem 'redcarpet'
-
-gem 'jquery-rails'
-gem 'haml'
 
 gem 'kaminari'
-
 gem 'bcrypt-ruby', :require => 'bcrypt'
-
 gem 'therubyracer'
-
-# Deploy with Capistrano
-gem 'capistrano'
 
 gem 'russian'
 #gem 'ukrainian'
 
-gem 'backup', :require => false
+group :production do
+  gem 'backup'
+  gem 'whenever'
+  gem 'mail'
+end
 
-gem 'whenever', :require => false
-
-gem 'mail', :require => false
+# Deploy with Capistrano
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'

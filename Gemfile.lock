@@ -165,6 +165,7 @@ DEPENDENCIES
   jquery-rails
   json
   kaminari
+  mail
   mini_magick
   mysql2
   rails (= 3.1.0)
