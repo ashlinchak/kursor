@@ -14,4 +14,13 @@ class HomeController < ApplicationController
   end
   helper_method :providers
 
+  def featured_posting
+    @featured_posting ||= Posting.last
+  end
+  helper_method :featured_posting
+
+  def recent_postings
+    @recent_postings ||= Posting.recent.reverse
+  end
+
 end

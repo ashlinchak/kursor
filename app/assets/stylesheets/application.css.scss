@@ -88,10 +88,18 @@ header {
       padding-left: 0;
     }
   }
+  .banner{
+    float:right;
+    margin-top: 2em;
+  }
 }
 
 body.admin nav ul li {
   font-size: 12px;
+}
+
+.banner{
+  margin-bottom: 1em;
 }
 /* FOOTER */
 footer {
