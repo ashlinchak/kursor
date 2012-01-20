@@ -1,4 +1,4 @@
-= form_for (@news, :url => ( @news.new_record? ? admin_news_index_path : admin_news_path(@news) ), :html => {:class => 'form-stacked'} ) do |f|
+= form_for @news, :url => ( @news.new_record? ? admin_news_index_path : admin_news_path(@news) ), :html => {:class => 'form-stacked'} do |f|
   .row
     = render :partial => 'shared/form_errors', :locals => { :object => @news }
     .field.clearfix
