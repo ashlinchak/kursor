@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
 
   has_many :categorizings, :dependent => :destroy
   has_many :providers
-  has_many :sub_providers, :through => :categorizings
+  has_many :sub_providers, :through => :categorizings, :source => :provider
   #has_many :categories, :through => :categorizings
 
   validates_presence_of :name, :description, :permalink
