@@ -53,4 +53,16 @@ module ApplicationHelper
     end
   end
 
+  def links_to_tags tags_list
+    links = []
+    tags_list.collect{ | tag |
+      links << link_to(tag, {:controller => :tags, :action => :show, :id => tag.name })
+    }
+    sanitize links.join(", ")
+  end
+
+  def commas_to_tags tags_list
+    tags_list.join(", ")
+  end
+
 end

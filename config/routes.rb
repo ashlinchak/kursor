@@ -16,6 +16,7 @@ Kursor::Application.routes.draw do
   end
 
   resources :search
+  resources :tags
   resources :info
 
   match '/login' => 'sessions#new',      :as => :login

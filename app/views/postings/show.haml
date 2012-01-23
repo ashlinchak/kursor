@@ -9,6 +9,8 @@
   -#- for image in posting.images do
     -#=link_to image.src_url(:large) do
       -#= image_tag image.src_url(:thumb).to_s
+.tags-list
+  = links_to_tags posting.tags_list
 .user-bar
   = posting.user
   |
