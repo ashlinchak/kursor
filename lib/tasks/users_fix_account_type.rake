@@ -6,6 +6,7 @@ namespace :users do
     # account type to User::ACCOUNT_TYPES['school']
     ::Provider.all.each do |provider|
       provider.user.account_type_id = ::User::ACCOUNT_TYPES.index('school')
+      provider.user.save
     end
   end
 end
