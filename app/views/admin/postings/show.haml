@@ -5,4 +5,5 @@
     = link_to image.src_url(:medium) do
       = image_tag image.src_url(:thumb).to_s, :alt => image.title
 .body= markdown posting.body
+.tags-list= links_to_tags posting.tags_list
 

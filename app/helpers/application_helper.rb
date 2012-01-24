@@ -56,7 +56,7 @@ module ApplicationHelper
   def links_to_tags tags_list
     links = []
     tags_list.collect{ | tag |
-      links << link_to(tag, {:controller => :tags, :action => :show, :id => tag.name })
+      links << link_to(tag, tag)
     }
     sanitize links.join(", ")
   end

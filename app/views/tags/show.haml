@@ -2,6 +2,6 @@
   %h2= @tag_name
   %p
     всего по критерию нашлось:
-    = @tagables.size()
-    - @tagables.each do |tagable|
+    = @taggables.size()
+    - @taggables.each do |tagable|
       %h3= link_to tagable, tagable
