@@ -1,0 +1,78 @@
+%h2 Admin panel
+%hr/
+.row
+  .span4
+    %h3 Statistics
+    %table.condensed-table
+      %tr
+        %td
+          Administrators
+        %td
+          = @admin_users
+      %tr
+        %td
+          = link_to 'Providers', admin_users_path
+          approved
+        %td
+          = providers_approved
+      %tr
+        %td
+          = link_to 'Providers', admin_users_path
+          waiting
+        %td
+          %span.label.important
+            = providers_waiting
+      %tr
+        %td
+          = link_to 'Locations', admin_locations_path
+        %td
+          = @cities
+      %tr
+        %td
+          = link_to 'Categories', admin_categories_path
+        %td
+          = @categories
+      %tr
+        %td
+          = link_to 'News', admin_news_index_path
+        %td
+          = @news
+      %tr
+        %td
+          = link_to 'Postings', admin_postings_path
+        %td
+          = @posts
+      %tr
+        %td
+          Tags
+        %td
+          = @tags
+
+  .span4
+    %h3 What is today?
+    %table.condensed-table
+      %tr
+        %td
+          = link_to 'Providers', admin_users_path
+          registered
+        %td
+          %span.label.success
+            = today_registered_providers
+      %tr
+        %td
+          = link_to 'News', admin_news_index_path
+          created
+        %td
+          = today_news_created
+      %tr
+        %td
+          = link_to 'Postings', admin_postings_path
+          created
+        %td
+          = today_postings_created
+
+  .span4
+    %h3
+
+  .span4
+    %h3

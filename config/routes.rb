@@ -28,6 +28,9 @@ Kursor::Application.routes.draw do
   end
 
   match '/home' => "home#index"
+  match '/admin' => "admin/dashboard#index"
+
+  resources :dashboard, :only => [:index]
 
   resources :news, :only => [:index, :show]
   resources :postings, :only => [:index, :show]
