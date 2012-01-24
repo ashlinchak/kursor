@@ -22,8 +22,17 @@ class UsersController < ApplicationController
 
   def new
     if authenticated?
-      redirect_to :my_profile, :notice => 'You already registered and logged in!'
+      redirect_to :my_profile, :notice => 'You already registered and logged in!' and return
     end
+    account_type = params[:account_type_id]
+    if account_type == User::ACCOUNT_TYPES[0]
+      user.build_profile
+    elsif account_type == User::ACCOUNT_TYPES[1]
+      user.build_repetitor
+    elsif account_type == User::ACCOUNT_TYPES[2]
+      user.build_provider
+    end
+    #user.build_provider
   end
 
   def edit

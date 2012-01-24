@@ -144,6 +144,11 @@ ru:
         email: "Эл. почта"
         password: "Пароль"
         password_confirmation: "Повторите пароль"
+        account_type: "Зарегистрироваться как"
+        account_types:
+          user: "Пользователь"
+          tutor: "Преподаватель"
+          school: "Учебное заведение"
       provider:
         name: "Название"
         is_approved: "Проверен"

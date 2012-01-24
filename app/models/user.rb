@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
   default_scope order('created_at DESC')
 
+  # TODO: find proper names for acc types
+  ACCOUNT_TYPES = %w( user tutor school )
+
   paginates_per 50
 
   def to_s

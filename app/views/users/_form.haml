@@ -1,18 +1,31 @@
 = form_for(user) do |f|
-  = render :partial => 'shared/form_errors', :locals => { :object => user }
-  .field
-    = f.label :email
-  .field
-    = f.text_field :email
-  .field
-    = f.label :password
-  .field
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation
-  .field
-    = f.password_field :password_confirmation
-  -#= fields_for :provider do |p|
-    -#= render :partial => 'providers/provider_fields', :locals => { :f => p }
+  .row
+    .span8
+      = render :partial => 'shared/form_errors', :locals => { :object => user }
+      .clearfix
+        = f.label :email
+        .field.input
+          = f.text_field :email
+      .clearfix
+        = f.label :password
+        .field.input
+          = f.password_field :password
+      .clearfix
+        = f.label :password_confirmation
+        .field.input
+          = f.password_field :password_confirmation
+      -#- if user.provider
+        -#= fields_for :provider do |p|
+          -#= render :partial => 'providers/provider_fields', :locals => { :f => p }
+      - if user.new_record?
+        .clearfix
+          = f.label :account_type
+          .input
+            %ul.inputs-list
+              - User::ACCOUNT_TYPES.each do |account_type|
+                %li
+                  %label
+                    = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
+                    %span= t("activerecord.attributes.user.account_types.#{account_type}")
   .actions
-    = f.submit
+    = f.submit :class => 'btn'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122142656) do
+ActiveRecord::Schema.define(:version => 20120123165510) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -228,7 +228,8 @@ ActiveRecord::Schema.define(:version => 20120122142656) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_active",     :default => false
+    t.boolean  "is_active",       :default => false
+    t.integer  "account_type_id", :default => 0
   end
 
 end
