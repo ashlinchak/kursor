@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "mail.kursor.org.ua",
-  :port                 => 25,
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
   :domain               => "kursor.org.ua",
-  :user_name            => "info@kursor.org.ua",
-  :password             => "R67iUpOY",
+  :user_name            => "noreply@kursor.org.ua",
+  :password             => "KuRs0r*pa88*w0rd",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
