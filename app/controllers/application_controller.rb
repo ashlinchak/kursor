@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError,       :with => :render_404
   #rescue_from ActiveRecord::RecordNotFound,         :with => :render_404
 
-  before_filter :require_authentication
+  #before_filter :require_authentication
 
   protected
 
