@@ -11,8 +11,6 @@ class Admin::DashboardController < ApplicationController
     @posts = Posting.all.size
     @tags = Tag.all.size
 
-    @time_today = Date.today
-
   end
 
 

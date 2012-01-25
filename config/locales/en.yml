@@ -35,6 +35,7 @@ en:
 
   sessions:
     create:
+      logged_in_as: "You are logged in as"
       title: 'Login'
       button: 'Login'
       success: 'Successfully logged in!'
@@ -86,9 +87,11 @@ en:
         provider: 'Provider'
         created_at: 'Created at'
         updated_at: 'Updated at'
-        active: 'Activated?'
+        is_active: 'Activated?'
         actions: 'Actions'
         no_provider: 'No provider'
+        is_approved: 'Approved?'
+
       legends:
         address: 'Address'
         contacts: 'Contacts'

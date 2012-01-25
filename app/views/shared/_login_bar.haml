@@ -1,10 +1,12 @@
 %ul.login-nav
   - if authenticated?
-    %li= link_to current_user, my_profile_path
+    %li
+      = t(:'sessions.create.logged_in_as')
+      = link_to current_user, my_profile_path
     - if authorized?
       %li= link_to 'Admin', admin_path
       %li= link_to 'Search', search_index_path
-      %li= link_to t(:'sessions.destroy.title'), logout_url
+    %li= link_to t(:'sessions.destroy.title'), logout_url
   - else
-    %li= link_to t(:'sessions.create.title'), login_url
     %li= link_to t(:'users.create.title'), new_user_url
+    %li= link_to t(:'sessions.create.title'), login_url

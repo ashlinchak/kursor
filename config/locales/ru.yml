@@ -32,6 +32,7 @@ ru:
 
   sessions:
     create:
+      logged_in_as: "Вы вошли как"
       title: "Войти"
       button: "Войти"
       success: "Вход успешно выполнен!"
@@ -77,9 +78,10 @@ ru:
         provider: "Провайдер"
         created_at: "Создан"
         updated_at: "Обновлен"
-        active: "Активирован?"
+        is_active: "Активирован?"
         actions: "Действия"
         no_provider: "Провайдер не создан"
+        is_approved: "Одобрен?"
       legends:
         address: "Основной адрес"
         contacts: "Контакты"
