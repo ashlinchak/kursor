@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def create
     if user.save
       UserMailer.registration_confirmation(user).deliver
-      redirect_to user, :notice => 'User was successfully created.'
+      redirect_to user, :notice => t(:'users.flash.user_created')
     else
       render :action => "new"
     end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
   def update
     if user.update_attributes(params[:user])
-      redirect_to :my_profile, :notice => 'User was successfully updated.'
+      redirect_to :my_profile, :notice => t(:'users.flash.user_updated')
     else
       render :action => "edit"
     end

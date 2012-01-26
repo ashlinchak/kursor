@@ -1,26 +1,29 @@
-.column.span-20.prepend-4
-  =breadcrumbs_for_category category
-  %h3= category.name
-  -#.description= category.description
+.row
 
-  -#%ul.regions.clearfix
-    -#- for region in regions
-      -#%li
-        -#= link_to region.name, '#'
-        -#- if region.locations.size > 0
-          -#%span= region.locations.size.to_s
-  %ul.categories.clearfix
-    - for child in category.children
-      %li
-        %h3= link_to child, child
-        - if child.children
-          %ul.children-categories
-            - for child in child.children
-              %li= link_to child, child
+  .span12
+    %ul.breadcrumb
+      =breadcrumbs_for_category category
+    %h3= category.name
+    -#.description= category.description
+
+    -#%ul.regions.clearfix
+      -#- for region in regions
+        -#%li
+          -#= link_to region.name, '#'
+          -#- if region.locations.size > 0
+            -#%span= region.locations.size.to_s
+    %ul.categories.clearfix
+      - for child in category.children
+        %li
+          %h3= link_to child, child
+          - if child.children
+            %ul.children-categories
+              - for child in child.children
+                %li= link_to child, child
 
 
-  %ul.entries
-    - for provider in providers
-      = render :partial => 'categories/provider', :locals => { :provider => provider }
-  .page_navigation.clear= paginate providers
-  %hr/
+    %ul.entries
+      - for provider in providers
+        = render :partial => 'categories/provider', :locals => { :provider => provider }
+    .page_navigation.clear= paginate providers
+    %hr/

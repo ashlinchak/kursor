@@ -1,5 +1,5 @@
 %h1= user.email
-= user.is_active? ? '[Active]' : '[Pending]'
+= user.is_active? ? t(:'users.active') : t(:'users.pending')
 %hr/
 - unless user.provider
   = link_to 'Add provider', new_provider_path

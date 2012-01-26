@@ -1,6 +1,8 @@
-%h3= t(:'news.title')
-%ul.news-list
-  - @news.each do |news|
-    %li
-      .date= l news.created_at, :format => :short
-      %h4= link_to news.title, news
+.row
+  .span12
+    %h3= t(:'news.title')
+    %ul.news-list
+      - @news.each do |news|
+        %li
+          .date= l news.created_at, :format => :short
+          %h4= link_to news.title, news
