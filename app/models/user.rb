@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessor :password, :password_confirmation, :provider_attributes
+  attr_accessor :password, :password_confirmation, :provider_attributes, :profile_attributes
 
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
+  has_one :profile, :dependent => :destroy
   has_one :user_activation, :dependent => :destroy
 
   before_save :encrypt_password
@@ -14,6 +15,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   accepts_nested_attributes_for :provider
+  accepts_nested_attributes_for :profile
 
   default_scope order('created_at DESC')
 
@@ -23,7 +25,17 @@ class User < ActiveRecord::Base
   paginates_per 50
 
   def to_s
-    email.split(/@/)[0]
+    if visitor? && profile
+      if profile.full_name && !profile.full_name.blank?
+        profile.full_name
+      else
+        nickname || email.split(/@/)[0]
+      end
+    elsif tutor? || school?
+      provider.name
+    #else
+      #nickname || email.split(/@/)[0]
+    end
   end
 
   # overriding default json fields

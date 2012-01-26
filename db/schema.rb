@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123165510) do
+ActiveRecord::Schema.define(:version => 20120126125950) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -166,6 +166,17 @@ ActiveRecord::Schema.define(:version => 20120123165510) do
 
   add_index "postings", ["user_id"], :name => "index_postings_on_user_id"
 
+  create_table "profiles", :force => true do |t|
+    t.string   "full_name"
+    t.date     "birth_date"
+    t.text     "bio"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
   create_table "providers", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -230,6 +241,7 @@ ActiveRecord::Schema.define(:version => 20120123165510) do
     t.datetime "updated_at"
     t.boolean  "is_active",       :default => false
     t.integer  "account_type_id", :default => 0
+    t.string   "nickname"
   end
 
 end

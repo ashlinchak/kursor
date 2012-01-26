@@ -1,0 +1,6 @@
+= form_for(profile, :html => { :class => 'form-stacked' }) do |f|
+  .row
+    = render :partial => "shared/form_errors", :locals => { :object => provider }
+    = render :partial => 'profile_fields', :locals => { :f => f, :profile => profile }
+  .actions
+    = f.submit :class => 'btn primary'
