@@ -1,10 +1,13 @@
-%h1= user.email
+%h1= user
 = user.is_active? ? '[Active]' : '[Pending]'
 %hr/
-- unless user.provider
-  = link_to 'Add provider', new_provider_path
-- else
-  = link_to user.provider, user.provider
 - if user === current_user
+  - unless user.visitor?
+    - unless user.provider
+      = link_to 'Add provider', new_provider_path
+    - else
+      = link_to user.provider, user.provider
+  - else
+    -#= render user.profile
   %hr/
   = link_to 'Edit', edit_profile_url

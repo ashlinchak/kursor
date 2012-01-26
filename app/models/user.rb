@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   paginates_per 50
 
   def to_s
-    email
+    email.split(/@/)[0]
   end
 
   # overriding default json fields
@@ -47,6 +47,18 @@ class User < ActiveRecord::Base
 
   def administrator?
     !!administrator
+  end
+
+  def visitor?
+    ACCOUNT_TYPES[account_type_id] == 'user'
+  end
+
+  def tutor?
+    ACCOUNT_TYPES[account_type_id] == 'tutor'
+  end
+
+  def school?
+    ACCOUNT_TYPES[account_type_id] == 'school'
   end
 
   def generate_activation
