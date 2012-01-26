@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
       if profile.full_name && !profile.full_name.blank?
         profile.full_name
       else
-        nickname || email.split(/@/)[0]
+        nickname.blank? ? email.split(/@/)[0] : nickname
       end
     elsif tutor? || school?
       provider.name
