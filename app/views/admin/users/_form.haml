@@ -12,7 +12,7 @@
         = f.label :password_confirmation
         = f.password_field :password_confirmation, :size => '45'
       .field
-        = button_tag t(:'admin.users.generate_credentials'), :type => :button, :class => 'default-credentials'
+        = button_tag t(:'admin.users.generate_credentials'), :type => :button, :class => 'btn default-credentials'
         %input{ :name => 'current_user', :value => "#{current_user.email.split('@')[0]}", :type => :hidden }
     = f.fields_for :provider do |p|
       .fields

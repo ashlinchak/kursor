@@ -8,6 +8,7 @@
     - else
       = link_to user.provider, user.provider
   - else
-    = render :partial => '/profile/profile', :locals => { :profile => user.profile }
+    - if user.profile
+      = render :partial => '/profile/profile', :locals => { :profile => user.profile }
   %hr/
   = link_to 'Edit', edit_profile_url

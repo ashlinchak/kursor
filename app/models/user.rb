@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
       end
     elsif tutor? || school?
       provider.name
-    #else
-      #nickname || email.split(/@/)[0]
+    else
+      email.split(/@/)[0]
     end
   end
 
