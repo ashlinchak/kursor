@@ -25,10 +25,11 @@ gem 'therubyracer'
 gem 'russian'
 #gem 'ukrainian'
 
+gem 'mail'
+
 group :production do
   gem 'backup'
   gem 'whenever'
-  gem 'mail'
 end
 
 # Deploy with Capistrano

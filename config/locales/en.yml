@@ -19,6 +19,7 @@ en:
     titles:
       recent_providers: 'Recently joined'
       news: 'News'
+      featured_posting: 'Posting of the week'
 
   providers:
     description:
@@ -57,6 +58,8 @@ en:
     back_to_list: 'Back to news list'
 
   user_activation:
+    perform:
+      success: "Congratulations! Your account has been successfully activated."
     title: 'Request activation link'
     create:
       success: 'Activation link successfully sent to your email'

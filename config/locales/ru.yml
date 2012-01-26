@@ -15,7 +15,8 @@ ru:
   home:
     titles:
       recent_providers: "С нами уже"
-      news: "Новости"
+      news: "Последние новости"
+      featured_posting: "Статья недели"
 
   providers:
     description:
@@ -55,6 +56,8 @@ ru:
 
   user_activation:
     title: "Получить ссылку активации"
+    perform:
+      success: "Поздравляем! Ваша учетная запись успешно активирована."
     create:
       success: "Ссылка активации отправлена вам на имейл"
       error: "Простите, но пользователь с указанным имейлом не найден"
