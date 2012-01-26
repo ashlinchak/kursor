@@ -19,6 +19,7 @@ en:
     titles:
       recent_providers: 'Recently joined'
       news: 'News'
+      featured_posting: 'Posting of the week'
 
   providers:
     description:
@@ -51,12 +52,24 @@ en:
       title: 'Register'
     edit:
       title: 'Edit your profile'
+    flash:
+      user_created: 'User has been created. See mail inbox for activation link'
+      user_updated: 'User has been updated'
+    pending: 'You must activate your account. See mail inbox for activation link'
+    active: 'Your account is active'
+
 
   news:
     title: 'News'
     back_to_list: 'Back to news list'
 
+  postings:
+    title: 'Postings'
+    readmore: 'Reaf more...'
+
   user_activation:
+    perform:
+      success: "Congratulations! Your account has been successfully activated."
     title: 'Request activation link'
     create:
       success: 'Activation link successfully sent to your email'

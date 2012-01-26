@@ -4,7 +4,7 @@ module CategoriesHelper
     if !category.parent.nil?
       result += breadcrumbs_for_category category.parent
     end
-    result += " / #{link_to category, category}"
+    result += " <li><span class='divider'>/</span> #{link_to category, category} </li>"
     raw result
   end
 end

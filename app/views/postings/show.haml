@@ -1,16 +1,18 @@
-%h1= posting.title
-%blockquote.excerpt= markdown posting.excerpt
-.images
-  - for image in posting.images do
-    = link_to image.src_url(:medium) do
-      = image_tag image.src_url(:thumb).to_s, :alt => image.title
-.body= markdown posting.body
--#.images
-  -#- for image in posting.images do
-    -#=link_to image.src_url(:large) do
-      -#= image_tag image.src_url(:thumb).to_s
-.tags-list= links_to_tags posting.tags_list
-.user-bar
-  = posting.user
-  |
-  = l posting.created_at, :format => :long
+.row
+  .span12
+    %h1= posting.title
+    %blockquote.excerpt= markdown posting.excerpt
+    .images
+      - for image in posting.images do
+        = link_to image.src_url(:medium) do
+          = image_tag image.src_url(:thumb).to_s, :alt => image.title
+    .body= markdown posting.body
+    -#.images
+      -#- for image in posting.images do
+        -#=link_to image.src_url(:large) do
+          -#= image_tag image.src_url(:thumb).to_s
+    .tags-list= links_to_tags posting.tags_list
+    .user-bar
+      = posting.user
+      |
+      = l posting.created_at, :format => :long

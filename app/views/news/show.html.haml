@@ -1,7 +1,14 @@
-.news-details
-  %h3= @news.title
-  .date= l @news.created_at, :format => :short
-  .body= markdown @news.body
+.row
+  .span12
+    %h3= @news.title
+    .date= l @news.created_at, :format => :short
+    .images
+      - for image in @news.images do
+        = link_to image.src_url(:medium) do
+          = image_tag image.src_url(:thumb).to_s, :alt => image.title
+    .body= markdown @news.body
+    .actions
+      = link_to t(:'news.back_to_list'), news_index_path
 
-.actions
-  = link_to t(:'news.back_to_list'), news_index_path
+
+
