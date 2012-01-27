@@ -1,0 +1,8 @@
+.field.provider-categories
+  = f.label :category
+  = f.select :category_id, root_categories.collect{|c| [ c, c.id ] }, :prompt => t(:'admin.users.selectors.select_category')
+  - root_categories.each do |c|
+    .field.provider-category{ :id => "child-of-#{c.id}"}
+      .field
+        -#= render :partial => '/providers/sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }
+        = render :partial => 'sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }
