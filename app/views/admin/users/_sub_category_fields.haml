@@ -1,6 +1,8 @@
 -if c.children.size > 0
   %fieldset{ :id => "sub-children-of-#{c.id}"}
-    - for ch in c.children do
-      = check_box_tag 'user[provider_attributes][category_ids][]', ch.id, ( :checked if provider.categories.include? ch ), :class => 'category-sub-parent'
-      = ch.name
-      = render :partial => 'sub_category_fields', :locals => { :c => ch, :provider => provider }
+    .sub-category
+      - for ch in c.children do
+        %label
+          = check_box_tag 'user[provider_attributes][category_ids][]', ch.id, ( :checked if provider.categories.include? ch ), :class => 'category-sub-parent'
+          = ch.name
+        = render :partial => 'admin/users/sub_category_fields', :locals => { :c => ch, :provider => provider }
