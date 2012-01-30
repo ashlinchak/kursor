@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
       if provider
         provider.name
       else
-        email
+        email.split(/@/)[0]
       end
     else
       email.split(/@/)[0]

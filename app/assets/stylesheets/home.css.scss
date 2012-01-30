@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .home-providers, .home-news{
-  margin: 0 6px;
+  margin: 0;
 
   li{
-    border-bottom: 1px solid #d6d6d6;
+    //border-bottom: 1px solid #d6d6d6;
     margin: .5em 0;
     padding: 3px;
   }
@@ -46,5 +46,14 @@
 .featured-posting{
   h3{
     line-height: 1.25;
+  }
+}
+
+
+.news-item{
+  clear: both;
+  .image{
+    float:left;
+    margin: 0 .25em .25em 0;
   }
 }
