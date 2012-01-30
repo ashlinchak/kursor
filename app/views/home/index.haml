@@ -26,7 +26,7 @@
                   .image
                     = link_to news_path(item) do
                       = image_tag item.images.last.src_url(:thumb).to_s
-                .date= item.created_at.strftime("%d.%m.%y")
+                -#.date= item.created_at.strftime("%d.%m.%y")
                 %h3= link_to item.title, news_path(item)
     %h2.home-title Все статьи
     %ul.home-postings
