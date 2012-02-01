@@ -13,10 +13,10 @@
         .span4
           %h3= link_to category, category
           %ul
-            - for sub_category in category.children do
+            - for sub_category in category.top_subcategories do
               %li
                 = link_to sub_category do
-                  = "#{sub_category} (#{sub_category.categorizings.count})"
+                  = "#{sub_category} (#{sub_category.providers_count})"
 
     .row
       .span12
