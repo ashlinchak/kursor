@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .home-postings{
   list-style: none;
-  margin: 0;
-  padding: 0;
+  //margin: 0;
+  //padding: 0;
 }
 
 #postings{
@@ -14,16 +14,16 @@
 }
 
 .posting {
-  clear: both;
+  //clear: both;
   margin-bottom: 1em;
-  .image{
-    float: left;
-    margin: 0 .5em .5em 0;
-    img{
-      border: 1px solid;
-      display: block;
-    }
-  }
+  //.image{
+    //float: left;
+    //margin: 0 .5em .5em 0;
+    //img{
+      //border: 1px solid;
+      //display: block;
+    //}
+  //}
 }
 
 .images{

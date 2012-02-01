@@ -10,7 +10,7 @@
   .span12
     - if provider.logo_url
       .image-container
-        = image_tag provider.logo_url(:thumb).to_s
+        = image_tag provider.logo_url(:medium).to_s
     .update-info
       %strong
         Последнее изменение:

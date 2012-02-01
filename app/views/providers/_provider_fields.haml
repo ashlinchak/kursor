@@ -3,6 +3,13 @@
     = f.label :name
     = f.text_field :name, :class => 'span12'
 .row
+  .span16
+    = f.label :logo
+    = image_tag(provider.logo_url(:thumb)) if provider.logo?
+    = f.file_field :logo
+    = f.hidden_field :logo_cache
+
+.row
   .span8
     %h4= t(:'admin.custom_fields.headers.title')
     = f.fields_for :custom_field_bindings do |b|

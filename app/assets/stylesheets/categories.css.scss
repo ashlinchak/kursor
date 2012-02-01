@@ -23,6 +23,12 @@ ul.entries {
     margin-bottom: 1em;
     padding: 1em;
 
+    &:after{
+      content: '';
+      display: block;
+      height: 0;
+      clear: both;
+    }
     .image-container {
       float: right;
     }

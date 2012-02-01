@@ -11,7 +11,7 @@ class Posting < ActiveRecord::Base
   has_many :tags,     :through => :taggings
   #accepts_nested_attributes_for :tags
 
-  scope :recent, lambda { where('created_at >= ?', Time.now - 1.week).limit(10) }
+  scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
 
   def to_s
     title

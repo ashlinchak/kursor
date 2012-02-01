@@ -7,9 +7,9 @@
       - root_categories.each do |item|
         %li
           = link_to item.name, item
-      %li= link_to 'Новости', news_index_path
+      -#%li= link_to 'Новости', news_index_path
       %li= link_to 'Статьи', postings_path
-      %li= link_to 'Контакты', '/info/contacts'
+      -#%li= link_to 'Контакты', '/info/contacts'
       %li= link_to 'Поиск', search_index_path
     -#%ul.nav.secondary-nav
       -#%li{ :class => 'dropdown', :'data-dropdown' => 'dropdown' }

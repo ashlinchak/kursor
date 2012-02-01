@@ -30,6 +30,7 @@ class Provider < ActiveRecord::Base
   paginates_per 30
 
   scope :approved, where( :is_approved => true )
+  scope :top_rated, order('created_at desc').limit(5)
 
   def to_param
     "#{id}-#{permalink}"
