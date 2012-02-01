@@ -38,9 +38,10 @@
     - if !provider.documents_info.blank?
       %h3= t(:'providers.documents_info')
       .documents-info= markdown provider.documents_info
-    - if current_user.administrator?
-      %hr/
-      = link_to t(:'site.actions.destroy_user'), admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
+    - if current_user
+      - if current_user.administrator?
+        %hr/
+        = link_to t(:'site.actions.destroy_user'), admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
 
   .span4
     .categories

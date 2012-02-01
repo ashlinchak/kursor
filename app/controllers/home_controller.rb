@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   private
 
   def news
-    @news = News.all.reverse
+    @news = News.recent
   end
   helper_method :news
 
@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   helper_method :featured_posting
 
   def recent_postings
-    @recent_postings ||= Posting.recent.reverse
+    @recent_postings ||= Posting.recent
   end
 
 end

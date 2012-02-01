@@ -32,7 +32,11 @@ class User < ActiveRecord::Base
         nickname.blank? ? email.split(/@/)[0] : nickname
       end
     elsif tutor? || school?
-      provider.name
+      if provider
+        provider.name
+      else
+        email.split(/@/)[0]
+      end
     else
       email.split(/@/)[0]
     end

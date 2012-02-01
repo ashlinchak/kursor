@@ -1,6 +1,6 @@
 .flash
   .flash_message.alert-message.notice
-    Портал работает в тестовом режиме. Просим прощения за временные неудобства и благодарим за понимаение.
+    Портал работает в тестовом режиме. Просим прощения за временные неудобства и благодарим за понимание.
 
 .row
   .span11
@@ -21,8 +21,13 @@
         %ul.home-news.no-bullets
           - news.each do |item|
             %li
-              .date= item.created_at.strftime("%d.%m.%y")
-              %h3= link_to item.title, news_path(item)
+              %article.news-item
+                - if !item.images.empty?
+                  .image
+                    = link_to news_path(item) do
+                      = image_tag item.images.last.src_url(:thumb).to_s
+                .date= item.created_at.strftime("%d.%m.%y")
+                %h3= link_to item.title, news_path(item)
     %h2.home-title Все статьи
     %ul.home-postings
       - recent_postings.each do |posting|
