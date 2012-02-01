@@ -9,8 +9,8 @@ class Posting < ActiveRecord::Base
 
   has_many :taggings, :as => :taggable
   has_many :tags,     :through => :taggings
-  #accepts_nested_attributes_for :tags
 
+  default_scope order('created_at desc')
   scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
 
   def to_s

@@ -1,6 +1,6 @@
 %form{ :action => '/search', :method => :get }
-  = text_field_tag 'q', params[:q], :size => '100'
-  = button_tag 'Search'
+  = text_field_tag 'q', params[:q], :class => 'span12'
+  = button_tag 'Search', :class => 'btn'
 -if !search_results.empty?
   = t :'search.results_found', :num => search_results.size
   %hr/

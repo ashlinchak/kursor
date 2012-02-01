@@ -25,10 +25,10 @@
           - for posting in recent_postings do
             %li.span3
               %article.posting
-                -#- for image in posting.images do
-                  -#- image.src.recreate_versions!
-                  -#- image.save
-                .image.thumbnail= image_tag posting.images.last.src_url(:small).to_s
+                - if !posting.images.empty?
+                  .image.thumbnail
+                    = link_to posting do
+                      = image_tag posting.images.last.src_url(:small).to_s
                 %h3= link_to posting.title, posting
                 .excerpt= posting.excerpt[0..100]
                 .date
