@@ -7,6 +7,14 @@
 .row
   .span16
     .clearfix
+      = f.label :avatar
+      .input
+        = image_tag(profile.avatar_url(:thumb)) if profile.avatar?
+        = f.file_field :avatar
+        = f.hidden_field :avatar_cache
+.row
+  .span16
+    .clearfix
       = f.label :birth_date
       .input
         = f.text_field :birth_date, :class => 'span12'
