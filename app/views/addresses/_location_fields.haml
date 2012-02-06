@@ -1,0 +1,12 @@
+.field
+  = f.label :city
+.field
+  = f.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
+  = #f.text_field :custom_city, :class => 'custom-city'
+.field
+  = f.label :street
+  = f.text_field :street, :size => 30
+  = f.label :building
+  = f.text_field :building, :class => 'mini'
+  = f.label :apartment
+  = f.text_field :apartment, :class => 'mini'

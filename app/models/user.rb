@@ -81,5 +81,4 @@ class User < ActiveRecord::Base
     self.create_user_activation
   end
 
-
 end

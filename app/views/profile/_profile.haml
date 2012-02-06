@@ -1,2 +1,19 @@
-.birth-date= l profile.birth_date
-.bio= profile.bio
+.row
+  .span4
+    .image
+      = image_tag profile.avatar_url(:medium)
+    %ul
+      %li= link_to 'Posts', user_postings_path(profile.user)
+  .span12
+    - if profile.birth_date.present?
+      .birth-date= l profile.birth_date
+    - if profile.location.present?
+      .address= address_value profile.location
+    - if profile.contacts.present?
+      .contacts
+        %ul
+          - for contact in profile.contacts do
+            %li
+              %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+
+    .bio= profile.bio

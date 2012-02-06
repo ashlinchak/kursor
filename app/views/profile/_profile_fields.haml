@@ -19,6 +19,19 @@
       .input
         = f.text_field :birth_date, :class => 'span12'
 .row
+  .span8
+    %fieldset
+      %legend= t(:'users.legends.address')
+      = f.fields_for :location do |l|
+        = render :partial => 'addresses/location_fields', :locals => { :f => l }
+  .span8
+    %fieldset
+      %legend= t(:'users.legends.contacts')
+      = f.fields_for :contacts do |c|
+        .fields
+          = render :partial => 'contacts/contact_fields', :locals => { :f => c }
+      .fields= link_to_add_fields "Add contact", f, :contacts
+.row
   .span16
     .clearfix
       = f.label :bio

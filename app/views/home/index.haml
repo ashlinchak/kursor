@@ -4,12 +4,35 @@
 
 .row
   .span12
+
+    %h2.home-title Свежие статьи
+    %ul.home-postings.row
+      - for posting in recent_postings do
+        %li.span3
+          %article.posting
+            - if !posting.images.empty?
+              .image.thumbnail
+                = link_to posting do
+                  = image_tag posting.images.last.src_url(:small).to_s
+            %h3= link_to posting.title, posting
+            .excerpt= posting.excerpt[0..100]
+            .user
+              = link_to posting.user do
+                - if posting.user.visitor?
+                  = image_tag posting.user.profile.avatar_url(:icon)
+                - else
+                  = image_tag posting.user.provider.logo_url(:icon)
+                = posting.user
+            .date
+              = time_ago_in_words posting.created_at
+              назад
+
+
     %h2.home-title= t(:'home.titles.categories')
     .row
       - root_categories.each_with_index do |category, index|
         - if ((index % 3) == 0) && index > 0
           .clear
-
         .span4
           %h3= link_to category, category
           %ul
@@ -18,22 +41,6 @@
                 = link_to sub_category do
                   = "#{sub_category} (#{sub_category.providers_count})"
 
-    .row
-      .span12
-        %h2.home-title Свежие статьи
-        %ul.home-postings.row
-          - for posting in recent_postings do
-            %li.span3
-              %article.posting
-                - if !posting.images.empty?
-                  .image.thumbnail
-                    = link_to posting do
-                      = image_tag posting.images.last.src_url(:small).to_s
-                %h3= link_to posting.title, posting
-                .excerpt= posting.excerpt[0..100]
-                .date
-                  = time_ago_in_words posting.created_at
-                  назад
   .span4
     %h2.home-title= t(:'home.titles.top_providers')
     %ul.home-providers.no-bullets

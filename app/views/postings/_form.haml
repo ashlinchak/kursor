@@ -1,4 +1,4 @@
-= form_for posting, :url => ( posting.new_record? ? admin_postings_path : admin_posting_path(posting) ), :html => {:class => 'form-stacked'} do |f|
+= form_for posting, :html => {:class => 'form-stacked'} do |f|
 
   = render :partial => 'posting_fields', :locals => { :f => f }
 

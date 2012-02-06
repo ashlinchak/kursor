@@ -20,12 +20,12 @@ module ApplicationHelper
   end
 
   def format_location location
-    result = ""
-    result << "#{location.city}" if location.city
-    result << ", #{location.street}" if location.street
-    result << ", #{location.building}" if location.building
-    result << ", apt. #{location.apartment}" if location.apartment
-    result
+    result = []
+    result << "#{location.city}" if location.city.present?
+    result << "#{location.street}" if location.street.present?
+    result << "#{location.building}" if location.building.present?
+    result << "apt. #{location.apartment}" if location.apartment.present?
+    result.join(', ')
   end
 
   def contact_value contact
@@ -42,14 +42,29 @@ module ApplicationHelper
 
   def address_value location
     if location
-      # "#{provider.location.city.region}, "
-      ( !location.custom_city.blank? ?
-        "#{location.custom_city.strip}, " :
-        "#{location.city}, " ) +
-      "#{location.street.strip}, " +
-      "#{location.building.strip}" +
-      ( !location.apartment.blank? ?
-       ', room ' + location.apartment : '' )
+      address = []
+      city = if location.custom_city.present?
+        location.custom_city.strip
+      elsif location.city.present?
+        location.city
+      end
+      if city
+        address << city
+      end
+
+      if location.street.present?
+        address << location.street.strip
+      end
+
+      if location.building.present?
+        address << "#{location.building.strip}"
+      end
+
+      if location.apartment.present?
+        address << "apt. #{location.apartment.strip}"
+      end
+
+      address.join(', ')
     end
   end
 

@@ -2,7 +2,14 @@
   - if authenticated?
     %li
       = t(:'sessions.create.logged_in_as')
-      = link_to current_user, my_profile_path
+      - if current_user.visitor?
+        = link_to my_profile_path do
+          = image_tag current_user.profile.avatar_url(:icon), :class => 'icon'
+          = current_user
+      - else
+        = link_to my_profile_path do
+          = image_tag current_user.provider.logo_url(:icon), :class => 'icon'
+          = current_user
     - if authorized?
       %li= link_to 'Admin', admin_path
       %li= link_to 'Search', search_index_path

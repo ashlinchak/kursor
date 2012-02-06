@@ -30,6 +30,9 @@ class UsersController < ApplicationController
     if user.visitor?
       unless user.profile
         user.build_profile
+        unless user.profile.location
+          user.profile.build_location
+        end
       end
     else
       unless user.provider
@@ -48,7 +51,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if user.update_attributes(params[:user])
+    #if user.update_attributes(params[:user])
+    if current_user.update_attributes(params[:user])
       redirect_to :my_profile, :notice => t(:'users.flash.user_updated')
     else
       render :action => "edit"
@@ -66,9 +70,10 @@ class UsersController < ApplicationController
   helper_method :users
 
   def user
-    @user ||= if authenticated?
-      current_user
-    elsif params[:id]
+    @user ||=
+      #if authenticated?
+      #current_user
+    if params[:id]
       User.find params[:id]
     else
       User.new params[:user]

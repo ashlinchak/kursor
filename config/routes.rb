@@ -33,9 +33,11 @@ Kursor::Application.routes.draw do
   resources :dashboard, :only => [:index]
 
   resources :news, :only => [:index, :show]
-  resources :postings, :only => [:index, :show]
+  resources :postings#, :only => [:index, :show]
 
-  resources :users, :except => [ :edit, :destroy]
+  resources :users, :except => [ :edit, :destroy] do
+    resources :postings
+  end
   match '/my_profile' => 'users#my_profile', :as => :my_profile
   match '/my_profile/edit' => 'users#edit',  :as => :edit_profile
 

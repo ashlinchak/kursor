@@ -87,11 +87,15 @@ header {
     right: 0;
     text-align: right;
     top: .5em;
+    line-height: 32px;
 
     li{
       border-left: 1px solid;
       display: inline;
       padding-left: .5em;
+      .icon{
+        vertical-align: middle;
+      }
     }
     li:first-child{
       border-left: none;
