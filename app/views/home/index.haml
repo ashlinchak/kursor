@@ -19,7 +19,8 @@
             .user
               = link_to posting.user do
                 - if posting.user.visitor?
-                  = image_tag posting.user.profile.avatar_url(:icon)
+                  - if posting.user.profile.present?
+                    = image_tag posting.user.profile.avatar_url(:icon)
                 - else
                   = image_tag posting.user.provider.logo_url(:icon)
                 = posting.user
