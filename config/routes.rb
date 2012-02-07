@@ -1,5 +1,7 @@
 Kursor::Application.routes.draw do
 
+  resources :students
+
   namespace :admin do
     resources :categories
     resources :info
