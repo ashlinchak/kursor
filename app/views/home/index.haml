@@ -5,7 +5,7 @@
 .row
   .span12
 
-    %h2.home-title Свежие статьи
+    %h2.home-title= t(:'home.titles.featured_posting')
     %ul.home-postings.row
       - for posting in recent_postings do
         %li.span3
@@ -43,7 +43,7 @@
                   = "#{sub_category} (#{sub_category.providers_count})"
 
   .span4
-    %h2.home-title= t(:'home.titles.top_providers')
+    %h2.home-title= t(:'home.titles.recent_providers')
     %ul.home-providers.no-bullets
       - providers.each do |item|
         %li
