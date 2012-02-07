@@ -1,0 +1,14 @@
+%li
+  %article.posting
+    %hr/
+    - if !posting.images.empty?
+      .image
+        = image_tag posting.images.last.src_url(:thumb).to_s
+
+    %h4= link_to posting.title, posting
+    %p= posting.excerpt
+    %span= link_to t(:'postings.readmore'), posting
+    .user-bar
+      = link_to posting.user, posting.user
+      |
+      = l posting.created_at, :format => :long

@@ -22,7 +22,7 @@ class PostingsController < ApplicationController
 
   def update
     if posting.update_attributes params[:posting]
-      redirect_to admin_posting_path(posting), :notice => t(:'postings.create.success')
+      redirect_to posting_path(posting), :notice => t(:'postings.create.success')
     else
       render :new
     end
@@ -30,7 +30,7 @@ class PostingsController < ApplicationController
 
   def destroy
     posting.destroy
-    redirect_to admin_postings_path
+    redirect_to user_postings_path(current_user)
   end
 
   def postings

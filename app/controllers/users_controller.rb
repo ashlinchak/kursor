@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     if user.visitor?
       unless user.profile
         user.build_profile

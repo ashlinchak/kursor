@@ -2,7 +2,8 @@
   .span12
     %h1
       = user
-      = link_to 'Edit', edit_profile_url
+      - if user === current_user
+        = link_to 'Edit', edit_profile_url
     - unless user.is_active?
       = t(:'users.pending')
     %hr/
