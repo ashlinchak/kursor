@@ -35,6 +35,9 @@ end
 # Deploy with Capistrano
 gem 'capistrano'
 
+
+gem 'twitter-bootstrap-rails', :group => :assets
+
 # To use debugger
 # gem 'ruby-debug'
 
