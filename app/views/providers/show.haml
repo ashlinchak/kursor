@@ -17,6 +17,12 @@
       = time_ago_in_words(provider.updated_at)
       назад
     %h1= provider.name
+    - if current_user
+      - if current_user.visitor?
+        - unless provider.student_users.include?(current_user)
+          = link_to 'Я учусь здесь!', join_provider_students_path(provider), :class => 'label label-info'
+        - else
+          = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'label label-info'
     .custom-fields
       %ul
         - if provider.custom_fields.size > 0

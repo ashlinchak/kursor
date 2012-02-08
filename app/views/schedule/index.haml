@@ -1,0 +1,30 @@
+%h1 Schedule
+%table#calendar.table.table-bordered.table-striped
+  %tr
+    %th
+      Sunday
+    %th
+      Monday
+    %th
+      Tuesday
+    %th
+      Wednesday
+    %th
+      Thursday
+    %th
+      Friday
+    %th
+      Saturday
+  %tr
+    - @today = Date.today
+    - @beginning_of_month = Date.civil(@today.year, @today.month, 1)
+    - @end_of_month       = Date.civil(@today.year, @today.month, -1)
+
+    - (@beginning_of_month..@end_of_month).each do |d|
+      - if d == @beginning_of_month
+        - (d.wday).times do # offset beginning of calendar
+          <td class='offset'></td>
+      -if d.wday == 0 #restart the week
+        </tr><tr>
+
+      == <td class='#{d}'>#{render :partial => 'calendar_day', :locals => { :day => d }}</td>

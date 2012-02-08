@@ -1,0 +1,6 @@
+= form_for [current_user, schedule_event],
+  :url => ( schedule_event.new_record? ? user_schedule_index_path(current_user) : user_schedule_path(current_user, schedule_event)) do |f|
+  .row
+    = render :partial => "shared/form_errors", :locals => { :object => schedule_event }
+  .actions
+    = f.submit :class => 'btn primary'

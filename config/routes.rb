@@ -1,5 +1,7 @@
 Kursor::Application.routes.draw do
 
+  resources :students
+
   namespace :admin do
     resources :categories
     resources :info
@@ -37,11 +39,19 @@ Kursor::Application.routes.draw do
 
   resources :users, :except => [ :edit, :destroy] do
     resources :postings
+    resources :schedule
   end
   match '/my_profile' => 'users#my_profile', :as => :my_profile
   match '/my_profile/edit' => 'users#edit',  :as => :edit_profile
 
-  resources :providers
+  resources :providers do
+    resources :students, :only => [] do
+      collection do
+        get 'join'
+        get 'leave'
+      end
+    end
+  end
 
   resources :categories, :only => [:show]
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120201205614) do
+ActiveRecord::Schema.define(:version => 20120207081203) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -198,6 +198,20 @@ ActiveRecord::Schema.define(:version => 20120201205614) do
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"
 
+  create_table "schedule_events", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "provider_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schedule_events", ["provider_id"], :name => "index_schedule_events_on_provider_id"
+  add_index "schedule_events", ["user_id"], :name => "index_schedule_events_on_user_id"
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -207,6 +221,18 @@ ActiveRecord::Schema.define(:version => 20120201205614) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "students", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "provider_id"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "students", ["provider_id"], :name => "index_students_on_provider_id"
+  add_index "students", ["user_id"], :name => "index_students_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "taggable_id"
