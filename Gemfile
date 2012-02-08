@@ -16,6 +16,7 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
   gem 'haml-rails'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'kaminari'
@@ -34,9 +35,6 @@ end
 
 # Deploy with Capistrano
 gem 'capistrano'
-
-
-gem 'twitter-bootstrap-rails', :group => :assets
 
 # To use debugger
 # gem 'ruby-debug'

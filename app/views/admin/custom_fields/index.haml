@@ -1,7 +1,7 @@
 %h2= t(:'admin.custom_fields.headers.title')
 %p= link_to t(:'admin.custom_fields.buttons.create_custom_field'), new_admin_custom_field_path, :class => 'link-icon icon-add'
 %hr/
-%table
+%table.table.table-striped.table-bordered.table-condensed
   %thead
     %th{:style => 'width: 6px;' }
     %th= t(:'admin.custom_fields.headers.custom_field_name')

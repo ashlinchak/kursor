@@ -11,7 +11,8 @@ class PostingsController < ApplicationController
   def create
     posting.user = current_user
     if posting.save
-      redirect_to admin_posting_path(posting), :notice => t(:'postings.create.success')
+      flash[:success] = t(:'postings.create.success')
+      redirect_to admin_posting_path(posting)
     else
       render :new
     end
@@ -22,7 +23,8 @@ class PostingsController < ApplicationController
 
   def update
     if posting.update_attributes params[:posting]
-      redirect_to posting_path(posting), :notice => t(:'postings.create.success')
+      flash[:notice] = t(:'postings.update.success')
+      redirect_to posting_path(posting)
     else
       render :new
     end

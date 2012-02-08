@@ -21,7 +21,8 @@ class ProvidersController < ApplicationController
   def create
     provider.user = current_user
     if provider.save
-      redirect_to provider_path(provider.permalink), :notice => 'Provider was successfully created.'
+      flash[:success] = 'Provider was successfully created.'
+      redirect_to provider_path(provider.permalink)
     else
       render :action => "new"
     end
@@ -31,7 +32,8 @@ class ProvidersController < ApplicationController
     # trick to delete unchecked categories
     params[:provider][:category_ids] ||= []
     if provider.update_attributes(params[:provider])
-      redirect_to provider, :notice => 'Provider was successfully updated.'
+      flash[:notice] = 'Provider was successfully updated.'
+      redirect_to provider
     else
       render :action => "edit"
     end

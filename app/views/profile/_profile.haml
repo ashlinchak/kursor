@@ -1,5 +1,5 @@
 .row
-  .span4
+  .span2
     .image
       = image_tag profile.avatar_url(:medium)
     %ul
@@ -7,7 +7,7 @@
         = link_to 'Posts', user_postings_path(profile.user)
         - if profile.user === current_user
           = link_to '[+]', new_user_posting_path(current_user)
-  .span12
+  .span8
     - if profile.birth_date.present?
       .birth-date= l profile.birth_date
     - if profile.location.present?

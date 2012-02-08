@@ -1,7 +1,7 @@
 %h2= t(:'admin.users.headers.title')
 %p= link_to t(:'admin.users.actions.create_user'), new_admin_user_path, :class => 'link-icon icon-add'
 %hr/
-%table
+%table.table.table-bordered.table-striped
   %thead
     %th= t(:'admin.users.headers.user')
     %th= t(:'admin.users.headers.provider')
@@ -12,39 +12,40 @@
     %th= t(:'admin.users.headers.is_approved')
     %th{ :width => 100 }
       = t(:'admin.users.headers.actions')
-  - for u in users do
-    %tr
-      %td
-        = link_to u.email, edit_admin_user_path( u )
-        = "(#{User::ACCOUNT_TYPES[u.account_type_id]})"
-      %td
-        - if u.provider
-          = link_to u.provider, provider_path( u.provider ), :target => "_blank"
-        - else
-          = t(:'admin.users.headers.no_provider')
-      %td= l u.created_at, :format => :short
-      %td
-        - if u.provider
-          = l u.provider.updated_at, :format => :short
-        - else
-          \-
-      %td
-        - if u.is_active?
-          %span.label.warning
-            &nbsp;&nbsp;&nbsp;
-        - else
-          %span.label
-            &nbsp;&nbsp;&nbsp;
-      %td
-        - if u.provider
-          - if u.provider.is_approved?
-            %span.label.success
+  %tbody
+    - for u in users do
+      %tr
+        %td
+          = link_to u.email, edit_admin_user_path( u )
+          = "(#{User::ACCOUNT_TYPES[u.account_type_id]})"
+        %td
+          - if u.provider
+            = link_to u.provider, provider_path( u.provider ), :target => "_blank"
+          - else
+            = t(:'admin.users.headers.no_provider')
+        %td= l u.created_at, :format => :short
+        %td
+          - if u.provider
+            = l u.provider.updated_at, :format => :short
+          - else
+            \-
+        %td
+          - if u.is_active?
+            %span.label.warning
               &nbsp;&nbsp;&nbsp;
           - else
             %span.label
               &nbsp;&nbsp;&nbsp;
+        %td
+          - if u.provider
+            - if u.provider.is_approved?
+              %span.label.success
+                &nbsp;&nbsp;&nbsp;
+            - else
+              %span.label
+                &nbsp;&nbsp;&nbsp;
 
-      %td= link_to t(:'admin.users.actions.delete_user'), admin_user_path(u), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
+        %td= link_to t(:'admin.users.actions.delete_user'), admin_user_path(u), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
 .page_navigation.clear= paginate users
 %hr/
 %p= link_to t(:'admin.users.actions.create_user'), new_admin_user_path, :class => 'link-icon icon-add'

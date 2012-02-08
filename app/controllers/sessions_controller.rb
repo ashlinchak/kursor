@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       # need to check if user account is activated through email
       if user.is_active?
         self.current_user = user
-        redirect_to root_url, :notice => t(:'sessions.create.success')
+        flash[:success] = t(:'sessions.create.success')
+        redirect_to root_url
       else
         flash[:error] = t(:'user_activation.errors.user_inactive')
         redirect_to login_url
@@ -25,7 +26,8 @@ class SessionsController < ApplicationController
   def destroy
     self.current_user = nil
     reset_session
-    redirect_to :root, :notice => t(:'sessions.destroy.success')
+    flash[:notice] = t(:'sessions.destroy.success')
+    redirect_to :root
   end
 
 end

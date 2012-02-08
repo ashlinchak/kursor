@@ -7,12 +7,13 @@
  = require_self
 */
 
+
 $baseColor: #156493;
 $shadeColor: #ebebeb;
 
 
 body {
-  background: #fbfbfb;
+  background: #fff;
 }
 a{
   //color: #1a7ab6;
@@ -118,7 +119,7 @@ body.admin nav ul li {
 /* FOOTER */
 footer {
   background: #f0f0f0;
-  padding: 0 1.3em;
+  padding: 1.3em;
 
   .footer-categories {
     border-bottom: 1px solid #e7e7e7;

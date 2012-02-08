@@ -28,8 +28,12 @@
       -#.container
       %h1#logo.ir
         = link_to 'Kursor.ua', root_url
-      .banner
-        = image_tag 'banner_holder00.jpg'
+
+      %span.label.label-important{:style => 'padding: 5px 15px; margin: 50px 10px 0px 0px; float: right;'}
+        Портал работает в тестовом режиме
+
+      //.banner
+      //  = image_tag 'banner_holder00.jpg'
       = render :partial => 'shared/top_nav'
       = render :partial => 'shared/login_bar'
 
@@ -38,10 +42,10 @@
       = yield
 
     %footer.container
-      .copyright.clear.clearfix
-        .span12.border.copyright-text
+      .row
+        .span10
           Copyright &copy; 2011
-        .span4
+        .span2
           = link_to 'kursor.org.ua', root_url
   = javascript_include_tag "application"
   = render :partial => 'shared/google_analytics_code'

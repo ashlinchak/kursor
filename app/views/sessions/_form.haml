@@ -2,16 +2,16 @@
   %legend Login
   = form_for(guest, :url => { :controller => :sessions, :action => :create }) do |f|
     .row
-      .span8
+      .span6
         .clearfix
           = f.label :email
           .field.input
-            = f.text_field :email
-        .clearfix
-          = f.label :password
-          .field.input
-            = f.password_field :password
-    .actions
-      = f.submit t(:'sessions.create.button'), :class => 'btn '
-      or
-      = link_to 'activate your account', new_activation_url
+          = f.text_field :email
+          .clearfix
+            = f.label :password
+            .field.input
+              = f.password_field :password
+        .actions
+          = f.submit t(:'sessions.create.button'), :class => 'btn '
+          or
+          = link_to 'activate your account', new_activation_url
