@@ -85,6 +85,8 @@ ru:
       locations: "Локации"
       custom_fields: "Спец. поля"
       custom_flags: "Спец. флаги"
+      search: "Поиск"
+      dashboard: "Админ"
     users:
       headers:
         title: "Пользователи / Провайдеры"

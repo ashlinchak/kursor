@@ -32,10 +32,10 @@
       = yield
 
     %footer.container
-      .copyright.clear.clearfix
-        .row
-          .span12.copyright-text
-            Copyright &copy; 2011
-          .span4
-            = link_to 'kursor.org.ua', root_url
+      .row
+        .span10
+          Copyright &copy; 2011
+        .span2
+          = link_to 'kursor.org.ua', root_url
   = javascript_include_tag "application"
+  = render :partial => 'shared/google_analytics_code'

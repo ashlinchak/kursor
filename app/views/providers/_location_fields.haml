@@ -1,14 +1,17 @@
--#.field
-  -#= builder.label :location
-.field
+.control-group
   = f.label :city
-.field
-  = f.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
-  = #f.text_field :custom_city, :class => 'custom-city'
-.field
+  .controls
+    = f.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
+    = #f.text_field :custom_city, :class => 'custom-city'
+.control-group
   = f.label :street
-  = f.text_field :street, :size => 30
+  .controls
+    = f.text_field :street, :class => 'span3'
+.control-group
   = f.label :building
-  = f.text_field :building, :class => 'mini'
+  .controls
+    = f.text_field :building, :class => 'span3'
+.control-group
   = f.label :apartment
-  = f.text_field :apartment, :class => 'mini'
+  .controls
+    = f.text_field :apartment, :class => 'span3'

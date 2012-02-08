@@ -1,33 +1,36 @@
-= form_for(user, :url => ( user.new_record? ? admin_users_path : admin_user_path(user) ), :multipart => true, :html => { :class => 'form-stacked' } ) do |f|
+= form_for(user, :url => ( user.new_record? ? admin_users_path : admin_user_path(user) ), :multipart => true, :html => { :class => 'form-horizontal' } ) do |f|
   .row
     = render :partial => 'shared/form_errors', :locals => { :object => user }
     %fieldset
-      .field
+      %legend User info
+      .control-group
         = f.label :email
-        = f.text_field :email, :size => '45'
-      .field
+        .controls
+          = f.text_field :email, :class => 'input-xlarge'
+      .control-group
         = f.label :password
-        = f.password_field :password, :size => '45'
-      .field
+        .controls
+          = f.password_field :password, :class => 'input-xlarge'
+      .control-group
         = f.label :password_confirmation
-        = f.password_field :password_confirmation, :size => '45'
-        %input{ :name => 'current_user', :value => "#{current_user.email.split('@')[0]}", :type => :hidden }
-        = button_tag t(:'admin.users.generate_credentials'), :type => :button, :class => 'btn default-credentials'
+        .controls
+          = f.password_field :password_confirmation, :class => 'input-xlarge'
+          %input{ :name => 'current_user', :value => "#{current_user.email.split('@')[0]}", :type => :hidden }
+          = button_tag t(:'admin.users.generate_credentials'), :type => :button, :class => 'btn default-credentials btn-success btn-large'
       - if user.new_record?
         -#.row
-        .clearfix
+        .control-group
           = f.label :account_type
-          .input
-            %ul.inputs-list
-              - User::ACCOUNT_TYPES.each do |account_type|
-                %li
-                  %label
-                    = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
-                    %span= t("activerecord.attributes.user.account_types.#{account_type}")
+          .controls
+            - User::ACCOUNT_TYPES.each do |account_type|
+              %label.radio
+                = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
+                = t("activerecord.attributes.user.account_types.#{account_type}")
     = f.fields_for :provider do |p|
-      .fields
+      .control-group
         = p.label :is_approved
-        = p.check_box :is_approved
+        .controls
+          = p.check_box :is_approved
       = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
-  .actions
-    = f.submit :class => 'btn primary'
+  .form-actions
+    = f.submit :class => 'btn btn-large btn-primary'
