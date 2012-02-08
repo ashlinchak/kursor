@@ -1,0 +1,9 @@
+%h3
+  = l day, :format => :short
+  = link_to '[+]', new_user_schedule_path(user)
+- for event in user.schedule_events.at_day(day) do
+  %h5= link_to event.provider, event.provider
+  = l event.start_at, :format => '%R'
+  \-
+  = l event.end_at, :format => '%R'
+

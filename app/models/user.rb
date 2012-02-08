@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_one :provider, :dependent => :destroy
   has_one :profile, :dependent => :destroy
   has_one :user_activation, :dependent => :destroy
+  has_many :students
+  has_many :schools, :through => :students
+  has_many :schedule_events
 
   before_save :encrypt_password
   after_create :generate_activation
@@ -17,7 +20,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :provider
   accepts_nested_attributes_for :profile
 
-  default_scope order('created_at DESC')
+  #default_scope order('created_at DESC')
 
   # TODO: find proper names for acc types
   ACCOUNT_TYPES = %w( user tutor school )

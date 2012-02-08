@@ -22,6 +22,9 @@ class Provider < ActiveRecord::Base
   has_many :custom_flags, :through => :custom_flag_bindings
   accepts_nested_attributes_for :custom_flag_bindings, :reject_if => lambda { |b| b[:value].blank? }, :allow_destroy => true
 
+  has_many :students
+  has_many :student_users, :through => :students, :source => :user
+
   before_save :generate_permalink
 
   mount_uploader :logo, ProviderLogoUploader

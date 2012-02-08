@@ -1,20 +1,29 @@
 class StudentsController < ApplicationController
-  def index
+
+  def join
+    provider.students.create(:user => user, :start_at => Time.now)
+    redirect_to provider, :notice => "You claimed that you are student at #{provider}!"
   end
 
-  def new
+  def leave
+    student.destroy
+    redirect_to provider, :notice => "You claimed that you are not a student at #{provider} anymore!"
   end
 
-  def create
+  private
+
+  def user
+    @user ||= current_user
   end
 
-  def show
+  def provider
+    @provider ||= if params[:provider_id]
+      Provider.find params[:provider_id]
+    end
   end
 
-  def update
-  end
-
-  def destroy
+  def student
+    @student ||= provider.students.where(:user_id => user.id).last
   end
 
 end
