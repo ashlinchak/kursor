@@ -3,7 +3,8 @@
     %hr/
     - if !posting.images.empty?
       .image
-        = image_tag posting.images.last.src_url(:thumb).to_s
+        = link_to posting, :class => 'thumbnail' do
+          = image_tag posting.images.last.src_url(:thumb).to_s
 
     %h4= link_to posting.title, posting
     %p= posting.excerpt
