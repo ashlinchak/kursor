@@ -42,7 +42,7 @@ class Admin::UsersController < Admin::DashboardController
   end
 
   def users
-    @users ||= User.page params[:page]
+    @users ||= User.order('created_at desc').page params[:page]
   end
   helper_method :users
 
