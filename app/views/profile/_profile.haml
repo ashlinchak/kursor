@@ -1,22 +1,50 @@
 .row
-  .span2
-    .image
+  .span3
+    .image.thumbnail
       = image_tag profile.avatar_url(:medium)
-    %ul
+    //.well{:style => "padding: 8px 0;"}
+    %br
+    %ul.nav.nav-list
       %li
-        = link_to 'Posts', user_postings_path(profile.user)
+        = link_to user_path(profile.user) do
+          %i.icon-home.icon-dark
+          My Home
+        = link_to user_postings_path(profile.user) do
+          %i.icon-list-alt.icon-dark
+          My Posts
         - if profile.user === current_user
-          = link_to '[+]', new_user_posting_path(current_user)
-  .span8
-    - if profile.birth_date.present?
-      .birth-date= l profile.birth_date
-    - if profile.location.present?
-      .address= address_value profile.location
-    - if profile.contacts.present?
-      .contacts
-        %ul
+          = link_to new_user_posting_path(current_user) do
+            %i.icon-plus-sign.icon-dark
+            Add Post
+
+  .span7
+
+    %table.table.table-striped.table-condensed
+      %tbody
+        - if profile.birth_date.present?
+          %tr
+            %td
+              %strong
+                Birth date
+            %td
+              .birth-date= l profile.birth_date
+        - if profile.location.present?
+          %tr
+            %td
+              %strong
+                Address
+            %td
+              .address= address_value profile.location
+
+
+        - if profile.contacts.present?
           - for contact in profile.contacts do
-            %li
-              %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+            %tr
+              %td
+              %td
+                %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                  = contact_value contact
+
+
 
     .bio= profile.bio
