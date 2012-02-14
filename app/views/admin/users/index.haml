@@ -31,7 +31,7 @@
             \-
         %td
           - if u.is_active?
-            %span.label.warning
+            %span.label.label-warning
               &nbsp;&nbsp;&nbsp;
           - else
             %span.label
@@ -39,7 +39,7 @@
         %td
           - if u.provider
             - if u.provider.is_approved?
-              %span.label.success
+              %span.label.label-success
                 &nbsp;&nbsp;&nbsp;
             - else
               %span.label

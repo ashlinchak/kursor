@@ -18,7 +18,7 @@
           %input{ :name => 'current_user', :value => "#{current_user.email.split('@')[0]}", :type => :hidden }
           = button_tag t(:'admin.users.generate_credentials'), :type => :button, :class => 'btn default-credentials btn-success btn-large'
       - if user.new_record?
-        -#.row
+        %legend Account type
         .control-group
           = f.label :account_type
           .controls
@@ -32,5 +32,5 @@
         .controls
           = p.check_box :is_approved
       = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
-  .form-actions
+  .actions
     = f.submit :class => 'btn btn-large btn-primary'

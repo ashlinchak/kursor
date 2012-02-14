@@ -1,37 +1,44 @@
-= form_for user, :multipart => true, :html => { :class => 'form-stacked' } do |f|
+= form_for user, :multipart => true, :html => { :class => 'form-stacked form-horizontal' } do |f|
   .row
     .span8
       = render :partial => 'shared/form_errors', :locals => { :object => user }
-      .clearfix
-        = f.label :email
-        .field.input
-          = f.text_field :email
-      .clearfix
-        = f.label :password
-        .field.input
-          = f.password_field :password
-      .clearfix
-        = f.label :password_confirmation
-        .field.input
-          = f.password_field :password_confirmation
-      -#- if user.provider
-        -#= fields_for :provider do |p|
-          -#= render :partial => 'providers/provider_fields', :locals => { :f => p }
-      - if user.new_record?
-        .clearfix
-          = f.label :account_type
-          .input
-            %ul.inputs-list
+      %fieldset
+        %legend= t(:'users.new.email-pass')
+        .control-group
+          = f.label :email
+          .controls
+            = f.text_field :email, :class => 'span4'
+            %p.help-block
+              = t(:'users.new.email_must_be_real')
+        .control-group
+          = f.label :password
+          .controls
+            = f.password_field :password, :class => 'span4'
+            %p.help-block
+              = t(:'users.new.password_requirements')
+        .control-group
+          = f.label :password_confirmation
+          .controls
+            = f.password_field :password_confirmation, :class => 'span4'
+        -#- if user.provider
+          -#= fields_for :provider do |p|
+            -#= render :partial => 'providers/provider_fields', :locals => { :f => p }
+        - if user.new_record?
+          %legend= t(:'users.new.account-type')
+          .control-group
+            =# f.label :account_type
+            .controls
               - User::ACCOUNT_TYPES.each do |account_type|
-                %li
-                  %label
-                    = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
-                    %span= t("activerecord.attributes.user.account_types.#{account_type}")
+                %label.radio
+                  = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
+                  = t("activerecord.attributes.user.account_types.#{account_type}")
+
+
   - if user.visitor?
     = f.fields_for :profile do |p|
       = render :partial => '/profile/profile_fields', :locals => { :f => p, :profile => user.profile }
   - else
     = f.fields_for :provider do |p|
       = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
-  .actions
-    = f.submit :class => 'btn'
+  .form-actions
+    = f.submit t(:'users.new.submit'), :class => 'btn btn-primary btn-large'

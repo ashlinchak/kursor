@@ -46,7 +46,13 @@ ru:
 
   users:
     new:
-      title: "Зарегистрироваться"
+      title: "Регистрация нового пользователя"
+      email-pass: "Введите Email и пароль"
+      account-type: "Зарегистрироваться как"
+      email_must_be_real: "Реальный Email. Пример: ivanov@gmail.com"
+      password_requirements: "Минимум 6 символов, выбирайте сложный пароль."
+      submit: "Зарегистрироваться"
+
     create:
       title: "Зарегистрироваться"
     edit:
@@ -159,10 +165,10 @@ ru:
         permalink: "Прямая ссылка"
 
       user:
-        email: "Эл. почта"
+        email: "Электронная почта"
         password: "Пароль"
         password_confirmation: "Повторите пароль"
-        account_type: "Зарегистрироваться как"
+        account_type: "Выберите тип учетной записи"
         account_types:
           user: "Пользователь"
           tutor: "Преподаватель"
@@ -184,4 +190,6 @@ ru:
     pagination:
       previous: "&laquo; Пред."
       next: "След. &raquo;"
-      truncate: "..."
+      truncate: ""
+      last: "В конец"
+      first: "В начало"

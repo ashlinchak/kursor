@@ -39,13 +39,18 @@
 
   .span4
     %h2.home-title= t(:'home.titles.recent_providers')
-    %ul.home-providers.no-bullets
-      - providers.each do |item|
-        %li
-          - if item.logo?
+    - providers.each do |item|
+      .row.clearfix
+        - if item.logo?
+          .span1
             = link_to item, :class => 'thumbnail' do
               = image_tag item.logo_url(:medium)
-          %h3= link_to item.name, provider_path(item)
+            %br
+          .span3
+            %h5= link_to item.name, provider_path(item)
+        - else
+          .span4
+            %h5= link_to item.name, provider_path(item)
   -#.span11
     -#.row
       -#.span7

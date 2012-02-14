@@ -22,7 +22,8 @@ class UsersController < ApplicationController
 
   def new
     if authenticated?
-      redirect_to :my_profile, :notice => 'You already registered and logged in!' and return
+      flash[:notice] = 'You already registered and logged in!'
+      redirect_to :my_profile and return
     end
   end
 
