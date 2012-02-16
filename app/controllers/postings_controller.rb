@@ -12,7 +12,7 @@ class PostingsController < ApplicationController
     posting.user = current_user
     if posting.save
       flash[:success] = t(:'postings.create.success')
-      redirect_to admin_posting_path(posting)
+      redirect_to posting_path(posting)
     else
       render :new
     end

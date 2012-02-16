@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207081203) do
+ActiveRecord::Schema.define(:version => 20120216212344) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -155,6 +155,23 @@ ActiveRecord::Schema.define(:version => 20120207081203) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "posting_categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posting_categorizings", :force => true do |t|
+    t.integer  "posting_id"
+    t.integer  "posting_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posting_categorizings", ["posting_category_id"], :name => "index_posting_categorizings_on_posting_category_id"
+  add_index "posting_categorizings", ["posting_id"], :name => "index_posting_categorizings_on_posting_id"
 
   create_table "postings", :force => true do |t|
     t.string   "title"

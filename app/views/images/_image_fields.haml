@@ -1,9 +1,11 @@
-.image-field
+.fields.image-field
   = image_tag f.object.src_url(:thumb).to_s
   = f.file_field :src
   = f.hidden_field :src_cache
-  = f.check_box :_destroy
-  [X]
-  = f.text_field :title
-  = f.text_area :description
+  -#= f.check_box :_destroy
+  -#[X]
+  = link_to_remove_fields "[X]", f
+  %br/
+  = f.text_field :title, :placeholder => 'Title', :class => 'span6'
+  = f.text_area :description, :placeholder => 'Description', :class => 'span6'
 
