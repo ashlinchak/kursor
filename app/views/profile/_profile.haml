@@ -8,24 +8,23 @@
       %li
         = link_to user_path(profile.user) do
           %i.icon-home.icon-dark
-          My Home
+          = t(:'visitor.profile.home')
         = link_to user_postings_path(profile.user) do
           %i.icon-list-alt.icon-dark
-          My Posts
+          = t(:'visitor.profile.postings')
         - if profile.user === current_user
           = link_to new_user_posting_path(current_user) do
             %i.icon-plus-sign.icon-dark
-            Add Post
+            = t(:'visitor.profile.add_post')
 
-  .span7
+  .span5
 
-    %table.table.table-striped.table-condensed
+    %table.table-condensed
       %tbody
         - if profile.birth_date.present?
           %tr
             %td
-              %strong
-                Birth date
+              Birth date:
             %td
               .birth-date= l profile.birth_date
         - if profile.location.present?
@@ -41,8 +40,9 @@
           - for contact in profile.contacts do
             %tr
               %td
-              %td
                 %span{ :class => "span-icon icon-#{contact.contact_type}" }
-                  = contact_value contact
-
+                  &nbsp;
+              %td
+                = contact_value contact
+    %hr
     .bio= profile.bio
