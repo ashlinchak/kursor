@@ -19,5 +19,4 @@ class Admin::PostingCategoriesController < Admin::DashboardController
 
   def destroy
   end
-
 end
