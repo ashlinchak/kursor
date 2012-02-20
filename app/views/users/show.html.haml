@@ -1,18 +1,21 @@
 .row
-  .span10
+  .span8
     %h1
       = user
-      - if user === current_user
-        = link_to 'Edit', edit_profile_url
-    - unless user.is_active?
-      = t(:'users.pending')
+    - if user === current_user
+      = link_to t(:'visitor.profile.edit'), edit_profile_url
+      - unless user.is_active?
+        = t(:'users.pending')
     %hr/
-- if user === current_user
+- if authenticated?
   - unless user.visitor?
     - unless user.provider
-      = link_to 'Add provider', new_provider_path
+      - if user === current_user
+        = link_to 'Add provider', new_provider_path
     - else
       = link_to user.provider, user.provider
   - else
     - if user.profile
       = render :partial => '/profile/profile', :locals => { :profile => user.profile }
+- else
+  = t(:'users.must_be_authenticated')

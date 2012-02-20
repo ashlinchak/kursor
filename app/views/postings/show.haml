@@ -1,5 +1,10 @@
 .row
+  .span8
   .span9
+    - if current_user === posting.user
+      .actions
+        = link_to 'Edit', edit_posting_path(posting)
+        = link_to 'Delete', posting_path(posting), :method => :delete, :confirm => 'Are you sure?'
     %h1= posting.title
     %blockquote.excerpt= markdown posting.excerpt
     %ul.thumbnails
@@ -8,10 +13,6 @@
           = link_to image.src_url(:medium), :class => 'thumbnail' do
             = image_tag image.src_url(:medium).to_s, :alt => image.title
     .body= markdown posting.body
-    -#.images
-      -#- for image in posting.images do
-        -#=link_to image.src_url(:large) do
-          -#= image_tag image.src_url(:thumb).to_s
     .tags-list= links_to_tags posting.tags_list
     .user-bar
       = posting.user
