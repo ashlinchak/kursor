@@ -97,12 +97,32 @@ ru:
       categories: "Категории"
       news: "Новости"
       postings: "Статьи"
+      posting_list: "Менеджер статей"
+      posting_categories: "Менеджер категорий"
       info_pages: "Инфо страницы"
       locations: "Локации"
       custom_fields: "Спец. поля"
       custom_flags: "Спец. флаги"
       search: "Поиск"
       dashboard: "Админ"
+    postings:
+      posting_list:
+        title: "Менеджер статей"
+        create: "Создать новую статью"
+        name: "Зоголовок"
+        user: "Автор"
+        date: "Дата создания"
+        actions: "Действия"
+        delete: "Удалить"
+        edit: "Редактировать"
+      posting_categories:
+        title: "Менеджер категорий"
+        create: "Создать новую категорию для статей"
+        name: "Название категории"
+        description: "Описание категории"
+        actions: "Действия"
+        delete: "Удалить"
+        edit: "Редактировать"
     users:
       headers:
         title: "Пользователи / Провайдеры"

@@ -1,0 +1,14 @@
+= form_for posting_category, :url => ( posting_category.new_record? ? admin_posting_categories_path : admin_posting_category_path(posting_category) ), :html => { :multipart => true } do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => posting_category }
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    =# f.label :permalink
+    =# f.text_field :permalink
+  .actions
+    = f.submit

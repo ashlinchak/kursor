@@ -1,11 +1,13 @@
-%h1 Postings
+%h1= t(:'admin.postings.posting_list.title')
+%p= link_to t(:'admin.postings.posting_list.create'), new_admin_posting_path, :class => 'link-icon icon-add'
+%hr/
 %table.table.table-bordered.table-striped.table-condensed
   %thead
     %tr
-      %th Title
-      %th User
-      %th Date
-      %th Actions
+      %th= t(:'admin.postings.posting_list.name')
+      %th= t(:'admin.postings.posting_list.user')
+      %th= t(:'admin.postings.posting_list.date')
+      %th= t(:'admin.postings.posting_list.actions')
   %tbody
     - for posting in postings do
       %tr
@@ -13,7 +15,10 @@
         %td= posting.user
         %td= l posting.created_at, :format => :long
         %td
-          = link_to 'Edit', edit_admin_posting_path(posting)
-          = link_to 'Destroy', admin_posting_path(posting), :method => :delete, :confirm => 'Are you sure?'
+          = link_to t(:'admin.postings.posting_list.edit'), edit_admin_posting_path(posting), :class => 'link-icon icon-edit'
+          %br
+          = link_to t(:'admin.postings.posting_list.delete'), admin_posting_path(posting), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
 %hr
-= link_to 'New', new_admin_posting_path
+%p= link_to t(:'admin.postings.posting_list.create'), new_admin_posting_path, :class => 'link-icon icon-add'
+
+

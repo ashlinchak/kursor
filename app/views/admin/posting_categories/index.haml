@@ -1,0 +1,21 @@
+%h2= t(:'admin.postings.posting_categories.title')
+%p= link_to t(:'admin.postings.posting_categories.create'), new_admin_posting_category_path, :class => 'link-icon icon-add'
+%hr/
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %th= t(:'admin.postings.posting_categories.name')
+    %th= t(:'admin.postings.posting_categories.description')
+    %th{ :width => '130' }
+      = t(:'admin.postings.posting_categories.actions')
+  %tbody
+    - posting_categories.each do |cat|
+      %tr
+        %td
+          = cat.name
+        %td
+          = cat.description
+        %td
+          = link_to t(:'admin.postings.posting_categories.edit'), edit_admin_posting_category_path( cat ), :class => 'link-icon icon-edit'
+          = link_to t(:'admin.postings.posting_categories.delete'), admin_posting_category_path( cat ), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+%hr/
+%p= link_to t(:'admin.postings.posting_categories.create'), new_admin_posting_category_path, :class => 'link-icon icon-add'
