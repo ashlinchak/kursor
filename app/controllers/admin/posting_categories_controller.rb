@@ -36,7 +36,7 @@ class Admin::PostingCategoriesController < Admin::DashboardController
   end
 
   def destroy
-    unless (posting_category.postings.size > 0)
+    unless (posting_category.children.size > 0) || (posting_category.postings.size > 0)
       posting_category.destroy
     else
       flash[:error] = 'Can\'t delete category! It\'s not empty!'
@@ -44,14 +44,19 @@ class Admin::PostingCategoriesController < Admin::DashboardController
     redirect_to admin_posting_categories_path
   end
 
+  private
+
   def posting_categories
-    @posting_categories = PostingCategory.all
+    @posting_categories = if params[:id]
+    else
+      root_posting_categories
+    end
   end
   helper_method :posting_categories
 
   def posting_category
     @posting_category ||= if params[:id]
-      PostingCategory.find params[:id]
+      PostingCategory.find_by_permalink params[:id]
     else
       PostingCategory.new params[:posting_category]
     end

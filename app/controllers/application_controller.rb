@@ -22,6 +22,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :root_categories
 
+  def root_posting_categories
+      @root_posting_categories ||= PostingCategory.roots
+  end
+  helper_method :root_posting_categories
+
   def regions
     @regions ||= Address::Region.all
   end
