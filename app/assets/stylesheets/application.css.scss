@@ -8,7 +8,7 @@
 */
 
 
-$baseColor: #156493;
+$baseColor: #272973;
 $shadeColor: #ebebeb;
 
 
@@ -81,6 +81,7 @@ header {
     li.active, a:hover{
       color: #000;
       background: $shadeColor;
+      text-decoration: none;
     }
   }
   ul.login-nav{

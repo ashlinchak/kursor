@@ -10,8 +10,19 @@ class Posting < ActiveRecord::Base
   has_many :taggings, :as => :taggable
   has_many :tags,     :through => :taggings
 
+
+  has_many :posting_categorizings, :dependent => :destroy
+  has_many :posting_categories, :through => :posting_categorizings
+
   default_scope order('created_at desc')
   scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
+
+
+  def posting_category_ids=(ids)
+    self.posting_categories = PostingCategory.find(ids)
+  end
+
+
 
   def to_s
     title

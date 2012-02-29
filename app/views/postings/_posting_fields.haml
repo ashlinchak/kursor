@@ -1,17 +1,42 @@
--#.row
-= render :partial => 'shared/form_errors', :locals => { :object => posting }
-.field.clearfix
-  = f.label :title
-  = f.text_field :title, :class => 'span12'
-.field.clearfix
-  = f.label :excerpt
-  = f.text_area :excerpt, :class => 'span12'
-.field.clearfix
-  = f.label :body
-  = f.text_area :body, :class => 'span12'
-= f.fields_for :images do |image|
-  = render :partial => 'images/image_fields', :locals => { :f => image }
-.fields= link_to_add_fields "Add image", f, :images
-.field.clearfix
-  = f.label :tags_list
-  = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span12'
+.row
+  .span12
+    = render :partial => 'shared/form_errors', :locals => { :object => posting }
+    %fieldset
+      .control-group
+        = f.label :title
+        .controls
+          = f.text_field :title, :class => 'span10'
+    %fieldset
+      .control-group
+        = f.label :excerpt
+        .controls
+          = f.text_area :excerpt, :class => 'span10'
+    %fieldset
+      .control-group
+        = f.label :body
+        .controls
+          = f.text_area :body, :class => 'span10'
+    %legend Images
+    = f.fields_for :images do |image|
+      = render :partial => 'images/image_fields', :locals => { :f => image }
+    %fieldset
+      .control-group
+        .controls
+          = link_to_add_fields "Add image", f, :images
+
+    %fieldset
+      .control-group
+        = f.label :tags_list
+        .controls
+          = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span10'
+
+
+
+    %fieldset
+    .control-group
+      %label Categories
+      .controls
+        - for cat in PostingCategory.all do
+          %label{:class => 'checkbox inline'}
+            = check_box_tag 'posting[posting_category_ids][]', cat.id, ( :checked if posting.posting_categories.include? cat ), :class => 'checkbox inline'
+            = cat.name
