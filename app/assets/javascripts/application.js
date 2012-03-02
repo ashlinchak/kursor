@@ -8,10 +8,10 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap.min
-//= require jquery.markitup
-//= require sets/markdown/set
-//= require_tree .
 
+//= require jquery.markitup
+//= require sets/markdown/set.js
+//= require_tree .
 
 $(document).ready(function(){
 
