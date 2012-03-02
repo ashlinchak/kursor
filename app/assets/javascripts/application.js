@@ -7,7 +7,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require twitter/bootstrap
+//= require bootstrap.min
+//= require jquery.markitup
+//= require sets/markdown/set
 //= require_tree .
 
 
@@ -85,3 +87,7 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
+
+$(document).ready(function(){
+  $("textarea").markItUp(myMarkdownSettings);
+});

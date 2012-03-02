@@ -32,11 +32,5 @@
 
 
 
-    %fieldset
-    .control-group
-      %label Categories
-      .controls
-        - for cat in PostingCategory.all do
-          %label{:class => 'checkbox inline'}
-            = check_box_tag 'posting[posting_category_ids][]', cat.id, ( :checked if posting.posting_categories.include? cat ), :class => 'checkbox inline'
-            = cat.name
+    %legend Categories
+    = render :partial => 'posting_category_fields', :locals => { :f => f, :posting => posting }

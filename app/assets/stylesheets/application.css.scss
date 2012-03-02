@@ -2,13 +2,13 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- = require twitter/bootstrap
+
+ = require bootstrap
  = require_tree .
  = require_self
 */
 
-
-$baseColor: #272973;
+$baseColor: #1A5585;
 $shadeColor: #ebebeb;
 
 
@@ -19,9 +19,9 @@ body {
     font-size: 20px;
   }
 }
-a{
-  //color: #1a7ab6;
+a, a:hover{
   color: $baseColor;
+
 }
 
 header {
@@ -68,11 +68,9 @@ header {
       display:block;
     }
     a{
-      //border: 1px outset $baseColor;
       border-right: 1px solid $shadeColor;
       border-top: none;
       border-bottom: none;
-      //border-left: 1px outset $baseColor;
       color: #fff;
       display: inline-block;
       margin: 0;
