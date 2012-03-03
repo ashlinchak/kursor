@@ -1,6 +1,11 @@
-= link_to posting_category.name, edit_admin_posting_category_path( posting_category ), :class => "sub_category_label", :style => "margin-left: 30px;"
+%ul
+  %li
+    = link_to posting_category.name, edit_admin_posting_category_path( posting_category )
 
--if posting_category.children
-  - for posting_category in posting_category.children
-    = link_to posting_category.name, edit_admin_posting_category_path( posting_category ), :class => "sub_category_label", :style => "margin-left: 60px;"
-    = render :partial => 'posting_category', :collection => posting_category.children
+
+  -if posting_category.children
+    %ul
+      - for posting_category in posting_category.children
+        %li
+          = link_to posting_category.name, edit_admin_posting_category_path( posting_category )
+        = render :partial => 'posting_category', :collection => posting_category.children

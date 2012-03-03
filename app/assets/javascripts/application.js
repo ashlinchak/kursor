@@ -7,7 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap.min
+//= require twitter/bootstrap
 
 //= require jquery.markitup
 //= require sets/markdown/set.js
