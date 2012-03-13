@@ -1,5 +1,5 @@
 %fieldset
-  .fields
+  .control-group
     = f.select :custom_flag_id, CustomFlag.all.collect{|cf|[cf.name, cf.id]}, {}, :class => 'span3'
     = f.check_box :value
     = link_to_remove_fields "[X]", f

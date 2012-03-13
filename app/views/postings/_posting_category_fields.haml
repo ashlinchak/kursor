@@ -1,0 +1,5 @@
+.field.provider-categories
+  %fieldset
+    - root_posting_categories.each do |c|
+      .control-group
+        = render :partial => 'posting_sub_category_fields', :locals => { :c => c, :posting => posting, :f => f }

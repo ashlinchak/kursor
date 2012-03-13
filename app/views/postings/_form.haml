@@ -1,8 +1,8 @@
-= form_for posting, :html => {:class => 'form-stacked'} do |f|
+= form_for posting, :html => {:class => 'form-horizontal'} do |f|
 
   = render :partial => 'posting_fields', :locals => { :f => f }
 
-  .actions
+  .form-actions
     = f.submit :class => 'btn'
     or
     = link_to 'Cancel', user_postings_path(current_user)

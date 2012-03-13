@@ -4,6 +4,7 @@ class PostingCategory < ActiveRecord::Base
   has_many :children, :class_name => 'PostingCategory', :foreign_key => 'parent_id', :dependent => :destroy
 
   has_many :posting_categorizings, :dependent => :destroy
+
   has_many :postings, :through => :posting_categorizings
 
   validates_presence_of :name, :description, :permalink

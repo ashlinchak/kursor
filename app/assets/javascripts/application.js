@@ -8,8 +8,10 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
-//= require_tree .
 
+//= require jquery.markitup
+//= require sets/markdown/set.js
+//= require_tree .
 
 $(document).ready(function(){
 
@@ -76,7 +78,7 @@ $(document).ready(function(){
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").fadeOut();
+  $(link).closest("fieldset").fadeOut();
 }
 
 function add_fields(link, association, content) {
@@ -85,3 +87,7 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
+
+$(document).ready(function(){
+  $("textarea").markItUp(myMarkdownSettings);
+});

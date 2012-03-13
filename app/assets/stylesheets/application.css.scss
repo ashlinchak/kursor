@@ -7,10 +7,11 @@
  = require_self
 */
 
+@import "skins/markitup/style";
+@import "sets/markdown/style";
 
-$baseColor: #156493;
+$baseColor: #1A5585;
 $shadeColor: #ebebeb;
-
 
 body {
   background: #fff;
@@ -19,9 +20,9 @@ body {
     font-size: 20px;
   }
 }
-a{
-  //color: #1a7ab6;
+a, a:hover{
   color: $baseColor;
+
 }
 
 header {
@@ -68,11 +69,9 @@ header {
       display:block;
     }
     a{
-      //border: 1px outset $baseColor;
       border-right: 1px solid $shadeColor;
       border-top: none;
       border-bottom: none;
-      //border-left: 1px outset $baseColor;
       color: #fff;
       display: inline-block;
       margin: 0;
@@ -81,6 +80,7 @@ header {
     li.active, a:hover{
       color: #000;
       background: $shadeColor;
+      text-decoration: none;
     }
   }
   ul.login-nav{

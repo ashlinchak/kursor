@@ -1,5 +1,5 @@
 %fieldset
-  .fields
+  .control-group
     = f.select :custom_field_id, CustomField.all.collect{|cf|[cf.name, cf.id]}, {}, :class => 'span2'
     = f.text_field :value
     = link_to_remove_fields "[X]", f

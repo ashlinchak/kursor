@@ -1,0 +1,8 @@
+-if c.children.size > 0
+  %fieldset{ :id => "sub-children-of-#{c.id}"}
+    .sub-category
+      - for ch in c.children do
+        %label
+          = check_box_tag 'posting[posting_category_ids][]', ch.id, ( :checked if posting.posting_categories.include? ch ), :class => 'category-sub-parent'
+          %span= ch.name
+        = render :partial => 'posting_sub_category_fields', :locals => { :c => ch, :posting => posting, :f => f }

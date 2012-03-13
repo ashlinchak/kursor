@@ -78,8 +78,14 @@ ru:
     back_to_list: "Вернуться к списку новостей"
 
   postings:
-    title: 'Статьи'
-    readmore: 'Читать полностью...'
+    title: "Статьи"
+    readmore: "Читать полностью..."
+    update:
+      success: "Статья успешно сохранена"
+    categories: "Категории:"
+    actions:
+      edit:  "Редактировать"
+      delete: "Удалить статью"
 
   user_activation:
     title: "Получить ссылку активации"
