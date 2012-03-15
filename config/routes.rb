@@ -55,6 +55,7 @@ Kursor::Application.routes.draw do
   end
 
   resources :categories, :only => [:show]
+  resources :posting_categories, :only => [:index, :show]
 
   root :to => 'home#index'
 

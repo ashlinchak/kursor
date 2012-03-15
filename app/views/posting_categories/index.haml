@@ -1,0 +1,20 @@
+.row
+  .span8
+    - for child in posting_categories
+      %h2.category-title
+        = link_to child.name, child
+        - if child.children
+          = '/ ' + child.children.size.to_s
+
+      - if child.children
+        .children-categories
+          - for child in child.children
+            = link_to child.name, child
+            - if child.children
+              = '(' + child.postings.size.to_s + ')'
+
+    %ul.entries
+      - for p in all_postings
+        = render :partial => 'posting_categories/posting', :locals => { :p => p }
+    .page_navigation.clear= paginate all_postings
+    %hr/

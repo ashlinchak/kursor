@@ -13,7 +13,7 @@
 //= require sets/markdown/set.js
 //= require_tree .
 
-$(document).ready(function(){
+  $(document).ready(function(){
 
   $('html').removeClass('no-js');
 
@@ -29,8 +29,6 @@ $(document).ready(function(){
   //$('.category-sub-parent').change(function(){
     //show_sub_categories(this);
   //});
-
-
 
   $('.select-city').bind('click change keyup blur load', function(){
     if ( $(this).val() == '' ){
