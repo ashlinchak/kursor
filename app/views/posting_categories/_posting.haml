@@ -1,12 +1,12 @@
 %article.posting
   %hr/
   .row
-    .span2
+    .span3
       - if !p.images.empty?
         = link_to p, :class => 'thumbnail' do
-          = image_tag p.images.last.src_url(:small).to_s
+          = image_tag p.images.last.src_url(:medium).to_s
 
-    .span6
+    .span5
       %h4= link_to p.title, p
       %p= p.excerpt
       %span= link_to t(:'postings.readmore'), p

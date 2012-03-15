@@ -29,9 +29,14 @@
       %h1#logo.ir
         = link_to 'Kursor.ua', root_url
 
-      %span.label.label-important{:style => 'padding: 5px 15px; margin: 50px 10px 0px 0px; float: right;'}
-        Портал работает в тестовом режиме
 
+      %form.form-search{ :action => '/search', :method => :get, :style => 'padding: 5px 5px 5px 20px; margin: 50px 0px 0px 0px; float: right;'}
+        = text_field_tag 'q', params[:q], :class => 'input-large search-query'
+        = button_tag 'Поиск', :class => 'btn'
+
+      %span.pager{:style => 'padding: 5px; margin: 50px 0px 0px; float: right;'}
+        %a
+          Портал работает в тестовом режиме
       //.banner
       //  = image_tag 'banner_holder00.jpg'
       = render :partial => 'shared/top_nav'
