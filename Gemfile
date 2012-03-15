@@ -15,7 +15,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'therubyracer'
 
 gem 'capistrano'
-gem "markitup_rails"
+gem 'markitup_rails'
 
 
 

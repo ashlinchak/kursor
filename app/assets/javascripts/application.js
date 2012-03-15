@@ -10,12 +10,15 @@
 //= require twitter/bootstrap
 
 //= require jquery.markitup
-//= require sets/markdown/set.js
+//= require ./sets/default/set
 //= require_tree .
 
   $(document).ready(function(){
 
   $('html').removeClass('no-js');
+
+
+  $("textarea").markItUp(mySettings);
 
   //$('.provider-categories select').bind('click change keyup blur', function(){
     //show_categories(this);
@@ -84,8 +87,3 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   $(link).parent().before(content.replace(regexp, new_id));
 }
-
-
-$(document).ready(function(){
-  $("textarea").markItUp(myMarkdownSettings);
-});
