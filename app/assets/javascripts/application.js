@@ -10,7 +10,7 @@
 //= require twitter/bootstrap
 
 //= require jquery.markitup
-//= require ./sets/default/set
+//= require sets/default/set
 //= require_tree .
 
   $(document).ready(function(){
@@ -18,7 +18,7 @@
   $('html').removeClass('no-js');
 
 
-  $("textarea").markItUp(mySettings);
+  $("textarea.show_editor").markItUp(mySettings);
 
   //$('.provider-categories select').bind('click change keyup blur', function(){
     //show_categories(this);
