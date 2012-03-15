@@ -1,0 +1,15 @@
+.row
+  .span8
+
+    %ul.breadcrumb
+      = breadcrumbs_for_posting_category posting_category
+
+    - for child in posting_category.children
+      = link_to child.name, child
+      = '(' + child.postings.size.to_s + ')'
+
+    .entries
+      - for p in postings
+        = render :partial => 'posting_categories/posting', :locals => { :p => p }
+    .page_navigation.clear= paginate postings
+    %hr/

@@ -21,10 +21,33 @@
     %h1= posting.title
 
     %blockquote.excerpt= markdown posting.excerpt
-    - for image in posting.images do
-      .span4{:style => 'margin: 0px 15px 15px 0px'}
-        = link_to image.src_url(:medium), :class => 'thumbnail' do
-          = image_tag image.src_url(:medium).to_s, :alt => image.title
+
+
+
+    #myCarousel.carousel
+      .carousel-inner
+        - posting.images.reverse.each_with_index do |image, index|
+          - if index == 0
+            .active.item
+              %a( href = "#myCarousel" data-slide = "next" )
+                = image_tag image.src_url(:wide).to_s
+              .carousel-caption
+                %h4= image.title
+                %p= image.description
+          - else
+            .item
+              %a( href = "#myCarousel" data-slide = "next" )
+                = image_tag image.src_url(:wide).to_s
+              .carousel-caption
+                %h4= image.title
+                %p= image.description
+
+      - if posting.images.size > 1
+        %a.carousel-control.left( href = "#myCarousel" data-slide = "prev" )
+          &lsaquo;
+        %a.carousel-control.right( href = "#myCarousel" data-slide = "next" )
+          &rsaquo;
+
     .body
       = markdown posting.body
     .tags-list= links_to_tags posting.tags_list

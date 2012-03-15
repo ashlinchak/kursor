@@ -1,0 +1,32 @@
+.row
+  .span8
+
+    .row
+      - posting_categories.each_with_index do |child, index|
+        .span4
+          %h2.category-title
+            = link_to child.name, child
+            - if child.children
+              = '/ postings: ' + child.postings.size.to_s
+
+          - for sub_post in child.postings
+            = sub_post.title
+
+
+          - if child.children
+            .children-categories
+              - for child in child.children
+                = link_to child.name, child
+                - if child.children
+                  = '(' + child.postings.size.to_s + ')'
+        - unless index % 2 == 0
+          .row
+
+
+    %hr/
+    %h2.home-title= t(:'home.titles.featured_posting')
+    %ul.entries
+      - for p in all_postings
+        = render :partial => 'posting_categories/posting', :locals => { :p => p }
+    .page_navigation.clear= paginate all_postings
+    %hr/

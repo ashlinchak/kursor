@@ -1,5 +1,7 @@
 .field.provider-categories
   %fieldset
     - root_posting_categories.each do |c|
-      .control-group
-        = render :partial => 'posting_sub_category_fields', :locals => { :c => c, :posting => posting, :f => f }
+      %label
+      = check_box_tag 'posting[posting_category_ids][]', c.id, ( :checked if posting.posting_categories.include? c ), :class => 'category-sub-parent'
+      %span= c.name
+      = render :partial => 'posting_sub_category_fields', :locals => { :c => c, :posting => posting, :f => f }

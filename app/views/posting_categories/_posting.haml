@@ -1,0 +1,16 @@
+%article.posting
+  %hr/
+  .row
+    .span2
+      - if !p.images.empty?
+        = link_to p, :class => 'thumbnail' do
+          = image_tag p.images.last.src_url(:small).to_s
+
+    .span6
+      %h4= link_to p.title, p
+      %p= p.excerpt
+      %span= link_to t(:'postings.readmore'), p
+      .user-bar
+        = link_to p.user, p.user
+        |
+        = l p.created_at, :format => :long

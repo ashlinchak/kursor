@@ -22,4 +22,5 @@ show_sub_categories = (parent) ->
   if ( $(parent).is('input:checked') )
     $('#sub-children-of-' + category_id).slideDown()
   else
+    $('#sub-children-of-' + category_id).find(':checkbox:checked').prop('checked', false);
     $('#sub-children-of-' + category_id).slideUp()

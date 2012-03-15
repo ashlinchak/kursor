@@ -15,7 +15,7 @@
       .control-group
         = f.label :body
         .controls
-          = f.text_area :body, :class => 'span10'
+          = f.text_area :body, :class => 'show_editor'
     %legend Images
     = f.fields_for :images do |image|
       = render :partial => 'images/image_fields', :locals => { :f => image }

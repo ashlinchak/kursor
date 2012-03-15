@@ -10,12 +10,15 @@
 //= require twitter/bootstrap
 
 //= require jquery.markitup
-//= require sets/markdown/set.js
+//= require sets/default/set
 //= require_tree .
 
-$(document).ready(function(){
+  $(document).ready(function(){
 
   $('html').removeClass('no-js');
+
+
+  $("textarea.show_editor").markItUp(mySettings);
 
   //$('.provider-categories select').bind('click change keyup blur', function(){
     //show_categories(this);
@@ -29,8 +32,6 @@ $(document).ready(function(){
   //$('.category-sub-parent').change(function(){
     //show_sub_categories(this);
   //});
-
-
 
   $('.select-city').bind('click change keyup blur load', function(){
     if ( $(this).val() == '' ){
@@ -86,8 +87,3 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   $(link).parent().before(content.replace(regexp, new_id));
 }
-
-
-$(document).ready(function(){
-  $("textarea").markItUp(myMarkdownSettings);
-});

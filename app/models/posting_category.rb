@@ -7,6 +7,8 @@ class PostingCategory < ActiveRecord::Base
 
   has_many :postings, :through => :posting_categorizings
 
+  has_many :sub_postings, :through => :posting_categorizings, :source => :posting
+
   validates_presence_of :name, :description, :permalink
   validates :name, :permalink, :uniqueness => true
 
