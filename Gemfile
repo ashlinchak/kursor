@@ -17,8 +17,6 @@ gem 'therubyracer'
 gem 'capistrano'
 gem 'markitup_rails'
 
-
-
 group :assets do
   gem 'sass-rails', "~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
@@ -34,4 +32,12 @@ end
 group :production do
   gem 'backup'
   gem 'whenever'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rack-test'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 end

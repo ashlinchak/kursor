@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227195413) do
+ActiveRecord::Schema.define(:version => 20120224173023) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -184,11 +184,8 @@ ActiveRecord::Schema.define(:version => 20120227195413) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "posting_categoriy_id", :null => false
-    t.integer  "posting_category_id",  :null => false
   end
 
-  add_index "postings", ["posting_category_id"], :name => "index_postings_on_posting_category_id"
   add_index "postings", ["user_id"], :name => "index_postings_on_user_id"
 
   create_table "profiles", :force => true do |t|

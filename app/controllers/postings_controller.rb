@@ -1,4 +1,7 @@
 class PostingsController < ApplicationController
+  before_filter :require_owner, :only => [ :edit, :update, :destroy ]
+
+
   def index
   end
 
@@ -19,6 +22,7 @@ class PostingsController < ApplicationController
   end
 
   def edit
+    @posting = current_user.postings.find(params[:id])
   end
 
   def update
@@ -34,6 +38,8 @@ class PostingsController < ApplicationController
     posting.destroy
     redirect_to user_postings_path(current_user)
   end
+
+  private
 
   def postings
     @postings ||= if params[:user_id]
@@ -52,5 +58,12 @@ class PostingsController < ApplicationController
     end
   end
   helper_method :posting
+
+  def require_owner
+    @posting = current_user.postings.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = t('permission_denied')
+    redirect_to user_postings_path(current_user)
+  end
 
 end

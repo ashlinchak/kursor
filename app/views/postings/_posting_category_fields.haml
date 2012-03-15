@@ -4,4 +4,4 @@
       %label
       = check_box_tag 'posting[posting_category_ids][]', c.id, ( :checked if posting.posting_categories.include? c ), :class => 'category-sub-parent'
       %span= c.name
-      = render :partial => 'posting_sub_category_fields', :locals => { :c => c, :posting => posting, :f => f }
+      = render :partial => '/postings/posting_sub_category_fields', :locals => { :c => c, :posting => posting, :f => f }

@@ -39,7 +39,13 @@
 .home-postings {
   h3{
     font-size: 1em;
+    height: 2.5em;
     line-height: 1.25;
+    overflow: hidden;
+  }
+  .excerpt{
+    height: 5.5em;
+    overflow: hidden;
   }
   .user {
     line-height: 32px;
