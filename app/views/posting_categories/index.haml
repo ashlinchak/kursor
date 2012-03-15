@@ -7,12 +7,14 @@
           %h2.category-title
             = link_to child.name, child
             - if child.children
-              = '/ postings: ' + child.postings.size.to_s
-
-          - for sub_post in child.postings
-            = sub_post.title
+              = '(' + child.postings.size.to_s + ')'
 
 
+          - for sub_post in child.postings.reverse.last(5)
+            %h5
+              = link_to sub_post.title, sub_post
+            = time_ago_in_words sub_post.created_at, :format => :long
+            назад
           - if child.children
             .children-categories
               - for child in child.children
