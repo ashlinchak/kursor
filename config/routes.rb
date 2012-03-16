@@ -42,6 +42,7 @@ Kursor::Application.routes.draw do
     resources :postings
     resources :schedule
   end
+  match '/signup' => 'users#new', :as => :signup
   match '/my_profile' => 'users#my_profile', :as => :my_profile
   match '/my_profile/edit' => 'users#edit',  :as => :edit_profile
 

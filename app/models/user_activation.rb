@@ -3,11 +3,11 @@ class UserActivation < ActiveRecord::Base
 
   before_create :generate_token
 
-  def to_s
+  def to_param
     self.token
   end
 
-  def to_param
+  def to_s
     self.token
   end
 

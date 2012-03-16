@@ -8,5 +8,6 @@
 -#  %p= @user.provider
 - if @user.user_activation
   %p Follow the link below to activate your account:
-  %p= link_to perform_activation_url( @user.user_activation, :host => "kursor.org.ua" ), perform_activation_url( @user.user_activation, :host => "kursor.org.ua" )
+  - activation_link = perform_activation_url( @user.user_activation.token, :host => "kursor.org.ua" )
+  %p= link_to activation_link, activation_link
 %p= link_to 'View Profile', user_url(@user, :host => "kursor.org.ua")
