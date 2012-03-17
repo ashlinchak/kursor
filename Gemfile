@@ -17,7 +17,7 @@ gem 'therubyracer'
 gem 'capistrano'
 gem 'markitup_rails'
 
-gem 'twitter-bootstrap-rails', '2.0.1'
+gem 'twitter-bootstrap-rails', '2.0.4'
 
 group :assets do
   gem 'sass-rails', "~> 3.1.0"
