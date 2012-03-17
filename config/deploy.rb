@@ -60,6 +60,11 @@ namespace :uploads do
   task :setup, :except => { :no_release => true } do
     dirs = uploads_dirs.map { |d| File.join(shared_path, d) }
     run "#{try_sudo} mkdir -p #{dirs.join(' ')} && #{try_sudo} chmod g+w #{dirs.join(' ')}"
+    #run "#{try_sudo} mkdir -p #{shared_path}/uploads"
+    #run "#{try_sudo} mkdir -p #{shared_path}/uploads/avatar"
+    #run "#{try_sudo} mkdir -p #{shared_path}/uploads/image"
+    #run "#{try_sudo} mkdir -p #{shared_path}/uploads/provider"
+    run "#{try_sudo} chmod 0777 -R #{shared_path}/uploads"
   end
 
   desc <<-EOD
@@ -76,7 +81,8 @@ namespace :uploads do
     and registers them in Capistrano environment.
   EOD
   task :register_dirs do
-    set :uploads_dirs,    %w(uploads uploads/tmp uploads/avatar uploads/image uploads/provider)
+    #set :uploads_dirs,    %w(uploads uploads/tmp uploads/avatar uploads/image uploads/provider)
+    set :uploads_dirs,    %w(uploads)
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
 
