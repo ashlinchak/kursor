@@ -11,4 +11,5 @@ tmp/
 mcmegavolt/
 Gemfile.lock
 public/uploads/
+public/assets/
 *~
