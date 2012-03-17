@@ -9,7 +9,6 @@ tmp/
 *.swo
 .rvmrc
 mcmegavolt/
-Gemfile.lock
 public/uploads/
 public/assets/
 *~
