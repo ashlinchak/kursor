@@ -13,6 +13,6 @@ class UserActivation < ActiveRecord::Base
 
   def generate_token
     self.expire_at = Time.now + 1.week
-    self.token = SecureRandom.base64
+    self.token = (SecureRandom.base64).gsub(/\//, '-')
   end
 end
