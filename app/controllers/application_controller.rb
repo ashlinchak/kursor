@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   helper_method :regions
 
   def recent_postings
-    @recent_postings ||= Posting.recent
+    @recent_postings ||= Posting.approved.recent
   end
   helper_method :recent_postings
 
@@ -82,5 +82,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
-
 end

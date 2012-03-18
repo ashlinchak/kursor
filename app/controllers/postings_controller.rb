@@ -1,7 +1,6 @@
 class PostingsController < ApplicationController
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
-
   def index
   end
 
@@ -45,7 +44,7 @@ class PostingsController < ApplicationController
     @postings ||= if params[:user_id]
       Posting.where( :user_id => params[:user_id])
     else
-      Posting.all
+      Posting.approved
     end
   end
   helper_method :postings

@@ -16,15 +16,24 @@ class Posting < ActiveRecord::Base
 
   default_scope order('created_at desc')
   scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
+  scope :approved, where(:is_approved => true)
 
 
   def posting_category_ids=(ids)
     self.posting_categories = PostingCategory.find(ids)
   end
 
-
-
   def to_s
     title
+  end
+
+  def approve!
+    self.is_approved = true
+    save
+  end
+
+  def decline!
+    self.is_approved = false
+    save
   end
 end

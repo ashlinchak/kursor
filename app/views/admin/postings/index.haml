@@ -7,7 +7,7 @@
       %th= t(:'admin.postings.posting_list.name')
       %th= t(:'admin.postings.posting_list.user')
       %th= t(:'admin.postings.posting_list.date')
-      %th= t(:'admin.postings.posting_list.actions')
+      %th{ width: '120' }= t(:'admin.postings.posting_list.actions')
   %tbody
     - for posting in postings do
       %tr
@@ -15,9 +15,21 @@
         %td= posting.user
         %td= l posting.created_at, :format => :long
         %td
-          = link_to t(:'admin.postings.posting_list.edit'), edit_admin_posting_path(posting), :class => 'link-icon icon-edit'
+          = link_to edit_admin_posting_path(posting) do
+            %span.icon-pencil
+            = t(:'admin.postings.posting_list.edit')
           %br
-          = link_to t(:'admin.postings.posting_list.delete'), admin_posting_path(posting), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+          = link_to admin_posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
+            %span.icon-remove
+            = t(:'admin.postings.posting_list.delete')
+          %br
+          = link_to posting.is_approved? ? decline_admin_posting_path(posting) : approve_admin_posting_path(posting)  do
+            %span{ :class => "icon-#{posting.is_approved? ? 'ban-circle' : 'ok-circle'}"}
+            - if posting.is_approved?
+              = t(:'admin.postings.actions.decline')
+            - else
+              = t(:'admin.postings.actions.approve')
+
 %hr
 %p= link_to t(:'admin.postings.posting_list.create'), new_admin_posting_path, :class => 'link-icon icon-add'
 
