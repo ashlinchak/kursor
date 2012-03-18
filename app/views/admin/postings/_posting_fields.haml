@@ -1,0 +1,41 @@
+.row
+  .span12
+    = render :partial => 'shared/form_errors', :locals => { :object => posting }
+    %fieldset
+      .control-group
+        = f.label :title
+        .controls
+          = f.text_field :title, :class => 'span10'
+    %fieldset
+      .control-group
+        = f.label :is_approved?
+        .controls
+          = f.check_box :is_approved?
+    %fieldset
+      .control-group
+        = f.label :excerpt
+        .controls
+          = f.text_area :excerpt, :class => 'span10'
+    %fieldset
+      .control-group
+        = f.label :body
+        .controls
+          = f.text_area :body, :class => 'show_editor'
+    %legend Images
+    = f.fields_for :images do |image|
+      = render :partial => 'images/image_fields', :locals => { :f => image }
+    %fieldset
+      .control-group
+        .controls
+          = link_to_add_fields "Add image", f, :images
+
+    %fieldset
+      .control-group
+        = f.label :tags_list
+        .controls
+          = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span10'
+
+
+
+    %legend Categories
+    = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
