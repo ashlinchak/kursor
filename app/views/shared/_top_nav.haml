@@ -4,13 +4,21 @@
 %nav.clear
   .container
     %ul
-      - root_categories.each do |item|
-        %li
-          = link_to item.name, item
-      -#%li= link_to 'Новости', news_index_path
-      %li= link_to 'Статьи', posting_categories_path
-      -#%li= link_to 'Контакты', '/info/contacts'
-      %li= link_to 'Поиск', search_index_path
+      -#- root_categories.each do |item|
+      -#  %li
+      -#    = link_to item.name, item
+
+      %li= link_to t(:'site.nav.pre-schools'), root_url + 'categories/doshkolnoe-obrazovanie'
+      %li= link_to t(:'site.nav.schools'), root_url + 'categories/schools'
+      %li= link_to t(:'site.nav.technical'), root_url + 'categories/prof-tech-obrazovanie'
+      %li= link_to t(:'site.nav.high-schools'), root_url + 'categories/high-schools'
+      %li= link_to t(:'site.nav.courses'), root_url + 'categories/kursy'
+      %li= link_to t(:'site.nav.tutors'), root_url + 'categories/teachers'
+      %li= link_to t(:'site.nav.trainings'), root_url + 'categories/treninhy-i-semynary'
+      %li= link_to t(:'site.nav.business-schools'), root_url + 'categories/biznes-shkoly'
+      %li= link_to t(:'site.nav.vip'), root_url + 'posting_categories/vip'
+      %li= link_to t(:'postings.title'), posting_categories_path, {:style => 'border-right: 0px none;'}
+
     -#%ul.nav.secondary-nav
       -#%li{ :class => 'dropdown', :'data-dropdown' => 'dropdown' }
         -#%a{ :href => '#', :class => 'dropdown-toggle' } Login

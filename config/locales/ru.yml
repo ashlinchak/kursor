@@ -10,6 +10,15 @@ ru:
       destroy: "Удалить"
       destroy_user: "Удалить этот провайдер"
     nav:
+      pre-schools: "Дошкольное"
+      schools: "Школы"
+      technical: "Проф-Тех."
+      high-schools: "ВУЗы"
+      courses: "Курсы"
+      tutors: "Специалисты"
+      trainings: "Тренинги"
+      business-schools: "Бизнес-школы"
+      vip: "VIP"
       search: "Поиск"
 
   home:

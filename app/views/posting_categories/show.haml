@@ -2,6 +2,8 @@
   .span8
 
     %ul.breadcrumb
+      %li
+        = link_to t(:'postings.title'), posting_categories_path
       = breadcrumbs_for_posting_category posting_category
 
     - for child in posting_category.children
