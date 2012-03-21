@@ -1,14 +1,26 @@
 %fieldset
-  .control-group
-    = f.label :name
-    .controls
-      = f.text_field :name
-      = link_to_remove_fields "[X]", f
-  -# TODO: research nested associations building
-  = f.fields_for( f.object.location || f.object.class.reflect_on_association(:location).klass.new ) do |l|
-    = render :partial => 'providers/location_fields', :locals => { :f => l }
+  .row
+    .span6
+      .control-group
+        = f.label t(:'providers.edit.filials.name'), :class => 'control-label'
+        .controls
+          = f.text_field :name
 
-  = f.fields_for :contacts do |c|
-    .control-group
-      = render :partial => 'contacts/contact_fields', :locals => { :f => c }
-  .control-group= link_to_add_fields "Add contact", f, :contacts
+      -# TODO: research nested associations building
+      = f.fields_for( f.object.location || f.object.class.reflect_on_association(:location).klass.new ) do |l|
+        = render :partial => 'providers/location_fields', :locals => { :f => l }
+
+    .span6
+      = f.fields_for :contacts do |c|
+        .control-group
+          = render :partial => 'contacts/contact_fields', :locals => { :f => c }
+
+      .control-group
+        = link_to_add_fields t(:'providers.edit.contacts.add'), f, :contacts
+
+  = link_to_remove_fieldset t(:'providers.edit.filials.remove'), f
+
+  %hr
+
+
+

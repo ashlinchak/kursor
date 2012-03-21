@@ -1,16 +1,25 @@
-%legend Provider info
 .row
   .span12
-    .control-group
-      = f.label :name
-      .controls
-        = f.text_field :name, :class => 'span8'
-    .control-group
-      = f.label :logo
-      .controls
-        = image_tag(provider.logo_url(:thumb)) if provider.logo?
-        = f.file_field :logo
-        = f.hidden_field :logo_cache
+    %fieldset
+      %legend= t(:'providers.edit.title')
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name, :class => 'span8'
+      .control-group
+        = f.label :logo, :class => 'control-label'
+        .controls
+          = f.file_field :logo
+          = f.hidden_field :logo_cache
+
+      - if provider.logo?
+        .control-group
+          %label.control-label
+            = image_tag(provider.logo_url(:thumb)) if provider.logo?
+          .controls
+            %label.checkbox
+              = f.check_box :remove_logo
+              = t(:'providers.edit.check_to_remove')
 
 .row
   .span6
@@ -18,13 +27,13 @@
       %legend= t(:'admin.custom_fields.headers.title')
       = f.fields_for :custom_field_bindings do |b|
         = render :partial => 'custom_field_bindings/custom_field_binding_fields', :locals => { :f => b }
-      .fields= link_to_add_fields "Add custom field", f, :custom_field_bindings
+      .fields= link_to_add_fields t(:'providers.custom_fields.add'), f, :custom_field_bindings
   .span6
     %fieldset
       %legend= t(:'admin.custom_flags.headers.title')
       = f.fields_for :custom_flag_bindings do |b|
         = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
-      .fields= link_to_add_fields "Add custom flag", f, :custom_flag_bindings
+      .fields= link_to_add_fields t(:'providers.custom_flags.add'), f, :custom_flag_bindings
 %br
 .row
   .span6
@@ -36,12 +45,11 @@
     %fieldset
       %legend= t(:'admin.users.legends.contacts')
       = f.fields_for :contacts do |c|
-        .fields
-          = render :partial => 'contacts/contact_fields', :locals => { :f => c }
+        = render :partial => 'contacts/contact_fields', :locals => { :f => c }
       .fields= link_to_add_fields "Add contact", f, :contacts
 
 %br
-%legend Description
+%legend= t(:'providers.edit.description')
 .row
   .span6
     = f.label :description
@@ -68,14 +76,20 @@
 
 %hr/
 .row
-  .span6
-    %legend= t(:'admin.users.legends.filials')
+  .span12
+    %fieldset
+      %legend= t(:'admin.users.legends.filials')
     = f.fields_for :filials do |fi|
       = render :partial => 'filials/filial_fields', :locals => { :f => fi }
-    .fields= link_to_add_fields "Add filial", f, :filials
+.row
+  .span12
+    %fieldset
+      = link_to_add_fields t(:'providers.edit.filials.add'), f, :filials
+
+
 %hr/
 .row
   .span12
-    %legend= t(:'admin.users.legends.categories')
-    -#= render :partial => '/providers/category_fields', :locals => { :f => f, :provider => provider }
-    = render :partial => 'category_fields', :locals => { :f => f, :provider => provider }
+    %fieldset
+      %legend= t(:'admin.users.legends.categories')
+      = render :partial => 'category_fields', :locals => { :f => f, :provider => provider }

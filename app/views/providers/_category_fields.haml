@@ -1,12 +1,10 @@
-.field.provider-categories
-  %fieldset
-    .control-group
-      = f.label :category
-      .controls
-        = f.select :category_id, root_categories.collect{|c| [ c, c.id ] }, :prompt => t(:'admin.users.selectors.select_category')
-    - root_categories.each do |c|
-      .control-group
-        .field.provider-category{ :id => "child-of-#{c.id}"}
-          .field
-            -#= render :partial => '/providers/sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }
-            = render :partial => 'sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }
+
+.control-group
+  = f.label :category, :class => 'control-label'
+  .controls.field.provider-categories
+    = f.select :category_id, root_categories.collect{|c| [ c, c.id ] }, :prompt => t(:'admin.users.selectors.select_category')
+- root_categories.each do |c|
+  .field.provider-category{ :id => "child-of-#{c.id}"}
+    .field
+      -#= render :partial => '/providers/sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }
+      = render :partial => 'sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }

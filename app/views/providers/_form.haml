@@ -1,6 +1,6 @@
-= form_for(provider, :html => { :class => 'form-stacked' }) do |f|
-  .row
-    = render :partial => "shared/form_errors", :locals => { :object => provider }
-    = render :partial => 'provider_fields', :locals => { :f => f, :provider => provider }
-  .actions
-    = f.submit :class => 'btn primary'
+= form_for(provider, :html => { :class => 'form-horizontal' }) do |f|
+  = render :partial => "shared/form_errors", :locals => { :object => provider }
+  = render :partial => 'provider_fields', :locals => { :f => f, :provider => provider }
+  .form-actions
+    = submit_tag t(:'providers.edit.actions.save'), :class => 'btn btn-large btn-success'
+    = link_to t(:'providers.edit.actions.cancel'), provider, :class => 'btn btn-large btn-warning'

@@ -30,10 +30,33 @@ ru:
       categories: "Категории"
 
   providers:
+
+    edit:
+      title: "Редактирование профиля"
+      description: "Описание"
+      check_to_remove: "удалить логотип"
+      actions:
+        save: "Сохранить профиль"
+        cancel: "Отмена"
+      location:
+        city: "Город"
+        street: "Улица"
+        building: "Дом"
+        apartment: "Офис"
+      contacts:
+        add: "Добавить контакт"
+      filials:
+        add: "Добавить филиал"
+        remove: "Удалить филиал"
+        name: "Название"
+
     description:
       visit_website_for_more_info: "Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте."
     custom_fields:
+      add: Добавить поле
       address: "Адрес"
+    custom_flags:
+      add: "Добавить флаг"
     categories: "Категории"
     filials: "Филиалы"
     more_info: "Дополнительная информация"

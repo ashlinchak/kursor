@@ -79,6 +79,13 @@
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
+//  $(link).closest("fieldset").fadeOut();
+  $(link).closest(".control-group").fadeOut();
+}
+
+function remove_fieldset(link) {
+  $(link).prev("input[type=hidden]").val("1");
+//  $(link).closest("fieldset").fadeOut();
   $(link).closest("fieldset").fadeOut();
 }
 
@@ -87,3 +94,4 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
