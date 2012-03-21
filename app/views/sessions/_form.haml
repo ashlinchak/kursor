@@ -1,17 +1,18 @@
-%fieldset
-  %legend Login
-  = form_for(guest, :url => { :controller => :sessions, :action => :create }) do |f|
-    .row
-      .span6
-        .clearfix
-          = f.label :email
-          .field.input
-          = f.text_field :email
-          .clearfix
+.row
+  .span8
+    = form_for guest, :html => {:class => 'form-horizontal'}, :url => { :controller => :sessions, :action => :create } do |f|
+      %fieldset
+        %legend= t(:'sessions.create.title')
+        .control-group
+          = f.label :email,  :class => 'control-label'
+          .controls
+            = f.text_field :email
+        .control-group
+          .control-label
             = f.label :password
-            .field.input
-              = f.password_field :password
-        .actions
-          = f.submit t(:'sessions.create.button'), :class => 'btn '
-          or
-          = link_to 'activate your account', new_activation_url
+          .controls
+            = f.password_field :password
+      .form-actions
+        = f.submit t(:'sessions.create.button'), :class => 'btn btn-large btn-success'
+        = t(:'sessions.create.or')
+        = link_to t(:'sessions.create.activate'), new_activation_url

@@ -1,39 +1,51 @@
 .row
-  .span10
-    .clearfix
-      = f.label :full_name
-      .input
-        = f.text_field :full_name, :class => 'span4'
-.row
-  .span10
-    .clearfix
-      = f.label :avatar
-      .input
-        = image_tag(profile.avatar_url(:thumb)) if profile.avatar?
-        = f.file_field :avatar
-        = f.hidden_field :avatar_cache
-.row
-  .span10
-    .clearfix
-      = f.label :birth_date
-      .input
-        = f.text_field :birth_date, :class => 'span4'
-.row
-  .span5
+  .span6
     %fieldset
-      %legend= t(:'users.legends.address')
-      = f.fields_for :location do |l|
-        = render :partial => 'addresses/location_fields', :locals => { :f => l }
-  .span5
+      %legend= t(:'visitor.edit_profile.main_info')
+      .control-group
+        %label.control-label
+          = t(:'visitor.edit_profile.name')
+        .controls
+          = f.text_field :full_name, :class => ''
+
+
+      .control-group
+        %label.control-label
+          = t(:'visitor.edit_profile.birth_date')
+        .controls
+          = f.text_field :birth_date, :class => ''
+
+  .span6
     %fieldset
-      %legend= t(:'users.legends.contacts')
+      %legend= t(:'visitor.edit_profile.avatar')
+      .control-group
+        = image_tag profile.avatar_url(:medium), :class => 'control-label' if profile.avatar?
+        .controls
+          = f.file_field :avatar
+          = f.hidden_field :avatar_cache
+
+.row
+  .span6
+    %fieldset
+      %legend= t(:'visitor.edit_profile.address')
+      .control-group
+        = f.fields_for :location do |l|
+          = render :partial => 'addresses/location_fields', :locals => { :f => l }
+
+
+  .span6
+    %legend= t(:'visitor.edit_profile.contacts')
+    %fieldset
       = f.fields_for :contacts do |c|
-        .fields
-          = render :partial => 'contacts/contact_fields', :locals => { :f => c }
-      .fields= link_to_add_fields "Add contact", f, :contacts
+        = render :partial => 'contacts/contact_fields', :locals => { :f => c }
+      .control-group
+        = link_to_add_fields t(:'visitor.edit_profile.add_contact'), f, :contacts
 .row
-  .span10
-    .clearfix
-      = f.label :bio
-      .input
-        = f.text_area :bio, :class => 'span3'
+  .span12
+    %fieldset
+      %legend= t(:'visitor.edit_profile.bio')
+      .control-group
+        %label.control-label
+          = t(:'visitor.edit_profile.bio_text')
+        .controls
+          = f.text_area :bio, :class => 'span4'

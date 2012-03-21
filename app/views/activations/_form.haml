@@ -1,6 +1,12 @@
-= form_tag( '/activations', :method => :post ) do |f|
-  .fields
-    = label_tag :email
-  .fields
-    = text_field_tag :email
-    = submit_tag t(:'user_activation.title')
+.row
+  .span8
+    = form_tag '/activations', :class => 'form-horizontal', :method => :post do |f|
+      %fieldset
+        %legend= t(:'user_activation.title')
+        .control-group
+          %label.control-label
+            Email
+          .controls
+            = text_field_tag :email
+      .form-actions
+        = submit_tag t(:'user_activation.title'), :class => 'btn btn-large btn-warning'

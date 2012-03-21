@@ -46,9 +46,11 @@ ru:
     create:
       logged_in_as: "Вы вошли как"
       title: "Войти"
-      button: "Войти"
+      button: "Вход"
       success: "Вход успешно выполнен!"
       error: "Неправильный логин/пароль"
+      or: "или"
+      activate: "активировать свой акаунт"
     destroy:
       title: "Выйти"
       success: "Вы успешно вышли!"
@@ -56,8 +58,10 @@ ru:
   users:
     new:
       title: "Регистрация нового пользователя"
-      email-pass: "Введите Email и пароль"
-      account-type: "Зарегистрироваться как"
+      email_pass: "Введите Email и пароль"
+      pass: "Пароль"
+      pass_confirm: "Подтвердите пароль"
+      account_type: "Зарегистрироваться как"
       email_must_be_real: "Реальный Email. Пример: ivanov@gmail.com"
       password_requirements: "Минимум 6 символов, выбирайте сложный пароль."
       submit: "Зарегистрироваться"
@@ -79,8 +83,23 @@ ru:
       add_post: "Добавить статью"
       home: "Профиль"
       edit: "Редактировать мой профиль"
-
-
+    edit_profile:
+      email_pass: "Email / Пароль"
+      no_pass: "Не вводите в это поле ничего, если<br /> Вы не собираетесь менять пароль!"
+      birth_date: "Дата рождения"
+      name: "Ваше имя"
+      address: "Адрес"
+      contacts: "Контакты"
+      avatar: "Аватар"
+      main_info: "Основная информация"
+      bio: "О себе"
+      bio_text: "Коротко о себе"
+      add_contact: "Добавить контакт"
+      location:
+        city: "Город"
+        street: "Улица"
+        building: "Дом"
+        apartment: "Квартира"
 
   news:
     title: "Новости"
