@@ -1,5 +1,5 @@
-%h2= t(:'admin.categories.title')
-%p= link_to 'Add Category', new_admin_category_path, :class => 'link-icon icon-add'
+%h2= t(:'admin.provider_categories.title')
+%p= link_to 'Add Category', new_admin_provider_category_path, :class => 'link-icon icon-add'
 %hr/
 %table.table.table-striped.table-bordered.table-condensed
   %thead
@@ -7,16 +7,16 @@
     %th Children
     %th{ :width => '130' } Actions
   %tbody
-    - root_categories.each do |category|
+    - root_provider_categories.each do |prov_category|
       %tr
-        %td= link_to category.name, category
+        %td= prov_category.name
         -#.description= category.description
         %td
-          -if category.children
+          -if prov_category.children
             %ul
-              = render :partial => 'category', :collection => category.children
+              = render :partial => 'category', :collection => prov_category.children
         %td
-          = link_to 'Edit', edit_admin_category_path( category ), :class => 'link-icon icon-edit'
-          = link_to 'Delete', admin_category_path( category ), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+          = link_to 'Edit', edit_admin_provider_category_path( prov_category ), :class => 'link-icon icon-edit'
+          = link_to 'Delete', admin_provider_category_path( prov_category ), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
 %hr/
-%p= link_to 'Add Category', new_admin_category_path, :class => 'link-icon icon-add'
+%p= link_to 'Add Category', new_admin_provider_category_path, :class => 'link-icon icon-add'

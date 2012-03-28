@@ -15,7 +15,7 @@ class Admin::CategoriesController < Admin::DashboardController
   def create
     if category.save
       flash[:success] = 'category was successfully created.'
-      redirect_to admin_categories_path
+      redirect_to admin_provider_categories_path
     else
       render :action => "new"
     end
@@ -24,7 +24,7 @@ class Admin::CategoriesController < Admin::DashboardController
   def update
     if category.update_attributes(params[:category])
       flash[:success] = 'Category was successfully updated.'
-      redirect_to admin_categories_path
+      redirect_to admin_provider_categories_path
     else
       render :action => "edit"
     end
@@ -36,7 +36,7 @@ class Admin::CategoriesController < Admin::DashboardController
     else
       flash[:error] = 'Can\'t delete non-empty category'
     end
-    redirect_to admin_categories_path
+    redirect_to admin_provider_categories_path
   end
 
   private
@@ -44,17 +44,22 @@ class Admin::CategoriesController < Admin::DashboardController
   def categories
     @categories = if params[:id]
     else
-      root_categories
+      root_provider_categories
     end
   end
 
   def category
     @category = if params[:id]
-      Category.find_by_permalink(params[:id])
+      category_type.find_by_permalink(params[:id])
     else
-      Category.new(params[:category])
+      category_type.new(params[:category])
     end
   end
   helper_method :category
+
+
+  def category_type
+    params[:type].constantize
+  end
 
 end

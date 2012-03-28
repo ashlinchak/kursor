@@ -1,9 +1,9 @@
 class Provider < ActiveRecord::Base
-  belongs_to :category
+  belongs_to :provider_category
   belongs_to :user
 
   has_many :categorizings, :dependent => :destroy
-  has_many :categories, :through => :categorizings
+  has_many :provider_categories, :through => :categorizings
 
   has_many :filials, :dependent => :destroy
   accepts_nested_attributes_for :filials, :reject_if => :all_blank, :allow_destroy => true
@@ -44,8 +44,8 @@ class Provider < ActiveRecord::Base
     name
   end
 
-  def category_ids=(ids)
-    self.categories = Category.find(ids)# || []
+  def provider_category_ids=(ids)
+    self.provider_categories = ProviderCategory.find(ids)# || []
   end
 
   def generate_permalink

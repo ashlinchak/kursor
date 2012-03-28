@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120318152012) do
+ActiveRecord::Schema.define(:version => 20120327093848) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120318152012) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", :force => true do |t|
+  create_table "provider_categories", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "parent_id"
@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(:version => 20120318152012) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "providers_count", :default => 0
+    t.string   "type"
   end
 
-  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+  add_index "provider_categories", ["parent_id"], :name => "index_categories_on_parent_id"
 
   create_table "categorizings", :force => true do |t|
     t.integer  "category_id"

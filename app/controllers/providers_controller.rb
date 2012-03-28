@@ -29,7 +29,7 @@ class ProvidersController < ApplicationController
   end
 
   def update
-    # trick to delete unchecked categories
+    # trick to delete unchecked provider_categories
     params[:provider][:category_ids] ||= []
     if provider.update_attributes(params[:provider])
       flash[:notice] = 'Provider was successfully updated.'

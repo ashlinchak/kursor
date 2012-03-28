@@ -26,7 +26,7 @@
 
     %h2.home-title= t(:'home.titles.categories')
     .row
-      - root_categories.each_with_index do |category, index|
+      - root_provider_categories.each_with_index do |category, index|
         - if ((index % 3) == 0) && index > 0
           .clear
         .span4
@@ -88,7 +88,7 @@
               -#= time_ago_in_words posting.created_at
               -#назад
 
-    -#-#.home-categories.clearfix
+    -#-#.home-provider_categories.clearfix
       -#-#- root_categories.each do |category|
         -#-#%div.category-item
           -#-#%h3= link_to category.name, category

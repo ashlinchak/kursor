@@ -12,7 +12,7 @@ ru:
     nav:
       pre-schools: "Дошкольное"
       schools: "Школы"
-      technical: "Проф-Тех."
+      technical: "Проф.-Тех."
       high-schools: "ВУЗы"
       courses: "Курсы"
       tutors: "Специалисты"
@@ -152,6 +152,9 @@ ru:
     nav:
       users: "Пользователи"
       categories: "Категории"
+      provider_categories: "Категории провайдеров"
+      tutor_categories: "Категории тьюторов"
+      other: "Еще"
       news: "Новости"
       postings: "Статьи"
       posting_list: "Менеджер статей"
@@ -280,3 +283,12 @@ ru:
       truncate: ""
       last: "В конец"
       first: "В начало"
+
+  errors:
+    messages:
+      wrong_size: "Загружаемый файл имеет неправильный размер (должен быть %{file_size})"
+      size_too_small: "Загружаемый файл слишком маленький (должен быть минимум %{file_size})"
+      size_too_big: "Загружаемый файл слишком большой (максимальный объем %{file_size})"
+      extension_white_list_error: "Вы пытаетесь загрузить файл с запрещенным разрешением. Можно загрузить только jpg, jpeg, gif, png"
+
+

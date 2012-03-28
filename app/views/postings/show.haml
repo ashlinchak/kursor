@@ -33,14 +33,15 @@
         - posting.images.reverse.each_with_index do |image, index|
           - if index == 0
             .active.item
-              = image_tag image.src_url(:medium).to_s
+              %a( href = "#myCarousel" data-slide = "next" )
+                = image_tag image.src_url(:wide).to_s if image.src_url(:wide)
               .carousel-caption
                 %h4= image.title
                 %p= image.description
           - else
             .item
               %a( href = "#myCarousel" data-slide = "next" )
-                = image_tag image.src_url(:medium).to_s
+                = image_tag image.src_url(:wide).to_s
               - if image.title
                 .carousel-caption
                   %h4= image.title

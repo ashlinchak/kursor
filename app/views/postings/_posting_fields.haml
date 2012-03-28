@@ -3,34 +3,43 @@
     = render :partial => 'shared/form_errors', :locals => { :object => posting }
     %fieldset
       .control-group
-        = f.label :title
+        = f.label :title, :class => 'control-label'
         .controls
           = f.text_field :title, :class => 'span10'
     %fieldset
       .control-group
-        = f.label :excerpt
+        = f.label :excerpt, :class => 'control-label'
         .controls
           = f.text_area :excerpt, :class => 'span10'
     %fieldset
       .control-group
-        = f.label :body
+        = f.label :body, :class => 'control-label'
         .controls
           = f.text_area :body, :class => 'show_editor'
-    %legend Images
+
+    %fieldset
+      %legend Images
     = f.fields_for :images do |image|
       = render :partial => 'images/image_fields', :locals => { :f => image }
-    %fieldset
-      .control-group
-        .controls
-          = link_to_add_fields "Add image", f, :images
+
 
     %fieldset
       .control-group
-        = f.label :tags_list
+        %i.icon-plus-sign.icon-dark
+        = link_to_add_fields "Add image", f, :images
+
+    %fieldset
+      %legend Tags
+      .control-group
+        = f.label :tags_list, :class => 'control-label'
         .controls
-          = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span10'
+          = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span9'
+          %p.help-block Some help for user
 
 
 
-    %legend Categories
-    = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
+    %fieldset
+      %legend Categories
+      .control-group
+        .controls
+          = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
