@@ -1,5 +1,7 @@
 %h2= t(:'admin.provider_categories.title')
-%p= link_to 'Add Category', new_admin_provider_category_path, :class => 'link-icon icon-add'
+= link_to new_admin_provider_category_path do
+  %i.icon-plus-sign
+  Add Category
 %hr/
 %table.table.table-striped.table-bordered.table-condensed
   %thead
@@ -16,7 +18,13 @@
             %ul
               = render :partial => 'category', :collection => prov_category.children
         %td
-          = link_to 'Edit', edit_admin_provider_category_path( prov_category ), :class => 'link-icon icon-edit'
-          = link_to 'Delete', admin_provider_category_path( prov_category ), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+          = link_to edit_admin_provider_category_path( prov_category ) do
+            %i.icon-pencil
+            Edit
+          = link_to admin_provider_category_path( prov_category ), :method => :delete, :confirm => 'Are you sure?' do
+            %i.icon-remove
+            Delete
 %hr/
-%p= link_to 'Add Category', new_admin_provider_category_path, :class => 'link-icon icon-add'
+= link_to new_admin_provider_category_path do
+  %i.icon-plus-sign
+  Add Category

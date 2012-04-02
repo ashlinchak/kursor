@@ -9,9 +9,9 @@ class ProvidersController < ApplicationController
   end
 
   def new
-    provider.build_location
-    provider.build_filials
-    provider.filials.build_location
+    provider.build_location unless provider.location
+    provider.build_filials unless provider.filials
+    provider.filials.build_location unless provider.filials
   end
 
   def edit

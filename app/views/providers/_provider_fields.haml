@@ -15,7 +15,7 @@
       - if provider.logo?
         .control-group
           %label.control-label
-            = image_tag(provider.logo_url(:thumb)) if provider.logo?
+            = image_tag(provider.logo_url(:thumb))
           .controls
             %label.checkbox
               = f.check_box :remove_logo

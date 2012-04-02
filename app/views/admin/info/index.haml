@@ -1,5 +1,9 @@
 %h2= t(:'admin.info_pages.title')
-%p= link_to 'Add info page', new_admin_info_path, :class => 'link-icon icon-add'
+
+= link_to new_admin_info_path do
+  %i.icon-plus-sign
+  Add info page
+
 %hr/
 %table.table.table-striped.table-bordered.table-condensed
   %thead
@@ -10,4 +14,6 @@
       %td= link_to info_page.title, admin_info_path(info_page)
       %td= link_to 'Delete', admin_info_path(info_page), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
 %hr/
-%p= link_to 'Add info page', new_admin_info_path, :class => 'link-icon icon-add'
+= link_to new_admin_info_path do
+  %i.icon-plus-sign
+  Add info page

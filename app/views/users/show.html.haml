@@ -2,16 +2,27 @@
   .span8
     %h1
       = user
-    - if user === current_user
-      = link_to t(:'visitor.profile.edit'), edit_profile_url
-      - unless user.is_active?
-        = t(:'users.pending')
+    - if authenticated?
+      - unless user.school? || user.tutor?
+        - if user === current_user
+          = link_to edit_profile_url do
+            %i.icon-pencil
+            = t(:'visitor.profile.edit')
+          - unless user.is_active?
+            = t(:'users.pending')
     %hr/
 - if authenticated?
   - unless user.visitor?
     - unless user.provider
       - if user === current_user
-        = link_to 'Add provider', new_provider_path
+
+        .alert.alert-block
+          %h4.alert-heading= t(:'providers.edit.no_provider')
+          %p= t(:'providers.edit.no_provider_desc')
+          %p
+            = link_to new_provider_path, :class => 'btn btn-success' do
+              %i.icon-white.icon-list-alt
+              = t(:'providers.edit.add_provider')
     - else
       = link_to user.provider, user.provider
   - else

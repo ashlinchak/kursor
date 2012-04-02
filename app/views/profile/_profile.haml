@@ -1,8 +1,7 @@
 .row
   .span3
-    .image.thumbnail
+    .image
       = image_tag profile.avatar_url(:medium)
-    //.well{:style => "padding: 8px 0;"}
     %br
     %ul.nav.nav-list
       %li
@@ -19,30 +18,28 @@
 
   .span5
 
-    %table.table-condensed
-      %tbody
-        - if profile.birth_date.present?
-          %tr
-            %td
-              Birth date:
-            %td
-              .birth-date= l profile.birth_date
-        - if profile.location.present?
-          %tr
-            %td
-              %strong
-                Address
-            %td
-              .address= address_value profile.location
+
+    - if profile.birth_date.present?
+      %p
+        Birth date:
+        = l profile.birth_date
+    - if profile.location.present?
+      %p
+        Address:
+        = address_value profile.location
+
+    - for contact in profile.contacts.by_type do
+      %p
+        -#- unless contact.contact_type == 'twitter' || contact.contact_type == 'facebook' || contact.contact_type == 'vkontakte' || contact.contact_type == 'google' || contact.contact_type == 'youtube'
+        - unless contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+          %span{ :class => "span-icon icon-#{contact.contact_type}" }
+          = contact_value contact
+    %hr/
+    %p
+      - for contact in profile.contacts.by_type
+        - if contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+          = social_icon contact
 
 
-        - if profile.contacts.present?
-          - for contact in profile.contacts do
-            %tr
-              %td
-                %span{ :class => "span-icon icon-#{contact.contact_type}" }
-                  &nbsp;
-              %td
-                = contact_value contact
-    %hr
+    %hr/
     .bio= profile.bio

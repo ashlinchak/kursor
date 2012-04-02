@@ -70,8 +70,10 @@
         %h3 Contacts
         %ul
           - for contact in provider.contacts.by_type do
-            %li
-              %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+            - unless contact.contact_type == 'facebook'
+              contact.contact_type
+              %li
+                %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
 
     - if provider.filials.size > 0
       .filials

@@ -48,9 +48,10 @@
 
     %footer.container
       .row.footer
-        .span10
-          Copyright &copy; 2011
-        .span2
-          = link_to 'kursor.org.ua', root_url
+        .span9
+          = t(:'site.copyright.rights').html_safe
+        .span3{:style => 'text-align: right;'}
+          = link_to root_url do
+            = image_tag 'logo_small.png'
   = javascript_include_tag "application"
   = render :partial => 'shared/google_analytics_code'

@@ -1,5 +1,9 @@
 %h2= t(:'admin.locations.headers.title')
-%p= link_to 'Add Location', new_admin_location_path, :class => 'link-icon icon-add'
+
+= link_to new_admin_location_path do
+  %i.icon-plus-sign
+  Add location
+
 %hr/
 %table.table.table-striped.table-bordered.table-condensed
   %thead
@@ -17,4 +21,6 @@
               %li
                 = city.name
 %hr/
-%p= link_to 'Add Location', new_admin_location_path, :class => 'link-icon icon-add'
+= link_to new_admin_location_path do
+  %i.icon-plus-sign
+  Add location

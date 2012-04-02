@@ -1,5 +1,7 @@
 %h2= t(:'admin.users.headers.title')
-%p= link_to t(:'admin.users.actions.create_user'), new_admin_user_path, :class => 'link-icon icon-add'
+= link_to new_admin_user_path do
+  %i.icon-plus-sign
+  = t(:'admin.users.actions.create_user')
 %hr/
 %table.table.table-bordered.table-striped
   %thead
@@ -45,8 +47,12 @@
               %span.label
                 &nbsp;&nbsp;&nbsp;
 
-        %td= link_to t(:'admin.users.actions.delete_user'), admin_user_path(u), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
+        %td
+          = link_to admin_user_path(u), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
+            %i.icon-remove
+            = t(:'admin.users.actions.delete_user')
 .page_navigation.clear= paginate users
 %hr/
-%p= link_to t(:'admin.users.actions.create_user'), new_admin_user_path, :class => 'link-icon icon-add'
-
+= link_to new_admin_user_path do
+  %i.icon-plus-sign
+  = t(:'admin.users.actions.create_user')

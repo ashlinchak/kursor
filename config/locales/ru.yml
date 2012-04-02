@@ -20,6 +20,9 @@ ru:
       business-schools: "Бизнес-школы"
       vip: "VIP"
       search: "Поиск"
+      admin-panel: "Админка"
+    copyright:
+      rights: "&copy; 2012 <a href=\"http://kursor.org.ua\">КУРСОР</a> - образовательный портал."
 
   home:
     titles:
@@ -32,6 +35,9 @@ ru:
   providers:
 
     edit:
+      no_provider: "Что дальше?"
+      no_provider_desc: "Ваши услуги пока не представлены на портале, для этого Вам необходимо заполнить свою страничку."
+      add_provider: "Сделать это сейчас!"
       title: "Редактирование профиля"
       description: "Описание"
       check_to_remove: "удалить логотип"
@@ -114,6 +120,7 @@ ru:
       address: "Адрес"
       contacts: "Контакты"
       avatar: "Аватар"
+      remove_avatar: "Удалить аватар"
       main_info: "Основная информация"
       bio: "О себе"
       bio_text: "Коротко о себе"
