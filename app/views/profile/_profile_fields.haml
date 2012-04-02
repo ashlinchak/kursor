@@ -19,10 +19,13 @@
     %fieldset
       %legend= t(:'visitor.edit_profile.avatar')
       .control-group
-        = image_tag profile.avatar_url(:medium), :class => 'control-label' if profile.avatar?
+        = image_tag profile.avatar_url(:medium), :class => 'control-label'
         .controls
           = f.file_field :avatar
           = f.hidden_field :avatar_cache
+          %label.checkbox
+            = f.check_box :remove_avatar
+            = t(:'visitor.edit_profile.remove_avatar')
 
 .row
   .span6

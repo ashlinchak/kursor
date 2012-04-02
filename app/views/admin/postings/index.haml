@@ -1,5 +1,9 @@
 %h1= t(:'admin.postings.posting_list.title')
-%p= link_to t(:'admin.postings.posting_list.create'), new_admin_posting_path, :class => 'link-icon icon-add'
+
+= link_to new_admin_posting_path do
+  %i.icon-plus-sign
+  = t(:'admin.postings.posting_list.create')
+
 %hr/
 %table.table.table-bordered.table-striped.table-condensed
   %thead
@@ -31,6 +35,7 @@
               = t(:'admin.postings.actions.approve')
 
 %hr
-%p= link_to t(:'admin.postings.posting_list.create'), new_admin_posting_path, :class => 'link-icon icon-add'
-
+= link_to new_admin_posting_path do
+  %i.icon-plus-sign
+  = t(:'admin.postings.posting_list.create')
 

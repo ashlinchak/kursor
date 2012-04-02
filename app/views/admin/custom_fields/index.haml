@@ -1,5 +1,9 @@
 %h2= t(:'admin.custom_fields.headers.title')
-%p= link_to t(:'admin.custom_fields.buttons.create_custom_field'), new_admin_custom_field_path, :class => 'link-icon icon-add'
+
+= link_to new_admin_custom_field_path do
+  %i.icon-plus-sign
+  = t(:'admin.custom_fields.buttons.create_custom_field')
+
 %hr/
 %table.table.table-striped.table-bordered.table-condensed
   %thead
@@ -13,4 +17,6 @@
         %td= link_to field, edit_admin_custom_field_path(field)
         %td= link_to '[X]', admin_custom_field_path(field), :method => :destroy, :confirm => 'Are you sure?'
 %hr/
-%p= link_to t(:'admin.custom_fields.buttons.create_custom_field'), new_admin_custom_field_path, :class => 'link-icon icon-add'
+= link_to new_admin_custom_field_path do
+  %i.icon-plus-sign
+  = t(:'admin.custom_fields.buttons.create_custom_field')

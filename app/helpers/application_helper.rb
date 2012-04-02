@@ -44,6 +44,16 @@ module ApplicationHelper
     end
   end
 
+  def social_icon contact
+
+    link_to contact.value, :target => '_blank' do
+      image_tag 'social-icons/48x48/' + contact.contact_type + '.png', :style => 'width: 32px; height: 32px;'
+    end
+
+  end
+
+
+
   def address_value location
     if location
       address = []
