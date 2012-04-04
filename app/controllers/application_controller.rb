@@ -17,15 +17,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def root_provider_categories
-    @root_provider_categories ||= ProviderCategory.roots
+  def root_categories
+    @root_categories ||= Category.roots
   end
-  helper_method :root_provider_categories
-
-  def root_tutor_categories
-    @root_tutor_categories ||= TutorCategory.roots
-  end
-  helper_method :root_tutor_categories
+  helper_method :root_categories
 
   def root_posting_categories
       @root_posting_categories ||= PostingCategory.roots

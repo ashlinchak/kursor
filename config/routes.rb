@@ -3,9 +3,7 @@ Kursor::Application.routes.draw do
   resources :students
 
   namespace :admin do
-    resources :provider_categories, :controller => "categories", :type => "ProviderCategory"
-    resources :tutor_categories, :controller => "categories", :type => "TutorCategory"
-
+    resources :categories
     resources :info
     resources :news
     resources :postings do
@@ -62,7 +60,7 @@ Kursor::Application.routes.draw do
     end
   end
 
-  resources :provider_categories, :only => [:show]
+  resources :categories, :only => [:index, :show]
   resources :posting_categories, :only => [:index, :show]
 
   root :to => 'home#index'

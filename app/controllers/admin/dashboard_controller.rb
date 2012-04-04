@@ -6,7 +6,7 @@ class Admin::DashboardController < ApplicationController
 
     @admin_users = Administrator.all.size
     @cities = Address::City.all.size
-    @categories = ProviderCategory.all.size
+    @categories = Category.all.size
     @news = News.all.size
     @posts = Posting.all.size
     @tags = Tag.all.size

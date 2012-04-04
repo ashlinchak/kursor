@@ -145,6 +145,10 @@ ru:
       edit:  "Редактировать"
       delete: "Удалить статью"
 
+  mailers:
+    user_activation:
+      subject: "Активация аккаунта на портале КУРСОР"
+
   user_activation:
     title: "Получить ссылку активации"
     perform:

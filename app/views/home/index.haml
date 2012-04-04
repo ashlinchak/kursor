@@ -26,7 +26,7 @@
 
     %h2.home-title= t(:'home.titles.categories')
     .row
-      - root_provider_categories.each_with_index do |category, index|
+      - root_categories.each_with_index do |category, index|
         - if ((index % 3) == 0) && index > 0
           .clear
         .span4

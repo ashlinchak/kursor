@@ -1,8 +1,8 @@
 .row
   .span12
     %ul.breadcrumb
-      =breadcrumbs_for_category provider_category
-    %h3= provider_category.name
+      =breadcrumbs_for_category category
+    %h3= category.name
     -#.description= category.description
 
     -#%ul.regions.clearfix
@@ -12,7 +12,7 @@
           -#- if region.locations.size > 0
             -#%span= region.locations.size.to_s
     %ul.categories.clearfix
-      - for child in provider_category.children
+      - for child in category.children
         %li
           %h3= link_to child, child
           - if child.children
@@ -23,6 +23,6 @@
 
     %ul.entries
       - for provider in providers
-        = render :partial => 'provider_categories/provider', :locals => { :provider => provider }
+        = render :partial => 'categories/provider', :locals => { :provider => provider }
     .page_navigation.clear= paginate providers
     %hr/
