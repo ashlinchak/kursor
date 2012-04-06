@@ -18,9 +18,9 @@ class ProviderLogoUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+  def default_url
+    "" + [version_name, "default_provider_logo.png"].compact.join('_')
+  end
 
   # Process files as they are uploaded:
   #process :resize_to_fill => [800, 800]

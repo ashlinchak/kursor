@@ -1,6 +1,9 @@
 - if current_user
   - if ( provider.user === current_user ) || current_user.administrator?
-    = link_to t(:'site.actions.edit'), edit_provider_path(provider), :class => 'link-icon icon-edit'
+    = link_to edit_provider_path(provider) do
+      %i.icon.icon-pencil
+      = t(:'site.actions.edit')
+
 %hr
 = link_to( provider.category, category_path(provider.category) ) if provider.category
 &gt;
@@ -8,32 +11,44 @@
 %hr
 .row
   .span8
-    - if provider.logo_url
-      .image-container
-        = image_tag provider.logo_url(:medium).to_s
-    .update-info
-      %strong
-        Последнее изменение:
-      = time_ago_in_words(provider.updated_at)
-      назад
-    %h1= provider.name
-    - if current_user
-      - if current_user.visitor?
-        - unless provider.student_users.include?(current_user)
-          = link_to 'Я учусь здесь!', join_provider_students_path(provider), :class => 'label label-info'
-        - else
-          = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'label label-info'
-    .custom-fields
-      %ul
-        - if provider.custom_fields.size > 0
-          - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
-            %li
-              %span= f.name
+    .row
+      .span3
+        - if provider.logo_url
+          .thumbnail
+            = image_tag provider.logo_url(:medium).to_s
+      .span5
+
+        %h1= provider.name
+
+        .update-info
+          %strong
+            Последнее изменение:
+          = time_ago_in_words(provider.updated_at)
+          назад
+        - if current_user
+          - if current_user.visitor?
+            - unless provider.student_users.include?(current_user)
+              = link_to 'Я учусь здесь!', join_provider_students_path(provider), :class => 'label label-info'
+            - else
+              = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'label label-info'
+
+    %br/
+    %table.table.table-striped.table-condensed
+      - if provider.custom_fields.size > 0
+        - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
+          %tr
+            %td
+              %span
+                %b= f.name
+            %td
               = f.value
         - if provider.location
-          %li
-            %span= t(:'providers.custom_fields.address')
-            = address_value provider.location
+          %tr
+            %td
+              %span
+                %b= t(:'providers.custom_fields.address')
+            %td
+              = address_value provider.location
 
     .description= markdown provider.description
     - if provider.description.blank?
@@ -47,48 +62,57 @@
     - if current_user
       - if current_user.administrator?
         %hr/
-        = link_to t(:'site.actions.destroy_user'), admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy'), :class => 'link-icon icon-delete'
-
+        = link_to admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
+          %i.icon.icon-remove
+          = t(:'site.actions.destroy_user')
   .span4
     .categories
       - if provider.categorizings.size > 0
-        %h3= t(:'providers.categories')
+        %h2.block-title= t(:'providers.categories')
         %ul
           - for categorizing in provider.categorizings do
             %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
 
-    .custom-flags
+    %h2.block-title=t(:'providers.custom_fields.title')
+    %table.table.table-striped.table-condensed
       - if provider.custom_flag_bindings.size > 0
-        %ul
-          - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
-            %li
+        - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
+          %tr
+            %td
               %span= field.custom_flag.name
+            %td
               = check_box_tag 'flag', '', field.value, :disabled => true
+
+    %h2.block-title=t(:'providers.contacts')
+    - for contact in provider.contacts.by_type do
+      %p
+        - unless contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+          %span{ :class => "span-icon icon-#{contact.contact_type}" }
+          = contact_value contact
     %hr/
-    - if provider.contacts.size > 0
-      .contacts
-        %h3 Contacts
-        %ul
-          - for contact in provider.contacts.by_type do
-            - unless contact.contact_type == 'facebook'
-              contact.contact_type
-              %li
-                %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+    %p
+      - for contact in provider.contacts.by_type
+        - if contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+          = social_icon contact
+    %br
+
 
     - if provider.filials.size > 0
-      .filials
-        %h3= t(:'providers.filials')
-        %ul
-          - for filial in provider.filials do
-            %li
-              -if filial.name.present?
-                %h4= filial.name
-              .location
-                = address_value filial.location
 
-              - if filial.contacts.size > 0
-                .contacts
-                  %ul
-                    - for contact in filial.contacts.by_type do
-                      %li
-                        %span{ :class => "span-icon icon-#{contact.contact_type}" }= contact_value contact
+      %h2.block-title= t(:'providers.filials')
+      - for filial in provider.filials do
+        -if filial.name.present?
+          %h4= filial.name
+        %p
+          = address_value filial.location
+
+        - if filial.contacts.size > 0
+          - for contact in filial.contacts.by_type do
+            %p
+              - unless contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+                %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                = contact_value contact
+        %p
+          - for contact in provider.contacts.by_type
+            - if contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+              = social_icon contact

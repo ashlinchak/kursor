@@ -61,12 +61,14 @@ ru:
     custom_fields:
       add: Добавить поле
       address: "Адрес"
+      title: "Особенности"
     custom_flags:
       add: "Добавить флаг"
     categories: "Категории"
     filials: "Филиалы"
     more_info: "Дополнительная информация"
     documents_info: "Информация для поступления"
+    contacts: "Контакты"
 
   search:
     results_found: "Найдено результатов: %{num}"
