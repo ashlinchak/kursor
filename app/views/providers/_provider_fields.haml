@@ -79,6 +79,7 @@
   .span12
     %fieldset
       %legend= t(:'admin.users.legends.filials')
+    %br/
     = f.fields_for :filials do |fi|
       = render :partial => 'filials/filial_fields', :locals => { :f => fi }
 .row

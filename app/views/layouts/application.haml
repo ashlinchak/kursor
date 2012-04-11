@@ -21,13 +21,27 @@
   = stylesheet_link_tag "application"
   /[if IE]
     %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
+  %script{ :type => "text/javascript", :src => "http://userapi.com/js/api/openapi.js?49" }
+  :javascript
+    VK.init({apiId: 2900318, onlyWidgets: true})
+
+  #fb-root
+  :javascript
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=383815018325312";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
   = csrf_meta_tags
 %body
   #page
     %header.container
       -#.container
       %h1#logo.ir
-        = link_to 'Kursor.ua', root_url
+        = link_to 'КУРСОР - образовательный портал', root_url
 
 
       %form.form-search{ :action => '/search', :method => :get, :style => 'padding: 5px 5px 5px 20px; margin: 50px 0px 0px 0px; float: right;'}
