@@ -20,7 +20,7 @@ Kursor::Application.routes.draw do
     resources :custom_flags do
       post 'sort', :on => :collection
     end
-    resources :locations
+    resources :cities
   end
 
   resources :search

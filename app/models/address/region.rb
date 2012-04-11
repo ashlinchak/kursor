@@ -1,5 +1,8 @@
 class Region < ActiveRecord::Base
   include Address
+  def self.table_name_prefix
+    'address_'
+  end
   #belongs_to :country
   #belongs_to :region
   has_many :cities
@@ -7,7 +10,4 @@ class Region < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
-  #def to_s
-    #name
-  #end
 end

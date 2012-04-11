@@ -20,7 +20,7 @@ module Kursor
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-    config.autoload_paths += %W(#{Rails.root}/lib)
+    config.autoload_paths += %W(#{Rails.root}/lib #{Rails.root}/app/models/**/*)
 
     config.autoload_paths += Dir["#{Rails.root.to_s}/app/models/*"].find_all { |f| File.stat(f).directory? }
     # Only load the plugins named here, in the order given (default is alphabetical).
