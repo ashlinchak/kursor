@@ -13,7 +13,11 @@
 //= require sets/default/set
 //= require_tree .
 
+
   $(document).ready(function(){
+
+
+
 
   $('html').removeClass('no-js');
 
@@ -32,6 +36,7 @@
   //$('.category-sub-parent').change(function(){
     //show_sub_categories(this);
   //});
+
 
   $('.select-city').bind('click change keyup blur load', function(){
     if ( $(this).val() == '' ){
@@ -60,7 +65,10 @@
     }
   });
 
+
 });
+
+
 
 //function show_categories(parent) {
   //var category = $("#child-of-" + $(parent).val());

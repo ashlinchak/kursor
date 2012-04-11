@@ -1,14 +1,33 @@
 - if current_user
   - if ( provider.user === current_user ) || current_user.administrator?
     = link_to edit_provider_path(provider) do
-      %i.icon.icon-pencil
-      = t(:'site.actions.edit')
+      %p
+        %i.icon.icon-pencil
+        = t(:'site.actions.edit')
 
-%hr
-= link_to( provider.category, category_path(provider.category) ) if provider.category
-&gt;
-= link_to provider
-%hr
+    - if current_user.provider
+      - if !current_user.provider.is_approved?
+        .alert.alert-info.alert-block
+          %h4.alert-heading= t(:'providers.edit.not_approved.title')
+          %p= t(:'providers.edit.not_approved.desc').html_safe
+    %hr
+
+.row
+  .span12
+    #vk_like
+    :javascript
+      VK.Widgets.Like("vk_like", {type: "button", verb: 1});
+    .fb-like( data-send = "true" data-layout = "button_count" data-width = "450" data-show-faces = "true" )
+
+
+%ul.breadcrumb
+  %li= link_to( provider.category, category_path(provider.category) ) if provider.category
+  %span.divider
+    \/
+  %li= link_to provider
+
+
+
 .row
   .span8
     .row
@@ -50,15 +69,37 @@
             %td
               = address_value provider.location
 
-    .description= markdown provider.description
-    - if provider.description.blank?
-      %p= t(:'providers.description.visit_website_for_more_info')
-    - if !provider.more_info.blank?
-      %h3= t(:'providers.more_info')
-      .more-info= markdown provider.more_info
-    - if !provider.documents_info.blank?
-      %h3= t(:'providers.documents_info')
-      .documents-info= markdown provider.documents_info
+
+
+    %ul#ProviderTabs.nav.nav-tabs
+      %li.active
+        %a( href = "#description" data-toggle = "tab" )
+          = t(:'providers.main_info')
+      - if !provider.more_info.blank?
+        %li
+          %a( href = "#more_info" data-toggle = "tab" )
+            = t(:'providers.more_info')
+      - if !provider.documents_info.blank?
+        %li
+          %a( href = "#documents_info" data-toggle = "tab" )
+            = t(:'providers.documents_info')
+
+
+
+    #myTabContent.tab-content
+      #description.tab-pane.fade.active.in
+        - if !provider.description.blank?
+          .description= markdown provider.description
+        - else
+          %p= t(:'providers.visit_website_for_more_info')
+      #more_info.tab-pane.fade
+        - if !provider.more_info.blank?
+          .more-info= markdown provider.more_info
+      #documents_info.tab-pane.fade
+        - if !provider.documents_info.blank?
+          .documents-info= markdown provider.documents_info
+
+
     - if current_user
       - if current_user.administrator?
         %hr/
@@ -81,7 +122,12 @@
             %td
               %span= field.custom_flag.name
             %td
-              = check_box_tag 'flag', '', field.value, :disabled => true
+              - if field.value == true
+                .label.label-success
+                  = t(:'providers.custom_flags.true_value')
+              - else
+                .label.label-important
+                  = t(:'providers.custom_flags.false_value')
 
     %h2.block-title=t(:'providers.contacts')
     - for contact in provider.contacts.by_type do
@@ -99,20 +145,30 @@
 
     - if provider.filials.size > 0
 
-      %h2.block-title= t(:'providers.filials')
-      - for filial in provider.filials do
-        -if filial.name.present?
-          %h4= filial.name
-        %p
-          = address_value filial.location
 
-        - if filial.contacts.size > 0
-          - for contact in filial.contacts.by_type do
-            %p
-              - unless contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
-                %span{ :class => "span-icon icon-#{contact.contact_type}" }
-                = contact_value contact
-        %p
-          - for contact in provider.contacts.by_type
-            - if contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
-              = social_icon contact
+      %h2.block-title= t(:'providers.filials')
+
+      #accordion2.accordion
+        - provider.filials.each_with_index do |filial, index|
+          .accordion-group
+            .accordion-heading
+              %a( class="accordion-toggle" data-toggle = "collapse" data-parent = "#accordion2"){ :href => "#collapse" + index.to_s}
+                - if filial.name.present?
+                  = filial.name
+                - else
+                  No filial name
+              .accordion-body.collapse.in{ :id => "collapse" + index.to_s }
+                .accordion-inner
+                  %p
+                    = address_value filial.location
+
+                  - if filial.contacts.size > 0
+                    - for contact in filial.contacts.by_type do
+                      %p
+                        - unless contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+                          %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                          = contact_value contact
+                  %p
+                    - for contact in provider.contacts.by_type
+                      - if contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+                        = social_icon contact
