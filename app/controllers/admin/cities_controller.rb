@@ -1,4 +1,4 @@
-class Admin::LocationsController < Admin::DashboardController
+class Admin::CitiesController < Admin::DashboardController
   layout 'admin'
 
   before_filter :require_authorization
@@ -24,7 +24,7 @@ class Admin::LocationsController < Admin::DashboardController
   end
 
   def update
-    if city.update_attributes(params[:location])
+    if city.update_attributes(params[:address_city])
       redirect_to admin_location_path, :notice => 'Location was successfully updated.'
     else
       render :action => "edit"
@@ -38,15 +38,15 @@ class Admin::LocationsController < Admin::DashboardController
   end
 
   def regions
-    @regions ||= Address::Region.all
+    @regions ||= Region.all
   end
   helper_method :regions
 
   def city
     @city ||= if params[:id]
-      Address::City.find params[:id]
+      City.find params[:id]
     else
-      Address::City.new params[:address_city]
+      City.new params[:address_city]
     end
   end
   helper_method :city

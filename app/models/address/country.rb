@@ -1,5 +1,5 @@
-class Address::Country < ActiveRecord::Base
-
+class Country < ActiveRecord::Base
+  include Address
   #def to_s
     #name
   #end

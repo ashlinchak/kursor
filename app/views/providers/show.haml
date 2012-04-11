@@ -99,7 +99,7 @@
         %h2.block-title= t(:'providers.categories')
         %ul
           - for categorizing in provider.categorizings do
-            %li= link_to categorizing, category_path(categorizing.category.permalink), :class => 'link-icon icon-arrow'
+            %li= link_to categorizing, category_path(categorizing.category.permalink)
 
     %h2.block-title=t(:'providers.custom_fields.title')
     %table.table.table-striped.table-condensed

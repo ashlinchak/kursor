@@ -10,7 +10,8 @@ class CategoriesController < ApplicationController
   private
 
   def categories
-    @categories = if params[:id]
+    @categories ||= if params[:id]
+      category.children
     else
       root_categories
     end
@@ -18,8 +19,8 @@ class CategoriesController < ApplicationController
   helper_method :categories
 
   def category
-    @category = if params[:id]
-      Category.find_by_permalink(params[:id])
+    @category ||= if params[:id]
+      Category.find_by_permalink!(params[:id])
     else
       Category.new(params[:categories])
     end
@@ -28,10 +29,8 @@ class CategoriesController < ApplicationController
 
   def providers
     @providers ||= if category.root?
-      #category.providers
       Kaminari.paginate_array(category.providers).page(params[:page]).per(30)
     else
-      #category.sub_providers
       Kaminari.paginate_array(category.sub_providers).page(params[:page]).per(30)
     end
   end
