@@ -1,4 +1,4 @@
-class Address::Region < ActiveRecord::Base
+class Region < ActiveRecord::Base
   include Address
   #belongs_to :country
   #belongs_to :region
