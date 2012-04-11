@@ -5,16 +5,13 @@
       - if current_user.visitor?
         = link_to my_profile_path do
           = current_user
-        - if current_user.profile.present?
-          = link_to my_profile_path do
+          - if current_user.profile.present?
             = image_tag current_user.profile.avatar_url(:icon), :class => 'icon'
+
       - else
         = link_to my_profile_path do
-          = current_user.email
-
-        - if current_user.provider
-          = link_to my_profile_path do
-            = image_tag current_user.provider.logo_url(:icon), :class => 'icon'
+          = current_user
+          -#= image_tag current_user.provider.logo(:icon), :class => 'icon'
 
     - if authorized?
       %li= link_to t(:'site.nav.admin-panel'), admin_path

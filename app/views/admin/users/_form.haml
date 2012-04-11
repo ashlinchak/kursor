@@ -3,15 +3,15 @@
   %fieldset
     %legend User info
     .control-group
-      = f.label :email, :class => 'control-label'
+      = f.label :email
       .controls
         = f.text_field :email, :class => 'input-xlarge'
     .control-group
-      = f.label :password, :class => 'control-label'
+      = f.label :password
       .controls
         = f.password_field :password, :class => 'input-xlarge'
     .control-group
-      = f.label :password_confirmation, :class => 'control-label'
+      = f.label :password_confirmation
       .controls
         = f.password_field :password_confirmation, :class => 'input-xlarge'
         %input{ :name => 'current_user', :value => "#{current_user.email.split('@')[0]}", :type => :hidden }
@@ -27,7 +27,7 @@
               = t("activerecord.attributes.user.account_types.#{account_type}")
   = f.fields_for :provider do |p|
     .control-group
-      = p.label :is_approved, :class => 'control-label'
+      = p.label :is_approved
       .controls
         = p.check_box :is_approved
     = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
