@@ -5,7 +5,7 @@ class Admin::DashboardController < ApplicationController
   def index
 
     @admin_users = Administrator.all.size
-    @cities = Address::City.all.size
+    @cities = City.all.size
     @categories = Category.all.size
     @news = News.all.size
     @posts = Posting.all.size
