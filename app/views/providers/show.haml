@@ -10,13 +10,24 @@
         .alert.alert-info.alert-block
           %h4.alert-heading= t(:'providers.edit.not_approved.title')
           %p= t(:'providers.edit.not_approved.desc').html_safe
-%hr
-= link_to( provider.category, category_path(provider.category) ) if provider.category
-&gt;
-= link_to provider
-%hr
+    %hr
+
+
+
+
+%ul.breadcrumb
+  %li= link_to( provider.category, category_path(provider.category) ) if provider.category
+  %span.divider
+    \/
+  %li= link_to provider
+
+
+
 .row
   .span8
+    .row
+      .span8
+        = render :partial => 'shared/bookmarks'
     .row
       .span3
         - if provider.logo_url
@@ -101,9 +112,11 @@
           - for categorizing in provider.categorizings do
             %li= link_to categorizing, category_path(categorizing.category.permalink)
 
-    %h2.block-title=t(:'providers.custom_fields.title')
-    %table.table.table-striped.table-condensed
-      - if provider.custom_flag_bindings.size > 0
+
+
+    - if provider.custom_flag_bindings.size > 0
+      %h2.block-title=t(:'providers.custom_fields.title')
+      %table.table.table-striped.table-condensed
         - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
           %tr
             %td
@@ -132,20 +145,30 @@
 
     - if provider.filials.size > 0
 
-      %h2.block-title= t(:'providers.filials')
-      - for filial in provider.filials do
-        -if filial.name.present?
-          %h4= filial.name
-        %p
-          = address_value filial.location
 
-        - if filial.contacts.size > 0
-          - for contact in filial.contacts.by_type do
-            %p
-              - unless contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
-                %span{ :class => "span-icon icon-#{contact.contact_type}" }
-                = contact_value contact
-        %p
-          - for contact in provider.contacts.by_type
-            - if contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
-              = social_icon contact
+      %h2.block-title= t(:'providers.filials')
+
+      #accordion2.accordion
+        - provider.filials.each_with_index do |filial, index|
+          .accordion-group
+            .accordion-heading
+              %a( class="accordion-toggle" data-toggle = "collapse" data-parent = "#accordion2"){ :href => "#collapse" + index.to_s}
+                - if filial.name.present?
+                  = filial.name
+                - else
+                  No filial name
+              .accordion-body.collapse.in{ :id => "collapse" + index.to_s }
+                .accordion-inner
+                  %p
+                    = address_value filial.location
+
+                  - if filial.contacts.size > 0
+                    - for contact in filial.contacts.by_type do
+                      %p
+                        - unless contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+                          %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                          = contact_value contact
+                  %p
+                    - for contact in provider.contacts.by_type
+                      - if contact.contact_type =~ /twitter|facebook|vkontakte|google|youtube/
+                        = social_icon contact

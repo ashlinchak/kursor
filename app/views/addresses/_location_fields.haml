@@ -2,7 +2,7 @@
   %label.control-label
     = t(:'visitor.edit_profile.location.city')
   .controls
-    = f.select :city_id, Address::City.all.collect{|c| [c.name, c.id]}, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
+    = f.select :city_id, City.all.collect{|c| [c.name, c.id]}, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
     = #f.text_field :custom_city, :class => 'custom-city'
 .control-group
   %label.control-label
