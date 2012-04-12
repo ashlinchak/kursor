@@ -17,15 +17,15 @@ class Admin::CitiesController < Admin::DashboardController
 
   def create
     if city.save
-      redirect_to admin_locations_path, :notice => 'Location was successfully created.'
+      redirect_to admin_cities_path, :notice => 'Location was successfully created.'
     else
       render :action => "new"
     end
   end
 
   def update
-    if city.update_attributes(params[:address_city])
-      redirect_to admin_location_path, :notice => 'Location was successfully updated.'
+    if city.update_attributes(params[:city])
+      redirect_to admin_cities_path, :notice => 'Location was successfully updated.'
     else
       render :action => "edit"
     end
@@ -34,7 +34,7 @@ class Admin::CitiesController < Admin::DashboardController
   def destroy
     category.destroy
 
-    redirect_to admin_locations_path
+    redirect_to admin_cities_path
   end
 
   def regions
@@ -46,7 +46,7 @@ class Admin::CitiesController < Admin::DashboardController
     @city ||= if params[:id]
       City.find params[:id]
     else
-      City.new params[:address_city]
+      City.new params[:city]
     end
   end
   helper_method :city

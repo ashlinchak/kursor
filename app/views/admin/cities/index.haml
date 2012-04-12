@@ -19,7 +19,7 @@
           %ul
             - region.cities.each do |city|
               %li
-                = city.name
+                = link_to city.name, edit_admin_city_path(city)
 %hr/
 = link_to new_admin_city_path do
   %i.icon-plus-sign

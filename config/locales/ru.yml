@@ -12,7 +12,7 @@ ru:
     nav:
       pre-schools: "Дошкольное"
       schools: "Школы"
-      technical: "Проф.-Тех."
+      technical: "Профтех"
       high-schools: "ВУЗы"
       courses: "Курсы"
       tutors: "Специалисты"
@@ -31,6 +31,19 @@ ru:
       news: "Последние новости"
       featured_posting: "Свежие статьи"
       categories: "Категории"
+
+  contacts:
+    social_icons:
+      vkontakte: "Вконтакте"
+      facebook: "Facebook"
+      twitter: "Twitter"
+      odnoklasniki: "Однокласники"
+      livejournal: "Живой Журнал"
+      blogger: "Blogger"
+      google: "Google+"
+      youtube: "YouTube"
+      vimeo: "Vimeo"
+
 
   providers:
 
