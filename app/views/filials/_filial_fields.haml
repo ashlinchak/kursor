@@ -7,8 +7,12 @@
           = f.text_field :name
 
       -# TODO: research nested associations building
+      -#= f.fields_for( f.object.location || f.object.class.reflect_on_association(:location).klass.new ) do |l|
+      -#  = render :partial => 'providers/location_fields', :locals => { :f => l }
+      -#
+
       = f.fields_for( f.object.location || f.object.class.reflect_on_association(:location).klass.new ) do |l|
-        = render :partial => 'providers/location_fields', :locals => { :f => l }
+        = render :partial => 'addresses/location_fields', :locals => { :f => l }
 
     .span6
       = f.fields_for :contacts do |c|

@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+
+
   private
 
   def root_categories
@@ -82,4 +84,5 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
 end

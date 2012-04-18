@@ -40,7 +40,8 @@
     %fieldset
       %legend= t(:'admin.users.legends.address')
       = f.fields_for :location do |l|
-        = render :partial => 'providers/location_fields', :locals => { :f => l }
+        = render :partial => 'addresses/location_fields', :locals => { :f => l }
+
   .span6
     %fieldset
       %legend= t(:'admin.users.legends.contacts')
