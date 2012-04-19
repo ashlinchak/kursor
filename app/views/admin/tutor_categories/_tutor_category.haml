@@ -1,0 +1,6 @@
+= link_to tutor_category.name, edit_admin_tutor_category_path( tutor_category )
+-if tutor_category.children
+  %ul
+    - for tutor_category in tutor_category.children
+      %li= link_to tutor_category.name, edit_admin_tutor_category_path( tutor_category )
+      = render :partial => 'tutor_category', :collection => tutor_category.children

@@ -24,6 +24,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :root_categories
 
+  def root_tutor_categories
+    @root_tutor_categories ||= TutorCategory.roots
+  end
+  helper_method :root_tutor_categories
+
   def root_posting_categories
       @root_posting_categories ||= PostingCategory.roots
   end
