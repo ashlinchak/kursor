@@ -1,0 +1,16 @@
+= form_for category, :url => ( category.new_record? ? admin_categories_path : admin_category_path(category) ), :html => { :multipart => true } do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => category }
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :parent_id
+    = f.select :parent_id, Category.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }
+  .field
+    = f.label :permalink
+    = f.text_field :permalink
+  .actions
+    = f.submit

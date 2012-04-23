@@ -1,0 +1,30 @@
+%h2= t(:'admin.provider_categories.title')
+= link_to new_admin_category_path do
+  %i.icon-plus-sign
+  Add Category
+%hr/
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %th Title
+    %th Children
+    %th{ :width => '130' } Actions
+  %tbody
+    - root_categories.each do |prov_category|
+      %tr
+        %td= prov_category.name
+        -#.description= category.description
+        %td
+          -if prov_category.children
+            %ul
+              = render :partial => 'category', :collection => prov_category.children
+        %td
+          = link_to edit_admin_category_path( prov_category ) do
+            %i.icon-pencil
+            Edit
+          = link_to admin_category_path( prov_category ), :method => :delete, :confirm => 'Are you sure?' do
+            %i.icon-remove
+            Delete
+%hr/
+= link_to new_admin_category_path do
+  %i.icon-plus-sign
+  Add Category
