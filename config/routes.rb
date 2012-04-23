@@ -4,6 +4,7 @@ Kursor::Application.routes.draw do
 
   namespace :admin do
     resources :categories
+    resources :tutor_categories
     resources :info
     resources :news
     resources :postings do

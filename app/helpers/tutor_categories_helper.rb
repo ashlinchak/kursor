@@ -1,10 +1,10 @@
-module CategoriesHelper
-  def breadcrumbs_for_category category
+module TutorCategoriesHelper
+  def breadcrumbs_for_tutor_category tutor_category
     result = ''
-    if !category.parent.nil?
-      result += breadcrumbs_for_category category.parent
+    if !tutor_category.parent.nil?
+      result += breadcrumbs_for_tutor_category tutor_category.parent
     end
-    result += " <li><span class='divider'>/</span> #{link_to category, category} </li>"
+    result += " <li><span class='divider'>/</span> #{link_to tutor_category, tutor_category} </li>"
     raw result
   end
 end

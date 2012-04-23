@@ -1,7 +1,7 @@
-%h1 Editing category
+%h1= t(:'admin.tutor_categories.edition')
 
 = render 'form'
 
-= link_to edit_admin_category_path(category), :method => :delete, :confirm => 'Are you sure?' do
+= link_to edit_admin_tutor_category_path(tutor_category), :method => :delete, :confirm => 'Are you sure?' do
   %i.icon-remove
-  Delete
+  = t(:'admin.provider_categories.delete')

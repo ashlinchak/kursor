@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120318152012) do
+ActiveRecord::Schema.define(:version => 20120419131401) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -272,6 +272,40 @@ ActiveRecord::Schema.define(:version => 20120318152012) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tutor_categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "parent_id"
+    t.string   "permalink"
+    t.integer  "tutors_count", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tutor_categories", ["parent_id"], :name => "index_tutor_categories_on_parent_id"
+
+  create_table "tutor_categorizings", :force => true do |t|
+    t.integer  "tutor_category_id"
+    t.integer  "tutor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tutor_categorizings", ["tutor_category_id"], :name => "index_tutor_categorizings_on_tutor_category_id"
+  add_index "tutor_categorizings", ["tutor_id"], :name => "index_tutor_categorizings_on_tutor_id"
+
+  create_table "tutors", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "tutor_category_id"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_approved",       :default => false
+  end
+
+  add_index "tutors", ["tutor_category_id"], :name => "index_tutors_on_tutor_category_id"
 
   create_table "user_activations", :force => true do |t|
     t.string   "token"

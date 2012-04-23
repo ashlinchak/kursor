@@ -1,12 +1,12 @@
-class Category < ActiveRecord::Base
+class TutorCategory < ActiveRecord::Base
 
-  belongs_to :parent, :class_name => 'Category'
-  has_many :children, :class_name => 'Category', :foreign_key => 'parent_id', :dependent => :destroy
-  has_many :top_subcategories, :class_name => 'Category', :limit => 5, :order => 'providers_count desc', :foreign_key => 'parent_id', :dependent => :destroy
+  belongs_to :parent, :class_name => 'TutorCategory'
+  has_many :children, :class_name => 'TutorCategory', :foreign_key => 'parent_id', :dependent => :destroy
+  has_many :top_tutor_subcategories, :class_name => 'TutorCategory', :limit => 5, :order => 'tutors_count desc', :foreign_key => 'parent_id', :dependent => :destroy
 
-  has_many :categorizings, :dependent => :destroy
-  has_many :providers
-  has_many :sub_providers, :through => :categorizings, :source => :provider
+  has_many :tutor_categorizings, :dependent => :destroy
+  has_many :tutor
+  #has_many :sub_tutors, :through => :tutor_categorizings, :source => :provider
 
   validates_presence_of :name, :description, :permalink
   validates :name, :permalink, :uniqueness => true

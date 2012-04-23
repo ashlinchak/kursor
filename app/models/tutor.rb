@@ -1,12 +1,12 @@
 class Provider < ActiveRecord::Base
-  belongs_to :category
+  belongs_to :tutor_category
   belongs_to :user
 
-  has_many :categorizings, :dependent => :destroy
-  has_many :categories, :through => :categorizings
+  has_many :tutor_categorizings, :dependent => :destroy
+  has_many :tutor_categories, :through => :tutor_categorizings
 
-  has_many :filials, :dependent => :destroy
-  accepts_nested_attributes_for :filials, :reject_if => :all_blank, :allow_destroy => true
+  #has_many :filials, :dependent => :destroy
+  #accepts_nested_attributes_for :filials, :reject_if => :all_blank, :allow_destroy => true
 
   has_one :location, :as => :addressable, :dependent => :destroy
   accepts_nested_attributes_for :location
@@ -27,7 +27,7 @@ class Provider < ActiveRecord::Base
 
   before_save :generate_permalink
 
-  mount_uploader :logo, ProviderLogoUploader
+  mount_uploader :avatar, TutorAvatarUploader
 
   searchable_by :name
   paginates_per 30
@@ -44,8 +44,8 @@ class Provider < ActiveRecord::Base
     name
   end
 
-  def category_ids=(ids)
-    self.categories = Category.find(ids)# || []
+  def tutor_category_ids=(ids)
+    self.tutor_categories = TutorCategory.find(ids)# || []
   end
 
   def generate_permalink

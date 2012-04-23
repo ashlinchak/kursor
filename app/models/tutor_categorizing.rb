@@ -1,9 +1,9 @@
 class Categorizing < ActiveRecord::Base
-  belongs_to :category, :counter_cache => :providers_count
-  belongs_to :provider
+  belongs_to :tutor_category, :counter_cache => :tutors_count
+  belongs_to :tutor
 
 
   def to_s
-    category
+    tutor_category
   end
 end

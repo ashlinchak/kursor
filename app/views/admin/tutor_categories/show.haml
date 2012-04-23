@@ -1,19 +1,15 @@
 .column.span-20.prepend-4
-  =breadcrumbs_for_category category
-  %h2= category.name
-  .description= category.description
+  =breadcrumbs_for_tutor_category tutor_category
+  %h2= tutor_category.name
+  .description= tutor_category.description
 
   %ul
-    - category.children.each do |child|
+    - tutor_category.children.each do |child|
       %li= link_to child.name, child
 
 
   %h3 Вхождения:
   %ul
-    - category.categorizings.each do |categorizing|
-      %li= link_to categorizing.provider.name, provider_path(categorizing.provider.permalink)
+    - tutor_category.tutor_categorizings.each do |tutor_categorizing|
+      %li= link_to tutor_categorizing.tutor.name, tutor_path(tutor_categorizing.tutor.permalink)
 
--#%hr/
--#= link_to 'Edit', edit_category_path(category)
--#\|
--#= link_to 'Back', categories_path
