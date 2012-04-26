@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
+  has_one :tutor, :dependent => :destroy
   has_one :profile, :dependent => :destroy
   has_one :user_activation, :dependent => :destroy
   has_many :students

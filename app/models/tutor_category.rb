@@ -5,8 +5,8 @@ class TutorCategory < ActiveRecord::Base
   has_many :top_tutor_subcategories, :class_name => 'TutorCategory', :limit => 5, :order => 'tutors_count desc', :foreign_key => 'parent_id', :dependent => :destroy
 
   has_many :tutor_categorizings, :dependent => :destroy
-  has_many :tutor
-  #has_many :sub_tutors, :through => :tutor_categorizings, :source => :provider
+  has_many :tutors
+  has_many :sub_tutors, :through => :tutor_categorizings, :source => :tutor
 
   validates_presence_of :name, :description, :permalink
   validates :name, :permalink, :uniqueness => true

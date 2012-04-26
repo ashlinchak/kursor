@@ -8,15 +8,15 @@
 #  :enable_starttls_auto => true
 #}
 
-ActionMailer::Base.smtp_settings = {
-    :address              => "mail.brainbox.com.ua",
-    :port                 => 26,
-    :domain               => "brainbox.com.ua",
-    :user_name            => "kursor+brainbox.com.ua",
-    :password             => "$ZGy%ZKuu&TE",
-    :authentication       => "plain",
-    :enable_starttls_auto => true
-}
-
+#ActionMailer::Base.smtp_settings = {
+#    :address              => "mail.brainbox.com.ua",
+#    :port                 => 26,
+#    :domain               => "brainbox.com.ua",
+#    :user_name            => "kursor+brainbox.com.ua",
+#    :password             => "$ZGy%ZKuu&TE",
+#    :authentication       => "plain",
+#    :enable_starttls_auto => false
+#}
+#
 
 

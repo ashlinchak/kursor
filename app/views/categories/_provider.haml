@@ -1,6 +1,6 @@
 %li.clearfix.list-provider
-  -if provider.logo_url
-    .image-container
+  .image-container
+    = link_to provider_path(provider) do
       = image_tag provider.logo_url(:medium)
   %h4= link_to provider.name, provider_path(provider)
   - if provider.location
@@ -9,6 +9,7 @@
         = "#{t(:'providers.custom_fields.address')}:"
       = format_location provider.location
   .categories
-    %ul
-      - for categoring in provider.categorizings
-        %li= link_to categoring, category_path(categoring.category)
+    - if provider
+      %ul
+        - for categoring in provider.categorizings
+          %li= link_to categoring, category_path(categoring.category)

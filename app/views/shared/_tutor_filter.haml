@@ -1,0 +1,5 @@
+.breadcrumb
+  = form_for :search, :url => tutor_category, :method => :get, :html => { :class => 'form-inline' } do |f|
+    = select_tag "search_region_id", options_from_collection_for_select(Region.all, :id, :name), :prompt => t(:'admin.users.selectors.choose_region')
+    = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
+    = f.submit t(:'site.sorting.sort_action'), :class => 'btn btn-success'

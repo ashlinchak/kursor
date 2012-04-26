@@ -1,0 +1,13 @@
+.row
+  .span12
+    %h3 Select tutor category
+    %ul.categories.clearfix
+      - for child in tutor_categories
+        %li
+          %h3= link_to child, child
+          - if child.children
+            %ul.children-categories
+              - for child in child.children
+                %li= link_to child, child
+
+    %hr/

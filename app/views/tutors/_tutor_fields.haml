@@ -1,0 +1,73 @@
+.row
+  .span12
+    %fieldset
+      %legend= t(:'providers.edit.title')
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name, :class => 'span8'
+      .control-group
+        = f.label :avatar, :class => 'control-label'
+        .controls
+          = f.file_field :avatar
+          = f.hidden_field :avatar_cache
+
+      - if tutor.avatar?
+        .control-group
+          %label.control-label
+            = image_tag(tutor.avatar_url(:thumb))
+          .controls
+            %label.checkbox
+              = f.check_box :remove_avatar
+              = t(:'providers.edit.check_to_remove')
+
+.row
+  .span6
+    %fieldset
+      %legend= t(:'admin.custom_fields.headers.title')
+      = f.fields_for :tutor_custom_field_bindings do |b|
+        = render :partial => 'custom_field_bindings/custom_field_binding_fields', :locals => { :f => b }
+      .fields= link_to_add_fields t(:'providers.custom_fields.add'), f, :tutor_custom_field_bindings
+  .span6
+
+%br
+.row
+  .span6
+    %fieldset
+      %legend= t(:'admin.users.legends.address')
+      = f.fields_for :location do |l|
+        = render :partial => 'addresses/location_fields', :locals => { :f => l }
+
+  .span6
+    %fieldset
+      %legend= t(:'admin.users.legends.contacts')
+      = f.fields_for :contacts do |c|
+        = render :partial => 'contacts/contact_fields', :locals => { :f => c }
+      .fields= link_to_add_fields "Add contact", f, :contacts
+
+%br
+%legend= t(:'providers.edit.description')
+.row
+  .span6
+    = f.label :description
+    = f.text_area :description, :class => 'span8'
+  .span6
+
+.row
+  .span6
+    = f.label :methodology
+    = f.text_area :methodology, :class => 'span8'
+  .span6
+
+.row
+  .span6
+    = f.label :more_info
+    = f.text_area :more_info, :class => 'span8'
+  .span6
+
+%hr/
+.row
+  .span12
+    %fieldset
+      %legend= t(:'admin.users.legends.categories')
+      = render :partial => 'category_fields', :locals => { :f => f, :tutor => tutor }

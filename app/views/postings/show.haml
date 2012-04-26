@@ -1,5 +1,8 @@
 .row
   .span8
+    %table.bookmarks
+      %tr
+        = render :partial => 'shared/bookmarks'
     - if current_user === posting.user
       .actions
         = link_to edit_posting_path(posting) do

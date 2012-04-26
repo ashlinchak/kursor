@@ -1,0 +1,6 @@
+= form_for(tutor, :html => { :class => 'form-horizontal' }) do |f|
+  = render :partial => "shared/form_errors", :locals => { :object => tutor }
+  = render :partial => 'tutor_fields', :locals => { :f => f, :tutor => tutor }
+  .form-actions
+    = submit_tag t(:'providers.edit.actions.save'), :class => 'btn btn-large btn-success'
+    = link_to t(:'providers.edit.actions.cancel'), tutor, :class => 'btn btn-large btn-warning'

@@ -1,0 +1,22 @@
+.row
+  .span12
+    = render 'shared/tutor_filter'
+    %ul.breadcrumb
+      =breadcrumbs_for_tutor_category tutor_category
+    %h3= tutor_category.name
+    %ul.categories.clearfix
+      - for child in tutor_category.children
+        %li
+          %h3= link_to child, child
+          - if child.children
+            %ul.children-categories
+              - for child in child.children
+                %li= link_to child, child
+    - if tutors.size > 0
+      %ul.entries
+        - for tut in tutors
+          = render :partial => 'tutor_categories/tutor', :locals => { :tutor => tut }
+      .page_navigation.clear= paginate tutors
+    - else
+      No tutors found
+    %hr/

@@ -18,6 +18,9 @@ Kursor::Application.routes.draw do
     resources :custom_fields do
       post 'sort', :on => :collection
     end
+    resources :tutor_custom_fields do
+      post 'sort', :on => :collection
+    end
     resources :custom_flags do
       post 'sort', :on => :collection
     end
@@ -61,7 +64,17 @@ Kursor::Application.routes.draw do
     end
   end
 
+  resources :tutors do
+    resources :students, :only => [] do
+      collection do
+        get 'join'
+        get 'leave'
+      end
+    end
+  end
+
   resources :categories, :only => [:index, :show]
+  resources :tutor_categories, :only => [:index, :show]
   resources :posting_categories, :only => [:index, :show]
 
   root :to => 'home#index'

@@ -12,10 +12,23 @@
             = t(:'users.pending')
     %hr/
 - if authenticated?
-  - unless user.visitor?
+
+  - if user.tutor?
+    - unless user.tutor
+      - if user === current_user
+        .alert.alert-block
+          %h4.alert-heading= t(:'providers.edit.no_provider')
+          %p= t(:'providers.edit.no_provider_desc')
+          %p
+            = link_to new_tutor_path, :class => 'btn btn-success' do
+              %i.icon-white.icon-list-alt
+              = t(:'providers.edit.add_provider')
+    - else
+      = link_to user.tutor, user.tutor
+
+  - elsif user.provider?
     - unless user.provider
       - if user === current_user
-
         .alert.alert-block
           %h4.alert-heading= t(:'providers.edit.no_provider')
           %p= t(:'providers.edit.no_provider_desc')
@@ -25,7 +38,8 @@
               = t(:'providers.edit.add_provider')
     - else
       = link_to user.provider, user.provider
-  - else
+
+  - elsif user.visitor?
     - if user.profile
       = render :partial => '/profile/profile', :locals => { :profile => user.profile }
 - else

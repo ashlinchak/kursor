@@ -1,6 +1,6 @@
-%h2= t(:'admin.custom_fields.headers.provider')
+%h2= t(:'admin.custom_fields.headers.tutor')
 
-= link_to new_admin_custom_field_path do
+= link_to new_admin_tutor_custom_field_path do
   %i.icon-plus-sign
   = t(:'admin.custom_fields.buttons.create_custom_field')
 
@@ -11,12 +11,12 @@
     %th= t(:'admin.custom_fields.headers.custom_field_name')
     %th{:style => 'width: 60px;'}
   %tbody.sort-custom_fields.sortable
-    - for field in custom_fields do
+    - for field in tutor_custom_fields do
       %tr{ :style => 'width: 100%;', :id => "sorted-item_#{field.id}", :class => 'custom_field'}
         %td.drag-handle |:|
-        %td= link_to field, edit_admin_custom_field_path(field)
-        %td= link_to '[X]', admin_custom_field_path(field), :method => :destroy, :confirm => 'Are you sure?'
+        %td= link_to field, edit_admin_tutor_custom_field_path(field)
+        %td= link_to '[X]', admin_tutor_custom_field_path(field), :method => :destroy, :confirm => 'Are you sure?'
 %hr/
-= link_to new_admin_custom_field_path do
+= link_to new_admin_tutor_custom_field_path do
   %i.icon-plus-sign
   = t(:'admin.custom_fields.buttons.create_custom_field')

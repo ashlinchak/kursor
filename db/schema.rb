@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419131401) do
+ActiveRecord::Schema.define(:version => 20120426101821) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -295,6 +295,23 @@ ActiveRecord::Schema.define(:version => 20120419131401) do
   add_index "tutor_categorizings", ["tutor_category_id"], :name => "index_tutor_categorizings_on_tutor_category_id"
   add_index "tutor_categorizings", ["tutor_id"], :name => "index_tutor_categorizings_on_tutor_id"
 
+  create_table "tutor_custom_field_bindings", :force => true do |t|
+    t.integer  "tutor_custom_field_id"
+    t.integer  "tutor_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tutor_custom_field_bindings", ["tutor_custom_field_id"], :name => "index_tutor_custom_field_bindings_on_tutor_custom_field_id"
+  add_index "tutor_custom_field_bindings", ["tutor_id"], :name => "index_tutor_custom_field_bindings_on_tutor_id"
+
+  create_table "tutor_custom_fields", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tutors", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -303,6 +320,10 @@ ActiveRecord::Schema.define(:version => 20120419131401) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_approved",       :default => false
+    t.integer  "user_id"
+    t.string   "avatar"
+    t.text     "methodology"
+    t.text     "more_info"
   end
 
   add_index "tutors", ["tutor_category_id"], :name => "index_tutors_on_tutor_category_id"

@@ -1,4 +1,4 @@
-class Categorizing < ActiveRecord::Base
+class TutorCategorizing < ActiveRecord::Base
   belongs_to :tutor_category, :counter_cache => :tutors_count
   belongs_to :tutor
 

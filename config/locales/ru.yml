@@ -24,6 +24,9 @@ ru:
     copyright:
       rights: "&copy; 2012 <a href=\"http://kursor.org.ua\">КУРСОР</a> - образовательный портал."
 
+    sorting:
+      sort_action: "Показать"
+
   home:
     titles:
       recent_providers: "С нами уже"
@@ -195,6 +198,8 @@ ru:
       info_pages: "Инфо страницы"
       locations: "Города"
       custom_fields: "Спец. поля"
+      tutor_custom_fields: "Для специалистов"
+      provider_custom_fields: "Для провадеров"
       custom_flags: "Спец. флаги"
       search: "Поиск"
       dashboard: "Админ"
@@ -257,7 +262,8 @@ ru:
       location:
         city: "Город"
       selectors:
-        choose_city: "Выберите город"
+        choose_city: "выберите город"
+        choose_region: "выберите область"
         select_category: "Выберите категорию"
       confirms:
         user_destroy: "Внимание! Вы собираетесь удалить Пользователя и его Провайдера! Отменить действие будет невозможно! Продолжить?"
@@ -274,7 +280,8 @@ ru:
         region: "Область"
     custom_fields:
       headers:
-        title: "Специльные поля"
+        tutor: "Спец. поля для специалистов"
+        provider: "Спец. поля для провадеров"
         custom_field_name: "Имя"
         custom_filed_uses: "Задействовано"
       buttons:

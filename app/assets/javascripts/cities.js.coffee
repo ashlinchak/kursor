@@ -1,6 +1,5 @@
 jQuery ->
 
-#  cities = $('#user_profile_attributes_location_attributes_city_id*').html()
   cities = $('select[id$=_city_id]').html()
 
   $('#region_id').change ->
@@ -11,5 +10,5 @@ jQuery ->
       $('select[id$=_city_id]').html(options)
       $('select[id$=_city_id]').parent().show()
     else
-      $('select[id$=_city_id]').empty()
-      $('select[id$=_city_id]').parent().hide()
+      $('select[id$=_city_id]').html(cities)
+      $('select[id$=_city_id]').parent().show()

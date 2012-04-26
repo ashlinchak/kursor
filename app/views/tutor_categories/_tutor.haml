@@ -1,0 +1,15 @@
+%li.clearfix.list-provider
+  .image-container
+    = link_to tutor_path(tutor) do
+      = image_tag tutor.avatar_url(:medium)
+  %h4= link_to tutor.name, tutor_path(tutor)
+  - if tutor.location
+    .address
+      %strong
+        = "#{t(:'providers.custom_fields.address')}:"
+      = format_location tutor.location
+  .categories
+    - if tutor
+      %ul
+        - for cat in tutor.tutor_categorizings
+          %li= link_to cat, tutor_category_path(cat.tutor_category)

@@ -20,7 +20,13 @@
               %li= link_to t(:'admin.nav.posting_list'), admin_postings_path
               %li= link_to t(:'admin.nav.posting_categories'), admin_posting_categories_path
           %li= link_to t(:'admin.nav.locations'), admin_cities_path
-          %li= link_to t(:'admin.nav.custom_fields'), admin_custom_fields_path
+          %li.dropdown
+            %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
+              = t(:'admin.nav.custom_fields')
+              %span.caret
+            %ul.dropdown-menu
+              %li= link_to t(:'admin.nav.provider_custom_fields'), admin_custom_fields_path
+              %li= link_to t(:'admin.nav.tutor_custom_fields'), admin_tutor_custom_fields_path
           %li= link_to t(:'admin.nav.custom_flags'), admin_custom_flags_path
           %li.dropdown
             %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }

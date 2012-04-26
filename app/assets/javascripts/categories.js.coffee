@@ -9,6 +9,28 @@ jQuery ->
   )
   show_categories($('.provider-categories select'))
 
+
+  # search form
+
+  cities = $('#search_city_id').html()
+
+  $('#search_region_id').change ->
+    region = $('#search_region_id :selected').text()
+    escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(cities).filter("optgroup[label='#{escaped_region}']").html()
+    if options
+      $('#search_city_id').html(options)
+      $('#search_city_id').prepend('<option value="">выберите город</option>')
+      $('#search_city_id').parent().show()
+
+    else
+      $('#search_city_id').html(cities)
+      $('#search_city_id').prepend('<option value="">выберите город</option>')
+      $('#search_city_id').parent().show()
+
+
+
+
 show_categories = (parent) ->
   category = $('#child-of-' + $(parent).val())
   #$('.provider-category').removeClass('active')
@@ -24,3 +46,6 @@ show_sub_categories = (parent) ->
   else
     $('#sub-children-of-' + category_id).find(':checkbox:checked').prop('checked', false);
     $('#sub-children-of-' + category_id).slideUp()
+
+
+

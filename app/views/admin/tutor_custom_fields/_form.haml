@@ -1,0 +1,8 @@
+= form_for tutor_custom_field, :url => tutor_custom_field.new_record? ? admin_tutor_custom_fields_path : admin_tutor_custom_field_path(tutor_custom_field)  do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => tutor_custom_field }
+  .field
+    = f.label :name
+  .field
+    = f.text_field :name
+  .actions
+    = f.submit

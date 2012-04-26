@@ -1,0 +1,4 @@
+.control-group
+  = f.select :tutor_custom_field_id, TutorCustomField.all.collect{|cf|[cf.name, cf.id]}, {}, :class => 'span2'
+  = f.text_field :value
+  = link_to_remove_fields "[X]", f
