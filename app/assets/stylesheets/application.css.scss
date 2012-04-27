@@ -82,7 +82,7 @@ header {
       margin: 0;
       padding: .5em .9em;
     }
-    li.active, a:hover{
+    li.active, a:hover, a.current{
       color: #000;
       background: $shadeColor;
       text-decoration: none;
