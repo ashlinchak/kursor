@@ -2,8 +2,14 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+
+  after :store, :delete_original_file
+
+  def delete_original_file(new_file)
+    File.delete path if version_name.blank?
+  end
+
+
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -24,6 +30,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   #process :resize_to_fill => [800, 800]
 
+  process :convert => 'jpg'
+
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_fill => [64, 64]
@@ -41,9 +49,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [620, 300]
   end
 
-  version :large do
-    process :resize_to_fill => [900, 900]
-  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')

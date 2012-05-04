@@ -2,8 +2,12 @@
 
 class ProviderLogoUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or ImageScience support:
-  #include CarrierWave::RMagick
+  after :store, :delete_original_file
+
+  def delete_original_file(new_file)
+    File.delete path if version_name.blank?
+  end
+
   include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 

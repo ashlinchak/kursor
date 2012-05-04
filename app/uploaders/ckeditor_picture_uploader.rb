@@ -1,5 +1,13 @@
 # encoding: utf-8
 class CkeditorPictureUploader < CarrierWave::Uploader::Base
+
+
+  after :store, :delete_original_file
+
+  def delete_original_file(new_file)
+    File.delete path if version_name.blank?
+  end
+
   include Ckeditor::Backend::CarrierWave
 
   # Include RMagick or ImageScience support:
@@ -31,12 +39,12 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   process :read_dimensions
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_fill => [118, 100]
-  end
+  #version :thumb do
+  #  process :resize_to_fill => [118, 100]
+  #end
 
   version :content do
-    process :resize_to_limit => [600, 600]
+    process :resize_to_limit => [620, 600]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

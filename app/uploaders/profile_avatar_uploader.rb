@@ -2,8 +2,12 @@
 
 class ProfileAvatarUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  after :store, :delete_original_file
+
+  def delete_original_file(new_file)
+    File.delete path if version_name.blank?
+  end
+
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -21,14 +25,6 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
     "" + [version_name, "default_avatar.png"].compact.join('_')
   end
 
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
   version :icon do
     process :resize_to_fill => [32, 32]
   end
@@ -41,21 +37,9 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [180, 260]
   end
 
-  #version :large do
-    #process :resize_to_fit => [180, 260]
-  #end
-
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
 
   def filename
      "#{secure_token(10)}.#{file.extension}" if original_filename.present?

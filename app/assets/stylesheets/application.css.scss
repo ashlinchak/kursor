@@ -19,7 +19,11 @@ $shadeColor: #ebebeb;
 
 body {
   background: #fff;
-  //font-family: 'Ubuntu Mono', sans-serif;
+  font-family: Ubuntu;
+  font-style: normal;
+  p {
+    font-family: Ubuntu;
+  }
   h1 {
     font-size: 20px;
     line-height: 25px;
@@ -200,26 +204,14 @@ table.bookmarks {
 
   }
 
-
-
-
-
-
-
-
-
 iframe.twitter-share-button {
   width: 100px !important;
 }
 
 
-
 /* Admin panel */
 
-
 /* Category managers */
-
-
 
 a:link.root_category_label,
 a:active.root_category_label,
