@@ -12,10 +12,7 @@
         = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
           %i.icon-remove
           = t(:'postings.actions.delete')
-      %hr/
-
-
-    %h1= posting.title
+        %hr/
 
     .posting-categories
       = t(:'postings.categories')
@@ -24,10 +21,11 @@
           = link_to c.name + ',' , c
         - else
           = link_to c.name, c
+    %hr/
+    %h1= posting.title
 
 
-
-    %blockquote.excerpt= markdown posting.excerpt
+    %blockquote.excerpt= posting.excerpt
 
 
 
@@ -57,7 +55,8 @@
           &rsaquo;
 
     .body
-      = markdown posting.body
+      = posting.body.html_safe
+    %hr/
     .tags-list
       %span.icon-tags
       = links_to_tags posting.tags_list

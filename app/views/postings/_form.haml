@@ -3,7 +3,7 @@
   = render :partial => 'posting_fields', :locals => { :f => f }
 
   .form-actions
-    = f.submit :class => 'btn btn-large btn-success'
-    or
-    = link_to 'Cancel', user_postings_path(current_user), :class => 'btn btn-large btn-error'
+    = submit_tag t(:'postings.actions.save'), :class => 'btn btn-large btn-success'
+    = t(:'postings.actions.or')
+    = link_to t(:'postings.actions.cancel'), user_postings_path(current_user), :class => 'btn btn-danger'
 

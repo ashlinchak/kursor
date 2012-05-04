@@ -26,7 +26,7 @@
     - else
       = link_to user.tutor, user.tutor
 
-  - elsif user.provider?
+  - elsif user.school?
     - unless user.provider
       - if user === current_user
         .alert.alert-block

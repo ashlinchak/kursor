@@ -1,6 +1,5 @@
 .row
   .span8
-
     .row
       - posting_categories.each_with_index do |child, index|
         .span4
@@ -8,8 +7,6 @@
             = link_to child.name, child
             - if child.children
               = '(' + child.postings.size.to_s + ')'
-
-
           - for sub_post in child.postings.reverse.last(5)
             %h5
               = link_to sub_post.title, sub_post
@@ -23,8 +20,6 @@
                   = '(' + child.postings.size.to_s + ')'
         - unless index % 2 == 0
           .row
-
-
     %hr/
     %h2.home-title= t(:'home.titles.featured_posting')
     %ul.entries

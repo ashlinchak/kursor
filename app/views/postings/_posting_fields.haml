@@ -3,43 +3,44 @@
     = render :partial => 'shared/form_errors', :locals => { :object => posting }
     %fieldset
       .control-group
-        = f.label :title, :class => 'control-label'
+        = f.label t(:'postings.titles.title'), :class => 'control-label'
         .controls
           = f.text_field :title, :class => 'span10'
     %fieldset
       .control-group
-        = f.label :excerpt, :class => 'control-label'
+        = f.label t(:'postings.titles.excerpt'), :class => 'control-label'
         .controls
           = f.text_area :excerpt, :class => 'span10'
     %fieldset
       .control-group
-        = f.label :body, :class => 'control-label'
+        = f.label t(:'postings.titles.body'), :class => 'control-label'
         .controls
-          = f.text_area :body, :class => 'show_editor'
+          = f.cktext_area :body, :input_html => {:cols => 1000, :rows => 200}
+          %p.help-block= t(:'postings.titles.body_help')
 
     %fieldset
-      %legend Images
+      %legend= t(:'postings.main_image')
     = f.fields_for :images do |image|
       = render :partial => 'images/image_fields', :locals => { :f => image }
 
+    -#%fieldset
+    -#  .control-group
+    -#    %i.icon-plus-sign.icon-dark
+    -#    = link_to_add_fields "Add image", f, :images
 
     %fieldset
+      %legend= t(:'tags.title')
       .control-group
-        %i.icon-plus-sign.icon-dark
-        = link_to_add_fields "Add image", f, :images
-
-    %fieldset
-      %legend Tags
-      .control-group
-        = f.label :tags_list, :class => 'control-label'
+        = f.label t(:'tags.tag_list'), :class => 'control-label'
         .controls
           = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span9'
-          %p.help-block Some help for user
+          %p.help-block= t(:'tags.tag_list_help')
 
 
 
     %fieldset
-      %legend Categories
+      %legend= t(:'postings.categories')
       .control-group
         .controls
           = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
+          %p.help-block= t(:'postings.categories_help')

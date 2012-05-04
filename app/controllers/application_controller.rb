@@ -15,7 +15,14 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+  def ckeditor_filebrowser_scope(options = {})
+    super({ :assetable_id => current_user.id, :assetable_type => 'User' }.merge(options))
+  end
 
+  def ckeditor_before_create_asset(asset)
+    asset.assetable = current_user
+    return true
+  end
 
   private
 

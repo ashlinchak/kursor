@@ -4,6 +4,7 @@ class Posting < ActiveRecord::Base
   attr_accessor :image_attributes
 
   belongs_to :user
+
   has_many :images, :as => :imageable, :dependent => :destroy
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => :all_blank # lambda { |i| i[:src].blank? }
 
@@ -17,7 +18,6 @@ class Posting < ActiveRecord::Base
   default_scope order('created_at desc')
   scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
   scope :approved, where(:is_approved => true)
-
 
   def posting_category_ids=(ids)
     self.posting_categories = PostingCategory.find(ids)

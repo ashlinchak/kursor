@@ -1,5 +1,7 @@
 Kursor::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   resources :students
 
   namespace :admin do

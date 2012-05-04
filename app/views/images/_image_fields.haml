@@ -7,20 +7,17 @@
     .controls
       = f.file_field :src
       = f.hidden_field :src_cache
-      %br
-      %i.icon-remove.icon-dark
-      = link_to_remove_fieldset 'Remove', f
+      -#%br
+      -#%i.icon-remove.icon-dark
+      -#= link_to_remove_fieldset 'Remove', f
 
   .control-group
-    = f.label :title, :class => 'control-label'
+    = f.label t(:'postings.main_image_title'), :class => 'control-label'
     .controls
       = f.text_field :title, :placeholder => 'Title', :class => 'span9'
-      %p.help-block Some help for user
   .control-group
-    = f.label :description, :class => 'control-label'
+    = f.label t(:'postings.main_image_description'), :class => 'control-label'
     .controls
       = f.text_field :description, :placeholder => 'Description', :class => 'span9'
-      %p.help-block Some help for user
-
 
 

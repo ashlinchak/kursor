@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
-
+//= require ckeditor/init
 //= require jquery.markitup
 //= require sets/default/set
 //= require_tree .
