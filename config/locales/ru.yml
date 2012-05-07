@@ -181,9 +181,13 @@ ru:
       excerpt_help: "Во вступлении форматирование текста отключено."
       body: "Основной текст"
       body_help: "Пожалуйста, удаляйте загруженные картинки с сервера, если Вы не используете их в статье."
-    main_image: "Главная картинка статьи"
-    main_image_title: "Заголовок картинки"
-    main_image_description: "Описание картинки"
+    main_image:
+      legend: "Главная картинка статьи"
+      title: "Заголовок картинки"
+      title_placeholder: "заголовок"
+      description: "Описание картинки"
+      description_placeholder: "описание"
+
 
   tags:
     title: "Теги"

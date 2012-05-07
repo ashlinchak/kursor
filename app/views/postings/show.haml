@@ -37,8 +37,9 @@
               %a( href = "#myCarousel" data-slide = "next" )
                 = image_tag image.src_url(:wide).to_s if image.src_url(:wide)
               .carousel-caption
-                %h4= image.title
-                %p= image.description
+                %p
+                  %b= image.title + ':'
+                  = image.description
           - else
             .item
               %a( href = "#myCarousel" data-slide = "next" )

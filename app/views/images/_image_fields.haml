@@ -1,23 +1,16 @@
 %fieldset
-  %legend
+  %legend= t(:'postings.main_image.legend')
   .control-group
     %label.control-label
-      = image_tag f.object.src_url(:thumb).to_s
-
+      = image_tag f.object.src_url(:small).to_s
     .controls
       = f.file_field :src
       = f.hidden_field :src_cache
-      -#%br
-      -#%i.icon-remove.icon-dark
-      -#= link_to_remove_fieldset 'Remove', f
-
   .control-group
-    = f.label t(:'postings.main_image_title'), :class => 'control-label'
+    = f.label t(:'postings.main_image.title'), :class => 'control-label'
     .controls
-      = f.text_field :title, :placeholder => 'Title', :class => 'span9'
+      = f.text_field :title, :placeholder => t(:'postings.main_image.title_placeholder'), :class => 'span9'
   .control-group
-    = f.label t(:'postings.main_image_description'), :class => 'control-label'
+    = f.label t(:'postings.main_image.description'), :class => 'control-label'
     .controls
-      = f.text_field :description, :placeholder => 'Description', :class => 'span9'
-
-
+      = f.text_field :description, :placeholder => t(:'postings.main_image.description_placeholder'), :class => 'span9'
