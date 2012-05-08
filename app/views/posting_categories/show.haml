@@ -1,17 +1,19 @@
-.row
-  .span8
+#posting-categories
+  #show
+    .row
+      .span8
 
-    %ul.breadcrumb
-      %li
-        = link_to t(:'postings.title'), posting_categories_path
-      = breadcrumbs_for_posting_category posting_category
+        %ul.breadcrumb
+          %li
+            = link_to t(:'postings.title'), posting_categories_path
+          = breadcrumbs_for_posting_category posting_category
 
-    - for child in posting_category.children
-      = link_to child.name, child
-      = '(' + child.postings.size.to_s + ')'
+        - for child in posting_category.children
+          = link_to child.name, child
+          = '(' + child.postings.size.to_s + ')'
 
-    .entries
-      - for p in postings
-        = render :partial => 'posting_categories/posting', :locals => { :p => p }
-    .page_navigation.clear= paginate postings
-    %hr/
+        .entries
+          - for p in postings
+            = render :partial => 'posting_categories/posting', :locals => { :p => p }
+        .page_navigation.clear= paginate postings
+        %hr/

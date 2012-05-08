@@ -7,28 +7,74 @@
   //padding: 0;
 }
 
-#postings{
-  list-style: none;
-  margin: 0;
-  padding: 0;
+#postings {
 
-  .image {
-    float: left;
-    margin: 0;
+  #show {
+    .posting-categories {
+      margin-bottom: 8px;
+    }
+    .excerpt {
+      margin: 8px 0px 10px 0px;
+      color: #888888;
+      letter-spacing: 0px;
+    }
+    .carousel {
+      img { padding: 0px; }
+      .carousel-caption { padding: 5px 15px 0px;}
+    }
+    .body {
+
+    }
+
+    .caption {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      span {
+        display: block;
+        padding: 3px 10px 3px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #ffffff;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        -webkit-border-radius: 0px 0px 3px 3px;
+        border-radius: 0px 0px 3px 3px;
+
+      }
+    }
+    .left {
+      margin-right: 10px;
+    }
+    .right {
+      margin-left: 10px;
+    }
+
+    img {
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+    .user-bar {
+      margin: 10px 0px;
+    }
+    .tags-list {
+      background: #f8f8f8;
+      padding: 10px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+
+    .carousel-caption {
+      -webkit-border-radius: 0px 0px 3px 3px;
+      border-radius: 0px 0px 3px 3px;
+    }
   }
-}
 
-.posting {
-  //clear: both;
-  margin-bottom: 1em;
-  //.image{
-    //float: left;
-    //margin: 0 .5em .5em 0;
-    //img{
-      //border: 1px solid;
-      //display: block;
-    //}
-  //}
+
+
 }
 
 .images{

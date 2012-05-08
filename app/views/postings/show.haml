@@ -1,67 +1,68 @@
-.row
-  .span8
-    %table.bookmarks
-      %tr
-        = render :partial => 'shared/bookmarks'
-    - if current_user === posting.user
-      .actions
-        = link_to edit_posting_path(posting) do
-          %i.icon-pencil
-          = t(:'postings.actions.edit')
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
-          %i.icon-remove
-          = t(:'postings.actions.delete')
+#postings
+  #show
+    .row
+      .span8
+        .posting-categories
+          = t(:'postings.categories')
+          - posting.posting_categories.each do |c|
+            - unless c === posting.posting_categories.last
+              = link_to c.name + ',' , c
+            - else
+              = link_to c.name, c
+        %table.bookmarks
+          %tr
+            = render :partial => 'shared/bookmarks'
+
+        %h1= posting.title
+
+
+        .excerpt= posting.excerpt
+
+
+
+        #myCarousel.carousel
+          .carousel-inner
+            - posting.images.reverse.each_with_index do |image, index|
+              - if index == 0
+                .active.item
+                  %a( href = "#myCarousel" data-slide = "next" )
+                    = image_tag image.src_url(:wide).to_s if image.src_url(:wide)
+                  .carousel-caption
+                    %p
+                      %b= image.title + ':'
+                      = image.description
+              - else
+                .item
+                  %a( href = "#myCarousel" data-slide = "next" )
+                    = image_tag image.src_url(:wide).to_s
+                  - if image.title
+                    .carousel-caption
+                      %h4= image.title
+                      %p= image.description
+
+          - if posting.images.size > 1
+            %a.carousel-control.left( href = "#myCarousel" data-slide = "prev" )
+              &lsaquo;
+            %a.carousel-control.right( href = "#myCarousel" data-slide = "next" )
+              &rsaquo;
+
+        .body
+          = posting.body.html_safe
         %hr/
+        .tags-list
+          %span.icon-tags
+          = links_to_tags posting.tags_list
+        .user-bar
+          = link_to posting.user, user_path(posting.user)
+          |
+          = l posting.created_at, :format => :long
+          - if current_user === posting.user
+            |
+            = link_to edit_posting_path(posting) do
+              %i.icon-pencil
+              = t(:'postings.actions.edit')
+            |
+            = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
+              %i.icon-remove
+              = t(:'postings.actions.delete')
 
-    .posting-categories
-      = t(:'postings.categories')
-      - posting.posting_categories.each do |c|
-        - unless c === posting.posting_categories.last
-          = link_to c.name + ',' , c
-        - else
-          = link_to c.name, c
-    %hr/
-    %h1= posting.title
-
-
-    %blockquote.excerpt= posting.excerpt
-
-
-
-    #myCarousel.carousel
-      .carousel-inner
-        - posting.images.reverse.each_with_index do |image, index|
-          - if index == 0
-            .active.item
-              %a( href = "#myCarousel" data-slide = "next" )
-                = image_tag image.src_url(:wide).to_s if image.src_url(:wide)
-              .carousel-caption
-                %p
-                  %b= image.title + ':'
-                  = image.description
-          - else
-            .item
-              %a( href = "#myCarousel" data-slide = "next" )
-                = image_tag image.src_url(:wide).to_s
-              - if image.title
-                .carousel-caption
-                  %h4= image.title
-                  %p= image.description
-
-      - if posting.images.size > 1
-        %a.carousel-control.left( href = "#myCarousel" data-slide = "prev" )
-          &lsaquo;
-        %a.carousel-control.right( href = "#myCarousel" data-slide = "next" )
-          &rsaquo;
-
-    .body
-      = posting.body.html_safe
-    %hr/
-    .tags-list
-      %span.icon-tags
-      = links_to_tags posting.tags_list
-    .user-bar
-      = posting.user
-      |
-      = l posting.created_at, :format => :long

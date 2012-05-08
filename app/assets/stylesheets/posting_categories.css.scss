@@ -2,13 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h2.category-title {
-  background: #EBEBEB;
-  border-radius: 4px;
-  font-size: 1em;
-  line-height: 1.5;
-  font-weight: normal;
-  margin: 1em 0em;
-  padding: 0 .5em;
-  text-transform: uppercase;
+#posting-categories {
+
+  h2.category-title {
+    background: #EBEBEB;
+    border-radius: 4px;
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: normal;
+    margin: 1em 0em;
+    padding: 0 .5em;
+    text-transform: uppercase;
+  }
+
+  #index {
+
+    .item {
+      clear: left;
+      img {
+        float: left;
+        padding-right: 10px;
+        padding-bottom: 10px;
+      }
+      .info {
+        color: #878787;
+      }
+    }
+
+
+  }
+
 }

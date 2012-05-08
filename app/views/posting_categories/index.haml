@@ -1,29 +1,35 @@
-.row
-  .span8
+#posting-categories
+  #index
     .row
-      - posting_categories.each_with_index do |child, index|
-        .span4
-          %h2.category-title
-            = link_to child.name, child
-            - if child.children
-              = '(' + child.postings.size.to_s + ')'
-          - for sub_post in child.postings.reverse.last(5)
-            %h5
-              = link_to sub_post.title, sub_post
-            = time_ago_in_words sub_post.created_at, :format => :long
-            назад
-          - if child.children
-            .children-categories
-              - for child in child.children
+      .span8
+        .row
+          - posting_categories.each_with_index do |child, index|
+            .span4
+              %h2.category-title
                 = link_to child.name, child
                 - if child.children
                   = '(' + child.postings.size.to_s + ')'
-        - unless index % 2 == 0
-          .row
-    %hr/
-    %h2.home-title= t(:'home.titles.featured_posting')
-    %ul.entries
-      - for p in all_postings
-        = render :partial => 'posting_categories/posting', :locals => { :p => p }
-    .page_navigation.clear= paginate all_postings
-    %hr/
+              - for sub_post in child.postings.last(5)
+                .item
+                  = link_to sub_post do
+                    = image_tag sub_post.images.last.src_url(:thumb).to_s
+                  %h5
+                    = link_to sub_post.title, sub_post
+                  .info
+                    = time_ago_in_words sub_post.created_at, :format => :long
+                    назад
+              - if child.children
+                .children-categories
+                  - for child in child.children
+                    = link_to child.name, child
+                    - if child.children
+                      = '(' + child.postings.size.to_s + ')'
+            - unless index % 2 == 0
+              .row
+        %hr/
+        %h2.home-title= t(:'home.titles.featured_posting')
+        %ul.entries
+          - for p in all_postings
+            = render :partial => 'posting_categories/posting', :locals => { :p => p }
+        .page_navigation.clear= paginate all_postings
+        %hr/

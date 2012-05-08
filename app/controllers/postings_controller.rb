@@ -23,7 +23,6 @@ class PostingsController < ApplicationController
 
   def edit
     @posting = current_user.postings.find(params[:id])
-    posting.images.build unless posting.images
   end
 
   def update
