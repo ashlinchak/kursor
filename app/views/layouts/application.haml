@@ -42,7 +42,7 @@
       %h1#logo.ir
         = link_to 'КУРСОР - образовательный портал', root_url
       %form.form-search{ :action => '/search', :method => :get, :style => 'padding: 5px 5px 5px 20px; margin: 50px 0px 0px 0px; float: right;'}
-        = text_field_tag 'q', params[:q], :class => 'input-large search-query'
+        = text_field_tag 'q', params[:q], :placeholder => 'название школы, курсов и т.д.', :class => 'input-large search-query'
         = button_tag 'Поиск', :class => 'btn'
       %span.pager{:style => 'padding: 5px; margin: 50px 0px 0px; float: right;'}
         %a

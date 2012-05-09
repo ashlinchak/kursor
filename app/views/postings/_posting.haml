@@ -1,15 +1,16 @@
-%li
-  %article.posting
-    %hr/
-    - if !posting.images.empty?
-      .image
-        = link_to posting, :class => 'thumbnail' do
-          = image_tag posting.images.last.src_url(:thumb).to_s
-
-    %h4= link_to posting.title, posting
-    %p= posting.excerpt
-    %span= link_to t(:'postings.readmore'), posting
-    .user-bar
-      = link_to posting.user, posting.user
-      |
-      = l posting.created_at, :format => :long
+.posting
+  %hr/
+  .row
+    .span3
+      - if !posting.images.empty?
+        .image
+          = link_to posting, :class => 'thumbnail' do
+            = image_tag posting.images.last.src_url(:medium).to_s
+    .span5
+      %h4= link_to posting.title, posting
+      = posting.excerpt
+      .read-more= link_to t(:'postings.readmore'), posting
+      .user-bar
+        = link_to posting.user, posting.user
+        |
+        = l posting.created_at, :format => :long

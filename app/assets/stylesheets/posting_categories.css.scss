@@ -6,7 +6,8 @@
 
   h2.category-title {
     background: #EBEBEB;
-    border-radius: 4px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
     font-size: 1em;
     line-height: 1.5;
     font-weight: normal;
@@ -15,21 +16,32 @@
     text-transform: uppercase;
   }
 
-  #index {
+  #index, #show {
 
     .item {
-      clear: left;
       img {
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
         float: left;
-        padding-right: 10px;
-        padding-bottom: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
       }
       .info {
         color: #878787;
       }
+      clear: left;
+      min-width: 299px;
+      min-height: 70px;
+      border-bottom: dotted 1px #d6d6d6;
+    }
+    .more-in {
+      float: right;
+    }
+    .read-more {
+      text-align: right;
+    }
+    .user-bar {
     }
 
-
   }
-
 }

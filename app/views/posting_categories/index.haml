@@ -9,7 +9,7 @@
                 = link_to child.name, child
                 - if child.children
                   = '(' + child.postings.size.to_s + ')'
-              - for sub_post in child.postings.last(5)
+              - for sub_post in child.postings.last(4)
                 .item
                   = link_to sub_post do
                     = image_tag sub_post.images.last.src_url(:thumb).to_s
@@ -18,6 +18,10 @@
                   .info
                     = time_ago_in_words sub_post.created_at, :format => :long
                     назад
+              .more-in
+                = link_to posting_category_path(child) do
+                  Больше в категории
+                  %b= child.name
               - if child.children
                 .children-categories
                   - for child in child.children

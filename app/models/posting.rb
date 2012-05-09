@@ -16,7 +16,8 @@ class Posting < ActiveRecord::Base
   has_many :posting_categories, :through => :posting_categorizings
 
   default_scope order('created_at desc')
-  scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
+  #scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
+  scope :recent, lambda { where('created_at >= ?', Time.now - 32.weeks).limit(4) }
   scope :approved, where(:is_approved => true)
 
   def posting_category_ids=(ids)

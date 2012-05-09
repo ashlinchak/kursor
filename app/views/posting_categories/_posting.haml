@@ -1,4 +1,4 @@
-%article.posting
+.posting
   %hr/
   .row
     .span3
@@ -8,8 +8,9 @@
 
     .span5
       %h4= link_to p.title, p
-      %p= p.excerpt
-      %span= link_to t(:'postings.readmore'), p
+      .excerpt
+        = p.excerpt
+      .read-more= link_to t(:'postings.readmore'), p
       .user-bar
         = link_to p.user, p.user
         |
