@@ -14,6 +14,8 @@ jQuery ->
 
   cities = $('#search_city_id').html()
 
+  $('#search_city_id').empty()
+
   $('#search_region_id').change ->
     region = $('#search_region_id :selected').text()
     escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
@@ -24,9 +26,10 @@ jQuery ->
       $('#search_city_id').parent().show()
 
     else
-      $('#search_city_id').html(cities)
-      $('#search_city_id').prepend('<option value="">выберите город</option>')
-      $('#search_city_id').parent().show()
+#      $('#search_city_id').html(cities)
+#      $('#search_city_id').prepend('<option value="">выберите город</option>')
+#      $('#search_city_id').parent().show()
+      $('#search_city_id').empty()
 
 
 
