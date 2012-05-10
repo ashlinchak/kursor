@@ -13,57 +13,68 @@
 //= require sets/default/set
 //= require_tree .
 
+$(document).ready(function(){
 
-  $(document).ready(function(){
+// LazyLoad // Image Smart Loading
+    $('img').show().lazyload({
+        effect: 'fadeIn',
+        easingType: 'easeInOutQuart',
+        effectspeed: 1500
 
+    });
 
+// Scroll To Top Button
+    $().UItoTop({
+      easingType: 'easeInOutQuart'
+    });
+//
 
-  // Add caption to image from alt text in posting
-      $('#postings #show .body img').jcaption({
-          //Element to wrap the image and caption in
-          wrapperElement: 'div',
+// Add caption to image from alt text in posting
+  $('#postings #show .body img').jcaption({
+      //Element to wrap the image and caption in
+      wrapperElement: 'div',
 
-          //Class for wrapper element
-          wrapperClass: 'caption',
+      //Class for wrapper element
+      wrapperClass: 'caption',
 
-          //Caption Element
-          captionElement: 'span',
+      //Caption Element
+      captionElement: 'span',
 
-          //Attribute of image to use as caption source
-          imageAttr: 'alt',
+      //Attribute of image to use as caption source
+      imageAttr: 'alt',
 
-          //If true, it checks to make sure there is caption copy before running on each image
-          requireText: false,
+      //If true, it checks to make sure there is caption copy before running on each image
+      requireText: false,
 
-          //Should inline style be copied from img element to wrapper
-          copyStyle: true,
+      //Should inline style be copied from img element to wrapper
+      copyStyle: true,
 
-          //Strip inline style from image
-          removeStyle: false,
+      //Strip inline style from image
+      removeStyle: false,
 
-          //Strip align attribute from image
-          removeAlign: true,
+      //Strip align attribute from image
+      removeAlign: true,
 
-          //Assign the value of the image's align attribute as a class to the wrapper
-          copyAlignmentToClass: false,
+      //Assign the value of the image's align attribute as a class to the wrapper
+      copyAlignmentToClass: false,
 
-          //Assign the value of the image's float value as a class to the wrapper
-          copyFloatToClass: true,
+      //Assign the value of the image's float value as a class to the wrapper
+      copyFloatToClass: true,
 
-          //Assign a width to the wrapper that matches the image
-          autoWidth: true,
+      //Assign a width to the wrapper that matches the image
+      autoWidth: true,
 
-          //Animate on hover over the image
-          animate: false,
+      //Animate on hover over the image
+      animate: false,
 
-          //Show Animation
-          show: {opacity: 'show'},
-          showDuration: 200,
+      //Show Animation
+      show: {opacity: 'show'},
+      showDuration: 200,
 
-          //Hide Animation
-          hide: {opacity: 'hide'},
-          hideDuration: 200
-      });
+      //Hide Animation
+      hide: {opacity: 'hide'},
+      hideDuration: 200
+  });
 
   $('html').removeClass('no-js');
 

@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
 
     # Providers sorting  by City and Region in current category
 
-      unless params[:city_id]
+      unless params[:search][:city_id]
 
         filtered_cities = City.where(:region_id => params[:search_region_id])
         addressables = Location.where(:city_id => filtered_cities).map(&:addressable)
@@ -48,8 +48,6 @@ class CategoriesController < ApplicationController
         addressables = Location.where(:city_id => params[:search][:city_id]).map(&:addressable)
 
       end
-
-      #addressables = Location.where("city_id = :city_id OR region_id = :region_id",{:city_id => params[:search][:city_id], :region_id => params[:search_region_id]}).map(&:addressable)
 
       providers = []
 

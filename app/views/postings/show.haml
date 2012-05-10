@@ -26,7 +26,7 @@
               - if index == 0
                 .active.item
                   %a( href = "#myCarousel" data-slide = "next" )
-                    = image_tag image.src_url(:wide).to_s if image.src_url(:wide)
+                    = image_tag 'no-image-small.png', :width => '620px', :height => '400px', "data-original" => image.src_url(:wide).to_s if image.src_url(:wide).to_s
                   .carousel-caption
                     %p
                       %b= image.title + ':'
@@ -34,7 +34,7 @@
               - else
                 .item
                   %a( href = "#myCarousel" data-slide = "next" )
-                    = image_tag image.src_url(:wide).to_s
+                    = image_tag 'no-image-small.png', :width => '620px', :height => '400px', "data-original" => image.src_url(:wide).to_s if image.src_url(:wide).to_s
                   - if image.title
                     .carousel-caption
                       %h4= image.title

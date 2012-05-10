@@ -7,8 +7,8 @@
         %li.span2
           %article.posting
             - if !posting.images.empty?
-              = link_to posting, :class => 'thumbnail' do
-                = image_tag posting.images.last.src_url(:small).to_s
+              = link_to posting do
+                = image_tag 'no-image-small.png', :width => '140px', :height => '93', "data-original" => posting.images.last.src_url(:small).to_s
             %h3= link_to posting.title, posting
             .excerpt= posting.excerpt[0..100]
             .user
