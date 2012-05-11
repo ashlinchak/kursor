@@ -23,4 +23,13 @@ class HomeController < ApplicationController
     @recent_postings ||= Posting.approved.recent
   end
 
+  def posting_categories
+    @posting_categories ||= if params[:id]
+                          else
+                            root_posting_categories
+                          end
+  end
+  helper_method :posting_categories
+
+
 end

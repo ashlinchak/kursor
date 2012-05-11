@@ -1,6 +1,6 @@
 = form_for user, :multipart => true, :html => { :class => 'form-horizontal' } do |f|
   .row
-    .span12
+    .span8
       = render :partial => 'shared/form_errors', :locals => { :object => user }
       %fieldset
         - unless user.new_record?
@@ -39,13 +39,19 @@
                 %label.radio
                   = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
                   = t("activerecord.attributes.user.account_types.#{account_type}")
+    .span4
+      - if user.new_record?
+        .alert.fade.in.alert-success
+          = t(:'users.new.before_register_info').html_safe
 
 
-  - if user.visitor?
-    = f.fields_for :profile do |p|
-      = render :partial => '/profile/profile_fields', :locals => { :f => p, :profile => user.profile }
-  - else
-    = f.fields_for :provider do |p|
-      = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
+  .row
+    .span12
+      - if user.visitor?
+        = f.fields_for :profile do |p|
+          = render :partial => '/profile/profile_fields', :locals => { :f => p, :profile => user.profile }
+      - else
+        = f.fields_for :provider do |p|
+          = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
   .form-actions
     = f.submit t(:'users.new.submit'), :class => 'btn btn-primary btn-large'

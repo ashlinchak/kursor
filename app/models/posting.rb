@@ -5,8 +5,13 @@ class Posting < ActiveRecord::Base
 
   belongs_to :user
 
+  #has_one :image, :as => :imageable, :dependent => :destroy
+  #accepts_nested_attributes_for :image, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
+
   has_many :images, :as => :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => :all_blank # lambda { |i| i[:src].blank? }
+  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
+
+  validates :images, :length => { :maximum => 1}
 
   has_many :taggings, :as => :taggable
   has_many :tags,     :through => :taggings
@@ -16,8 +21,9 @@ class Posting < ActiveRecord::Base
   has_many :posting_categories, :through => :posting_categorizings
 
   default_scope order('created_at desc')
-  #scope :recent, lambda { where('created_at >= ?', Time.now - 8.weeks).limit(4) }
+
   scope :recent, lambda { where('created_at >= ?', Time.now - 32.weeks).limit(4) }
+
   scope :approved, where(:is_approved => true)
 
   def posting_category_ids=(ids)

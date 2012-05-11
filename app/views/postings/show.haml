@@ -29,7 +29,7 @@
                     = image_tag 'no-image-small.png', :width => '620px', :height => '400px', "data-original" => image.src_url(:wide).to_s if image.src_url(:wide).to_s
                   .carousel-caption
                     %p
-                      %b= image.title + ':'
+                      %b= image.title
                       = image.description
               - else
                 .item

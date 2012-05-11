@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def create
     if user.save
       UserMailer.registration_confirmation(user).deliver
-      flash[:success] = t(:'users.flash.user_created')
+      flash[:success] = t(:'users.flash.user_created').html_safe
       redirect_to user
     else
       render :action => "new"

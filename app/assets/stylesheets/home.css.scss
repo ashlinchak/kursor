@@ -2,6 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#home {
+
+  ul#FeaturedNav {
+
+    li a {
+      color: #333333;
+      border: 0px none;
+      height: 10px;
+      line-height: 9px;
+      cursor: pointer;
+    }
+    li.active a:hover, li a:hover {
+
+      cursor: pointer;
+      border: 0px none;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+    li.active a {
+
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+
+      color: #ffffff;
+      cursor: pointer;
+      border: 0px none;
+      background: #d6096c;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+
+      text-shadow: 0px 0px 5px #ffffff;
+      filter: dropshadow(color=#ffffff, offx=0, offy=0);
+    }
+    border: 1px none;
+
+  }
+
+
+
+
+
+
+}
+
+
+
 .home-providers, .home-news{
   margin: 0;
 
@@ -51,6 +102,11 @@
     img {
       vertical-align: middle;
     }
+  }
+  img {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
   }
 }
 
