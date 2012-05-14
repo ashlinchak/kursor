@@ -5,10 +5,7 @@ set :using_rvm, true
 set :rvm_type, :system
 
 require "rvm/capistrano"
-
-# Bundler
-
-#require "bundler/capistrano"
+require "bundler/capistrano"
 
 # General
 
