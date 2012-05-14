@@ -21,10 +21,10 @@
     = f.fields_for :images do |image|
       = render :partial => 'images/image_fields', :locals => { :f => image }
 
-    %fieldset
-      .control-group
-        %i.icon-plus-sign.icon-dark
-        = link_to_add_fields "Add image", f, :images
+    -#%fieldset
+    -#  .control-group
+    -#    %i.icon-plus-sign.icon-dark
+    -#    = link_to_add_fields "Add image", f, :images
 
     %fieldset
       %legend= t(:'tags.title')

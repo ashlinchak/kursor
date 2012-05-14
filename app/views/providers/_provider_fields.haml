@@ -27,13 +27,13 @@
       %legend= t(:'admin.custom_fields.headers.title')
       = f.fields_for :custom_field_bindings do |b|
         = render :partial => 'custom_field_bindings/custom_field_binding_fields', :locals => { :f => b }
-      .fields= link_to_add_fields t(:'providers.custom_fields.add'), f, :custom_field_bindings
+      .fields= link_to_add_fields t(:'providers.custom_fields.add').html_safe, f, :custom_field_bindings
   .span6
     %fieldset
       %legend= t(:'admin.custom_flags.headers.title')
       = f.fields_for :custom_flag_bindings do |b|
         = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
-      .fields= link_to_add_fields t(:'providers.custom_flags.add'), f, :custom_flag_bindings
+      .fields= link_to_add_fields t(:'providers.custom_flags.add').html_safe, f, :custom_flag_bindings
 %br
 .row
   .span6
@@ -47,7 +47,7 @@
       %legend= t(:'admin.users.legends.contacts')
       = f.fields_for :contacts do |c|
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
-      .fields= link_to_add_fields "Add contact", f, :contacts
+      .fields= link_to_add_fields t(:'providers.add_contact').html_safe, f, :contacts
 
 %br
 %legend= t(:'providers.edit.description')

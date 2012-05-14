@@ -1,5 +1,5 @@
 %form{ :action => '/search', :method => :get }
-  = text_field_tag 'q', params[:q], :class => 'span6'
+  = text_field_tag 'q', params[:q], :class => 'span6', :id => 'home-search-typehead', "data-provide" => "typeahead"
   = button_tag 'Search', :class => 'btn'
 -if !search_results.empty?
   = t :'search.results_found', :num => search_results.size

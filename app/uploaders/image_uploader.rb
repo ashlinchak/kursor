@@ -2,13 +2,11 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
 
-
   after :store, :delete_original_file
 
   def delete_original_file(new_file)
     File.delete path if version_name.blank?
   end
-
 
   include CarrierWave::MiniMagick
 
@@ -25,7 +23,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 
   # Process files as they are uploaded:
   #process :resize_to_fill => [800, 800]

@@ -3,6 +3,10 @@ class ProvidersController < ApplicationController
   before_filter :require_authentication, :except => [:index, :show]
 
   def index
+    respond_to do |format|
+      format.html
+      format.json { render :json => Provider.order(:name) }
+    end
   end
 
   def show
@@ -22,7 +26,7 @@ class ProvidersController < ApplicationController
     provider.user = current_user
     if provider.save
       flash[:success] = 'Provider was successfully created.'
-      redirect_to provider_path(provider.permalink)
+      redirect_to provider_path(provider)
     else
       render :action => "new"
     end
@@ -33,7 +37,7 @@ class ProvidersController < ApplicationController
     params[:provider][:category_ids] ||= []
     if provider.update_attributes(params[:provider])
       flash[:notice] = 'Provider was successfully updated.'
-      redirect_to provider
+      redirect_to provider_path(provider)
     else
       render :action => "edit"
     end

@@ -9,9 +9,9 @@ class Posting < ActiveRecord::Base
   #accepts_nested_attributes_for :image, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
 
   has_many :images, :as => :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
+  accepts_nested_attributes_for :images, :allow_destroy => true #, :reject_if => lambda { |i| i[:src].blank? }
 
-  validates :images, :length => { :maximum => 1}
+  #validates :images, :length => { :maximum => 1}
 
   has_many :taggings, :as => :taggable
   has_many :tags,     :through => :taggings

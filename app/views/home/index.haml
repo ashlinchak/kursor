@@ -26,7 +26,7 @@
                       .recent_image{ :style => 'height: 93px; width: 140; ' }
                         - if !posting.images.empty?
                           = link_to posting do
-                            = image_tag 'no-image-small.png', :width => '140px', :height => '93', "data-original" => posting.images.last.src_url(:small).to_s
+                            = image_tag 'no-image.png', :width => '140px', :height => '93', "data-original" => posting.images.last.src_url(:small).to_s
                       %h3= link_to posting.title, posting
                       .excerpt= posting.excerpt[0..100]
                       .user

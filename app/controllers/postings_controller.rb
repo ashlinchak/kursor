@@ -22,8 +22,8 @@ class PostingsController < ApplicationController
   end
 
   def edit
-    posting.images.build unless posting.images
     @posting = current_user.postings.find(params[:id])
+    #posting.images.build unless posting.images.size > 0
   end
 
   def update

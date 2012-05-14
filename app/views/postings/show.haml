@@ -15,10 +15,7 @@
 
         %h1= posting.title
 
-
         .excerpt= posting.excerpt
-
-
 
         #myCarousel.carousel
           .carousel-inner
@@ -26,7 +23,7 @@
               - if index == 0
                 .active.item
                   %a( href = "#myCarousel" data-slide = "next" )
-                    = image_tag 'no-image-small.png', :width => '620px', :height => '400px', "data-original" => image.src_url(:wide).to_s if image.src_url(:wide).to_s
+                    = image_tag 'no-image.png', :width => '620px', :height => '400px', "data-original" => image.src_url(:wide).to_s if image.src_url(:wide).to_s
                   .carousel-caption
                     %p
                       %b= image.title
@@ -34,11 +31,12 @@
               - else
                 .item
                   %a( href = "#myCarousel" data-slide = "next" )
-                    = image_tag 'no-image-small.png', :width => '620px', :height => '400px', "data-original" => image.src_url(:wide).to_s if image.src_url(:wide).to_s
+                    = image_tag 'no-image.png', :width => '620px', :height => '400px', "data-original" => image.src_url(:wide).to_s if image.src_url(:wide).to_s
                   - if image.title
                     .carousel-caption
-                      %h4= image.title
-                      %p= image.description
+                    %p
+                      %b= image.title
+                      = image.description
 
           - if posting.images.size > 1
             %a.carousel-control.left( href = "#myCarousel" data-slide = "prev" )

@@ -23,7 +23,7 @@ class TutorAvatarUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "" + [version_name, "default_provider_logo.png"].compact.join('_')
+    "" + [version_name, "default_avatar.png"].compact.join('_')
   end
 
   # Process files as they are uploaded:
@@ -39,11 +39,11 @@ class TutorAvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :resize_to_fit => [64, 64]
+    process :resize_to_fill => [64, 64]
   end
 
   version :medium do
-    process :resize_to_fit => [260, 180]
+    process :resize_to_fill => [180, 260]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

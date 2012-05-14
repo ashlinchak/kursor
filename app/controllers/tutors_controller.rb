@@ -20,7 +20,7 @@ class TutorsController < ApplicationController
     tutor.user = current_user
     if tutor.save
       flash[:success] = 'Tutor was successfully created.'
-      redirect_to tutor_path(tutor.permalink)
+      redirect_to tutor_path(tutor)
     else
       render :action => "new"
     end
@@ -31,7 +31,7 @@ class TutorsController < ApplicationController
     params[:tutor][:tutor_category_ids] ||= []
     if tutor.update_attributes(params[:tutor])
       flash[:notice] = 'Tutor was successfully updated.'
-      redirect_to tutor
+      redirect_to tutor_path(tutor)
     else
       render :action => "edit"
     end

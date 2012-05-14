@@ -18,9 +18,6 @@ class Tutor < ActiveRecord::Base
   has_many :tutor_custom_fields, :through => :tutor_custom_field_bindings
   accepts_nested_attributes_for :tutor_custom_field_bindings, :reject_if => lambda { |b| b[:value].blank? }, :allow_destroy => true
 
-  has_many :students
-  has_many :student_users, :through => :students, :source => :user
-
   before_save :generate_permalink
 
   mount_uploader :avatar, TutorAvatarUploader

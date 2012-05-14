@@ -3,25 +3,19 @@
     = link_to edit_tutor_path(tutor) do
       %p
         %i.icon.icon-pencil
-        = t(:'site.actions.edit')
+        = t(:'tutors.show.edit')
 
     - if current_user.tutor
       - if !current_user.tutor.is_approved?
         .alert.alert-info.alert-block
           %h4.alert-heading= t(:'providers.edit.not_approved.title')
           %p= t(:'providers.edit.not_approved.desc').html_safe
-    %hr
-
-
-
 
 %ul.breadcrumb
   %li= link_to( tutor.tutor_category, tutor_category_path(tutor.tutor_category) ) if tutor.tutor_category
   %span.divider
     \/
   %li= link_to tutor
-
-
 
 .row
   .span8
@@ -31,10 +25,9 @@
           %tr
             = render :partial => 'shared/bookmarks'
     .row
-      .span3
+      .span3{ :style => 'width: 190px;'}
         - if tutor.avatar_url
-          .thumbnail
-            = image_tag tutor.avatar_url(:medium).to_s
+          = image_tag tutor.avatar_url(:medium).to_s
       .span5
 
         %h1= tutor.name
@@ -44,12 +37,6 @@
             Последнее изменение:
           = time_ago_in_words(tutor.updated_at)
           назад
-        - if current_user
-          - if current_user.visitor?
-            - unless tutor.student_users.include?(current_user)
-              = link_to 'Я учусь здесь!', join_tutor_students_path(tutor), :class => 'label label-info'
-            - else
-              = link_to 'Я больше не учусь здесь!', leave_tutor_students_path(tutor), :class => 'label label-info'
 
     %br/
     %table.table.table-striped.table-condensed
@@ -62,23 +49,18 @@
             %td
               = f.value
 
-
-
-
     %ul#ProviderTabs.nav.nav-tabs
       %li.active
         %a( href = "#description" data-toggle = "tab" )
-          = t(:'providers.main_info')
+          = t(:'tutors.show.description')
       - if !tutor.methodology.blank?
         %li
-          %a( href = "#more_info" data-toggle = "tab" )
-            = t(:'providers.more_info')
+          %a( href = "#methodology" data-toggle = "tab" )
+            = t(:'tutors.show.methodology')
       - if !tutor.more_info.blank?
         %li
-          %a( href = "#documents_info" data-toggle = "tab" )
-            = t(:'providers.documents_info')
-
-
+          %a( href = "#more_info" data-toggle = "tab" )
+            = t(:'tutors.show.more_info')
 
     #myTabContent.tab-content
       #description.tab-pane.fade.active.in
@@ -86,10 +68,10 @@
           .description= tutor.description
         - else
           %p= t(:'providers.visit_website_for_more_info')
-      #more_info.tab-pane.fade
+      #methodology.tab-pane.fade
         - if !tutor.methodology.blank?
           .more-info= tutor.methodology
-      #documents_info.tab-pane.fade
+      #more_info.tab-pane.fade
         - if !tutor.more_info.blank?
           .documents-info= tutor.more_info
 
