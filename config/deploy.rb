@@ -1,13 +1,14 @@
 # RVM
 
 set :using_rvm, true
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-require "rvm/capistrano"
+#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 set :rvm_type, :system
+
+require "rvm/capistrano"
 
 # Bundler
 
-require "bundler/capistrano"
+#require "bundler/capistrano"
 
 # General
 
