@@ -14,7 +14,8 @@ gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'therubyracer'
 
-gem 'capistrano'
+gem 'capistrano', '2.12.0'
+gem 'rvm-capistrano'
 gem 'markitup_rails'
 
 gem 'twitter-bootstrap-rails', '2.0.4'

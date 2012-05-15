@@ -2,7 +2,8 @@
   %legend= t(:'postings.main_image.legend')
   .control-group
     %label.control-label
-      = image_tag f.object.src_url(:small).to_s
+      - if f.object.src_url.present?
+        = image_tag f.object.src_url(:small).to_s
     .controls
       = f.file_field :src
       = f.hidden_field :src_cache
