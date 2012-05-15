@@ -1,5 +1,6 @@
 class Tag < ActiveRecord::Base
-  has_many :taggings
+
+  has_many :taggings, :dependent => :destroy
 
   validates_presence_of   :name
   validates_uniqueness_of :name

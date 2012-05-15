@@ -13,9 +13,8 @@ class Posting < ActiveRecord::Base
 
   #validates :images, :length => { :maximum => 1}
 
-  has_many :taggings, :as => :taggable
+  has_many :taggings, :as => :taggable, :dependent => :destroy
   has_many :tags,     :through => :taggings
-
 
   has_many :posting_categorizings, :dependent => :destroy
   has_many :posting_categories, :through => :posting_categorizings
