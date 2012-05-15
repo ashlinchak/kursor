@@ -94,7 +94,7 @@ ru:
     custom_fields:
       add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
       address: "Адрес"
-      title: "Особенности"
+      title: "Специальные поля (особенности)"
     custom_flags:
       add: "<i class=\'icon-plus-sign\'></i> Добавить флаг"
       true_value: "Есть"

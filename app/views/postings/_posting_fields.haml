@@ -15,7 +15,7 @@
       .control-group
         = f.label t(:'postings.titles.body'), :class => 'control-label'
         .controls
-          = f.cktext_area :body, :input_html => {:cols => 1000, :rows => 200}
+          = f.cktext_area :body #:input_html => {:cols => 1000, :rows => 2000}
           %p.help-block= t(:'postings.titles.body_help')
 
     = f.fields_for :images do |image|

@@ -24,13 +24,17 @@
 .row
   .span6
     %fieldset
-      %legend= t(:'admin.custom_fields.headers.title')
+      %legend= t(:'providers.custom_fields.title')
+
       = f.fields_for :custom_field_bindings do |b|
         = render :partial => 'custom_field_bindings/custom_field_binding_fields', :locals => { :f => b }
       .fields= link_to_add_fields t(:'providers.custom_fields.add').html_safe, f, :custom_field_bindings
   .span6
     %fieldset
       %legend= t(:'admin.custom_flags.headers.title')
+      .alert.alert-notice.fade.in{ "data-dismiss" => "alert" }
+        %a.close{:href => '#'} x
+        help text
       = f.fields_for :custom_flag_bindings do |b|
         = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
       .fields= link_to_add_fields t(:'providers.custom_flags.add').html_safe, f, :custom_flag_bindings
@@ -54,26 +58,26 @@
 .row
   .span6
     = f.label :description
-    = f.text_area :description, :class => 'span8'
+    = f.cktext_area :description
   .span6
     = f.label :description_uk
-    = f.text_area :description_uk, :class => 'span8'
+    = f.cktext_area :description_uk
 
 .row
   .span6
     = f.label :more_info
-    = f.text_area :more_info, :class => 'span8'
+    = f.cktext_area :more_info
   .span6
     = f.label :more_info_uk
-    = f.text_area :more_info_uk, :class => 'span8'
+    = f.cktext_area :more_info_uk
 
 .row
   .span6
     = f.label :documents_info
-    = f.text_area :documents_info, :class => 'span8'
+    = f.cktext_area :documents_info
   .span6
     = f.label :documents_info_uk
-    = f.text_area :documents_info_uk, :class => 'span8'
+    = f.cktext_area :documents_info_uk
 
 %hr/
 .row

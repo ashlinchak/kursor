@@ -1,8 +1,6 @@
 class TagsController < ApplicationController
   def index
-
   end
-
   # accepts name
   def show
     @tag_name = params[:id]
