@@ -2,9 +2,6 @@
   .row
     .span8
 
-      -#%h2.home-title= t(:'home.titles.featured_posting')
-
-
       %ul#FeaturedNav.nav.nav-tabs
         - root_posting_categories.each_with_index do |cat, index|
           - if index == 0
@@ -20,7 +17,7 @@
           - if index == 0
             %div{ :id => cat.name, :class => 'tab-pane fade active in'}
               .home-postings.row
-                - for posting in cat.postings.approved.last(4) do
+                - for posting in cat.postings.order("created_at ASC").approved.limit(4) do
                   .span2
                     .posting
                       .recent_image{ :style => 'height: 93px; width: 140; ' }
@@ -37,7 +34,7 @@
           - else
             %div{ :id => cat.name, :class => 'tab-pane fade'}
               .home-postings.row
-                - for posting in cat.postings.approved.last(4) do
+                - for posting in cat.postings.approved.limit(4) do
                   .span2
                     .posting
                       .recent_image{ :style => 'height: 93px; width: 140; ' }

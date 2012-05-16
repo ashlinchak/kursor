@@ -15,11 +15,11 @@
   %tbody
     - for posting in postings do
       %tr
-        %td= link_to posting.title, admin_posting_path(posting)
+        %td= link_to posting.title, posting_path(posting), :target => '_blank'
         %td= posting.user
         %td= l posting.created_at, :format => :long
         %td
-          = link_to edit_admin_posting_path(posting) do
+          = link_to edit_posting_path(posting), :target => '_blank' do
             %span.icon-pencil
             = t(:'admin.postings.posting_list.edit')
           %br

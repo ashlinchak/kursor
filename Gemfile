@@ -13,7 +13,6 @@ gem 'mail'
 gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'therubyracer'
-
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
 gem 'markitup_rails'

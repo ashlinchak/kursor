@@ -9,10 +9,10 @@
                 = link_to child.name, child
                 - if child.children
                   = '(' + child.postings.size.to_s + ')'
-              - for sub_post in child.postings.last(4)
+              - for sub_post in child.postings.approved.limit(4)
                 .item
                   = link_to sub_post do
-                    = image_tag 'no-image.png', :width => '64px', :height => '64px', "data-original" => sub_post.images.last.src_url(:thumb).to_s unless sub_post.images
+                    = image_tag 'no-image.png', :width => '64px', :height => '64px', "data-original" => sub_post.images.last.src_url(:thumb).to_s
                   %h5
                     = link_to sub_post.title, sub_post
                   .info

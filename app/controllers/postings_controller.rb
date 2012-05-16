@@ -1,4 +1,5 @@
 class PostingsController < ApplicationController
+
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
   def index
@@ -28,6 +29,7 @@ class PostingsController < ApplicationController
 
   def update
     if posting.update_attributes params[:posting]
+
       flash[:notice] = t(:'postings.update.success')
       redirect_to posting_path(posting)
     else

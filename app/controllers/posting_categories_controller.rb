@@ -28,16 +28,16 @@ class PostingCategoriesController < ApplicationController
   def postings
 
     @postings ||= if posting_category.root?
-      Kaminari.paginate_array(posting_category.postings).page(params[:page]).per(30)
+      Kaminari.paginate_array(posting_category.postings.approved).page(params[:page]).per(30)
     else
-      Kaminari.paginate_array(posting_category.sub_postings).page(params[:page]).per(30)
+      Kaminari.paginate_array(posting_category.sub_postings.approved).page(params[:page]).per(30)
     end
 
   end
   helper_method :postings
 
   def all_postings
-     @postings = Kaminari.paginate_array(Posting.all).page(params[:page]).per(30)
+     @postings = Kaminari.paginate_array(Posting.approved).page(params[:page]).per(30)
   end
   helper_method :all_postings
 
