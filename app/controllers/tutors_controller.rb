@@ -19,9 +19,10 @@ class TutorsController < ApplicationController
   def create
     tutor.user = current_user
     if tutor.save
-      flash[:success] = 'Tutor was successfully created.'
+      flash[:success] = t(:'tutors.create.success').html_safe
       redirect_to tutor_path(tutor)
     else
+      flash[:error] = (:'tutors.create.error').html_safe
       render :action => "new"
     end
   end
@@ -30,9 +31,10 @@ class TutorsController < ApplicationController
     # trick to delete unchecked tutor_categories
     params[:tutor][:tutor_category_ids] ||= []
     if tutor.update_attributes(params[:tutor])
-      flash[:notice] = 'Tutor was successfully updated.'
+      flash[:success] = t(:'tutors.edit.success').html_safe
       redirect_to tutor_path(tutor)
     else
+      flash[:error] = t(:'tutors.create.error').html_safe
       render :action => "edit"
     end
   end

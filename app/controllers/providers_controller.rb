@@ -25,9 +25,10 @@ class ProvidersController < ApplicationController
   def create
     provider.user = current_user
     if provider.save
-      flash[:success] = 'Provider was successfully created.'
+      flash[:success] = t(:'providers.create.success').html_safe
       redirect_to provider_path(provider)
     else
+      flash[:error] = t(:'providers.create.error').html_safe
       render :action => "new"
     end
   end
@@ -36,7 +37,7 @@ class ProvidersController < ApplicationController
     # trick to delete unchecked provider_categories
     params[:provider][:category_ids] ||= []
     if provider.update_attributes(params[:provider])
-      flash[:notice] = 'Provider was successfully updated.'
+      flash[:success] = t(:'providers.edit.success').html_safe
       redirect_to provider_path(provider)
     else
       render :action => "edit"

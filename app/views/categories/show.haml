@@ -1,8 +1,9 @@
 .row
   .span12
-    = render 'shared/provider_filter'
+
     %ul.breadcrumb
       =breadcrumbs_for_category category
+    = render 'shared/provider_filter'
     %h3= category.name
     %ul.categories.clearfix
       - for child in category.children

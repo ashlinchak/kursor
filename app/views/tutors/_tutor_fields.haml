@@ -55,7 +55,7 @@
       .control-group
         = f.label t(:'tutors.show.description'), :class => 'control-label'
         .controls
-          = f.text_area :description, :class => 'span8'
+          = f.cktext_area :description, :class => 'span8', :toolbar => 'Basic'
 
 .row
   .span12
@@ -63,7 +63,7 @@
       .control-group
         = f.label t(:'tutors.show.methodology'), :class => 'control-label'
         .controls
-          = f.text_area :methodology, :class => 'span8'
+          = f.cktext_area :methodology, :class => 'span8', :toolbar => 'Basic'
 
 .row
   .span12
@@ -71,7 +71,7 @@
       .control-group
         = f.label t(:'tutors.show.more_info'), :class => 'control-label'
         .controls
-          = f.text_area :more_info, :class => 'span8'
+          = f.cktext_area :more_info, :class => 'span8', :toolbar => 'Basic'
 
 %hr/
 .row

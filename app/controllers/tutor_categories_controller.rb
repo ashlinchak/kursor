@@ -30,25 +30,29 @@ class TutorCategoriesController < ApplicationController
   def tutors
     @tutors ||= unless params[:search]
       if tutor_category.root?
-        Kaminari.paginate_array(tutor_category.tutors).page(params[:page]).per(30)
+        Kaminari.paginate_array(tutor_category.tutors.approved).page(params[:page]).per(30)
       else
-        Kaminari.paginate_array(tutor_category.sub_tutors).page(params[:page]).per(30)
+        Kaminari.paginate_array(tutor_category.sub_tutors.approved).page(params[:page]).per(30)
       end
     else
 
-
     # Providers sorting  by City and Region in current category
 
-      addressables = Location.where(:city_id => params[:search][:city_id]).map(&:addressable)
-
-      #addressables = Location.where("city_id = :city_id OR region_id = :region_id",{:city_id => params[:search][:city_id], :region_id => params[:search_region_id]}).map(&:addressable)
+      if  !params[:search][:city_id].blank?
+        addressables = Location.where(:city_id => params[:search][:city_id]).map(&:addressable)
+      else
+        filtered_cities = City.where(:region_id => params[:search_region_id])
+        addressables = Location.where(:city_id => filtered_cities).map(&:addressable)
+      end
 
       tutors = []
 
       addressables.each do |a|
         if a.is_a? Tutor
           if a.tutor_categories.include? tutor_category or a.tutor_category == tutor_category
-            tutors << a
+            unless a.is_approved == false
+              tutors << a
+            end
           end
         end
       end

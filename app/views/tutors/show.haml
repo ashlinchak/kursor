@@ -65,15 +65,15 @@
     #myTabContent.tab-content
       #description.tab-pane.fade.active.in
         - if !tutor.description.blank?
-          .description= tutor.description
+          .description= tutor.description.html_safe
         - else
           %p= t(:'providers.visit_website_for_more_info')
       #methodology.tab-pane.fade
         - if !tutor.methodology.blank?
-          .more-info= tutor.methodology
+          .more-info= tutor.methodology.html_safe
       #more_info.tab-pane.fade
         - if !tutor.more_info.blank?
-          .documents-info= tutor.more_info
+          .documents-info= tutor.more_info.html_safe
 
 
     - if current_user
