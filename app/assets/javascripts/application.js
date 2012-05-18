@@ -74,6 +74,11 @@ $(document).ready(function(){
   });
 
 
+    $('.bar').mosaic({
+        animation : 'slide'
+    });
+
+
   $('html').removeClass('no-js');
 
   //$('.provider-categories select').bind('click change keyup blur', function(){

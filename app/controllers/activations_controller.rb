@@ -19,7 +19,7 @@ class ActivationsController < ApplicationController
   end
 
   def perform
-    if user_activation = UserActivation.find_by_token( params[:id] ).html_safe
+    if user_activation = UserActivation.find_by_token(params[:id])
       if user = user_activation.user
         user.is_active = true
         user.save
@@ -37,5 +37,4 @@ class ActivationsController < ApplicationController
       redirect_to :action => :create
     end
   end
-
 end

@@ -16,38 +16,37 @@
         - root_posting_categories.each_with_index do |cat, index|
           - if index == 0
             %div{ :id => cat.name, :class => 'tab-pane fade active in'}
+
+
+
               .home-postings.row
                 - for posting in cat.postings.order("created_at ASC").approved.limit(4) do
                   .span2
                     .posting
-                      .recent_image{ :style => 'height: 93px; width: 140; ' }
-                        - if !posting.images.empty?
-                          = link_to posting do
-                            = image_tag posting.images.last.src_url(:small).to_s, :width => '140px', :height => '93'
-                      %h3= link_to posting.title, posting
-                      .excerpt= posting.excerpt[0..100]
-                      .user
-                        = link_to posting.user do
-                          = posting.user
-                      .date
-                        = time_ago_in_words posting.created_at.to_s + ' назад'
+                      = link_to posting do
+                        = image_tag posting.images.last.src_url(:medium).to_s
+                    %h3= link_to posting.title, posting
+                    .excerpt= posting.excerpt[0..100]
+                    .user
+                      = link_to posting.user do
+                        = posting.user
+                    .date
+                      = time_ago_in_words posting.created_at.to_s + ' назад'
           - else
             %div{ :id => cat.name, :class => 'tab-pane fade'}
               .home-postings.row
                 - for posting in cat.postings.approved.limit(4) do
                   .span2
                     .posting
-                      .recent_image{ :style => 'height: 93px; width: 140; ' }
-                        - if !posting.images.empty?
-                          = link_to posting do
-                            = image_tag posting.images.last.src_url(:small).to_s, :width => '140px', :height => '93'
-                      %h3= link_to posting.title, posting
-                      .excerpt= posting.excerpt[0..100]
-                      .user
-                        = link_to posting.user do
-                          = posting.user
-                      .date
-                        = time_ago_in_words posting.created_at.to_s + ' назад'
+                      = link_to posting do
+                        = image_tag posting.images.last.src_url(:medium).to_s
+                    %h3= link_to posting.title, posting
+                    .excerpt= posting.excerpt[0..100]
+                    .user
+                      = link_to posting.user do
+                        = posting.user
+                    .date
+                      = time_ago_in_words posting.created_at.to_s + ' назад'
 
       %h2.home-title= t(:'home.titles.categories')
       .row
@@ -73,3 +72,20 @@
           .span3
             %b= link_to item.name, provider_path(item)
 
+  -#.row
+  -#  .span8
+  -#    .mosaic-block.bar2
+  -#      = link_to Posting.find(22), :class => 'mosaic-overlay', :style => 'display: inline; ' do
+  -#        .details
+  -#          %h4 Около 9 тысяч китайцев учатся в
+  -#          %p Около 9 тысяч китайцев учатся в украинских вузах
+  -#      .mosaic-backdrop{:style => 'display: block; '}
+  -#        = image_tag Posting.find(22).images.last.src_url(:medium).to_s
+  -#
+  -#    .mosaic-block.bar
+  -#      %a{ :href => "http://buildinternet.com/project/mosaic", :target => "_blank", :class => "mosaic-overlay" }
+  -#        .details
+  -#          %h4 Mosaic - Sliding Boxes and Captions jQuery Plugin
+  -#          %p by Build Internet
+  -#        .mosaic-backdrop
+  -#          = image_tag "http://buildinternet.s3.amazonaws.com/projects/mosaic/mosaic.jpg"

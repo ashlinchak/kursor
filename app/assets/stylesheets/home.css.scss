@@ -78,6 +78,26 @@
 }
 
 .home-postings {
+
+  .posting {
+
+    img {
+      position: absolute;
+      top: 0px;
+      margin: 0px 103px 0px -103px;
+    }
+
+    height: 240px;
+    width: 140px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
   h3{
     font-size: 1em;
     height: 2.5em;
@@ -93,11 +113,6 @@
     img {
       vertical-align: middle;
     }
-  }
-  img {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
   }
 }
 
