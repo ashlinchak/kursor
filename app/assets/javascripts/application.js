@@ -76,9 +76,6 @@ $(document).ready(function(){
 
   $('html').removeClass('no-js');
 
-  $("textarea.show_editor").markItUp(mySettings);
-
-
   //$('.provider-categories select').bind('click change keyup blur', function(){
     //show_categories(this);
   //});

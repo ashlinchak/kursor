@@ -5,7 +5,6 @@ gem 'mysql2'
 gem 'json'
 gem 'jquery-rails'
 gem 'haml'
-gem 'redcarpet'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'russian'
@@ -15,11 +14,9 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'therubyracer'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
-gem 'markitup_rails'
 
 gem 'twitter-bootstrap-rails', '2.0.4'
 gem "ckeditor", "3.7.0.rc3"
-
 
 group :assets do
   gem 'sass-rails', "3.1.4"
