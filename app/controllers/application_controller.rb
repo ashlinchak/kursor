@@ -1,15 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  rescue_from ActionController::RedirectBackError,  :with => :render_404
+  rescue_from ActionController::RedirectBackError,  :with => :render_500
   rescue_from ActionController::RoutingError,       :with => :render_404
   rescue_from ActiveRecord::RecordNotFound,         :with => :render_404
 
   protected
 
   def render_404
-    #render :file => File.join(Rails.root, 'public/404.html'), :layout => false, :status => 404
     flash[:error] = t(:'site.errors.error_404')
+    redirect_to root_url
+    end
+
+  def render_500
+    flash[:error] = t(:'site.errors.error_500')
     redirect_to root_url
   end
 
