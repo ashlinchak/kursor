@@ -14,7 +14,6 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'therubyracer'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
-
 gem 'twitter-bootstrap-rails', '2.0.4'
 gem "ckeditor", "3.7.0.rc3"
 

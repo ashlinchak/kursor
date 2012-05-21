@@ -1,54 +1,29 @@
 #home
   .row
     .span8
-
-      %ul#FeaturedNav.nav.nav-tabs
-        - root_posting_categories.each_with_index do |cat, index|
-          - if index == 0
-            %li.active
-              = link_to cat.name, '#' + cat.name, "data-toggle" => "tab"
-          - else
-            %li
-              = link_to '#' + cat.name, "data-toggle" => "tab" do
-                = cat.name
-
-      #FeaturedTabs.tab-content
-        - root_posting_categories.each_with_index do |cat, index|
-          - if index == 0
-            %div{ :id => cat.name, :class => 'tab-pane fade active in'}
-
-
-
-              .home-postings.row
+      %h2.home-title= t(:'home.titles.featured_posting')
+      .coda-slider-wrapper
+        .coda-slider.preload#coda-slider-1
+          - root_posting_categories.each do |cat|
+            .panel
+              .panel-wrapper.row
+                %h2.title= cat.name
                 - for posting in cat.postings.order("created_at ASC").approved.limit(4) do
-                  .span2
-                    .posting
-                      = link_to posting do
-                        = image_tag posting.images.last.src_url(:medium).to_s
-                    %h3= link_to posting.title, posting
-                    .excerpt= posting.excerpt[0..100]
-                    .user
-                      = link_to posting.user do
-                        = posting.user
-                    .date
-                      = time_ago_in_words posting.created_at.to_s + ' назад'
-          - else
-            %div{ :id => cat.name, :class => 'tab-pane fade'}
-              .home-postings.row
-                - for posting in cat.postings.approved.limit(4) do
-                  .span2
-                    .posting
-                      = link_to posting do
-                        = image_tag posting.images.last.src_url(:medium).to_s
-                    %h3= link_to posting.title, posting
-                    .excerpt= posting.excerpt[0..100]
-                    .user
-                      = link_to posting.user do
-                        = posting.user
-                    .date
-                      = time_ago_in_words posting.created_at.to_s + ' назад'
+                  .mosaic-block.bar.span2
+                    .mosaic-overlay
+                      .details
+                        %h4= link_to posting.title, posting
+                        %p
+                          = time_ago_in_words posting.created_at.to_s
+                          назад
+                        %p
+                          -#= link_to posting.user do
+                          = posting.user
+                    .mosaic-backdrop
+                      = image_tag posting.images.last.src_url(:medium).to_s
 
-      %h2.home-title= t(:'home.titles.categories')
+      -#%h2.home-title= t(:'home.titles.categories')
+      %hr/
       .row
         - root_categories.each_with_index do |category, index|
           - if ((index % 3) == 0) && index > 0
@@ -72,20 +47,3 @@
           .span3
             %b= link_to item.name, provider_path(item)
 
-  -#.row
-  -#  .span8
-  -#    .mosaic-block.bar2
-  -#      = link_to Posting.find(22), :class => 'mosaic-overlay', :style => 'display: inline; ' do
-  -#        .details
-  -#          %h4 Около 9 тысяч китайцев учатся в
-  -#          %p Около 9 тысяч китайцев учатся в украинских вузах
-  -#      .mosaic-backdrop{:style => 'display: block; '}
-  -#        = image_tag Posting.find(22).images.last.src_url(:medium).to_s
-  -#
-  -#    .mosaic-block.bar
-  -#      %a{ :href => "http://buildinternet.com/project/mosaic", :target => "_blank", :class => "mosaic-overlay" }
-  -#        .details
-  -#          %h4 Mosaic - Sliding Boxes and Captions jQuery Plugin
-  -#          %p by Build Internet
-  -#        .mosaic-backdrop
-  -#          = image_tag "http://buildinternet.s3.amazonaws.com/projects/mosaic/mosaic.jpg"

@@ -9,7 +9,6 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require ckeditor/init
-// require sets/default/set
 //= require_tree .
 
 $(document).ready(function(){
@@ -73,8 +72,23 @@ $(document).ready(function(){
   });
 
 
+  // Mosaic Caption Slider
+
     $('.bar').mosaic({
-        animation : 'slide'
+        animation : 'slide',
+        animateEasing: 'easeInOutQuad',
+        speed: 600,
+        opacity : 0.8
+      });
+
+  // News Tabs Slider
+    $('#coda-slider-1').codaSlider({
+        dynamicArrows: false,
+        autoSlide: true,
+        autoSlideStopWhenClicked: true,
+        dynamicTabsAlign: 'center',
+        dynamicTabsPosition: 'bottom',
+        slideEaseDuration: 1500
     });
 
 
