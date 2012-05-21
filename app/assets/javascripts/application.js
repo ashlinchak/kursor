@@ -9,8 +9,7 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require ckeditor/init
-//= require jquery.markitup
-//= require sets/default/set
+// require sets/default/set
 //= require_tree .
 
 $(document).ready(function(){
