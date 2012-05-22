@@ -16,6 +16,7 @@ gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
 gem 'twitter-bootstrap-rails', '2.0.4'
 gem "ckeditor", "3.7.0.rc3"
+gem 'acts_as_commentable_with_threading'
 
 group :assets do
   gem 'sass-rails', "3.1.4"

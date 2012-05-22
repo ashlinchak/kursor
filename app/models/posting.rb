@@ -1,6 +1,8 @@
 class Posting < ActiveRecord::Base
   include ::Taggable
 
+  acts_as_commentable
+
   attr_accessor :image_attributes
 
   belongs_to :user
