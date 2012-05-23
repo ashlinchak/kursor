@@ -47,7 +47,10 @@ Kursor::Application.routes.draw do
   resources :dashboard, :only => [:index]
 
   resources :news, :only => [:index, :show]
-  resources :postings#, :only => [:index, :show]
+
+  resources :postings do
+    resources :comments
+  end
 
   resources :users, :except => [ :edit, :destroy] do
     resources :postings

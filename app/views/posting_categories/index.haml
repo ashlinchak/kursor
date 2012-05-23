@@ -16,8 +16,12 @@
                   %h5
                     = link_to sub_post.title, sub_post
                   .info
-                    = time_ago_in_words sub_post.created_at, :format => :long
-                    назад
+                    %p
+                      = time_ago_in_words sub_post.created_at, :format => :long
+                      назад
+                      %br/
+                      = t(:'posting_categories.comments')
+                      = sub_post.comment_threads.size
               .more-in
                 = link_to posting_category_path(child) do
                   Больше в категории

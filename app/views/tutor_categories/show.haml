@@ -1,8 +1,11 @@
 .row
   .span12
-    = render 'shared/tutor_filter'
+
     %ul.breadcrumb
-      =breadcrumbs_for_tutor_category tutor_category
+      %li
+        Вы здесь:
+      = breadcrumbs_for_tutor_category tutor_category
+    = render 'tutor_filter'
     %h3= tutor_category.name
     %ul.categories.clearfix
       - for child in tutor_category.children

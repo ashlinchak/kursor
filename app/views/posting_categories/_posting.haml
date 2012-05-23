@@ -14,3 +14,6 @@
         = link_to p.user, p.user
         |
         = l p.created_at, :format => :long
+        |
+        = t(:'posting_categories.comments')
+        = p.comment_threads.size

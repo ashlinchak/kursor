@@ -1,0 +1,24 @@
+- for child in comment.children
+  .child
+    %h4
+      = link_to user_path(child.user) do
+        - unless !child.user.visitor?
+          = image_tag child.user.profile.avatar_url(:icon).to_s
+          = child.user.profile.full_name
+        - unless !child.user.tutor?
+          = image_tag child.user.tutor.avatar_url(:icon).to_s
+          = child.user.tutor.name
+        - unless !child.user.school?
+          = image_tag child.user.provider.logo_url(:icon).to_s
+          = child.user.provider.name
+    .body
+      = child.body
+      %p.details
+        = time_ago_in_words(child.created_at) + ' назад'
+        - if current_user.administrator?
+          = link_to [commentable ,child], :method => :delete, :confirm => 'Are you sure?', :class => 'delete' do
+            %i.icon-remove
+            = t(:'postings.comments.remove')
+    %hr/
+    - if child.has_children?
+      = render 'comments/child', :comment => child, :commentable => commentable

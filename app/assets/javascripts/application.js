@@ -85,10 +85,9 @@ $(document).ready(function(){
     $('#coda-slider-1').codaSlider({
         dynamicArrows: false,
         autoSlide: true,
-        autoSlideStopWhenClicked: true,
         dynamicTabsAlign: 'center',
         dynamicTabsPosition: 'bottom',
-        slideEaseDuration: 1500
+        slideEaseDuration: 2500
     });
 
 

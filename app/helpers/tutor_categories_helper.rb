@@ -4,7 +4,7 @@ module TutorCategoriesHelper
     if !tutor_category.parent.nil?
       result += breadcrumbs_for_tutor_category tutor_category.parent
     end
-    result += " <li><span class='divider'>/</span> #{link_to tutor_category, tutor_category} </li>"
+    result += "<li> #{link_to tutor_category, tutor_category} <span class='divider'>/</span></li>"
     raw result
   end
 end

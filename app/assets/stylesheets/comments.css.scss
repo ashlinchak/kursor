@@ -1,0 +1,36 @@
+.comments {
+
+  .comment, .child {
+
+    h4 {
+      img {
+        float: left;
+        width: 32px;
+        margin: 3px 10px
+      }
+      a {
+      text-decoration: none;
+      }
+    }
+    .body {
+      margin: 0 0 0 42px;
+      overflow: hidden;
+
+      p.details {
+        a.delete {
+          float: right;
+        }
+        font-size: 11px;
+        line-height: 1;
+        color: #CCC;
+      }
+    }
+
+    width: auto;
+    margin-bottom: 15px;
+  }
+  .child {
+    margin-left: 40px;
+  }
+
+}

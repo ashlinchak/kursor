@@ -19,6 +19,9 @@
                         %p
                           -#= link_to posting.user do
                           = posting.user
+                        %p
+                          = t(:'home.news_slider.comments')
+                          = posting.comment_threads.size
                     .mosaic-backdrop
                       = image_tag posting.images.last.src_url(:medium).to_s
 

@@ -20,7 +20,6 @@
 
     = f.fields_for :images do |image|
       = render :partial => 'images/image_fields', :locals => { :f => image }
-
     %fieldset
       %legend= t(:'tags.title')
       .control-group
@@ -28,9 +27,6 @@
         .controls
           = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span9'
           %p.help-block= t(:'tags.tag_list_help')
-
-
-
     %fieldset
       %legend= t(:'postings.categories')
       .control-group

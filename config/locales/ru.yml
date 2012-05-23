@@ -35,6 +35,8 @@ ru:
       featured_posting: "Свежие статьи"
       categories: "Категории"
 
+    news_slider:
+      comments: "Комментарии:"
   contacts:
     social_icons:
       vkontakte: "Вконтакте"
@@ -217,7 +219,22 @@ ru:
       title_placeholder: "заголовок"
       description: "Описание картинки"
       description_placeholder: "описание"
+    comments:
+      title: "Комментарии"
+      leave_comment: "Оставить комментарий"
+      submit: "Отправить"
+      remove: "Удалить"
+      no_comments: "Пока никто не оставил комментарий, Вы можете стать первым!"
+      only_for_registered: "Комментарии могут просматривать только зарегистрированные пользователи."
+      please_register_or_login: "Пожалуйста, <a href=\'/login\'>Войдите</a> или <a href=\'/users/new'>Зарегистрируйтесь</a>."
+      messages:
+        create_success: "Комментарий добавлен."
+        create_error: "Ошибка при добавлении комментария"
+        destroy_success: "Комментарий успешно удален"
+        cant_destroy_non_empty: "Нельзя удалить комментарий с вложенными комментариями"
 
+  posting_categories:
+    comments: "Комментарии:"
 
   tags:
     title: "Теги"

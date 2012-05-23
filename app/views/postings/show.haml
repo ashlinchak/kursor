@@ -47,9 +47,6 @@
         .body
           = posting.body.html_safe
         %hr/
-        .tags-list
-          %span.icon-tags
-          = links_to_tags posting.tags_list
         .user-bar
           = link_to posting.user, user_path(posting.user)
           |
@@ -63,4 +60,37 @@
             = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
               %i.icon-remove
               = t(:'postings.actions.delete')
+        .tags-list
+          %span.icon-tags
+          = links_to_tags posting.tags_list
+    .row
+      .span8
+        %legend= t(:'postings.comments.title') + ' (' + posting.comment_threads.size.to_s + ')'
+        - if authenticated?
 
+          - if posting.comment_threads.size > 0
+            = render 'comments/comments', :commentable => posting
+          - else
+            = t(:'postings.comments.no_comments')
+
+
+          = form_for [ posting, Comment.build_from( posting, nil, '') ], :html => {:class => 'form-horizontal'} do |f|
+            %fieldset
+              %legend= t(:'postings.comments.leave_comment')
+              .control-group
+                %label.control-label
+                  - unless !current_user.visitor?
+                    = image_tag current_user.profile.avatar_url(:thumb).to_s
+                  - unless !current_user.tutor?
+                    = image_tag current_user.tutor.avatar_url(:thumb).to_s
+                  - unless !current_user.school?
+                    = image_tag current_user.provider.logo_url(:thumb).to_s
+                .controls
+                  = f.text_area :body, :class => 'span5'
+                  -#= f.text_field :parent_id, :class => 'span1'
+            .form-actions
+              = f.submit t(:'postings.comments.submit'), :class => 'btn btn-large btn-success'
+        - else
+          .alert.alert-danger
+            %p= t(:'postings.comments.only_for_registered')
+            %p= t(:'postings.comments.please_register_or_login').html_safe

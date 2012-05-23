@@ -22,8 +22,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :provider
   accepts_nested_attributes_for :profile
 
-  #default_scope order('created_at DESC')
-
   # TODO: find proper names for acc types
   ACCOUNT_TYPES = %w( user tutor school )
 
