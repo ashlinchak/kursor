@@ -2,6 +2,8 @@ class TutorsController < ApplicationController
 
   before_filter :require_authentication, :except => [:index, :show]
 
+  before_filter :require_owner, :only => [ :edit, :update, :destroy ]
+
   def index
   end
 
@@ -57,5 +59,15 @@ class TutorsController < ApplicationController
     @tutors ||= Tutor.all
   end
   helper_method :tutors
+
+  def require_owner
+    unless current_user.administrator?
+      unless current_user == Tutor.find(params[:id]).user
+        #rescue ActiveRecord::RecordNotFound
+        flash[:error] = t('site.errors.access_denied')
+        redirect_to root_path
+      end
+    end
+  end
 
 end

@@ -1,8 +1,2 @@
-%h3
-  Good day,
-  %strong= @user
-  ,
-%p Here's activation link for your account. If you didn't request it &mdash; please, ignore this email.
 - if @user.user_activation
-  %p Follow the link below:
-  %p= link_to perform_activation_url( @user.user_activation.token ), perform_activation_url( @user.user_activation.token )
+  = t 'mailers.user_activation.mail_body_html', :link => perform_activation_url(@user.user_activation.token), :root_url => root_url

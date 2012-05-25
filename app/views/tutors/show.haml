@@ -6,7 +6,7 @@
         = t(:'tutors.show.edit')
 
     - if current_user.tutor
-      - if !current_user.tutor.is_approved?
+      - unless current_user.tutor.is_approved == true
         .alert.alert-info.alert-block
           %h4.alert-heading= t(:'providers.edit.not_approved.title')
           %p= t(:'providers.edit.not_approved.desc').html_safe

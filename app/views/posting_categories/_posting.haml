@@ -5,7 +5,7 @@
       - if !p.images.empty?
         = link_to p, :class => 'thumbnail' do
           = image_tag 'assets/logo.png', "data-original" => p.images.last.src_url(:medium).to_s, :width => '210px', :height => '129px'
-    .span5
+    .span6
       %h4= link_to p.title, p
       .excerpt
         = p.excerpt

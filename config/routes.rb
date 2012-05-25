@@ -5,6 +5,7 @@ Kursor::Application.routes.draw do
   resources :students
 
   namespace :admin do
+    resources :user_transfers
     resources :categories
     resources :tutor_categories
     resources :info

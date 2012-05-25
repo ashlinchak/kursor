@@ -7,10 +7,10 @@
           %legend= t(:'visitor.edit_profile.email_pass')
         - else
           %legend= t(:'users.new.email_pass')
-        .control-group{:style => 'padding-bottom: 0px; margin-bottom: 0px;'}
-          .controls
-            .alert.fade.in.alert-error{:style => 'width: 330px;'}
-              = t(:'users.new.ukr_net_warning').html_safe
+          .control-group{:style => 'padding-bottom: 0px; margin-bottom: 0px;'}
+            .controls
+              .alert.fade.in.alert-error{:style => 'width: 330px;'}
+                = t(:'users.new.ukr_net_warning').html_safe
         .control-group
           = f.label :email, :class => 'control-label'
           .controls
@@ -18,7 +18,6 @@
             - if user.new_record?
               %p.help-block
                 -#= t(:'users.new.email_must_be_real')
-
         .control-group
           = f.label t(:'users.new.pass'), :class => 'control-label'
           .controls
@@ -51,8 +50,6 @@
           .control-group
             .alert.fade.in.alert-success
               = t(:'users.new.before_register_info').html_safe
-
-
   .row
     .span12
       - if user.visitor?

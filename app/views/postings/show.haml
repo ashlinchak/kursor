@@ -66,14 +66,12 @@
     .row
       .span8
         %legend= t(:'postings.comments.title') + ' (' + posting.comment_threads.size.to_s + ')'
+
+        - if posting.comment_threads.size > 0
+          = render 'comments/comments', :commentable => posting
+        - else
+          = t(:'postings.comments.no_comments')
         - if authenticated?
-
-          - if posting.comment_threads.size > 0
-            = render 'comments/comments', :commentable => posting
-          - else
-            = t(:'postings.comments.no_comments')
-
-
           = form_for [ posting, Comment.build_from( posting, nil, '') ], :html => {:class => 'form-horizontal'} do |f|
             %fieldset
               %legend= t(:'postings.comments.leave_comment')
@@ -92,5 +90,6 @@
               = f.submit t(:'postings.comments.submit'), :class => 'btn btn-large btn-success'
         - else
           .alert.alert-danger
-            %p= t(:'postings.comments.only_for_registered')
+            %p
+              %b= t(:'postings.comments.only_for_registered')
             %p= t(:'postings.comments.please_register_or_login').html_safe

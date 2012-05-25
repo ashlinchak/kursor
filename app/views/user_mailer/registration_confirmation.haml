@@ -1,13 +1,2 @@
-%h3
-  Congratulations,
-  = @user
-  ,
-%p You've been successfully registered!
--#- if @user.provider
--#  %p Your service profile added:
--#  %p= @user.provider
 - if @user.user_activation
-  %p Follow the link below to activate your account:
-  - activation_link = perform_activation_url( @user.user_activation.token, :host => "kursor.org.ua" )
-  %p= link_to activation_link, activation_link
-%p= link_to 'View Profile', user_url(@user, :host => "kursor.org.ua")
+  = t 'mailers.user_activation.mail_body_html', :link => perform_activation_url(@user.user_activation.token), :root_url => root_url

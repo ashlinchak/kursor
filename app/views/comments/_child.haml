@@ -15,10 +15,11 @@
       = child.body
       %p.details
         = time_ago_in_words(child.created_at) + ' назад'
-        - if current_user.administrator?
-          = link_to [commentable ,child], :method => :delete, :confirm => 'Are you sure?', :class => 'delete' do
-            %i.icon-remove
-            = t(:'postings.comments.remove')
+        - unless !authenticated?
+          - if current_user.administrator?
+            = link_to [commentable ,child], :method => :delete, :confirm => 'Are you sure?', :class => 'delete' do
+              %i.icon-remove
+              = t(:'postings.comments.remove')
     %hr/
     - if child.has_children?
       = render 'comments/child', :comment => child, :commentable => commentable

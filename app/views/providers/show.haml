@@ -1,19 +1,20 @@
 - if current_user
   - if ( provider.user === current_user ) || current_user.administrator?
-    = link_to edit_provider_path(provider) do
-      %p
+    %p
+      = link_to edit_provider_path(provider) do
         %i.icon.icon-pencil
         = t(:'providers.edit.edit_profile')
 
+      - unless !current_user.administrator?
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        = link_to t(:'search.transfer_user').html_safe, edit_admin_user_transfer_path(provider.user_id), :class => ''
+
     - if current_user.provider
-      - if !current_user.provider.is_approved?
+      - unless current_user.provider.is_approved == true
         .alert.alert-info.alert-block
           %h4.alert-heading= t(:'providers.edit.not_approved.title')
           %p= t(:'providers.edit.not_approved.desc').html_safe
     %hr
-
-
-
 
 %ul.breadcrumb
   %li= link_to( provider.category, category_path(provider.category) ) if provider.category

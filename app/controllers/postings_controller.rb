@@ -65,8 +65,8 @@ class PostingsController < ApplicationController
   def require_owner
     @posting = current_user.postings.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = t('permission_denied')
-    redirect_to user_postings_path(current_user)
+    flash[:error] = t('site.errors.access_denied')
+    redirect_to root_path
   end
 
 end

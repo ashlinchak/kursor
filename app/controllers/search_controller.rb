@@ -10,4 +10,9 @@ class SearchController < ApplicationController
   end
   helper_method :search_results
 
+  def provider_user (provider)
+    @provider_user = Provider.find(provider.id).user.id
+  end
+  helper_method :provider_user
+
 end

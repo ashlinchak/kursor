@@ -9,7 +9,7 @@
 	.coda-slider-wrapper { padding: 0px; }
 	.coda-slider {
       //background: #ebebeb;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 	
 	/* Use this to keep the slider content contained in a box even when JavaScript is disabled */
@@ -53,7 +53,7 @@
 
 	/* Tabbed nav */
 	.coda-nav ul { clear: both; display: block; margin: auto; overflow: hidden }
-	.coda-nav ul li { display: inline; padding: 5px;}
+	.coda-nav ul li { display: inline; padding: 5px 5px; }
 	.coda-nav ul li a {
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -69,6 +69,8 @@
     border-radius: 4px;
     margin: 0px 5px;
     line-height: 20px;
+    display: inline-block;
+    padding: 4px 12px;
     }
 	
 	/* Miscellaneous */

@@ -2,6 +2,8 @@ class ProvidersController < ApplicationController
 
   before_filter :require_authentication, :except => [:index, :show]
 
+  before_filter :require_owner, :only => [ :edit, :update, :destroy ]
+
   def index
     respond_to do |format|
       format.html
@@ -49,6 +51,8 @@ class ProvidersController < ApplicationController
     redirect_to providers_url
   end
 
+  private
+
   def provider
     @provider ||= if params[:id]
       Provider.find(params[:id])
@@ -62,5 +66,16 @@ class ProvidersController < ApplicationController
     @providers ||= Provider.all
   end
   helper_method :providers
+
+
+  def require_owner
+    unless current_user.administrator?
+      unless current_user == Provider.find(params[:id]).user
+        #rescue ActiveRecord::RecordNotFound
+        flash[:error] = t('site.errors.access_denied')
+        redirect_to root_path
+      end
+    end
+  end
 
 end

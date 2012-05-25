@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       if user.is_active?
         self.current_user = user
         flash[:success] = t(:'sessions.create.success')
-        redirect_to root_url
+        redirect_to user_path(user)
       else
         flash[:error] = t(:'user_activation.errors.user_inactive')
         redirect_to login_url

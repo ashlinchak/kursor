@@ -1,7 +1,7 @@
 #home
   .row
     .span8
-      %h2.home-title= t(:'home.titles.featured_posting')
+      -#%h2.home-title= t(:'home.titles.featured_posting')
       .coda-slider-wrapper
         .coda-slider.preload#coda-slider-1
           - root_posting_categories.each do |cat|
@@ -25,8 +25,8 @@
                     .mosaic-backdrop
                       = image_tag posting.images.last.src_url(:medium).to_s
 
-      -#%h2.home-title= t(:'home.titles.categories')
-      %hr/
+      %br/
+      %h2.home-title= t(:'home.titles.categories')
       .row
         - root_categories.each_with_index do |category, index|
           - if ((index % 3) == 0) && index > 0
@@ -38,15 +38,19 @@
                 %li
                   = link_to sub_category do
                     = "#{sub_category} (#{sub_category.providers_count})"
-
     .span4
+      = image_tag '/images/shkola.jpg'
+      %br/
+      %br/
       %h2.home-title= t(:'home.titles.recent_providers')
+      .row
+        .span4
+        -#.span1
+        -#  = link_to item, :class => 'thumbnail' do
+        -#    = image_tag item.logo_url(:thumb)
+        -#  %br
+        -#.span3
+        -#  %b= link_to item.name, provider_path(item)
       - providers.each do |item|
-        .row
-          .span1
-            = link_to item, :class => 'thumbnail' do
-              = image_tag item.logo_url(:thumb)
-            %br
-          .span3
-            %b= link_to item.name, provider_path(item)
+        %h5{ :style => 'margin-bottom: 2px;' }= link_to item.name, provider_path(item)
 
