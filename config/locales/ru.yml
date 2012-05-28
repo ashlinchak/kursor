@@ -52,6 +52,10 @@ ru:
 
 
   tutors:
+    actions:
+      approve:
+        success: "Преподаватель <a href=\'%{tutor_path}\' target=\'_blank\'><b>&laquo;%{tutor_name}&raquo;</b></a> опубликован!"
+        confirm: "Опубликовать преподавателя &laquo;%{name}&raquo; ?"
     create:
       success: "Профиль успешно создан и сохранен в базу"
       error: "Возникла ошибка при создании профиля"
@@ -71,6 +75,11 @@ ru:
       add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
 
   providers:
+
+    actions:
+      approve:
+        success: "Провайдер <a href=\'%{provider_path}\' target=\'_blank\'><b>&laquo;%{provider_name}&raquo;</b></a> опубликован!"
+        confirm: "Опубликовать  &laquo;%{name}&raquo; ?"
 
     create:
       success: "Страничка успешно создана"
@@ -202,6 +211,9 @@ ru:
     categories: "Категории:"
     categories_help: "Отметьте галочками нужные категории"
     actions:
+      approve:
+        success: "Статья <a href=\'%{posting_path}\' target=\'_blank\'><b>&laquo;%{posting_title}&raquo;</b></a> опубликована!"
+        confirm: "Опубликовать статью &laquo;%{title}&raquo; ?"
       creating: "Создать новую статью"
       edit:  "Редактировать"
       delete: "Удалить статью"
@@ -266,6 +278,7 @@ ru:
 
   admin:
     nav:
+      notifications: "Уведомления"
       users: "Пользователи"
       categories: "Категории"
       provider_categories: "Категории провайдеров"
@@ -296,6 +309,8 @@ ru:
       delete: "Удалить эту категорию"
       edition: "Редактирование категории специалиста"
     postings:
+      actions:
+        approve: "Опубликовать"
       posting_list:
         title: "Менеджер статей"
         create: "Создать новую статью"
@@ -371,6 +386,12 @@ ru:
         title: "Специальные флаги"
       buttons:
         create_custom_flag: "Добавить новый флаг"
+    notifications:
+      titles:
+        providers: "Провайдеры"
+        tutors: "Преподаватели"
+        postings: "Статьи"
+
 
   activerecord:
     models:

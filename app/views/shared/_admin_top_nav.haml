@@ -4,7 +4,11 @@
       .nav-collapse
         %ul.nav
           %li= link_to t(:'site.back_to_site'), root_url
-          %li= link_to t(:'admin.nav.users'), admin_users_path
+          -#%li= link_to t(:'admin.nav.users'), admin_users_path
+          %li
+            = link_to admin_notifications_path do
+              = t(:'admin.nav.notifications')
+              %span.badge.badge-warning= pending_count
           %li.dropdown
             %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
               = t(:'admin.nav.categories')

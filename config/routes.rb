@@ -10,7 +10,20 @@ Kursor::Application.routes.draw do
     resources :tutor_categories
     resources :info
     resources :news
+    resources :notifications
     resources :postings do
+      member do
+        get :approve
+        get :decline
+      end
+    end
+    resources :providers do
+      member do
+        get :approve
+        get :decline
+      end
+    end
+    resources :tutors do
       member do
         get :approve
         get :decline

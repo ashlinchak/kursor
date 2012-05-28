@@ -35,18 +35,18 @@ class Admin::PostingsController < Admin::DashboardController
 
   def approve
     if posting.approve!
-      flash[:notice]= t(:'postings.approve.success')
+      flash[:success]= t('postings.actions.approve.success', :posting_title => posting.title, :posting_path => posting_path(posting)).html_safe
     else
-      flash[:notice]= t(:'postings.approve.error')
+      flash[:danger]= t(:'postings.approve.error')
     end
-    redirect_to admin_postings_path
+    redirect_to admin_notifications_path
   end
 
   def decline
     if posting.decline!
-      flash[:notice]= t(:'postings.decline.success')
+      flash[:success]= t(:'postings.decline.success')
     else
-      flash[:notice]= t(:'postings.decline.error')
+      flash[:danger]= t(:'postings.decline.error')
     end
     redirect_to admin_postings_path
   end

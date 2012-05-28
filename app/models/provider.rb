@@ -44,6 +44,16 @@ class Provider < ActiveRecord::Base
     name
   end
 
+  def approve!
+    self.is_approved = true
+    save
+  end
+
+  def decline!
+    self.is_approved = false
+    save
+  end
+
   def category_ids=(ids)
     self.categories = Category.find(ids)
   end

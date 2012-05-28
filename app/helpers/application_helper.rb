@@ -46,13 +46,14 @@ module ApplicationHelper
 
   def social_icon contact
 
-    link_to contact.value, :target => '_blank' do
+    cleaned_social_url = contact.value.gsub(/http:\/\//,'')
+    social_url = "http://#{cleaned_social_url}"
+
+    link_to social_url, :target => '_blank' do
       image_tag 'social-icons/32x32/' + contact.contact_type + '.png', :style => 'width: 32px; height: 32px;'
     end
 
   end
-
-
 
   def address_value location
     if location

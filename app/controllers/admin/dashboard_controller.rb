@@ -2,6 +2,12 @@ class Admin::DashboardController < ApplicationController
   layout 'admin'
   before_filter :require_authorization
 
+
+  def pending_count
+    @pending_count = Tutor.where(:is_approved => false).size + Provider.where(:is_approved => false).size + Posting.where(:is_approved => false).size
+  end
+  helper_method :pending_count
+
   def index
 
     @admin_users = Administrator.all.size
@@ -20,7 +26,7 @@ class Admin::DashboardController < ApplicationController
   helper_method :providers_approved
 
   def providers_waiting
-    @providers = Provider.where(:is_approved => 0).size
+    @providers = Provider.where(:is_approved => false).size
   end
   helper_method :providers_waiting
 
