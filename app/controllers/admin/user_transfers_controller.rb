@@ -14,17 +14,16 @@ class Admin::UserTransfersController < Admin::DashboardController
   def update
     transfer_user.is_active = true
     if transfer_user.update_attributes(params[:user])
-      flash[:success] = 'User saved'
       unless params[:send_email] != 'yes'
         if UserTransferMailer.transfer_email(transfer_user, transfer_user.password).deliver
-          flash[:success] += ' and mail sent!'
+          flash[:success] = t(:'admin.transfering_users.success_with_mail', :email => transfer_user.email.to_s, :password => ( transfer_user.password != '' ? transfer_user.password : t(:'admin.transfering_users.no_changes') )).html_safe
         end
       else
-        flash[:success] += ' without sending mail!'
+        flash[:success] = t(:'admin.transfering_users.success_without_mail', :email => transfer_user.email.to_s, :password => ( transfer_user.password != '' ? transfer_user.password : t(:'admin.transfering_users.no_changes') )).html_safe
       end
       redirect_to edit_admin_user_transfer_path(transfer_user)
     else
-      flash[:success] = 'Failed!'
+      flash[:error] = t('admin.transfering_users.failed').html_safe
       redirect_to edit_admin_user_transfer_path(transfer_user)
     end
   end

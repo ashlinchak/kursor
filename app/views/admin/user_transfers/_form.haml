@@ -1,27 +1,31 @@
 = form_for transfer_user, :url => admin_user_transfer_path(transfer_user), :html => { :class => 'form-horizontal' }  do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => transfer_user }
   %fieldset
-    %legend User transfering
+
+    %legend= t(:'admin.transfering_users.title')
+
     .control-group
       = f.label :email, :class => 'control-label'
       .controls
         = f.text_field :email, :class => 'input-xlarge'
+
     .control-group
-      = f.label :password, :class => 'control-label'
+      = f.label t(:'admin.transfering_users.password'), :class => 'control-label'
       .controls
         = f.password_field :password, :class => 'input-xlarge'
         %input{ :name => 'current_user', :value => "#{current_user.email.split('@')[0]}", :type => :hidden }
-        = button_tag 'Random Password', :type => :button, :class => 'btn btn-success random-password'
+        = button_tag t(:'admin.transfering_users.random_password'), :type => :button, :class => 'btn btn-success random-password'
+
     .control-group
-      = f.label :password_confirmation, :class => 'control-label'
+      = f.label t(:'admin.transfering_users.password_confirm'), :class => 'control-label'
       .controls
         = f.password_field :password_confirmation, :class => 'input-xlarge'
 
     .control-group
       %label.control-label
-        Send Email?
+        = t(:'admin.transfering_users.send_mail')
       .controls
         = check_box_tag 'send_email', 'yes', true
 
   .form-actions
-    = f.submit 'Save & Mail', :class => 'btn btn-large btn-primary'
+    = f.submit t(:'admin.transfering_users.submit'), :class => 'btn btn-large btn-primary'
