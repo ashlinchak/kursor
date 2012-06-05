@@ -1,0 +1,38 @@
+.modal.hide.fade#register-dialog
+  .modal-header
+    %button.close{"data-dismiss" => "modal"} х
+    %h3= t(:'users.register_modal.title_html')
+  .modal-body
+
+    .well
+      %h4= t(:'users.register_modal.intro_header')
+      %p= t('users.register_modal.intro_html', :search_link => t(:'users.register_modal.search_link_html') )
+      %h4=t(:'users.register_modal.fill_the_form_header')
+      %p= t('users.register_modal.fill_the_form_html',  :request_form_link => request_path)
+
+      -#= form_for ProviderRequest.new, :url => request_path do |form|
+        %fieldset
+          .field
+            = form.label :name
+            = form.text_field :name
+          .field
+            = form.label :email
+            = form.text_field :email
+          .field
+            = form.label :phone
+            = form.text_field :phone
+          .field
+            = form.label :city
+            = form.text_field :city
+          .field
+            = form.label :provider_name
+            = form.text_field :provider_name
+          .field
+            = form.label :body
+            = form.text_field :body
+        %fieldset
+          = form.submit "Send"
+
+  .modal-footer
+    = link_to t(:'users.register_modal.go_register'), new_user_url, :class => 'btn btn-success btn-large'
+    %a{ :href => "#", :class => "btn", "data-dismiss" => "modal"}= t(:'users.register_modal.cancel')

@@ -1,0 +1,39 @@
+.row
+  .span8
+    %legend= t(:'provider_request.form.title')
+    = form_for @provider_request, :html => { :class => 'form-horizontal' }, :url => request_path do |form|
+      -#= render :partial => 'shared/form_errors', :locals => { :object => @provider_request }
+      %fieldset
+        .control-group
+          = form.label t(:'provider_request.form.name'), :class => 'control-label'
+          .controls
+            = form.text_field :name, :class => 'span5'
+        .control-group
+          = form.label :email,  :class => 'control-label'
+          .controls
+            = form.text_field :email, :class => 'span5', :placeholder => t(:'provider_request.form.require')
+            %p.help-block
+              = t(:'provider_request.form.email_help')
+        .control-group
+          = form.label t(:'provider_request.form.phone'), :class => 'control-label'
+          .controls
+            = form.text_field :phone, :class => 'span5'
+        .control-group
+          = form.label t(:'provider_request.form.city'), :class => 'control-label'
+          .controls
+            = form.text_field :city, :class => 'span5'
+            %p.help-block
+              = t(:'provider_request.form.city_help')
+        .control-group
+          = form.label t(:'provider_request.form.provider_name'), :class => 'control-label'
+          .controls
+            = form.text_field :provider_name, :class => 'span5', :placeholder => t(:'provider_request.form.require')
+        .control-group
+          = form.label t(:'provider_request.form.info'), :class => 'control-label'
+          .controls
+            = form.text_area :body, :class => 'span5'
+      .form-actions
+        = form.submit t(:'provider_request.form.submit'), :class => 'btn btn-success btn-large'
+
+    %p= t(:'provider_request.form.add_help_html')
+  .span4

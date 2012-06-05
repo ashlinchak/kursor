@@ -38,7 +38,8 @@
                   = link_to sub_category do
                     = "#{sub_category} (#{sub_category.providers_count})"
     .span4
-      = image_tag '/images/shkola.jpg'
+      = link_to root_url + 'categories/schools' do
+        = image_tag '/images/shkola.jpg'
       %br/
       %br/
       %h2.home-title= t(:'home.titles.recent_providers')

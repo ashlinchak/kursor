@@ -5,4 +5,4 @@
         %label
           = check_box_tag 'tutor[tutor_category_ids][]', ch.id, ( :checked if tutor.tutor_categories.include? ch ), :class => 'category-sub-parent'
           %span= ch.name
-        = render :partial => 'sub_category_fields', :locals => { :c => ch, :tutor => tutor, :f => f }
+        = render :partial => 'tutors/sub_category_fields', :locals => { :c => ch, :tutor => tutor, :f => f }

@@ -49,14 +49,11 @@
           %legend &nbsp;
           .control-group
             .alert.fade.in.alert-success
-              = t(:'users.new.before_register_info').html_safe
+              = t(:'users.new.before_register_info', :signature => t(:'users.new.segnature')).html_safe
   .row
     .span12
       - if user.visitor?
-        = f.fields_for :profile do |p|
-          = render :partial => '/profile/profile_fields', :locals => { :f => p, :profile => user.profile }
-      - else
-        = f.fields_for :provider do |p|
-          = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
+        = f.fields_for :profile do |profile|
+          = render :partial => '/profile/profile_fields', :locals => { :f => profile, :profile => user.profile }
   .form-actions
     = f.submit t(:'users.new.submit'), :class => 'btn btn-primary btn-large'

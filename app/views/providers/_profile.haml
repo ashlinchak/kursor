@@ -1,0 +1,168 @@
+- if current_user
+  - if current_user.administrator?
+    = link_to edit_provider_path(provider) do
+      %i.icon.icon-pencil
+      = t(:'providers.edit.edit_profile')
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      = link_to t(:'search.transfer_user').html_safe, edit_admin_user_transfer_path(provider.user_id), :class => ''
+    %hr/
+
+  - if current_user.provider and !current_user.provider.is_approved
+    .alert.alert-info.alert-block
+      %h4.alert-heading= t(:'providers.edit.not_approved.title')
+      %p= t(:'providers.edit.not_approved.desc').html_safe
+
+- unless controller.controller_name == 'users'
+  .row
+    .span12
+      %ul.breadcrumb
+        %li= link_to( provider.category, category_path(provider.category) ) if provider.category
+        %span.divider
+          \/
+        %li= link_to provider
+.row
+  .span8
+    - unless controller.controller_name == 'users'
+      .row
+        .span8
+          %table.bookmarks
+            %tr
+              = render :partial => 'shared/bookmarks'
+    .row
+      .span3
+        - if provider.logo_url
+          .thumbnail
+            = image_tag provider.logo_url(:medium).to_s
+      .span5
+
+        %h1= provider.name
+
+        .update-info
+          %strong
+            Последнее изменение:
+          = time_ago_in_words(provider.updated_at)
+          назад
+        - if current_user
+          - if current_user.visitor?
+            - unless provider.student_users.include?(current_user)
+              = link_to 'Я учусь здесь!', join_provider_students_path(provider), :class => 'label label-info'
+            - else
+              = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'label label-info'
+
+    %br/
+    %table.table.table-striped.table-condensed
+      - if provider.custom_fields.size > 0
+        - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
+          %tr
+            %td
+              %span
+                %b= f.name
+            %td
+              = f.value
+
+
+
+
+    %ul#ProviderTabs.nav.nav-tabs
+      %li.active
+        %a( href = "#description" data-toggle = "tab" )
+          = t(:'providers.main_info')
+      - if !provider.more_info.blank?
+        %li
+          %a( href = "#more_info" data-toggle = "tab" )
+            = t(:'providers.more_info')
+      - if !provider.documents_info.blank?
+        %li
+          %a( href = "#documents_info" data-toggle = "tab" )
+            = t(:'providers.documents_info')
+
+
+
+    #myTabContent.tab-content
+      #description.tab-pane.fade.active.in
+        - if !provider.description.blank?
+          .description= provider.description.html_safe
+        - else
+          %p= t(:'providers.visit_website_for_more_info')
+      #more_info.tab-pane.fade
+        - if !provider.more_info.blank?
+          .more-info= provider.more_info.html_safe
+      #documents_info.tab-pane.fade
+        - if !provider.documents_info.blank?
+          .documents-info= provider.documents_info.html_safe
+
+
+    - if current_user
+      - if current_user.administrator?
+        %hr/
+        = link_to admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
+          %i.icon.icon-remove
+          = t(:'site.actions.destroy_user')
+  .span4
+    .categories
+      - if provider.categorizings.size > 0
+        %h2.block-title= t(:'providers.categories')
+        %ul
+          - for categorizing in provider.categorizings do
+            %li= link_to categorizing, category_path(categorizing.category.permalink)
+
+
+
+    - if provider.custom_flag_bindings.size > 0
+      %h2.block-title=t(:'providers.custom_fields.title')
+      %table.table.table-striped.table-condensed
+        - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
+          %tr
+            %td
+              %span= field.custom_flag.name
+            %td
+              - if field.value == true
+                .label.label-success
+                  = t(:'providers.custom_flags.true_value')
+              - else
+                .label.label-important
+                  = t(:'providers.custom_flags.false_value')
+
+    %h2.block-title=t(:'providers.contacts')
+    - if provider.location
+      -#%b= t(:'providers.custom_fields.address')
+      %p
+        %i.icon-home
+        = address_value provider.location
+    - for contact in provider.contacts.by_type do
+      %p
+        - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+          %span{ :class => "span-icon icon-#{contact.contact_type}" }
+          = contact_value contact
+    %hr/
+    %p
+      - for contact in provider.contacts.by_type
+        - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+          = social_icon contact
+    %br
+
+
+    - if provider.filials.size > 0
+
+
+      %h2.block-title= t(:'providers.filials')
+
+
+      - provider.filials.each do |filial|
+
+        %h5= filial.name if filial.name.present?
+
+        = address_value filial.location
+
+        - if filial.contacts.size > 0
+          - for contact in filial.contacts.by_type do
+            %p
+              - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+                %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                = contact_value contact
+
+          %p
+            - for contact in filial.contacts.by_type
+              - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+                = social_icon contact
+        %hr/

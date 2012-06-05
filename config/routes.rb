@@ -44,6 +44,7 @@ Kursor::Application.routes.draw do
   end
 
   resources :search
+  resources :feedback
   resources :tags
   resources :info
 
@@ -57,6 +58,9 @@ Kursor::Application.routes.draw do
 
   match '/home' => "home#index"
   match '/admin' => "admin/dashboard#index"
+
+  match 'request' => 'provider_request#new', :as => 'request', :via => :get
+  match 'request' => 'provider_request#create', :as => 'request', :via => :post
 
   resources :dashboard, :only => [:index]
 

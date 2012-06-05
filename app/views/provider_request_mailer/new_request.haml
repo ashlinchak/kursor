@@ -1,0 +1,19 @@
+%p
+  = t(:'provider_request.form.name')+': '
+  = @message.name
+%p
+  = t(:'provider_request.form.email')+': '
+  - mailto = 'mailto:' + @message.email
+  = link_to @message.email, mailto
+%p
+  = t(:'provider_request.form.phone')+': '
+  = @message.phone
+%p
+  = t(:'provider_request.form.city')+': '
+  = @message.city
+%p
+  = t(:'provider_request.form.provider_name')+': '
+  = @message.provider_name
+%p
+  = t(:'provider_request.form.info')+': '
+  = @message.body

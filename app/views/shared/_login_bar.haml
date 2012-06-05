@@ -20,5 +20,9 @@
       %li= link_to t(:'site.nav.admin-panel'), admin_path
     %li= link_to t(:'sessions.destroy.title'), logout_url
   - else
-    %li= link_to t(:'users.create.title'), new_user_url, :class => 'label label-success', :style => 'vertical-align: baseline; marging-right: 5px;'
+    %li
+      %a.btn.btn-mini.btn-success{ "data-toggle" => "modal", :href => "#register-dialog", :style => 'vertical-align: baseline'}= t(:'users.create.title')
+      &nbsp;
     %li= link_to t(:'sessions.create.title'), login_url
+- unless authenticated?
+  = render 'shared/register_modal'

@@ -20,7 +20,6 @@
             %label.checkbox
               = f.check_box :remove_logo
               = t(:'providers.edit.check_to_remove')
-
 .row
   .span6
     %fieldset
@@ -45,14 +44,12 @@
       %legend= t(:'admin.users.legends.address')
       = f.fields_for :location do |l|
         = render :partial => 'addresses/location_fields', :locals => { :f => l }
-
   .span6
     %fieldset
       %legend= t(:'admin.users.legends.contacts')
       = f.fields_for :contacts do |c|
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
       .fields= link_to_add_fields t(:'providers.add_contact').html_safe, f, :contacts
-
 %br
 %legend= t(:'providers.edit.description')
 .row
@@ -62,7 +59,6 @@
   .span6
     = f.label :description_uk
     = f.cktext_area :description_uk, :toolbar => 'Basic'
-
 .row
   .span6
     = f.label :more_info
@@ -70,7 +66,6 @@
   .span6
     = f.label :more_info_uk
     = f.cktext_area :more_info_uk, :toolbar => 'Basic'
-
 .row
   .span6
     = f.label :documents_info
@@ -78,7 +73,6 @@
   .span6
     = f.label :documents_info_uk
     = f.cktext_area :documents_info_uk, :toolbar => 'Basic'
-
 %hr/
 .row
   .span12
@@ -91,11 +85,9 @@
   .span12
     %fieldset
       = link_to_add_fields t(:'providers.edit.filials.add'), f, :filials
-
-
 %hr/
 .row
   .span12
     %fieldset
       %legend= t(:'admin.users.legends.categories')
-      = render :partial => 'category_fields', :locals => { :f => f, :provider => provider }
+      = render :partial => 'providers/category_fields', :locals => { :f => f, :provider => provider }

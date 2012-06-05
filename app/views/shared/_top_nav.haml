@@ -1,5 +1,7 @@
 %nav.clear
   %ul
+    %li= link_to t(:'postings.title'), posting_categories_path, :class => ( "current" if request.fullpath.include?("posting_categories") unless request.fullpath.include?("/posting_categories/vip") )
+    -#%li= link_to t(:'site.nav.vip'), root_url + 'posting_categories/vip', :class => ( "current" if request.fullpath.include?("/posting_categories/vip") )
     %li= link_to t(:'site.nav.pre-schools'), root_url + 'categories/doshkolnoe-obrazovanie', :class => ( "current " if request.fullpath.include?("/categories/doshkolnoe-obrazovanie")  )
     %li= link_to t(:'site.nav.schools'), root_url + 'categories/schools', :class => ( "current" if request.fullpath.include?("/categories/schools") )
     %li= link_to t(:'site.nav.technical'), root_url + 'categories/prof-tech-obrazovanie', :class => ( "current" if request.fullpath.include?("/categories/prof-tech-obrazovanie") )
@@ -8,5 +10,5 @@
     %li= link_to t(:'site.nav.tutors'), tutor_categories_path, :class => ( "current" if request.fullpath.include?("tutor_categories") )
     %li= link_to t(:'site.nav.trainings'), root_url + 'categories/treninhy-i-semynary', :class => ( "current" if request.fullpath.include?("/categories/treninhy-i-semynary") )
     %li= link_to t(:'site.nav.business-schools'), root_url + 'categories/biznes-shkoly', :class => ( "current" if request.fullpath.include?("/categories/biznes-shkoly") )
-    %li= link_to t(:'site.nav.vip'), root_url + 'posting_categories/vip', :class => ( "current" if request.fullpath.include?("/posting_categories/vip") )
-    %li= link_to t(:'postings.title'), posting_categories_path, :class => ( "current" if request.fullpath.include?("posting_categories") unless request.fullpath.include?("/posting_categories/vip") )
+
+

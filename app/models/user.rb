@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   accepts_nested_attributes_for :provider
+  accepts_nested_attributes_for :tutor
   accepts_nested_attributes_for :profile
 
   # TODO: find proper names for acc types

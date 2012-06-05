@@ -7,4 +7,4 @@
   .field.provider-category{ :id => "child-of-#{c.id}"}
     .field
       -#= render :partial => '/providers/sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }
-      = render :partial => 'sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }
+      = render :partial => 'providers/sub_category_fields', :locals => { :c => c, :provider => provider, :f => f }

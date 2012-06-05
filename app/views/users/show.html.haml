@@ -1,21 +1,30 @@
 .row
   .span8
-    %h1
-      = user
     - if authenticated?
-      - unless user.school? || user.tutor?
-        - if user === current_user
-          = link_to edit_profile_url do
+      %i.icon-user
+      = user.email
+      &nbsp;&nbsp;&nbsp;
+      - if user === current_user
+        = link_to edit_profile_url do
+          - unless user.visitor?
+            %i.icon-envelope
+            = t(:'users.panel.edit_email_password')
+          - else
             %i.icon-pencil
-            = t(:'visitor.profile.edit')
-          - unless user.is_active?
-            = t(:'users.pending')
+            = t(:'users.panel.edit_my_profile')
+        - if user.school?
+          &nbsp;&nbsp;&nbsp;
+          %i.icon-pencil
+          = link_to t(:'users.panel.edit_my_profile'), edit_provider_path(user.provider)
+        - if user.tutor?
+          &nbsp;&nbsp;&nbsp;
+          %i.icon-pencil
+          = link_to t(:'users.panel.edit_my_profile'), edit_tutor_path(user.tutor)
     %hr/
 - if authenticated?
-
   - if user.tutor?
     - unless user.tutor
-      - if user === current_user
+      - if user == current_user
         .alert.alert-block
           %h4.alert-heading= t(:'providers.edit.no_provider')
           %p= t(:'providers.edit.no_provider_desc')
@@ -24,11 +33,11 @@
               %i.icon-white.icon-list-alt
               = t(:'providers.edit.add_provider')
     - else
-      = link_to user.tutor, user.tutor
+      = render :partial => '/tutors/profile', :locals => { :tutor => user.tutor }
 
   - elsif user.school?
     - unless user.provider
-      - if user === current_user
+      - if user == current_user
         .alert.alert-block
           %h4.alert-heading= t(:'providers.edit.no_provider')
           %p= t(:'providers.edit.no_provider_desc')
@@ -37,7 +46,7 @@
               %i.icon-white.icon-list-alt
               = t(:'providers.edit.add_provider')
     - else
-      = link_to user.provider, user.provider
+      = render :partial => '/providers/profile', :locals => { :provider => user.provider }
 
   - elsif user.visitor?
     - if user.profile

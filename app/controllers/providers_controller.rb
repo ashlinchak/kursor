@@ -28,6 +28,7 @@ class ProvidersController < ApplicationController
     provider.user = current_user
     if provider.save
       flash[:success] = t(:'providers.create.success').html_safe
+      NotificationMailer.provider_created(provider).deliver
       redirect_to provider_path(provider)
     else
       flash[:error] = t(:'providers.create.error').html_safe

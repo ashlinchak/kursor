@@ -36,9 +36,13 @@ class UsersController < ApplicationController
           user.profile.build_location
         end
       end
-    else
+    elsif user.school?
       unless user.provider
         user.build_provider
+      end
+    elsif user.tutor?
+      unless user.tutor
+        user.build_tutor
       end
     end
   end

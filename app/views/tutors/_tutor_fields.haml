@@ -13,7 +13,6 @@
       = f.label t(:'tutors.edit.photo'), :class => 'control-label'
       .controls
         = image_tag tutor.avatar_url(:medium)
-
   .span6
     %fieldset
       .control-group
@@ -23,7 +22,6 @@
         .control-group
           = f.check_box :remove_avatar
           = t(:'tutors.edit.delete_photo')
-
 .row
   .span12
     %fieldset
@@ -31,7 +29,6 @@
       = f.fields_for :tutor_custom_field_bindings do |b|
         = render :partial => 'tutor_custom_field_bindings/tutor_custom_field_binding_fields', :locals => { :f => b }
       .fields= link_to_add_fields t(:'providers.custom_fields.add').html_safe, f, :tutor_custom_field_bindings
-
 %br
 .row
   .span6
@@ -39,14 +36,12 @@
       %legend= t(:'admin.users.legends.address')
       = f.fields_for :location do |l|
         = render :partial => 'addresses/location_fields', :locals => { :f => l }
-
   .span6
     %fieldset
       %legend= t(:'admin.users.legends.contacts')
       = f.fields_for :contacts do |c|
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
       .fields= link_to_add_fields t(:'tutors.edit.add_contact').html_safe, f, :contacts
-
 %br
 %legend= t(:'providers.edit.description')
 .row
@@ -56,7 +51,6 @@
         = f.label t(:'tutors.show.description'), :class => 'control-label'
         .controls
           = f.cktext_area :description, :class => 'span8', :toolbar => 'Basic'
-
 .row
   .span12
     %fieldset
@@ -64,7 +58,6 @@
         = f.label t(:'tutors.show.methodology'), :class => 'control-label'
         .controls
           = f.cktext_area :methodology, :class => 'span8', :toolbar => 'Basic'
-
 .row
   .span12
     %fieldset
@@ -72,10 +65,9 @@
         = f.label t(:'tutors.show.more_info'), :class => 'control-label'
         .controls
           = f.cktext_area :more_info, :class => 'span8', :toolbar => 'Basic'
-
 %hr/
 .row
   .span12
     %fieldset
       %legend= t(:'admin.users.legends.categories')
-      = render :partial => 'category_fields', :locals => { :f => f, :tutor => tutor }
+      = render :partial => 'tutors/category_fields', :locals => { :f => f, :tutor => tutor }
