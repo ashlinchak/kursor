@@ -1,9 +1,1 @@
-%p= t(:'mailers.provider_created.info')
-%p
-  = t(:'mailers.provider_created.user_link.')
-  = link_to @provider.user.email, user_url(@provider.user)
-%p
-  = t(:'mailers.provider_created.provider_link')
-  = link_to @provider.name, provider_url(@provider)
-%p
-  = link_to t(:'mailers.provider_created.admin_link'), admin_url
+= t(:'mailers.provider_approved.congratulations', :provider_url => provider_url(@provider), :signature => t(:'users.new.signature')).html_safe

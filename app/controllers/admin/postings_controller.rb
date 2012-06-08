@@ -36,6 +36,7 @@ class Admin::PostingsController < Admin::DashboardController
   def approve
     if posting.approve!
       flash[:success]= t('postings.actions.approve.success', :posting_title => posting.title, :posting_path => posting_path(posting)).html_safe
+      NotificationMailer.posting_approved(posting).deliver
     else
       flash[:danger]= t(:'postings.approve.error')
     end

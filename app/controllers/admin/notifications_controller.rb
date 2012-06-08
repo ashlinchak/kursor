@@ -1,9 +1,7 @@
 class Admin::NotificationsController < Admin::DashboardController
 
-
   def index
   end
-
 
   def providers_pending
     @providers_pending = Provider.where(:is_approved => false)
@@ -16,9 +14,8 @@ class Admin::NotificationsController < Admin::DashboardController
   helper_method :tutors_pending
 
   def postings_pending
-    @posting = Posting.where(:is_approved => false)
+    @posting = Posting.where(:is_approved => false).order('updated_at DESC')
   end
   helper_method :postings_pending
-
 
 end

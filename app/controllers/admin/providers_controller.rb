@@ -3,6 +3,7 @@ class Admin::ProvidersController < Admin::DashboardController
   def approve
     if provider.approve!
       flash[:success]= t('providers.actions.approve.success', :provider_name => provider.name, :provider_path => provider_path(provider)).html_safe
+      NotificationMailer.provider_approved(provider).deliver
     else
       flash[:danger]= t(:'providers.approve.error')
     end
