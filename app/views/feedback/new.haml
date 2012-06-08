@@ -1,0 +1,19 @@
+.row
+  .span8
+    %legend= t(:'feedback.form.title')
+    = form_for @feedback, :html => { :class => 'form-horizontal' }, :url => feedback_path do |form|
+      -#= render :partial => 'shared/form_errors', :locals => { :object => @feedback }
+      %fieldset
+        .control-group
+          = form.label t(:'feedback.form.name'), :class => 'control-label'
+          .controls
+            = form.text_field :name, :class => 'span5'
+        .control-group
+          = form.label t(:'feedback.form.body'), :class => 'control-label'
+          .controls
+            = form.text_area :body, :class => 'span5'
+        = show_simple_captcha
+      .form-actions
+        = form.submit t(:'feedback.form.submit'), :class => 'btn btn-success btn-large'
+    %p= t(:'provider_request.form.add_help_html')
+  .span4

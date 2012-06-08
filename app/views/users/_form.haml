@@ -49,7 +49,7 @@
           %legend &nbsp;
           .control-group
             .alert.fade.in.alert-success
-              = t(:'users.new.before_register_info', :signature => t(:'users.new.segnature')).html_safe
+              = t(:'users.new.before_register_info', :signature => t(:'users.new.segnature'), :feedback_form_link => new_feedback_path).html_safe
   .row
     .span12
       - if user.visitor?

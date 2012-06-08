@@ -16,6 +16,7 @@ class PostingsController < ApplicationController
     posting.user = current_user
     if posting.save
       flash[:success] = t(:'postings.create.success')
+      NotificationMailer.posting_created(posting).deliver
       redirect_to posting_path(posting)
     else
       render :new

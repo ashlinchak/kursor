@@ -1,0 +1,9 @@
+%p= t(:'mailers.posting_created.info')
+%p
+  = t(:'mailers.posting_created.user_link')
+  = link_to @posting.user.email, user_url(@posting.user)
+%p
+  = t(:'mailers.posting_created.posting_link')
+  = link_to @posting.title, posting_url(@posting)
+%p
+  = link_to t(:'mailers.provider_created.admin_link'), admin_url

@@ -62,6 +62,9 @@ Kursor::Application.routes.draw do
   match 'request' => 'provider_request#new', :as => 'request', :via => :get
   match 'request' => 'provider_request#create', :as => 'request', :via => :post
 
+  match 'feedback' => 'feedback#new', :as => 'feedback', :via => :get
+  match 'feedback' => 'feedback#create', :as => 'feedback', :via => :post
+
   resources :dashboard, :only => [:index]
 
   resources :news, :only => [:index, :show]

@@ -1,0 +1,9 @@
+%p= t(:'mailers.tutor_created.info')
+%p
+  = t(:'mailers.tutor_created.user_link.')
+  = link_to @tutor.user.email, user_url(@tutor.user)
+%p
+  = t(:'mailers.tutor_created.tutor_link')
+  = link_to @tutor.name, tutor_url(@tutor)
+%p
+  = link_to t(:'mailers.provider_created.admin_link'), admin_url

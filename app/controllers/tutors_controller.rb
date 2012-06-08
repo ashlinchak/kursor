@@ -22,6 +22,7 @@ class TutorsController < ApplicationController
     tutor.user = current_user
     if tutor.save
       flash[:success] = t(:'tutors.create.success').html_safe
+      NotificationMailer.tutor_created(tutor).deliver
       redirect_to tutor_path(tutor)
     else
       flash[:error] = (:'tutors.create.error').html_safe

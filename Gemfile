@@ -17,6 +17,7 @@ gem 'rvm-capistrano'
 gem 'twitter-bootstrap-rails', '2.0.4'
 gem "ckeditor", "3.7.0.rc3"
 gem 'acts_as_commentable_with_threading'
+gem "galetahub-simple_captcha", :require => "simple_captcha"
 
 group :assets do
   gem 'sass-rails', "3.1.4"

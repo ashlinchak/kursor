@@ -9,9 +9,11 @@
           .controls
             = form.text_field :name, :class => 'span5'
         .control-group
-          = form.label :email,  :class => 'control-label'
+          %label.control-label
+            %b= t(:'provider_request.form.email')
           .controls
-            = form.text_field :email, :class => 'span5', :placeholder => t(:'provider_request.form.require')
+            = form.text_field :email, :class => 'span5'#, :placeholder => t(:'provider_request.form.require')
+            %b{:style => 'color: red;'} &nbsp;*
             %p.help-block
               = t(:'provider_request.form.email_help')
         .control-group
@@ -25,15 +27,16 @@
             %p.help-block
               = t(:'provider_request.form.city_help')
         .control-group
-          = form.label t(:'provider_request.form.provider_name'), :class => 'control-label'
+          %label.control-label
+            %b= t(:'provider_request.form.provider_name')
           .controls
-            = form.text_field :provider_name, :class => 'span5', :placeholder => t(:'provider_request.form.require')
+            = form.text_field :provider_name, :class => 'span5'#, :placeholder => t(:'provider_request.form.require')
+            %b{:style => 'color: red;'} &nbsp;*
         .control-group
           = form.label t(:'provider_request.form.info'), :class => 'control-label'
           .controls
             = form.text_area :body, :class => 'span5'
       .form-actions
         = form.submit t(:'provider_request.form.submit'), :class => 'btn btn-success btn-large'
-
     %p= t(:'provider_request.form.add_help_html')
   .span4

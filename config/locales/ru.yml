@@ -1,5 +1,4 @@
 ru:
-
   site:
     errors:
       error_404: "Страница не найдена"
@@ -71,7 +70,7 @@ ru:
       name: "ФИО"
       photo: "Фото"
       delete_photo: "Удалить текущее фото"
-      custom_fields_title: "Специальные поля (особенности)"
+      custom_fields_title: "Основные данные"
       add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
 
   providers:
@@ -112,14 +111,13 @@ ru:
         remove: "Удалить филиал"
         name: "Название"
 
-
     visit_website_for_more_info: "Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте."
     custom_fields:
       add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
       address: "Адрес"
-      title: "Специальные поля (особенности)"
+      title: "Основные данные"
     custom_flags:
-      add: "<i class=\'icon-plus-sign\'></i> Добавить флаг"
+      add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
       true_value: "Есть"
       false_value: "Нет"
     categories: "Категории"
@@ -158,7 +156,7 @@ ru:
       password_requirements: "Минимум 6 символов, выбирайте сложный пароль."
       submit: "Зарегистрироваться"
       ukr_net_warning: "<h4>Обратите внимание!</h4>  При регистрации не рекомендуется использовать почтовые ящики на сервисах <b>ukr.net</b> и <b>mail.ru</b>, так как доставка писем на эти сервера не гарантируется."
-      before_register_info: "<p>Приносим свои извинения за неудобства. Сайт временно работает в тестовом режиме. Будем благодарны любым советам и замечаниям по работе портала.</b>%{signature}"
+      before_register_info: "<p>Сайт работает в режиме тестирования. В связи с этим некоторые элементы могут работать некорректно. Помогите нам улучшить портал для Вас. Если Вы заметили ошибку, пожалуйста, отправьте отзыв через <a href=\'%{feedback_form_link}\'>эту форму</a>.</p>%{signature}"
       segnature: "<p>С уважением,</p><p>администрация портала <a href=\'http://kursor.org.ua\'>«КУРСОР»</a></p>"
     create:
       title: "Зарегистрироваться"
@@ -188,7 +186,7 @@ ru:
 
   provider_request:
     messages:
-      success: "Спасибо, Ваша заявка успешно отправлена администратору, с Вами свяжутся сразу после ее рассмотрения."
+      success: "Спасибо, Ваша заявка успешно отправлена администратору, мы свяжемся с Вами в ближайшее время."
       failed: "Пожалуйста, укажите Ваш <b>Email</b> и <b>Название заведения</b>."
     form:
       title: "Заявка на получение доступа к странице учебного заведения"
@@ -204,6 +202,16 @@ ru:
       submit: "Отправить заявку"
       add_help_html: "По любым вопросам пишите по адресу <a href=\'mailto:info@kursor.org.ua\' rel=\'tooltip\' title=\'Написать письмо\' target=\'_blank\'>info@kursor.org.ua</a>"
 
+  feedback:
+    messages:
+      success: "Ваш отзыв успешно отправлен! "
+      failed: "<li>Введите, пожалуйста, символы с картинки.</li>"
+      empty_body: "<li>Текст сообщения не может быть пустым.</li>"
+    form:
+      title: "Оставить отзыв"
+      name: "Ваше имя"
+      body: "Сообщение"
+      submit: "Отправить отзыв"
 
   visitor:
     profile:
@@ -301,6 +309,35 @@ ru:
 
     provider_request:
       subject: "Запрос доступа к учебному заведению"
+
+    feedback:
+      subject: "Отзыв"
+
+    provider_created:
+      subject: "Новый провайдер!"
+      info: "Информация о провайдере"
+      admin_link: "Админка"
+      provider_link: "Провайдер:"
+      user_link: "Пользователь:"
+
+    provider_approved:
+      subject: "Ваша страница одобрена"
+      congratulations_html: "Наши поздравления! Ваша <a href=\'%{provider_url}\'>страница</a> на портале КУРСОР была рассмотрена и одобрена!"
+
+    tutor_created:
+      subject: "Новый преподаватель!"
+      info: "Информация о преподавателе"
+      admin_link: "Админка"
+      tutor_link: "Преподаватель:"
+      user_link: "Пользователь:"
+
+    posting_created:
+      subject: "Новая статья!"
+      info: "Информация о статье"
+      admin_link: "Админка"
+      posting_link: "Статья:"
+      user_link: "Пользователь:"
+
 
   user_activation:
     title: "Получить ссылку активации"
@@ -432,7 +469,7 @@ ru:
         create_custom_field: "Добавить новое поле"
     custom_flags:
       headers:
-        title: "Специальные флаги"
+        title: "Особенности"
       buttons:
         create_custom_flag: "Добавить новый флаг"
     notifications:
@@ -441,6 +478,10 @@ ru:
         tutors: "Преподаватели"
         postings: "Статьи"
 
+  activemodel:
+    attributes:
+      feedback:
+        body: "Текст сообщения"
 
   activerecord:
     models:
@@ -455,7 +496,6 @@ ru:
         description: "Описание"
         parent_id: "Родительская категория"
         permalink: "Прямая ссылка"
-
       user:
         email: "Электронная почта"
         password: "Пароль"
@@ -495,6 +535,9 @@ ru:
       wrong_size: "Загружаемый файл имеет неправильный размер (должен быть %{file_size})"
       size_too_small: "Загружаемый файл слишком маленький (должен быть минимум %{file_size})"
       size_too_big: "Загружаемый файл слишком большой (максимальный объем %{file_size})"
-      extension_white_list_error: "Вы пытаетесь загрузить файл с запрещенным разрешением. Можно загрузить только jpg, jpeg, gif, png"
+      extension_white_list_error: "Вы пытаетесь загрузить файл с запрещенным расширением. Можно загрузить только jpg, jpeg, gif, png"
 
-
+  simple_captcha:
+    label: "Введите символы с картинки"
+    message:
+      default: "???"
