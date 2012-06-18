@@ -25,6 +25,10 @@ class Provider < ActiveRecord::Base
   has_many :students
   has_many :student_users, :through => :students, :source => :user
 
+  has_many :votes, :as => :voteable, :dependent => :destroy
+
+  has_one :rating, :as => :rateable, :dependent => :destroy
+
   before_save :generate_permalink
 
   mount_uploader :logo, ProviderLogoUploader

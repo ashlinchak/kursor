@@ -39,11 +39,11 @@ class ProviderLogoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :resize_to_fit => [64, 64]
+    process :resize_to_fill => [64, 64]
   end
 
   version :medium do
-    process :resize_to_fit => [260, 180]
+    process :resize_to_fill => [220, 220]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

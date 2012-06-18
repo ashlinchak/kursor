@@ -60,4 +60,4 @@
           = link_to root_url do
             = image_tag 'logo_small.png'
 
-  = render :partial => 'shared/google_analytics_code'
+  = render :partial => 'shared/google_analytics_code' unless Rails.env.development?

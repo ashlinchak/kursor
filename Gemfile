@@ -24,6 +24,8 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'haml-rails'
   gem 'uglifier'
+  gem 'jquery-ui-rails'
+  gem 'jquery-star-rating-rails'
 end
 
 group :development do

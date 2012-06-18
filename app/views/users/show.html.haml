@@ -46,7 +46,7 @@
               %i.icon-white.icon-list-alt
               = t(:'providers.edit.add_provider')
     - else
-      = render :partial => '/providers/profile', :locals => { :provider => user.provider }
+      = link_to user.provider.name, provider_path(user.provider)
 
   - elsif user.visitor?
     - if user.profile

@@ -7,11 +7,32 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.ui.datepicker
+//= require jquery.ui.datepicker-ru
 //= require twitter/bootstrap
 //= require ckeditor/init
+//= require jquery-star-rating
 //= require_tree .
 
 $(document).ready(function(){
+
+// Rating
+
+    $('input.rating_star').rating({
+        required: true,
+        callback: function(value, link){
+            var url = $('form.rating_form').attr( 'action' );
+            $('form.rating_form').fadeOut();
+            $.post(url, { value: value }, function(data) {
+                $('form.rating_form').html(data).fadeIn();
+            });
+            $('input.rating_star').rating('readOnly', true);
+        }
+    });
+
+    $('input.read_only_star').rating({
+            readOnly: true
+    });
 
 // LazyLoad // Image Smart Loading
     $('img').show().lazyload({
@@ -35,6 +56,13 @@ $(document).ready(function(){
             triggerLength: 1,
             method: "get"
         }
+    });
+
+// UI
+
+    $('.datepicker').datepicker({
+        changeYear: true,
+        changeMonth: true
     });
 
 // Add caption to image from alt text in posting

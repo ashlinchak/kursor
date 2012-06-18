@@ -1,5 +1,4 @@
 ru:
-
   site:
     errors:
       error_404: "Страница не найдена"
@@ -27,7 +26,6 @@ ru:
       rights: "&copy; 2012 <a href=\"http://kursor.org.ua\">КУРСОР</a> - образовательный портал."
     sorting:
       sort_action: "Показать"
-
   home:
     titles:
       recent_providers: "С нами уже"
@@ -48,8 +46,6 @@ ru:
       google: "Google+"
       youtube: "YouTube"
       vimeo: "Vimeo"
-
-
   tutors:
     actions:
       approve:
@@ -72,18 +68,14 @@ ru:
       delete_photo: "Удалить текущее фото"
       custom_fields_title: "Основные данные"
       add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
-
   providers:
-
     actions:
       approve:
         success: "Провайдер <a href=\'%{provider_path}\' target=\'_blank\'><b>&laquo;%{provider_name}&raquo;</b></a> опубликован!"
         confirm: "Опубликовать  &laquo;%{name}&raquo; ?"
-
     create:
       success: "Страничка успешно создана"
       error: "Ой, возникли проблемы с созданием странички"
-
     edit:
       edit_profile: "Редактировать страничку"
       success: "Изменения успешно сохранены"
@@ -110,7 +102,6 @@ ru:
         add: "Добавить филиал"
         remove: "Удалить филиал"
         name: "Название"
-
     visit_website_for_more_info: "Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте."
     custom_fields:
       add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
@@ -127,11 +118,9 @@ ru:
     documents_info: "Информация для поступления"
     contacts: "Контакты"
     add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
-
   search:
     results_found: "Найдено результатов: %{num}"
     transfer_user: "<i class=\'icon icon-user\'></i> Передать права"
-
   sessions:
     create:
       logged_in_as: "Вы вошли как"
@@ -144,7 +133,6 @@ ru:
     destroy:
       title: "Выйти"
       success: "Вы успешно вышли!"
-
   users:
     new:
       title: "Регистрация нового пользователя"
@@ -168,10 +156,9 @@ ru:
     pending: "Для начала работы Вам нужно активировать Вашу учетную запись. Инструкция по активации выслана на Ваш имейл."
     active: "Ваша учетная запись активна."
     must_be_authenticated: "Для просмотра этой страницы необходима авторизация на портале."
-
     panel:
       edit_email_password: "Изменить имейл/пароль"
-      edit_my_profile: "Редактировать профиль"
+      edit_my_profile: "Редактировать страницу"
 
     register_modal:
       title_html: "Регистрация на портале &laquo;КУРСОР&raquo;"
@@ -183,6 +170,15 @@ ru:
       search_link_html: "<a href=\'search\' target=\'_blank\' rel=\'tooltip\' title=\'Откроется в новой вкладке\'>поиском</a>"
       go_register: "Продолжить регистрацию"
       cancel: "Закрыть"
+
+  rating:
+    votes:
+      success: "Спасибо за Вашу оценку!"
+      votes_count: "%{votes_count} оценок"
+      only_for_users: "Ставить оценку могут только зарегистрированные пользователи."
+      already_voted: "Вы уже поставили свою оценку этому заведению."
+      please_vote: "Вы можете оценивать каждое заведение только один раз"
+      only_for_visitor: "Ставить оценку могут только обычные пользователи!"
 
   provider_request:
     messages:

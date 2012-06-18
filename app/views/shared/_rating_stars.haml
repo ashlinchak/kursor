@@ -1,0 +1,24 @@
+- cur_val = provider.rating.average_value.round(0) unless provider.rating.nil?
+= provider.rating.average_value unless provider.rating.nil?
+(
+= t(:'rating.votes.votes_count', :votes_count => provider.votes.size)
+)
+- if current_user
+  - if current_user.visitor?
+    - if current_user.votes.where("voteable_type = ? AND voteable_id = ?", 'Provider', provider.id).empty?
+      = form_for Vote.new, :url => vote_provider_votes_path(provider), :html => { :class => 'rating_form' } do
+        = vote_stars cur_val, false
+        %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.please_vote')}
+          %i.icon-info-sign
+    - else
+      = vote_stars cur_val, true
+      %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.already_voted')}
+        %i.icon-ok-sign
+  - else
+    = vote_stars cur_val, true
+    %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.only_for_visitor')}
+      %i.icon-info-sign
+- else
+  = vote_stars cur_val, true
+  %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.only_for_users')}
+    %i.icon-exclamation-sign

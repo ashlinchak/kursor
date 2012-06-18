@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607132001) do
+ActiveRecord::Schema.define(:version => 20120613144129) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -251,6 +251,18 @@ ActiveRecord::Schema.define(:version => 20120607132001) do
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"
 
+  create_table "ratings", :force => true do |t|
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.integer  "votes_count",   :default => 0
+    t.integer  "total_value",   :default => 0
+    t.float    "average_value", :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["rateable_id", "rateable_type"], :name => "index_ratings_on_rateable_id_and_rateable_type"
+
   create_table "schedule_events", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -389,5 +401,16 @@ ActiveRecord::Schema.define(:version => 20120607132001) do
     t.integer  "account_type_id", :default => 0
     t.string   "nickname"
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.integer  "voteable_id"
+    t.string   "voteable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["voteable_id", "voteable_type"], :name => "index_votes_on_voteable_id_and_voteable_type"
 
 end

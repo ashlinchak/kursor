@@ -76,7 +76,7 @@ module ApplicationHelper
       end
 
       if location.apartment.present?
-        address << "apt. #{location.apartment.strip}"
+        address << "#{location.apartment.strip}"
       end
 
       address.join(', ')
@@ -94,5 +94,7 @@ module ApplicationHelper
   def commas_to_tags tags_list
     tags_list.join(", ")
   end
+
+
 
 end

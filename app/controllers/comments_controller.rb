@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
       flash[:error] = t(:'postings.comments.messages.create_error')
       redirect_to @posting
     end
+
   end
 
   def edit

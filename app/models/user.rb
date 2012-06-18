@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :schedule_events
   has_many :postings
 
+  has_many :votes
+
   before_save :encrypt_password
   after_create :generate_activation
 
