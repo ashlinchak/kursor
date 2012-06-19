@@ -102,6 +102,11 @@ Kursor::Application.routes.draw do
         get 'leave'
       end
     end
+    resources :votes do
+      collection do
+        post 'vote'
+      end
+    end
   end
 
   resources :categories, :only => [:index, :show]

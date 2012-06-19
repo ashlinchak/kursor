@@ -39,6 +39,9 @@
           = time_ago_in_words(tutor.updated_at)
           назад
 
+        %p
+          = render :partial => 'shared/rating_stars', :locals => {:rateable => tutor}
+
     %br/
     %table.table.table-striped.table-condensed
       - if tutor.tutor_custom_fields.size > 0

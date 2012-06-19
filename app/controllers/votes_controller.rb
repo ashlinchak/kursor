@@ -3,9 +3,13 @@ class VotesController < ApplicationController
   def vote
     vote_value = params[:value].to_i
 
-    provider.votes.create(:value => vote_value, :user_id => user.id)
-
-    rating = provider.rating || provider.build_rating
+    if provider
+      provider.votes.create(:value => vote_value, :user_id => user.id)
+      rating = provider.rating || provider.build_rating
+    elsif tutor
+      tutor.votes.create(:value => vote_value, :user_id => user.id)
+      rating = tutor.rating || tutor.build_rating
+    end
 
     rating.votes_count = rating.votes_count + 1 || 1
     rating.total_value = rating.total_value + vote_value || vote_value
@@ -25,6 +29,12 @@ class VotesController < ApplicationController
   def provider
     @provider ||= if params[:provider_id]
       Provider.find params[:provider_id]
+    end
+  end
+
+  def tutor
+    @tutor ||= if params[:tutor_id]
+      Tutor.find params[:tutor_id]
     end
   end
 

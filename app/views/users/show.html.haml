@@ -33,7 +33,7 @@
               %i.icon-white.icon-list-alt
               = t(:'providers.edit.add_provider')
     - else
-      = render :partial => '/tutors/profile', :locals => { :tutor => user.tutor }
+      = link_to user.tutor.name, tutor_path(user.tutor)
 
   - elsif user.school?
     - unless user.provider

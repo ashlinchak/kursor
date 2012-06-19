@@ -1,24 +1,41 @@
-- cur_val = provider.rating.average_value.round(0) unless provider.rating.nil?
-= provider.rating.average_value unless provider.rating.nil?
-(
-= t(:'rating.votes.votes_count', :votes_count => provider.votes.size)
-)
-- if current_user
-  - if current_user.visitor?
-    - if current_user.votes.where("voteable_type = ? AND voteable_id = ?", 'Provider', provider.id).empty?
-      = form_for Vote.new, :url => vote_provider_votes_path(provider), :html => { :class => 'rating_form' } do
-        = vote_stars cur_val, false
-        %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.please_vote')}
-          %i.icon-info-sign
+#vote-stars-panel
+  - cur_val = rateable.rating.average_value.round(0) unless rateable.rating.nil?
+  - if current_user
+    - if current_user.visitor?
+      - if current_user.votes.where("voteable_type = ? AND voteable_id = ?", rateable.class.name, rateable.id).empty?
+        - if rateable.is_a? Provider
+          .stars
+            = form_for Vote.new, :url => vote_provider_votes_path(rateable), :html => { :class => 'rating_form' } do
+              = vote_stars cur_val, false
+              %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.please_vote')}
+                %i.icon-info-sign
+        - if rateable.is_a? Tutor
+          .stars
+            = form_for Vote.new, :url => vote_tutor_votes_path(rateable), :html => { :class => 'rating_form' } do
+              = vote_stars cur_val, false
+              %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.please_vote_tutor')}
+                %i.icon-info-sign
+
+      - else
+        .stars
+          = vote_stars cur_val, true
+          - if rateable.is_a? Provider
+            %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.already_voted')}
+              %i.icon-ok-sign
+          - if rateable.is_a? Tutor
+            %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.already_voted_tutor')}
+              %i.icon-ok-sign
     - else
-      = vote_stars cur_val, true
-      %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.already_voted')}
-        %i.icon-ok-sign
+      .stars
+        = vote_stars cur_val, true
+        %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.only_for_visitor')}
+          %i.icon-info-sign
   - else
-    = vote_stars cur_val, true
-    %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.only_for_visitor')}
-      %i.icon-info-sign
-- else
-  = vote_stars cur_val, true
-  %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.only_for_users')}
-    %i.icon-exclamation-sign
+    .stars
+      = vote_stars cur_val, true
+      %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'rating.votes.only_for_users')}
+        %i.icon-exclamation-sign
+  .value
+    - unless rateable.rating.nil?
+      = t(:'rating.votes.current_rating', :current_rating => rateable.rating.average_value)
+    = t(:'rating.votes.votes_count', :votes_count => rateable.votes.size)

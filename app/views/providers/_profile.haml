@@ -34,12 +34,12 @@
       .span5
 
         %h1= provider.name
-
         %p
           %strong
-            Последнее изменение:
+          Последнее изменение:
           = time_ago_in_words(provider.updated_at)
           назад
+
         - if current_user
           - if current_user.visitor?
             %p
@@ -48,7 +48,7 @@
               - else
                 = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'btn btn-danger'
         %p
-          = render :partial => 'shared/rating_stars', :provider => provider
+          = render :partial => 'shared/rating_stars', :locals => {:rateable => provider}
     %br/
     %table.table.table-striped.table-condensed
       - if provider.custom_fields.size > 0
