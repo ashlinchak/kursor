@@ -9,15 +9,13 @@ class Location < ActiveRecord::Base
   belongs_to :city
   belongs_to :addressable, :polymorphic => true
 
-
-  after_validation :geocode #, :if => :street_changed? || :building_changed?
-
+  after_validation :geocode, :if => :street_changed? || :building_changed?
 
   def full_address
     @city = City.find(city_id)
-    @region = Region.find(@city.region_id)
-    @ukraine = I18n.t(:'geocoder.address.ukraine')
-    [street, building, @city.name, @region.name, @ukraine ].compact.join(', ')
+    @request = [street, building, @city.name].compact.join(', ')
+    @request
+    logger.info @request
   end
 
 end

@@ -78,11 +78,14 @@
               .control-group
                 %label.control-label
                   - unless !current_user.visitor?
-                    = image_tag current_user.profile.avatar_url(:thumb).to_s
+                    - unless current_user.profile.nil?
+                      = image_tag current_user.profile.avatar_url(:thumb).to_s
                   - unless !current_user.tutor?
-                    = image_tag current_user.tutor.avatar_url(:thumb).to_s
+                    - unless current_user.tutor.nil?
+                      = image_tag current_user.tutor.avatar_url(:thumb).to_s
                   - unless !current_user.school?
-                    = image_tag current_user.provider.logo_url(:thumb).to_s
+                    - unless current_user.provider.nil?
+                      = image_tag current_user.provider.logo_url(:thumb).to_s
                 .controls
                   = f.text_area :body, :class => 'span5'
                   -#= f.text_field :parent_id, :class => 'span1'
