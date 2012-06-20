@@ -1,9 +1,9 @@
 %td.facebook
   .fb-like( data-send = "true" data-layout = "button_count" data-width = "450" data-show-faces = "true" )
 %td.vkontakte
-  #vk_like
+  -##vk_like
   :javascript
-    VK.Widgets.Like("vk_like", {type: "button", verb: 1});
+    document.write(VK.Share.button(false,{type: "round", text: "Мне нравится"}));
 %td.twitter
   %a.twitter-share-button{ :href => "https://twitter.com/share", "data-lang" => "ru"}
     Твитнуть

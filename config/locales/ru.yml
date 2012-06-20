@@ -236,7 +236,7 @@ ru:
         city: "Город"
         street: "Улица"
         building: "Дом"
-        apartment: "Квартира"
+        apartment: "Офис"
 
   news:
     title: "Новости"
@@ -482,6 +482,11 @@ ru:
         providers: "Провайдеры"
         tutors: "Преподаватели"
         postings: "Статьи"
+
+  geocoder:
+    address:
+      ukraine: "Украина"
+
 
   activemodel:
     attributes:

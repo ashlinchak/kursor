@@ -169,14 +169,16 @@ table.bookmarks {
   margin-bottom: 8px;
   padding: 0px;
   height: 19px;
-  background: #f5f5f5;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  background: #FAFAFA;
+  overflow: hidden;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 
 
     td.facebook {
-      width: 200px !important;
+      padding-left: 10px;
+      //width: 200px !important;
       div.fb-like  {
         width: 200px;
         span {
@@ -189,21 +191,22 @@ table.bookmarks {
     }
 
     td.vkontakte {
-      width: 180px !important;
+      padding-left: 10px;
 
-      div#vk_like {
-        width: 180px;
-        margin: 0px;
+      //width: 150px !important;
+      table tbody td {
         padding: 0px;
+        margin: 0px;
       }
+
     }
     td.twitter {
-      width: 100px !important;
+      //width: 100px !important;
 
     }
     td.plusone {
       #___plusone_0 {
-        width: 60px !important;
+        //width: 60px !important;
       }
     }
 
