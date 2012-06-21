@@ -9,9 +9,9 @@
   /
     Always force latest IE rendering engine (even in intranet) &amp; Chrome Frame
   %meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
-  %title= "Kursor"
-  %meta{:content => "", :name => "description"}/
-  %meta{:content => "", :name => "author"}/
+  -#%meta{:content => "", :name => "description"}/
+  -#%meta{:content => "", :name => "author"}/
+  = display_meta_tags :site => t(:'seo.meta.site'), :reverse => true
   / Mobile viewport optimized: j.mp/bplateviewport
   %meta{:name => "viewport", :content => "width=device-width; initial-scale=1.0; maximum-scale=1.0;"}
   / Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references
@@ -34,6 +34,7 @@
     js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=383815018325312";
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
   = csrf_meta_tags
 %body
   #page

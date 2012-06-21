@@ -1,4 +1,15 @@
 ru:
+
+  seo:
+    meta:
+      site: "КУРСОР - образовательный портал"
+    sections:
+      posting_categories: "Статьи"
+      posting_category: "Статьи в категории "
+#      provider_category: "Учебные заведения в категории "
+#      tutor_category: "Преподаватели в категории "
+#      registration: "Регистрация нового пользователя"
+
   site:
     errors:
       error_404: "Страница не найдена"

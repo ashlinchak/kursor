@@ -124,6 +124,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta-tags (1.2.6)
+      actionpack
     mime-types (1.17.2)
     mini_magick (3.4)
       subexec (~> 0.2.1)
@@ -249,6 +251,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   mail
+  meta-tags
   mini_magick
   mysql2
   rack-test
