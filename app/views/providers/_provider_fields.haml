@@ -53,27 +53,30 @@
 %br
 %legend= t(:'providers.edit.description')
 .row
-  .span6
+  .span10
     = f.label :description
     = f.cktext_area :description, :toolbar => 'Basic'
-  .span6
+  -#.span6
     = f.label :description_uk
     = f.cktext_area :description_uk, :toolbar => 'Basic'
+
 .row
-  .span6
+  .span10
+    %br/
     = f.label :more_info
     = f.cktext_area :more_info, :toolbar => 'Basic'
-  .span6
+  -#.span6
     = f.label :more_info_uk
     = f.cktext_area :more_info_uk, :toolbar => 'Basic'
 .row
-  .span6
+  .span10
+    %br/
     = f.label :documents_info
     = f.cktext_area :documents_info, :toolbar => 'Basic'
-  .span6
+  -#.span6
     = f.label :documents_info_uk
     = f.cktext_area :documents_info_uk, :toolbar => 'Basic'
-%hr/
+%br/
 .row
   .span12
     %fieldset

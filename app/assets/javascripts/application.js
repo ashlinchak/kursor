@@ -47,16 +47,6 @@ $(document).ready(function(){
     });
 //
 
-// TypeHead for search form in the header //
-    $("#home-search-typehead").typeahead({
-        ajax: {
-            url: "/providers.json",
-            timeout: 500,
-            displayField: "name",
-            triggerLength: 1,
-            method: "get"
-        }
-    });
 
 // UI
 

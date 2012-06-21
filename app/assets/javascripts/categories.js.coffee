@@ -32,8 +32,6 @@ jQuery ->
       $('#search_city_id').empty()
 
 
-
-
 show_categories = (parent) ->
   category = $('#child-of-' + $(parent).val())
   #$('.provider-category').removeClass('active')

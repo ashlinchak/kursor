@@ -19,17 +19,18 @@
     - if user.new_record?
       %legend Account type
       .control-group
-        = f.label :account_type
+        -#= f.label :account_type
         .controls
           - User::ACCOUNT_TYPES.each do |account_type|
             %label.radio
-              = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
+              = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type), :checked => ( true if account_type == 'school' )
               = t("activerecord.attributes.user.account_types.#{account_type}")
+              = account_type
   = f.fields_for :provider do |p|
     .control-group
-      = p.label :is_approved, :class => 'control-label'
+      = p.label t(:'admin.users.headers.is_approved'), :class => 'control-label'
       .controls
-        = p.check_box :is_approved
+        = p.check_box :is_approved, :checked => true
     = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
   .form-actions
     = f.submit :class => 'btn btn-large btn-primary'
