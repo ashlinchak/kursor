@@ -1,11 +1,12 @@
 .row
-  .span8
-    %h1 Info Pages
-
-    %ul
-      - info_pages.each do |info|
-        %li
-          %h3= info.title
-    %hr
-
-    -#= link_to 'New Info', new_info_path
+  .span3
+    .well{:style => "padding: 8px 0;"}
+      %ul.nav.nav-list
+        - roots_info_pages.each do |root|
+          %li.nav-header
+            %a= link_to root.title, info_path(root)
+          - root.children.each do |child|
+            %li{ :class => ( 'active' if request.fullpath.include?("/info/" + child.permalink) ) }
+              = link_to child.title, info_path(child)
+  .span9
+    %p= t(:'info.home_text').html_safe

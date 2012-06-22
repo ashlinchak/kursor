@@ -1,3 +1,4 @@
+- set_meta_tags :title => provider.name, :description => provider.description
 - if current_user
   - if current_user.administrator?
     = link_to edit_provider_path(provider) do

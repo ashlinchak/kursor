@@ -1,4 +1,22 @@
+- set_meta_tags :title => info_page.title, :description => info_page.body
 .row
-  .span8
+  .span3
+    .well{:style => "padding: 8px 0;"}
+      %ul.nav.nav-list
+        - roots_info_pages.each do |root|
+          %li.nav-header
+            %a= link_to root.title, info_path(root)
+          - root.children.each do |child|
+            %li{ :class => ( 'active' if request.fullpath.include?("/info/" + child.permalink) ) }
+              = link_to child.title, info_path(child)
+  .span9
     %h1= info_page.title
-    .body= markdown info_page.body
+    %hr/
+    .body= info_page.body.html_safe
+    - if authorized?
+      %hr/
+
+      = link_to edit_admin_info_path(info_page), :class => 'btn btn-mini' do
+        %i.icon-pencil
+      = link_to admin_info_path(info_page), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini', :style => 'float:right;' do
+        %i.icon-remove

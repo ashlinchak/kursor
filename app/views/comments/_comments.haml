@@ -1,20 +1,23 @@
 .comments
-  - for comment in commentable.root_comments
+  - commentable.root_comments.each do |comment|
     .comment
-      %h4
-        = link_to user_path(comment.user) do
-          - if comment.user.visitor?
-            - unless !comment.user.profile
-              = image_tag comment.user.profile.avatar_url(:icon).to_s
-              = comment.user.profile.full_name
-          - if comment.user.tutor?
-            - unless !comment.user.tutor
-              = image_tag comment.user.tutor.avatar_url(:icon).to_s
-              = comment.user.tutor.name
-          - if comment.user.school?
-            - unless !comment.user.provider
-              = image_tag comment.user.provider.logo_url(:icon).to_s
-              = comment.user.provider.name
+      - unless comment.user.nil?
+        %h4
+          = link_to user_path(comment.user) do
+            - if comment.user.visitor?
+              - unless !comment.user.profile
+                = image_tag comment.user.profile.avatar_url(:icon).to_s
+                = comment.user.profile.full_name
+            - elsif comment.user.tutor?
+              - unless !comment.user.tutor
+                = image_tag comment.user.tutor.avatar_url(:icon).to_s
+                = comment.user.tutor.name
+            - elsif comment.user.school?
+              - unless !comment.user.provider
+                = image_tag comment.user.provider.logo_url(:icon).to_s
+                = comment.user.provider.name
+      - else
+        %p{:style => 'color:red; padding-left:42px;;'} Пользователь удален
       .body
         = comment.body
         %p.details

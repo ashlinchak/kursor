@@ -5,14 +5,15 @@
   Add info page
 
 %hr/
-%table.table.table-striped.table-bordered.table-condensed
-  %thead
-    %th Title
-    %th{:width=> '60'} Actions
-  - info_pages.each do |info_page|
-    %tr
-      %td= link_to info_page.title, admin_info_path(info_page)
-      %td= link_to 'Delete', admin_info_path(info_page), :method => :delete, :confirm => 'Are you sure?', :class => 'link-icon icon-delete'
+
+- roots_info_pages.each do |root|
+
+  %h4= link_to root.title, edit_admin_info_path(root)
+  %ul
+  - root.children.each do |children|
+    %li
+      = link_to children.title, edit_admin_info_path(children)
+  %br/
 %hr/
 = link_to new_admin_info_path do
   %i.icon-plus-sign

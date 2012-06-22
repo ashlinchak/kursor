@@ -10,5 +10,6 @@
     %li= link_to t(:'site.nav.tutors'), tutor_categories_path, :class => ( "current" if request.fullpath.include?("tutor_categories") )
     %li= link_to t(:'site.nav.trainings'), root_url + 'categories/treninhy-i-semynary', :class => ( "current" if request.fullpath.include?("/categories/treninhy-i-semynary") )
     %li= link_to t(:'site.nav.business-schools'), root_url + 'categories/biznes-shkoly', :class => ( "current" if request.fullpath.include?("/categories/biznes-shkoly") )
+    %li= link_to t(:'site.nav.wiki'), root_url + 'info', :class => ( "current" if request.fullpath.include?("/info") )
 
 

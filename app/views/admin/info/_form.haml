@@ -3,11 +3,11 @@
   .field
     = f.label :title
   .field
-    = f.text_field :title
+    = f.text_field :title, :class => 'span9'
   .field
     = f.label :body
   .field
-    = f.text_area :body
+    = f.cktext_area :body
   .field
     = f.label :permalink
   .field
@@ -15,6 +15,6 @@
   .field
     = f.label :parent_id
   .field
-    = f.select :parent_id, info_pages, :include_blank => true
-  .actions
-    = f.submit 'Save'
+    = f.select :parent_id, Info.roots.collect{|c| [c.title, c.id]}, {  :prompt => '== root ==', :include_blank => true }
+  .form-actions
+    = f.submit 'Save', :class => 'btn btn-success btn-large'

@@ -6,8 +6,11 @@ ru:
     sections:
       posting_categories: "Статьи"
       posting_category: "Статьи в категории "
-#      provider_category: "Учебные заведения в категории "
-#      tutor_category: "Преподаватели в категории "
+      provider_category: "Учебные заведения в категории "
+      provider_categories: "Учебные заведения"
+      tutor_categories: "Преподаватели"
+      tutor_category: "Преподаватели в категории "
+      tutor: "Преподаватель "
 #      registration: "Регистрация нового пользователя"
 
   site:
@@ -301,6 +304,9 @@ ru:
 
   posting_categories:
     comments: "Комментарии:"
+
+  info:
+    home_text: "&larr; Выберите слева категорию, которая Вас интересует."
 
   tags:
     title: "Теги"

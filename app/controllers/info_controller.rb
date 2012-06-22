@@ -20,4 +20,9 @@ class InfoController < ApplicationController
   end
   helper_method :info_page
 
+  def roots_info_pages
+    Info.roots
+  end
+  helper_method :roots_info_pages
+
 end

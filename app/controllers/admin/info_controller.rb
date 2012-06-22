@@ -14,8 +14,8 @@ class Admin::InfoController < Admin::DashboardController
 
   def create
     if info_page.save
-      flash[:notice] = 'Info was successfully created.'
-      redirect_to admin_info_path(info_page)
+      flash[:success] = 'New page was successfully created.'
+      redirect_to admin_info_index_path
     else
       render :action => "new"
     end
@@ -23,8 +23,8 @@ class Admin::InfoController < Admin::DashboardController
 
   def update
     if info_page.update_attributes(params[:info])
-      flash[:notice] = 'Info was successfully updated.'
-      redirect_to admin_info_path(info_page)
+      flash[:success] = 'Page was successfully updated.'
+      redirect_to admin_info_index_path
     else
       render :action => "edit"
     end
@@ -49,5 +49,10 @@ class Admin::InfoController < Admin::DashboardController
     end
   end
   helper_method :info_page
+
+  def roots_info_pages
+    Info.roots
+  end
+  helper_method :roots_info_pages
 
 end
