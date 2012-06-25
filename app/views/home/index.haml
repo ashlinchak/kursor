@@ -40,10 +40,10 @@
     .span4
       = link_to root_url + 'categories/schools' do
         = image_tag '/images/shkola.jpg'
-      %br/
-      %br/
-      %h2.home-title= t(:'home.titles.recent_providers')
-      .row
+      -#%br/
+      -#%br/
+      -#%h2.home-title= t(:'home.titles.recent_providers')
+      -#.row
         .span4
         -#.span1
         -#  = link_to item, :class => 'thumbnail' do
@@ -51,6 +51,6 @@
         -#  %br
         -#.span3
         -#  %b= link_to item.name, provider_path(item)
-      - providers.each do |item|
+      -#- providers.each do |item|
         %h5{ :style => 'margin-bottom: 2px;' }= link_to item.name, provider_path(item)
 

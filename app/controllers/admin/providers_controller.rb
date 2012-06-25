@@ -1,5 +1,7 @@
 class Admin::ProvidersController < Admin::DashboardController
 
+  require 'csv'
+
   def approve
     if provider.approve!
       flash[:success]= t('providers.actions.approve.success', :provider_name => provider.name, :provider_path => provider_path(provider)).html_safe
@@ -17,6 +19,25 @@ class Admin::ProvidersController < Admin::DashboardController
       flash[:danger]= t(:'providers.decline.error')
     end
     redirect_to admin_notifications_path
+  end
+
+  def export
+    @contacts = Contact.where("contactable_type = ? AND contact_type_id = ?", 'Provider', 1)
+    @string = StringIO.new
+
+    @string = CSV.generate do |csv|
+      csv << ['Email', 'Title', 'URL']
+      @contacts.each do |contact|
+         prov = Provider.find(contact.contactable_id)
+         csv << [contact.value, prov.name, provider_path(prov)]
+      end
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @string }
+    end
+
   end
 
   def provider

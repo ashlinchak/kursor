@@ -22,6 +22,7 @@ Kursor::Application.routes.draw do
         get :approve
         get :decline
       end
+      get 'export', :on => :collection
     end
     resources :tutors do
       member do

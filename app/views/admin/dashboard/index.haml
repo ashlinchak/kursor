@@ -2,7 +2,7 @@
 %hr/
 .row
   .span3
-    %h3 Statistics
+    %legend Statistics
     %table.table.table-bordered.table-striped.table-condensed
       %tbody
         %tr
@@ -50,7 +50,7 @@
             = @tags
 
   .span3
-    %h3 What is today?
+    %legend What is today?
     %table.table.table-bordered.table-striped.table-condensed
       %tbody
         %tr
@@ -74,5 +74,8 @@
             = today_postings_created
 
   .span3
-
+    %legend Export emails database
+    = link_to export_admin_providers_path(:format => :csv), :class => 'btn' do
+      %i.icon-download-alt
+      Download CSV file
   .span3
