@@ -34,6 +34,7 @@ ru:
       trainings: "Тренинги"
       business-schools: "Бизнес-школы"
       vip: "VIP"
+      info: "Инфо"
       search: "Поиск"
       admin-panel: "Админка"
     copyright:
@@ -110,6 +111,7 @@ ru:
         street: "Улица"
         building: "Дом"
         apartment: "Офис"
+        ap_short: "оф."
       contacts:
         add: "Добавить контакт"
       filials:
@@ -232,6 +234,8 @@ ru:
       add_post: "Добавить статью"
       home: "Профиль"
       edit: "Редактировать мой профиль"
+      birth_date: "Дата рождения:"
+      address: "Адрес:"
     edit_profile:
       email_pass: "Email / Пароль"
       no_pass: "Не вводите в это поле ничего, если<br /> Вы не собираетесь менять пароль!"

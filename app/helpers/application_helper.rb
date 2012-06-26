@@ -28,7 +28,7 @@ module ApplicationHelper
     result << "#{location.city}" if location.city.present?
     result << "#{location.street}" if location.street.present?
     result << "#{location.building}" if location.building.present?
-    result << "apt. #{location.apartment}" if location.apartment.present?
+    result << t(:'providers.edit.location.ap_short') + " #{location.apartment}" if location.apartment.present?
     result.join(', ')
   end
 
@@ -76,7 +76,7 @@ module ApplicationHelper
       end
 
       if location.apartment.present?
-        address << "#{location.apartment.strip}"
+        address << t(:'providers.edit.location.ap_short') + " #{location.apartment.strip}"
       end
 
       address.join(', ')

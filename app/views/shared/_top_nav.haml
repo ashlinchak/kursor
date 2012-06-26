@@ -1,15 +1,16 @@
 %nav.clear
   %ul
-    %li= link_to t(:'postings.title'), posting_categories_path, :class => ( "current" if request.fullpath.include?("posting_categories") unless request.fullpath.include?("/posting_categories/vip") )
-    -#%li= link_to t(:'site.nav.vip'), root_url + 'posting_categories/vip', :class => ( "current" if request.fullpath.include?("/posting_categories/vip") )
-    %li= link_to t(:'site.nav.pre-schools'), root_url + 'categories/doshkolnoe-obrazovanie', :class => ( "current " if request.fullpath.include?("/categories/doshkolnoe-obrazovanie")  )
-    %li= link_to t(:'site.nav.schools'), root_url + 'categories/schools', :class => ( "current" if request.fullpath.include?("/categories/schools") )
-    %li= link_to t(:'site.nav.technical'), root_url + 'categories/prof-tech-obrazovanie', :class => ( "current" if request.fullpath.include?("/categories/prof-tech-obrazovanie") )
-    %li= link_to t(:'site.nav.high-schools'), root_url + 'categories/high-schools', :class => ( "current" if request.fullpath.include?("/categories/high-schools") )
-    %li= link_to t(:'site.nav.courses'), root_url + 'categories/kursy', :class => ( "current" if request.fullpath.include?("/categories/kursy") )
-    %li= link_to t(:'site.nav.tutors'), tutor_categories_path, :class => ( "current" if request.fullpath.include?("tutor_categories") )
-    %li= link_to t(:'site.nav.trainings'), root_url + 'categories/treninhy-i-semynary', :class => ( "current" if request.fullpath.include?("/categories/treninhy-i-semynary") )
-    %li= link_to t(:'site.nav.business-schools'), root_url + 'categories/biznes-shkoly', :class => ( "current" if request.fullpath.include?("/categories/biznes-shkoly") )
-    %li= link_to t(:'site.nav.wiki'), root_url + 'info', :class => ( "current" if request.fullpath.include?("/info") )
+    -#%li= link_to t(:'postings.title'), posting_categories_path, :class => ( "current" if request.fullpath.include?("/p") )
+    %li= link_to t(:'postings.title'), posting_categories_path, :class => ( "current" if controller_name == 'posting_categories')
+    %li= link_to t(:'site.nav.pre-schools'), root_url + 'c/doshkolnoe-obrazovanie', :class => ( "current " if request.fullpath.include?("/c/doshkolnoe-obrazovanie")  )
+    %li= link_to t(:'site.nav.schools'), root_url + 'c/shkoly', :class => ( "current" if request.fullpath.include?("/c/shkoly") )
+    %li= link_to t(:'site.nav.technical'), root_url + 'c/prof-tech-obrazovanie', :class => ( "current" if request.fullpath.include?("/c/prof-tech-obrazovanie") )
+    %li= link_to t(:'site.nav.high-schools'), root_url + 'c/vuzy', :class => ( "current" if request.fullpath.include?("/c/vuzy") )
+    %li= link_to t(:'site.nav.courses'), root_url + 'c/kursy', :class => ( "current" if request.fullpath.include?("/c/kursy") )
+    %li= link_to t(:'site.nav.tutors'), tutor_categories_path, :class => ( "current" if controller_name == 'tutor_categories' )
+    %li= link_to t(:'site.nav.trainings'), root_url + 'c/treninhy-i-semynary', :class => ( "current" if request.fullpath.include?("/c/treninhy-i-semynary") )
+    %li= link_to t(:'site.nav.business-schools'), root_url + 'c/biznes-shkoly', :class => ( "current" if request.fullpath.include?("/c/biznes-shkoly") )
+    %li= link_to t(:'site.nav.info'), root_url + 'info', :class => ( "current" if controller_name == 'info' )
+
 
 

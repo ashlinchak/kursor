@@ -70,11 +70,11 @@ Kursor::Application.routes.draw do
 
   resources :news, :only => [:index, :show]
 
-  resources :postings do
+  resources :postings, :path => 'posts' do
     resources :comments
   end
 
-  resources :users, :except => [ :edit, :destroy] do
+  resources :users, :path => 'u', :except => [ :edit, :destroy] do
     resources :postings
     resources :schedule
   end
@@ -82,7 +82,7 @@ Kursor::Application.routes.draw do
   match '/my_profile' => 'users#my_profile', :as => :my_profile
   match '/my_profile/edit' => 'users#edit',  :as => :edit_profile
 
-  resources :providers do
+  resources :providers, :path => 'provs'  do
     resources :students, :only => [] do
       collection do
         get 'join'
@@ -96,7 +96,7 @@ Kursor::Application.routes.draw do
     end
   end
 
-  resources :tutors do
+  resources :tutors, :path => 'tutors' do
     resources :students, :only => [] do
       collection do
         get 'join'
@@ -110,12 +110,11 @@ Kursor::Application.routes.draw do
     end
   end
 
-  resources :categories, :only => [:index, :show]
-  resources :tutor_categories, :only => [:index, :show]
-  resources :posting_categories, :only => [:index, :show]
+  resources :categories, :path => 'c', :only => [:index, :show]
+  resources :tutor_categories, :path => 't', :only => [:index, :show]
+  resources :posting_categories, :path => 'p', :only => [:index, :show]
 
   root :to => 'home#index'
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

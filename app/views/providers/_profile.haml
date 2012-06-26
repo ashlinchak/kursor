@@ -141,13 +141,11 @@
 
     - if provider.filials.size > 0
 
-
       %h2.block-title= t(:'providers.filials')
-
 
       - provider.filials.each do |filial|
 
-        %h5= filial.name if filial.name.present?
+        %h4= filial.name if filial.name.present?
 
         = address_value filial.location
 

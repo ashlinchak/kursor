@@ -19,11 +19,11 @@
   .span5
     - if profile.birth_date.present?
       %p
-        Birth date:
+        %b= t(:'visitor.profile.birth_date')
         = l profile.birth_date
     - if profile.location.present?
       %p
-        Address:
+        %b= t(:'visitor.profile.address')
         = address_value profile.location
 
     - for contact in profile.contacts.by_type do
