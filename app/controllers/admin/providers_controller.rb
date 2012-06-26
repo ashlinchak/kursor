@@ -26,10 +26,10 @@ class Admin::ProvidersController < Admin::DashboardController
     @string = StringIO.new
 
     @string = CSV.generate do |csv|
-      csv << ['Email', 'Title', 'URL']
+      #csv << ['Email', 'Title', 'URL']
       @contacts.each do |contact|
          prov = Provider.find(contact.contactable_id)
-         csv << [contact.value, prov.name, provider_path(prov)]
+         csv << [contact.value, prov.name, provider_url(prov)]
       end
     end
 
