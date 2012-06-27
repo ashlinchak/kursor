@@ -31,7 +31,7 @@ class Admin::TutorCategoriesController < Admin::DashboardController
   end
 
   def destroy
-    unless (tutor_category.children.size > 0) || (tutor_category.providers.size > 0)
+    unless (tutor_category.children.size > 0) || (tutor_category.tutors.size > 0)
       tutor_category.destroy
     else
       flash[:error] = 'Can\'t delete non-empty category'

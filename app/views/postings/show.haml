@@ -1,4 +1,4 @@
-- set_meta_tags :title => posting.title, :description => posting.excerpt, :keywords => ( posting.tags.each do |tag| tag.name end )
+- set_meta_tags :title => posting.title + ' | ' + t(:'seo.sections.postings'), :description => posting.excerpt, :keywords => ( posting.tags.each do |tag| tag.name end )
 #postings
   #show
     .row

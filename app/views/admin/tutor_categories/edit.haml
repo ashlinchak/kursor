@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to edit_admin_tutor_category_path(tutor_category), :method => :delete, :confirm => 'Are you sure?' do
+= link_to admin_tutor_category_path(tutor_category), :method => :delete, :confirm => 'Are you sure?' do
   %i.icon-remove
   = t(:'admin.provider_categories.delete')

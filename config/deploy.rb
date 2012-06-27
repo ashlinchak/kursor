@@ -4,8 +4,11 @@ set :using_rvm, true
 #$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 set :rvm_type, :system
 
+set :whenever_command, "bundle exec whenever"
+
 require "rvm/capistrano"
 require "bundler/capistrano"
+require "whenever/capistrano"
 
 # General
 

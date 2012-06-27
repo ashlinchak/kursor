@@ -1,8 +1,8 @@
-- set_meta_tags :title => t(:'seo.sections.posting_category') +  posting_category.name
+- set_meta_tags :title => posting_category.name + ' | ' + t(:'seo.sections.postings'), :description => posting_category.description
 #posting-categories
   #show
     .row
-      .span9
+      .span8
         %ul.breadcrumb
           %li
             = link_to t(:'postings.title'), posting_categories_path
