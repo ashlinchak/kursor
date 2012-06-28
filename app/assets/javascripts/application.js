@@ -52,7 +52,8 @@ $(document).ready(function(){
 
     $('.datepicker').datepicker({
         changeYear: true,
-        changeMonth: true
+        changeMonth: true,
+        yearRange: "-70y:-14y"
     });
 
 // Add caption to image from alt text in posting

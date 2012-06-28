@@ -1,10 +1,9 @@
 .row
   .span8
     - if authenticated?
-      %i.icon-user
-      = user.email
-      &nbsp;&nbsp;&nbsp;
       - if user === current_user
+        %i.icon-user
+        = user.email
         = link_to edit_profile_url do
           - unless user.visitor?
             %i.icon-envelope
@@ -20,6 +19,19 @@
           &nbsp;&nbsp;&nbsp;
           %i.icon-pencil
           = link_to t(:'users.panel.edit_my_profile'), edit_tutor_path(user.tutor)
+      - else
+        - if user.visitor? && user.profile
+          - if user.profile.full_name && !user.profile.full_name.blank?
+            = user.profile.full_name
+          - else
+            = user.email.split(/@/)[0]
+        - elsif user.tutor? || user.school?
+          - if user.provider
+            = user.provider.name
+          - else
+            = user.email.split(/@/)[0]
+        - else
+          = user.email.split(/@/)[0]
     %hr/
 - if authenticated?
   - if user.tutor?

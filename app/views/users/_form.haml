@@ -56,4 +56,7 @@
         = f.fields_for :profile do |profile|
           = render :partial => '/profile/profile_fields', :locals => { :f => profile, :profile => user.profile }
   .form-actions
-    = f.submit t(:'users.new.submit'), :class => 'btn btn-primary btn-large'
+    - unless user.new_record?
+      = f.submit t(:'users.edit.save'), :class => 'btn btn-success btn-large'
+    - else
+      = f.submit t(:'users.new.submit'), :class => 'btn btn-success btn-large'

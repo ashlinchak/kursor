@@ -7,14 +7,11 @@
           = t(:'visitor.edit_profile.name')
         .controls
           = f.text_field :full_name, :class => ''
-
-
       .control-group
         %label.control-label
           = t(:'visitor.edit_profile.birth_date')
         .controls
           = f.text_field :birth_date, :class => 'datepicker'
-
   .span6
     %fieldset
       %legend= t(:'visitor.edit_profile.avatar')
@@ -26,7 +23,6 @@
           %label.checkbox
             = f.check_box :remove_avatar
             = t(:'visitor.edit_profile.remove_avatar')
-
 .row
   .span6
     %fieldset
@@ -34,8 +30,6 @@
       .control-group
         = f.fields_for :location do |l|
           = render :partial => 'addresses/location_fields', :locals => { :f => l }
-
-
   .span6
     %legend= t(:'visitor.edit_profile.contacts')
     %fieldset
