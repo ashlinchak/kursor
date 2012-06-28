@@ -28,11 +28,13 @@
     .row
       .span3{ :style => 'width: 190px;'}
         - if tutor.avatar_url
-          = image_tag tutor.avatar_url(:medium).to_s
+          .tutor-avatar
+            = image_tag tutor.avatar_url(:medium).to_s
+            - if tutor.is_native_speaker?
+              .label-area
+                %span= t(:'tutors.show.native_speaker')
       .span5
-
         %h1= tutor.name
-
         .update-info
           %strong
             Последнее изменение:
@@ -41,7 +43,6 @@
 
         %p
           = render :partial => 'shared/rating_stars', :locals => {:rateable => tutor}
-
     %br/
     %table.table.table-striped.table-condensed
       - if tutor.tutor_custom_fields.size > 0

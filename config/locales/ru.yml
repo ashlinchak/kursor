@@ -76,6 +76,7 @@ ru:
       description: "Основная информация"
       methodology: "Образование"
       more_info: "Дополнительная информация"
+      native_speaker: "Носитель"
     edit:
       success: "Профиль успешно изменен"
       error: "Возникла ошибка при сохранении профиля"
@@ -83,6 +84,9 @@ ru:
       name: "ФИО"
       photo: "Фото"
       delete_photo: "Удалить текущее фото"
+      special_options: "Особенности"
+      is_native_speaker: "Я носитель преподаваемого языка"
+      is_nat_sp_help: "Эта опция только для преподавателей языков"
       custom_fields_title: "Основные данные"
       add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
   providers:

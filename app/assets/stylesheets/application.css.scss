@@ -313,6 +313,38 @@ a:hover.sub_category_label
 }
 
 
+.tutor-avatar {
+
+  position: relative;
+  width: 100%; /* for IE 6 */
+
+  .label-area {
+
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+    width: 100%;
+
+    span {
+
+      color: white;
+      font: bold 24px/45px;
+      letter-spacing: -1px;
+      background: rgb(0, 0, 0); /* fallback color */
+      background: rgba(0, 0, 0, 0.7);
+      padding: 6px 15px;
+      -webkit-border-radius: 0px 5px 5px 0px;
+      border-radius: 0px 5px 5px 0px;
+
+    }
+
+  }
+
+}
+
+
+
+
 /* MAIN */
 #main{
   padding:  1.5em 0;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620092821) do
+ActiveRecord::Schema.define(:version => 20120628191854) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -379,6 +379,7 @@ ActiveRecord::Schema.define(:version => 20120620092821) do
     t.string   "avatar"
     t.text     "methodology"
     t.text     "more_info"
+    t.boolean  "is_native_speaker"
   end
 
   add_index "tutors", ["tutor_category_id"], :name => "index_tutors_on_tutor_category_id"

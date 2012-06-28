@@ -20,15 +20,29 @@
         = f.hidden_field :avatar_cache
       - if tutor.avatar_url.present?
         .control-group
-          = f.check_box :remove_avatar
-          = t(:'tutors.edit.delete_photo')
+          %label.checkbox
+            = f.check_box :remove_avatar
+            = t(:'tutors.edit.delete_photo')
 .row
-  .span12
+  .span6
     %fieldset
       %legend= t(:'tutors.edit.custom_fields_title')
       = f.fields_for :tutor_custom_field_bindings do |b|
         = render :partial => 'tutor_custom_field_bindings/tutor_custom_field_binding_fields', :locals => { :f => b }
       .fields= link_to_add_fields t(:'providers.custom_fields.add').html_safe, f, :tutor_custom_field_bindings
+  .span6
+    %fieldset
+      %legend= t(:'tutors.edit.special_options')
+      .control-group
+        %label.control-label
+          %a{:rel=>'tooltip',:href => '#','data-original-title' => t(:'tutors.edit.is_nat_sp_help')}
+            %i.icon-info-sign
+        .controls
+          %label.checkbox
+            = f.check_box :is_native_speaker
+            = t(:'tutors.edit.is_native_speaker')
+
+
 %br
 .row
   .span6
