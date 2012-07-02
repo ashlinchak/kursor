@@ -11,6 +11,8 @@ class TutorCategory < ActiveRecord::Base
   validates_presence_of :name, :description, :permalink
   validates :name, :permalink, :uniqueness => true
 
+  validates_format_of :permalink, :with => /^[a-z\d\-]*$/, :message => "a-z, 0-9 \' - \' ONLY"
+
   scope :roots, where(:parent_id => nil)
 
   before_save :generate_permalink

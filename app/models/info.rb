@@ -7,6 +7,8 @@ class Info < ActiveRecord::Base
   validates :title, :body, :permalink, :presence => true
   validates :permalink, :uniqueness => true
 
+  validates_format_of :permalink, :with => /^[a-z\d\-]*$/, :message => "a-z, 0-9 \' - \' ONLY"
+
   scope :roots, where(:parent_id => nil)
 
   def has_children?

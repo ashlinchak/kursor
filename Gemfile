@@ -21,6 +21,8 @@ gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem "geocoder"
 gem 'meta-tags', :require => 'meta_tags'
 gem 'sitemap_generator'
+gem 'nokogiri'
+
 
 group :assets do
   gem 'sass-rails', "3.1.4"

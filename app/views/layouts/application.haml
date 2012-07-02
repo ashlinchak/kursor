@@ -59,6 +59,6 @@
         .span7
           = t(:'site.copyright.rights').html_safe
         .span5{:style => 'text-align: right;'}
-          = render :partial => 'shared/counters'
+          = render :partial => 'shared/counters' unless Rails.env.development?
           = link_to root_url do
             = image_tag 'logo_small.png'

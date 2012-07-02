@@ -1,5 +1,9 @@
 class Posting < ActiveRecord::Base
+
   include ::Taggable
+
+  require 'nokogiri'
+  require 'open-uri'
 
   acts_as_commentable
 
@@ -20,6 +24,8 @@ class Posting < ActiveRecord::Base
 
   has_many :posting_categorizings, :dependent => :destroy
   has_many :posting_categories, :through => :posting_categorizings
+
+  before_save :add_nofollow
 
   default_scope order('created_at desc')
 
@@ -44,4 +50,26 @@ class Posting < ActiveRecord::Base
     self.is_approved = false
     save
   end
+
+  def add_nofollow
+    doc = Nokogiri::HTML.parse(self.body)
+    links = []
+    doc.css('a').each do |link|
+      next unless link['rel'].blank?
+      next if (link['href'][0,4] != 'http' && link['href'][0,3] != 'www')
+      next if (link['href'].downcase.include?('kursor.org.ua'))
+      links << link
+    end
+
+    links.uniq.each do |link|
+      link['rel'] = 'nofollow'
+      link['target'] = '_blank'
+      href1 = "href='#{link['href']}'"
+      href2 = 'href="'+link['href']+'"'
+      self.body = self.body.gsub(href1, href1+' rel="nofollow"')
+      self.body = self.body.gsub(href2, href2+' rel="nofollow"')
+    end
+  end
+
+
 end

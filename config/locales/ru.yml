@@ -487,6 +487,8 @@ ru:
       title: "Новости"
     categories:
       title: "Категории"
+      edit:
+        permalink_help: "Только: <b>a-z,  0-9, &laquo; - &raquo;</b>"
     locations:
       headers:
         title: "Локации"
