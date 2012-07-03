@@ -26,6 +26,8 @@
   -#:javascript
     VK.init({apiId: 2465708, onlyWidgets: true});
   #fb-root
+  = render :partial => 'shared/yandex_metrika_code' unless Rails.env.development?
+  = render :partial => 'shared/google_analytics_code' unless Rails.env.development?
   :javascript
     (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -35,8 +37,8 @@
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   = csrf_meta_tags
-  = render :partial => 'shared/google_analytics_code' unless Rails.env.development?
-  = render :partial => 'shared/yandex_metrika_code' unless Rails.env.development?
+
+
 %body
   #page
     %header.container

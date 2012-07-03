@@ -27,5 +27,12 @@
       .controls
         = check_box_tag 'send_email', 'yes', true
 
+    .control-group
+      %label.control-label
+        = t(:'admin.transfering_users.additional_message')
+      .controls
+        = text_area_tag 'additional_message', nil, :class => 'span6', :id => 'additional_message'
+        = link_to '#', :id => 'clear_text_button', :class => 'btn btn-mini', :title => t(:'admin.transfering_users.clear_add_msg') do
+          %i.icon-fire
   .form-actions
     = f.submit t(:'admin.transfering_users.submit'), :class => 'btn btn-large btn-primary'

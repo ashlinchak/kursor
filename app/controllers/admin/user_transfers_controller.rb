@@ -15,8 +15,14 @@ class Admin::UserTransfersController < Admin::DashboardController
     transfer_user.is_active = true
     if transfer_user.update_attributes(params[:user])
       unless params[:send_email] != 'yes'
-        if UserTransferMailer.transfer_email(transfer_user, transfer_user.password).deliver
-          flash[:success] = t(:'admin.transfering_users.success_with_mail', :email => transfer_user.email.to_s, :password => ( transfer_user.password != '' ? transfer_user.password : t(:'admin.transfering_users.no_changes') )).html_safe
+        if !params[:additional_message].blank?
+          if UserTransferMailer.transfer_email_with_add_msg(transfer_user, transfer_user.password, params[:additional_message]).deliver
+            flash[:success] = t(:'admin.transfering_users.success_with_mail_plus_add_msg', :add_msg => params[:additional_message], :email => transfer_user.email.to_s, :password => ( transfer_user.password != '' ? transfer_user.password : t(:'admin.transfering_users.no_changes') )).html_safe
+          end
+        else
+          if UserTransferMailer.transfer_email(transfer_user, transfer_user.password).deliver
+            flash[:success] = t(:'admin.transfering_users.success_with_mail', :email => transfer_user.email.to_s, :password => ( transfer_user.password != '' ? transfer_user.password : t(:'admin.transfering_users.no_changes') )).html_safe
+          end
         end
       else
         flash[:success] = t(:'admin.transfering_users.success_without_mail', :email => transfer_user.email.to_s, :password => ( transfer_user.password != '' ? transfer_user.password : t(:'admin.transfering_users.no_changes') )).html_safe

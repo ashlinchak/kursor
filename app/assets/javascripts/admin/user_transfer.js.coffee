@@ -7,3 +7,7 @@ jQuery ->
     date = new Date()
     time = date.getTime()
     $('input#user_password, input#user_password_confirmation').val( time )
+
+
+  $('#clear_text_button').click ->
+    $('#additional_message').val('')
