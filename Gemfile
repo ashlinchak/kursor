@@ -22,6 +22,7 @@ gem "geocoder"
 gem 'meta-tags', :require => 'meta_tags'
 gem 'sitemap_generator'
 gem 'nokogiri'
+gem 'gritter_notices'
 
 
 group :assets do

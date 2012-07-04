@@ -30,6 +30,8 @@
       .container
         = render :partial => 'shared/admin_top_nav'
     #main.container
+      = gflash
+      = gritter_flash_messages
       .flash= render 'shared/flash_messages'
       = yield
 

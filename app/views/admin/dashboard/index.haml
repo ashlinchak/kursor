@@ -12,13 +12,13 @@
             = @admin_users
         %tr
           %td
-            Providers
+            = link_to 'Providers', admin_users_path
             approved
           %td
             = providers_approved
         %tr
           %td
-            Providers
+            = link_to 'Providers', admin_users_path
             waiting
           %td
             %span.badge.badge-important
@@ -55,7 +55,7 @@
       %tbody
         %tr
           %td
-            Providers
+            = link_to 'Providers', admin_users_path
             registered
           %td
             %span.badge.badge-success

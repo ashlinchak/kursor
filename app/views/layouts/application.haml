@@ -38,7 +38,6 @@
     }(document, 'script', 'facebook-jssdk'));
   = csrf_meta_tags
 
-
 %body
   #page
     %header.container
@@ -54,7 +53,9 @@
       = render :partial => 'shared/top_nav'
       = render :partial => 'shared/login_bar'
     #main.container
-      .flash= render 'shared/flash_messages'
+      = gflash
+      = gritter_flash_messages
+      -#.flash= render 'shared/flash_messages'
       = yield
     %footer.container
       .row.footer

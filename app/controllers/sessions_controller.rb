@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   def destroy
     self.current_user = nil
     reset_session
-    flash[:notice] = t(:'sessions.destroy.success')
+    flash[:success] = t(:'sessions.destroy.success')
     redirect_to :root
   end
 
