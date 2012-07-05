@@ -66,6 +66,23 @@
           = links_to_tags posting.tags_list
     .row
       .span8
+        %hr/
+        #disqus_thread
+        :javascript
+          //CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE
+          //var disqus_developer = 1;
+          var disqus_category_id = '1541317'
+          var disqus_shortname = 'kursor-ua';
+          //DON'T EDIT BELOW THIS LINE
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        %noscript
+          Пожалуйста, включите поддержку JavaScript в Вашем браузере.
+
+      -#.span8
         %legend= t(:'postings.comments.title') + ' (' + posting.comment_threads.size.to_s + ')'
 
         - if posting.comment_threads.size > 0

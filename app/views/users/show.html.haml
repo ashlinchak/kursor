@@ -32,6 +32,10 @@
             = user.email.split(/@/)[0]
         - else
           = user.email.split(/@/)[0]
+      - if authorized?
+        = link_to 'mailto:'+user.email+'?subject=Образовательный Портал КУРСОР' do
+          %i.icon-envelope
+          Send email
     %hr/
 - if authenticated?
   - if user.tutor?

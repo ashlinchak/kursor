@@ -87,6 +87,21 @@
         = link_to admin_user_path(tutor.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
           %i.icon.icon-remove
           = t(:'site.actions.destroy_user')
+    %hr/
+    #disqus_thread
+    :javascript
+      //CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE
+      //var disqus_developer = 1;
+      var disqus_category_id = '1541318'
+      var disqus_shortname = 'kursor-ua';
+      //DON'T EDIT BELOW THIS LINE
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    %noscript
+      Пожалуйста, включите поддержку JavaScript в Вашем браузере.
   .span4
     .categories
       - if tutor.tutor_categorizings.size > 0

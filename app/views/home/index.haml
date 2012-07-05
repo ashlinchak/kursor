@@ -55,6 +55,11 @@
       - elsif @random == 5
         = link_to root_url + 'c/uroki-vokala' do
           = image_tag '/images/banner-5.jpg'
+
+      %br/
+
+      = render :partial => 'shared/widgets/vk_group'
+
       -#%br/
       -#%br/
       -#%h2.home-title= t(:'home.titles.recent_providers')
