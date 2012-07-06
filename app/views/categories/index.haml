@@ -1,6 +1,6 @@
 - set_meta_tags :title => t(:'seo.sections.providers')
 .row
-  .span12
+  .span8
     %h3 Выберите нужную категорию
     %ul.categories.clearfix
       - for child in categories
@@ -12,3 +12,7 @@
                 %li= link_to child, child
 
     %hr/
+  .span4
+    = render :partial => 'shared/advertising/kursor_ads'
+    %hr/
+    = render :partial => 'shared/widgets/widgets'

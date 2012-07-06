@@ -1,6 +1,6 @@
 - set_meta_tags :title => t(:'seo.sections.tutors'), :description => t(:'seo.sections.tutors_description')
 .row
-  .span12
+  .span8
     %h3 Выберите нужную категорию
     %ul.categories.clearfix
       - for child in tutor_categories
@@ -11,12 +11,17 @@
               - for child in child.children
                 %li= link_to child, child
 
+    -#%hr/
+    -#- if tutors.size > 0
+    -#  %ul.entries
+    -#    - for tut in tutors
+    -#      = render :partial => 'tutor_categories/tutor', :locals => { :tutor => tut }
+    -#  .page_navigation.clear= paginate tutors
+    -#- else
+    -#  Нет зарегистрированных преподавателей в этой категории
+    -#%hr/
+
+  .span4
+    = render :partial => 'shared/advertising/kursor_ads'
     %hr/
-    - if tutors.size > 0
-      %ul.entries
-        - for tut in tutors
-          = render :partial => 'tutor_categories/tutor', :locals => { :tutor => tut }
-      .page_navigation.clear= paginate tutors
-    - else
-      Нет зарегистрированных преподавателей в этой категории
-    %hr/
+    = render :partial => 'shared/widgets/widgets'

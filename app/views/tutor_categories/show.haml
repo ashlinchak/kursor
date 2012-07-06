@@ -1,7 +1,6 @@
 - set_meta_tags :title => tutor_category.name + ' | ' + t(:'seo.sections.tutors'), :description => tutor_category.description
 .row
-  .span12
-
+  .span8
     %ul.breadcrumb
       %li
         Вы здесь:
@@ -24,3 +23,8 @@
     - else
       Нет зарегистрированных преподавателей в этой категории
     %hr/
+
+  .span4
+    = render :partial => 'shared/advertising/kursor_ads'
+    %hr/
+    = render :partial => 'shared/widgets/widgets'

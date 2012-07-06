@@ -21,8 +21,7 @@
                       = time_ago_in_words sub_post.created_at, :format => :long
                       назад
                       %br/
-                      = t(:'posting_categories.comments')
-                      = sub_post.comment_threads.size
+                      = link_to '', posting_path(sub_post) + '#disqus_thread'
               .more-in
                 = link_to posting_category_path(child) do
                   Больше в категории
@@ -42,3 +41,7 @@
             = render :partial => 'posting_categories/posting', :locals => { :p => p }
         .page_navigation.clear= paginate all_postings
         %hr/
+      .span4
+        = render :partial => 'shared/advertising/kursor_ads'
+        %hr/
+        = render :partial => 'shared/widgets/widgets'

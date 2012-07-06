@@ -20,11 +20,9 @@
                           -#= link_to posting.user do
                           = posting.user
                         %p
-                          = t(:'home.news_slider.comments')
-                          = posting.comment_threads.size
+                          = link_to '', posting_path(posting) + '#disqus_thread'
                     .mosaic-backdrop
                       = image_tag posting.images.last.src_url(:medium).to_s
-
       %br/
       %h2.home-title= t(:'home.titles.categories')
       .row
@@ -39,38 +37,6 @@
                   = link_to sub_category do
                     = "#{sub_category} (#{sub_category.providers_count})"
     .span4
-      - @random = rand(1...6)
-      - if @random == 1
-        = link_to root_url + 'c/uroki-muzyki' do
-          = image_tag '/images/banner-1.jpg'
-      - elsif @random == 2
-        = link_to root_url + 't' do
-          = image_tag '/images/banner-2.jpg'
-      - elsif @random == 3
-        = link_to root_url + 'c/vuzy' do
-          = image_tag '/images/banner-3.jpg'
-      - elsif @random == 4
-        = link_to root_url + 'c/shkoly' do
-          = image_tag '/images/banner-4.jpg'
-      - elsif @random == 5
-        = link_to root_url + 'c/uroki-vokala' do
-          = image_tag '/images/banner-5.jpg'
-
-      %br/
-
-      = render :partial => 'shared/widgets/vk_group'
-
-      -#%br/
-      -#%br/
-      -#%h2.home-title= t(:'home.titles.recent_providers')
-      -#.row
-        .span4
-        -#.span1
-        -#  = link_to item, :class => 'thumbnail' do
-        -#    = image_tag item.logo_url(:thumb)
-        -#  %br
-        -#.span3
-        -#  %b= link_to item.name, provider_path(item)
-      -#- providers.each do |item|
-        %h5{ :style => 'margin-bottom: 2px;' }= link_to item.name, provider_path(item)
-
+      = render :partial => 'shared/advertising/kursor_ads'
+      %hr/
+      = render :partial => 'shared/widgets/widgets'

@@ -15,3 +15,8 @@
             = render :partial => 'posting_categories/posting', :locals => { :p => p }
         .page_navigation.clear= paginate postings
         %hr/
+
+      .span4
+        = render :partial => 'shared/advertising/kursor_ads'
+        %hr/
+        = render :partial => 'shared/widgets/widgets'

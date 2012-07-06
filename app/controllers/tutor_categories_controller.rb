@@ -30,9 +30,9 @@ class TutorCategoriesController < ApplicationController
   def tutors
     @tutors ||= unless params[:search]
       if tutor_category.root?
-        Kaminari.paginate_array(tutor_category.tutors.approved).page(params[:page]).per(30)
+        Kaminari.paginate_array(tutor_category.tutors.approved.order("updated_at desc")).page(params[:page]).per(30)
       else
-        Kaminari.paginate_array(tutor_category.sub_tutors.approved).page(params[:page]).per(30)
+        Kaminari.paginate_array(tutor_category.sub_tutors.approved.order("updated_at desc")).page(params[:page]).per(30)
       end
     else
 
@@ -57,8 +57,9 @@ class TutorCategoriesController < ApplicationController
         end
       end
 
-      Kaminari.paginate_array(tutors).page(params[:page]).per(30)
-      end
+      Kaminari.paginate_array(tutors.sort_by{|t| -t.updated_at.to_i}).page(params[:page]).per(30)
+
+    end
 
   end
   helper_method :tutors

@@ -15,8 +15,7 @@
           = link_to new_user_posting_path(current_user) do
             %i.icon-plus-sign.icon-dark
             = t(:'visitor.profile.add_post')
-
-  .span5
+  .span6
     - if profile.birth_date.present?
       %p
         %b= t(:'visitor.profile.birth_date')
@@ -37,7 +36,6 @@
       - for contact in profile.contacts.by_type
         - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
           = social_icon contact
-
-
     %hr/
     .bio= profile.bio
+  .span3
