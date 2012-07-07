@@ -5,6 +5,8 @@ class Posting < ActiveRecord::Base
   require 'nokogiri'
   require 'open-uri'
 
+  before_save :add_nofollow
+
   acts_as_commentable
 
   attr_accessor :image_attributes
@@ -24,8 +26,6 @@ class Posting < ActiveRecord::Base
 
   has_many :posting_categorizings, :dependent => :destroy
   has_many :posting_categories, :through => :posting_categorizings
-
-  before_save :add_nofollow
 
   default_scope order('created_at desc')
 
@@ -66,8 +66,8 @@ class Posting < ActiveRecord::Base
       link['target'] = '_blank'
       href1 = "href='#{link['href']}'"
       href2 = 'href="'+link['href']+'"'
-      self.body = self.body.gsub(href1, href1+' rel="nofollow"')
-      self.body = self.body.gsub(href2, href2+' rel="nofollow"')
+      self.body = self.body.gsub(href1, href1+' rel="nofollow" target="_blank"')
+      self.body = self.body.gsub(href2, href2+' rel="nofollow" target="_blank"')
     end
   end
 

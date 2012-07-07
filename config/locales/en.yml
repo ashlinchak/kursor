@@ -91,6 +91,7 @@ en:
       news: 'News'
       info_pages: 'Info pages'
       locations: 'Locations'
+      wikis: ''
       custom_fields: 'Custom fields'
       custom_flags: 'Custom flags'
     users:

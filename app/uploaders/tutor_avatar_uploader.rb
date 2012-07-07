@@ -2,7 +2,7 @@
 
 class TutorAvatarUploader < CarrierWave::Uploader::Base
 
-  after :store, :delete_original_file
+  #after :store, :delete_original_file
 
   def delete_original_file(new_file)
     File.delete path if version_name.blank?

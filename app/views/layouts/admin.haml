@@ -20,7 +20,6 @@
   %link{ :href => "http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin", :rel => "stylesheet", :type => "text/css"}/
   = stylesheet_link_tag "application"
   = javascript_include_tag "application"
-
   /[if IE]
     %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
   = csrf_meta_tags
@@ -31,7 +30,7 @@
         = render :partial => 'shared/admin_top_nav'
     #main.container
       = gflash
-      = gritter_flash_messages
+      -#= gritter_flash_messages
       .flash= render 'shared/flash_messages'
       = yield
 
@@ -42,5 +41,4 @@
         .span3{:style => 'text-align: right;'}
           = link_to root_url do
             = image_tag 'logo_small.png'
-
-  = render :partial => 'shared/google_analytics_code' unless Rails.env.development?
+  -#= render :partial => 'shared/google_analytics_code' unless Rails.env.development?

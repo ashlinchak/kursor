@@ -9,6 +9,7 @@ Kursor::Application.routes.draw do
     resources :categories
     resources :tutor_categories
     resources :info
+    resources :wiki
     resources :news
     resources :notifications
     resources :postings do
@@ -48,6 +49,7 @@ Kursor::Application.routes.draw do
   resources :feedback
   resources :tags
   resources :info
+  resources :wiki
 
   match '/login' => 'sessions#new',      :as => :login
   match '/logout' => 'sessions#destroy', :as => :logout

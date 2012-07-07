@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ProviderLogoUploader < CarrierWave::Uploader::Base
+class WikiImageUploader < CarrierWave::Uploader::Base
 
   #after :store, :delete_original_file
 
@@ -9,7 +9,6 @@ class ProviderLogoUploader < CarrierWave::Uploader::Base
   end
 
   include CarrierWave::MiniMagick
-  # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -21,42 +20,53 @@ class ProviderLogoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url
-    "" + [version_name, "default_provider_logo.png"].compact.join('_')
+  def extension_white_list
+    %w(jpg jpeg gif png)
   end
 
   # Process files as they are uploaded:
   #process :resize_to_fill => [800, 800]
+
+  process :convert => 'jpg'
+
+  # Create different versions of your uploaded files:
+  version :thumb do
+    process :resize_to_fill => [64, 64]
+  end
+
+  version :small do
+    process :resize_to_fill => [120, 80]
+  end
+
+  version :standart do
+    process :resize_to_fill => [220, 180]
+  end
+
+
+  # Provide a default URL as a default if there hasn't been a file uploaded:
+  # def default_url
+  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  # end
+
+  # Process files as they are uploaded:
+  # process :scale => [200, 300]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
-  version :icon do
-    process :resize_to_fill => [32, 32]
-  end
+  # version :thumb do
+  #   process :scale => [50, 50]
+  # end
 
-  version :thumb do
-    process :resize_to_fill => [64, 64]
-  end
-
-  version :medium do
-    process :resize_to_limit => [220, 220]
-  end
-
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  def extension_white_list
-    %w(jpg jpeg gif png)
-  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+
   def filename
      "#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end

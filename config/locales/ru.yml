@@ -37,6 +37,7 @@ ru:
       business-schools: "Бизнес-школы"
       vip: "VIP"
       info: "Инфо"
+      wiki: "Вики"
       search: "Поиск"
       admin-panel: "Админка"
     copyright:
@@ -319,6 +320,9 @@ ru:
   info:
     home_text: "&larr; Выберите слева категорию, которая Вас интересует."
 
+  wiki:
+    index_title: "Вики"
+
   tags:
     title: "Теги"
     tag_list: "Список тегов"
@@ -397,6 +401,7 @@ ru:
       posting_categories: "Менеджер категорий"
       info_pages: "Инфо страницы"
       locations: "Города"
+      wiki: "Вики"
       custom_fields: "Спец. поля"
       tutor_custom_fields: "Для специалистов"
       provider_custom_fields: "Для провадеров"
@@ -487,6 +492,8 @@ ru:
         user_destroy: "Внимание! Вы собираетесь удалить Пользователя и его Провайдера! Отменить действие будет невозможно! Продолжить?"
     info_pages:
       title: "Информационные страницы"
+    wiki_pages:
+      title: "Вики страницы"
     news:
       title: "Новости"
     categories:
