@@ -20,7 +20,7 @@
 
         .carousel
           .carousel-inner
-            -#%link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:wide).to_s }
+            %link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:wide).to_s }
             = image_tag posting.images.last.src_url(:wide).to_s, :width => '620px', :height => '400px'
             .carousel-caption
               %p

@@ -107,7 +107,7 @@ ru:
       no_provider: "Что дальше?"
       no_provider_desc: "Ваши услуги пока не представлены на портале, для этого Вам необходимо заполнить свою страничку."
       add_provider: "Сделать это сейчас!"
-      title: "Редактирование профиля"
+      title: "Редактирование учебного заведения"
       description: "Описание"
       check_to_remove: "удалить логотип"
       actions:
@@ -358,6 +358,13 @@ ru:
       tutor_link: "Преподаватель:"
       user_link: "Пользователь:"
 
+    profile_created:
+      subject: "Новый профиль пользователя!"
+      info: "Информация о пользователе"
+      admin_link: "Админка"
+      profile_link: "Профиль:"
+      user_link: "Пользователь:"
+
     posting_created:
       subject: "Новая статья!"
       info: "Информация о статье"
@@ -556,6 +563,8 @@ ru:
           user: "Пользователь"
           tutor: "Преподаватель"
           school: "Учебное заведение"
+      profile:
+        full_name: "Имя"
       provider:
         name: "Название"
         is_approved: "Проверен"

@@ -4,21 +4,21 @@
       - if user === current_user
         %i.icon-user
         = user.email
-        = link_to edit_profile_url do
-          - unless user.visitor?
-            %i.icon-envelope
-            = t(:'users.panel.edit_email_password')
-          - else
-            %i.icon-pencil
-            = t(:'users.panel.edit_my_profile')
-        - if user.school?
+        = link_to edit_user_path(user) do
+          %i.icon-envelope
+          = t(:'users.panel.edit_email_password')
+        - if user.school? && user.provider.present?
           &nbsp;&nbsp;&nbsp;
           %i.icon-pencil
           = link_to t(:'users.panel.edit_my_profile'), edit_provider_path(user.provider)
-        - if user.tutor?
+        - if user.tutor? && user.tutor.present?
           &nbsp;&nbsp;&nbsp;
           %i.icon-pencil
           = link_to t(:'users.panel.edit_my_profile'), edit_tutor_path(user.tutor)
+        - if user.visitor? && user.profile.present?
+          &nbsp;&nbsp;&nbsp;
+          %i.icon-pencil
+          = link_to t(:'users.panel.edit_my_profile'), edit_profile_path(user.profile)
       - else
         - if user.visitor? && user.profile
           - if user.profile.full_name && !user.profile.full_name.blank?
@@ -36,7 +36,9 @@
         = link_to 'mailto:'+user.email+'?subject=Образовательный Портал КУРСОР' do
           %i.icon-envelope
           Send email
+
     %hr/
+
 - if authenticated?
   - if user.tutor?
     - unless user.tutor
@@ -65,7 +67,10 @@
       = link_to user.provider.name, provider_path(user.provider)
 
   - elsif user.visitor?
-    - if user.profile
-      = render :partial => '/profile/profile', :locals => { :profile => user.profile }
+    - unless user.profile.present?
+      .alert.alert-block
+        = link_to 'Заполнить профиль', new_profile_path
+    - else
+      = render :partial => '/profiles/profile', :locals => { :profile => user.profile }
 - else
   = t(:'users.must_be_authenticated')

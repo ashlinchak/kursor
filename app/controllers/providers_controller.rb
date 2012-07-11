@@ -29,7 +29,7 @@ class ProvidersController < ApplicationController
     if provider.save
       flash[:success] = t(:'providers.create.success').html_safe
       NotificationMailer.provider_created(provider).deliver
-      redirect_to provider_path(provider)
+      redirect_to provider
     else
       flash[:error] = t(:'providers.create.error').html_safe
       render :action => "new"

@@ -2,9 +2,21 @@ class UsersController < ApplicationController
 
   before_filter :require_authentication, :except => [:new, :create, :show]
 
-  def my_profile
-    redirect_to user_path( current_user )
-  end
+  #def my_profile
+  #  if user.visitor?
+  #    unless user.profile
+  #      redirect_to profile_path(current_user.profile)
+  #    end
+  #  elsif user.school?
+  #    unless user.provider
+  #      redirect_to provider_path(current_user.provider)
+  #    end
+  #  elsif user.tutor?
+  #    unless user.tutor
+  #      redirect_to tutor_path(current_user.tutor)
+  #    end
+  #  end
+  #end
 
   def index
     respond_to do |format|
@@ -23,28 +35,28 @@ class UsersController < ApplicationController
   def new
     if authenticated?
       flash[:notice] = 'You already registered and logged in!'
-      redirect_to :my_profile and return
+      redirect_to current_user and return
     end
   end
 
   def edit
-    @user = current_user
-    if user.visitor?
-      unless user.profile
-        user.build_profile
-        unless user.profile.location
-          user.profile.build_location
-        end
-      end
-    elsif user.school?
-      unless user.provider
-        user.build_provider
-      end
-    elsif user.tutor?
-      unless user.tutor
-        user.build_tutor
-      end
-    end
+    #@user = current_user
+    #if user.visitor?
+    #  unless user.profile
+    #    user.build_profile
+    #    unless user.profile.location
+    #      user.profile.build_location
+    #    end
+    #  end
+    #elsif user.school?
+    #  unless user.provider
+    #    user.build_provider
+    #  end
+    #elsif user.tutor?
+    #  unless user.tutor
+    #    user.build_tutor
+    #  end
+    #end
   end
 
   def create
@@ -60,8 +72,8 @@ class UsersController < ApplicationController
   def update
     #if user.update_attributes(params[:user])
     if current_user.update_attributes(params[:user])
-      flash[:notice] = t(:'users.flash.user_updated')
-      redirect_to :my_profile
+        flash[:notice] = t(:'users.flash.user_updated')
+        redirect_to current_user
     else
       render :action => "edit"
     end
@@ -69,7 +81,7 @@ class UsersController < ApplicationController
 
   def destroy
     user.destroy
-    redirect_to providers_url
+    redirect_to root
   end
 
   def users

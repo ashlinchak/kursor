@@ -54,7 +54,7 @@
     .span12
       - if user.visitor?
         = f.fields_for :profile do |profile|
-          = render :partial => '/profile/profile_fields', :locals => { :f => profile, :profile => user.profile }
+          = render :partial => '/profiles/profile_fields', :locals => { :f => profile, :profile => user.profile }
   .form-actions
     - unless user.new_record?
       = f.submit t(:'users.edit.save'), :class => 'btn btn-success btn-large'

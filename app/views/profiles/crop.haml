@@ -1,0 +1,12 @@
+%h1 Crop It
+
+= image_tag profile.avatar_url(:large), :id => 'cropbox'
+
+-#%div{:style => "width:200px;height:280px;overflow:hidden;float:right;"}
+  = image_tag profile.avatar.url(:large), :id => 'preview'
+
+= form_for profile do |f|
+  - %w[x y w h].each do |attribute|
+    = f.hidden_field "crop_#{attribute}"
+  .actions
+    = f.submit 'Do it!'

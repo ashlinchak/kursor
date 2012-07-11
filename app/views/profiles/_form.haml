@@ -1,5 +1,5 @@
 = form_for(profile, :html => { :class => 'form-horizontal' }) do |f|
-  = render :partial => "shared/form_errors", :locals => { :object => provider }
+  = render :partial => "shared/form_errors", :locals => { :object => profile }
   = render :partial => 'profile_fields', :locals => { :f => f, :profile => profile }
   .form-actions
     = f.submit :class => 'btn primary'

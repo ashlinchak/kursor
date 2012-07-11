@@ -15,6 +15,11 @@ class NotificationMailer < ActionMailer::Base
   def tutor_created(tutor)
     @tutor = tutor
     mail(:subject => t(:'mailers.tutor_created.subject'))
+    end
+
+  def profile_created(profile)
+    @profile = profile
+    mail(:subject => t(:'mailers.profile_created.subject'))
   end
 
   def posting_created(posting)

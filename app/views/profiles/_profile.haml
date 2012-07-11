@@ -16,18 +16,15 @@
             %i.icon-plus-sign.icon-dark
             = t(:'visitor.profile.add_post')
   .span6
-    - if profile.birth_date.present?
-      %p
-        %b= t(:'visitor.profile.birth_date')
-        = l profile.birth_date
-    - if profile.location.present?
-      %p
-        %b= t(:'visitor.profile.address')
-        = address_value profile.location
+    %p
+      %b= t(:'visitor.profile.birth_date')
+      = l profile.birth_date  unless profile.birth_date.blank?
+    %p
+      %b= t(:'visitor.profile.address')
+      = address_value profile.location unless !profile.location.present?
 
     - for contact in profile.contacts.by_type do
       %p
-        -#- unless contact.contact_type == 'twitter' || contact.contact_type == 'facebook' || contact.contact_type == 'vkontakte' || contact.contact_type == 'google' || contact.contact_type == 'youtube'
         - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
           %span{ :class => "span-icon icon-#{contact.contact_type}" }
           = contact_value contact

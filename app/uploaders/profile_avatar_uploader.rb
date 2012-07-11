@@ -4,11 +4,12 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
 
   #after :store, :delete_original_file
 
-  def delete_original_file(new_file)
-    File.delete path if version_name.blank?
-  end
+  #def delete_original_file(new_file)
+  #  File.delete path if version_name.blank?
+  #end
 
-  include CarrierWave::MiniMagick
+  #include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -25,16 +26,34 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
     "" + [version_name, "default_avatar.png"].compact.join('_')
   end
 
-  version :icon do
-    process :resize_to_fill => [32, 32]
-  end
-
-  version :thumb do
-    process :resize_to_fill => [64, 64]
+  version :large do
+    resize_to_limit(600,600)
   end
 
   version :medium do
-    process :resize_to_fill => [180, 260]
+    process :crop
+    process :resize_to_fill => [200, 280]
+  end
+
+  version :thumb do
+    resize_to_fill(64,64)
+  end
+
+  version :icon do
+    resize_to_fill(32,32)
+  end
+
+  def crop
+    if model.crop_x.present?
+      resize_to_limit(600,600)
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.crop!(x, y, w, h)
+      end
+    end
   end
 
   def extension_white_list

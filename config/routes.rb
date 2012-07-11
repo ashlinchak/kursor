@@ -3,6 +3,78 @@ Kursor::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :students
+  resources :search
+  resources :feedback
+  resources :tags
+  resources :info
+  resources :wiki
+
+  match '/login' => 'sessions#new',      :as => :login
+  match '/logout' => 'sessions#destroy', :as => :logout
+  resources :sessions, :only => :create
+
+  resources :activations, :only => [:new, :create] do
+    get 'perform', :on => :member
+  end
+
+  match '/home' => "home#index"
+  match '/admin' => "admin/dashboard#index"
+
+  match 'request' => 'provider_request#new', :as => 'request', :via => :get
+  match 'request' => 'provider_request#create', :as => 'request', :via => :post
+
+  match 'feedback' => 'feedback#new', :as => 'feedback', :via => :get
+  match 'feedback' => 'feedback#create', :as => 'feedback', :via => :post
+
+  resources :dashboard, :only => [:index]
+
+  resources :news, :only => [:index, :show]
+
+  resources :postings, :path => 'posts' do
+    resources :comments
+  end
+
+  resources :users, :path => 'u', :except => [ :destroy] do
+    resources :postings
+    resources :schedule
+  end
+  match '/signup' => 'users#new', :as => :signup
+  match '/my_profile' => 'profiles#my_profile', :as => :my_profile
+  #match '/my_profile/edit' => 'profiles#edit',  :as => :edit_profile
+
+  resources :profiles
+
+  resources :providers, :path => 'provs'  do
+    resources :students, :only => [] do
+      collection do
+        get 'join'
+        get 'leave'
+      end
+    end
+    resources :votes do
+      collection do
+        post 'vote'
+      end
+    end
+  end
+
+  resources :tutors, :path => 'tutors' do
+    resources :students, :only => [] do
+      collection do
+        get 'join'
+        get 'leave'
+      end
+    end
+    resources :votes do
+      collection do
+        post 'vote'
+      end
+    end
+  end
+
+  resources :categories, :path => 'c', :only => [:index, :show]
+  resources :tutor_categories, :path => 't', :only => [:index, :show]
+  resources :posting_categories, :path => 'p', :only => [:index, :show]
 
   namespace :admin do
     resources :user_transfers
@@ -45,76 +117,6 @@ Kursor::Application.routes.draw do
     resources :cities
   end
 
-  resources :search
-  resources :feedback
-  resources :tags
-  resources :info
-  resources :wiki
-
-  match '/login' => 'sessions#new',      :as => :login
-  match '/logout' => 'sessions#destroy', :as => :logout
-  resources :sessions, :only => :create
-
-  resources :activations, :only => [:new, :create] do
-    get 'perform', :on => :member
-  end
-
-  match '/home' => "home#index"
-  match '/admin' => "admin/dashboard#index"
-
-  match 'request' => 'provider_request#new', :as => 'request', :via => :get
-  match 'request' => 'provider_request#create', :as => 'request', :via => :post
-
-  match 'feedback' => 'feedback#new', :as => 'feedback', :via => :get
-  match 'feedback' => 'feedback#create', :as => 'feedback', :via => :post
-
-  resources :dashboard, :only => [:index]
-
-  resources :news, :only => [:index, :show]
-
-  resources :postings, :path => 'posts' do
-    resources :comments
-  end
-
-  resources :users, :path => 'u', :except => [ :edit, :destroy] do
-    resources :postings
-    resources :schedule
-  end
-  match '/signup' => 'users#new', :as => :signup
-  match '/my_profile' => 'users#my_profile', :as => :my_profile
-  match '/my_profile/edit' => 'users#edit',  :as => :edit_profile
-
-  resources :providers, :path => 'provs'  do
-    resources :students, :only => [] do
-      collection do
-        get 'join'
-        get 'leave'
-      end
-    end
-    resources :votes do
-      collection do
-        post 'vote'
-      end
-    end
-  end
-
-  resources :tutors, :path => 'tutors' do
-    resources :students, :only => [] do
-      collection do
-        get 'join'
-        get 'leave'
-      end
-    end
-    resources :votes do
-      collection do
-        post 'vote'
-      end
-    end
-  end
-
-  resources :categories, :path => 'c', :only => [:index, :show]
-  resources :tutor_categories, :path => 't', :only => [:index, :show]
-  resources :posting_categories, :path => 'p', :only => [:index, :show]
 
   root :to => 'home#index'
 
