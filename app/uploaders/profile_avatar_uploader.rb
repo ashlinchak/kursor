@@ -8,8 +8,8 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
   #  File.delete path if version_name.blank?
   #end
 
-  #include CarrierWave::MiniMagick
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -32,15 +32,17 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
 
   version :medium do
     process :crop
-    process :resize_to_fill => [200, 280]
+    resize_to_fill(200, 280)
   end
 
   version :thumb do
-    resize_to_fill(64,64)
+    process :crop
+    resize_to_fill(64, 64)
   end
 
   version :icon do
-    resize_to_fill(32,32)
+    process :crop
+    resize_to_fill(32, 32)
   end
 
   def crop
@@ -51,7 +53,8 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
         y = model.crop_y.to_i
         w = model.crop_w.to_i
         h = model.crop_h.to_i
-        img.crop!(x, y, w, h)
+        img.crop "#{w}x#{h}+#{x}+#{y}"
+        img
       end
     end
   end
@@ -60,15 +63,15 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def filename
-     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
-  end
+  #def filename
+     #"#{secure_token(10)}.#{file.extension}" if original_filename.present?
+  #end
 
-  protected
+  #protected
 
-  def secure_token(length=16)
-    var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
-  end
+  #def secure_token(length=16)
+    #var = :"@#{mounted_as}_secure_token"
+    #model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
+  #end
 
 end

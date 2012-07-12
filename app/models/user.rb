@@ -88,6 +88,10 @@ class User < ActiveRecord::Base
   end
 
   def generate_activation
+    # delete pending activation
+    if user_activation
+      user_activation.destroy
+    end
     self.create_user_activation
   end
 

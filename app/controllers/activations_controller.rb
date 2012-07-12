@@ -5,8 +5,6 @@ class ActivationsController < ApplicationController
 
   def create
     if user = User.find_by_email(params[:email])
-      # delete pending activation
-      #user.user_activation.destroy
       # create user activation link
       user.generate_activation
       UserActivationMailer.activation_email(user).deliver
@@ -21,9 +19,7 @@ class ActivationsController < ApplicationController
   def perform
     if user_activation = UserActivation.find_by_token(params[:id])
       if user = user_activation.user
-        user.is_active = true
-        user.save
-        user_activation.destroy
+        user_activation.activate!
         flash[:success] = t(:'user_activation.perform.success').html_safe
         # logging in activated user
         self.current_user = user

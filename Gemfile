@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.2.6'
 gem 'mysql2'
 gem 'json'
 gem 'jquery-rails'
 gem 'haml'
 gem 'mini_magick'
-gem 'rmagick'
+#gem 'rmagick'
 gem 'carrierwave'
 gem 'russian'
 gem 'mail'
@@ -27,8 +27,8 @@ gem 'gritter_notices'
 
 
 group :assets do
-  gem 'sass-rails', "3.1.4"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'haml-rails'
   gem 'uglifier'
   gem 'jquery-ui-rails'

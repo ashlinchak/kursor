@@ -15,4 +15,10 @@ class UserActivation < ActiveRecord::Base
     self.expire_at = Time.now + 1.week
     self.token = (SecureRandom.base64).gsub(/\//, '-')
   end
+
+  def activate!
+    user.is_active = true
+    user.save
+    destroy
+  end
 end
