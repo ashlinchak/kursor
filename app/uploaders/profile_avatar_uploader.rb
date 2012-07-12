@@ -31,28 +31,29 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    #process :crop
-    process :resize_to_fill => [200, 280]
+    process :crop
+    resize_to_fill(200, 280)
   end
 
   version :thumb do
-    resize_to_fill(64,64)
+    process :crop
+    resize_to_fill(64, 64)
   end
 
   version :icon do
-    resize_to_fill(32,32)
+    process :crop
+    resize_to_fill(32, 32)
   end
 
   def crop
     if model.crop_x.present?
       resize_to_limit(600, 600)
       manipulate! do |img|
-        x = model.crop_x
-        y = model.crop_y
-        w = model.crop_w
-        h = model.crop_h
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
         img.crop "#{w}x#{h}+#{x}+#{y}"
-        img = yield(img) if block_given?
         img
       end
     end
@@ -62,16 +63,16 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def filename
-     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
-  end
+  #def filename
+     #"#{secure_token(10)}.#{file.extension}" if original_filename.present?
+  #end
 
-  protected
+  #protected
 
-  def secure_token(length=16)
-    var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
-  end
+  #def secure_token(length=16)
+    #var = :"@#{mounted_as}_secure_token"
+    #model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
+  #end
 
 
 
