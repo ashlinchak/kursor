@@ -1,17 +1,41 @@
-= form_for category, :url => ( category.new_record? ? admin_categories_path : admin_category_path(category) ), :html => { :multipart => true } do |f|
+= form_for category, :url => ( category.new_record? ? admin_categories_path : admin_category_path(category) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => category }
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :parent_id
-    = f.select :parent_id, Category.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }
-  .field
-    = f.label :permalink
-    = f.text_field :permalink
-    = t(:'admin.categories.edit.permalink_help').html_safe
-  .actions
-    = f.submit
+  .row
+    .span6
+      %fieldset
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name
+      %fieldset
+        .control-group
+          = f.label 'META Description', :class => 'control-label'
+          .controls
+            = f.text_area :description
+    .span6
+      %fieldset
+        .control-group
+          = image_tag category.icon_url(:standart), :class => 'thumbnail control-label', :style => 'width:64px;'
+          = image_tag category.icon_url(:small), :class => 'thumbnail control-label', :style => 'width:32px;'
+          .controls
+            = f.file_field :icon
+            = f.hidden_field :icon_cache
+            %label.checkbox
+              %br/
+              %i.icon-fire
+              = f.check_box :remove_icon
+      %fieldset
+        .control-group
+          = f.label :parent_id, :class => 'control-label'
+          .controls
+            = f.select :parent_id, Category.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }
+      %fieldset
+        .control-group
+          = f.label :permalink, :class => 'control-label'
+          .controls
+            = f.text_field :permalink
+            %p.help-text
+              = t(:'admin.categories.edit.permalink_help').html_safe
+    .span12
+      .form-actions
+        = f.submit 'Make me smile :)', :class => 'btn btn-large btn-info'

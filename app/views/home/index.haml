@@ -30,12 +30,17 @@
           - if ((index % 3) == 0) && index > 0
             .clear
           .span4
-            %h3= link_to category, category
-            %ul
-              - for sub_category in category.top_subcategories do
-                %li
-                  = link_to sub_category do
-                    = "#{sub_category} (#{sub_category.providers_count})"
+            .row.category_item
+              .span1.category_icon
+                = link_to category do
+                  = image_tag category.icon_url(:standart), :title => category
+              .span3.list
+                %h3= link_to category, category
+                %ul
+                  - for sub_category in category.top_subcategories do
+                    %li
+                      = link_to sub_category do
+                        = "#{sub_category} (#{sub_category.providers_count})"
     .span4
       = render :partial => 'shared/advertising/kursor_ads'
       %hr/

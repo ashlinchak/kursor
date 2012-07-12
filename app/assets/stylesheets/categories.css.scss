@@ -7,66 +7,85 @@
   //text-decoration: underline;
 //}
 
-ul.entries, ul.regions, ul.categories, ul.categories ul{
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2em 0;
-}
+#categories {
 
-ul.entries {
-  clear: both;
-  .list-provider{
-    background: #f8f8f8;
+  #show {
+
+    .header {
+
+        background: #F8F8F8;
+        border-top: 1px dashed #D6D6D6;
+        border-bottom: 1px dashed #D6D6D6;
+        margin-bottom: 1em;
+        padding: 1em;
+
+    }
+
+  }
+
+
+
+  ul.entries, ul.regions, ul.categories, ul.categories ul{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2em 0;
+  }
+
+  ul.entries {
+    clear: both;
+    .list-provider{
+      background: #f8f8f8;
+      border-top: 1px dashed #d6d6d6;
+      border-bottom: 1px dashed #d6d6d6;
+      list-style : none;
+      margin-bottom: 1em;
+      padding: 1em;
+
+      &:after{
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+      }
+
+    }
+  }
+
+  ul.regions{
     border-top: 1px dashed #d6d6d6;
     border-bottom: 1px dashed #d6d6d6;
-    list-style : none;
-    margin-bottom: 1em;
     padding: 1em;
-
-    &:after{
-      content: '';
+    font-size: 1.1em;
+    li {
       display: block;
-      height: 0;
-      clear: both;
-    }
-    .image-container {
-      float: right;
-    }
-
-    //h4 a{
-      //color: #1a7bb0;
-    //}
-  }
-}
-ul.regions{
-  border-top: 1px dashed #d6d6d6;
-  border-bottom: 1px dashed #d6d6d6;
-  padding: 1em;
-  font-size: 1.1em;
-  li {
-    display: block;
-    float: left;
-    width: 50%;
-    span{
-      color: #ccc;
-    }
-  }
-}
-
-ul.categories{
-  li{
-    float: left;
-    width: 33%;
-
-    li{
-      background: url(asset_path('bg_bullet00.png', image)) no-repeat 0 50%;
-      float: none;
-      width: 100%;
-
-      a{
-        display: inline-block;
-        margin-left: 1em;
+      float: left;
+      width: 50%;
+      span{
+        color: #ccc;
       }
     }
   }
+
+  ul.categories{
+    li{
+      float: left;
+      width: 33%;
+
+      h3 {
+        font-size: 15px;
+      }
+
+      li{
+        background: url(asset_path('bg_bullet00.png', image)) no-repeat 0 50%;
+        float: none;
+        width: 100%;
+
+        a{
+          display: inline-block;
+          margin-left: 1em;
+        }
+      }
+    }
+  }
+
 }

@@ -1,15 +1,14 @@
 # encoding: utf-8
 
-class ProfileAvatarUploader < CarrierWave::Uploader::Base
+class CategoryIconUploader < CarrierWave::Uploader::Base
 
-  #after :store, :delete_original_file
+  after :store, :delete_original_file
 
-  #def delete_original_file(new_file)
-  #  File.delete path if version_name.blank?
-  #end
+  def delete_original_file(new_file)
+    File.delete path if version_name.blank?
+  end
 
   include CarrierWave::MiniMagick
-  #include CarrierWave::RMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -18,61 +17,40 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "" + [version_name, "default_avatar.png"].compact.join('_')
+    "" + [version_name, "default_cat_icon.png"].compact.join('_')
   end
 
-  version :large do
-    resize_to_limit(600,600)
-  end
-
-  version :medium do
-    #process :crop
-    process :resize_to_fill => [200, 280]
-  end
-
-  version :thumb do
+  version :standart do
+    process :png
     resize_to_fill(64,64)
   end
 
-  version :icon do
+  version :small do
+    process :png
     resize_to_fill(32,32)
-  end
-
-  def crop
-    if model.crop_x.present?
-      resize_to_limit(600, 600)
-      manipulate! do |img|
-        x = model.crop_x
-        y = model.crop_y
-        w = model.crop_w
-        h = model.crop_h
-        img.crop "#{w}x#{h}+#{x}+#{y}"
-        img = yield(img) if block_given?
-        img
-      end
-    end
   end
 
   def extension_white_list
     %w(jpg jpeg gif png)
   end
 
+
   def filename
-     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
+    "#{model.permalink}.png"
   end
 
   protected
 
-  def secure_token(length=16)
-    var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
+  def png
+    manipulate! do |img|
+      img.format("png")
+      img
+    end
   end
-
-
 
 end

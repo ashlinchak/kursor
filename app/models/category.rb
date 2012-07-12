@@ -17,6 +17,8 @@ class Category < ActiveRecord::Base
 
   before_save :generate_permalink
 
+  mount_uploader :icon, CategoryIconUploader
+
   def to_param
     permalink
   end

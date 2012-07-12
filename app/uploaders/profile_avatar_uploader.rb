@@ -8,8 +8,8 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
   #  File.delete path if version_name.blank?
   #end
 
-  #include CarrierWave::MiniMagick
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -31,7 +31,7 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process :crop
+    #process :crop
     process :resize_to_fill => [200, 280]
   end
 
@@ -45,13 +45,15 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
 
   def crop
     if model.crop_x.present?
-      resize_to_limit(600,600)
+      resize_to_limit(600, 600)
       manipulate! do |img|
-        x = model.crop_x.to_i
-        y = model.crop_y.to_i
-        w = model.crop_w.to_i
-        h = model.crop_h.to_i
-        img.crop!(x, y, w, h)
+        x = model.crop_x
+        y = model.crop_y
+        w = model.crop_w
+        h = model.crop_h
+        img.crop "#{w}x#{h}+#{x}+#{y}"
+        img = yield(img) if block_given?
+        img
       end
     end
   end
@@ -70,5 +72,7 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
   end
+
+
 
 end

@@ -43,7 +43,7 @@ $(document).ready(function(){
 
 // Scroll To Top Button
     $().UItoTop({
-      easingType: 'easeInOutQuart'
+      easingType: 'easeOutQuart'
     });
 //
 

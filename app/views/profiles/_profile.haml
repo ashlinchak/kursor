@@ -18,7 +18,10 @@
   .span6
     %p
       %b= t(:'visitor.profile.birth_date')
-      = l profile.birth_date  unless profile.birth_date.blank?
+
+      = l profile.birth_date, :format => :long_ordinal unless profile.birth_date.blank?
+
+      -#= profile.birth_date.to_formatted_s(:long_ordinal)
     %p
       %b= t(:'visitor.profile.address')
       = address_value profile.location unless !profile.location.present?

@@ -506,7 +506,7 @@ ru:
     categories:
       title: "Категории"
       edit:
-        permalink_help: "Только: <b>a-z,  0-9, &laquo; - &raquo;</b>"
+        permalink_help: "a-z,  0-9, &laquo; - &raquo;"
     locations:
       headers:
         title: "Локации"
@@ -601,3 +601,7 @@ ru:
     label: "Введите символы с картинки"
     message:
       default: "???"
+
+  date:
+    formats:
+      long_ordinal: "%d %B, %Y г."

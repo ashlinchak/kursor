@@ -11,8 +11,10 @@
   %tbody
     - root_categories.each do |prov_category|
       %tr
-        %td= prov_category.name
-        -#.description= category.description
+        %td
+          = image_tag prov_category.icon_url(:small), :class => 'thumbnail'
+          = prov_category.name
+          -#.description= category.description
         %td
           -if prov_category.children
             %ul
