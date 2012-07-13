@@ -13,15 +13,20 @@
             .span6
               %h3= category.name
               %p= category.description
-
         %ul.categories.clearfix
           - for child in category.children
             %li
-              %h3= link_to child, child
+              = link_to category do
+                = image_tag category.icon_url(:small), :title => category, :class => 'rounded_2'
+              = link_to child do
+                %h3= child
               - if child.children
                 %ul.children-categories
                   - for child in child.top_subcategories
                     %li= link_to child, child
+              - if child.children.size > 5
+                = link_to 'Show all', child
+
         - if providers.size > 0
           %ul.entries
             - for provider in providers

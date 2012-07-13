@@ -69,10 +69,21 @@
   ul.categories{
     li{
       float: left;
-      width: 33%;
+      width: 31%;
+      margin-left: 10px;
 
-      h3 {
-        font-size: 15px;
+      img {
+        //vertical-align: middle;
+      }
+
+      a:link h3 {
+        vertical-align: middle;
+        font-size: 14px;
+        margin-left: 10px;
+        font-weight: normal;
+        line-height: 14px;
+        display: inline-block;
+        width: 145px;
       }
 
       li{
@@ -84,6 +95,9 @@
           display: inline-block;
           margin-left: 1em;
         }
+      }
+      .children-categories {
+        margin-top: 5px;
       }
     }
   }
