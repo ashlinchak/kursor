@@ -11,5 +11,5 @@
   .categories
     - if provider
       %ul
-        - for categoring in provider.categorizings
-          %li= link_to categoring, category_path(categoring.category)
+        - for categoring in provider.categories
+          %li= link_to categoring, category_path(categoring)
