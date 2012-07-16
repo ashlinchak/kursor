@@ -3,6 +3,9 @@
     .sub-category
       - for ch in c.children do
         %label
-          = check_box_tag 'provider[category_ids][]', ch.id, ( :checked if provider.categories.include? ch ), :class => 'category-sub-parent'
+          - if controller_name == 'users'
+            = check_box_tag 'user[provider_attributes][category_ids][]', ch.id, ( :checked if provider.categories.include? ch ), :class => 'category-sub-parent'
+          - else
+            = check_box_tag 'provider[category_ids][]', ch.id, ( :checked if provider.categories.include? ch ), :class => 'category-sub-parent'
           %span= ch.name
         = render :partial => 'providers/sub_category_fields', :locals => { :c => ch, :provider => provider, :f => f }

@@ -1,5 +1,4 @@
 ru:
-
   seo:
     meta:
       site_name: "Образовательный Портал Kursor.org.ua"
@@ -535,11 +534,6 @@ ru:
         providers: "Провайдеры"
         tutors: "Преподаватели"
         postings: "Статьи"
-
-  geocoder:
-    address:
-      ukraine: "Украина"
-
 
   activemodel:
     attributes:

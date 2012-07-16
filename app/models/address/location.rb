@@ -6,20 +6,7 @@ class Location < ActiveRecord::Base
     'address_'
   end
 
-  geocoded_by :full_address
-
   belongs_to :city
   belongs_to :addressable, :polymorphic => true
-
-  after_validation :geocode, :if => :street_changed? || :building_changed?
-
-  def full_address
-    unless city_id.blank?
-      @city = City.find(city_id)
-      @request = [street, building, @city.name].compact.join(', ')
-      @request
-      logger.info @request
-    end
-  end
 
 end

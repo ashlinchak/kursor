@@ -2,6 +2,7 @@
 
 class CategoryIconUploader < CarrierWave::Uploader::Base
 
+
   after :store, :delete_original_file
 
   def delete_original_file(new_file)

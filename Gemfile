@@ -19,11 +19,11 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem "ckeditor", "3.7.0.rc3"
 gem 'acts_as_commentable_with_threading'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
-gem "geocoder"
 gem 'meta-tags', :require => 'meta_tags'
 gem 'sitemap_generator'
 gem 'nokogiri'
 gem 'gritter_notices'
+gem 'gmaps4rails'
 
 
 group :assets do
