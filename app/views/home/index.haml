@@ -2,7 +2,6 @@
 #home
   .row
     .span8
-      -#- unless Rails.env.development?
       .coda-slider-wrapper
         .coda-slider.preload#coda-slider-1
           - PostingCategory.post_cat.children.each do |cat|
