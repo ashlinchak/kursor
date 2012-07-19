@@ -13,6 +13,8 @@ ru:
       tutors_description: "Образовательный портал, на котором Вы сможете найти самую большую базу данных репетиторов Украины."
       registration: "Регистрация нового пользователя"
       registration_description: "Регистрация на сайте дает возможность заявить о себе как о профессионале, найти целевую аудиторию, представить свое учебное заведение."
+    users:
+      user_postings: "Cтатьи автора "
 
   site:
     errors:
@@ -48,7 +50,11 @@ ru:
       recent_providers: "С нами уже"
       top_providers: "ТОП-курсы"
       featured_posting: "Свежие статьи"
-      categories: "Категории"
+      categories: "Учебные заведения"
+      video: "Видео"
+      posts: "Статьи"
+      wiki: "Вики"
+      blog: "Блоги"
 
     news_slider:
       comments: "Комментарии:"
@@ -242,12 +248,13 @@ ru:
 
   visitor:
     profile:
-      postings: "Статьи"
-      add_post: "Добавить статью"
+      postings: "Все статьи"
+      add_post: "Написать статью"
       home: "Профиль"
       edit: "Редактировать мой профиль"
       birth_date: "Дата рождения:"
       address: "Адрес:"
+      profile_age: "На портале: "
     edit_profile:
       email_pass: "Email / Пароль"
       no_pass: "Не вводите в это поле ничего, если<br /> Вы не собираетесь менять пароль!"
@@ -267,20 +274,20 @@ ru:
         street: "Улица"
         building: "Дом"
         apartment: "Офис"
-
   news:
     title: "Новости"
     back_to_list: "Вернуться к списку новостей"
-
   postings:
-    title: "Статьи"
+    all_articles: "Все материалы"
+    title_html: "Статьи"
+    user_postings: "Cтатьи автора"
     readmore: "Читать полностью..."
     update:
       success: "Изменения в статье успешно сохранены"
     create:
       success: "Статья успешно создана и сохранена"
     categories: "Категории:"
-    categories_help: "Отметьте галочками нужные категории"
+    categories_help_html: "<hr/><i class=\"icon-file\"></i> Текстовая &#8212; <b>&laquo;Статьи&raquo;</b>, <b>&laquo;Вики&raquo;</b>, <b>&laquo;Блоги&raquo;</b><br/><i class=\"icon-facetime-video\"></i> Видео &#8212; <b>&laquo;Видео&raquo;</b> (в этом случае отмечать только одну категорию, не облажайся!)"
     actions:
       approve:
         success: "Статья <a href=\'%{posting_path}\' target=\'_blank\'><b>&laquo;%{posting_title}&raquo;</b></a> опубликована!"
@@ -293,6 +300,7 @@ ru:
       cancel: "Отменить изменения"
       or: "или"
     titles:
+      type: "Тип статьи"
       title: "Заголовок"
       excerpt: "Вступление"
       excerpt_help: "Во вступлении форматирование текста отключено."
@@ -320,6 +328,9 @@ ru:
 
   posting_categories:
     comments: "Комментарии:"
+
+  tutor_categories:
+    index_categories: "Все категории"
 
   info:
     home_text: "&larr; Выберите слева категорию, которая Вас интересует."
@@ -562,6 +573,10 @@ ru:
           user: "Пользователь"
           tutor: "Преподаватель"
           school: "Учебное заведение"
+      posting:
+        posting_types:
+          posting: "<i class=\'icon-file\'></i> Текстовая"
+          video: "<i class=\'icon-facetime-video\'></i> Видео"
       profile:
         full_name: "Имя"
       provider:

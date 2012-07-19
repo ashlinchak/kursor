@@ -1,6 +1,17 @@
 .row
   .span12
     = render :partial => 'shared/form_errors', :locals => { :object => posting }
+    - if authorized?
+      %fieldset
+        .control-group
+          = f.label t(:'postings.titles.type'), :class => 'control-label'
+          .controls
+            %label.radio
+              = f.radio_button :posting_type_id, Posting::POSTING_TYPES.index('text')
+              = t("activerecord.attributes.posting.posting_types.posting").html_safe
+            %label.radio
+              = f.radio_button :posting_type_id, Posting::POSTING_TYPES.index('video'), :id => 'video_posting_type'
+              = t("activerecord.attributes.posting.posting_types.video").html_safe
     %fieldset
       .control-group
         = f.label t(:'postings.titles.title'), :class => 'control-label'
@@ -27,9 +38,10 @@
         .controls
           = f.text_field :tags_list, :value => posting.tags_list.map(&:name).join(', '), :class => 'span9'
           %p.help-block= t(:'tags.tag_list_help')
-    %fieldset
-      %legend= t(:'postings.categories')
-      .control-group
-        .controls
-          = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
-          %p.help-block= t(:'postings.categories_help')
+    - if authorized?
+      %fieldset
+        %legend= t(:'postings.categories')
+        .control-group
+          .controls
+            = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
+            %p.help-block= t(:'postings.categories_help_html')

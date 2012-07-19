@@ -259,6 +259,7 @@ GEM
     uglifier (1.2.6)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
+    url_to_media_tag (0.1.4)
     whenever (0.7.3)
       activesupport (>= 2.3.4)
       chronic (~> 0.6.3)
@@ -305,4 +306,5 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails!
   uglifier
+  url_to_media_tag
   whenever

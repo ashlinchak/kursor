@@ -1,5 +1,7 @@
 class PostingsController < ApplicationController
 
+  before_filter :require_authentication, :except => [:index, :show]
+
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
   def index
@@ -15,6 +17,9 @@ class PostingsController < ApplicationController
   def create
     posting.user = current_user
     if posting.save
+      unless authorized?
+        posting.posting_categories << PostingCategory.find_by_permalink('blog')
+      end
       flash[:success] = t(:'postings.create.success')
       NotificationMailer.posting_created(posting).deliver
       redirect_to posting_path(posting)
@@ -24,13 +29,12 @@ class PostingsController < ApplicationController
   end
 
   def edit
-    @posting = current_user.postings.find(params[:id])
+    #@posting = current_user.postings.find(params[:posting])
     #posting.images.build unless posting.images.size > 0
   end
 
   def update
     if posting.update_attributes params[:posting]
-
       flash[:notice] = t(:'postings.update.success')
       redirect_to posting_path(posting)
     else
@@ -46,10 +50,10 @@ class PostingsController < ApplicationController
   private
 
   def postings
-    @postings ||= if params[:user_id]
-      Posting.where( :user_id => params[:user_id])
+    @postings ||= if user.present?
+      user.postings
     else
-      Posting.approved
+    Posting.approved
     end
   end
   helper_method :postings
@@ -63,11 +67,18 @@ class PostingsController < ApplicationController
   end
   helper_method :posting
 
+  def user
+    @user ||= User.find params[:user_id] if params[:user_id]
+  end
+  helper_method :user
+
   def require_owner
-    @posting = current_user.postings.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = t('site.errors.access_denied')
-    redirect_to root_path
+    unless current_user.administrator?
+      unless current_user == posting.user
+        flash[:error] = t('site.errors.access_denied')
+        redirect_to root_path
+      end
+    end
   end
 
 end

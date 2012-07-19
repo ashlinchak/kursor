@@ -1,7 +1,7 @@
 %nav.clear
   %ul
     -#%li= link_to t(:'postings.title'), posting_categories_path, :class => ( "current" if request.fullpath.include?("/p") )
-    %li= link_to t(:'postings.title'), posting_categories_path, :class => ( "current" if controller_name == 'posting_categories')
+
     %li= link_to t(:'site.nav.pre-schools'), root_url + 'c/doshkolnoe-obrazovanie', :class => ( "current " if request.fullpath.include?("/c/doshkolnoe-obrazovanie")  )
     %li= link_to t(:'site.nav.schools'), root_url + 'c/shkoly', :class => ( "current" if request.fullpath.include?("/c/shkoly") )
     %li= link_to t(:'site.nav.technical'), root_url + 'c/prof-tech-obrazovanie', :class => ( "current" if request.fullpath.include?("/c/prof-tech-obrazovanie") )
@@ -10,8 +10,8 @@
     %li= link_to t(:'site.nav.tutors'), tutor_categories_path, :class => ( "current" if controller_name == 'tutor_categories' )
     %li= link_to t(:'site.nav.trainings'), root_url + 'c/treninhy-i-semynary', :class => ( "current" if request.fullpath.include?("/c/treninhy-i-semynary") )
     %li= link_to t(:'site.nav.business-schools'), root_url + 'c/biznes-shkoly', :class => ( "current" if request.fullpath.include?("/c/biznes-shkoly") )
-    %li= link_to t(:'site.nav.info'), root_url + 'info', :class => ( "current" if controller_name == 'info' )
-    %li= link_to t(:'site.nav.wiki'), root_url + 'wiki', :class => ( "current" if controller_name == 'wiki' )
-
-
-
+    %li= link_to t(:'postings.title_html'), posting_categories_path, :class => ( "current" if controller_name == 'posting_categories')
+    -#%li= link_to t(:'site.nav.info'), root_url + 'info', :class => ( "current" if controller_name == 'info' )
+    %li.pull-right
+      = link_to info_index_path, :title => 'Информация и помощь на портале',  :class =>  "clean #{'current' if controller_name == 'info'}"  do
+        %i.icon-info-sign.icon-white

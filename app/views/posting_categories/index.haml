@@ -4,7 +4,7 @@
     .row
       .span8
         .row
-          - posting_categories.each_with_index do |child, index|
+          - post_cat.children.each_with_index do |child, index|
             .span4
               %h2.category-title
                 = link_to child.name, child
@@ -12,8 +12,9 @@
                   = '(' + child.postings.size.to_s + ')'
               - for sub_post in child.postings.approved.limit(4)
                 .item
-                  = link_to sub_post do
-                    = image_tag 'no-image.png', :width => '64px', :height => '64px', "data-original" => sub_post.images.last.src_url(:thumb).to_s
+                  - if sub_post.images.last.present?
+                    = link_to sub_post do
+                      = image_tag 'no-image.png', :width => '64px', :height => '64px', "data-original" => sub_post.images.last.src_url(:thumb).to_s
                   %h5
                     = link_to sub_post.title, sub_post
                   .info
@@ -21,6 +22,7 @@
                       = time_ago_in_words sub_post.created_at, :format => :long
                       назад
                       %br/
+                      %i.icon-comment
                       = link_to '', posting_path(sub_post) + '#disqus_thread'
               .more-in
                 = link_to posting_category_path(child) do
@@ -36,11 +38,9 @@
               .row
         %hr/
         %h2.home-title= t(:'home.titles.featured_posting')
-        %ul.entries
-          - for p in all_postings
-            = render :partial => 'posting_categories/posting', :locals => { :p => p }
-        .page_navigation.clear= paginate all_postings
-        %hr/
+        - for p in posts_only
+          = render :partial => 'posting_categories/posting', :locals => { :p => p }
+        .page_navigation.clear= paginate posts_only
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
         %hr/

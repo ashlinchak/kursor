@@ -3,6 +3,9 @@
   #show
     .row
       .span8
+        %table.bookmarks
+          %tr
+            = render :partial => 'shared/bookmarks'
         .posting-categories
           = t(:'postings.categories')
           - posting.posting_categories.each do |c|
@@ -10,46 +13,55 @@
               = link_to c.name + ',' , c
             - else
               = link_to c.name, c
-        %table.bookmarks
-          %tr
-            = render :partial => 'shared/bookmarks'
-
         %h1= posting.title
+        - if posting.text_posting?
+          .excerpt= posting.excerpt
+          - if posting.images.last.present?
+            .carousel
+              .carousel-inner
+                %link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:wide).to_s }
+                = image_tag posting.images.last.src_url(:wide).to_s, :width => '620px', :height => '400px'
+                .carousel-caption
+                  %p
+                    %b= posting.images.last.title
+                    = posting.images.last.description
+          - else
+            %hr/
 
-        .excerpt= posting.excerpt
-
-        .carousel
-          .carousel-inner
-            %link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:wide).to_s }
-            = image_tag posting.images.last.src_url(:wide).to_s, :width => '620px', :height => '400px'
-            .carousel-caption
-              %p
-                %b= posting.images.last.title
-                = posting.images.last.description
-
-        .body
-          = posting.body.html_safe
+          .body
+            = posting.body.html_safe
+        - elsif posting.video_posting?
+          = render :partial => 'postings/posting_types/video_post', :locales => {:posting => posting}
         %hr/
+        .tags-list
+          %span.icon-tags
+          = links_to_tags posting.tags_list
         .user-bar
           = link_to posting.user, user_path(posting.user)
           |
           = l posting.created_at, :format => :long
-          - if current_user === posting.user
-            |
-            = link_to edit_posting_path(posting) do
-              %i.icon-pencil
-              = t(:'postings.actions.edit')
-            |
-            = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
-              %i.icon-remove
-              = t(:'postings.actions.delete')
-        .tags-list
-          %span.icon-tags
-          = links_to_tags posting.tags_list
+          - if authenticated?
+            - if posting.user == current_user || authorized?
+              |
+              = link_to edit_posting_path(posting) do
+                %i.icon-pencil
+                = t(:'postings.actions.edit')
+              |
+              = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
+                %i.icon-remove
+                = t(:'postings.actions.delete')
+
+
+
+
+
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
         %hr/
         = render :partial => 'shared/widgets/widgets'
+
+
+
     .row
       .span8
         %hr/

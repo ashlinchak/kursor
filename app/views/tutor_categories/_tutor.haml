@@ -1,7 +1,7 @@
 %li.clearfix.list-provider
   .image-container
     = link_to tutor_path(tutor) do
-      = image_tag tutor.avatar_url(:medium)
+      = image_tag 'no-image.png', :width => '', :height => '80', :style => 'width: 100px;', "data-original" => tutor.avatar_url(:medium), :class => 'rounded_2'
   %h4= link_to tutor.name, tutor_path(tutor)
   - if tutor.location
     .address
@@ -11,5 +11,5 @@
   .categories
     - if tutor
       %ul
-        - for cat in tutor.tutor_categorizings
-          %li= link_to cat, tutor_category_path(cat.tutor_category)
+        - for cat in tutor.tutor_categories
+          %li= link_to cat, tutor_category_path(cat)

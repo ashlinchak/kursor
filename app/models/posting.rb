@@ -17,7 +17,7 @@ class Posting < ActiveRecord::Base
   #accepts_nested_attributes_for :image, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
 
   has_many :images, :as => :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :images, :allow_destroy => true #, :reject_if => lambda { |i| i[:src].blank? }
+  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
 
   #validates :images, :length => { :maximum => 1}
 
@@ -27,18 +27,35 @@ class Posting < ActiveRecord::Base
   has_many :posting_categorizings, :dependent => :destroy
   has_many :posting_categories, :through => :posting_categorizings
 
+  POSTING_TYPES = %w( text video )
+
   default_scope order('created_at desc')
 
   scope :recent, lambda { where('created_at >= ?', Time.now - 32.weeks).limit(4) }
 
   scope :approved, where(:is_approved => true)
 
+  scope :text_postings, where(:posting_type_id => POSTING_TYPES.index('text'))
+  scope :video_postings, where(:posting_type_id => POSTING_TYPES.index('video'))
+
   def posting_category_ids=(ids)
     self.posting_categories = PostingCategory.find(ids)
   end
 
+  def text_posting?
+    POSTING_TYPES[posting_type_id] == 'text'
+  end
+
+  def video_posting?
+    POSTING_TYPES[posting_type_id] == 'video'
+  end
+
   def to_s
     title
+  end
+
+  def to_param
+    "#{id}-#{title.parameterize}"
   end
 
   def approve!

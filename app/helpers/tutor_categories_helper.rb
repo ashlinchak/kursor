@@ -1,6 +1,6 @@
 module TutorCategoriesHelper
   def breadcrumbs_for_tutor_category tutor_category
-    result = ''
+    result = ' / '
     if !tutor_category.parent.nil?
       result += breadcrumbs_for_tutor_category tutor_category.parent
     end

@@ -41,9 +41,6 @@ class CategoryIconUploader < CarrierWave::Uploader::Base
   end
 
 
-  def filename
-    "#{model.permalink}.png"
-  end
 
   protected
 

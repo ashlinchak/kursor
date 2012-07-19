@@ -2,28 +2,76 @@
 #home
   .row
     .span8
-      .coda-slider-wrapper
-        .coda-slider.preload#coda-slider-1
-          - root_posting_categories.each do |cat|
-            .panel
-              .panel-wrapper.row
-                %h2.title= cat.name
-                - for posting in cat.postings.order("created_at ASC").approved.limit(4) do
-                  .mosaic-block.bar.span2
-                    .mosaic-overlay
-                      .details
-                        %h4= link_to posting.title, posting
-                        %p
-                          = time_ago_in_words posting.created_at.to_s
-                          назад
-                        %p
-                          -#= link_to posting.user do
-                          = posting.user
-                        %p
-                          = link_to '', posting_path(posting) + '#disqus_thread'
-                    .mosaic-backdrop
-                      = image_tag posting.images.last.src_url(:medium).to_s
-      %br/
+      - unless Rails.env.development?
+        .coda-slider-wrapper
+          .coda-slider.preload#coda-slider-1
+            - post_cat.children.each do |cat|
+              .panel
+                .panel-wrapper.row
+                  %h2.title= cat.name
+                  - for posting in cat.postings.order("created_at ASC").approved.limit(4) do
+                    .mosaic-block.bar.span2
+                      .mosaic-overlay
+                        .details
+                          %h4= link_to posting.title, posting
+                          %p
+                            = time_ago_in_words posting.created_at.to_s
+                            назад
+                          %p
+                            -#= link_to posting.user do
+                            = posting.user
+                          %p
+                            = link_to '', posting_path(posting) + '#disqus_thread'
+                      .mosaic-backdrop
+                        = image_tag posting.images.last.src_url(:medium).to_s
+        %br/
+      .home-postings
+        .row
+          .span4
+            = link_to posting_categories_path do
+              %h2.home-title= t(:'home.titles.posts')
+            %ul
+              - for post in PostingCategory.post_cat.postings.limit(3)
+                %li{:style => 'margin-bottom: 5px;'}
+                  %h5= link_to post.title, posting_path(post), :class=>'post_title'
+                  = link_to post.user, user_path(post.user) , :class=>'user_link'
+                  |
+                  %i.icon-comment
+                  = link_to '', posting_path(post) + '#disqus_thread'
+          .span4
+            = link_to posting_category_path(PostingCategory.video_cat) do
+              %h2.home-title= t(:'home.titles.video')
+            %ul
+              - for video_post in PostingCategory.video_cat.postings.limit(3)
+                %li{:style => 'margin-bottom: 5px;'}
+                  %h5= link_to video_post.title, posting_path(video_post), :class=>'post_title'
+                  = link_to video_post.user, user_path(video_post.user) , :class=>'user_link'
+                  |
+                  %i.icon-comment
+                  = link_to '', posting_path(video_post) + '#disqus_thread'
+        .row
+          .span4
+            = link_to posting_category_path(PostingCategory.wiki_cat) do
+              %h2.home-title= t(:'home.titles.wiki')
+            %ul
+              - for wiki_post in PostingCategory.wiki_cat.postings.limit(3)
+                %li{:style => 'margin-bottom: 5px;'}
+                  %h5= link_to wiki_post.title, posting_path(wiki_post), :class=>'post_title'
+                  = link_to wiki_post.user, user_path(wiki_post.user), :class=>'user_link'
+                  |
+                  %i.icon-comment
+                  = link_to '', posting_path(wiki_post) + '#disqus_thread'
+          .span4
+            = link_to posting_category_path(PostingCategory.blog_cat) do
+              %h2.home-title= t(:'home.titles.blog')
+            %ul
+              - for blog_post in PostingCategory.blog_cat.postings.limit(3)
+                %li{:style => 'margin-bottom: 5px;'}
+                  %h5= link_to blog_post.title, posting_path(blog_post), :class=>'post_title'
+                  = link_to blog_post.user, user_path(blog_post.user) , :class=>'user_link'
+                  |
+                  %i.icon-comment
+                  = link_to '', posting_path(wiki_post) + '#disqus_thread'
       %h2.home-title= t(:'home.titles.categories')
       .row
         - root_categories.each_with_index do |category, index|

@@ -2,7 +2,7 @@
   %hr/
   .row
     .span3
-      - if !posting.images.empty?
+      - if posting.images.last.present?
         .image
           = link_to posting, :class => 'thumbnail' do
             = image_tag posting.images.last.src_url(:medium).to_s

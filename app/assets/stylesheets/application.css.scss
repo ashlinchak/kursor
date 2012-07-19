@@ -104,7 +104,10 @@ header {
       //-o-transition: background 200ms ease-in;
       //transition: background 200ms ease-in;
     }
-    li.active, a:hover, a.current{
+    a.clean {
+      background: none;
+    }
+    li.active, a:hover, a.current, a:hover.clean{
       -webkit-transition: background 100ms ease-out;
       -moz-transition: background 100ms ease-out;
       -ms-transition: background 100ms ease-out;
@@ -116,6 +119,7 @@ header {
       text-decoration: none;
       background: image_url('menu_bg_active.png') repeat-x;
     }
+
   }
   ul.login-nav{
     list-style: none;

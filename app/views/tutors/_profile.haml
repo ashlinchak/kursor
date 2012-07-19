@@ -4,11 +4,15 @@
       %h4.alert-heading= t(:'providers.edit.not_approved.title')
       %p= t(:'providers.edit.not_approved.desc').html_safe
 
-  - if current_user.administrator?
+  - if authorized?
     = link_to edit_tutor_path(tutor) do
-      %p
-        %i.icon.icon-pencil
-        = t(:'tutors.show.edit')
+      %i.icon.icon-pencil
+      = t(:'tutors.show.edit')
+    &nbsp;&nbsp;
+    = link_to 'mailto:'+tutor.user.email+'?subject=Образовательный Портал КУРСОР' do
+      %i.icon-envelope
+      Send email
+    %hr/
 
 - unless controller.controller_name == 'users'
   %ul.breadcrumb
@@ -107,8 +111,8 @@
       - if tutor.tutor_categorizings.size > 0
         %h2.block-title= t(:'providers.categories')
         %ul
-          - for tutor_categorizing in tutor.tutor_categorizings do
-            %li= link_to tutor_categorizing, tutor_category_path(tutor_categorizing.tutor_category.permalink)
+          - for tutor_cat in tutor.tutor_categories do
+            %li= link_to tutor_cat, tutor_category_path(tutor_cat.permalink)
 
 
     %h2.block-title=t(:'providers.contacts')

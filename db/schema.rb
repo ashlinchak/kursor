@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712081547) do
+ActiveRecord::Schema.define(:version => 20120717090742) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -209,6 +209,7 @@ ActiveRecord::Schema.define(:version => 20120712081547) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.string   "permalink"
+    t.boolean  "is_public",   :default => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"
@@ -230,7 +231,8 @@ ActiveRecord::Schema.define(:version => 20120712081547) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_approved", :default => false
+    t.boolean  "is_approved",     :default => false
+    t.integer  "posting_type_id", :default => 1
   end
 
   add_index "postings", ["user_id"], :name => "index_postings_on_user_id"
@@ -428,16 +430,5 @@ ActiveRecord::Schema.define(:version => 20120712081547) do
   end
 
   add_index "votes", ["voteable_id", "voteable_type"], :name => "index_votes_on_voteable_id_and_voteable_type"
-
-  create_table "wikis", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.text     "body"
-    t.string   "permalink"
-    t.integer  "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image"
-  end
 
 end

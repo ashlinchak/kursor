@@ -1,6 +1,7 @@
 class PostingCategory < ActiveRecord::Base
 
   belongs_to :parent, :class_name => 'PostingCategory'
+
   has_many :children, :class_name => 'PostingCategory', :foreign_key => 'parent_id', :dependent => :destroy
 
   has_many :posting_categorizings, :dependent => :destroy
@@ -14,10 +15,25 @@ class PostingCategory < ActiveRecord::Base
 
   validates_format_of :permalink, :with => /^[a-z\d\-]*$/, :message => "a-z, 0-9 \' - \' ONLY"
 
-
   scope :roots, where(:parent_id => nil)
 
   before_save :generate_permalink
+
+  def self.post_cat
+    find_by_permalink('posts')
+  end
+
+  def self.blog_cat
+    find_by_permalink('blog')
+  end
+
+  def self.wiki_cat
+    find_by_permalink('wiki')
+  end
+
+  def self.video_cat
+    find_by_permalink('video')
+  end
 
   def to_param
     permalink

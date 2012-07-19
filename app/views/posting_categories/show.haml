@@ -5,11 +5,13 @@
       .span8
         %ul.breadcrumb
           %li
-            = link_to t(:'postings.title'), posting_categories_path
+            %i.icon-arrow-left
+            = link_to t(:'postings.all_articles'), posting_categories_path
           = breadcrumbs_for_posting_category posting_category
         - for child in posting_category.children
           = link_to child.name, child
           = '(' + child.postings.size.to_s + ')'
+        %hr/
         .entries
           - for p in postings
             = render :partial => 'posting_categories/posting', :locals => { :p => p }

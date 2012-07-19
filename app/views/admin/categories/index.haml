@@ -7,19 +7,20 @@
   %thead
     %th Title
     %th Children
-    %th{ :width => '130' } Actions
+    -#%th{ :width => '130' } Actions
   %tbody
     - root_categories.each do |prov_category|
       %tr
         %td
-          = image_tag prov_category.icon_url(:small), :class => 'thumbnail'
-          = prov_category.name
-          -#.description= category.description
+          = image_tag prov_category.icon_url(:standart), :class => 'rounded_2'
+          = link_to edit_admin_category_path( prov_category ) do
+            %h4= prov_category.name
+          .description= category.description
         %td
           -if prov_category.children
             %ul
               = render :partial => 'category', :collection => prov_category.children
-        %td
+        -#%td
           = link_to edit_admin_category_path( prov_category ) do
             %i.icon-pencil
             Edit
