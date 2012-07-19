@@ -209,7 +209,6 @@ ActiveRecord::Schema.define(:version => 20120717090742) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.string   "permalink"
-    t.boolean  "is_public",   :default => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"
@@ -232,7 +231,7 @@ ActiveRecord::Schema.define(:version => 20120717090742) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_approved",     :default => false
-    t.integer  "posting_type_id", :default => 1
+    t.integer  "posting_type_id", :default => 0
   end
 
   add_index "postings", ["user_id"], :name => "index_postings_on_user_id"
