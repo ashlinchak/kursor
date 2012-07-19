@@ -1,42 +1,25 @@
-# RVM
-
-set :using_rvm, true
-#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-set :rvm_type, :system
-
-set :whenever_command, "bundle exec whenever"
-
 require "rvm/capistrano"
 require "bundler/capistrano"
 require "whenever/capistrano"
 
-# General
+set :using_rvm, true
+set :rvm_type, :system
+
+set :whenever_command, "bundle exec whenever"
+
 
 set :application, "kursor"
 set :user, "root"
-#set :port, 3764
 
 set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :copy
-
 set :normalize_asset_timestamps, false
-
-# Git
-
 set :scm, :git
-set :scm_verbose, true
 set :repository,  "~/projects/#{application}/.git"
 #set :repository,  "git@github.com:ivankukobko/Kursor-Online-catalog.git"
 #set :branch, "master"
 
-# VPS
-
-role :web, "85.25.100.135"
-role :app, "85.25.100.135"
-role :db,  "85.25.100.135", :primary => true
-role :db,  "85.25.100.135"
-
-# Passenger
+role "85.25.100.135", :web, :app, :db, :primary => true
 
 set :keep_releases, 4
 
@@ -59,12 +42,7 @@ namespace :uploads do
     and sets the proper upload permissions.
   EOD
   task :setup, :except => { :no_release => true } do
-    dirs = uploads_dirs.map { |d| File.join(shared_path, d) }
-    run "#{try_sudo} mkdir -p #{dirs.join(' ')} && #{try_sudo} chmod g+w #{dirs.join(' ')}"
-    #run "#{try_sudo} mkdir -p #{shared_path}/uploads"
-    #run "#{try_sudo} mkdir -p #{shared_path}/uploads/avatar"
-    #run "#{try_sudo} mkdir -p #{shared_path}/uploads/image"
-    #run "#{try_sudo} mkdir -p #{shared_path}/uploads/provider"
+    run "#{try_sudo} mkdir -p #{shared_path}/uploads"
     run "#{try_sudo} chmod 0777 -R #{shared_path}/uploads"
   end
 
@@ -82,7 +60,6 @@ namespace :uploads do
     and registers them in Capistrano environment.
   EOD
   task :register_dirs do
-    #set :uploads_dirs,    %w(uploads uploads/tmp uploads/avatar uploads/image uploads/provider)
     set :uploads_dirs,    %w(uploads)
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
@@ -92,11 +69,3 @@ namespace :uploads do
 
 end
 
-#after "deploy:symlink", "deploy:update_crontab"
-
-#namespace :deploy do
-  #desc "Update the crontab file"
-  #task :update_crontab, :roles => :db do
-    #run "cd #{release_path} && whenever --update-crontab #{application}"
-  #end
-#end
