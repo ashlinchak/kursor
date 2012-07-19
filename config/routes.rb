@@ -30,9 +30,9 @@ Kursor::Application.routes.draw do
 
   resources :news, :only => [:index, :show]
 
-  #resources :postings, :path => 'posts' do
+  resources :postings, :path => 'posts' do
     #resources :comments
-  #end
+  end
 
   resources :users, :path => 'u', :except => [ :destroy] do
     resources :postings
