@@ -19,7 +19,7 @@ set :repository,  "~/projects/#{application}/.git"
 #set :repository,  "git@github.com:ivankukobko/Kursor-Online-catalog.git"
 #set :branch, "master"
 
-role "85.25.100.135" :web, :app, :db, :primary => true
+server "85.25.100.135", :web, :app, :db, :primary => true
 
 set :keep_releases, 4
 
