@@ -2,27 +2,28 @@
 #home
   .row
     .span8
-      - unless Rails.env.development?
-        .coda-slider-wrapper
-          .coda-slider.preload#coda-slider-1
-            - post_cat.children.each do |cat|
-              .panel
-                .panel-wrapper.row
-                  %h2.title= cat.name
-                  - for posting in cat.postings.order("created_at ASC").approved.limit(4) do
-                    .mosaic-block.bar.span2
-                      .mosaic-overlay
-                        .details
-                          %h4= link_to posting.title, posting
-                          %p
-                            = time_ago_in_words posting.created_at.to_s
-                            назад
-                          %p
-                            -#= link_to posting.user do
-                            = posting.user
-                          %p
-                            = link_to '', posting_path(posting) + '#disqus_thread'
-                      .mosaic-backdrop
+      -#- unless Rails.env.development?
+      .coda-slider-wrapper
+        .coda-slider.preload#coda-slider-1
+          - PostingCategory.post_cat.children.each do |cat|
+            .panel
+              .panel-wrapper.row
+                %h2.title= cat.name
+                - for posting in cat.postings.order("created_at ASC").approved.limit(4) do
+                  .mosaic-block.bar.span2
+                    .mosaic-overlay
+                      .details
+                        %h4= link_to posting.title, posting
+                        %p
+                          = time_ago_in_words posting.created_at.to_s
+                          назад
+                        %p
+                          -#= link_to posting.user do
+                          = posting.user
+                        %p
+                          = link_to '', posting_path(posting) + '#disqus_thread'
+                    .mosaic-backdrop
+                      - unless posting.images.empty?
                         = image_tag posting.images.last.src_url(:medium).to_s
         %br/
       .home-postings
