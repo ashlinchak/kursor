@@ -1,0 +1,10 @@
+%footer.container
+  .row
+    .span4
+      = link_to root_url do
+        = image_tag 'logo_white.png'
+    .span4
+    .span4
+      = t(:'site.footer.policy_html')
+    .span4{:style => 'text-align: right;'}
+      = render :partial => 'shared/counters' unless Rails.env.development?
