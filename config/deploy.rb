@@ -24,11 +24,11 @@ server "85.25.100.135", :web, :app, :db, :primary => true
 set :keep_releases, 4
 
 namespace :deploy do
- task :start do ; end
- task :stop do ; end
- task :restart, :roles => :app, :except => { :no_release => true } do
-   run "touch #{File.join(current_path,'tmp','restart.txt')}"
- end
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
 end
 
 # ==============================
@@ -68,4 +68,3 @@ namespace :uploads do
   on :start,  "uploads:register_dirs"
 
 end
-
