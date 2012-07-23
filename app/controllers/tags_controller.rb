@@ -1,5 +1,12 @@
 class TagsController < ApplicationController
   def index
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => Tag.order(:name).as_json(:only => :name)
+        #render :json => Tag.order(:name).as_json(:only => :name, :include => {:region => {:only => :name}})
+      }
+    end
   end
   # accepts name
   def show

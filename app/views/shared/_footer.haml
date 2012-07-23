@@ -1,24 +1,39 @@
 %footer.container
   .row
-    .span3
+    .span4
       = link_to root_url do
         = image_tag 'logo_white.png'
       %hr/
       %p= t(:'site.footer.policy_html')
-    .span3
-      %h6= t(:'site.footer.tags')
-      #tagCloudContainer
-        -#- for tag in Tag.limit(20)
-          %span{"data-weight"=>rand(10)}= tag
-
+      %p
+        %b= t(:'site.footer.cooperation_html')
+      %p
+        %b= link_to 'info@kursor.org.ua','mailto:info@kursor.org.ua'
+        %br/
+        %b (044) 287-26-79
+        %br/
+        %b (067) 406-94-64
     .span2
-      %h6= t(:'site.footer.sections')
+      %h4= t(:'site.footer.tags')
+      -##tagCloudContainer
+
+    .span3
+      %h4= t(:'site.footer.sections')
       - for cat in Category.roots
         = link_to cat, category_path(cat)
         = '(' + cat.root_category_providers_count.to_s + ')'
         %br/
       %p
-    .span4
-      %h6= t(:'site.footer.socials')
-      %p
+    .span3
+      %h4= t(:'site.footer.socials')
+      %p.social-icons
+        = link_to 'http://vk.com/kursor_org_ua', :target => '_blank' do
+          = image_tag 'social-icons/32x32/vkontakte.png'
+        = link_to 'http://www.facebook.com/pages/Kursororgua/300466546696921', :target => '_blank' do
+          = image_tag 'social-icons/32x32/facebook.png'
+        = link_to 'https://twitter.com/kursor_pasha', :target => '_blank' do
+          = image_tag 'social-icons/32x32/twitter.png'
+      -#%h4= t(:'site.footer.subscribe.title')
+      -#%p= t(:'site.footer.subscribe.text_html')
+      -#= text_field_tag 'subscribe', nil, :class => 'span3', :placeholder => 'Введите email и нажмите Enter', :disabled => true
       = render :partial => 'shared/counters' unless Rails.env.development?

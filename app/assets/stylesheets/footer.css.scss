@@ -5,7 +5,7 @@ $textColor: #ffffff;
 
 footer {
   color: $textColor;
-  font-size: 12px;
+  font-size: 11px;
   background: $bgColor;
   border-top: 1px solid #f0f0f0;
   margin-bottom: 10px;
@@ -13,20 +13,39 @@ footer {
   -webkit-border-radius: 4px;
   border-radius: 4px;
 
+  p.social-icons {
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    img {
+    text-decoration: none;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-right: 2px;
+    }
+  }
+
+
   a, a:hover {
     color: #ffffff;
   }
 
-  h6 {
+  h4 {
     color: $textColor;
+    margin-bottom: 12px;
   }
 
   hr {
     border-top: none;
+    border-color: silver;
   }
 
-  .footer-categories {
-
+  #tagCloudContainer {
+    span {
+      color: #ffffff;
+    }
   }
 
 }

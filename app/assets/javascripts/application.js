@@ -93,19 +93,24 @@ $(document).ready(function(){
 
   // JCloud
 
-    $("#tagCloudContainer").jQCloud(
-        $.ajax({
-            url : 'tags',
-            type: 'get',
-            dataType: 'json'
-            //data : sortedItems
-        }),
-        {
-            width: 140,
-            heigh: 200
-
-        }
-    );
+//    var word_array = [
+//        {text: "Lorem", weight: 15},
+//        {text: "Ipsum", weight: 9, link: "http://jquery.com/"},
+//        {text: "Dolor", weight: 6, html: {title: "I can haz any html attribute"}},
+//        {text: "Sit", weight: 7},
+//        {text: "Amet", weight: 5}
+//        // ...as many words as you want
+//    ];
+//
+//
+//    $("#tagCloudContainer").jQCloud(
+//        word_array,
+//        {
+//            width: 140,
+//            heigh: 200
+//
+//        }
+//    );
 
   // Mosaic Caption Slider
 
@@ -165,7 +170,7 @@ $(document).ready(function(){
         url : '/admin/'+ $(ui.item).attr('class') +'s/sort',
         type: 'post',
         dataType: 'script',
-        data : sortedItems//,
+        data : sortedItems
       });
     }
   });
