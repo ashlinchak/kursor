@@ -71,7 +71,7 @@
                   = link_to blog_post.user, user_path(blog_post.user) , :class=>'user_link'
                   |
                   %i.icon-comment
-                  = link_to '', posting_path(wiki_post) + '#disqus_thread'
+                  = link_to '', posting_path(blog_post) + '#disqus_thread'
       %h2.home-title= t(:'home.titles.categories')
       .row
         - root_categories.each_with_index do |category, index|
