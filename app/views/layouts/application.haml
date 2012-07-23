@@ -6,7 +6,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 %head
   %meta{:charset => "utf-8"}/
-  %meta{:name => "verify-reformal", :content => "0e3e2ca0166ae518d2240b7a"}
+  %meta{:name => "verify-reformal", :content => "c05eef0cb68500dcfe6913f7"}
   /
     Always force latest IE rendering engine (even in intranet) &amp; Chrome Frame
   %meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
@@ -41,7 +41,6 @@
 
   #page
     %header.container
-      -#.container
       %h1#logo.ir
         = link_to 'КУРСОР - образовательный портал', root_url
       %form.form-search{ :action => '/search', :method => :get, :style => 'padding: 5px 5px 5px 20px; margin: 50px 0px 0px 0px; float: right;'}
@@ -57,13 +56,7 @@
       -#= gritter_flash_messages
       .flash= render 'shared/flash_messages'
       = yield
-    %footer.container
-      .row.footer
-        .span7
-          = t(:'site.copyright.rights').html_safe
-        .span5{:style => 'text-align: right;'}
-          = render :partial => 'shared/counters' unless Rails.env.development?
-          = link_to root_url do
-            = image_tag 'logo_small.png'
+    = render :partial => 'shared/footer'
+
 
   = render :partial => 'shared/disqus/counter'

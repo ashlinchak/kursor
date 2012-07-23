@@ -1,0 +1,32 @@
+/* FOOTER */
+
+$bgColor: #005997;
+$textColor: #ffffff;
+
+footer {
+  color: $textColor;
+  font-size: 12px;
+  background: $bgColor;
+  border-top: 1px solid #f0f0f0;
+  margin-bottom: 10px;
+  padding: 1.3em;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+
+  a, a:hover {
+    color: #ffffff;
+  }
+
+  h6 {
+    color: $textColor;
+  }
+
+  hr {
+    border-top: none;
+  }
+
+  .footer-categories {
+
+  }
+
+}

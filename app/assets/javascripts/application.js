@@ -11,6 +11,7 @@
 //= require jquery.ui.datepicker-ru
 //= require twitter/bootstrap
 //= require ckeditor/init
+//= require jqcloud
 //= require jquery-star-rating
 //= require_tree .
 
@@ -90,6 +91,21 @@ $(document).ready(function(){
       hideDuration: 200
   });
 
+  // JCloud
+
+    $("#tagCloudContainer").jQCloud(
+        $.ajax({
+            url : 'tags',
+            type: 'get',
+            dataType: 'json'
+            //data : sortedItems
+        }),
+        {
+            width: 140,
+            heigh: 200
+
+        }
+    );
 
   // Mosaic Caption Slider
 

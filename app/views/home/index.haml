@@ -31,7 +31,7 @@
             = link_to posting_categories_path do
               %h2.home-title= t(:'home.titles.posts')
             %ul
-              - for post in PostingCategory.post_cat.postings.limit(3)
+              - for post in PostingCategory.post_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to post.title, posting_path(post), :class=>'post_title'
                   = link_to post.user, user_path(post.user) , :class=>'user_link'
@@ -42,7 +42,7 @@
             = link_to posting_category_path(PostingCategory.video_cat) do
               %h2.home-title= t(:'home.titles.video')
             %ul
-              - for video_post in PostingCategory.video_cat.postings.limit(3)
+              - for video_post in PostingCategory.video_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to video_post.title, posting_path(video_post), :class=>'post_title'
                   = link_to video_post.user, user_path(video_post.user) , :class=>'user_link'
@@ -54,7 +54,7 @@
             = link_to posting_category_path(PostingCategory.wiki_cat) do
               %h2.home-title= t(:'home.titles.wiki')
             %ul
-              - for wiki_post in PostingCategory.wiki_cat.postings.limit(3)
+              - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to wiki_post.title, posting_path(wiki_post), :class=>'post_title'
                   = link_to wiki_post.user, user_path(wiki_post.user), :class=>'user_link'
@@ -65,7 +65,7 @@
             = link_to posting_category_path(PostingCategory.blog_cat) do
               %h2.home-title= t(:'home.titles.blog')
             %ul
-              - for blog_post in PostingCategory.blog_cat.postings.limit(3)
+              - for blog_post in PostingCategory.blog_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to blog_post.title, posting_path(blog_post), :class=>'post_title'
                   = link_to blog_post.user, user_path(blog_post.user) , :class=>'user_link'

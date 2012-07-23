@@ -10,7 +10,7 @@
           = breadcrumbs_for_posting_category posting_category
         - for child in posting_category.children
           = link_to child.name, child
-          = '(' + child.postings.size.to_s + ')'
+          = '(' + child.postings.approved.size.to_s + ')'
         %hr/
         .entries
           - for p in postings

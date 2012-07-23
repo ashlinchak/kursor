@@ -25,7 +25,7 @@ gem 'nokogiri'
 gem 'gritter_notices'
 gem 'gmaps4rails'
 gem 'url_to_media_tag'
-
+gem 'jqcloud-rails' # Jquery TagCloud Plugin
 
 group :assets do
   gem 'sass-rails'

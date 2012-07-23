@@ -4,12 +4,14 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  = require jquery.ui.datepicker
  = require jquery-star-rating
+ = require jqcloud
  = require_tree .
  = require_self
 */
 
 $baseColor: #005C99;
 $shadeColor: #ebebeb;
+
 
 body {
   background: #fff;
@@ -160,27 +162,7 @@ body.admin nav ul li {
   }
 }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid #f0f0f0;
-  padding: 1.3em 0;
 
-  .footer-categories {
-    border-bottom: 1px solid #e7e7e7;
-    margin: 0 -1.3em;
-    padding: 1.3em;
-  }
-
-  .copyright {
-    background: #f7f7f7;
-    margin: 0 -1.3em;
-    padding: 1.3em;
-
-    .copyright-text {
-      text-align: right;
-    }
-  }
-}
 
 /* Bookmarks */
 

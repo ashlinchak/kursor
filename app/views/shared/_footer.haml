@@ -1,10 +1,24 @@
 %footer.container
   .row
-    .span4
+    .span3
       = link_to root_url do
         = image_tag 'logo_white.png'
+      %hr/
+      %p= t(:'site.footer.policy_html')
+    .span3
+      %h6= t(:'site.footer.tags')
+      #tagCloudContainer
+        -#- for tag in Tag.limit(20)
+          %span{"data-weight"=>rand(10)}= tag
+
+    .span2
+      %h6= t(:'site.footer.sections')
+      - for cat in Category.roots
+        = link_to cat, category_path(cat)
+        = '(' + cat.root_category_providers_count.to_s + ')'
+        %br/
+      %p
     .span4
-    .span4
-      = t(:'site.footer.policy_html')
-    .span4{:style => 'text-align: right;'}
+      %h6= t(:'site.footer.socials')
+      %p
       = render :partial => 'shared/counters' unless Rails.env.development?
