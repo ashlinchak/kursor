@@ -24,6 +24,7 @@
   %script{ :type => "text/javascript", :src => "http://userapi.com/js/api/openapi.js?49" }
   = render :partial => 'shared/yandex_metrika_code' unless Rails.env.development?
   = render :partial => 'shared/google_analytics_code' unless Rails.env.development?
+  = render :partial => 'shared/dfp'
   = stylesheet_link_tag "application"
   = javascript_include_tag "application"
   = csrf_meta_tags
