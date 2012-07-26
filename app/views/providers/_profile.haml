@@ -73,6 +73,7 @@
         %li
           %a( href = "#documents_info" data-toggle = "tab" )
             = t(:'providers.documents_info')
+      - if provider.location.gmaps?
         %li
           %a( href = "#on_map" data-toggle = "tab" id = "mapTab" )
             %i.icon-map-marker
