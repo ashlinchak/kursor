@@ -4,4 +4,4 @@
       = t(:'errors.messages.form_errors.header')
     %ul
       -object.errors.full_messages.each do |msg|
-        %li= msg
+        %li= msg.html_safe

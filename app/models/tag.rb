@@ -12,4 +12,9 @@ class Tag < ActiveRecord::Base
   def to_param
     name
   end
+
+  def text
+    name
+  end
+
 end

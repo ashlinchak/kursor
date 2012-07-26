@@ -4,9 +4,8 @@
       = link_to root_url do
         = image_tag 'logo_white.png'
       %hr/
-      %p= t(:'site.footer.policy_html')
-      %p
-        %b= t(:'site.footer.cooperation_html')
+
+      %p= t(:'site.footer.cooperation_html')
       %p
         %b= link_to 'info@kursor.org.ua','mailto:info@kursor.org.ua'
         %br/
@@ -15,15 +14,37 @@
         %b (067) 406-94-64
     .span2
       %h4= t(:'site.footer.tags')
-      -##tagCloudContainer
 
+      -#var word_array = [
+      -#        {text: "Lorem", weight: 15},
+      -#        {text: "Ipsum", weight: 9, link: "http://jquery.com/"},
+      -#        {text: "Dolor", weight: 6, html: {title: "I can haz any html attribute"}},
+      -#        {text: "Sit", weight: 7},
+      -#        {text: "Amet", weight: 5}
+      -#        // ...as many words as you want
+      -#    ];
+
+      #tagCloudContainer{:style=>'width:140px;height:200px;'}
     .span3
       %h4= t(:'site.footer.sections')
-      - for cat in Category.roots
-        = link_to cat, category_path(cat)
-        = '(' + cat.root_category_providers_count.to_s + ')'
-        %br/
       %p
+        - for cat in Category.roots
+          = link_to cat, category_path(cat)
+          -#= '(' + cat.root_category_providers_count.to_s + ')'
+          - unless cat == Category.roots.last
+            |
+      %h4= t(:'site.footer.tutors')
+      %p
+        - for tc in TutorCategory.roots
+          = link_to tc, posting_category_path(tc)
+          - unless tc == TutorCategory.roots.last
+            |
+      %h4= t(:'site.footer.articles')
+      %p
+        - for pc in PostingCategory.roots
+          = link_to pc, posting_category_path(pc)
+          - unless pc == PostingCategory.roots.last
+            |
     .span3
       %h4= t(:'site.footer.socials')
       %p.social-icons
@@ -36,4 +57,6 @@
       -#%h4= t(:'site.footer.subscribe.title')
       -#%p= t(:'site.footer.subscribe.text_html')
       -#= text_field_tag 'subscribe', nil, :class => 'span3', :placeholder => 'Введите email и нажмите Enter', :disabled => true
+
+      %p= t(:'site.footer.policy_html')
       = render :partial => 'shared/counters' unless Rails.env.development?

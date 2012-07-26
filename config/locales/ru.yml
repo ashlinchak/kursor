@@ -42,10 +42,12 @@ ru:
       search: "Поиск"
       admin-panel: "Админка"
     footer:
-      policy_html: "При использовании материалов сайта обязательным условием является наличие гиперссылки в пределах первого абзаца на страницу расположения исходной статьи  (например, как сообщает kursor.org.ua)"
+      policy_html: "При использовании материалов сайта обязательным условием является наличие гиперссылки в пределах первого абзаца на страницу расположения исходной статьи  (например, как сообщает <a href=\'http://kursor.org.ua\'>kursor.org.ua</a>)"
       cooperation_html: "По вопросам сотрудничества и размещения рекламы обращайтесь по телефонам либо по e-mail:"
       tags: "Теги"
-      sections: "Разделы"
+      sections: "Учебные заведения"
+      tutors: "Преподаватели"
+      articles: "Материалы"
       socials: "Мы в социальных сетях"
       subscribe:
         title: "Подпишитесь на новости"
@@ -144,14 +146,17 @@ ru:
       address: "Адрес"
       title: "Основные данные"
     custom_flags:
+      title: "Особенности"
       add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
       true_value: "Есть"
       false_value: "Нет"
     categories: "Категории"
     filials: "Филиалы"
     main_info: "Основная информация"
-    more_info: "Дополнительная информация"
-    documents_info: "Информация для поступления"
+    more_info: "Дополнительно"
+    documents_info: "Для поступления"
+    more_tabs: "Еще"
+    on_map: "На карте"
     contacts: "Контакты"
     add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
   search:
@@ -554,10 +559,17 @@ ru:
         tutors: "Преподаватели"
         postings: "Статьи"
 
+  address:
+    ukraine: "Украина"
+    gmaps_error: "<p><b>Не удалось найти адрес на карте.</b><br/>Проверьте все поля адреса, если ошибка повторяется - поставьте галочку <b>&laquo;Не искать на карте&raquo;</b>.</p>"
+    gmaps_check_box: "Не искать на карте"
+    gmaps_check_box_help: "снимите галочку в случае смены адреса"
+
   activemodel:
     attributes:
       feedback:
         body: "Текст сообщения"
+
 
   activerecord:
     models:
@@ -567,6 +579,8 @@ ru:
       provider: "Учебное заведение"
       location: "Местоположение"
     attributes:
+      location:
+        gmaps4rails_address: ""
       category:
         name: "Название"
         description: "Описание"
@@ -613,7 +627,7 @@ ru:
   errors:
     messages:
       form_errors:
-        header: "Были допущены следующие ошибки:"
+        header: "Возникли следующие ошибки:"
       wrong_size: "Загружаемый файл имеет неправильный размер (должен быть %{file_size})"
       size_too_small: "Загружаемый файл слишком маленький (должен быть минимум %{file_size})"
       size_too_big: "Загружаемый файл слишком большой (максимальный объем %{file_size})"

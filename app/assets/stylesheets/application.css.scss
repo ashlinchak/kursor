@@ -5,6 +5,7 @@
  = require jquery.ui.datepicker
  = require jquery-star-rating
  = require jqcloud
+ = require ios-checkboxes
  = require_tree .
  = require_self
 */
@@ -19,6 +20,10 @@ body {
   font-style: normal;
   p {
     font-family: Ubuntu;
+
+  }
+  p.silver {
+    color: #808080;
   }
   h1 {
     font-size: 20px;
@@ -284,18 +289,16 @@ a:visited.sub_category_label
 
 a:hover.sub_category_label
 {
-
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     background-color: #999;
-
 }
 .block-title{
-  background: #1A5585;
+  background: #005B98;
   color: #fff;
-  border-radius: 6px;
+  border-radius: 2px;
   font-size: 1em;
-  line-height: 1.5;
+  line-height: 1.7;
   font-weight: normal;
   margin-bottom: 1em;
   padding: 0 .5em;
@@ -386,4 +389,10 @@ textarea{
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.iPhoneCheckContainer {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: bottom;
 }

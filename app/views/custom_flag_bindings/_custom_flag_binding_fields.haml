@@ -1,4 +1,5 @@
 .control-group
   = f.select :custom_flag_id, CustomFlag.all.collect{|cf|[cf.name, cf.id]}, {}, :class => 'span3'
-  = f.check_box :value
-  = link_to_remove_fields "[X]", f
+  = f.check_box :value, :class => 'iphone_check_box'
+  %span{:style=>'margin-left:10px;'}
+    = link_to_remove_fields "<i class=\'icon-remove\'></i>".html_safe, f

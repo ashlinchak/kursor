@@ -58,6 +58,6 @@
       = yield
     = render :partial => 'shared/footer'
 
-
+  = yield :scripts
   = render :partial => 'shared/disqus/counter'
   = render :partial => 'shared/widgets/reformal' unless Rails.env.development?

@@ -12,10 +12,18 @@
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require jqcloud
+//= require ios-checkboxes
 //= require jquery-star-rating
 //= require_tree .
 
 $(document).ready(function(){
+
+
+//  IPhone
+    $('.iphone_check_box').iphoneStyle({
+        checkedLabel: 'Есть',
+        uncheckedLabel: 'Нет'
+    });
 
 // Rating
 
@@ -48,9 +56,10 @@ $(document).ready(function(){
     });
 //
 
+// Gmaps show in tab fix
+    $('#mapTab').on('shown', function (e) { google.maps.event.trigger(map, 'resize');})
 
 // UI
-
     $('.datepicker').datepicker({
         changeYear: true,
         changeMonth: true,
@@ -213,6 +222,10 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   $(link).parent().before(content.replace(regexp, new_id));
+    $('.iphone_check_box').iphoneStyle({
+        checkedLabel: 'Есть',
+        uncheckedLabel: 'Нет'
+    });
 }
 
 
