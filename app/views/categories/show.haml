@@ -23,10 +23,11 @@
                 %h3= child
               - if child.children
                 %ul.children-categories
-                  - for child in child.top_subcategories
-                    %li= link_to child, child
-              - if child.children.size > 5
-                = link_to 'Show all', child
+                  - for ch in child.top_subcategories
+                    %li
+                      = link_to (ch.name + ' <sup>' +ch.providers_count.to_s + '</sup>').html_safe, ch
+                  - if child.children.size > 5
+                    %li.bullet_down= link_to t(:'categories.more'), child, :title => t(:'categories.more_title')
 
         - if providers.size > 0
           %ul.entries
@@ -34,7 +35,12 @@
               = render :partial => 'categories/provider', :locals => { :provider => provider }
           .page_navigation.clear= paginate providers
         - else
-          Нет зарегистрированных заведений в этой категории
+          - if params[:search]
+            .alert
+              По Вашему запросу ничего не найдено.
+          - else
+            .alert
+              Нет зарегистрированных заведений в этой категории
         %hr/
 
       .span4

@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//a:hover {
-  //color: #00c290;
-  //text-decoration: underline;
-//}
+
+$silver: #B2B2B2;
+$green: #86A116;
+
+
 
 #categories {
 
@@ -84,16 +85,36 @@
         line-height: 14px;
         display: inline-block;
         width: 145px;
-      }
 
+      }
+      a:hover h3{
+        color: $green;
+      }
       li{
-        background: url(asset_path('bg_bullet00.png', image)) no-repeat 0 50%;
+        background: url(asset_path('bullet_right.png', image)) no-repeat 0 50%;
         float: none;
         width: 100%;
-
         a{
           display: inline-block;
           margin-left: 1em;
+          sup {
+            color: $silver;
+            font-size: 11px;
+          }
+        }
+        a:hover {
+          text-decoration: none;
+          color: $green;
+        }
+      }
+      li.bullet_down {
+        background: url(asset_path('bullet_down.png', image)) no-repeat 13px 50%;
+        a {
+          color: $silver;
+          padding-left: 13px;
+        }
+        a:hover {
+          color: $green;
         }
       }
       .children-categories {

@@ -9,12 +9,11 @@ jQuery ->
   )
   show_categories($('.provider-categories select'))
 
-
   # search form
 
   cities = $('#search_city_id').html()
 
-  $('#search_city_id').empty()
+#  $('#search_city_id').empty()
 
   $('#search_region_id').change ->
     region = $('#search_region_id :selected').text()

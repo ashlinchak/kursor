@@ -345,6 +345,10 @@ ru:
   tutor_categories:
     index_categories: "Все категории"
 
+  categories:
+    more: "еще"
+    more_title: "Показать все подкатегории"
+
   info:
     home_text: "&larr; Выберите слева категорию, которая Вас интересует."
 
