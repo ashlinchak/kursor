@@ -38,7 +38,7 @@
       .span3{ :style => 'width: 190px;'}
         - if tutor.avatar_url
           .tutor-avatar
-            = image_tag tutor.avatar_url(:medium).to_s
+            = image_tag tutor.avatar_url(:medium).to_s, :class => 'rounded_4'
             - if tutor.is_native_speaker?
               .label-area
                 %span= t(:'tutors.show.native_speaker')

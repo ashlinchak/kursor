@@ -309,7 +309,7 @@ ru:
     title: "Новости"
     back_to_list: "Вернуться к списку новостей"
   postings:
-    more_in_this_category: "Еще статьи из этой категории"
+    more_in_this_category: "Еще из категории "
     all_articles: "Все материалы"
     title_html: "Статьи"
     user_postings: "Cтатьи автора"

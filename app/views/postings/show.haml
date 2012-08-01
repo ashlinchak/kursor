@@ -27,7 +27,6 @@
                     = posting.images.last.description
           - else
             %hr/
-
           .body
             = posting.body.html_safe
         - elsif posting.video_posting?
@@ -50,16 +49,10 @@
               = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
                 %i.icon-remove
                 = t(:'postings.actions.delete')
-
-
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
         = render :partial => 'postings/more_in_this_category'
-        %hr/
         = render :partial => 'shared/widgets/widgets'
-
-
-
     .row
       .span8
         %hr/

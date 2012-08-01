@@ -1,7 +1,10 @@
 .row
   .span3
-    .image
+    .profile-avatar
       = image_tag profile.avatar_url(:medium), :class => 'rounded_4'
+      - if profile.user.administrator?
+        .label-area
+          %span ADMIN
       - if authorized?
         %p
           = link_to 'mailto:'+profile.user.email+'?subject=Образовательный Портал КУРСОР' do
@@ -9,9 +12,13 @@
 
   .span6
     - unless profile.full_name.blank?
-      %p.lead= profile.full_name
+      %p.lead
+        = profile.full_name
     - else
-      %p.lead= profile.user.email.split(/@/)[0]
+      %p.lead
+        = profile.user.email.split(/@/)[0]
+
+
     - unless profile.birth_date.blank?
       %p
         %b= t(:'visitor.profile.birth_date')
