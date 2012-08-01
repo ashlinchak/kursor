@@ -37,7 +37,7 @@
           %span.icon-tags
           = links_to_tags posting.tags_list
         .user-bar
-          = link_to posting.user, user_path(posting.user)
+          = link_to posting.user, user_postings_path(posting.user)
           |
           = l posting.created_at, :format => :long
           - if authenticated?
@@ -52,11 +52,9 @@
                 = t(:'postings.actions.delete')
 
 
-
-
-
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
+        = render :partial => 'postings/more_in_this_category'
         %hr/
         = render :partial => 'shared/widgets/widgets'
 

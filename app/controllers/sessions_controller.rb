@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-  #layout 'login'
   skip_before_filter :require_authentication, :only => [:new, :create]
 
   def new
@@ -10,9 +9,20 @@ class SessionsController < ApplicationController
     if user = User.authenticate( params[:user][:email], params[:user][:password] )
       # need to check if user account is activated through email
       if user.is_active?
+
         self.current_user = user
         flash[:success] = t(:'sessions.create.success')
-        redirect_to user_path(user)
+
+        if user.tutor? && user.tutor.present?
+          redirect_to tutor_path(user.tutor)
+        elsif user.school? && user.provider.present?
+          redirect_to provider_path(user.provider)
+        elsif user.visitor? && user.profile.present?
+          redirect_to profile_path(user.profile)
+        else
+          redirect_to user_path(user)
+        end
+
       else
         flash[:error] = t(:'user_activation.errors.user_inactive')
         redirect_to login_url

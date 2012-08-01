@@ -52,8 +52,6 @@
       = render :partial => 'shared/top_nav'
       = render :partial => 'shared/login_bar'
     #main.container
-      = gflash
-      -#= gritter_flash_messages
       .flash= render 'shared/flash_messages'
       = yield
     = render :partial => 'shared/footer'

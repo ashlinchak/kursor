@@ -1,4 +1,7 @@
-- set_meta_tags :title => t(:'seo.users.user_postings') + user.to_s, :description => user.profile.bio
+- if user.visitor?
+  - set_meta_tags :title => t(:'seo.users.user_postings') + user.to_s
+-#- elsif user.tutor?
+  - set_meta_tags :title => t(:'seo.users.user_postings') + user.to_s
 #postings
   #index
     .row
@@ -7,10 +10,19 @@
         .header
           .row
             .span1
-              = image_tag user.profile.avatar_url(:thumb), :class => 'rounded_2'
+              - if user.visitor?
+                = image_tag user.profile.avatar_url(:thumb), :class => 'rounded_2'
+              - elsif user.tutor?
+                = image_tag user.tutor.avatar_url(:thumb), :class => 'rounded_2'
             .span6
-              %h4= link_to user, profile_path(user.profile)
-              %p= user.profile.bio
+              %h4
+                - if user.visitor?
+                  = link_to user.profile.full_name, profile_path(user.profile)
+                - elsif user.tutor?
+                  = link_to user.tutor.name, tutor_path(user.tutor)
+              %p
+                - if user.visitor?
+                  = user.profile.bio
               %p= t(:'visitor.profile.profile_age') + time_ago_in_words(user.created_at)
 
         = render postings

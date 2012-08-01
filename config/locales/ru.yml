@@ -79,6 +79,19 @@ ru:
       google: "Google+"
       youtube: "YouTube"
       vimeo: "Vimeo"
+      phone: "Телефон"
+      url: "Сайт"
+      email: "Email"
+      skype: "Skype"
+      add_contact_html: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
+
+  toolbar:
+    title: "Панель инструментов"
+    edit_user_html: "<i class=\'icon-cog\'></i> Изменить email / пароль"
+    edit_profile_html: "<i class=\'icon-user\'></i> Редактировать профиль"
+    write_posting_html: "<i class=\'icon-pencil\'></i> Написать статью"
+    my_postings_html: "<i class=\'icon-list\'></i> Мои статьи"
+
   tutors:
     actions:
       approve:
@@ -259,6 +272,11 @@ ru:
       body: "Сообщение"
       submit: "Отправить отзыв"
 
+  students:
+    joined: "Вы заявили, что учитесь в %{provider}!"
+    leaved: "Вы заявили, что больше не учитесь в %{provider}!"
+    studying_in: "Учится в"
+
   visitor:
     profile:
       postings: "Все статьи"
@@ -278,7 +296,7 @@ ru:
       avatar: "Аватар"
       remove_avatar: "Удалить аватар"
       main_info: "Основная информация"
-      bio: "О себе"
+      bio: "Дополнительно"
       bio_text: "Коротко о себе"
       add_contact: "Добавить контакт"
       location:
@@ -291,14 +309,16 @@ ru:
     title: "Новости"
     back_to_list: "Вернуться к списку новостей"
   postings:
+    more_in_this_category: "Еще статьи из этой категории"
     all_articles: "Все материалы"
     title_html: "Статьи"
     user_postings: "Cтатьи автора"
     readmore: "Читать полностью..."
+    posting_author: "Автор статьи"
     update:
       success: "Изменения в статье успешно сохранены"
     create:
-      success: "Статья успешно создана и сохранена"
+      success: "Статья успешно создана и появится в общем каталоге после проверки модератором. Уведомление о проверке прийдет Вам на почтовый ящик"
     categories: "Категории:"
     categories_help_html: "<hr/><i class=\"icon-file\"></i> Текстовая &#8212; <b>&laquo;Статьи&raquo;</b>, <b>&laquo;Вики&raquo;</b>, <b>&laquo;Блоги&raquo;</b><br/><i class=\"icon-facetime-video\"></i> Видео &#8212; <b>&laquo;Видео&raquo;</b> (в этом случае отмечать только одну категорию, не облажайся!)"
     actions:
@@ -582,6 +602,7 @@ ru:
       category: "Категория"
       provider: "Учебное заведение"
       location: "Местоположение"
+      profile: "Профиль"
     attributes:
       location:
         gmaps4rails_address: ""

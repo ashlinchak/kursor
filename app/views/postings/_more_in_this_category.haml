@@ -1,0 +1,12 @@
+%br/
+%h2.home-title= t(:'postings.more_in_this_category')
+.more_postings
+  - for r in posting.posting_categories.roots do
+    %ul
+      - for post in r.postings.approved.limit(5) do
+        %li= link_to post.title, posting_path(post)
+    - if r.postings.approved.size > 5
+
+      %p.plus
+        = link_to '<span>Еще</span> + '.html_safe + (r.postings.approved.size - 5).to_s, posting_category_path(r)
+    %hr/
