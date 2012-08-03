@@ -12,4 +12,5 @@ mcmegavolt/
 public/uploads/
 public/assets/
 public/ckeditor_assets/
+config/deploy.rb
 *~

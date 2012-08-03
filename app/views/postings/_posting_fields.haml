@@ -28,9 +28,17 @@
         .controls
           = f.cktext_area :body
           %p.help-block= t(:'postings.titles.body_help')
+    .row
+      .span9
+        = f.fields_for :images do |image|
+          = render :partial => 'images/image_fields', :locals => { :f => image }
+      .span3
+        - unless posting.new_record?
+          - if authorized? && posting.user.administrator?
+            %legend= t(:'postings.posting_author')
+            %p.silver эта функция только для админов
+            = f.select :user_id, Administrator.all.collect{ |admin| [User.find(admin.id).email, admin.id] }
 
-    = f.fields_for :images do |image|
-      = render :partial => 'images/image_fields', :locals => { :f => image }
     %fieldset
       %legend= t(:'tags.title')
       .control-group

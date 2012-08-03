@@ -27,7 +27,6 @@
                     = posting.images.last.description
           - else
             %hr/
-
           .body
             = posting.body.html_safe
         - elsif posting.video_posting?
@@ -37,7 +36,7 @@
           %span.icon-tags
           = links_to_tags posting.tags_list
         .user-bar
-          = link_to posting.user, user_path(posting.user)
+          = link_to posting.user, user_postings_path(posting.user)
           |
           = l posting.created_at, :format => :long
           - if authenticated?
@@ -50,18 +49,10 @@
               = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
                 %i.icon-remove
                 = t(:'postings.actions.delete')
-
-
-
-
-
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
-        %hr/
+        = render :partial => 'postings/more_in_this_category'
         = render :partial => 'shared/widgets/widgets'
-
-
-
     .row
       .span8
         %hr/

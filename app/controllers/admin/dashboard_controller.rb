@@ -9,16 +9,14 @@ class Admin::DashboardController < ApplicationController
   helper_method :pending_count
 
   def index
-
     @admin_users = Administrator.all.size
     @cities = City.all.size
     @categories = Category.all.size
     @news = News.all.size
     @posts = Posting.all.size
     @tags = Tag.all.size
-
+    @users = User.last(10).reverse
   end
-
 
   def providers_approved
     @providers = Provider.approved.size

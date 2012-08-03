@@ -1,0 +1,7 @@
+.subnav
+  %ul.nav.nav-pills
+    .brand= t(:'toolbar.title')
+    %li= link_to t(:'toolbar.edit_user_html'), edit_user_path(current_user)
+    %li= link_to t(:'toolbar.edit_profile_html'), edit_profile_path(current_user.profile)
+    %li= link_to t(:'toolbar.write_posting_html'), new_user_posting_path(current_user)
+    %li= link_to t(:'toolbar.my_postings_html'), user_postings_path(current_user)

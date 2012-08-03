@@ -11,6 +11,9 @@
       = posting.excerpt
       .read-more= link_to t(:'postings.readmore'), posting
       .user-bar
-        = link_to posting.user, posting.user
+        - if posting.user.visitor?
+          = link_to posting.user, profile_path(posting.user.profile)
+        - if posting.user.tutor?
+          = link_to posting.user.tutor.name, tutor_path(posting.user.tutor)
         |
         = l posting.created_at, :format => :long

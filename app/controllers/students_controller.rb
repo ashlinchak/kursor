@@ -2,12 +2,15 @@ class StudentsController < ApplicationController
 
   def join
     provider.students.create(:user => user, :start_at => Time.now)
-    redirect_to provider, :notice => "You claimed that you are student at #{provider}!"
+    flash[:success] = t('students.joined', :provider => provider)
+    redirect_to provider
+
   end
 
   def leave
     student.destroy
-    redirect_to provider, :notice => "You claimed that you are not a student at #{provider} anymore!"
+    flash[:success] = t('students.leaved', :provider => provider)
+    redirect_to provider
   end
 
   private

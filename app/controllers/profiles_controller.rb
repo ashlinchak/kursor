@@ -34,7 +34,7 @@ class ProfilesController < ApplicationController
       end
     else
       flash[:error] = t(:'tutors.create.error').html_safe
-      render :action => "new"
+      render :new
     end
   end
 
@@ -47,8 +47,8 @@ class ProfilesController < ApplicationController
         redirect_to profile_path(profile)
       end
     else
-      flash[:error] = t(:'tutors.create.error').html_safe
-      render :action => "edit"
+      flash[:error] = t(:'tutors.edit.error').html_safe
+      render :new
     end
   end
 

@@ -7,14 +7,11 @@ class Posting < ActiveRecord::Base
 
   before_save :add_nofollow
 
-  acts_as_commentable
+  #acts_as_commentable
 
   attr_accessor :image_attributes
 
   belongs_to :user
-
-  #has_one :image, :as => :imageable, :dependent => :destroy
-  #accepts_nested_attributes_for :image, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
 
   has_many :images, :as => :imageable, :dependent => :destroy
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }

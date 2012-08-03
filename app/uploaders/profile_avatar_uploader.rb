@@ -32,7 +32,7 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
 
   version :medium do
     process :crop
-    resize_to_fill(200, 280)
+    resize_to_fill(180, 260)
   end
 
   version :thumb do

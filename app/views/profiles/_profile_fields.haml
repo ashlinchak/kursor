@@ -36,7 +36,7 @@
       = f.fields_for :contacts do |c|
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
       .control-group
-        = link_to_add_fields t(:'visitor.edit_profile.add_contact'), f, :contacts
+        = link_to_add_fields t(:'contacts.social_icons.add_contact_html'), f, :contacts
 .row
   .span12
     %fieldset
@@ -45,4 +45,4 @@
         %label.control-label
           = t(:'visitor.edit_profile.bio_text')
         .controls
-          = f.text_area :bio, :class => 'span4'
+          = f.text_area :bio, :class => 'span6'

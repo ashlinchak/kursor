@@ -24,6 +24,7 @@
   %script{ :type => "text/javascript", :src => "http://userapi.com/js/api/openapi.js?49" }
   = render :partial => 'shared/yandex_metrika_code' unless Rails.env.development?
   = render :partial => 'shared/google_analytics_code' unless Rails.env.development?
+  = render :partial => 'shared/dfp'
   = stylesheet_link_tag "application"
   = javascript_include_tag "application"
   = csrf_meta_tags
@@ -40,7 +41,6 @@
 
   #page
     %header.container
-      -#.container
       %h1#logo.ir
         = link_to 'КУРСОР - образовательный портал', root_url
       %form.form-search{ :action => '/search', :method => :get, :style => 'padding: 5px 5px 5px 20px; margin: 50px 0px 0px 0px; float: right;'}
@@ -52,17 +52,10 @@
       = render :partial => 'shared/top_nav'
       = render :partial => 'shared/login_bar'
     #main.container
-      = gflash
-      -#= gritter_flash_messages
       .flash= render 'shared/flash_messages'
       = yield
-    %footer.container
-      .row.footer
-        .span7
-          = t(:'site.copyright.rights').html_safe
-        .span5{:style => 'text-align: right;'}
-          = render :partial => 'shared/counters' unless Rails.env.development?
-          = link_to root_url do
-            = image_tag 'logo_small.png'
+    = render :partial => 'shared/footer'
 
+  = yield :scripts
   = render :partial => 'shared/disqus/counter'
+  = render :partial => 'shared/widgets/reformal' unless Rails.env.development?

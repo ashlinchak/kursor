@@ -30,12 +30,12 @@ class PostingsController < ApplicationController
 
   def edit
     #@posting = current_user.postings.find(params[:posting])
-    #posting.images.build unless posting.images.size > 0
+    posting.images.build unless posting.images.size > 0
   end
 
   def update
     if posting.update_attributes params[:posting]
-      flash[:notice] = t(:'postings.update.success')
+      flash[:success] = t(:'postings.update.success')
       redirect_to posting_path(posting)
     else
       render :new
@@ -68,7 +68,7 @@ class PostingsController < ApplicationController
   helper_method :posting
 
   def user
-    @user ||= User.find params[:user_id] if params[:user_id]
+      @user ||= User.find params[:user_id] if params[:user_id]
   end
   helper_method :user
 

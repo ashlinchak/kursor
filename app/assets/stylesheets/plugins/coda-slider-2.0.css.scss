@@ -52,7 +52,7 @@
 /* Don't change anything below here unless you know what you're doing */
 
 	/* Tabbed nav */
-	.coda-nav ul { clear: both; display: block; margin: auto; overflow: hidden }
+	.coda-nav ul { clear: both; display: block; margin: auto; overflow: hidden; width:300px !important; }
 	.coda-nav ul li { display: inline; padding: 5px 3px; }
 	.coda-nav ul li a {
     -webkit-transition: all 0.5s ease-in-out;

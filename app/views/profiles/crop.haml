@@ -1,7 +1,10 @@
 .row#crop
-  .span8
+  .span12
+
     %legend= t(:'crop.title')
+
     %p= t(:'crop.help_html')
+
     = image_tag profile.avatar_url(:large), :id => 'cropbox'
 
     -#%div{:style => "width:200px;height:280px;overflow:hidden;float:right;"}

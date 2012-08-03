@@ -1,7 +1,7 @@
 %li.clearfix.list-provider
   .image-container
     = link_to provider_path(provider) do
-      = image_tag 'no-image.png', :width => '', :height => '80', :style => 'width: 150px;', "data-original" => provider.logo_url(:medium)
+      = image_tag 'no-image.png', :width => '', :height => '', :style => 'width: 150px;', "data-original" => provider.logo_url(:medium)
   %h4= link_to provider.name, provider_path(provider)
   - if provider.location
     .address

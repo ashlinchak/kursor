@@ -1,15 +1,14 @@
 .breadcrumb
   = form_for :search, :url => category, :method => :get, :html => { :class => 'form-inline' } do |f|
-    = select_tag "search_region_id", options_from_collection_for_select(Region.all, :id, :name), :prompt => t(:'admin.users.selectors.choose_region')
-    = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
+
+    - if params[:search] && !params[:search_region_id].blank?
+      = select_tag "search_region_id", options_from_collection_for_select(Region.all, :id, :name, :selected => params[:search_region_id])
+    - else
+      = select_tag "search_region_id", options_from_collection_for_select(Region.all, :id, :name),  :prompt => t(:'admin.users.selectors.choose_region')
+
+    - if params[:search] && !params[:search][:city_id].blank?
+      = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :prompt => '',  :class => 'select-city'
+    - else
+      = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :prompt => t(:'admin.users.selectors.choose_city'), :class => 'select-city'
+
     = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'
-  - if params[:search]
-    %p
-      Показаны результаты для
-      %span.label.label-success{:style => 'font-weight: normal; font-size: 12px; vertical-align: baseline; padding: 3px 5px'}
-        = Region.find(params[:search_region_id]).name unless params[:search_region_id].blank?
-        = '/ ' + City.find(params[:search][:city_id]).name unless params[:search][:city_id].blank?
-      &nbsp;
-      в категории
-      %span.label.label-success{:style => 'font-weight: normal; font-size: 12px; vertical-align: baseline; padding: 3px 5px'}
-        = link_to category.name, category_path(category), :style => 'color: white'

@@ -14,3 +14,5 @@ jQuery ->
   })
 
   $(".tooltip").tooltip()
+
+  $('.nav-tabs').button()

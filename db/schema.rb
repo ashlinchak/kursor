@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717090742) do
+ActiveRecord::Schema.define(:version => 20120725131123) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120717090742) do
     t.string   "custom_region"
     t.float    "latitude"
     t.float    "longitude"
+    t.boolean  "gmaps"
   end
 
   add_index "address_locations", ["city_id"], :name => "index_address_locations_on_city_id"
@@ -209,6 +210,7 @@ ActiveRecord::Schema.define(:version => 20120717090742) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.string   "permalink"
+    t.boolean  "is_public",   :default => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"

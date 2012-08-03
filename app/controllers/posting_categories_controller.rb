@@ -35,7 +35,7 @@ class PostingCategoriesController < ApplicationController
   helper_method :postings
 
   def all_postings
-     @postings = Kaminari.paginate_array(text_postings.approved).page(params[:page]).per(30)
+     @all_postings = Kaminari.paginate_array(text_postings.approved).page(params[:page]).per(30)
   end
   helper_method :all_postings
 

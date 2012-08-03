@@ -31,9 +31,6 @@
   .span6
     %fieldset
       %legend= t(:'admin.custom_flags.headers.title')
-      .alert.alert-notice.fade.in{ "data-dismiss" => "alert" }
-        %a.close{:href => '#'} x
-        help text
       = f.fields_for :custom_flag_bindings do |b|
         = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
       .fields= link_to_add_fields t(:'providers.custom_flags.add').html_safe, f, :custom_flag_bindings
@@ -43,7 +40,7 @@
     %fieldset
       %legend= t(:'admin.users.legends.address')
       = f.fields_for :location do |l|
-        = render :partial => 'addresses/location_fields', :locals => { :f => l }
+        = render :partial => 'addresses/location_fields', :locals => { :f => l}
   .span6
     %fieldset
       %legend= t(:'admin.users.legends.contacts')

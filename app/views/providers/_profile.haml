@@ -15,14 +15,6 @@
     .alert.alert-info.alert-block
       %h4.alert-heading= t(:'providers.edit.not_approved.title')
       %p= t(:'providers.edit.not_approved.desc').html_safe
-- unless controller.controller_name == 'users'
-  .row
-    .span12
-      %ul.breadcrumb
-        %li= link_to( provider.category, category_path(provider.category) ) if provider.category
-        %span.divider
-          \/
-        %li= link_to provider
 .row
   .span8
     - unless controller.controller_name == 'users'
@@ -31,16 +23,21 @@
           %table.bookmarks
             %tr
               = render :partial => 'shared/bookmarks'
+      -#.row
+        .span12
+          %ul.breadcrumb
+            %li= link_to( provider.category, category_path(provider.category) ) if provider.category
+            %span.divider
+              \/
+            %li= link_to provider
     .row
       .span3
         - if provider.logo_url
-          .thumbnail
-            = image_tag provider.logo_url(:medium).to_s
+          -#.thumbnail
+          = image_tag provider.logo_url(:medium).to_s
       .span5
-
         %h1= provider.name
-        %p
-          %strong
+        %p.silver
           Последнее изменение:
           = time_ago_in_words(provider.updated_at)
           назад
@@ -68,16 +65,24 @@
       %li.active
         %a( href = "#description" data-toggle = "tab" )
           = t(:'providers.main_info')
-      - if !provider.more_info.blank?
+      - unless provider.more_info.blank?
         %li
           %a( href = "#more_info" data-toggle = "tab" )
             = t(:'providers.more_info')
-      - if !provider.documents_info.blank?
+      - unless provider.documents_info.blank?
         %li
           %a( href = "#documents_info" data-toggle = "tab" )
             = t(:'providers.documents_info')
-
-
+      - if provider.location.gmaps?
+        %li
+          %a( href = "#on_map" data-toggle = "tab" id = "mapTab" )
+            %i.icon-map-marker
+            = t(:'providers.on_map')
+        -#%li.dropdown
+          %a.dropdown-toggle{"data-toggle"=>"dropdown", :href=>'#'}
+            = t(:'providers.more_tabs')
+            %b.caret
+          %ul.dropdown-menu
 
     #myTabContent.tab-content
       #description.tab-pane.fade.active.in
@@ -91,8 +96,9 @@
       #documents_info.tab-pane.fade
         - if !provider.documents_info.blank?
           .documents-info= provider.documents_info.html_safe
-
-
+      #on_map.tab-pane.fade
+        - if provider.location.gmaps?
+          = gmaps4rails(provider.location.to_gmaps4rails)
     - if current_user
       - if current_user.administrator?
         %hr/
@@ -124,7 +130,7 @@
             %li= link_to categoring, category_path(categoring)
 
     - if provider.custom_flag_bindings.size > 0
-      %h2.block-title=t(:'providers.custom_fields.title')
+      %h2.block-title=t(:'providers.custom_flags.title')
       %table.table.table-striped.table-condensed
         - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
           %tr
@@ -132,24 +138,25 @@
               %span= field.custom_flag.name
             %td
               - if field.value == true
-                .label.label-success
-                  = t(:'providers.custom_flags.true_value')
+                = image_tag 'icons/onebit_true.png', :width => '20'
               - else
-                .label.label-important
-                  = t(:'providers.custom_flags.false_value')
+                = image_tag 'icons/onebit_false.png', :width => '20'
 
     %h2.block-title=t(:'providers.contacts')
-    - if provider.location
-      -#%b= t(:'providers.custom_fields.address')
-      %p
-        %i.icon-home
-        = address_value provider.location
-    - for contact in provider.contacts.by_type do
-      %p
+    %table.table.table-striped.table-condensed
+      - if provider.location
+        %tr
+          %td
+            %span{ :class => "span-icon icon-address" }
+          %td
+            = address_value provider.location
+      - for contact in provider.contacts.by_type do
         - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
-          %span{ :class => "span-icon icon-#{contact.contact_type}" }
-          = contact_value contact
-    %hr/
+          %tr
+            %td
+              %span{ :class => "span-icon icon-#{contact.contact_type}" }
+            %td
+              = contact_value contact
     %p
       - for contact in provider.contacts.by_type
         - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
@@ -162,20 +169,26 @@
       %h2.block-title= t(:'providers.filials')
 
       - provider.filials.each do |filial|
+        - if filial.name.present?
+          %h4.home-title= filial.name
+        %table.table.table-striped.table-condensed
+          %tr
+            %td
+              %span{ :class => "span-icon icon-address" }
+            %td
+              = address_value filial.location
 
-        %h4= filial.name if filial.name.present?
+          - if filial.contacts.size > 0
+            - for contact in filial.contacts.by_type do
+              %tr
+                - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+                  %td
+                    %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                  %td
+                    = contact_value contact
 
-        = address_value filial.location
-
-        - if filial.contacts.size > 0
-          - for contact in filial.contacts.by_type do
-            %p
-              - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
-                %span{ :class => "span-icon icon-#{contact.contact_type}" }
-                = contact_value contact
-
-          %p
-            - for contact in filial.contacts.by_type
-              - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
-                = social_icon contact
+        %p
+          - for contact in filial.contacts.by_type
+            - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+              = social_icon contact
         %hr/

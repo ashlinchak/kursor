@@ -11,10 +11,19 @@
 //= require jquery.ui.datepicker-ru
 //= require twitter/bootstrap
 //= require ckeditor/init
+//= require jqcloud
+//= require ios-checkboxes
 //= require jquery-star-rating
 //= require_tree .
 
 $(document).ready(function(){
+
+
+//  IPhone
+    $('.iphone_check_box').iphoneStyle({
+        checkedLabel: 'Есть',
+        uncheckedLabel: 'Нет'
+    });
 
 // Rating
 
@@ -47,9 +56,10 @@ $(document).ready(function(){
     });
 //
 
+// Gmaps show in tab fix
+    $('#mapTab').on('shown', function (e) { google.maps.event.trigger(map, 'resize');})
 
 // UI
-
     $('.datepicker').datepicker({
         changeYear: true,
         changeMonth: true,
@@ -90,6 +100,26 @@ $(document).ready(function(){
       hideDuration: 200
   });
 
+  // JCloud
+
+//    var word_array = [
+//        {text: "Lorem", weight: 15},
+//        {text: "Ipsum", weight: 9, link: "http://jquery.com/"},
+//        {text: "Dolor", weight: 6, html: {title: "I can haz any html attribute"}},
+//        {text: "Sit", weight: 7},
+//        {text: "Amet", weight: 5}
+//        // ...as many words as you want
+//    ];
+//
+//
+//    $("#tagCloudContainer").jQCloud(
+//        word_array,
+//        {
+//            width: 140,
+//            heigh: 200
+//
+//        }
+//    );
 
   // Mosaic Caption Slider
 
@@ -149,7 +179,7 @@ $(document).ready(function(){
         url : '/admin/'+ $(ui.item).attr('class') +'s/sort',
         type: 'post',
         dataType: 'script',
-        data : sortedItems//,
+        data : sortedItems
       });
     }
   });
@@ -192,6 +222,10 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   $(link).parent().before(content.replace(regexp, new_id));
+    $('.iphone_check_box').iphoneStyle({
+        checkedLabel: 'Есть',
+        uncheckedLabel: 'Нет'
+    });
 }
 
 

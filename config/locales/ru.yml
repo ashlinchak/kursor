@@ -41,8 +41,18 @@ ru:
       wiki: "Вики"
       search: "Поиск"
       admin-panel: "Админка"
-    copyright:
-      rights: "&copy; 2012 <a href=\"http://kursor.org.ua\">КУРСОР</a> - образовательный портал."
+    footer:
+      policy_html: "При использовании материалов сайта обязательным условием является наличие гиперссылки в пределах первого абзаца на страницу расположения исходной статьи  (например, как сообщает <a href=\'http://kursor.org.ua\'>kursor.org.ua</a>)"
+      cooperation_html: "По вопросам сотрудничества и размещения рекламы обращайтесь по телефонам либо по e-mail:"
+      tags: "Теги"
+      sections: "Учебные заведения"
+      tutors: "Преподаватели"
+      articles: "Материалы"
+      socials: "Мы в социальных сетях"
+      subscribe:
+        title: "Подпишитесь на новости"
+        text_html: "Чтобы получать самые свежие новости и интересности подписывайтесь на нашу рассылку, которая будет приходить 1 раз в 2 недели."
+
     sorting:
       sort_action: "Показать"
   home:
@@ -69,6 +79,19 @@ ru:
       google: "Google+"
       youtube: "YouTube"
       vimeo: "Vimeo"
+      phone: "Телефон"
+      url: "Сайт"
+      email: "Email"
+      skype: "Skype"
+      add_contact_html: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
+
+  toolbar:
+    title: "Панель инструментов"
+    edit_user_html: "<i class=\'icon-cog\'></i> Изменить email / пароль"
+    edit_profile_html: "<i class=\'icon-user\'></i> Редактировать профиль"
+    write_posting_html: "<i class=\'icon-pencil\'></i> Написать статью"
+    my_postings_html: "<i class=\'icon-list\'></i> Мои статьи"
+
   tutors:
     actions:
       approve:
@@ -136,14 +159,17 @@ ru:
       address: "Адрес"
       title: "Основные данные"
     custom_flags:
+      title: "Особенности"
       add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
       true_value: "Есть"
       false_value: "Нет"
     categories: "Категории"
     filials: "Филиалы"
     main_info: "Основная информация"
-    more_info: "Дополнительная информация"
-    documents_info: "Информация для поступления"
+    more_info: "Дополнительно"
+    documents_info: "Для поступления"
+    more_tabs: "Еще"
+    on_map: "На карте"
     contacts: "Контакты"
     add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
   search:
@@ -246,6 +272,11 @@ ru:
       body: "Сообщение"
       submit: "Отправить отзыв"
 
+  students:
+    joined: "Вы заявили, что учитесь в %{provider}!"
+    leaved: "Вы заявили, что больше не учитесь в %{provider}!"
+    studying_in: "Учится в"
+
   visitor:
     profile:
       postings: "Все статьи"
@@ -265,7 +296,7 @@ ru:
       avatar: "Аватар"
       remove_avatar: "Удалить аватар"
       main_info: "Основная информация"
-      bio: "О себе"
+      bio: "Дополнительно"
       bio_text: "Коротко о себе"
       add_contact: "Добавить контакт"
       location:
@@ -278,14 +309,16 @@ ru:
     title: "Новости"
     back_to_list: "Вернуться к списку новостей"
   postings:
+    more_in_this_category: "Еще из категории "
     all_articles: "Все материалы"
     title_html: "Статьи"
     user_postings: "Cтатьи автора"
     readmore: "Читать полностью..."
+    posting_author: "Автор статьи"
     update:
       success: "Изменения в статье успешно сохранены"
     create:
-      success: "Статья успешно создана и сохранена"
+      success: "Статья успешно создана и появится в общем каталоге после проверки модератором. Уведомление о проверке прийдет Вам на почтовый ящик"
     categories: "Категории:"
     categories_help_html: "<hr/><i class=\"icon-file\"></i> Текстовая &#8212; <b>&laquo;Статьи&raquo;</b>, <b>&laquo;Вики&raquo;</b>, <b>&laquo;Блоги&raquo;</b><br/><i class=\"icon-facetime-video\"></i> Видео &#8212; <b>&laquo;Видео&raquo;</b> (в этом случае отмечать только одну категорию, не облажайся!)"
     actions:
@@ -331,6 +364,10 @@ ru:
 
   tutor_categories:
     index_categories: "Все категории"
+
+  categories:
+    more: "еще"
+    more_title: "Показать все подкатегории"
 
   info:
     home_text: "&larr; Выберите слева категорию, которая Вас интересует."
@@ -546,10 +583,17 @@ ru:
         tutors: "Преподаватели"
         postings: "Статьи"
 
+  address:
+    ukraine: "Украина"
+    gmaps_error: "<p><b>Не удалось найти адрес на карте.</b><br/>Проверьте все поля адреса, если ошибка повторяется - поставьте галочку <b>&laquo;Не искать на карте&raquo;</b>.</p>"
+    gmaps_check_box: "Не искать на карте"
+    gmaps_check_box_help: "снимите галочку в случае смены адреса"
+
   activemodel:
     attributes:
       feedback:
         body: "Текст сообщения"
+
 
   activerecord:
     models:
@@ -558,7 +602,10 @@ ru:
       category: "Категория"
       provider: "Учебное заведение"
       location: "Местоположение"
+      profile: "Профиль"
     attributes:
+      location:
+        gmaps4rails_address: ""
       category:
         name: "Название"
         description: "Описание"
@@ -605,7 +652,7 @@ ru:
   errors:
     messages:
       form_errors:
-        header: "Были допущены следующие ошибки:"
+        header: "Возникли следующие ошибки:"
       wrong_size: "Загружаемый файл имеет неправильный размер (должен быть %{file_size})"
       size_too_small: "Загружаемый файл слишком маленький (должен быть минимум %{file_size})"
       size_too_big: "Загружаемый файл слишком большой (максимальный объем %{file_size})"

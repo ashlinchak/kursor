@@ -19,6 +19,14 @@ class Category < ActiveRecord::Base
 
   mount_uploader :icon, CategoryIconUploader
 
+  def root_category_providers_count
+    @count = 0
+    for child in self.children do
+      @count += child.providers_count
+    end
+    @count
+  end
+
   def to_param
     permalink
   end

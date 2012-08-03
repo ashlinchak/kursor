@@ -1,8 +1,13 @@
 - if current_user
-  - if current_user.tutor and !current_user.tutor.is_approved
-    .alert.alert-info.alert-block
-      %h4.alert-heading= t(:'providers.edit.not_approved.title')
-      %p= t(:'providers.edit.not_approved.desc').html_safe
+  - if current_user.tutor
+
+    - if current_user == tutor.user
+      = render :partial => 'toolbar'
+
+    - unless current_user.tutor.is_approved
+      .alert.alert-info.alert-block
+        %h4.alert-heading= t(:'providers.edit.not_approved.title')
+        %p= t(:'providers.edit.not_approved.desc').html_safe
 
   - if authorized?
     = link_to edit_tutor_path(tutor) do
@@ -33,7 +38,7 @@
       .span3{ :style => 'width: 190px;'}
         - if tutor.avatar_url
           .tutor-avatar
-            = image_tag tutor.avatar_url(:medium).to_s
+            = image_tag tutor.avatar_url(:medium).to_s, :class => 'rounded_4'
             - if tutor.is_native_speaker?
               .label-area
                 %span= t(:'tutors.show.native_speaker')

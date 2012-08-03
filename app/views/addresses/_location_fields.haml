@@ -24,3 +24,10 @@
     = t(:'visitor.edit_profile.location.apartment')
   .controls
     = f.text_field :apartment, :class => 'span2'
+.control-group
+  %label.control-label
+    = t(:'address.gmaps_check_box')
+  .controls
+    %label.checkbox
+      = f.check_box :gmaps
+      %p.silver= t(:'address.gmaps_check_box_help')

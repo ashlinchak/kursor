@@ -1,27 +1,10 @@
-.row
-  .span8
-    - if authenticated?
-      - if profile.user === current_user
-        %i.icon-user
-        = profile.user.email
-        = link_to edit_profile_path(profile) do
-          - unless profile.user.visitor?
-            %i.icon-envelope
-            = t(:'users.panel.edit_email_password')
-          - else
-            %i.icon-pencil
-            = t(:'users.panel.edit_my_profile')
-      - else
-        - if profile.full_name && !profile.full_name.blank?
-          = profile.full_name
-        - else
-          = profile.user.email.split(/@/)[0]
-      - if authorized?
-        = link_to 'mailto:'+profile.user.email+'?subject=Образовательный Портал КУРСОР' do
-          %i.icon-envelope
-          Send email
-    %hr/
 - if authenticated?
+  - if current_user == profile.user
+    .row
+      .span12
+        = render :partial => 'toolbar'
+        %hr/
+
   = render :partial => '/profiles/profile', :locals => { :profile => profile }
 - else
   = t(:'users.must_be_authenticated')
