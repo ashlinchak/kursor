@@ -15,12 +15,31 @@
               = link_to c.name, c
         %h1= posting.title
         - if posting.text_posting?
-          .excerpt= posting.excerpt
+          .row.intro
+            .span6
+              .excerpt
+                = posting.excerpt
+            .span2
+              .author
+                - if posting.user.visitor? && posting.user.profile
+                  = link_to profile_path(posting.user.profile) do
+                    = image_tag posting.user.profile.avatar_url(:icon).to_s
+                  = link_to posting.user.profile.full_name, profile_path(posting.user.profile)
+                - if posting.user.tutor? && posting.user.tutor
+                  = link_to tutor_path(posting.user.tutor) do
+                    = image_tag posting.user.tutor.avatar_url(:icon).to_s
+                  = link_to posting.user.tutor.name, tutor_path(posting.user.tutor)
+                %p.date= l posting.created_at, :format => :long
+                - if authorized? || authenticated? && current_user == posting.user
+                  = link_to edit_posting_path(posting), :class => 'btn btn-mini' do
+                    %i.icon-pencil
+                    = t(:'postings.actions.edit')
+
           - if posting.images.last.present?
             .carousel
               .carousel-inner
-                %link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:wide).to_s }
-                = image_tag posting.images.last.src_url(:wide).to_s, :width => '620px', :height => '300px'
+                -#%link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:medium).to_s }
+                = image_tag posting.images.last.src_url(:medium).to_s
                 .carousel-caption
                   %p
                     %b= posting.images.last.title
@@ -41,10 +60,6 @@
           = l posting.created_at, :format => :long
           - if authenticated?
             - if posting.user == current_user || authorized?
-              |
-              = link_to edit_posting_path(posting) do
-                %i.icon-pencil
-                = t(:'postings.actions.edit')
               |
               = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
                 %i.icon-remove
