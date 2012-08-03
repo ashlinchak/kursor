@@ -1,8 +1,7 @@
 %h2 Admin panel
 %hr/
-
 .row
-  .span4
+  .span5
     %p.lead Last registered users
     %table.table.table-condensed.table-striped.table-bordered
       - for user in @users
@@ -10,10 +9,12 @@
           %td
             - unless user.is_active
               = link_to user.email, user_path(user), :style => 'color:red;', :target => '_blank'
+              = link_to admin_user_path(user), :method => :delete, :confirm => 'Ай-яй-яй! Ты хочешь удалить этого мерзкого, жестокого, неактивированного юзера?! :)', :style => 'float:right;' do
+                %i.icon-remove
             - else
               = link_to user.email, user_path(user), :target => '_blank'
             %span.muted.small= time_ago_in_words user.created_at
-  .span3
+  .span4
     %p.lead Statistics
     %table.table.table-bordered.table-striped.table-condensed
       %tbody
@@ -60,6 +61,13 @@
               = today_registered_providers
         %tr
           %td
+            = link_to 'Tutors', admin_users_path
+            registered
+          %td
+            %span.badge.badge-success
+              = today_registered_tutors
+        %tr
+          %td
             = link_to 'News', admin_news_index_path
             created
           %td= today_news_created
@@ -69,7 +77,6 @@
             created
           %td= today_postings_created
 
-  .span2
     %p.lead Export emails database
     = link_to export_admin_providers_path(:format => :csv), :class => 'btn' do
       %i.icon-download-alt
