@@ -37,7 +37,7 @@
           - if authorized? && posting.user.administrator?
             %legend= t(:'postings.posting_author')
             %p.silver эта функция только для админов
-            = f.select :user_id, Administrator.all.collect{ |admin| [User.find(admin.id).email, admin.id] }
+            = f.select :user_id, Administrator.all.collect{ |admin| [admin.user.email, admin.user.id] }
 
     %fieldset
       %legend= t(:'tags.title')

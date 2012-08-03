@@ -4,7 +4,7 @@
       = image_tag profile.avatar_url(:medium), :class => 'rounded_4'
       - if profile.user.administrator?
         .label-area
-          %span ADMIN
+          %span Администратор
       - if authorized?
         %p
           = link_to 'mailto:'+profile.user.email+'?subject=Образовательный Портал КУРСОР' do

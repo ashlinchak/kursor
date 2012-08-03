@@ -38,8 +38,9 @@ class Admin::UsersController < Admin::DashboardController
     else
       flash[:notice] = 'Error...'
     end
-    redirect_to admin_users_path
+    redirect_to admin_path
   end
+
 
   def users
     @users ||= User.order('created_at desc').page params[:page]

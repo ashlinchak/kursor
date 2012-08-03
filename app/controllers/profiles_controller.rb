@@ -54,7 +54,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     profile.destroy
-    redirect_to profiles_url
+    redirect_to root_path
   end
 
   def profile

@@ -15,7 +15,7 @@ class Admin::DashboardController < ApplicationController
     @news = News.all.size
     @posts = Posting.all.size
     @tags = Tag.all.size
-    @users = User.last(10).reverse
+    @users = User.last(20).reverse
   end
 
   def providers_approved
@@ -32,6 +32,11 @@ class Admin::DashboardController < ApplicationController
     @providers = Provider.find(:all, :conditions => [" created_at between ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]).size
   end
   helper_method :today_registered_providers
+
+  def today_registered_tutors
+    @providers = Tutor.find(:all, :conditions => [" created_at between ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]).size
+  end
+  helper_method :today_registered_tutors
 
 
 def today_news_created
