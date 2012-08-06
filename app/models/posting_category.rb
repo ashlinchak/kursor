@@ -19,7 +19,7 @@ class PostingCategory < ActiveRecord::Base
 
   before_save :generate_permalink
 
-  default_scope order('position ASC, created_at DESC')
+  default_scope order('position ASC')
 
   def self.post_cat
     find_by_permalink('posts')
