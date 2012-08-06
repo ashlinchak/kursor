@@ -39,12 +39,11 @@
     }
     .carousel {
       float: left;
-      //width: 350px;
+      display: inline-block;
       margin: 0px 10px 10px 0px;
       img { padding: 0px; }
       .carousel-caption {
         padding: 5px 15px 0px;
-        //width: 320px;
       }
     }
 
@@ -72,6 +71,10 @@
 
     }
 
+    ul {
+      li {
+      }
+    }
     
     }
     .left {

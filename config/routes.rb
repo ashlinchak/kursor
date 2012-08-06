@@ -102,7 +102,9 @@ Kursor::Application.routes.draw do
         get :decline
       end
     end
-    resources :posting_categories
+    resources :posting_categories do
+      post 'sort', :on => :collection
+    end
     resources :users
     resources :custom_fields do
       post 'sort', :on => :collection

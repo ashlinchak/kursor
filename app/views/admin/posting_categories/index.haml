@@ -1,20 +1,27 @@
-%h2= t(:'admin.postings.posting_categories.title')
-%hr/
-= link_to new_admin_posting_category_path do
-  %i.icon-plus-sign
-  = t(:'admin.postings.posting_categories.create')
-%hr/
-%table.table.table-striped.table-bordered.table-condensed
-  %tbody
-    - root_posting_categories.each do |category|
-      %tr
-        %td
-          %ul
-            %li
-              = link_to category.name, edit_admin_posting_category_path( category )
-            - if category.children
-              = render :partial => 'posting_category', :collection => category.children
-%hr/
-= link_to new_admin_posting_category_path do
-  %i.icon-plus-sign
-  = t(:'admin.postings.posting_categories.create')
+.row
+  .span9
+    %legend= t(:'admin.postings.posting_categories.title')
+    = link_to new_admin_posting_category_path do
+      %i.icon-plus-sign
+      = t(:'admin.postings.posting_categories.create')
+    %hr/
+    %table.table.table-striped.table-bordered.table-condensed
+      %tbody.sort-posting_categories.sortable
+        - root_posting_categories.each do |category|
+          %tr{ :style => 'width: 100%;', :id => "sorted-item_#{category.id}", :class => 'posting_categorie'}
+            %td.drag-handle
+              %i.icon-move
+            %td
+              - if category.children.present?
+                = link_to admin_posting_category_path( category ) do
+                  = "#{category.name} (#{category.children.size})"
+              - else
+                = category.name
+            %td.actions
+              = link_to edit_admin_posting_category_path(category) do
+                %i.icon-pencil
+
+    %hr/
+    = link_to new_admin_posting_category_path do
+      %i.icon-plus-sign
+      = t(:'admin.postings.posting_categories.create')

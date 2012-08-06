@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725131123) do
+ActiveRecord::Schema.define(:version => 20120806113151) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -211,6 +211,7 @@ ActiveRecord::Schema.define(:version => 20120725131123) do
     t.integer  "parent_id"
     t.string   "permalink"
     t.boolean  "is_public",   :default => false
+    t.integer  "position",    :default => 0,     :null => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"

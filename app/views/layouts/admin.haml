@@ -37,8 +37,10 @@
     %footer.container
       .row
         .span9
-          = t(:'site.copyright.rights').html_safe
+          = link_to admin_path do
+            %i.icon-wrench.icon-white
+            Admin
         .span3{:style => 'text-align: right;'}
           = link_to root_url do
-            = image_tag 'logo_small.png'
+            %i.icon-forward.icon-white
   -#= render :partial => 'shared/google_analytics_code' unless Rails.env.development?
