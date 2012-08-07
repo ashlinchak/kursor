@@ -17,6 +17,8 @@ class TutorCategory < ActiveRecord::Base
 
   before_save :generate_permalink
 
+  default_scope order('position ASC')
+
   def to_param
     permalink
   end

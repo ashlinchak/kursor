@@ -24,7 +24,7 @@ class Admin::CategoriesController < Admin::DashboardController
   def update
     if category.update_attributes(params[:category])
       flash[:success] = 'Category was successfully updated.'
-      redirect_to admin_categories_path
+      redirect_to admin_category_path(category)
     else
       render :action => "edit"
     end
@@ -37,6 +37,14 @@ class Admin::CategoriesController < Admin::DashboardController
       flash[:error] = 'Can\'t delete non-empty category'
     end
     redirect_to admin_categories_path
+  end
+
+  def sort
+    params[:'sorted-item'].each_with_index do |item, index|
+      todo_item = ::Category.find(item)
+      todo_item.update_attribute :position, index
+    end if params[:'sorted-item']
+    render :nothing => true
   end
 
   private

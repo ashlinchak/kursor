@@ -77,8 +77,12 @@ Kursor::Application.routes.draw do
 
   namespace :admin do
     resources :user_transfers
-    resources :categories
-    resources :tutor_categories
+    resources :categories do
+      post 'sort', :on => :collection
+    end
+    resources :tutor_categories do
+      post 'sort', :on => :collection
+    end
     resources :info
     resources :wiki
     resources :news

@@ -1,5 +1,9 @@
-= link_to category.name, edit_admin_category_path( category )
--if category.children
+%span.badge.badge-info
+  = link_to admin_category_path(category) do
+    = category.name
+    - if category.children.present?
+      %span.badge= category.children.size
+-#- if category.children.present?
   %ul
     - for category in category.children
       %li= link_to category.name, edit_admin_category_path( category )

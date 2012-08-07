@@ -17,6 +17,8 @@ class Category < ActiveRecord::Base
 
   before_save :generate_permalink
 
+  default_scope order('position ASC')
+
   mount_uploader :icon, CategoryIconUploader
 
   def root_category_providers_count
