@@ -13,7 +13,14 @@
                 %i.icon-remove
             - else
               = link_to user.email, user_path(user), :target => '_blank'
+
             %span.muted.small= time_ago_in_words user.created_at
+            - if user.user_type == 'user'
+              %span.label{ :style => 'float:right;' } U
+            - if user.user_type == 'tutor'
+              %span.label.label-warning{ :style => 'float:right;' } T
+            - if user.user_type == 'school'
+              %span.label.label-info{ :style => 'float:right;' } P
   .span4
     %p.lead Statistics
     %table.table.table-bordered.table-striped.table-condensed

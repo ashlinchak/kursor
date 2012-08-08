@@ -87,6 +87,10 @@ class User < ActiveRecord::Base
     ACCOUNT_TYPES[account_type_id] == 'school'
   end
 
+  def user_type
+    @user_type = ACCOUNT_TYPES[self.account_type_id]
+  end
+
   def generate_activation
     # delete pending activation
     if user_activation
