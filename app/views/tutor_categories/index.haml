@@ -1,27 +1,37 @@
 - set_meta_tags :title => t(:'seo.sections.tutors'), :description => t(:'seo.sections.tutors_description')
-.row
-  .span8
-    %h3 Выберите нужную категорию
-    %ul.categories.clearfix
-      - for child in tutor_categories
-        %li
-          %h3= link_to child, child
-          - if child.children
-            %ul.children-categories
-              - for child in child.children
-                %li= link_to child, child
+#categories
+  #show
+    .row
+      .span8
+        %legend Выберите нужную категорию
+        .row
+          - root_tutor_categories.each_with_index do |category, index|
+            - if ((index % 3) == 0) && index > 0
+              .clear
+            .span4
+              .row.category_item
+                .span1.category_icon
+                  = link_to category do
+                    = image_tag category.icon_url(:standart), :title => category, :class => 'rounded_2'
+                .span3.list
+                  %h3= link_to category, category
+                  %ul
+                    - for sub_category in category.top_tutor_subcategories do
+                      %li
+                        = link_to sub_category do
+                          = "#{sub_category} (#{sub_category.tutors_count})"
 
-    -#%hr/
-    -#- if tutors.size > 0
-    -#  %ul.entries
-    -#    - for tut in tutors
-    -#      = render :partial => 'tutor_categories/tutor', :locals => { :tutor => tut }
-    -#  .page_navigation.clear= paginate tutors
-    -#- else
-    -#  Нет зарегистрированных преподавателей в этой категории
-    -#%hr/
+        -#%hr/
+        -#- if tutors.size > 0
+        -#  %ul.entries
+        -#    - for tut in tutors
+        -#      = render :partial => 'tutor_categories/tutor', :locals => { :tutor => tut }
+        -#  .page_navigation.clear= paginate tutors
+        -#- else
+        -#  Нет зарегистрированных преподавателей в этой категории
+        -#%hr/
 
-  .span4
-    = render :partial => 'shared/advertising/kursor_ads'
-    %hr/
-    = render :partial => 'shared/widgets/widgets'
+      .span4
+        = render :partial => 'shared/advertising/kursor_ads'
+        %hr/
+        = render :partial => 'shared/widgets/widgets'

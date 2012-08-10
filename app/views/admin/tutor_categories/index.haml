@@ -1,29 +1,24 @@
-%h2= t(:'admin.tutor_categories.title')
+%legend= t(:'admin.tutor_categories.title')
 = link_to new_admin_tutor_category_path do
   %i.icon-plus-sign
   = t(:'admin.tutor_categories.add')
 %hr/
 %table.table.table-striped.table-bordered.table-condensed
-  %thead
-    %th Title
-    %th Children
-    %th{ :width => '130' } Actions
-  %tbody
+  %tbody.sort-categories.sortable
     - root_tutor_categories.each do |tut_category|
-      %tr
-        %td= tut_category.name
-        -#.description= category.description
-        %td
-          -if tut_category.children
+      %tr{:id => "sorted-item_#{tut_category.id}", :class => 'tutor_categorie'}
+        %td.name
+          = image_tag tut_category.icon_url(:standart), :class => 'rounded_2'
+          %b= link_to tut_category.name, admin_tutor_category_path(tut_category)
+        %td.children
+          -if tut_category.children.present?
             %ul
               = render :partial => 'tutor_category', :collection => tut_category.children
-        %td
+        %td.drag-handle
+          %i.icon-move
+          %hr/
           = link_to edit_admin_tutor_category_path( tut_category ) do
             %i.icon-pencil
-            Edit
-          = link_to admin_tutor_category_path(tut_category), :method => :delete, :confirm => 'Are you sure?' do
-            %i.icon-remove
-            Delete
 %hr/
 = link_to new_admin_tutor_category_path do
   %i.icon-plus-sign

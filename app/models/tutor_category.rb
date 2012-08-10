@@ -19,6 +19,8 @@ class TutorCategory < ActiveRecord::Base
 
   default_scope order('position ASC')
 
+  mount_uploader :icon, TutorCategoryIconUploader
+
   def to_param
     permalink
   end

@@ -1,6 +1,10 @@
-= link_to tutor_category.name, edit_admin_tutor_category_path( tutor_category )
--if tutor_category.children
+%span.badge.badge-info
+  = link_to admin_tutor_category_path(tutor_category) do
+    = tutor_category.name
+    - if tutor_category.children.present?
+      %span.badge= tutor_category.children.size
+-#- if category.children.present?
   %ul
-    - for tutor_category in tutor_category.children
-      %li= link_to tutor_category.name, edit_admin_tutor_category_path( tutor_category )
-      = render :partial => 'tutor_category', :collection => tutor_category.children
+    - for category in category.children
+      %li= link_to category.name, edit_admin_category_path( category )
+      = render :partial => 'category', :collection => category.children
