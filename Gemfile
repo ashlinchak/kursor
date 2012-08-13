@@ -22,7 +22,6 @@ gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem 'meta-tags', :require => 'meta_tags'
 gem 'sitemap_generator'
 gem 'nokogiri'
-gem 'gritter_notices'
 gem 'gmaps4rails'
 gem 'url_to_media_tag'
 gem 'jqcloud-rails' # Jquery TagCloud Plugin

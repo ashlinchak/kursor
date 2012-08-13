@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
 
-  has_gritter_notices
-
   attr_accessor :password, :password_confirmation, :provider_attributes, :profile_attributes
 
   has_one :administrator, :dependent => :destroy

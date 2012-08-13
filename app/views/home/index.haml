@@ -2,7 +2,36 @@
 #home
   .row
     .span8
-      .coda-slider-wrapper
+      .slider-container
+        .row
+          .span5
+            .flexslider
+              %ul.slides
+                - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
+                  - unless posting.images.empty?
+                    %li
+                      = image_tag posting.images.last.src_url(:slider).to_s
+                      .flex-caption
+                        %p.title
+                          = link_to posting_path(posting) do
+                            = posting.title
+                        %p.info
+                          Автор:
+                          = posting.user
+                          &nbsp; | &nbsp; Комментарии:
+                          = link_to '', posting_path(posting) + '#disqus_thread'
+                          &nbsp; | &nbsp;
+                          = link_to 'Читать...', posting_path(posting)
+
+          .span3
+            .flexslider-controls
+              - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
+                .item
+                  = link_to '#' do
+                    = posting.title
+
+
+      -#.coda-slider-wrapper
         .coda-slider.preload#coda-slider-1
           - PostingCategory.post_cat.children.each do |cat|
             .panel
@@ -24,7 +53,7 @@
                     .mosaic-backdrop
                       - unless posting.images.empty?
                         = image_tag posting.images.last.src_url(:medium).to_s
-        %br/
+
       .home-postings
         .row
           .span4
