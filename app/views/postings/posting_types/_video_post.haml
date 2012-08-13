@@ -5,7 +5,8 @@
 %hr/
 .body
   = posting.body.html_safe
-= link_to edit_posting_path(posting), :class => 'btn btn-small' do
-  %i.icon-pencil
-  Edit
+- if authorized?
+  = link_to edit_posting_path(posting), :class => 'btn btn-small' do
+    %i.icon-pencil
+    Edit
 
