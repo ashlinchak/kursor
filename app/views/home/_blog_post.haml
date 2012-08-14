@@ -1,0 +1,17 @@
+.post-block
+  .image
+    - if blog_post.user.visitor? && blog_post.user.profile
+      = image_tag blog_post.user.profile.avatar_url(:icon)
+    - if blog_post.user.tutor? && blog_post.user.tutor
+      = image_tag blog_post.user.tutor.avatar_url(:icon)
+  .title= link_to blog_post.title, posting_path(blog_post), :class=>'post_title'
+  .excerpt
+    = blog_post.excerpt.truncate(100)
+  .info
+    - if blog_post.user.visitor? && blog_post.user.profile
+      = link_to blog_post.user, profile_path(blog_post.user.profile) , :class=>'user_link'
+    - if blog_post.user.tutor? && blog_post.user.tutor
+      = link_to blog_post.user, user_postings_path(blog_post.user) , :class=>'user_link'
+    &nbsp;&nbsp;
+    = image_tag 'icons/comment-16.png'
+    = link_to '', posting_path(blog_post) + '#disqus_thread'
