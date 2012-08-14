@@ -1,32 +1,24 @@
-%h2= t(:'admin.provider_categories.title')
+%legend= t(:'admin.provider_categories.title')
 = link_to new_admin_category_path do
   %i.icon-plus-sign
   = t(:'admin.provider_categories.add')
 %hr/
 %table.table.table-striped.table-bordered.table-condensed
-  %thead
-    %th Title
-    %th Children
-    -#%th{ :width => '130' } Actions
-  %tbody
+  %tbody.sort-categories.sortable
     - root_categories.each do |prov_category|
-      %tr
-        %td
+      %tr{:id => "sorted-item_#{prov_category.id}", :class => 'categorie'}
+        %td.name
           = image_tag prov_category.icon_url(:standart), :class => 'rounded_2'
-          = link_to edit_admin_category_path( prov_category ) do
-            %h4= prov_category.name
-          .description= category.description
-        %td
-          -if prov_category.children
+          %b= link_to prov_category.name, admin_category_path(prov_category)
+        %td.children
+          -if prov_category.children.present?
             %ul
               = render :partial => 'category', :collection => prov_category.children
-        -#%td
+        %td.drag-handle
+          %i.icon-move
+          %hr/
           = link_to edit_admin_category_path( prov_category ) do
             %i.icon-pencil
-            Edit
-          = link_to admin_category_path( prov_category ), :method => :delete, :confirm => 'Are you sure?' do
-            %i.icon-remove
-            Delete
 %hr/
 = link_to new_admin_category_path do
   %i.icon-plus-sign

@@ -39,6 +39,14 @@ class Admin::TutorCategoriesController < Admin::DashboardController
     redirect_to admin_tutor_categories_path
   end
 
+  def sort
+    params[:'sorted-item'].each_with_index do |item, index|
+      todo_item = ::TutorCategory.find(item)
+      todo_item.update_attribute :position, index
+    end if params[:'sorted-item']
+    render :nothing => true
+  end
+
   private
 
   def tutor_categories

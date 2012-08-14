@@ -2,7 +2,36 @@
 #home
   .row
     .span8
-      .coda-slider-wrapper
+      .slider-container
+        .row
+          .span5
+            .flexslider
+              %ul.slides
+                - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
+                  - unless posting.images.empty?
+                    %li
+                      = image_tag posting.images.last.src_url(:slider).to_s
+                      .flex-caption
+                        %p.title
+                          = link_to posting_path(posting) do
+                            = posting.title
+                        %p.info
+                          Автор:
+                          = posting.user
+                          &nbsp; | &nbsp; Комментарии:
+                          = link_to '', posting_path(posting) + '#disqus_thread'
+                          &nbsp; | &nbsp;
+                          = link_to 'Читать...', posting_path(posting)
+
+          .span3
+            .flexslider-controls
+              - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
+                .item
+                  = link_to '#' do
+                    = posting.title
+
+
+      -#.coda-slider-wrapper
         .coda-slider.preload#coda-slider-1
           - PostingCategory.post_cat.children.each do |cat|
             .panel
@@ -24,7 +53,7 @@
                     .mosaic-backdrop
                       - unless posting.images.empty?
                         = image_tag posting.images.last.src_url(:medium).to_s
-        %br/
+
       .home-postings
         .row
           .span4
@@ -34,7 +63,7 @@
               - for post in PostingCategory.post_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to post.title, posting_path(post), :class=>'post_title'
-                  = link_to post.user, user_postings_path(post.user) , :class=>'user_link'
+                  = link_to post.user, profile_path(post.user.profile) , :class=>'user_link'
                   |
                   %i.icon-comment
                   = link_to '', posting_path(post) + '#disqus_thread'
@@ -45,7 +74,7 @@
               - for video_post in PostingCategory.video_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to video_post.title, posting_path(video_post), :class=>'post_title'
-                  = link_to video_post.user, user_postings_path(video_post.user) , :class=>'user_link'
+                  = link_to video_post.user, profile_path(video_post.user.profile) , :class=>'user_link'
                   |
                   %i.icon-comment
                   = link_to '', posting_path(video_post) + '#disqus_thread'
@@ -57,7 +86,7 @@
               - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to wiki_post.title, posting_path(wiki_post), :class=>'post_title'
-                  = link_to wiki_post.user, user_postings_path(wiki_post.user), :class=>'user_link'
+                  = link_to wiki_post.user, profile_path(wiki_post.user.profile), :class=>'user_link'
                   |
                   %i.icon-comment
                   = link_to '', posting_path(wiki_post) + '#disqus_thread'
@@ -68,14 +97,18 @@
               - for blog_post in PostingCategory.blog_cat.postings.approved.limit(3)
                 %li{:style => 'margin-bottom: 5px;'}
                   %h5= link_to blog_post.title, posting_path(blog_post), :class=>'post_title'
-                  = link_to blog_post.user, user_postings_path(blog_post.user) , :class=>'user_link'
+                  - if blog_post.user.visitor? && blog_post.user.profile
+                    = link_to blog_post.user, profile_path(blog_post.user.profile) , :class=>'user_link'
+                  - if blog_post.user.tutor? && blog_post.user.tutor
+                    = link_to blog_post.user, user_postings_path(blog_post.user) , :class=>'user_link'
                   |
                   %i.icon-comment
                   = link_to '', posting_path(blog_post) + '#disqus_thread'
+
       %h2.home-title= t(:'home.titles.categories')
       .row
         - root_categories.each_with_index do |category, index|
-          - if ((index % 3) == 0) && index > 0
+          - if ((index % 2) == 0) && index > 0
             .clear
           .span4
             .row.category_item

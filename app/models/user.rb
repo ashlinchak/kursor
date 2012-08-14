@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
 
-  has_gritter_notices
-
   attr_accessor :password, :password_confirmation, :provider_attributes, :profile_attributes
 
   has_one :administrator, :dependent => :destroy
@@ -85,6 +83,10 @@ class User < ActiveRecord::Base
 
   def school?
     ACCOUNT_TYPES[account_type_id] == 'school'
+  end
+
+  def user_type
+    @user_type = ACCOUNT_TYPES[self.account_type_id]
   end
 
   def generate_activation

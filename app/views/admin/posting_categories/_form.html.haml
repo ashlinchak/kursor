@@ -12,13 +12,20 @@
       .field
         %br/
         = f.label :parent_id
-        = f.select :parent_id, PostingCategory.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }, :class => 'span4', :disabled => ( true if posting_category.root? )
+        = f.select :parent_id, PostingCategory.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }, :class => 'span4', :disabled => ( true if posting_category.root? && !posting_category.new_record? )
       .field
         %br/
         = f.label :permalink
-        = f.text_field :permalink, :class => 'span4', :disabled => ( true if posting_category.root?)
+        = f.text_field :permalink, :class => 'span4', :disabled => ( true if posting_category.root? && !posting_category.new_record? )
       - if posting_category.root?
         %br/
         %p You can't change parent & permalink of root category, sorry ;)
+      - unless posting_category.root?
+        %br/
+        %br/
+        = link_to admin_posting_category_path(posting_category), :method => :delete, :confirm => "Ты точно хочешь удалить? Ты выспался? Справка от врача есть?", :class => 'btn btn-danger' do
+          %i.icon-remove.icon-white
+          Destroy it!
+
   .form-actions
     = f.submit 'Yepp!', :class => 'btn btn-success btn-large'

@@ -59,4 +59,10 @@
       -#= text_field_tag 'subscribe', nil, :class => 'span3', :placeholder => 'Введите email и нажмите Enter', :disabled => true
 
       %p= t(:'site.footer.policy_html')
+      %p.developer
+        Разработка портала &#8212;
+        = link_to 'http://brainbox.com.ua', :target => '_blank' do
+          = image_tag 'brain-box.png'
+          BrainBox
+
       = render :partial => 'shared/counters' unless Rails.env.development?

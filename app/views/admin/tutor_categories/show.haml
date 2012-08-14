@@ -1,15 +1,50 @@
-.column.span-20.prepend-4
-  =breadcrumbs_for_tutor_category tutor_category
-  %h2= tutor_category.name
-  .description= tutor_category.description
-
-  %ul
-    - tutor_category.children.each do |child|
-      %li= link_to child.name, child
-
-
-  %h3 Вхождения:
-  %ul
-    - tutor_category.tutor_categorizings.each do |tutor_categorizing|
-      %li= link_to tutor_categorizing.tutor.name, tutor_path(tutor_categorizing.tutor.permalink)
-
+.row
+  .span1
+    = image_tag tutor_category.icon_url(:standart).to_s, :class => 'rounded_2'
+  .span7
+    %p.lead= tutor_category.name
+    %p.silver= tutor_category.description
+  .span1
+    = link_to edit_admin_tutor_category_path( tutor_category ) do
+      %i.icon-pencil
+      Edit
+  .span1
+    - unless tutor_category.root?
+      = link_to admin_tutor_category_path(tutor_category.parent) do
+        %i.icon-chevron-up
+        Up
+    - else
+      = link_to admin_tutor_categories_path do
+        %i.icon-chevron-up
+        Up
+  .span1
+    = link_to admin_tutor_categories_path do
+      %i.icon-home
+      Home
+  .span1
+    = link_to new_admin_tutor_category_path do
+      %i.icon-plus-sign
+      Add
+.row
+  .span12
+    %hr/
+    %table.table.table-striped.table-bordered.table-condensed
+      %tbody.sort-categories.sortable
+        - tutor_category.children.each do |category|
+          %tr{ :style => 'width: 940px;', :id => "sorted-item_#{category.id}", :class => 'tutor_categorie'}
+            %td.name
+              = image_tag category.icon_url(:standart), :class => 'rounded_2'
+              %b= link_to category.name, admin_tutor_category_path(category)
+            %td.children
+              -if category.children.present?
+                %ul
+                  = render :partial => 'tutor_category', :collection => category.children
+            %td.drag-handle
+              %i.icon-move
+              %hr/
+              = link_to edit_admin_tutor_category_path( category ) do
+                %i.icon-pencil
+    %hr/
+    = link_to new_admin_tutor_category_path do
+      %i.icon-plus-sign
+      Add

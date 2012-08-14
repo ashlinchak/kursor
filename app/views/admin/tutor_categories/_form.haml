@@ -1,16 +1,39 @@
-= form_for tutor_category, :url => ( tutor_category.new_record? ? admin_tutor_categories_path : admin_tutor_category_path(tutor_category) ), :html => { :multipart => true } do |f|
-  = render :partial => 'shared/form_errors', :locals => { :object => tutor_category }
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :parent_id
-    = f.select :parent_id, TutorCategory.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }
-  .field
-    = f.label :permalink
-    = f.text_field :permalink
-  .actions
-    = f.submit
+= form_for tutor_category, :url => ( tutor_category.new_record? ? admin_tutor_categories_path : admin_tutor_category_path(tutor_category) ), :html => { :multipart => true, :class => 'form-horizontal' } do |f|
+  .row
+    .span12
+      = render :partial => 'shared/form_errors', :locals => { :object => tutor_category }
+  .row
+    .span6
+      %fieldset
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name
+        .control-group
+          = f.label :description, :class => 'control-label'
+          .controls
+            = f.text_area :description
+    .span6
+      %fieldset
+        .control-group
+          = image_tag tutor_category.icon_url(:standart), :class => 'thumbnail control-label', :style => 'width:64px;'
+          = image_tag tutor_category.icon_url(:small), :class => 'thumbnail control-label', :style => 'width:32px;'
+          .controls
+            = f.file_field :icon
+            = f.hidden_field :icon_cache
+            %label.checkbox
+              %br/
+              %i.icon-fire
+              = f.check_box :remove_icon
+        .control-group
+          = f.label :parent_id, :class => 'control-label'
+          .controls
+            = f.select :parent_id, TutorCategory.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }
+        .control-group
+          = f.label :permalink, :class => 'control-label'
+          .controls
+            = f.text_field :permalink
+  .row
+    .span12
+      .form-actions
+        = f.submit 'Do It Now!', :class => 'btn btn-success btn-large'

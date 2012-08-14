@@ -1,0 +1,44 @@
+tbody.sortable {
+  td.drag-handle {
+    width: 10px;
+  }
+  td.actions {
+    width: 10px;
+  }
+  td.name {
+    width: 250px;
+  }
+  td.children {
+    width: 680px;
+  }
+  span.badge {
+    margin: 0px 10px 5px 0px;
+    display: inline-block;
+    a {
+      color: #ffffff;
+      font-weight: normal;
+      font-size: larger;
+      text-decoration: none;
+    }
+    span.badge {
+      margin: 0px;
+      background: #ffffff;
+      color: #747474;
+      box-shadow: none;
+      text-shadow: none;
+      -moz-box-shadow: none;
+    }
+  }
+  span.badge:hover {
+    background: #d6d6d6;
+    a {
+      color: #747474;
+      box-shadow: none;
+      text-shadow: none;
+      -moz-box-shadow: none;
+    }
+  }
+}
+
+
+

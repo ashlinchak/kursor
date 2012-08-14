@@ -41,8 +41,17 @@
     %hr/
     .bio= profile.bio
   .span3
+    - if profile.user.postings.present?
+      %p.lead= t(:'seo.users.user_postings')
+      %ul
+        - for posting in profile.user.postings.limit(5)
+          %li= link_to posting.title, posting_path(posting)
+        %li
+          %b
+            = link_to t(:'postings.all_postings') + ' +' + (profile.user.postings.size - 5).to_s, user_postings_path(profile.user)
     - if profile.user.students.present?
       %p.lead= t(:'students.studying_in')
       %ul
-      - for student in profile.user.students
-        %li= link_to student.provider, provider_path(student.provider)
+        - for student in profile.user.students
+          %li= link_to student.provider, provider_path(student.provider)
+

@@ -1,14 +1,50 @@
-.column.span-20.prepend-4
-  =breadcrumbs_for_category category
-  %h2= category.name
-  .description= category.description
-
-  %ul
-    - category.children.each do |child|
-      %li= link_to child.name, child
-
-
-  %h3 Вхождения:
-  %ul
-    - category.categorizings.each do |categorizing|
-      %li= link_to categorizing.provider.name, provider_path(categorizing.provider.permalink)
+.row
+  .span1
+    = image_tag category.icon_url(:standart).to_s, :class => 'rounded_2'
+  .span7
+    %p.lead= category.name
+    %p.silver= category.description
+  .span1
+    = link_to edit_admin_category_path( category ) do
+      %i.icon-pencil
+      Edit
+  .span1
+    - unless category.root?
+      = link_to admin_category_path(category.parent) do
+        %i.icon-chevron-up
+        Up
+    - else
+      = link_to admin_categories_path do
+        %i.icon-chevron-up
+        Up
+  .span1
+    = link_to admin_categories_path do
+      %i.icon-home
+      Home
+  .span1
+    = link_to new_admin_category_path do
+      %i.icon-plus-sign
+      Add
+.row
+  .span12
+    %hr/
+    %table.table.table-striped.table-bordered.table-condensed
+      %tbody.sort-categories.sortable
+        - category.children.each do |category|
+          %tr{ :style => 'width: 940px;', :id => "sorted-item_#{category.id}", :class => 'categorie'}
+            %td.name
+              = image_tag category.icon_url(:standart), :class => 'rounded_2'
+              %b= link_to category.name, admin_category_path(category)
+            %td.children
+              -if category.children.present?
+                %ul
+                  = render :partial => 'category', :collection => category.children
+            %td.drag-handle
+              %i.icon-move
+              %hr/
+              = link_to edit_admin_category_path( category ) do
+                %i.icon-pencil
+    %hr/
+    = link_to new_admin_category_path do
+      %i.icon-plus-sign
+      Add

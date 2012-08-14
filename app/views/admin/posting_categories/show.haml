@@ -1,0 +1,24 @@
+.row
+  .span9
+    %legend
+      = posting_category.name
+
+    %table.table.table-striped.table-bordered.table-condensed
+      %tbody.sort-posting_categories.sortable
+        - posting_category.children.each do |c|
+          %tr{ :style => 'width: 100%;', :id => "sorted-item_#{c.id}", :class => 'posting_categorie'}
+            %td.drag-handle
+              %i.icon-move
+            %td
+              - if c.children.present?
+                = link_to admin_posting_category_path(c) do
+                  = "#{c.name} (#{c.children.size})"
+              - else
+                = c.name
+            %td.actions
+              = link_to edit_admin_posting_category_path(c) do
+                %i.icon-pencil
+    %hr/
+    = link_to admin_posting_categories_path do
+      %icon.icon-chevron-left
+      back

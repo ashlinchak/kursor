@@ -60,6 +60,7 @@ ru:
       recent_providers: "С нами уже"
       top_providers: "ТОП-курсы"
       featured_posting: "Свежие статьи"
+      more_postings: "Еще статьи"
       categories: "Учебные заведения"
       video: "Видео"
       posts: "Статьи"
@@ -311,6 +312,7 @@ ru:
   postings:
     more_in_this_category: "Еще из категории "
     all_articles: "Все материалы"
+    all_postings: "Все статьи"
     title_html: "Статьи"
     user_postings: "Cтатьи автора"
     readmore: "Читать полностью..."

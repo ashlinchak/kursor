@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725131123) do
+ActiveRecord::Schema.define(:version => 20120813155543) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120725131123) do
     t.datetime "updated_at"
     t.integer  "providers_count", :default => 0
     t.string   "icon"
+    t.integer  "position",        :default => 0, :null => false
   end
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
@@ -163,18 +164,6 @@ ActiveRecord::Schema.define(:version => 20120725131123) do
 
   add_index "filials", ["provider_id"], :name => "index_filials_on_provider_id"
 
-  create_table "gritter_notices", :force => true do |t|
-    t.integer  "owner_id",     :null => false
-    t.string   "owner_type",   :null => false
-    t.text     "text",         :null => false
-    t.text     "options",      :null => false
-    t.datetime "delivered_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "gritter_notices", ["owner_id", "delivered_at"], :name => "index_gritter_notices_on_owner_id_and_delivered_at"
-
   create_table "images", :force => true do |t|
     t.string   "src"
     t.string   "title"
@@ -211,6 +200,7 @@ ActiveRecord::Schema.define(:version => 20120725131123) do
     t.integer  "parent_id"
     t.string   "permalink"
     t.boolean  "is_public",   :default => false
+    t.integer  "position",    :default => 0,     :null => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"
@@ -351,6 +341,8 @@ ActiveRecord::Schema.define(:version => 20120725131123) do
     t.integer  "tutors_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",     :default => 0, :null => false
+    t.string   "icon"
   end
 
   add_index "tutor_categories", ["parent_id"], :name => "index_tutor_categories_on_parent_id"

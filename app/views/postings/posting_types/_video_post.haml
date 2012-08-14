@@ -1,7 +1,12 @@
 %hr/
+
 .video
   = UrlToMediaTag.convert(posting.excerpt, :width => 620, :height => 420)
 %hr/
 .body
   = posting.body.html_safe
+- if authorized?
+  = link_to edit_posting_path(posting), :class => 'btn btn-small' do
+    %i.icon-pencil
+    Edit
 
