@@ -27,6 +27,7 @@ gem 'jqcloud-rails' # Jquery TagCloud Plugin
 gem 'ios-checkboxes'
 gem 'inherited_resources'
 gem 'thin'
+gem 'libv8', '~> 3.11.8'
 
 group :assets do
   gem 'sass-rails'
