@@ -73,16 +73,17 @@
         %li
           %a( href = "#documents_info" data-toggle = "tab" )
             = t(:'providers.documents_info')
-      - if provider.location.gmaps?
-        %li
-          %a( href = "#on_map" data-toggle = "tab" id = "mapTab" )
-            %i.icon-map-marker
-            = t(:'providers.on_map')
-        -#%li.dropdown
-          %a.dropdown-toggle{"data-toggle"=>"dropdown", :href=>'#'}
-            = t(:'providers.more_tabs')
-            %b.caret
-          %ul.dropdown-menu
+      - if provider.location
+        - if provider.location.gmaps?
+          %li
+            %a( href = "#on_map" data-toggle = "tab" id = "mapTab" )
+              %i.icon-map-marker
+              = t(:'providers.on_map')
+          -#%li.dropdown
+            %a.dropdown-toggle{"data-toggle"=>"dropdown", :href=>'#'}
+              = t(:'providers.more_tabs')
+              %b.caret
+            %ul.dropdown-menu
 
     #myTabContent.tab-content
       #description.tab-pane.fade.active.in
@@ -97,8 +98,9 @@
         - if !provider.documents_info.blank?
           .documents-info= provider.documents_info.html_safe
       #on_map.tab-pane.fade
-        - if provider.location.gmaps?
-          = gmaps4rails(provider.location.to_gmaps4rails)
+        - if provider.location
+          - if provider.location.gmaps?
+            = gmaps4rails(provider.location.to_gmaps4rails)
     - if current_user
       - if current_user.administrator?
         %hr/
