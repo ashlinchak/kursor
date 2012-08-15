@@ -164,6 +164,7 @@ GEM
       less (~> 2.2.0)
     letter_opener (0.0.2)
       launchy
+    libv8 (3.11.8.3)
     libwebsocket (0.1.5)
       addressable
     mail (2.4.4)
@@ -304,6 +305,7 @@ DEPENDENCIES
   json
   kaminari
   letter_opener
+  libv8 (~> 3.11.8)
   mail
   meta-tags
   mini_magick
