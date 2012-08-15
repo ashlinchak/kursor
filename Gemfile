@@ -11,11 +11,11 @@ gem 'russian'
 gem 'mail'
 gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
-gem 'therubyracer'
+gem 'therubyracer', '0.11.0beta8'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem "ckeditor", "3.7.0.rc3"
+gem 'ckeditor', "3.7.0.rc3"
 gem 'acts_as_commentable_with_threading'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem 'meta-tags', :require => 'meta_tags'
