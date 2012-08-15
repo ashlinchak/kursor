@@ -2,33 +2,31 @@
 #home
   .row
     .span8
-      .slider-container
-        .row
-          .span5
-            .flexslider
-              %ul.slides
-                - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
-                  - unless posting.images.empty?
-                    %li
-                      = image_tag posting.images.last.src_url(:slider).to_s
-                      .flex-caption
-                        %p.title
-                          = link_to posting_path(posting) do
-                            = posting.title
-                        %p.info
-                          Автор:
-                          = posting.user
-                          &nbsp; | &nbsp; Комментарии:
-                          = link_to '', posting_path(posting) + '#disqus_thread'
-                          &nbsp; | &nbsp;
-                          = link_to 'Читать...', posting_path(posting)
-
-          .span3
-            .flexslider-controls
+      .row
+        .span5
+          .flexslider
+            %ul.slides
               - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
-                .item
-                  = link_to '#' do
-                    = posting.title
+                - unless posting.images.empty?
+                  %li
+                    = image_tag posting.images.last.src_url(:slider).to_s
+                    .flex-caption
+                      %p.title
+                        = link_to posting_path(posting) do
+                          = posting.title
+                      %p.info
+                        Автор:
+                        = posting.user
+                        &nbsp; | &nbsp; Комментарии:
+                        = link_to '', posting_path(posting) + '#disqus_thread'
+                        &nbsp; | &nbsp;
+                        = link_to 'Читать...', posting_path(posting)
+
+        .span3
+          - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
+            .item
+              = link_to '#' do
+                = posting.title
 
 
       -#.coda-slider-wrapper
