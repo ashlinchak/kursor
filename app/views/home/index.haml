@@ -54,9 +54,40 @@
                       - unless posting.images.empty?
                         = image_tag posting.images.last.src_url(:medium).to_s
 
+
+      .row
+        .span8
+          .blog-title
+            = t(:'home.titles.blog')
+            = link_to posting_category_path(PostingCategory.blog_cat), :style => 'float:right;' do
+              %i.icon-list.icon-white
+              Смотреть все блоги
+          .blog
+            - PostingCategory.blog_cat.postings.approved.limit(4).each_with_index do |blog_post,index|
+              - if ((index % 2) == 0)
+                .clear
+              = render :partial => 'home/blog_post', :locals => {:blog_post => blog_post}
+
+
+
       .home-postings
         .row
           .span4
+            = link_to posting_category_path(PostingCategory.wiki_cat) do
+              %h2.home-title= t(:'home.titles.wiki')
+            %ul
+              - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(3)
+                %li{:style => 'margin-bottom: 5px;'}
+                  %h5= link_to wiki_post.title, posting_path(wiki_post), :class=>'post_title'
+                  = link_to wiki_post.user, profile_path(wiki_post.user.profile), :class=>'user_link'
+                  |
+                  %i.icon-comment
+                  = link_to '', posting_path(wiki_post) + '#disqus_thread'
+
+
+
+
+          -#.span4
             = link_to posting_categories_path do
               %h2.home-title= t(:'home.titles.posts')
             %ul
@@ -78,32 +109,8 @@
                   |
                   %i.icon-comment
                   = link_to '', posting_path(video_post) + '#disqus_thread'
-        .row
-          .span4
-            = link_to posting_category_path(PostingCategory.wiki_cat) do
-              %h2.home-title= t(:'home.titles.wiki')
-            %ul
-              - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(3)
-                %li{:style => 'margin-bottom: 5px;'}
-                  %h5= link_to wiki_post.title, posting_path(wiki_post), :class=>'post_title'
-                  = link_to wiki_post.user, profile_path(wiki_post.user.profile), :class=>'user_link'
-                  |
-                  %i.icon-comment
-                  = link_to '', posting_path(wiki_post) + '#disqus_thread'
-          .span4
-            = link_to posting_category_path(PostingCategory.blog_cat) do
-              %h2.home-title= t(:'home.titles.blog')
-            %ul
-              - for blog_post in PostingCategory.blog_cat.postings.approved.limit(3)
-                %li{:style => 'margin-bottom: 5px;'}
-                  %h5= link_to blog_post.title, posting_path(blog_post), :class=>'post_title'
-                  - if blog_post.user.visitor? && blog_post.user.profile
-                    = link_to blog_post.user, profile_path(blog_post.user.profile) , :class=>'user_link'
-                  - if blog_post.user.tutor? && blog_post.user.tutor
-                    = link_to blog_post.user, user_postings_path(blog_post.user) , :class=>'user_link'
-                  |
-                  %i.icon-comment
-                  = link_to '', posting_path(blog_post) + '#disqus_thread'
+
+
 
       %h2.home-title= t(:'home.titles.categories')
       .row
