@@ -23,11 +23,10 @@
                         = link_to 'Читать...', posting_path(posting)
 
         .span3
-          - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
-            .item
-              = link_to '#' do
-                = posting.title
-
+          .flexslider-controls
+            - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
+              .item
+                = link_to posting.title, posting_path(posting)
 
       -#.coda-slider-wrapper
         .coda-slider.preload#coda-slider-1
