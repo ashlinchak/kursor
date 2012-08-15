@@ -15,7 +15,8 @@ set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :copy
 set :normalize_asset_timestamps, false
 set :scm, :git
-set :repository,  "/media/Work/Dropbox/rails_sites/Kursor-Online-catalog/.git"
+#set :repository,  "/media/Work/Dropbox/rails_sites/Kursor-Online-catalog/.git"
+set :repository,  ".git"
 
 server "85.25.100.135", :web, :app, :db, :primary => true
 

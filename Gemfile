@@ -11,7 +11,6 @@ gem 'russian'
 gem 'mail'
 gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
-gem 'therubyracer', '0.11.0beta8'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
@@ -27,7 +26,8 @@ gem 'jqcloud-rails' # Jquery TagCloud Plugin
 gem 'ios-checkboxes'
 gem 'inherited_resources'
 gem 'thin'
-gem 'libv8', '~> 3.11.8'
+gem 'therubyracer'#, '0.11.0beta8'
+gem 'libv8'#, '~> 3.11.8'
 
 group :assets do
   gem 'sass-rails'

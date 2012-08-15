@@ -305,7 +305,7 @@ DEPENDENCIES
   json
   kaminari
   letter_opener
-  libv8 (~> 3.11.8)
+  libv8
   mail
   meta-tags
   mini_magick
@@ -318,7 +318,7 @@ DEPENDENCIES
   rvm-capistrano
   sass-rails
   sitemap_generator
-  therubyracer (= 0.11.0beta8)
+  therubyracer
   thin
   twitter-bootstrap-rails!
   uglifier
