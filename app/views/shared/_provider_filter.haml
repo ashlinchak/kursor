@@ -1,14 +1,12 @@
 .breadcrumb
-  = form_for :search, :url => category, :method => :get, :html => { :class => 'form-inline' } do |f|
+  = form_for :filter, :url => category, :method => :get, :html => { :class => 'form-inline' } do |f|
 
-    - if params[:search] && !params[:search_region_id].blank?
-      = select_tag "search_region_id", options_from_collection_for_select(Region.all, :id, :name, :selected => params[:search_region_id])
-    - else
-      = select_tag "search_region_id", options_from_collection_for_select(Region.all, :id, :name),  :prompt => t(:'admin.users.selectors.choose_region')
+    = f.select 'region_id',
+      options_from_collection_for_select(Address::Region.all, :id, :name, filter[:region_id]),
+      :prompt => t(:'admin.users.selectors.choose_region')
 
-    - if params[:search] && !params[:search][:city_id].blank?
-      = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :prompt => '',  :class => 'select-city'
-    - else
-      = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :prompt => t(:'admin.users.selectors.choose_city'), :class => 'select-city'
+    = f.select 'city_id',
+      option_groups_from_collection_for_select(Address::Region.all(:order => "name"), :cities, :name, :id, :name, filter[:city_id]),
+      :prompt => t(:'admin.users.selectors.choose_city'), :class => 'select-city'
 
     = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'

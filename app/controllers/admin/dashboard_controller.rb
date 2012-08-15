@@ -10,7 +10,7 @@ class Admin::DashboardController < ApplicationController
 
   def index
     @admin_users = Administrator.all.size
-    @cities = City.all.size
+    @cities = Address::City.all.size
     @categories = Category.all.size
     @news = News.all.size
     @posts = Posting.all.size
@@ -39,12 +39,12 @@ class Admin::DashboardController < ApplicationController
   helper_method :today_registered_tutors
 
 
-def today_news_created
+  def today_news_created
     @news = News.find(:all, :conditions => [" created_at between ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]).size
   end
   helper_method :today_news_created
 
-def today_postings_created
+  def today_postings_created
     @posting = Posting.find(:all, :conditions => [" created_at between ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]).size
   end
   helper_method :today_postings_created

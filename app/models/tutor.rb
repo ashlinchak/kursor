@@ -5,10 +5,7 @@ class Tutor < ActiveRecord::Base
   has_many :tutor_categorizings, :dependent => :destroy
   has_many :tutor_categories, :through => :tutor_categorizings
 
-  #has_many :filials, :dependent => :destroy
-  #accepts_nested_attributes_for :filials, :reject_if => :all_blank, :allow_destroy => true
-
-  has_one :location, :as => :addressable, :dependent => :destroy
+  has_one :location, :as => :addressable, :class_name => 'Address::Location', :dependent => :destroy
   accepts_nested_attributes_for :location
 
   has_many :contacts, :as => :contactable, :dependent => :destroy

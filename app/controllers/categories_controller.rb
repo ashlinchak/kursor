@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   helper_method :category
 
   def providers
-    @providers ||= unless params[:search]
+    @providers ||= unless filter
       if category.root?
         Kaminari.paginate_array(category.providers.approved).page(params[:page]).per(30)
       else
@@ -36,10 +36,10 @@ class CategoriesController < ApplicationController
       end
     else
       # Providers filtering by City and Region in current category
-      if params[:search][:city_id].blank?
-        filtered_cities = City.where(:region_id => params[:search_region_id])
+      if filter[:city_id].blank?
+        filtered_cities = Address::City.where(:region_id => filter[:region_id])
       end
-      addressables = Location.where(:city_id => filtered_cities || params[:search][:city_id]).map(&:addressable)
+      addressables = Address::Location.where(:city_id => filtered_cities || filter[:city_id]).map(&:addressable)
 
       providers = []
 
@@ -63,4 +63,8 @@ class CategoriesController < ApplicationController
   end
   helper_method :providers
 
+  def filter
+    @filter ||= params[:filter] || {}
+  end
+  helper_method :filter
 end

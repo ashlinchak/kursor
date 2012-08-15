@@ -11,24 +11,24 @@ jQuery ->
 
   # search form
 
-  cities = $('#search_city_id').html()
+  cities = $('#filter_city_id').html()
 
 #  $('#search_city_id').empty()
 
-  $('#search_region_id').change ->
-    region = $('#search_region_id :selected').text()
+  $('#filter_region_id').change ->
+    region = $('#filter_region_id :selected').text()
     escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     options = $(cities).filter("optgroup[label='#{escaped_region}']").html()
     if options
-      $('#search_city_id').html(options)
-      $('#search_city_id').prepend('<option value="">выберите город</option>')
-      $('#search_city_id').parent().show()
+      $('#filter_city_id').html(options)
+      $('#filter_city_id').prepend('<option value="">выберите город</option>')
+      $('#filter_city_id').parent().show()
 
     else
 #      $('#search_city_id').html(cities)
 #      $('#search_city_id').prepend('<option value="">выберите город</option>')
 #      $('#search_city_id').parent().show()
-      $('#search_city_id').empty()
+      $('#filter_city_id').empty()
 
 
 show_categories = (parent) ->
@@ -44,7 +44,7 @@ show_sub_categories = (parent) ->
   if ( $(parent).is('input:checked') )
     $('#sub-children-of-' + category_id).slideDown()
   else
-    $('#sub-children-of-' + category_id).find(':checkbox:checked').prop('checked', false);
+    $('#sub-children-of-' + category_id).find(':checkbox:checked').prop('checked', false)
     $('#sub-children-of-' + category_id).slideUp()
 
 

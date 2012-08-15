@@ -28,7 +28,7 @@ class TutorCategoriesController < ApplicationController
   helper_method :tutor_category
 
   def tutors
-    @tutors ||= unless params[:search]
+    @tutors ||= unless filter
       if tutor_category.root?
         Kaminari.paginate_array(tutor_category.tutors.approved.order("updated_at desc")).page(params[:page]).per(30)
       else
@@ -38,11 +38,11 @@ class TutorCategoriesController < ApplicationController
 
     # Providers sorting  by City and Region in current category
 
-      if  !params[:search][:city_id].blank?
-        addressables = Location.where(:city_id => params[:search][:city_id]).map(&:addressable)
+      if  !filter[:city_id].blank?
+        addressables = Address::Location.where(:city_id => filter[:city_id]).map(&:addressable)
       else
-        filtered_cities = City.where(:region_id => params[:search_region_id])
-        addressables = Location.where(:city_id => filtered_cities).map(&:addressable)
+        filtered_cities = Address::City.where(:region_id => filter[:region_id])
+        addressables = Address::Location.where(:city_id => filtered_cities).map(&:addressable)
       end
 
       tutors = []
@@ -63,5 +63,10 @@ class TutorCategoriesController < ApplicationController
 
   end
   helper_method :tutors
+
+  def filter
+    @filter ||= params[:filter] || {}
+  end
+  helper_method :filter
 
 end

@@ -1,17 +1,9 @@
-class City < ActiveRecord::Base
+module Address
+  class City < ActiveRecord::Base
+    belongs_to :region, :class_name => 'Address::Region'
+    has_many :locations, :class_name => 'Address::Location'
 
-  include Address
+    validates :name, :uniqueness => { :scope => :region_id }
 
-  def self.table_name_prefix
-    'address_'
   end
-  belongs_to :region, :class_name => 'Address::Region'
-  validates :name, :uniqueness => { :scope => :region_id }
-  has_many :locations
-
-
-
-  #def to_s
-    #name
-  #end
 end

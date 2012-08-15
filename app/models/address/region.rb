@@ -1,13 +1,9 @@
-class Region < ActiveRecord::Base
-  include Address
-  def self.table_name_prefix
-    'address_'
+module Address
+  class Region < ActiveRecord::Base
+    has_many :cities, :class_name => 'Address::City'
+    has_many :locations, :through => :cities, :class_name => 'Address::Location'
+
+    validates :name, :uniqueness => true
+
   end
-  #belongs_to :country
-  #belongs_to :region
-  has_many :cities
-  has_many :locations, :through => :cities
-
-  validates :name, :uniqueness => true
-
 end

@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   include SimpleCaptcha::ControllerHelpers
 
   #unless  Rails.env.development?
-    rescue_from ActionController::RedirectBackError,  :with => :render_500
-    rescue_from ActionController::RoutingError,       :with => :render_404
-    rescue_from ActiveRecord::RecordNotFound,         :with => :render_404
+    #rescue_from ActionController::RedirectBackError,  :with => :render_500
+    #rescue_from ActionController::RoutingError,       :with => :render_404
+    #rescue_from ActiveRecord::RecordNotFound,         :with => :render_404
   #end
 
   protected
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def render_404
     flash[:error] = t(:'site.errors.error_404')
     redirect_to root_url
-    end
+  end
 
   def render_500
     flash[:error] = t(:'site.errors.error_500')
@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def guest
-    User.new
+    @guest ||= User.new
   end
   helper_method :guest
 

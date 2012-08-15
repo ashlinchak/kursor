@@ -4,7 +4,7 @@
 
   Administrator.create( :user => admin )
 
- Address::Region.create([
+  Address::Region.create([
     { :name => "Киевская область" },
     { :name => "АР Крым" },
     { :name => "Винницкая область" },
@@ -60,4 +60,11 @@
     {:name => "Симферополь", :region=> Address::Region.find_by_name("АР Крым")},
     {:name => "Севастополь", :region=> Address::Region.find_by_name("АР Крым")},
     {:name => "Ялта", :region=> Address::Region.find_by_name("АР Крым")}
+  ])
+
+  PostingCategory.create!([
+    #{:name => 'Posts', :description => 'Aaa', :permalink => 'posts', :position => 0},
+    {:name => 'Blog',  :description => 'Aaa', :permalink => 'blog', :position => 0},
+    {:name => 'Wiki',  :description => 'Aaa', :permalink => 'wiki', :position => 0},
+    {:name => 'Video', :description => 'Aaa', :permalink => 'video', :position => 0}
   ])

@@ -8,7 +8,7 @@ class Provider < ActiveRecord::Base
   has_many :filials, :dependent => :destroy
   accepts_nested_attributes_for :filials, :reject_if => :all_blank, :allow_destroy => true
 
-  has_one :location, :as => :addressable, :dependent => :destroy
+  has_one :location, :as => :addressable, :class_name => 'Address::Location', :dependent => :destroy
   accepts_nested_attributes_for :location
 
   has_many :contacts, :as => :contactable, :dependent => :destroy
