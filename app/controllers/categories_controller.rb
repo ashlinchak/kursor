@@ -35,41 +35,31 @@ class CategoriesController < ApplicationController
         Kaminari.paginate_array(category.sub_providers.approved).page(params[:page]).per(30)
       end
     else
-
-    # Providers sorting  by City and Region in current category
-
-    if  !params[:search][:city_id].blank?
-      addressables = Location.where(:city_id => params[:search][:city_id]).map(&:addressable)
-    else
-      filtered_cities = City.where(:region_id => params[:search_region_id])
-      addressables = Location.where(:city_id => filtered_cities).map(&:addressable)
-    end
+      # Providers filtering by City and Region in current category
+      if params[:search][:city_id].blank?
+        filtered_cities = City.where(:region_id => params[:search_region_id])
+      end
+      addressables = Location.where(:city_id => filtered_cities || params[:search][:city_id]).map(&:addressable)
 
       providers = []
 
-      addressables.each do |a|
-        if a.is_a? Filial
-          if a.provider.categories.include? category or a.provider.category == category
-             unless a.provider.is_approved == false
-               providers << a.provider
-             end
-          end
-        elsif a.is_a? Provider
-          if a.categories.include? category or a.category == category
-            unless a.is_approved == false
-              providers << a
-            end
+      addressables.each do |addressable|
+        provider = if addressable.is_a? Filial
+          addressable.provider
+        elsif addressable.is_a? Provider
+          addressable
+        end
+        if provider.categories.include? category or provider.category == category
+          if provider.is_approved
+            providers << provider
           end
         end
       end
 
-      if providers.size > 1
       providers.uniq!
-      end
 
       Kaminari.paginate_array(providers).page(params[:page]).per(30)
-      end
-
+    end
   end
   helper_method :providers
 
