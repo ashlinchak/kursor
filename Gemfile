@@ -13,7 +13,7 @@ gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'ckeditor', "3.7.0.rc3"
 gem 'acts_as_commentable_with_threading'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
@@ -26,8 +26,8 @@ gem 'jqcloud-rails' # Jquery TagCloud Plugin
 gem 'ios-checkboxes'
 gem 'inherited_resources'
 gem 'thin'
-gem 'therubyracer'#, '0.11.0beta8'
-gem 'libv8'#, '~> 3.11.8'
+#gem 'therubyracer'#, '0.11.0beta8'
+#gem 'libv8'#, '~> 3.11.8'
 
 group :assets do
   gem 'sass-rails'
