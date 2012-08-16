@@ -2,12 +2,12 @@
   %label.control-label
     = t(:'visitor.edit_profile.location.region')
   .controls
-    = select_tag "region_id", options_from_collection_for_select(Region.all, :id, :name), :prompt => "-"
+    = select_tag "region_id", options_from_collection_for_select(Address::Region.all, :id, :name), :prompt => "-"
 .control-group
   %label.control-label
     = t(:'visitor.edit_profile.location.city')
   .controls
-    = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
+    = f.grouped_collection_select :city_id, Address::Region.all(:order => "name"), :cities, :name, :id, :name, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
 
 .control-group
   %label.control-label

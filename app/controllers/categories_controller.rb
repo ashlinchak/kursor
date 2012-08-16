@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
 
       providers = []
 
-      addressables.each do |addressable|
+      addressables.compact.each do |addressable|
         provider = if addressable.is_a? Filial
           addressable.provider
         elsif addressable.is_a? Provider

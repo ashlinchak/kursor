@@ -1,7 +1,6 @@
 module ApplicationHelper
   def markdown(text)
-    options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
-    #Redcarpet.new(text, *options).to_html.html_safe
+    #options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
         :autolink => true, :space_after_headers => true)
     markdown.render(text).html_safe
@@ -25,7 +24,7 @@ module ApplicationHelper
 
   def format_location location
     result = []
-    result << "#{location.city}" if location.city.present?
+    result << "#{location.city.name}" if location.city.present?
     result << "#{location.street}" if location.street.present?
     result << "#{location.building}" if location.building.present?
     result << t(:'providers.edit.location.ap_short') + " #{location.apartment}" if location.apartment.present?
@@ -61,8 +60,9 @@ module ApplicationHelper
       city = if location.custom_city.present?
         location.custom_city.strip
       elsif location.city.present?
-        location.city
+        location.city.name
       end
+
       if city
         address << city
       end
@@ -94,8 +94,4 @@ module ApplicationHelper
   def commas_to_tags tags_list
     tags_list.join(", ")
   end
-
-
-
-
 end
