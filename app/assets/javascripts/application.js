@@ -65,7 +65,7 @@ $(document).ready(function(){
             direction: "horizontal",        //String: Select the sliding direction, "horizontal" or "vertical"
             reverse: false,                 //{NEW} Boolean: Reverse the animation direction
             animationLoop: true,             //Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
-            smoothHeight: true,            //{NEW} Boolean: Allow height of the slider to animate smoothly in horizontal mode
+            smoothHeight: false,            //{NEW} Boolean: Allow height of the slider to animate smoothly in horizontal mode
             startAt: 0,                     //Integer: The slide that the slider should start on. Array notation (0 = first slide)
             slideshow: true,                //Boolean: Animate slider automatically
             slideshowSpeed: 10000,           //Integer: Set the speed of the slideshow cycling, in milliseconds

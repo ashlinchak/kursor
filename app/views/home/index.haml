@@ -21,12 +21,16 @@
                         = link_to '', posting_path(posting) + '#disqus_thread'
                         &nbsp; | &nbsp;
                         = link_to 'Читать...', posting_path(posting)
-
         .span3
-          .flexslider-controls
-            - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
-              .item
-                = link_to posting.title, posting_path(posting)
+          .last-postings-block
+            .last-postings-title
+              = t(:'home.titles.featured_posting')
+              = link_to posting_category_path(PostingCategory.post_cat), :style => 'float:right;' do
+                %i.icon-file.icon-white
+                = t(:'home.titles.all_postings')
+            %ul.last-postings
+              - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(5) do
+                %li= link_to posting.title, posting_path(posting)
 
       -#.coda-slider-wrapper
         .coda-slider.preload#coda-slider-1
@@ -50,66 +54,72 @@
                     .mosaic-backdrop
                       - unless posting.images.empty?
                         = image_tag posting.images.last.src_url(:medium).to_s
-
-
       .row
         .span8
           .blog-title
             = t(:'home.titles.blog')
             = link_to posting_category_path(PostingCategory.blog_cat), :style => 'float:right;' do
               %i.icon-list.icon-white
-              Смотреть все блоги
+              = t(:'home.titles.all_blog_posts')
           .blog
             - PostingCategory.blog_cat.postings.approved.limit(4).each_with_index do |blog_post,index|
               - if ((index % 2) == 0)
                 .clear
               = render :partial => 'home/blog_post', :locals => {:blog_post => blog_post}
 
+      .row
+        .span8
+          .wiki-block
+            .wiki-title
+              %h3= t(:'home.titles.wiki')
+            - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(4)
+              .wiki-post
+                = link_to posting_path(wiki_post) do
+                  = image_tag wiki_post.images.last.src_url(:small), :alt => wiki_post
+                %p= link_to wiki_post.title.truncate(45), posting_path(wiki_post), :title => wiki_post
 
+            = link_to posting_category_path(PostingCategory.wiki_cat), :class => 'all-wiki' do
+              %i.icon-circle-arrow-right.icon-white
 
-      .home-postings
-        .row
-          .span4
-            = link_to posting_category_path(PostingCategory.wiki_cat) do
-              %h2.home-title= t(:'home.titles.wiki')
-            %ul
-              - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(3)
-                %li{:style => 'margin-bottom: 5px;'}
-                  %h5= link_to wiki_post.title, posting_path(wiki_post), :class=>'post_title'
-                  = link_to wiki_post.user, profile_path(wiki_post.user.profile), :class=>'user_link'
-                  |
-                  %i.icon-comment
-                  = link_to '', posting_path(wiki_post) + '#disqus_thread'
+      .row
+        .span8
+          .video-block
+            .video-title
+              %h3= t(:'home.titles.video')
+            - for video_post in PostingCategory.video_cat.postings.approved.limit(4)
+              .video-post
+                = link_to posting_path(video_post) do
+                  = image_tag video_post.images.last.src_url(:small), :alt => video_post
+                %p= link_to video_post.title.truncate(45), posting_path(video_post), :title => video_post
 
+            = link_to posting_category_path(PostingCategory.video_cat), :class => 'all-video' do
+              %i.icon-circle-arrow-right.icon-white
 
+      -#.span4
+        = link_to posting_category_path(PostingCategory.wiki_cat) do
+          %h2.home-title= t(:'home.titles.wiki')
+        %ul
+          - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(3)
+            %li{:style => 'margin-bottom: 5px;'}
+              %h5= link_to wiki_post.title, posting_path(wiki_post), :class=>'post_title'
+              = link_to wiki_post.user, profile_path(wiki_post.user.profile), :class=>'user_link'
+              |
+              %i.icon-comment
+              = link_to '', posting_path(wiki_post) + '#disqus_thread'
 
+      -#.span4
+        = link_to posting_category_path(PostingCategory.video_cat) do
+          %h2.home-title= t(:'home.titles.video')
+        %ul
+          - for video_post in PostingCategory.video_cat.postings.approved.limit(3)
+            %li{:style => 'margin-bottom: 5px;'}
+              %h5= link_to video_post.title, posting_path(video_post), :class=>'post_title'
+              = link_to video_post.user, profile_path(video_post.user.profile) , :class=>'user_link'
+              |
+              %i.icon-comment
+              = link_to '', posting_path(video_post) + '#disqus_thread'
 
-          -#.span4
-            = link_to posting_categories_path do
-              %h2.home-title= t(:'home.titles.posts')
-            %ul
-              - for post in PostingCategory.post_cat.postings.approved.limit(3)
-                %li{:style => 'margin-bottom: 5px;'}
-                  %h5= link_to post.title, posting_path(post), :class=>'post_title'
-                  = link_to post.user, profile_path(post.user.profile) , :class=>'user_link'
-                  |
-                  %i.icon-comment
-                  = link_to '', posting_path(post) + '#disqus_thread'
-          .span4
-            = link_to posting_category_path(PostingCategory.video_cat) do
-              %h2.home-title= t(:'home.titles.video')
-            %ul
-              - for video_post in PostingCategory.video_cat.postings.approved.limit(3)
-                %li{:style => 'margin-bottom: 5px;'}
-                  %h5= link_to video_post.title, posting_path(video_post), :class=>'post_title'
-                  = link_to video_post.user, profile_path(video_post.user.profile) , :class=>'user_link'
-                  |
-                  %i.icon-comment
-                  = link_to '', posting_path(video_post) + '#disqus_thread'
-
-
-
-      %h2.home-title= t(:'home.titles.categories')
+      -#%h2.home-title= t(:'home.titles.categories')
       .row
         - root_categories.each_with_index do |category, index|
           - if ((index % 2) == 0) && index > 0
