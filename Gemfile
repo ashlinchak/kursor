@@ -14,7 +14,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
 gem 'twitter-bootstrap-rails'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'ckeditor', "3.7.0.rc3"
+gem 'ckeditor', "3.7.1"
 gem 'acts_as_commentable_with_threading'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem 'meta-tags', :require => 'meta_tags'
