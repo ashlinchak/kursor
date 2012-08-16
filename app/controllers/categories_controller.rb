@@ -43,20 +43,21 @@ class CategoriesController < ApplicationController
 
       providers = []
 
-      addressables.compact.each do |addressable|
-        provider = if addressable.is_a? Filial
-          addressable.provider
-        elsif addressable.is_a? Provider
-          addressable
-        end
-        if provider.categories.include? category or provider.category == category
-          if provider.is_approved
-            providers << provider
+      addressables.each do |addressable|
+        if provider = if addressable.is_a? Filial
+            addressable.provider
+          elsif addressable.is_a? Provider
+            addressable
+          end
+          if provider.categories.include? category or provider.category == category
+            if provider.is_approved
+              providers << provider
+            end
           end
         end
       end
 
-      providers.uniq!
+      providers = providers.compact.uniq
 
       Kaminari.paginate_array(providers).page(params[:page]).per(30)
     end
