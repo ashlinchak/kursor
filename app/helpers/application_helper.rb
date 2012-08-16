@@ -62,8 +62,9 @@ module ApplicationHelper
       elsif location.city.present?
         location.city.name
       end
+
       if city
-        address << city.name
+        address << city
       end
 
       if location.street.present?
