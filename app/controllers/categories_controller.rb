@@ -56,7 +56,7 @@ class CategoriesController < ApplicationController
         end
       end
 
-      providers.uniq!
+      providers = providers.compact.uniq
 
       Kaminari.paginate_array(providers).page(params[:page]).per(30)
     end
