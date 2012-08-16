@@ -60,12 +60,14 @@ ru:
       recent_providers: "С нами уже"
       top_providers: "ТОП-курсы"
       featured_posting: "Свежие статьи"
+      all_postings: "Все статьи"
       more_postings: "Еще статьи"
       categories: "Учебные заведения"
       video: "Видео"
       posts: "Статьи"
       wiki: "Вики"
       blog: "Последние записи в блогах"
+      all_blog_posts: "Все блоги"
 
     news_slider:
       comments: "Комментарии:"
