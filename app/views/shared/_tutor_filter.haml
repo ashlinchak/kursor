@@ -1,12 +1,21 @@
 = form_for :search, :url => tutor_category, :method => :get, :html => { :class => 'form-inline' } do |f|
-  = select_tag "search_region_id", options_from_collection_for_select(Region.all, :id, :name), :prompt => t(:'admin.users.selectors.choose_region')
-  = f.grouped_collection_select :city_id, Region.all(:order => "name"), :cities, :name, :id, :name, :class => 'select-city', :prompt => t(:'admin.users.selectors.choose_city')
+
+  = select_tag "search_region_id",
+    options_from_collection_for_select(Address::Region.all, :id, :name),
+    :prompt => t(:'admin.users.selectors.choose_region')
+
+  = f.grouped_collection_select :city_id,
+    Address::Region.all(:order => "name"), :cities, :name, :id, :name,
+    :class => 'select-city',
+    :prompt => t(:'admin.users.selectors.choose_city')
+
   = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'
+
 - if params[:search]
   %p
     Показаны результаты для
     %span.region-results{ :style => 'color: #005C99;' }
-      = Region.find(params[:search_region_id]).name unless params[:search_region_id].blank?
-      = '/ ' + City.find(params[:search][:city_id]).name unless params[:search][:city_id].blank?
+      = Address::Region.find(params[:search_region_id]).name unless params[:search_region_id].blank?
+      = '/ ' + Address::City.find(params[:search][:city_id]).name unless params[:search][:city_id].blank?
     в категории
     = link_to tutor_category.name, tutor_category_path(tutor_category)
