@@ -1,16 +1,3 @@
--#= form_for :search, :url => tutor_category, :method => :get, :html => { :class => 'form-inline' } do |f|
-
-  = select_tag "search_region_id",
-    options_from_collection_for_select(Address::Region.all, :id, :name),
-    :prompt => t(:'admin.users.selectors.choose_region')
-
-  = f.grouped_collection_select :city_id,
-    Address::Region.all(:order => "name"), :cities, :name, :id, :name,
-    :class => 'select-city',
-    :prompt => t(:'admin.users.selectors.choose_city')
-
-  = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'
-
 .breadcrumb
   = form_for :filter, :url => tutor_category, :method => :get, :html => { :class => 'form-inline' } do |f|
 
@@ -20,19 +7,10 @@
 
     = f.select 'city_id',
       option_groups_from_collection_for_select(Address::Region.all(:order => "name"), :cities, :name, :id, :name, filter[:city_id]),
-      :prompt => t(:'admin.users.selectors.choose_city'), :class => 'select-city'
+      :prompt => t(:'admin.users.selectors.choose_city'),
+      :class => 'select-city'
 
     = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'
-    = t(:'site.or')
-    = link_to t(:'site.filter.reset'), tutor_category
-
-
-
-- if params[:search]
-  %p
-    Показаны результаты для
-    %span.region-results{ :style => 'color: #005C99;' }
-      = Address::Region.find(params[:search_region_id]).name unless params[:search_region_id].blank?
-      = '/ ' + Address::City.find(params[:search][:city_id]).name unless params[:search][:city_id].blank?
-    в категории
-    = link_to tutor_category.name, tutor_category_path(tutor_category)
+    - if params[:filter]
+      -#= t(:'filter.or')
+      = link_to t(:'filter.reset'), tutor_category, :class => 'btn btn-small btn-mini'

@@ -10,5 +10,6 @@
       :prompt => t(:'admin.users.selectors.choose_city'), :class => 'select-city'
 
     = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'
-    = t(:'site.or')
-    = link_to t(:'site.filter.reset'), category
+    - if params[:filter]
+      -#= t(:'filter.or')
+      = link_to t(:'filter.reset'), category, :class => 'btn btn-small btn-mini'

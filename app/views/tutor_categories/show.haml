@@ -33,7 +33,7 @@
               = render :partial => 'tutor_categories/tutor', :locals => { :tutor => tutor }
           .page_navigation.clear= paginate tutors
         - else
-          - if params[:search]
+          - if params[:filter]
             .alert
               По Вашему запросу ничего не найдено.
           - else

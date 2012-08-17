@@ -35,7 +35,7 @@
               = render :partial => 'categories/provider', :locals => { :provider => provider }
           .page_navigation.clear= paginate providers
         - else
-          - if params[:search]
+          - if params[:filter]
             .alert
               По Вашему запросу ничего не найдено.
           - else
