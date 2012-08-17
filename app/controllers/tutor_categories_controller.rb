@@ -28,7 +28,7 @@ class TutorCategoriesController < ApplicationController
   helper_method :tutor_category
 
   def tutors
-    @tutors ||= unless filter
+    @tutors ||= if !filter || filter[:region_id].blank?
       if tutor_category.root?
         Kaminari.paginate_array(tutor_category.tutors.approved.order("updated_at desc")).page(params[:page]).per(30)
       else
