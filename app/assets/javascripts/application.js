@@ -184,19 +184,6 @@ $(document).ready(function(){
         opacity : 0.8
       });
 
-  // News Tabs Slider
-    $('#coda-slider-1').codaSlider({
-        dynamicArrows: false,
-        autoSlide: true,
-        dynamicTabsAlign: 'center',
-        dynamicTabsPosition: 'bottom',
-        slideEaseDuration: 2500
-    });
-
-
-  $('html').removeClass('no-js');
-
-
   //$('.provider-categories select').bind('click change keyup blur', function(){
     //show_categories(this);
   //});
