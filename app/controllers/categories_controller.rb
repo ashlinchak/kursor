@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   helper_method :category
 
   def providers
-    @providers ||= unless filter
+    @providers ||= if ( !filter || filter[:region_id].blank? )
       if category.root?
         Kaminari.paginate_array(category.providers.approved).page(params[:page]).per(30)
       else
@@ -45,15 +45,15 @@ class CategoriesController < ApplicationController
 
       addressables.each do |addressable|
         if provider = if addressable.is_a? Filial
-            addressable.provider
-          elsif addressable.is_a? Provider
-            addressable
+          addressable.provider
+        elsif addressable.is_a? Provider
+          addressable
+        end
+        if provider.categories.include? category or provider.category == category
+          if provider.is_approved
+            providers << provider
           end
-          if provider.categories.include? category or provider.category == category
-            if provider.is_approved
-              providers << provider
-            end
-          end
+        end
         end
       end
 
