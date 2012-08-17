@@ -36,7 +36,7 @@
       %h4= t(:'site.footer.tutors')
       %p
         - for tc in TutorCategory.roots
-          = link_to tc, posting_category_path(tc)
+          = link_to tc, tutor_category_path(tc)
           - unless tc == TutorCategory.roots.last
             |
       %h4= t(:'site.footer.articles')
