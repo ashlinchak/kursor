@@ -49,7 +49,11 @@ class CategoriesController < ApplicationController
         elsif addressable.is_a? Provider
           addressable
         end
-        if provider && (provider.categories.include? category || provider.category == category)
+        if provider &&
+          (
+           ( provider.category == category ) ||
+           provider.categories.include?(category)
+          )
           if provider.is_approved
             providers << provider
           end
