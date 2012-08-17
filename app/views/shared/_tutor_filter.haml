@@ -1,4 +1,4 @@
-= form_for :search, :url => tutor_category, :method => :get, :html => { :class => 'form-inline' } do |f|
+-#= form_for :search, :url => tutor_category, :method => :get, :html => { :class => 'form-inline' } do |f|
 
   = select_tag "search_region_id",
     options_from_collection_for_select(Address::Region.all, :id, :name),
@@ -10,6 +10,23 @@
     :prompt => t(:'admin.users.selectors.choose_city')
 
   = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'
+
+.breadcrumb
+  = form_for :filter, :url => tutor_category, :method => :get, :html => { :class => 'form-inline' } do |f|
+
+    = f.select 'region_id',
+      options_from_collection_for_select(Address::Region.all, :id, :name, filter[:region_id]),
+      :prompt => t(:'admin.users.selectors.choose_region')
+
+    = f.select 'city_id',
+      option_groups_from_collection_for_select(Address::Region.all(:order => "name"), :cities, :name, :id, :name, filter[:city_id]),
+      :prompt => t(:'admin.users.selectors.choose_city'), :class => 'select-city'
+
+    = f.submit t(:'site.sorting.sort_action'), "data-content" => "Процесс сортировки может занять до 10 секунд. Дождитесь, пожалуйста, загрузки результатов", "data-original-title" => "Внимание!", :class => 'btn btn-success', :id => 'popover'
+    = t(:'site.or')
+    = link_to t(:'site.filter.reset'), tutor_category
+
+
 
 - if params[:search]
   %p

@@ -44,7 +44,6 @@
               - if ((index % 2) == 0)
                 .clear
               = render :partial => 'home/blog_post', :locals => {:blog_post => blog_post}
-
       .row
         .span8
           .wiki-block
@@ -58,7 +57,6 @@
 
             = link_to posting_category_path(PostingCategory.wiki_cat), :class => 'all-wiki' do
               %i.icon-circle-arrow-right.icon-white
-
       .row
         .span8
           .video-block
