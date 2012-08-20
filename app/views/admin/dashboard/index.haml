@@ -85,6 +85,11 @@
           %td= today_postings_created
 
     %p.lead Export emails database
-    = link_to export_admin_providers_path(:format => :csv), :class => 'btn' do
-      %i.icon-download-alt
-      Download providers CSV file
+    %p
+      = link_to export_admin_providers_path(:format => :csv), :class => 'btn' do
+        %i.icon-download-alt
+        Download providers CSV file
+    %p
+      = link_to export_admin_tutors_path(:format => :csv), :class => 'btn' do
+        %i.icon-download-alt
+        Download tutors CSV file
