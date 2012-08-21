@@ -1,0 +1,43 @@
+= form_for [event_parent, event], :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :title, :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'text_field'
+  .control-group
+    = f.label :description, :class => 'control-label'
+    .controls
+      = f.text_area :description, :class => 'text_area'
+  .control-group
+    = f.label :eventable_id, :class => 'control-label'
+    .controls
+      = f.number_field :eventable_id, :class => 'number_field'
+  .control-group
+    = f.label :eventable_type, :class => 'control-label'
+    .controls
+      = f.text_field :eventable_type, :class => 'text_field'
+  .control-group
+    = f.label :location_id, :class => 'control-label'
+    .controls
+      = f.number_field :location_id, :class => 'number_field'
+  .control-group
+    = f.label :start_datetime, :class => 'control-label'
+    .controls
+      = f.datetime_select :start_datetime, :class => 'datetime_select'
+  .control-group
+    = f.label :end_datetime, :class => 'control-label'
+    .controls
+      = f.datetime_select :end_datetime, :class => 'datetime_select'
+  .control-group
+    = f.label :min_price, :class => 'control-label'
+    .controls
+      = f.number_field :min_price, :class => 'number_field'
+  .control-group
+    = f.label :max_price, :class => 'control-label'
+    .controls
+      = f.number_field :max_price, :class => 'number_field'
+  .control-group
+    = f.label :teacher, :class => 'control-label'
+    .controls
+      = f.text_field :teacher, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'

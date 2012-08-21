@@ -1,4 +1,6 @@
 class Tutor < ActiveRecord::Base
+
+
   belongs_to :tutor_category
   belongs_to :user
 
@@ -10,6 +12,9 @@ class Tutor < ActiveRecord::Base
 
   has_many :contacts, :as => :contactable, :dependent => :destroy
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |c| c[:value].blank? || c[:contact_type_id].blank? }, :allow_destroy => true
+
+  has_many :events, :as => :eventable, :dependent => :destroy
+  accepts_nested_attributes_for :events, :allow_destroy => true
 
   has_many :tutor_custom_field_bindings, :dependent => :destroy
   has_many :tutor_custom_fields, :through => :tutor_custom_field_bindings

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815152957) do
+ActiveRecord::Schema.define(:version => 20120821114111) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -156,6 +156,21 @@ ActiveRecord::Schema.define(:version => 20120815152957) do
     t.integer  "position",   :default => 0, :null => false
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "eventable_id"
+    t.string   "eventable_type"
+    t.integer  "location_id"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
+    t.integer  "min_price"
+    t.integer  "max_price"
+    t.string   "teacher"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "filials", :force => true do |t|
     t.integer  "provider_id"
     t.datetime "created_at"
@@ -200,7 +215,8 @@ ActiveRecord::Schema.define(:version => 20120815152957) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.string   "permalink"
-    t.integer  "position",    :default => 0, :null => false
+    t.boolean  "is_public",   :default => false
+    t.integer  "position",    :default => 0,     :null => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"
