@@ -39,9 +39,13 @@ class CategoriesController < ApplicationController
       if filter[:city_id].blank?
         filtered_cities = Address::City.where(:region_id => filter[:region_id])
       end
-      addressables = Address::Location.where(:city_id => filtered_cities || filter[:city_id]).map(&:addressable).compact
+      addressables = Address::Location.where(
+        :city_id => (filtered_cities || filter[:city_id]),
+        :addressable_type => ['Filial', 'Provider']
+      ).map(&:addressable).compact
 
       providers = []
+      providers_in_category = category.root? ? category.providers.approved : category.sub_providers.approved
 
       addressables.each do |addressable|
         provider = if addressable.is_a? Filial
@@ -50,14 +54,13 @@ class CategoriesController < ApplicationController
           addressable
         end
         if provider &&
+          provider.is_approved &&
           (
            ( category == provider.category ) ||
            # make less request to db by comparing from category
-           category.sub_providers.approved.include?(provider)
+           providers_in_category.include?(provider)
           )
-          if provider.is_approved
-            providers << provider
-          end
+          providers << provider
         end
       end
 
