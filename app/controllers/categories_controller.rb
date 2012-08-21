@@ -51,8 +51,9 @@ class CategoriesController < ApplicationController
         end
         if provider &&
           (
-           ( provider.category == category ) ||
-           provider.categories.include?(category)
+           ( category == provider.category ) ||
+           # make less request to db by comparing from category
+           category.sub_providers.approved.include?(provider)
           )
           if provider.is_approved
             providers << provider
