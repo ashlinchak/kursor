@@ -156,6 +156,21 @@ ActiveRecord::Schema.define(:version => 20120821125816) do
     t.integer  "position",   :default => 0, :null => false
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "eventable_id"
+    t.string   "eventable_type"
+    t.integer  "location_id"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
+    t.integer  "min_price"
+    t.integer  "max_price"
+    t.string   "teacher"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "filials", :force => true do |t|
     t.integer  "provider_id"
     t.datetime "created_at"
