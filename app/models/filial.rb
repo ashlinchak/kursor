@@ -10,4 +10,7 @@ class Filial < ActiveRecord::Base
   def location= attrs
     self.location_attributes= attrs
   end
+  def address_location= attrs
+    self.location_attributes= attrs
+  end
 end
