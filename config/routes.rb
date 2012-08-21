@@ -121,6 +121,7 @@ Kursor::Application.routes.draw do
       post 'sort', :on => :collection
     end
     resources :cities
+    resources :promotions
   end
 
 

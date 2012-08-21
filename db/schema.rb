@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815152957) do
+ActiveRecord::Schema.define(:version => 20120821125816) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -239,6 +239,20 @@ ActiveRecord::Schema.define(:version => 20120815152957) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "promotions", :force => true do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "promotionable_id"
+    t.string   "promotionable_type"
+    t.boolean  "is_featured"
+    t.boolean  "is_vip"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "promotions", ["promotionable_id"], :name => "index_promotions_on_promotionable_id"
+  add_index "promotions", ["promotionable_type"], :name => "index_promotions_on_promotionable_type"
 
   create_table "providers", :force => true do |t|
     t.string   "name"
