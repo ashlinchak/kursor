@@ -1,44 +1,46 @@
 class EventsController < ApplicationController
 
- inherit_resources
+  inherit_resources
 
- before_filter :require_authentication, :except => [:index, :show]
+  belongs_to :provider, :tutor, :polymorphic => true
 
- before_filter :require_owner, :only => [ :edit, :update, :destroy ]
+  before_filter :require_authentication, :except => [:index, :show]
+  before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
- def events
-   @events = Event.all
- end
- helper_method :events
+private
 
- def event
-   resource
- end
- helper_method :event
+  def events
+    collection
+  end
+  helper_method :events
 
- def provider
-   @provider ||= Provider.find params[:provider_id] if params[:provider_id]
- end
- helper_method :provider
+  def event
+    resource
+  end
+  helper_method :event
 
- def tutor
-   @tutor ||= Tutor.find params[:tutor_id] if params[:tutor_id]
- end
- helper_method :tutor
+  #def provider
+    #@provider ||= Provider.find params[:provider_id] if params[:provider_id]
+  #end
+  #helper_method :provider
 
- def event_parent
-   parent
- end
- helper_method :event_parent
+  #def tutor
+    #@tutor ||= Tutor.find params[:tutor_id] if params[:tutor_id]
+  #end
+  #helper_method :tutor
 
+  def event_parent
+    parent
+  end
+  helper_method :event_parent
 
- def require_owner
-   unless current_user.administrator?
-     unless current_user == event.user
-       flash[:error] = t('site.errors.access_denied')
-       redirect_to root_path
-     end
-   end
- end
+  def require_owner
+    unless current_user.administrator?
+      unless current_user == event.user
+        flash[:error] = t('site.errors.access_denied')
+        redirect_to root_path
+      end
+    end
+  end
 
 end
