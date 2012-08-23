@@ -1,0 +1,8 @@
+%li
+  = link_to promotion.promotionable, [:edit, :admin, promotion]
+  = l(promotion.start_date, format: :short)
+  \&mdash;
+  = l(promotion.end_date, format: :short)
+  = link_to [:admin, promotion] do
+    %i.icon.icon-trash
+

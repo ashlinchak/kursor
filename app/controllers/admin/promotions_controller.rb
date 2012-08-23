@@ -1,11 +1,18 @@
 class Admin::PromotionsController < Admin::DashboardController
   inherit_resources
-  #defaults :resource_class => 'Promotion'#, :collection_name => 'cities', :instance_name => 'city'
+
+  def create
+    create!{ [:admin, :promotions] }
+  end
+
+  def update
+    update!{ [:admin, :promotions] }
+  end
 
 protected
 
   def promotions
-    collection
+    collection.by_position
   end
   helper_method :promotions
 

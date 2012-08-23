@@ -16,3 +16,5 @@ jQuery ->
   $(".tooltip").tooltip()
 
   $('.nav-tabs').button()
+
+  #$('.typeahead').typeahead()

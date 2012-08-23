@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821125816) do
+ActiveRecord::Schema.define(:version => 20120822181555) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -263,8 +263,9 @@ ActiveRecord::Schema.define(:version => 20120821125816) do
     t.string   "promotionable_type"
     t.boolean  "is_featured"
     t.boolean  "is_vip"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "position",           :default => 0, :null => false
   end
 
   add_index "promotions", ["promotionable_id"], :name => "index_promotions_on_promotionable_id"
