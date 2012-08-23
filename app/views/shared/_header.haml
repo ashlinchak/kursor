@@ -1,0 +1,17 @@
+.row
+  .span5
+    %h1#logo.ir
+      = link_to 'КУРСОР - образовательный портал', root_url
+    %form.form-search{ :action => '/search', :method => :get, :style => 'padding: 0px 5px 5px 20px; margin: 0px 0px 10px 0px; width: 288px;'}
+      = text_field_tag 'q', params[:q], :placeholder => 'название школы, курсов и т.д.', :style => 'width:232px;', :class => 'search-query', :id => 'home-search-typehead'
+      = button_tag :class => 'btn' do
+        %i.icon-search
+  .span7
+    .login-bar
+      = render :partial => 'shared/login_bar'
+    .banner
+      = link_to 'http://www.facebook.com/pages/Kursororgua/300466546696921', :target => '_blank' do
+        = image_tag 'facebook-header.jpg'
+.row
+  .span12
+    = render :partial => 'shared/top_nav'

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 
   inherit_resources
 
-  belongs_to :provider, :tutor, :polymorphic => true
+  belongs_to :provider, :tutor, :polymorphic => true, :optional => true
 
   before_filter :require_authentication, :except => [:index, :show]
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]

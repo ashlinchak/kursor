@@ -24,10 +24,9 @@ gem 'gmaps4rails'
 gem 'url_to_media_tag'
 gem 'jqcloud-rails' # Jquery TagCloud Plugin
 gem 'ios-checkboxes'
+
 gem 'inherited_resources'
 gem 'thin'
-#gem 'therubyracer'#, '0.11.0beta8'
-#gem 'libv8'#, '~> 3.11.8'
 
 group :assets do
   gem 'sass-rails'

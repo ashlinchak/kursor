@@ -1,33 +1,35 @@
-- if provider
-  %h1= provider.name + ' events'
-  %br/
-  %p= link_to 'new', [:new, provider, :event], :class => 'btn'
-- elsif tutor
-  %h1= tutor.name + ' events'
-  %br/
-  %p= link_to 'new', [:new, tutor, :event], :class => 'btn'
+.row
+  .span8
 
+    -#- if provider
+      %h1= provider.name + ' events'
+      %br/
+      %p= link_to 'new', [:new, provider, :event], :class => 'btn'
+    -#- elsif tutor
+    %p= link_to 'new', [:new, event_parent, :event], :class => 'btn'
 
+    %table.table.table-striped
+      %thead
+        %tr
+          %th title
+          %th datetime
+          %th Price
+          %th Company
+          %th
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td= event.title
+            %td
+              = l event.start_datetime, :format => :long
+              %hr/
+              = l event.end_datetime, :format => :long
+            %td= 'From ' + event.min_price.to_s + ' to ' + event.max_price.to_s
+            %td
+              = event.eventable
+            %td
+              - if parent? || authorized?
+                = link_to t('.edit', :default => t("helpers.links.edit")), [:edit, event.eventable, event], :class => 'btn btn-mini'
+                = link_to t('.destroy', :default => t("helpers.links.destroy")), [event.eventable, event], :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th title
-      %th start_datetime
-      %th end_datetime
-      %th Price
-      %th teacher
-      %th
-  %tbody
-    - @events.each do |event|
-      %tr
-        %td= event.title
-        %td= event.start_datetime
-        %td= event.end_datetime
-        %td= event.min_price.to_s  event.max_price.to_s
-        %td= event.teacher
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), [:edit, event.eventable, event], :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), [event.eventable, event], :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
-
-
+  .span4

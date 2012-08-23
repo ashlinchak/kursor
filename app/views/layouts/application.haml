@@ -36,19 +36,9 @@
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 %body
-
   #page
     %header.container
-      %h1#logo.ir
-        = link_to 'КУРСОР - образовательный портал', root_url
-      %form.form-search{ :action => '/search', :method => :get, :style => 'padding: 5px 5px 5px 20px; margin: 50px 0px 0px 0px; float: right;'}
-        = text_field_tag 'q', params[:q], :placeholder => 'название школы, курсов и т.д.', :class => 'input-large search-query', :id => 'home-search-typehead'
-        = button_tag 'Поиск', :class => 'btn'
-      %span.pager{:style => 'padding: 5px; margin: 50px 0px 0px; float: right;'}
-        %a
-          Портал работает в тестовом режиме
-      = render :partial => 'shared/top_nav'
-      = render :partial => 'shared/login_bar'
+      = render :partial => 'shared/header'
     #main.container
       .flash= render 'shared/flash_messages'
       = yield

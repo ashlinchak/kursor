@@ -120,6 +120,19 @@ $(document).ready(function(){
         yearRange: "-70y:-14y"
     });
 
+    $('.datetime-picker').datetimepicker({
+        stepMinute: 10,
+        addSliderAccess: true,
+        sliderAccessArgs: { touchonly: false },
+        timeOnlyTitle: 'Выберите время',
+        timeText: 'Время',
+        hourText: 'Часы',
+        minuteText: 'Минуты',
+        secondText: 'Секунды',
+        currentText: 'Сейчас',
+        closeText: 'Закрыть'
+    });
+
 // Add caption to image from alt text in posting
   $('#postings #show .body img').jcaption({
       //Element to wrap the image and caption in
