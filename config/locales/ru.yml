@@ -193,7 +193,7 @@ ru:
   users:
     new:
       title: "Регистрация нового пользователя"
-      email_pass: "Введите Email и пароль"
+      email_pass: "Введите данные"
       pass: "Пароль"
       pass_confirm: "Подтвердите пароль"
       account_type: "Зарегистрироваться как"

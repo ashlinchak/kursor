@@ -26,5 +26,5 @@
       %a.btn.btn-mini.btn-success{ "data-toggle" => "modal", :href => "#register-dialog", :style => 'vertical-align: baseline'}= t(:'users.create.title')
       &nbsp;
     %li= link_to t(:'sessions.create.title'), login_url
-- unless authenticated?
+-#- unless authenticated?
   = render 'shared/register_modal'
