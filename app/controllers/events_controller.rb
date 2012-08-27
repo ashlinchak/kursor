@@ -19,16 +19,6 @@ private
   end
   helper_method :event
 
-  #def provider
-    #@provider ||= Provider.find params[:provider_id] if params[:provider_id]
-  #end
-  #helper_method :provider
-
-  #def tutor
-    #@tutor ||= Tutor.find params[:tutor_id] if params[:tutor_id]
-  #end
-  #helper_method :tutor
-
   def event_parent
     parent
   end

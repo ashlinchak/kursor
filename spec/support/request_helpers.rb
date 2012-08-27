@@ -19,8 +19,8 @@ module RequestHelpers
 end
 
 RSpec.configure do |c|
-  c.include RequestHelpers::Helpers, :type => :acceptance, :example_group => {
-    :file_path => c.escaped_path(%w[spec acceptance])
+  c.include RequestHelpers::Helpers, :type => :integration, :example_group => {
+    :file_path => c.escaped_path(%w[spec integration])
   }
 end
 

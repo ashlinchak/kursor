@@ -28,6 +28,7 @@ feature 'User Registration', %q{
   scenario 'Activate newly created account' do
     user = FactoryGirl.create(:user)
     visit perform_activation_url(user.user_activation.token)
-    page.should have_content( I18n.t('user_activation.perform.success') )
+    current_path.should == user_path(user)
+    #page.should have_content( I18n.t('user_activation.perform.success') )
   end
 end

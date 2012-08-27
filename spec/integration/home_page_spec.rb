@@ -8,6 +8,6 @@ feature 'Home Page', %q{
   end
   scenario "Home page" do
     visit "/"
-    page.should have_selector('ul.home-postings')
+    page.should have_selector('#home')
   end
 end
