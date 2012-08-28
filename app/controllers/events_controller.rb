@@ -26,7 +26,7 @@ private
 
   def require_owner
     unless current_user.administrator?
-      unless current_user == event.user
+      unless current_user == event.eventable.user
         flash[:error] = t('site.errors.access_denied')
         redirect_to root_path
       end

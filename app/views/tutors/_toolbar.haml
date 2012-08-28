@@ -5,3 +5,4 @@
     %li= link_to t(:'toolbar.edit_profile_html'), edit_tutor_path(current_user.tutor)
     %li= link_to t(:'toolbar.write_posting_html'), new_posting_path
     %li= link_to t(:'toolbar.my_postings_html'), user_postings_path(current_user)
+    %li= link_to t(:'toolbar.my_events_html'), tutor_events_path(current_user.tutor)

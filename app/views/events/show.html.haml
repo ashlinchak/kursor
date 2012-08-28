@@ -6,42 +6,6 @@
       %strong title
       %br
       = @event.title
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:description) + ':'
-    -#  %br
-    -#  = @event.description
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:eventable_id) + ':'
-    -#  %br
-    -#  = @event.eventable_id
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:eventable_type) + ':'
-    -#  %br
-    -#  = @event.eventable_type
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:location_id) + ':'
-    -#  %br
-    -#  = @event.location_id
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:start_datetime) + ':'
-    -#  %br
-    -#  = @event.start_datetime
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:end_datetime) + ':'
-    -#  %br
-    -#  = @event.end_datetime
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:min_price) + ':'
-    -#  %br
-    -#  = @event.min_price
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:max_price) + ':'
-    -#  %br
-    -#  = @event.max_price
-    -#%p
-    -#  %strong= model_class.human_attribute_name(:teacher) + ':'
-    -#  %br
-    -#  = @event.teacher
 
     .form-actions
       = link_to 'Events', [event_parent, :events], :class => 'btn'

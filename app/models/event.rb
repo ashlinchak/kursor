@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
   has_one :location, :as => :addressable, :class_name => 'Address::Location', :dependent => :destroy
   accepts_nested_attributes_for :location
 
+  validates_presence_of :start_datetime, :title, :description
+
   def build_nested_resources
     self.build_location
   end

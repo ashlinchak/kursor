@@ -94,6 +94,7 @@ ru:
     edit_profile_html: "<i class=\'icon-user\'></i> Редактировать профиль"
     write_posting_html: "<i class=\'icon-pencil\'></i> Написать статью"
     my_postings_html: "<i class=\'icon-list\'></i> Мои статьи"
+    my_events_html: "<i class=\'icon-calendar\'></i> Мои события"
 
   tutors:
     actions:
@@ -311,6 +312,31 @@ ru:
         street: "Улица"
         building: "Дом"
         apartment: "Офис"
+
+  events:
+    events_html: "Афиша <sup style=\"color:#F3EC57\">!</sup>"
+    title: "Название"
+    description: "Описание"
+    start_date: "Начало"
+    end_date: "Окончание"
+    min_price: "Стоимость от"
+    max_price: "Стоимость до"
+    teacher: "Ведущий"
+    location: "Место проведения"
+    date: "Когда"
+    price:
+     cost: "Стоимость"
+     from: "от"
+     to: "до"
+     hrn: "грн."
+    provider: "Организатор"
+    no_events: "Не создано ни одного предстоящего события"
+    actions:
+      save: "Сохранить событие"
+      new: "Новое событие"
+      edit: "Редактирование события"
+
+
   news:
     title: "Новости"
     back_to_list: "Вернуться к списку новостей"

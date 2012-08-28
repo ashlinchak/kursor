@@ -1,42 +1,41 @@
 = form_for [event_parent, event], :html => { :class => 'form-horizontal' } do |f|
   .control-group
-    = f.label :title, :class => 'control-label'
+    = f.label :title, t(:'events.title'), :class => 'control-label'
     .controls
       = f.text_field :title, :class => 'span6'
   .control-group
-    = f.label :description, :class => 'control-label'
+    = f.label :description, t(:'events.description'), :class => 'control-label'
     .controls
       = f.cktext_area :description, :class => 'text_area'
   .row
     .span4
       .control-group
-        = f.label :start_datetime, :class => 'control-label'
+        = f.label :start_datetime, t(:'events.start_date'),:class => 'control-label'
         .controls
           = f.text_field :start_datetime, :class => 'datetime-picker span2'
 
     .span4
       .control-group
-        = f.label :min_price, :class => 'control-label'
+        = f.label :min_price, t(:'events.min_price'),:class => 'control-label'
         .controls
           = f.number_field :min_price, :class => 'span2'
   .row
     .span4
       .control-group
-        = f.label :end_datetime, :class => 'control-label'
+        = f.label :end_datetime, t(:'events.end_date'), :class => 'control-label'
         .controls
           = f.text_field :end_datetime, :class => 'datetime-picker span2'
     .span4
       .control-group
-        = f.label :max_price, :class => 'control-label'
+        = f.label :max_price, t(:'events.max_price'), :class => 'control-label'
         .controls
           = f.number_field :max_price, :class => ' span2'
-
   .control-group
-    = f.label :teacher, :class => 'control-label'
+    = f.label :teacher, t(:'events.teacher'), :class => 'control-label'
     .controls
       = f.text_field :teacher, :class => 'span6'
   = f.fields_for :location do |l|
-    %legend Location
+    %legend= t(:'events.location')
     = render :partial => 'addresses/location_fields', :locals => { :f => l }
   .form-actions
-    = f.submit 'Save', :class => 'btn btn-large btn-success'
+    = f.submit t(:'events.actions.save'), :class => 'btn btn-large btn-success'
