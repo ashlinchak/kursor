@@ -1,14 +1,31 @@
-.row
-  .span8
-    %legend Event
-    -#
-    %p
-      %strong title
-      %br
-      = @event.title
+#events
+  #show
+    .row
+      .span8
+        %span.date
+          = l(@event.start_datetime, :format => '%e %B')
+        - unless @event.end_datetime.blank?
+          &#8211;
+          %span.date
+            = l(@event.end_datetime, :format => '%e %B')
+        %h1= @event.title
+        .well.pull-right
+          %p
+            Event price:
+            = @event.min_price
+          %p
+            Location:
+            -#= Address::City.find(@event.location.city_id)
+            = @event.location.city_id.inspect
+          %p
+            Start time:
+            = l(@event.start_datetime, :format => '%R')
+        .description
+          = @event.description.html_safe
 
-    .form-actions
-      = link_to 'Events', [event_parent, :events], :class => 'btn'
-      = link_to 'Edit', [:edit, event_parent, :event], :class => 'btn'
-      = link_to 'Destroy', [event_parent, :event], :method => "delete", :confirm => 'Are you sure?', :class => 'btn btn-danger'
-  .span4
+        - if authenticated?
+          - if (@event.eventable.user = current_user) || authorized?
+            .form-actions
+              = link_to t(:'events.actions.to_edit'), [:edit, event_parent, :event], :class => 'btn'
+              = link_to t(:'events.actions.destroy'), [event_parent, :event], :method => "delete", :confirm => 'Are you sure?', :class => 'btn btn-danger'
+      .span4

@@ -1,3 +1,41 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$green: #9FB518;
+
+
+#events {
+
+  #show {
+    .description {
+    }
+    .date {
+      color: $green;
+      font-size: 16px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+  }
+
+
+  #index{
+    .date {
+      .number{
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 3px;
+        font-weight: bolder;
+        color: #9FB518;
+      }
+      .month{
+        text-align: center;
+        font-size: 14px;
+        color: #6a6a6a;
+      }
+    }
+  }
+}
