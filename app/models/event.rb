@@ -2,8 +2,8 @@ class Event < ActiveRecord::Base
 
   attr_accessible :description,
                   :end_datetime,
-                  :eventable_id,
-                  :eventable_type,
+                  #:eventable_id,
+                  #:eventable_type,
                   :location_id,
                   :max_price,
                   :min_price,
@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
   default_scope order('start_datetime ASC')
 
   def build_nested_resources
-    self.build_location
+    self.build_location unless location
   end
 
 end
