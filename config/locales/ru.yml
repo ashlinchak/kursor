@@ -323,12 +323,14 @@ ru:
     max_price: "Стоимость до"
     teacher: "Ведущий"
     location: "Место проведения"
+    office: "комн. "
     date: "Когда"
     price:
      cost: "Стоимость"
      from: "от "
      to: "до "
      hrn: " грн."
+     free: "бесплатно"
     provider: "Организатор"
     no_events: "Не создано ни одного предстоящего события"
     actions:

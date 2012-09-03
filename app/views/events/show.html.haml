@@ -9,23 +9,38 @@
           %span.date
             = l(@event.end_datetime, :format => '%e %B')
         %h1= @event.title
-        .well.pull-right
-          %p
-            Event price:
+        .well.pull-right.info
+          .info-label= t(:'events.price.cost') + ':'
+          - unless @event.min_price.blank?
             = @event.min_price
-          %p
-            Location:
-            -#= Address::City.find(@event.location.city_id)
-            = @event.location.city_id.inspect
-          %p
-            Start time:
-            = l(@event.start_datetime, :format => '%R')
+            - unless @event.max_price.blank?
+              = '&#8211; '.html_safe + @event.max_price.to_s
+            = t(:'events.price.hrn')
+          - else
+            .free= t(:'events.price.free')
+          .info-label= t(:'events.location') + ':'
+          = @event.location.city.name unless @event.location.city.blank?
+          %br/
+          = @event.location.street  unless @event.location.street.blank?
+          = ', ' + @event.location.building unless @event.location.building.blank?
+          - unless @event.location.apartment.blank?
+            %br/
+            = t(:'events.office') + @event.location.apartment
+          .info-label= t(:'events.start_date') + ':'
+          = l(@event.start_datetime, :format => '%R')
+          - unless @event.teacher.blank?
+            .info-label= t(:'events.teacher') + ':'
+            = @event.teacher
+
         .description
           = @event.description.html_safe
 
         - if authenticated?
           - if (@event.eventable.user = current_user) || authorized?
-            .form-actions
-              = link_to t(:'events.actions.to_edit'), [:edit, event_parent, :event], :class => 'btn'
-              = link_to t(:'events.actions.destroy'), [event_parent, :event], :method => "delete", :confirm => 'Are you sure?', :class => 'btn btn-danger'
+            = link_to [:edit, event_parent, :event], :class => 'btn btn-small' do
+              %icon.icon-pencil
+              = t(:'events.actions.to_edit')
+            = link_to [event_parent, :event], :method => "delete", :confirm => 'Are you sure?', :class => 'btn btn-danger btn-small' do
+              %icon.icon-trash.icon-white
+              = t(:'events.actions.destroy')
       .span4

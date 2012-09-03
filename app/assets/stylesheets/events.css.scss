@@ -4,6 +4,10 @@
 
 $green: #9FB518;
 
+@mixin rounded($radius){
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
 
 #events {
 
@@ -13,11 +17,23 @@ $green: #9FB518;
     .date {
       color: $green;
       font-size: 16px;
+      line-height: 30px;
+      //@include rounded(5px);
     }
     h1 {
       font-size: 20px;
       font-weight: normal;
       margin-bottom: 10px;
+    }
+    .info {
+      margin-left: 15px;
+      .info-label {
+        font-weight: bold;
+        margin: 3px 0px;
+      }
+      .free {
+        color: #006400;
+      }
     }
   }
 
