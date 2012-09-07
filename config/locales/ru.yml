@@ -495,6 +495,7 @@ ru:
       postings: "Статьи"
       posting_list: "Менеджер статей"
       posting_categories: "Менеджер категорий"
+      promotions: 'Продвижение'
       info_pages: "Инфо страницы"
       locations: "Города"
       wiki: "Вики"
@@ -640,6 +641,7 @@ ru:
       provider: "Учебное заведение"
       location: "Местоположение"
       profile: "Профиль"
+      promotion: "Продвижение"
     attributes:
       location:
         gmaps4rails_address: ""
@@ -677,6 +679,12 @@ ru:
         location: "Местоположение"
       provider_request:
         provider_name: "Название заведения"
+      promotion:
+        provider_name: 'Название заведения'
+        is_featured: 'Показывать в списке продвигаемых в категории'
+        is_vip: 'VIP/Показывать на главной'
+        start_date: 'Дата начала продвижения'
+        end_date: 'Дата окончания продвижения'
 
   views:
     pagination:
