@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $green: #9FB518;
+$rosie: #95044D;
+$silver: #DDDDDD;
 
 @mixin rounded($radius){
   -webkit-border-radius: $radius;
@@ -32,7 +34,7 @@ $green: #9FB518;
         margin: 3px 0px;
       }
       .free {
-        color: #006400;
+        color: $green;
       }
     }
   }
@@ -52,6 +54,18 @@ $green: #9FB518;
         font-size: 14px;
         color: #6a6a6a;
       }
+      .city {
+        text-align: center;
+        margin-top: 3px;
+        text-transform: uppercase;
+        font-size: 9px;
+        background: $silver;
+        color: grey;
+        @include rounded(3px);
+      }
     }
+  }
+  .free {
+    color: $green;
   }
 }

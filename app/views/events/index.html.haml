@@ -3,7 +3,7 @@
     .row
       .span8
         - unless parent?
-          %h1.home-title= t(:'events.events_html')
+          %h1.home-title= t(:'events.upcoming_events')
 
         - if authenticated?
           - if parent? && event_parent.user == current_user
@@ -41,11 +41,16 @@
                           = l event.start_datetime, :format => '%e'
                         .month
                           = l(event.start_datetime, :format => '%e %B').tr("0-9","")
+                      - unless event.location.city.blank?
+                        .city= event.location.city.name
 
 
                   %td= link_to event.title, event_path(event), :title => event.title
                   %td
-                    = t(:'events.price.from').to_s + event.min_price.to_s + t(:'events.price.hrn')
+                    - unless event.min_price.blank?
+                      = t(:'events.price.from').to_s + event.min_price.to_s + t(:'events.price.hrn')
+                    - else
+                      .free= t(:'events.price.free')
                     -#- unless event.max_price.blank?
                       %br/
                       = t(:'events.price.to').to_s + event.max_price.to_s

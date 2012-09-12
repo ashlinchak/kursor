@@ -315,6 +315,7 @@ ru:
 
   events:
     events_html: "Афиша <sup style=\"color:#F3EC57\">!</sup>"
+    upcoming_events: "Ближайшие мероприятия"
     title: "Название"
     description: "Описание"
     start_date: "Начало"
