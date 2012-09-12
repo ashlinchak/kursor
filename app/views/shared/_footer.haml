@@ -13,7 +13,8 @@
         %br/
         %b (067) 406-94-64
     .span2
-      %h4= t(:'site.footer.tags')
+      = render :partial => 'shared/yandex_metrika_code' unless Rails.env.development?
+      -#%h4= t(:'site.footer.tags')
 
       -#var word_array = [
       -#        {text: "Lorem", weight: 15},

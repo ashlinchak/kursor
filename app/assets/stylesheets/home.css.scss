@@ -23,9 +23,12 @@
        -moz-border-radius: 4px;
        border-radius: 4px;
      }
-     .flex-caption {background:none; -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
-       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000); zoom: 1;}
      .flex-caption {
+       background:none;
+       -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+        zoom: 1;
+
        width: 366px;
        padding: 2%;
        margin: 0;
@@ -119,11 +122,11 @@
         font-size: 13px;
         font-weight: normal;
         color: #ffffff;
-        -moz-transform: scale(1) rotate(-90deg) translateX(-107px) translateY(-1px) skewX(0deg) skewY(0deg);
-        -webkit-transform: scale(1) rotate(-90deg) translateX(-107px) translateY(-1px) skewX(0deg) skewY(0deg);
-        -o-transform: scale(1) rotate(-90deg) translateX(-107px) translateY(-1px) skewX(0deg) skewY(0deg);
-        -ms-transform: scale(1) rotate(-90deg) translateX(-107px) translateY(-1px) skewX(0deg) skewY(0deg);
-        transform: scale(1) rotate(-90deg) translateX(-107px) translateY(-1px) skewX(0deg) skewY(0deg);
+        -moz-transform: scale(1) rotate(-90deg) translateX(-92px) translateY(-1px) skewX(0deg) skewY(0deg);
+        -webkit-transform: scale(1) rotate(-90deg) translateX(-92px) translateY(-1px) skewX(0deg) skewY(0deg);
+        -o-transform: scale(1) rotate(-90deg) translateX(-92px) translateY(-1px) skewX(0deg) skewY(0deg);
+        -ms-transform: scale(1) rotate(-90deg) translateX(-92px) translateY(-1px) skewX(0deg) skewY(0deg);
+        transform: scale(1) rotate(-90deg) translateX(-92px) translateY(-1px) skewX(0deg) skewY(0deg);
       }
     }
     .wiki-post {

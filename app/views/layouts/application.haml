@@ -20,7 +20,6 @@
     %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
   %script{ :type => "text/javascript", :src => "http://vk.com/js/api/share.js?11" }
   %script{ :type => "text/javascript", :src => "http://userapi.com/js/api/openapi.js?52" }
-  = render :partial => 'shared/yandex_metrika_code' unless Rails.env.development?
   = render :partial => 'shared/google_analytics_code' unless Rails.env.development?
   = render :partial => 'shared/dfp'
   = stylesheet_link_tag "application"
