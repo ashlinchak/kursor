@@ -1,61 +1,60 @@
-.navbar.navbar-fixed-top
+.navbar.navbar-fixed-top.navbar-inverse
   .navbar-inner
-    .container
-      .nav-collapse
-        %ul.nav
-          %li= link_to t(:'site.back_to_site'), root_url
-          -#%li= link_to t(:'admin.nav.users'), admin_users_path
-          %li
-            = link_to admin_notifications_path do
-              = t(:'admin.nav.notifications')
-              %span.badge.badge-warning= pending_count
-          %li.dropdown
-            %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
-              = t(:'admin.nav.categories')
-              %span.caret
-            %ul.dropdown-menu
-              %li= link_to t(:'admin.nav.provider_categories'), admin_categories_path
-              %li= link_to t(:'admin.nav.tutor_categories'), admin_tutor_categories_path
-          %li.dropdown
-            %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
-              = t(:'admin.nav.postings')
-              %span.caret
-            %ul.dropdown-menu
-              %li= link_to t(:'admin.nav.posting_list'), admin_postings_path
-              %li= link_to t(:'admin.nav.posting_categories'), admin_posting_categories_path
-          %li= link_to t(:'admin.nav.locations'), admin_cities_path
-          %li= link_to t(:'admin.nav.promotions'), admin_promotions_path
-          %li.dropdown
-            %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
-              = t(:'admin.nav.custom_fields')
-              %span.caret
-            %ul.dropdown-menu
-              %li= link_to t(:'admin.nav.provider_custom_fields'), admin_custom_fields_path
-              %li= link_to t(:'admin.nav.tutor_custom_fields'), admin_tutor_custom_fields_path
-          %li= link_to t(:'admin.nav.custom_flags'), admin_custom_flags_path
-          %li.dropdown
-            %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
-              = t(:'admin.nav.other')
-              %span.caret
-            %ul.dropdown-menu
-              %li= link_to t(:'admin.nav.news'), admin_news_index_path
-              %li= link_to t(:'admin.nav.info_pages'), admin_info_index_path
-          %li.divider-vertical
-        %ul.nav.pull-right
-          %li.dropdown
-            %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
-              %i.icon-plus-sign.icon-white
-            %ul.dropdown-menu
-              %li
-                = link_to admin_path do
-                  %i.icon-home
-                  = t(:'admin.nav.dashboard')
-              %li
-                = link_to search_index_path do
-                  %i.icon-search
-                  = t(:'admin.nav.search')
-              %li.divider
-              %li
-                = link_to logout_url do
-                  %i.icon-off
-                  = t(:'sessions.destroy.title')
+    .nav-collapse
+      %ul.nav
+        %li= link_to t(:'site.back_to_site'), root_url
+        -#%li= link_to t(:'admin.nav.users'), admin_users_path
+        %li
+          = link_to admin_notifications_path do
+            = t(:'admin.nav.notifications')
+            %span.badge.badge-warning= pending_count
+        %li.dropdown
+          %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
+            = t(:'admin.nav.categories')
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to t(:'admin.nav.provider_categories'), admin_categories_path
+            %li= link_to t(:'admin.nav.tutor_categories'), admin_tutor_categories_path
+        %li.dropdown
+          %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
+            = t(:'admin.nav.postings')
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to t(:'admin.nav.posting_list'), admin_postings_path
+            %li= link_to t(:'admin.nav.posting_categories'), admin_posting_categories_path
+        %li= link_to t(:'admin.nav.locations'), admin_cities_path
+        %li= link_to t(:'admin.nav.promotions'), admin_promotions_path
+        %li.dropdown
+          %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
+            = t(:'admin.nav.custom_fields')
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to t(:'admin.nav.provider_custom_fields'), admin_custom_fields_path
+            %li= link_to t(:'admin.nav.tutor_custom_fields'), admin_tutor_custom_fields_path
+        %li= link_to t(:'admin.nav.custom_flags'), admin_custom_flags_path
+        %li.dropdown
+          %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
+            = t(:'admin.nav.other')
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to t(:'admin.nav.news'), admin_news_index_path
+            %li= link_to t(:'admin.nav.info_pages'), admin_info_index_path
+        %li.divider-vertical
+      %ul.nav.pull-right
+        %li.dropdown
+          %a{ :href => '#', :class => 'dropdown-toggle', :'data-toggle' => 'dropdown' }
+            %i.icon-plus-sign.icon-white
+          %ul.dropdown-menu
+            %li
+              = link_to admin_path do
+                %i.icon-home
+                = t(:'admin.nav.dashboard')
+            %li
+              = link_to search_index_path do
+                %i.icon-search
+                = t(:'admin.nav.search')
+            %li.divider
+            %li
+              = link_to logout_url do
+                %i.icon-off
+                = t(:'sessions.destroy.title')

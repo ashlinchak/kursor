@@ -5,12 +5,10 @@
     %h3= promotion.promotionable
   - else
     = f.text_field :provider_name, data: { source: Provider.all.map(&:name), provide: 'typeahead' }, class: 'typeahead'
-  = f.label :is_featured do
-    = f.check_box :is_featured
-    Featured?
-  = f.label :is_vip do
-    = f.check_box :is_vip
-    VIP?
+  = f.label :is_featured
+  = f.check_box :is_featured
+  = f.label :is_vip
+  = f.check_box :is_vip
 
   = f.label :start_date
   = f.date_select :start_date
@@ -18,3 +16,5 @@
   = f.date_select :end_date
   .actions
     = f.submit class: 'btn '
+    = t :'or'
+    = link_to t(:'cancel'), :back
