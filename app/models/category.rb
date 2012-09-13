@@ -9,7 +9,10 @@ class Category < ActiveRecord::Base
   has_many :sub_providers, :through => :categorizings, :source => :provider
 
   has_one :metatag, :as => :metatagable, :dependent => :destroy
-  accepts_nested_attributes_for :metatag
+  #accepts_nested_attributes_for :metatag, :reject_if => :all_blank
+  accepts_nested_attributes_for :metatag, :reject_if => proc { |attr| attr[:title].blank? && attr[:description].blank? && attr[:keywords].blank? && attr[:additional].blank?  }
+
+
 
   validates_presence_of :name, :description, :permalink
   validates :name, :permalink, :uniqueness => true
