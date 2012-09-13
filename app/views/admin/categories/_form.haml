@@ -37,5 +37,12 @@
             %p.help-text
               = t(:'admin.categories.edit.permalink_help').html_safe
     .span12
+      = link_to '#', :class=>"", "data-toggle"=>"collapse", "data-target"=>"#meta" do
+        %i.icon-music
+        Metatags
+      #meta.collapse.in
+        123456
+      = f.fields_for :metatag do |m|
+        = render :partial => 'metatags/tag_fields', :locals => { :f => m}
       .form-actions
         = f.submit 'Make me smile :)', :class => 'btn btn-large btn-info'

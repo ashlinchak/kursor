@@ -53,3 +53,5 @@
           .controls
             = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
             %p.help-block= t(:'postings.categories_help_html')
+      = f.fields_for :metatag do |m|
+        = render :partial => 'metatags/tag_fields', :locals => { :f => m}

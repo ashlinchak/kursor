@@ -8,6 +8,9 @@ class Category < ActiveRecord::Base
   has_many :providers
   has_many :sub_providers, :through => :categorizings, :source => :provider
 
+  has_one :metatag, :as => :metatagable, :dependent => :destroy
+  accepts_nested_attributes_for :metatag
+
   validates_presence_of :name, :description, :permalink
   validates :name, :permalink, :uniqueness => true
 

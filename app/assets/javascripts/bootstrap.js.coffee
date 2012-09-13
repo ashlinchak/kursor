@@ -1,5 +1,7 @@
 jQuery ->
 
+  $(".collapse").collapse()
+
   $("a[rel=popover]").popover()
 
   $("#popover").popover()

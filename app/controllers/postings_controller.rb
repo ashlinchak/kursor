@@ -12,6 +12,7 @@ class PostingsController < ApplicationController
 
   def new
     posting.images.build
+    posting.build_metatag
   end
 
   def create
@@ -31,6 +32,7 @@ class PostingsController < ApplicationController
   def edit
     #@posting = current_user.postings.find(params[:posting])
     posting.images.build unless posting.images.size > 0
+    posting.build_metatag unless posting.metatag
   end
 
   def update

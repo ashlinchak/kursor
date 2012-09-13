@@ -7,9 +7,11 @@ class Admin::CategoriesController < Admin::DashboardController
   end
 
   def new
+    category.build_metatag
   end
 
   def edit
+    category.build_metatag# unless category.metatag
   end
 
   def create
