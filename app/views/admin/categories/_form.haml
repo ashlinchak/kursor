@@ -37,8 +37,9 @@
             %p.help-text
               = t(:'admin.categories.edit.permalink_help').html_safe
     .span12
-      = link_to '#', :class=>"", "data-toggle"=>"collapse", "data-target"=>"#meta" do
-        %i.icon-random
+      %a.btn.btn-mini.btn-info{"data-toggle"=>"collapse", "data-target"=>"#meta"}
+        meta-tags
+        %i.icon-random.icon-white
       #meta.collapse.in
         = f.fields_for :metatag do |m|
           = render :partial => 'metatags/tag_fields', :locals => { :f => m}

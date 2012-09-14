@@ -1,7 +1,5 @@
-- set_meta_tags :title => category.name + ' | ' + t(:'seo.sections.providers'), :description => category.description
-
 - if category.metatag && !category.metatag.title.blank?
-  - set_meta_tags :title => category.metatag.title + ' | ' + t(:'seo.sections.providers')
+  - set_meta_tags :title => category.metatag.title# + ' | ' + t(:'seo.sections.providers')
 - else
   - set_meta_tags :title => category.name + ' | ' + t(:'seo.sections.providers')
 

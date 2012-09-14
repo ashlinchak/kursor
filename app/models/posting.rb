@@ -25,7 +25,7 @@ class Posting < ActiveRecord::Base
   has_many :posting_categories, :through => :posting_categorizings
 
   has_one :metatag, :as => :metatagable, :dependent => :destroy
-  accepts_nested_attributes_for :metatag, :reject_if => :all_blank
+  accepts_nested_attributes_for :metatag, :reject_if => proc { |attr| attr[:title].blank? && attr[:description].blank? && attr[:keywords].blank? && attr[:additional].blank?  }
 
   POSTING_TYPES = %w( text video )
 

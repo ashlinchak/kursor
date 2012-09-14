@@ -53,5 +53,9 @@
           .controls
             = render :partial => '/postings/posting_category_fields', :locals => { :f => f, :posting => posting }
             %p.help-block= t(:'postings.categories_help_html')
-      = f.fields_for :metatag do |m|
-        = render :partial => 'metatags/tag_fields', :locals => { :f => m}
+      %a.btn.btn-mini.btn-info{"data-toggle"=>"collapse", "data-target"=>"#meta"}
+        meta-tags
+        %i.icon-random.icon-white
+      #meta.collapse.in
+        = f.fields_for :metatag do |m|
+          = render :partial => 'metatags/tag_fields', :locals => { :f => m}

@@ -35,5 +35,12 @@
             = f.text_field :permalink
   .row
     .span12
+      %a.btn.btn-mini.btn-info{"data-toggle"=>"collapse", "data-target"=>"#meta"}
+        meta-tags
+        %i.icon-random.icon-white
+      #meta.collapse.in
+        = f.fields_for :metatag do |m|
+          = render :partial => 'metatags/tag_fields', :locals => { :f => m}
+
       .form-actions
         = f.submit 'Do It Now!', :class => 'btn btn-success btn-large'
