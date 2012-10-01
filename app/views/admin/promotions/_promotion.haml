@@ -3,6 +3,6 @@
   = l(promotion.start_date, format: :short)
   \&mdash;
   = l(promotion.end_date, format: :short)
-  = link_to [:admin, promotion] do
+  = link_to [:admin, promotion], :method => :delete, :confirm => 'Are you CRAZY? :P' do
     %i.icon.icon-trash
 

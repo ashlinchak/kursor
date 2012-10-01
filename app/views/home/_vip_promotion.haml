@@ -1,4 +1,2 @@
-%li.thumbnail
-  = link_to vip_promotion.promotionable do
-    = image_tag 'no-image.png', :width => '64', :height => '64', "data-original" => vip_promotion.promotionable.logo_url(:thumb)
-    = vip_promotion.promotionable
+= link_to vip_promotion.promotionable, :class => 'promotionable' do
+  = image_tag  vip_promotion.promotionable.logo_url(:medium), :title => vip_promotion.promotionable, :class => 'thumbnail'

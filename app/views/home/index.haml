@@ -98,9 +98,9 @@
       = render :partial => 'shared/advertising/kursor_ads'
       = render :partial => 'shared/advertising/home_right_second'
       %hr/
-      - if home_promotions.size > 0
-        %h3 VIP
-        %ul.vip-promotions
+      - if home_promotions.exists?
+        .home-title= t(:'home.titles.vip')
+        .vip-promotions
           = render :partial => 'vip_promotion', :collection => home_promotions unless Rails.env.production?
         %hr/
       = render :partial => 'shared/widgets/widgets'

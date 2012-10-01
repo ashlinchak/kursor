@@ -63,7 +63,7 @@ ru:
   home:
     titles:
       recent_providers: "С нами уже"
-      top_providers: "ТОП-курсы"
+      vip: "КУРСОР рекомендует"
       featured_posting: "Свежие статьи"
       all_postings: "Все статьи"
       more_postings: "Еще статьи"
@@ -688,7 +688,7 @@ ru:
       promotion:
         provider_name: 'Название заведения'
         is_featured: 'Показывать в списке продвигаемых в категории'
-        is_vip: 'VIP/Показывать на главной'
+        is_vip: 'Показывать на главной (VIP)'
         start_date: 'Дата начала продвижения'
         end_date: 'Дата окончания продвижения'
 
