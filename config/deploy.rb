@@ -64,7 +64,7 @@ namespace :uploads do
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
 
-  after       "deploy:finalize_update", "uploads:symlink"
+  after       "deploy:finalize_update", "uploads:symlink", "sitemap_refresh"
   on :start,  "uploads:register_dirs"
 
 end
