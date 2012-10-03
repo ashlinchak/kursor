@@ -23,6 +23,10 @@ class Event < ActiveRecord::Base
 
   default_scope order('start_datetime DESC')
 
+  scope :upcoming, where('end_datetime > ?', DateTime.now)
+
+  scope :ended, where('end_datetime < ?', DateTime.now)
+
   def build_nested_resources
     self.build_location unless location
   end

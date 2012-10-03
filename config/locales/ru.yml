@@ -100,6 +100,8 @@ ru:
     write_posting_html: "<i class=\'icon-pencil\'></i> Написать статью"
     my_postings_html: "<i class=\'icon-list\'></i> Мои статьи"
     my_events_html: "<i class=\'icon-calendar\'></i> Мои события"
+    all_events_html: "<i class=\'icon-list\'></i> Все события"
+    new_event_html: "<i class=\'icon-plus-sign\'></i> Новое событие"
 
   tutors:
     actions:
