@@ -27,7 +27,7 @@ Kursor::Application.routes.draw do
   #match 'request' => 'provider_request#new', :as => 'request', :via => :get
   #match 'request' => 'provider_request#create', :as => 'request', :via => :post
 
-  resources :provider_request
+  #resources :provider_request
 
 
   match 'feedback' => 'feedback#new', :as => 'feedback', :via => :get
@@ -60,8 +60,7 @@ Kursor::Application.routes.draw do
         post 'vote'
       end
     end
-    resources :events
-    resources :provider_request, :on => :member
+    resources :provider_requests
   end
 
   resources :tutors, :path => 'tutors' do

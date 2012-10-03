@@ -1,7 +1,7 @@
 .row
   .span8
     %legend= t(:'provider_request.form.title')
-    = form_for @provider_request, :html => { :class => 'form-horizontal' }, :url => create_provider_provider_request_path do |form|
+    = form_for @provider_request, :html => { :class => 'form-horizontal' }, :url => provider_provider_requests_path, :method => :post do |form|
       -#= render :partial => 'shared/form_errors', :locals => { :object => @provider_request }
       %fieldset
         .control-group

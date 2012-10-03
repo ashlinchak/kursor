@@ -1,4 +1,4 @@
-class ProviderRequestController < ApplicationController
+class ProviderRequestsController < ApplicationController
 
   def index
     @provider_request = ProviderRequest.new
