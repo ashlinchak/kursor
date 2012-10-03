@@ -59,7 +59,7 @@ describe EventsController do
 
   describe "GET new" do
     it "assigns a new event as @event" do
-      get :new, {}, valid_session
+      get :index, {}, valid_session
       assigns(:event).should be_a_new(Event)
     end
   end

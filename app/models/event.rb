@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :start_datetime, :title, :description
 
-  default_scope order('start_datetime ASC')
+  default_scope order('start_datetime DESC')
 
   def build_nested_resources
     self.build_location unless location

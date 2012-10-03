@@ -8,7 +8,7 @@
         - if authenticated?
           - if parent? && event_parent.user == current_user
             %p
-              = link_to [:new, event_parent, :event], :class => 'btn btn-mini' do
+              = link_to [:index, event_parent, :event], :class => 'btn btn-mini' do
                 %i.icon-plus-sign
                 = t(:'events.actions.new')
         - if @events.size > 0

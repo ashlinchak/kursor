@@ -24,8 +24,11 @@ Kursor::Application.routes.draw do
   match '/home' => "home#index"
   match '/admin' => "admin/dashboard#index"
 
-  match 'request' => 'provider_request#new', :as => 'request', :via => :get
-  match 'request' => 'provider_request#create', :as => 'request', :via => :post
+  #match 'request' => 'provider_request#new', :as => 'request', :via => :get
+  #match 'request' => 'provider_request#create', :as => 'request', :via => :post
+
+  resources :provider_request
+
 
   match 'feedback' => 'feedback#new', :as => 'feedback', :via => :get
   match 'feedback' => 'feedback#create', :as => 'feedback', :via => :post
@@ -58,6 +61,7 @@ Kursor::Application.routes.draw do
       end
     end
     resources :events
+    resources :provider_request, :on => :member
   end
 
   resources :tutors, :path => 'tutors' do

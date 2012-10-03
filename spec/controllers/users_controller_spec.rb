@@ -23,9 +23,9 @@ describe UsersController do
     end
 
     it 'should render signup page' do
-      get :new
+      get :index
       response.should be_success
-      response.should render_template( :new )
+      response.should render_template( :index )
     end
     
     it 'should create new valid user' do
