@@ -30,7 +30,7 @@ namespace :deploy do
     run "cd '#{current_path}' && #{rake} sitemap:refresh RAILS_ENV=#{rails_env}"
   end
 
-  after "sitemap_refresh"
+
 
 end
 
@@ -67,7 +67,7 @@ namespace :uploads do
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
 
-  after       "deploy:finalize_update", "uploads:symlink"
+  after       "deploy:finalize_update", "uploads:symlink", "deploy:sitemap_refresh"
   on :start,  "uploads:register_dirs"
 
 end
