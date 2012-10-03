@@ -26,6 +26,9 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+  task :sitemap_refresh do
+    run "cd '#{current_path}' && #{rake} sitemap:refresh RAILS_ENV=#{rails_env}"
+  end
 end
 
 # ==============================
