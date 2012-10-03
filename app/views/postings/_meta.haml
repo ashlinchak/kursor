@@ -1,0 +1,14 @@
+- if posting.metatag && !posting.metatag.title.blank?
+  - set_meta_tags :title => posting.metatag.title + ' | ' + t(:'seo.sections.postings')
+- else
+  - set_meta_tags :title => posting.title + ' | ' + t(:'seo.sections.postings')
+
+- if posting.metatag && !posting.metatag.description.blank?
+  - set_meta_tags :description => posting.metatag.description
+- else
+  - set_meta_tags :description => posting.excerpt
+
+- if posting.metatag && !posting.metatag.keywords.blank?
+  - set_meta_tags :keywords => posting.metatag.keywords
+- else
+  - set_meta_tags :keywords => ( posting.tags.each do |tag| tag.name end )

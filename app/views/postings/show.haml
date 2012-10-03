@@ -1,11 +1,9 @@
-- set_meta_tags :title => posting.title + ' | ' + t(:'seo.sections.postings'), :description => posting.excerpt, :keywords => ( posting.tags.each do |tag| tag.name end )
+= render :partial => 'postings/meta'
 #postings
   #show
     .row
       .span8
-        %table.bookmarks
-          %tr
-            = render :partial => 'shared/bookmarks'
+
         .posting-categories
           = t(:'postings.categories')
           - posting.posting_categories.each do |c|
@@ -50,6 +48,11 @@
             = posting.body.html_safe
         - elsif posting.video_posting?
           = render :partial => 'postings/posting_types/video_post', :locales => {:posting => posting}
+
+        %table.bookmarks
+          %tr
+            = render :partial => 'shared/bookmarks'
+
         %hr/
         .tags-list
           %span.icon-tags

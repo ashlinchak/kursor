@@ -7,9 +7,11 @@ class Admin::CategoriesController < Admin::DashboardController
   end
 
   def new
+    category.build_metatag
   end
 
   def edit
+    category.build_metatag unless category.metatag.present?
   end
 
   def create
@@ -50,7 +52,7 @@ class Admin::CategoriesController < Admin::DashboardController
   private
 
   def categories
-    @categories = if params[:id]
+    @categories ||= if params[:id]
     else
       root_categories
     end
@@ -58,7 +60,7 @@ class Admin::CategoriesController < Admin::DashboardController
   helper_method :categories
 
   def category
-    @category = if params[:id]
+    @category ||= if params[:id]
       Category.find_by_permalink(params[:id])
     else
       Category.new(params[:category])

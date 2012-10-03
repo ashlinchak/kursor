@@ -1,0 +1,14 @@
+- if tutor_category.metatag && !tutor_category.metatag.title.blank?
+  - set_meta_tags :title => tutor_category.metatag.title# + ' | ' + t(:'seo.sections.tutors')
+- else
+  - set_meta_tags :title => tutor_category.name + ' | ' + t(:'seo.sections.tutors')
+
+- if tutor_category.metatag && !tutor_category.metatag.description.blank?
+  - set_meta_tags :description => tutor_category.metatag.description
+- else
+  - set_meta_tags :description => tutor_category.description
+
+- if tutor_category.metatag && !tutor_category.metatag.keywords.blank?
+  - set_meta_tags :keywords => tutor_category.metatag.keywords
+- else
+  - set_meta_tags :keywords => ( tutor_category.children.each do |c| c.name end )

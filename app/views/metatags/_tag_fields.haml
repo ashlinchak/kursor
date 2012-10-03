@@ -1,0 +1,23 @@
+%fieldset
+  %legend Meta Tags
+  .control-group
+    = f.label 'Title', :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'span9'
+  .control-group
+    = f.label 'Description', :class => 'control-label'
+    .controls
+      = f.text_area :description, :class => 'span9'
+  .control-group
+    = f.label 'Keywords', :class => 'control-label'
+    .controls
+      = f.text_area :keywords, :class => 'span9'
+  .control-group
+    = f.label 'Additional Text', :class => 'control-label'
+    .controls
+      = f.text_area :additional, :class => 'span9'
+  .control-group
+    .controls
+      %label{ :class => 'checkbox'}
+        = f.check_box :split_keywords
+        Split keywords?

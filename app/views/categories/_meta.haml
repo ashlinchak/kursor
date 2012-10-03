@@ -1,0 +1,14 @@
+- if category.metatag && !category.metatag.title.blank?
+  - set_meta_tags :title => category.metatag.title# + ' | ' + t(:'seo.sections.providers')
+- else
+  - set_meta_tags :title => category.name + ' | ' + t(:'seo.sections.providers')
+
+- if category.metatag && !category.metatag.description.blank?
+  - set_meta_tags :description => category.metatag.description
+- else
+  - set_meta_tags :description => category.description
+
+- if category.metatag && !category.metatag.keywords.blank?
+  - set_meta_tags :keywords => category.metatag.keywords
+- else
+  - set_meta_tags :keywords => ( category.children.each do |c| c.name end )

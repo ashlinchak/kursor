@@ -348,10 +348,13 @@
 .vip-promotions{
   padding: 0;
   margin: 0;
-  li{
-    margin: 0 0 1em;
+
+  a:link.promotionable {
+    display: inline-block;
     img{
-      margin: 0 1em 0 0;
+      margin: 0 5px 0 0;
+      width: 83px;
     }
   }
+
 }

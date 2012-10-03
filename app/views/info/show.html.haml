@@ -1,6 +1,6 @@
 - set_meta_tags :title => info_page.title, :description => info_page.body
 .row
-  .span3
+  -#.span3
     .well{:style => "padding: 8px 0;"}
       %ul.nav.nav-list
         - roots_info_pages.each do |root|
@@ -20,3 +20,5 @@
         %i.icon-pencil
       = link_to admin_info_path(info_page), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini', :style => 'float:right;' do
         %i.icon-remove
+  -#.span4
+    = render :partial => 'shared/widgets/widgets'

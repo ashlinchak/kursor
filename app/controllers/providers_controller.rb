@@ -52,6 +52,10 @@ class ProvidersController < ApplicationController
     redirect_to providers_url
   end
 
+  def provider_request
+
+  end
+
   private
 
   def provider

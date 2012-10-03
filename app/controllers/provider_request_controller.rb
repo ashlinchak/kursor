@@ -1,6 +1,6 @@
 class ProviderRequestController < ApplicationController
 
-  def new
+  def index
     @provider_request = ProviderRequest.new
   end
 
@@ -14,9 +14,18 @@ class ProviderRequestController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = t(:'provider_request.messages.failed').html_safe
-      render :new
+      render :index
     end
   end
 
+
+  private
+
+  def provider
+    @provider ||= if params[:provider_id]
+                    Provider.find(params[:provider_id])
+                  end
+  end
+  helper_method :provider
 
 end

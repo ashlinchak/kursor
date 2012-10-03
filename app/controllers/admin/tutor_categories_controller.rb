@@ -7,9 +7,11 @@ class Admin::TutorCategoriesController < Admin::DashboardController
   end
 
   def new
+    tutor_category.build_metatag
   end
 
   def edit
+    tutor_category.build_metatag unless tutor_category.metatag.present?
   end
 
   def create
@@ -58,7 +60,7 @@ class Admin::TutorCategoriesController < Admin::DashboardController
   helper_method :tutor_categories
 
   def tutor_category
-    @tutor_category = if params[:id]
+    @tutor_category ||= if params[:id]
       TutorCategory.find_by_permalink(params[:id])
     else
       TutorCategory.new(params[:tutor_category])

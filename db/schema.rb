@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822181555) do
+ActiveRecord::Schema.define(:version => 20120913115432) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -201,6 +201,21 @@ ActiveRecord::Schema.define(:version => 20120822181555) do
     t.datetime "updated_at"
   end
 
+  create_table "metatags", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "keywodrs"
+    t.text     "additional"
+    t.boolean  "split_keywords"
+    t.integer  "metatagable_id"
+    t.string   "metatagable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "metatags", ["metatagable_id"], :name => "index_metatags_on_metatagable_id"
+  add_index "metatags", ["metatagable_type"], :name => "index_metatags_on_metatagable_type"
+
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -215,7 +230,8 @@ ActiveRecord::Schema.define(:version => 20120822181555) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.string   "permalink"
-    t.integer  "position",    :default => 0, :null => false
+    t.boolean  "is_public",   :default => false
+    t.integer  "position",    :default => 0,     :null => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"
