@@ -4,7 +4,7 @@
       .span8
         %span.date
           = l(@event.start_datetime, :format => '%e %B')
-        - unless @event.end_datetime.blank?
+        - if !@event.end_datetime.blank? && (@event.end_datetime.to_date != @event.start_datetime.to_date)
           &#8211;
           %span.date
             = l(@event.end_datetime, :format => '%e %B')

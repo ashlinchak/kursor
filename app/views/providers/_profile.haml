@@ -21,11 +21,7 @@
 .row
   .span8
     - unless controller.controller_name == 'users'
-      .row
-        .span8
-          %table.bookmarks
-            %tr
-              = render :partial => 'shared/bookmarks'
+
       -#.row
         .span12
           %ul.breadcrumb
@@ -52,6 +48,8 @@
                 = link_to 'Я учусь здесь!', join_provider_students_path(provider), :class => 'btn btn-info'
               - else
                 = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'btn btn-danger'
+        - elsif provider.user.email.include?("kursor.org.ua")
+          = link_to t(:'provider_request.iam_owner'), provider_provider_requests_path(provider), :class => 'btn btn-info'
         %p
           = render :partial => 'shared/rating_stars', :locals => {:rateable => provider}
     %br/
@@ -110,6 +108,14 @@
         = link_to admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
           %i.icon.icon-remove
           = t(:'site.actions.destroy_user')
+
+    .row
+      .span8
+        %table.bookmarks
+          %tr
+            = render :partial => 'shared/bookmarks'
+
+
 
     #disqus_thread
     :javascript

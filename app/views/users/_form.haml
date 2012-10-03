@@ -3,8 +3,7 @@
     .well
       %h4= t(:'users.register_modal.intro_header')
       %p= t('users.register_modal.intro_html', :search_link => t(:'users.register_modal.search_link_html') )
-      %h4=t(:'users.register_modal.fill_the_form_header')
-      %p= t('users.register_modal.fill_the_form_html',  :request_form_link => request_path)
+      %p= t('users.register_modal.fill_the_form_html')
 = form_for user, :multipart => true, :html => { :class => 'form-horizontal' } do |f|
   .row
     .span8

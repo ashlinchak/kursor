@@ -64,6 +64,9 @@ $silver: #DDDDDD;
         @include rounded(3px);
       }
     }
+    table tr:hover {
+      background: #fafafa;
+    }
   }
   .free {
     color: $green;

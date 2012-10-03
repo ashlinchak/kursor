@@ -14,6 +14,8 @@ class Event < ActiveRecord::Base
 
   after_initialize :build_nested_resources
 
+  before_save :check_enddatetime
+
   belongs_to :eventable, :polymorphic => true
 
   has_one :location, :as => :addressable, :class_name => 'Address::Location', :dependent => :destroy
@@ -21,7 +23,7 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :start_datetime, :title, :description
 
-  default_scope order('start_datetime DESC')
+  default_scope order('start_datetime ASC')
 
   scope :upcoming, where('end_datetime > ?', DateTime.now)
 
@@ -29,6 +31,12 @@ class Event < ActiveRecord::Base
 
   def build_nested_resources
     self.build_location unless location
+  end
+
+  def check_enddatetime
+    if self.end_datetime.blank?
+      self.end_datetime = self.start_datetime
+    end
   end
 
 end

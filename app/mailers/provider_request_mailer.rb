@@ -6,7 +6,7 @@ class ProviderRequestMailer < ActionMailer::Base
     @message = request
     @subject = t(:'mailers.provider_request.subject')
     @email = 'info@kursor.org.ua'
-    mail(:to => @email, :subject => "#{subject}")
+    mail(:to => @email, :subject => @subject)
   end
 
 end

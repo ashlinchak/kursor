@@ -61,6 +61,7 @@ Kursor::Application.routes.draw do
       end
     end
     resources :provider_requests
+    resources :events
   end
 
   resources :tutors, :path => 'tutors' do
