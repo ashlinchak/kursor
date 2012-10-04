@@ -27,6 +27,13 @@ class CategoriesController < ApplicationController
   end
   helper_method :category
 
+  def promoted_providers
+    promotions_by_provider = Promotion.where(:promotionable_type => 'Provider')
+    selected_providers = category.providers.where(id: promotions_by_provider.map(&:promotionable_id))
+    @promoted_providers = selected_providers
+  end
+  helper_method :promoted_providers
+
   def providers
     @providers ||= if ( !filter || filter[:region_id].blank? )
       if category.root?

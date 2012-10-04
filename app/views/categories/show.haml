@@ -29,6 +29,9 @@
                   - if child.children.size > 5
                     %li.bullet_down= link_to t(:'categories.more'), child, :title => t(:'categories.more_title')
 
+        - promoted_providers.each do |promoted|
+          %p= promoted.name
+
         - if providers.size > 0
           %ul.entries
             - for provider in providers
