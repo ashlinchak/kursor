@@ -40,7 +40,7 @@ $green: #86A116;
       border-bottom: 1px dashed #d6d6d6;
       list-style : none;
       margin-bottom: 1em;
-      padding: 1em;
+      padding: 5px;
 
       &:after{
         content: '';
@@ -49,8 +49,15 @@ $green: #86A116;
         clear: both;
       }
 
+      h5 {
+        padding-top: 0px;
+        margin-top: 0px;
+        margin-bottom: 3px;
+      }
+
     }
   }
+
 
   ul.regions{
     border-top: 1px dashed #d6d6d6;

@@ -1,0 +1,10 @@
+%ul.entries
+  - promoted_providers.each do |promoted|
+    %li.clearfix.list-provider
+      .image-container
+        = link_to provider_path(promoted) do
+          = image_tag 'no-image.png', :width => '', :height => '', :style => 'width: 120px;', "data-original" => promoted.logo_url(:medium)
+      %h5= link_to promoted.name, provider_path(promoted)
+      - if promoted.location
+        .address
+          = format_location promoted.location

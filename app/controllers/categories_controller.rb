@@ -29,8 +29,11 @@ class CategoriesController < ApplicationController
 
   def promoted_providers
     promotions_by_provider = Promotion.where(:promotionable_type => 'Provider')
-    selected_providers = category.providers.where(id: promotions_by_provider.map(&:promotionable_id))
-    @promoted_providers = selected_providers
+    @selected_providers ||= if category.root?
+       category.providers.where(id: promotions_by_provider.map(&:promotionable_id))
+    else
+      category.sub_providers.where(id: promotions_by_provider.map(&:promotionable_id))
+    end
   end
   helper_method :promoted_providers
 

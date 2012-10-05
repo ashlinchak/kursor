@@ -1,14 +1,14 @@
 %li.clearfix.list-provider
   .image-container
     = link_to provider_path(provider) do
-      = image_tag 'no-image.png', :width => '', :height => '', :style => 'width: 150px;', "data-original" => provider.logo_url(:medium)
-  %h4= link_to provider.name, provider_path(provider)
+      = image_tag 'no-image.png', :width => '', :height => '', :style => 'width: 64px;', "data-original" => provider.logo_url(:thumb)
+  %h5= link_to provider.name, provider_path(provider)
   - if provider.location
     .address
-      %strong
+      -#%strong
         = "#{t(:'providers.custom_fields.address')}:"
       = format_location provider.location
-  .categories
+  -#.categories
     - if provider
       %ul
         - for categoring in provider.categories

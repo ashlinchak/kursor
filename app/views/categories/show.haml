@@ -17,11 +17,11 @@
         %ul.categories.clearfix
           - for child in category.children
             %li
-              = link_to child do
+              -#= link_to child do
                 = image_tag child.icon_url(:small), :title => child, :class => 'rounded_2'
               = link_to child do
                 %h3= child
-              - if child.children
+              -#- if child.children
                 %ul.children-categories
                   - for ch in child.top_subcategories
                     %li
@@ -29,8 +29,8 @@
                   - if child.children.size > 5
                     %li.bullet_down= link_to t(:'categories.more'), child, :title => t(:'categories.more_title')
 
-        - promoted_providers.each do |promoted|
-          %p= promoted.name
+        - if promoted_providers.size > 0
+          = render :partial => 'promoted'
 
         - if providers.size > 0
           %ul.entries
