@@ -83,6 +83,7 @@ Kursor::Application.routes.draw do
   resources :categories, :path => 'c', :only => [:index, :show]
   resources :tutor_categories, :path => 't', :only => [:index, :show]
   resources :posting_categories, :path => 'p', :only => [:index, :show]
+  resources :event_categories, :path => 'e', :only => [:index, :show]
 
   namespace :admin do
     resources :user_transfers
@@ -90,6 +91,9 @@ Kursor::Application.routes.draw do
       post 'sort', :on => :collection
     end
     resources :tutor_categories do
+      post 'sort', :on => :collection
+    end
+    resources :event_categories do
       post 'sort', :on => :collection
     end
     resources :info

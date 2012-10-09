@@ -1,0 +1,11 @@
+%ul
+  %li
+    = link_to event_category.name, edit_admin_event_category_path(event_category)
+
+
+  -if event_category.children
+    %ul
+      - for event_category in event_category.children
+        %li
+          = link_to event_category.name, edit_admin_event_category_path(event_category)
+        = render :partial => 'event_category', :collection => event_category.children

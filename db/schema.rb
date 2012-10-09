@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913115432) do
+ActiveRecord::Schema.define(:version => 20121009111547) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -156,6 +156,28 @@ ActiveRecord::Schema.define(:version => 20120913115432) do
     t.integer  "position",   :default => 0, :null => false
   end
 
+  create_table "event_categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "parent_id"
+    t.string   "permalink"
+    t.integer  "position",    :default => 0, :null => false
+  end
+
+  add_index "event_categories", ["parent_id"], :name => "index_event_categories_on_parent_id"
+
+  create_table "event_categorizings", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "event_category_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "event_categorizings", ["event_category_id"], :name => "index_event_categorizings_on_event_category_id"
+  add_index "event_categorizings", ["event_id"], :name => "index_event_categorizings_on_event_id"
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -230,7 +252,8 @@ ActiveRecord::Schema.define(:version => 20120913115432) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.string   "permalink"
-    t.integer  "position",    :default => 0, :null => false
+    t.boolean  "is_public",   :default => false
+    t.integer  "position",    :default => 0,     :null => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"

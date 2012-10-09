@@ -561,6 +561,16 @@ ru:
         actions: "Действия"
         delete: "Удалить"
         edit: "Редактировать"
+    events:
+      event_categories:
+        title: "Менеджер категорий"
+        create: "Создать новую категорию для событий"
+        name: "Название категории"
+        description: "Описание категории"
+        actions: "Действия"
+        delete: "Удалить"
+        edit: "Редактировать"
+
     users:
       headers:
         title: "Пользователи / Провайдеры"

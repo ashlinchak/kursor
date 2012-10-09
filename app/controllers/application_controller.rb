@@ -43,8 +43,13 @@ class ApplicationController < ActionController::Base
   end
   helper_method :root_tutor_categories
 
+  def root_event_categories
+      @root_event_categories ||= EventCategory.roots
+  end
+  helper_method :root_event_categories
+
   def root_posting_categories
-      @root_posting_categories ||= PostingCategory.roots
+    @root_posting_categories ||= PostingCategory.roots
   end
   helper_method :root_posting_categories
 

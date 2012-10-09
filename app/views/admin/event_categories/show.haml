@@ -1,0 +1,24 @@
+.row
+  .span9
+    %legend
+      = event_category.name
+
+    %table.table.table-striped.table-bordered.table-condensed
+      %tbody.sort-posting_categories.sortable
+        - event_category.children.each do |e|
+          %tr{ :style => 'width: 100%;', :id => "sorted-item_#{e.id}", :class => 'event_categorie'}
+            %td.drag-handle
+              %i.icon-move
+            %td
+              - if e.children.present?
+                = link_to admin_event_category_path(e) do
+                  = "#{e.name} (#{e.children.size})"
+              - else
+                = e.name
+            %td.actions
+              = link_to edit_admin_event_category_path(e) do
+                %i.icon-pencil
+    %hr/
+    = link_to admin_event_categories_path do
+      %icon.icon-chevron-left
+      back
