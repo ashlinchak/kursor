@@ -210,7 +210,6 @@ $(document).ready(function(){
     //show_sub_categories(this);
   //});
 
-
   $('.select-city').bind('click change keyup blur load', function(){
     if ( $(this).val() == '' ){
       $('.custom-city').show();

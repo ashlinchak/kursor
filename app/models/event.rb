@@ -10,13 +10,17 @@ class Event < ActiveRecord::Base
                   :start_datetime,
                   :teacher,
                   :title,
-                  :location_attributes
+                  :location_attributes,
+                  :event_category_ids
 
   after_initialize :build_nested_resources
 
   before_save :check_enddatetime
 
   belongs_to :eventable, :polymorphic => true
+
+  has_many :event_categorizings, :dependent => :destroy
+  has_many :event_categories, :through => :event_categorizings
 
   has_one :location, :as => :addressable, :class_name => 'Address::Location', :dependent => :destroy
   accepts_nested_attributes_for :location
@@ -28,6 +32,10 @@ class Event < ActiveRecord::Base
   scope :upcoming, where('end_datetime > ?', DateTime.now)
 
   scope :ended, where('end_datetime < ?', DateTime.now)
+
+  def event_category_ids=(ids)
+    self.event_categories = EventCategory.find(ids)
+  end
 
   def build_nested_resources
     self.build_location unless location

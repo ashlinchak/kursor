@@ -37,5 +37,13 @@
   = f.fields_for :location do |l|
     %legend= t(:'events.location')
     = render :partial => 'addresses/location_fields', :locals => { :f => l }
+
+  .control-group
+    - root_event_categories.each do |c|
+      .controls
+        = radio_button_tag 'event[event_category_ids][]', c.id, ( :checked if event.event_categories.include? c ), :class => 'category-sub-parent'
+        %span= c.name
+        = render :partial => '/events/event_sub_category_fields', :locals => { :c => c, :event => event, :f => f }
+
   .form-actions
     = f.submit t(:'events.actions.save'), :class => 'btn btn-large btn-success'

@@ -3,6 +3,6 @@
     .sub-category
       - for ch in c.children do
         %label
-          = check_box_tag 'posting[posting_category_ids][]', ch.id, ( :checked if posting.posting_categories.include? ch ), :class => 'category-sub-parent'
+          = check_box_tag 'event[event_category_ids][]', ch.id, ( :checked if event.event_categories.include? ch ), :class => 'category-sub-parent'
           %span= ch.name
-        = render :partial => '/postings/posting_sub_category_fields', :locals => { :c => ch, :posting => posting, :f => f }
+        = render :partial => '/events/event_sub_category_fields', :locals => { :c => ch, :event => event, :f => f }
