@@ -23,9 +23,10 @@
       -#- unless event_category.root?
         %br/
       %br/
-      = link_to admin_event_category_path(event_category), :method => :delete, :confirm => "Ты точно хочешь удалить? Ты выспался? Справка от врача есть?", :class => 'btn btn-danger' do
-        %i.icon-remove.icon-white
-        Destroy it!
+      - unless event_category.new_record?
+        = link_to admin_event_category_path(event_category), :method => :delete, :confirm => "Ты точно хочешь удалить? Ты выспался? Справка от врача есть?", :class => 'btn btn-danger' do
+          %i.icon-remove.icon-white
+          Destroy it!
 
   .form-actions
     = f.submit 'Move It Up!', :class => 'btn btn-success btn-large'
