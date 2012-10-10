@@ -1,0 +1,28 @@
+- set_meta_tags :title => posting_category.name + ' | ' + t(:'seo.sections.postings'), :description => posting_category.description
+#posting-categories
+  #show
+    .row
+      .span8
+        %ul.breadcrumb
+          %li
+            %i.icon-arrow-left
+            = link_to t(:'postings.all_articles'), posting_categories_path
+          = breadcrumbs_for_posting_category posting_category
+        - for child in posting_category.children
+          = link_to child.name, child
+          = '(' + child.postings.approved.size.to_s + ')'
+        %hr/
+        .posting
+          - for p in postings
+            - unless p.video_posting?
+              = render :partial => 'posting_categories/posting', :locals => { :p => p }
+              %hr/
+            - else
+              = render :partial => 'posting_categories/video_posting', :locals => { :p => p}
+        .page_navigation.clear= paginate postings
+        %hr/
+
+      .span4
+        = render :partial => 'shared/advertising/kursor_ads'
+        %hr/
+        = render :partial => 'shared/widgets/widgets'
