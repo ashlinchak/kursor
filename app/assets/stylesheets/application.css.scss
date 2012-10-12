@@ -44,6 +44,13 @@ body {
     border-radius: 6px;
   }
 
+  #meta-additional {
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+
+
+
 }
 a, a:hover{
   color: $baseColor;
@@ -369,6 +376,7 @@ a:hover.sub_category_label
     }
 
   }
+
 }
 
 

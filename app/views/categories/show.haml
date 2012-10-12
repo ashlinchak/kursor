@@ -46,6 +46,11 @@
               Нет зарегистрированных заведений в этой категории
         %hr/
 
+        #meta-additional
+          - if category.metatag && !category.metatag.additional.blank?
+            = category.metatag.additional
+
+
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
         %hr/

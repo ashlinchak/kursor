@@ -40,6 +40,9 @@
             .alert
               Нет зарегистрированных преподавателей в этой категории
         %hr/
+        #meta-additional
+          - if tutor_category.metatag && !tutor_category.metatag.additional.blank?
+            = tutor_category.metatag.additional
 
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
