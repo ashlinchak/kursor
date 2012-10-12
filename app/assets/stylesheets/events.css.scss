@@ -11,7 +11,45 @@ $silver: #DDDDDD;
   border-radius: $radius;
 }
 
-#events {
+#events, #event-categories {
+
+  #nav-holder {
+
+    //background: #fafafa;
+    margin-bottom: 16px;
+    //padding: 6px;
+    //border-top: 1px solid #eeeeee;
+    //@include rounded(5px);
+
+    ul.navigation {
+
+      margin: 0;
+
+      li {
+
+        list-style-type: none;
+        display: inline;
+        margin: 0px 0px 0px 10px;
+        padding: 0px 0px 0px 0px;
+
+        &:hover, &.current {
+          border-bottom: 1px solid $green;
+        }
+        &.current a {
+          color: $green;
+        }
+        a:link {
+          text-decoration: none;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+
+    }
+  }
+
 
   #show {
     .description {
@@ -39,8 +77,7 @@ $silver: #DDDDDD;
     }
   }
 
-
-  #index{
+  #index {
     .date {
       .number{
         text-align: center;
@@ -64,11 +101,12 @@ $silver: #DDDDDD;
         @include rounded(3px);
       }
     }
-    table tr:hover {
+    table tbody tr:hover, table thead th {
       background: #fafafa;
     }
   }
   .free {
     color: $green;
   }
+
 }

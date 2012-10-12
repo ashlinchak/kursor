@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
 
+  require 'nokogiri'
+  require 'open-uri'
+
   attr_accessible :description,
                   :end_datetime,
                   #:eventable_id,
@@ -15,7 +18,7 @@ class Event < ActiveRecord::Base
 
   after_initialize :build_nested_resources
 
-  before_save :check_enddatetime
+  before_save :check_enddatetime, :add_nofollow
 
   belongs_to :eventable, :polymorphic => true
 
@@ -44,6 +47,26 @@ class Event < ActiveRecord::Base
   def check_enddatetime
     if self.end_datetime.blank?
       self.end_datetime = self.start_datetime
+    end
+  end
+
+  def add_nofollow
+    doc = Nokogiri::HTML.parse(self.description)
+    links = []
+    doc.css('a').each do |link|
+      next unless link['rel'].blank?
+      next if (link['href'][0,4] != 'http' && link['href'][0,3] != 'www')
+      next if (link['href'].downcase.include?('kursor.org.ua'))
+      links << link
+    end
+
+    links.uniq.each do |link|
+      link['rel'] = 'nofollow'
+      link['target'] = '_blank'
+      href1 = "href='#{link['href']}'"
+      href2 = 'href="'+link['href']+'"'
+      self.description = self.description.gsub(href1, href1+' rel="nofollow" target="_blank"')
+      self.description = self.description.gsub(href2, href2+' rel="nofollow" target="_blank"')
     end
   end
 

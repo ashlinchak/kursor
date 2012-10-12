@@ -1,0 +1,7 @@
+#nav-holder
+  %ul.navigation
+    %li{ :class => ( "current" if controller.action_name == 'index' ) }
+      = link_to t(:'events.all_avents'), event_categories_path
+    - EventCategory.roots.each do |cat|
+      %li{ :class => ( "current" if event_category == cat) }
+        = link_to cat, event_category_path(cat)
