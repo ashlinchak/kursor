@@ -42,7 +42,7 @@
         %hr/
         #meta-additional
           - if tutor_category.metatag && !tutor_category.metatag.additional.blank?
-            = tutor_category.metatag.additional
+            = tutor_category.metatag.additional.html_safe
 
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
