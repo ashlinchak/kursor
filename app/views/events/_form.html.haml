@@ -16,29 +16,25 @@
     = f.label :description, t(:'events.description'), :class => 'control-label'
     .controls
       = f.cktext_area :description, :class => 'text_area', :toolbar => 'Basic'
-  .row
-    .span4
-      .control-group
-        = f.label :start_datetime, t(:'events.start_date'),:class => 'control-label'
-        .controls
-          = f.text_field :start_datetime, :class => 'datetime-picker span2'
+  .control-group
+    = f.label :start_datetime, t(:'events.start_date'),:class => 'control-label'
+    .controls
+      = f.text_field :start_datetime, :class => 'datetime-picker span3'
 
-    .span4
-      .control-group
-        = f.label :min_price, t(:'events.min_price'),:class => 'control-label'
-        .controls
-          = f.number_field :min_price, :class => 'span2'
-  .row
-    .span4
-      .control-group
-        = f.label :end_datetime, t(:'events.end_date'), :class => 'control-label'
-        .controls
-          = f.text_field :end_datetime, :class => 'datetime-picker span2'
-    .span4
-      .control-group
-        = f.label :max_price, t(:'events.max_price'), :class => 'control-label'
-        .controls
-          = f.number_field :max_price, :class => ' span2'
+  .control-group
+    = f.label :end_datetime, t(:'events.end_date'), :class => 'control-label'
+    .controls
+      = f.text_field :end_datetime, :class => 'datetime-picker span3'
+
+  .control-group
+    = f.label :min_price, t(:'events.min_price'),:class => 'control-label'
+    .controls
+      = f.number_field :min_price, :class => 'span1'
+
+  .control-group
+    = f.label :max_price, t(:'events.max_price'), :class => 'control-label'
+    .controls
+      = f.number_field :max_price, :class => ' span1'
   .control-group
     = f.label :teacher, t(:'events.teacher'), :class => 'control-label'
     .controls

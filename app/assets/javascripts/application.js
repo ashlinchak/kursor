@@ -121,6 +121,11 @@ $(document).ready(function(){
     });
 
     $('.datetime-picker').datetimepicker({
+        dateFormat: "yy-mm-dd",
+        timeFormat: "hh:mm:ss",
+        showOn: "button",
+        buttonImage: "/assets/icons/calendar.edit.png",
+        buttonImageOnly: true,
         stepMinute: 10,
         addSliderAccess: true,
         sliderAccessArgs: { touchonly: false },

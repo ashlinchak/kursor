@@ -30,7 +30,7 @@
             %br/
             = t(:'events.office') + @event.location.apartment
           .info-label= t(:'events.start_date') + ':'
-          = l(@event.start_datetime, :format => '%R')
+          = l @event.start_datetime, :format => '%R'
           - unless @event.teacher.blank?
             .info-label= t(:'events.teacher') + ':'
             = @event.teacher
