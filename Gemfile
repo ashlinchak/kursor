@@ -24,6 +24,7 @@ gem 'gmaps4rails'
 gem 'url_to_media_tag'
 gem 'jqcloud-rails' # Jquery TagCloud Plugin
 gem 'ios-checkboxes'
+gem 'devise'
 
 gem 'inherited_resources'
 gem 'thin'
