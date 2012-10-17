@@ -1,20 +1,19 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
-  # :token_authenticatable
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  # :token_authenticatable, :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable, :timeoutable,
+         :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  attr_accessor :password, :password_confirmation, :provider_attributes, :profile_attributes
+  attr_accessor :provider_attributes, :profile_attributes#, :password, :password_confirmation
 
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
   has_one :tutor, :dependent => :destroy
   has_one :profile, :dependent => :destroy
-  has_one :user_activation, :dependent => :destroy
   has_many :students
   has_many :schools, :through => :students
   has_many :schedule_events
@@ -22,14 +21,10 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
-  before_save :encrypt_password
-  after_create :generate_activation
-
-
-  validates_presence_of     :password, :on => :create
-  validates_confirmation_of :password
-  validates_presence_of   :email
-  validates_uniqueness_of :email
+  #validates_presence_of     :password, :on => :create
+  #validates_confirmation_of :password
+  #validates_presence_of   :email
+  #validates_uniqueness_of :email
 
   accepts_nested_attributes_for :provider
   accepts_nested_attributes_for :tutor
@@ -63,20 +58,6 @@ class User < ActiveRecord::Base
     super(:only => [:email, :is_active])
   end
 
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    end
-  end
-
   def administrator?
     !!administrator
   end
@@ -96,14 +77,5 @@ class User < ActiveRecord::Base
   def user_type
     @user_type = ACCOUNT_TYPES[self.account_type_id]
   end
-
-  def generate_activation
-    # delete pending activation
-    if user_activation
-      user_activation.destroy
-    end
-    self.create_user_activation
-  end
-
 
 end

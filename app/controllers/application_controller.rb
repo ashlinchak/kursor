@@ -86,12 +86,12 @@ class ApplicationController < ActionController::Base
   helper_method :guest
 
   def authenticated?
-    !!current_user
+    user_signed_in?
   end
   helper_method :authenticated?
 
   def authorized?
-    authenticated? && current_user.administrator?
+    user_signed_in? && current_user.administrator?
   end
   helper_method :authorized?
 
