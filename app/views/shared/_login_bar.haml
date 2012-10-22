@@ -1,15 +1,5 @@
 %ul.login-nav
-  - if user_signed_in?
-    Signed In!
-  - if authorized?
-    Authorized!
-  current_user:
-  = current_user.inspect
-  user_session:
-  = user_session.inspect
-
   - if authenticated?
-    TRUE
     %li
       = t(:'sessions.create.logged_in_as')
       - if current_user.profile.present?
@@ -30,12 +20,9 @@
 
     - if authorized?
       %li= link_to t(:'site.nav.admin-panel'), admin_path
-    %li= link_to t(:'sessions.destroy.title'), destroy_user_session_path
+    %li= link_to t(:'sessions.destroy.title'), destroy_user_session_path, :method => :delete
   - else
-    -#%li
-      = link_to t(:'users.create.title'), new_user_path, :class => "btn btn-success", :style => "vertical-align: baseline"
+    %li
+      = link_to t(:'users.create.title'), new_user_registration_path, :class => "btn btn-success", :style => "vertical-align: baseline"
       &nbsp;
     %li= link_to t(:'sessions.create.title'), new_user_session_path
-
--#- unless authenticated?
-  = render 'shared/register_modal'

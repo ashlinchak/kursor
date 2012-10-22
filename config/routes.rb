@@ -1,6 +1,12 @@
 Kursor::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users,
+             :skip => [:sessions] do
+    get '/login'   => "devise/sessions#new",       :as => :new_user_session
+    post '/login'  => 'devise/sessions#create',    :as => :user_session
+    delete '/logout'  => 'devise/sessions#destroy',   :as => :destroy_user_session
+    get "/register"   => "devise/registrations#new",   :as => :new_user_registration
+  end
 
   mount Ckeditor::Engine => '/ckeditor'
 

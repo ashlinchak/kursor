@@ -1,0 +1,22 @@
+%legend= t(:'devise.login.title')
+.row
+  .span8
+    = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'} do |f|
+      .control-group
+        = f.label :email, :class => 'control-label'
+        .controls
+          = f.email_field :email
+      .control-group
+        = f.label :password, :class => 'control-label'
+        .controls
+          = f.password_field :password
+      - if devise_mapping.rememberable?
+        .control-group
+          .controls
+            = f.label :remember_me, :class => 'checkbox' do
+              = f.check_box :remember_me
+              = t(:'devise.login.remember')
+
+      .form-actions= f.submit t(:'devise.login.submit'), :class => 'btn btn-large'
+  .span4
+    = render "users/shared/links"

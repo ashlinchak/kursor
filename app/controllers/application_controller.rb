@@ -63,23 +63,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :recent_postings
 
-  def current_user
-    @current_user ||= User.find(session[:user_id])
-  rescue
-    nil
-  end
-  helper_method :current_user
-
-  def current_user= object
-    if object.is_a? User
-      session[:user_id] = object.id
-      @current_user = object
-    else
-      @current_user = session[:user_id] = nil
-    end
-  end
-  helper_method :current_user
-
   def guest
     @guest ||= User.new
   end

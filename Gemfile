@@ -25,9 +25,11 @@ gem 'url_to_media_tag'
 gem 'jqcloud-rails' # Jquery TagCloud Plugin
 gem 'ios-checkboxes'
 gem 'devise'
-
+gem "devise-async"
 gem 'inherited_resources'
 gem 'thin'
+gem 'delayed_job_active_record'
+gem 'client_side_validations'
 
 group :assets do
   gem 'sass-rails'

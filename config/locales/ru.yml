@@ -676,6 +676,7 @@ ru:
         email: "Электронная почта"
         password: "Пароль"
         password_confirmation: "Повторите пароль"
+        current_password: "Текущий пароль"
         account_type: "Выберите тип учетной записи"
         account_types:
           user: "Пользователь"

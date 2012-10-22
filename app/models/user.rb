@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
 
-  # Include default devise modules. Others available are:
   # :token_authenticatable, :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  include Devise::Async::Model # should be below call to `devise`
 
-  attr_accessor :provider_attributes, :profile_attributes#, :password, :password_confirmation
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id
+
+  attr_accessor :provider_attributes, :profile_attributes
 
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
@@ -20,11 +21,6 @@ class User < ActiveRecord::Base
   has_many :postings
 
   has_many :votes
-
-  #validates_presence_of     :password, :on => :create
-  #validates_confirmation_of :password
-  #validates_presence_of   :email
-  #validates_uniqueness_of :email
 
   accepts_nested_attributes_for :provider
   accepts_nested_attributes_for :tutor
