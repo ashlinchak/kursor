@@ -4,7 +4,7 @@
       - if user === current_user
         %i.icon-user
         = user.email
-        = link_to edit_user_path(user) do
+        = link_to edit_user_registration_path do
           %i.icon-envelope
           = t(:'users.panel.edit_email_password')
         - if user.school? && user.provider.present?

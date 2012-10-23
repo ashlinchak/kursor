@@ -30,6 +30,9 @@ gem 'inherited_resources'
 gem 'thin'
 gem 'delayed_job_active_record'
 gem 'client_side_validations'
+gem 'omniauth'
+gem 'oauth2'
+gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
 group :assets do

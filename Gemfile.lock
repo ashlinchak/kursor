@@ -205,6 +205,8 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
     omniauth-google-oauth2 (0.1.13)
       omniauth (~> 1.0)
       omniauth-oauth2
@@ -343,6 +345,9 @@ DEPENDENCIES
   mini_magick
   mysql2
   nokogiri
+  oauth2
+  omniauth
+  omniauth-facebook
   omniauth-google-oauth2
   rack-test
   rails (= 3.2.6)
