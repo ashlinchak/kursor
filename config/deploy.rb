@@ -29,8 +29,9 @@ namespace :deploy do
   task :sitemap_refresh do
     run "cd '#{current_path}' && #{rake} sitemap:refresh RAILS_ENV=#{rails_env}"
   end
-
-
+  task :migrate_database do
+  run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
+  end
 
 end
 
@@ -67,7 +68,7 @@ namespace :uploads do
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
 
-  after       "deploy:finalize_update", "uploads:symlink", "deploy:sitemap_refresh"
+  after       "deploy:finalize_update", "uploads:symlink", "deploy:sitemap_refresh", "deploy:migrate_database"
   on :start,  "uploads:register_dirs"
 
 end
