@@ -14,6 +14,7 @@
 //= require jqcloud
 //= require ios-checkboxes
 //= require jquery-star-rating
+//= require rails.validations
 //= require_tree .
 
 $(document).ready(function(){

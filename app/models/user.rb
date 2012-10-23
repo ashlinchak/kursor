@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
-  # :token_authenticatable, :omniauthable
+  # :token_authenticatable
   devise :database_authenticatable, :registerable, :confirmable, :timeoutable,
-         :recoverable, :rememberable, :trackable, :validatable, :lockable
+         :recoverable, :rememberable, :trackable, :validatable, :lockable, :omniauthable
 
   include Devise::Async::Model # should be below call to `devise`
 
@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   has_many :schools, :through => :students
   has_many :schedule_events
   has_many :postings
-
   has_many :votes
 
   accepts_nested_attributes_for :provider
@@ -73,5 +72,20 @@ class User < ActiveRecord::Base
   def user_type
     @user_type = ACCOUNT_TYPES[self.account_type_id]
   end
+
+  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+    data = access_token.info
+    user = User.where(:email => data["email"]).first
+
+    unless user
+      user = User.create(name: data["name"],
+                         email: data["email"],
+                         password: Devise.friendly_token[0,20]
+      )
+    end
+    user
+  end
+
+
 
 end
