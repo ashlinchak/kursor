@@ -1,6 +1,6 @@
-%legend= t(:'devise.resend_unlock_instructions.title')
 .row
   .span8
+    %legend= t(:'devise.resend_unlock_instructions.title')
     = form_for resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post, :class => 'form-horizontal'  } do |f|
       = devise_error_messages!
       .control-group
@@ -9,4 +9,5 @@
           = f.email_field :email
       .form-actions= f.submit t(:'devise.resend_unlock_instructions.submit'), :class => 'btn btn-large'
   .span4
+    %legend= t(:'devise.tools.title')
     = render "users/shared/links"

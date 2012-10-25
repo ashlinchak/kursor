@@ -1,6 +1,6 @@
-%legend= t(:'devise.login.title')
 .row
   .span8
+    %legend= t(:'devise.login.title')
     = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'} do |f|
       .control-group
         = f.label :email, :class => 'control-label'
@@ -19,4 +19,5 @@
 
       .form-actions= f.submit t(:'devise.login.submit'), :class => 'btn btn-large'
   .span4
+    %legend= t(:'devise.tools.title')
     = render "users/shared/links"

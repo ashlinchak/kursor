@@ -512,7 +512,7 @@ ActiveRecord::Schema.define(:version => 20121023140752) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
-    t.string   "provider"
+    t.string   "oauth_provider"
     t.string   "uid"
   end
 

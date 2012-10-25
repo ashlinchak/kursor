@@ -7,9 +7,12 @@ class User < ActiveRecord::Base
   include Devise::Async::Model # should be below call to `devise`
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id, :provider, :uid,
+                  :confirmed_at, :confirmation_token, :confirmation_sent_at # for rake task users:confirm_all_active
 
   attr_accessor :provider_attributes, :profile_attributes
+
+  #before_validation :generate_password, :on => :create
 
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
@@ -88,10 +91,20 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
+
+    user = User.where(:oauth_provider => auth.provider, :uid => auth.uid).first || User.find_by_email(auth.info.email)
+
+    if user
+
+      if user.oauth_provider.blank? || user.uid.blank?
+        user.oauth_provider = auth.provider
+        user.uid = auth.uid
+        user.save
+      end
+
+    else
       user = User.create(#name:auth.extra.raw_info.name,
-                         provider:auth.provider,
+                         oauth_provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
                          password:Devise.friendly_token[0,20]
@@ -107,6 +120,13 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+
+  # Generate random password
+  #def generate_password
+  #  o =  [('a'..'z'), ('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
+  #  self.password = self.password_confirmation = (0..16).map{ o[rand(o.length)] }.join if self.password.blank?
+  #end
 
 
 end

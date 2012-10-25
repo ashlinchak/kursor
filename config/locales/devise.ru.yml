@@ -60,6 +60,9 @@ ru:
 
     # MEGAVOLT
 
+    tools:
+      title: "Инструменты"
+
     links:
       sign_in: "Войти"
       sign_up: "Зарегистрироваться"
@@ -82,6 +85,9 @@ ru:
       submit: "Выслать инструкцию по разблокировке"
     register:
       title: "Введите свои данные"
+      oauth_registration:
+        title: "Упрощенная регистрация"
+        description: "Зарегистрироваться как <a href=\'#\' rel=\'tooltip\' title=\'%{user_type_description}\'>&laquo;Пользователь&raquo;</a> теперь можно через:"
     edit:
       title: "Редактирование учетной записи"
       submit: "Сохранить"
