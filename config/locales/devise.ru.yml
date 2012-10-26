@@ -70,6 +70,7 @@ ru:
       didnt_receive_confirmation_instructions: "Не получили инструкций по активации?"
       didnt_receive_unlock_instructions: "Не получили иструкцию по разблокировке?"
       sign_in_with: "Войти через "
+
     login:
       title: "Вход в систему"
       submit: "Войти"
@@ -86,6 +87,8 @@ ru:
     register:
       title: "Введите свои данные"
       oauth_registration:
+        sign_up_with: "Регистрация через"
+        or_go_regural_way: "или заполните поля ниже"
         title: "Упрощенная регистрация"
         description: "Зарегистрироваться как <a href=\'#\' rel=\'tooltip\' title=\'%{user_type_description}\'>&laquo;Пользователь&raquo;</a> теперь можно через:"
     edit:

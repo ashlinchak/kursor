@@ -20,6 +20,17 @@
 $(document).ready(function(){
 
 
+// Registration radio buttons
+
+
+
+    $("input[name='user[account_type_id]']").change(function(){
+        if ($("input[name='user[account_type_id]']:checked").val() == '0')
+        { $("#oauth").animate({height: "show", opacity: 1}, 500, "easeInOutQuad"); }
+        else
+        { $("#oauth").animate({height: "hide", opacity: 0}, 500, "easeInOutQuad"); }
+    });
+
 //  IPhone
     $('.iphone_check_box').iphoneStyle({
         checkedLabel: 'Есть',
