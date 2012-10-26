@@ -68,7 +68,7 @@ ru:
       sign_up: "Зарегистрироваться"
       forgot_password: "Забыли свой пароль?"
       didnt_receive_confirmation_instructions: "Не получили инструкций по активации?"
-      didnt_receive_unlock_instructions: "Не поличили иструкцию по разблокировке?"
+      didnt_receive_unlock_instructions: "Не получили иструкцию по разблокировке?"
       sign_in_with: "Войти через "
     login:
       title: "Вход в систему"
@@ -93,4 +93,3 @@ ru:
       submit: "Сохранить"
       current_password_help: "Введите старый пароль для подтверждения изменений."
       leave_blank: "Оставьте это поле пустым, если вы не собираетесь менять пароль."
-
