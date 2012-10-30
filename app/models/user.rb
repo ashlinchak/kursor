@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   #before_validation :generate_password, :on => :create
 
+  has_many :authentications, :dependent => :destroy
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
   has_one :tutor, :dependent => :destroy
@@ -91,24 +92,27 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-
     user = User.where(:oauth_provider => auth.provider, :uid => auth.uid).first || User.find_by_email(auth.info.email)
-
     if user
-
       if user.oauth_provider.blank? || user.uid.blank?
         user.oauth_provider = auth.provider
         user.uid = auth.uid
         user.save
       end
-
     else
-      user = User.create(#name:auth.extra.raw_info.name,
-                         oauth_provider:auth.provider,
+      user = User.create(oauth_provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
                          password:Devise.friendly_token[0,20]
       )
+    end
+    user
+  end
+
+  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+    user = current_user.authentications.where(:oauth_provider => auth.provider, :uid => auth.uid).first
+    if user
+      cu
     end
     user
   end
@@ -120,13 +124,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-
-  # Generate random password
-  #def generate_password
-  #  o =  [('a'..'z'), ('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
-  #  self.password = self.password_confirmation = (0..16).map{ o[rand(o.length)] }.join if self.password.blank?
-  #end
 
 
 end

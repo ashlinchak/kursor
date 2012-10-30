@@ -5,6 +5,7 @@ gem 'mysql2'
 gem 'json'
 gem 'jquery-rails'
 gem 'haml'
+gem 'nifty-generators'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'russian'
@@ -33,6 +34,8 @@ gem 'client_side_validations'
 gem 'omniauth'
 gem 'oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
 
 group :assets do
@@ -60,3 +63,5 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
 end
+
+gem "mocha", :group => :test

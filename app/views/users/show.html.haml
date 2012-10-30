@@ -1,5 +1,5 @@
 .row
-  .span8
+  .span12
     - if authenticated?
       - if user === current_user
         %i.icon-user
@@ -40,37 +40,71 @@
     %hr/
 
 - if authenticated?
-  - if user.tutor?
-    - unless user.tutor
-      - if user == current_user
-        .alert.alert-block
-          %h4.alert-heading= t(:'providers.edit.no_provider')
-          %p= t(:'providers.edit.no_provider_desc')
-          %p
-            = link_to new_tutor_path, :class => 'btn btn-success' do
-              %i.icon-white.icon-list-alt
-              = t(:'providers.edit.add_provider')
-    - else
-      = link_to user.tutor.name, tutor_path(user.tutor)
+  .row
+    .span4
+      - if user.tutor?
+        - unless user.tutor
+          - if user == current_user
+            .alert.alert-block
+              %h4.alert-heading= t(:'providers.edit.no_provider')
+              %p= t(:'providers.edit.no_provider_desc')
+              %p
+                = link_to new_tutor_path, :class => 'btn btn-success' do
+                  %i.icon-white.icon-list-alt
+                  = t(:'providers.edit.add_provider')
+        - else
+          = link_to user.tutor.name, tutor_path(user.tutor)
 
-  - elsif user.school?
-    - unless user.provider
-      - if user == current_user
-        .alert.alert-block
-          %h4.alert-heading= t(:'providers.edit.no_provider')
-          %p= t(:'providers.edit.no_provider_desc')
-          %p
-            = link_to new_provider_path, :class => 'btn btn-success' do
-              %i.icon-white.icon-list-alt
-              = t(:'providers.edit.add_provider')
-    - else
-      = link_to user.provider.name, provider_path(user.provider)
+      - elsif user.school?
+        - unless user.provider
+          - if user == current_user
+            .alert.alert-block
+              %h4.alert-heading= t(:'providers.edit.no_provider')
+              %p= t(:'providers.edit.no_provider_desc')
+              %p
+                = link_to new_provider_path, :class => 'btn btn-success' do
+                  %i.icon-white.icon-list-alt
+                  = t(:'providers.edit.add_provider')
+        - else
+          = link_to user.provider.name, provider_path(user.provider)
 
-  - elsif user.visitor?
-    - unless user.profile.present?
-      .alert.alert-block
-        = link_to 'Заполнить профиль', new_profile_path
-    - else
-      = render :partial => '/profiles/profile', :locals => { :profile => user.profile }
+      - elsif user.visitor?
+        - unless user.profile.present?
+          .alert.alert-block
+            = link_to 'Заполнить профиль', new_profile_path
+        - else
+          .alert.alert-block
+            = link_to user.profile.full_name, profile_path(user)
+    .span4
+      - if user.authentications
+        %p
+          %strong You can sign in to this account using:
+        .authentications
+          - for auth in user.authentications
+            .authentication
+              = image_tag "icons/#{auth.provider}_32.png", :size => "32x32"
+              .provider= auth.provider.titleize
+              .uid= auth.uid
+              = link_to "X", auth, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove"
+          .clear
+        %p
+          %strong Add another service to sign in with:
+      - else
+        %p
+          %strong Sign in through one of these services:
+      = link_to omniauth_authorize_path(:user, :twitter ), :class => 'auth_provider' do
+        = image_tag "icons/twitter_64.png", :size => "64x64", :alt => "Twitter"
+        Twitter
+      = link_to omniauth_authorize_path(:user, :facebook ), :class => 'auth_provider' do
+        = image_tag "icons/facebook_64.png", :size => "64x64", :alt => "Facebook"
+        Facebook
+      = link_to omniauth_authorize_path(:user, :google_oauth2 ), :class => 'auth_provider' do
+        = image_tag "icons/google_64.png", :size => "64x64", :alt => "Google"
+        Google
+      .clear
+
+
+
+
 - else
   = t(:'users.must_be_authenticated')
