@@ -96,3 +96,14 @@ ru:
       submit: "Сохранить"
       current_password_help: "Введите старый пароль для подтверждения изменений."
       leave_blank: "Оставьте это поле пустым, если вы не собираетесь менять пароль."
+    authentications:
+      you_can_sign_in_with: "Вы можете входить на портал через:"
+      add_service_to_sign_in_with: "Подключить сервисы для входа на портал:"
+      no_authentications: "Для быстрого входа на портал можно добавить следующие сервисы:"
+      remove_authentication_confirm: "Вы собираетесь отключить учетную запись из %{provider} для входа на портал?"
+      flash:
+        successfully_destroyed_authentication: "Учетная запись из %{provider} была успешно отключена."
+        successfully_added_authentication: "Учетная запись из %{provider} была успешно подключена."
+        this_oauth_not_linked_with_any_users: "Эта учетная запись из %{provider} не привязана ни к одному зарегистрированному пользователю на портале."
+
+

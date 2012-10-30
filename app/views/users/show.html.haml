@@ -75,32 +75,38 @@
         - else
           .alert.alert-block
             = link_to user.profile.full_name, profile_path(user)
-    .span4
-      - if user.authentications
+    .span5
+      - unless user.authentications.empty?
         %p
-          %strong You can sign in to this account using:
+          %strong= t(:'devise.authentications.you_can_sign_in_with')
         .authentications
           - for auth in user.authentications
             .authentication
               = image_tag "icons/#{auth.provider}_32.png", :size => "32x32"
               .provider= auth.provider.titleize
               .uid= auth.uid
-              = link_to "X", auth, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove"
+              = link_to "X", auth, :confirm => t(:'devise.authentications.remove_authentication_confirm', :provider => auth.provider.titleize), :method => :delete, :class => "remove"
           .clear
         %p
-          %strong Add another service to sign in with:
+          %strong= t(:'devise.authentications.add_service_to_sign_in_with')
       - else
         %p
-          %strong Sign in through one of these services:
-      = link_to omniauth_authorize_path(:user, :twitter ), :class => 'auth_provider' do
-        = image_tag "icons/twitter_64.png", :size => "64x64", :alt => "Twitter"
-        Twitter
+          %strong= t(:'devise.authentications.no_authentications')
+      - unless user.authentications.find_by_provider('vkontakte')
+        = link_to omniauth_authorize_path(:user, :vkontakte ), :class => 'auth_provider' do
+          = image_tag "icons/vkontakte_64.png", :size => "64x64", :alt => "Vkontakte"
+          Vkontakte
       = link_to omniauth_authorize_path(:user, :facebook ), :class => 'auth_provider' do
         = image_tag "icons/facebook_64.png", :size => "64x64", :alt => "Facebook"
         Facebook
+      - unless user.authentications.find_by_provider('twitter')
+        = link_to omniauth_authorize_path(:user, :twitter ), :class => 'auth_provider' do
+          = image_tag "icons/twitter_64.png", :size => "64x64", :alt => "Twitter"
+          Twitter
       = link_to omniauth_authorize_path(:user, :google_oauth2 ), :class => 'auth_provider' do
         = image_tag "icons/google_64.png", :size => "64x64", :alt => "Google"
         Google
+
       .clear
 
 
