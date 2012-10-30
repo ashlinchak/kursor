@@ -5,8 +5,11 @@
         = image_tag 'logo_white.png'
       %hr/
       %p
+        %i.icon-info-sign.icon-white
+        = link_to '/info/project' do
+          О проекте
+        &nbsp; | &nbsp;
         = link_to 'posts/248-kommercheskoe-predlozhenie-po-razmescheniyu-reklamy-na-portale-kursor-org-ua' do
-          %i.icon-info-sign.icon-white
           Реклама на сайте
       %p= t(:'site.footer.cooperation_html')
       %p

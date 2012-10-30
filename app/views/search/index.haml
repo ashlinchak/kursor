@@ -1,19 +1,22 @@
-%form{ :action => '/search', :method => :get }
-  = text_field_tag 'q', params[:q], :class => 'span6', :id => 'home-search-typehead', "data-provide" => "typeahead"
-  = button_tag 'Search', :class => 'btn'
--if !search_results.empty?
-  = t :'search.results_found', :num => search_results.size
-  %hr/
-  %ul
-    - for item in search_results
-      %li
-        = link_to item, item
-        - unless !authenticated?
-          - unless !current_user.administrator?
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            = link_to t(:'search.transfer_user').html_safe, edit_admin_user_transfer_path(provider_user(item)), :class => ''
-            %br/
-            %br/
--elsif (search_results.empty? && params[:q])
-  %h3= t :'search.not_found'
-
+.row
+  .span8
+    %legend=t(:'search.title')
+    %form{ :class=>"form-inline", :action => '/search', :method => :get }
+      = text_field_tag 'q', params[:q], :class => 'span5', :placeholder => t(:'search.placeholder'), :id => 'home-search-typehead', "data-provide" => "typeahead"
+      = submit_tag t(:'search.submit'), :class => 'btn'
+    - unless params[:q].blank?
+      -if !search_results.empty?
+        = t :'search.results_found', :num => search_results.size
+        %hr/
+        %ul
+          - for item in search_results
+            %li
+              = link_to item, item
+              - unless !authenticated?
+                - unless !current_user.administrator?
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  = link_to t(:'search.transfer_user').html_safe, edit_admin_user_transfer_path(provider_user(item)), :class => ''
+                  %br/
+                  %br/
+      -elsif search_results.empty?
+        %h3= t :'search.nothing_found'

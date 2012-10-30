@@ -187,6 +187,10 @@ ru:
     contacts: "Контакты"
     add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
   search:
+    title: "Поиск учебного заведения"
+    placeholder: "Введите название или его фрагмент"
+    submit: "Вперед!"
+    nothing_found: "По вашему запросу ничего не найдено"
     results_found: "Найдено результатов: %{num}"
     transfer_user: "<i class=\'icon icon-user\'></i> Передать права"
   sessions:
@@ -325,7 +329,7 @@ ru:
 
   events:
     all_avents: "Все события"
-    events_html: "Афиша <sup style=\"color:#F3EC57\">!</sup>"
+    events_html: "Афиша"
     upcoming_events: "Ближайшие мероприятия"
     title: "Название"
     category: "Выберите категорию"
