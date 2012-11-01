@@ -9,7 +9,7 @@
       - unless providers_pending.size == 0
         - providers_pending.each do |p|
           .alert.alert-warning.item
-            %h4= link_to truncate(p.name, length: 35), provider_path(p), :target => '_blank'
+            %h5= link_to truncate(p.name, length: 35), provider_path(p), :target => '_blank'
             %p
               = link_to p.user.email, user_path(p.user), :target => '_blank'
               = time_ago_in_words(p.updated_at) + ' назад'
@@ -28,7 +28,7 @@
       - unless tutors_pending.size == 0
         - tutors_pending.each do |t|
           .alert.alert-warning.item
-            %h4= link_to truncate(t.name, length: 35), tutor_path(t), :target => '_blank'
+            %h5= link_to truncate(t.name, length: 35), tutor_path(t), :target => '_blank'
             %p
               = link_to t.user.email, user_path(t.user), :target => '_blank'
               = time_ago_in_words(t.updated_at) + ' назад'
@@ -47,7 +47,7 @@
       - unless postings_pending.size == 0
         - postings_pending.each do |p|
           .alert.alert-info.item
-            %h4= link_to truncate(p.title, length: 35), posting_path(p), :target => '_blank'
+            %h5= link_to truncate(p.title, length: 35), posting_path(p), :target => '_blank'
             %p
               = link_to p.user.email, user_path(p.user), :target => '_blank'
               = time_ago_in_words(p.updated_at) + ' назад'

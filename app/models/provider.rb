@@ -61,6 +61,10 @@ class Provider < ActiveRecord::Base
     save
   end
 
+  def destroy_filials!
+    self.filials.destroy_all
+  end
+
   def category_ids=(ids)
     self.categories = Category.find(ids)
   end

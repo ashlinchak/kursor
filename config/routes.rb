@@ -1,7 +1,5 @@
 Kursor::Application.routes.draw do
 
-
-
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :students
@@ -11,7 +9,6 @@ Kursor::Application.routes.draw do
   resources :info
   resources :wiki
   resources :events
-
 
   match '/login' => 'sessions#new',      :as => :login
   match '/logout' => 'sessions#destroy', :as => :logout
@@ -86,6 +83,7 @@ Kursor::Application.routes.draw do
   resources :event_categories, :path => 'e', :only => [:index, :show]
 
   namespace :admin do
+    resources :filials
     resources :user_transfers
     resources :categories do
       post 'sort', :on => :collection
@@ -110,6 +108,7 @@ Kursor::Application.routes.draw do
       member do
         get :approve
         get :decline
+        get :destroy_filials
       end
       get 'export', :on => :collection
     end

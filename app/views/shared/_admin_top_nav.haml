@@ -1,9 +1,8 @@
 .navbar.navbar-fixed-top.navbar-inverse
   .navbar-inner
-    .nav-collapse
+    .container
       %ul.nav
-        %li= link_to t(:'site.back_to_site'), root_url
-        -#%li= link_to t(:'admin.nav.users'), admin_users_path
+
         %li
           = link_to admin_notifications_path do
             = t(:'admin.nav.notifications')

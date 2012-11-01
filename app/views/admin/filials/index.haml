@@ -1,0 +1,30 @@
+- providers_with_filials = []
+- collection.each do |f|
+  - if f.provider.present?
+    - providers_with_filials << f.provider
+- providers_with_filials.uniq!
+
+%span.badge.badge-success Providers with filials: #{providers_with_filials.size}
+%span.badge.badge-info Filials total: #{collection.all.size}
+%p{:style => 'float:right;'}
+  = link_to new_admin_user_path, :class => 'btn' do
+    %i.icon-plus-sign
+    New provider
+%hr/
+%table.table.table-striped.table-condensed.table-hover
+  %thead
+    %tr
+      %th #
+      %th Provider Name
+      %th Filials Count
+      %th
+  %tbody
+    - providers_with_filials.each_with_index do |p, index|
+      %tr
+        %td= index + 1
+        %td= link_to p, provider_path(p), :target => '_blank'
+        %td= p.filials.size
+        %td
+          = link_to destroy_filials_admin_provider_path(p), :confirm => 'It can\'t be undone! Destroy all provider filials?', :class => 'btn btn-mini' do
+            %i.icon-trash
+            Destroy filials
