@@ -92,4 +92,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource) # Redirect to user path after signing in
+    user_path(current_user)
+  end
+
+  def after_sign_out_path_for(resource_or_scope) # Keeping user on the same page after signing out
+    request.referrer
+  end
+
 end

@@ -20,4 +20,6 @@
     %li
       = link_to t(:'users.create.title'), new_user_registration_path, :class => "btn btn-success", :style => "vertical-align: baseline"
       &nbsp;
-    %li= link_to t(:'sessions.create.title'), new_user_session_path
+    %li
+      %span{:style => 'color: silver; margin-right:4px;'}= t(:'sessions.create.already_signed_up')
+      = link_to t(:'sessions.create.title'), new_user_session_path

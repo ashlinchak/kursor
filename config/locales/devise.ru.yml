@@ -85,6 +85,10 @@ ru:
       title: "Повторная разблокировака учетной записи"
       submit: "Выслать инструкцию по разблокировке"
     register:
+      cancel_account:
+        link: "Удалить учетную запись"
+        description: "Ошибочно зарегистрировались на портале?"
+        confirm: "Отменить действие будет невозможно, продолжить?"
       title: "Введите свои данные"
       oauth_registration:
         sign_up_with: "Регистрация через"
@@ -99,11 +103,13 @@ ru:
     authentications:
       you_can_sign_in_with: "Вы можете входить на портал через:"
       add_service_to_sign_in_with: "Подключить сервисы для входа на портал:"
-      no_authentications: "Для быстрого входа на портал можно добавить следующие сервисы:"
       remove_authentication_confirm: "Вы собираетесь отключить учетную запись из %{provider} для входа на портал?"
       flash:
         successfully_destroyed_authentication: "Учетная запись из %{provider} была успешно отключена."
         successfully_added_authentication: "Учетная запись из %{provider} была успешно подключена."
         this_oauth_not_linked_with_any_users: "Эта учетная запись из %{provider} не привязана ни к одному зарегистрированному пользователю на портале."
-
-
+      providers:
+        vkontakte: "Вконтакте"
+      authenticate_with_buttons:
+        description: "Вы можете войти с помощью %{provider}, если этот сервис был добавлен ранее в вашем личном кабинете."
+        title: "Войти через %{provider}"

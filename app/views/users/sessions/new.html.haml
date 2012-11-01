@@ -19,5 +19,12 @@
 
       .form-actions= f.submit t(:'devise.login.submit'), :class => 'btn btn-large'
   .span4
+    %legend= t(:'devise.links.sign_in_with')
+
+    = authenticate_with_button :vkontakte, 'vkontakte_64.png', '64x64'
+    = authenticate_with_button :facebook, 'facebook_64.png', '64x64'
+    = authenticate_with_button :twitter, 'twitter_64.png', '64x64'
+    = authenticate_with_button :google_oauth2, 'google_64.png', '64x64'
+
     %legend= t(:'devise.tools.title')
     = render "users/shared/links"

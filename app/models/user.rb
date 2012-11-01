@@ -77,17 +77,16 @@ class User < ActiveRecord::Base
     @user_type = ACCOUNT_TYPES[self.account_type_id]
   end
 
-  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-    data = access_token.info
-    user = User.where(:email => data["email"]).first
+  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
+
+    user = User.where(:email => auth.info["email"]).first
 
     unless user
-      user = User.create(#name: data["name"],
-                         email: data["email"],
+      user = User.create(email: auth.info["email"],
                          password: Devise.friendly_token[0,20],
-                         user_type_id: nil
       )
     end
+    user.authentications.find_or_create_by_provider_and_uid(auth.provider, auth.uid)
     user
   end
 
@@ -100,20 +99,11 @@ class User < ActiveRecord::Base
         user.save
       end
     else
-      user = User.create(oauth_provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
+      user = User.create(email:auth.info.email,
                          password:Devise.friendly_token[0,20]
       )
     end
-    user
-  end
-
-  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = current_user.authentications.where(:oauth_provider => auth.provider, :uid => auth.uid).first
-    if user
-      cu
-    end
+    user.authentications.find_or_create_by_provider_and_uid(auth.provider, auth.uid)
     user
   end
 
