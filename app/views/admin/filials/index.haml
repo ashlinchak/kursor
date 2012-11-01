@@ -7,17 +7,17 @@
 %span.badge.badge-success Providers with filials: #{providers_with_filials.size}
 %span.badge.badge-info Filials total: #{collection.all.size}
 %p{:style => 'float:right;'}
-  = link_to new_admin_user_path, :class => 'btn' do
+  = link_to new_admin_user_path, :class => 'btn', :target => '_blank' do
     %i.icon-plus-sign
     New provider
 %hr/
 %table.table.table-striped.table-condensed.table-hover
   %thead
     %tr
-      %th #
+      %th
       %th Provider Name
       %th Filials Count
-      %th
+      %th{:style=>'width:110px;'}
   %tbody
     - providers_with_filials.each_with_index do |p, index|
       %tr
