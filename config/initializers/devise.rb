@@ -147,7 +147,7 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  config.maximum_attempts = 20
+  config.maximum_attempts = 6
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
@@ -182,7 +182,7 @@ Devise.setup do |config|
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
-  # config.default_scope = :user
+  config.default_scope = :user
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
@@ -208,6 +208,23 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   require "omniauth-google-oauth2"
   config.omniauth :google_oauth2, "334150822942-q7gdfd706m2arflmp3al3ja70dcpqk8u.apps.googleusercontent.com", "Wz0EY6GewlG9U4pIkwIcofPo", { access_type: "offline", approval_prompt: "" }
+
+  require "omniauth-facebook"
+  require 'omniauth-twitter'
+  require 'omniauth-vkontakte'
+  require "omniauth-google-oauth2"
+
+  if Rails.env.production?
+    config.omniauth :twitter, "4m2Z3a93LfPOD3bAsBTOw", "lXqLRaFJAqydGcHJi1tLkgamMsaJ3JVwypPN0aBPg"
+    config.omniauth :facebook, "383815018325312", "d30d17fed413673a5df33b6d5ea2a52b"
+    config.omniauth :google_oauth2, "334150822942.apps.googleusercontent.com", "5hki3Q2PMADGfQ-kdjGOqZCZ", { access_type: "offline", approval_prompt: "" }
+    #config.omniauth :vkontakte, "3207415", "UTv8jecndp7SZEADiKve"
+  elsif Rails.env.development?
+    config.omniauth :twitter, "4m2Z3a93LfPOD3bAsBTOw", "lXqLRaFJAqydGcHJi1tLkgamMsaJ3JVwypPN0aBPg"
+    config.omniauth :facebook, "125936467557274", "5667cbd1fb0e164453821eb6e5b79926"
+    config.omniauth :google_oauth2, "334150822942-q7gdfd706m2arflmp3al3ja70dcpqk8u.apps.googleusercontent.com", "Wz0EY6GewlG9U4pIkwIcofPo", { access_type: "offline", approval_prompt: "" }
+    config.omniauth :vkontakte, "3207427", "0EdzsOgtwRFo0r12kk9T"
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

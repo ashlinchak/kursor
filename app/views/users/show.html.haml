@@ -1,10 +1,10 @@
 .row
-  .span8
+  .span12
     - if authenticated?
       - if user === current_user
         %i.icon-user
         = user.email
-        = link_to edit_user_path(user) do
+        = link_to edit_user_registration_path do
           %i.icon-envelope
           = t(:'users.panel.edit_email_password')
         - if user.school? && user.provider.present?
@@ -40,37 +40,86 @@
     %hr/
 
 - if authenticated?
-  - if user.tutor?
-    - unless user.tutor
-      - if user == current_user
-        .alert.alert-block
-          %h4.alert-heading= t(:'providers.edit.no_provider')
-          %p= t(:'providers.edit.no_provider_desc')
-          %p
-            = link_to new_tutor_path, :class => 'btn btn-success' do
-              %i.icon-white.icon-list-alt
-              = t(:'providers.edit.add_provider')
-    - else
-      = link_to user.tutor.name, tutor_path(user.tutor)
+  .row
+    .span4
+      - if user.tutor?
+        - unless user.tutor
+          - if user == current_user
+            .alert.alert-block
+              %h4.alert-heading= t(:'providers.edit.no_provider')
+              %p= t(:'providers.edit.no_provider_desc')
+              %p
+                = link_to new_tutor_path, :class => 'btn btn-success' do
+                  %i.icon-white.icon-list-alt
+                  = t(:'providers.edit.add_provider')
+        - else
+          = link_to user.tutor.name, tutor_path(user.tutor)
 
-  - elsif user.school?
-    - unless user.provider
-      - if user == current_user
-        .alert.alert-block
-          %h4.alert-heading= t(:'providers.edit.no_provider')
-          %p= t(:'providers.edit.no_provider_desc')
-          %p
-            = link_to new_provider_path, :class => 'btn btn-success' do
-              %i.icon-white.icon-list-alt
-              = t(:'providers.edit.add_provider')
-    - else
-      = link_to user.provider.name, provider_path(user.provider)
+      - elsif user.school?
+        - unless user.provider
+          - if user == current_user
+            .alert.alert-block
+              %h4.alert-heading= t(:'providers.edit.no_provider')
+              %p= t(:'providers.edit.no_provider_desc')
+              %p
+                = link_to new_provider_path, :class => 'btn btn-success' do
+                  %i.icon-white.icon-list-alt
+                  = t(:'providers.edit.add_provider')
+        - else
+          = link_to user.provider.name, provider_path(user.provider)
 
-  - elsif user.visitor?
-    - unless user.profile.present?
-      .alert.alert-block
-        = link_to 'Заполнить профиль', new_profile_path
-    - else
-      = render :partial => '/profiles/profile', :locals => { :profile => user.profile }
+      - elsif user.visitor?
+        - unless user.profile.present?
+          .alert.alert-block
+            = link_to 'Заполнить профиль', new_profile_path
+        - else
+          .alert.alert-block
+            = link_to user.profile.full_name, profile_path(user)
+      - unless user.profile || user.tutor || user.provider
+        .well
+          %h5= t(:'devise.register.cancel_account.description')
+          = link_to registration_path(user), :confirm => t(:'devise.register.cancel_account.confirm'), :method => :delete, :class => 'btn btn-danger' do
+            %i.icon-trash.icon-white
+            = t(:'devise.register.cancel_account.link')
+    .span5
+      - unless user.authentications.empty?
+        %p
+          %strong= t(:'devise.authentications.you_can_sign_in_with')
+        .authentications
+          - for auth in user.authentications
+            .authentication
+              - if auth.provider == 'google_oauth2'
+                = image_tag "icons/google_32.png", :size => "32x32"
+                .provider Google
+              - else
+                = image_tag "icons/#{auth.provider}_32.png", :size => "32x32"
+                .provider= auth.provider.titleize
+              .uid= auth.uid.to_s.truncate(12)
+              = link_to "X", auth, :confirm => t(:'devise.authentications.remove_authentication_confirm', :provider => auth.provider.titleize), :method => :delete, :class => "remove"
+          .clear
+      - if user.authentications.size < 4
+        %p
+          %strong= t(:'devise.authentications.add_service_to_sign_in_with')
+        - unless user.authentications.find_by_provider('vkontakte')
+          = link_to omniauth_authorize_path(:user, :vkontakte ), :class => 'auth_provider' do
+            = image_tag "icons/vkontakte_64.png", :size => "64x64", :alt => "Vkontakte"
+            Vkontakte
+        - unless user.authentications.find_by_provider('facebook')
+          = link_to omniauth_authorize_path(:user, :facebook), :class => 'auth_provider' do
+            = image_tag "icons/facebook_64.png", :size => "64x64", :alt => "Facebook"
+            Facebook
+        - unless user.authentications.find_by_provider('twitter')
+          = link_to omniauth_authorize_path(:user, :twitter), :class => 'auth_provider' do
+            = image_tag "icons/twitter_64.png", :size => "64x64", :alt => "Twitter"
+            Twitter
+        - unless user.authentications.find_by_provider('google_oauth2')
+          = link_to omniauth_authorize_path(:user, :google_oauth2), :class => 'auth_provider' do
+            = image_tag "icons/google_64.png", :size => "64x64", :alt => "Google"
+            Google
+      .clear
+
+
+
+
 - else
   = t(:'users.must_be_authenticated')

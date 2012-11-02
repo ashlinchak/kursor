@@ -1,4 +1,5 @@
 - set_meta_tags :title =>  t(:'seo.sections.registration'), :description => t(:'seo.sections.registration_description')
+<<<<<<< HEAD
 %h1= t(:'users.register_modal.title_html')
 .row
   .span12
@@ -36,3 +37,71 @@
 
   .span4
     = render "users/shared/links"
+=======
+#register
+
+  -#.row
+    .span12
+      %blockquote
+        %p= t(:'users.register_modal.intro_header')
+        %p= t('users.register_modal.intro_html', :search_link => t(:'users.register_modal.search_link_html') )
+        %p= t('users.register_modal.fill_the_form_html')
+  .row
+    .span8
+
+      = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}, :validate => true do |f|
+        = devise_error_messages!
+        %h1= t(:'users.register_modal.title_html')
+        -#%legend= t(:'users.new.account_type')
+        %legend
+        .control-group
+          .controls
+            - User::ACCOUNT_TYPES.each_with_index do |account_type, index|
+              %label.radio
+                = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
+                - if index == 0
+                  %span.user-type-name= t(:'users.user_types.regular_name', :user_type_description => t(:'users.user_types.regular_help')).html_safe
+                - elsif index == 1
+                  %span.user-type-name= t(:'users.user_types.tutor_name', :user_type_description => t(:'users.user_types.tutor_help')).html_safe
+                - elsif index == 2
+                  %span.user-type-name= t(:'users.user_types.provider_name', :user_type_description => t(:'users.user_types.provider_help')).html_safe
+        #oauth
+          .control-group
+            %label.control-label= t(:'devise.register.oauth_registration.sign_up_with')
+            .controls
+              = link_to omniauth_authorize_path(:user, :google_oauth2, {t:'reg'} ) do
+                = image_tag 'icons/google_32x32.png'
+              &nbsp;
+              = link_to omniauth_authorize_path(:user, :facebook, {t:'reg'}) do
+                = image_tag 'icons/facebook_32x32.png'
+            .controls{:style=>'margin-top:12px;'}
+              = t(:'devise.register.oauth_registration.or_go_regural_way')
+
+        -#%legend= t(:'devise.register.title')
+        .control-group
+          = f.label :email, :class => 'control-label'
+          .controls
+            = f.email_field :email
+        .control-group
+          = f.label :password, :class => 'control-label'
+          .controls
+            = f.password_field :password
+        .control-group
+          = f.label :password_confirmation, :class => 'control-label'
+          .controls
+            = f.password_field :password_confirmation
+
+
+
+        .form-actions= f.submit t(:'users.new.submit'), :class => 'btn btn-success btn-large'
+
+    .span4
+      %legend= t(:'devise.tools.title')
+      = render "users/shared/links"
+      %hr/
+      -#%legend= t(:'devise.register.oauth_registration.title').html_safe
+      %p
+
+
+
+>>>>>>> 83353705fb4d04cd4db75f1a0007d8db17a2ba4d

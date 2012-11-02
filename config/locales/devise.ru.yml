@@ -60,13 +60,17 @@ ru:
 
     # MEGAVOLT
 
+    tools:
+      title: "Инструменты"
+
     links:
       sign_in: "Войти"
       sign_up: "Зарегистрироваться"
       forgot_password: "Забыли свой пароль?"
       didnt_receive_confirmation_instructions: "Не получили инструкций по активации?"
-      didnt_receive_unlock_instructions: "Не поличили иструкцию по разблокировке?"
+      didnt_receive_unlock_instructions: "Не получили иструкцию по разблокировке?"
       sign_in_with: "Войти через "
+
     login:
       title: "Вход в систему"
       submit: "Войти"
@@ -81,10 +85,31 @@ ru:
       title: "Повторная разблокировака учетной записи"
       submit: "Выслать инструкцию по разблокировке"
     register:
+      cancel_account:
+        link: "Удалить учетную запись"
+        description: "Ошибочно зарегистрировались на портале?"
+        confirm: "Отменить действие будет невозможно, продолжить?"
       title: "Введите свои данные"
+      oauth_registration:
+        sign_up_with: "Регистрация через"
+        or_go_regural_way: "или заполните поля ниже"
+        title: "Упрощенная регистрация"
+        description: "Зарегистрироваться как <a href=\'#\' rel=\'tooltip\' title=\'%{user_type_description}\'>&laquo;Пользователь&raquo;</a> теперь можно через:"
     edit:
       title: "Редактирование учетной записи"
       submit: "Сохранить"
       current_password_help: "Введите старый пароль для подтверждения изменений."
       leave_blank: "Оставьте это поле пустым, если вы не собираетесь менять пароль."
-
+    authentications:
+      you_can_sign_in_with: "Вы можете входить на портал через:"
+      add_service_to_sign_in_with: "Подключить сервисы для входа на портал:"
+      remove_authentication_confirm: "Вы собираетесь отключить учетную запись из %{provider} для входа на портал?"
+      flash:
+        successfully_destroyed_authentication: "Учетная запись из %{provider} была успешно отключена."
+        successfully_added_authentication: "Учетная запись из %{provider} была успешно подключена."
+        this_oauth_not_linked_with_any_users: "Эта учетная запись из %{provider} не привязана ни к одному зарегистрированному пользователю на портале."
+      providers:
+        vkontakte: "Вконтакте"
+      authenticate_with_buttons:
+        description: "Вы можете войти с помощью %{provider}, если этот сервис был добавлен ранее в вашем личном кабинете."
+        title: "Войти через %{provider}"
