@@ -19,7 +19,7 @@
       Send email
     %hr/
 
-- unless controller.controller_name == 'users'
+-#- unless controller.controller_name == 'users'
   %ul.breadcrumb
     %li= link_to( tutor.tutor_category, tutor_category_path(tutor.tutor_category) ) if tutor.tutor_category
     %span.divider
@@ -28,12 +28,7 @@
 
 .row
   .span8
-    - unless controller.controller_name == 'users'
-      .row
-        .span8
-          %table.bookmarks
-            %tr
-              = render :partial => 'shared/bookmarks'
+
     .row
       .span3{ :style => 'width: 190px;'}
         - if tutor.avatar_url
@@ -96,7 +91,16 @@
         = link_to admin_user_path(tutor.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
           %i.icon.icon-remove
           = t(:'site.actions.destroy_user')
+
     %hr/
+    - unless controller.controller_name == 'users'
+      .row
+        .span8
+          %table.bookmarks
+            %tr
+              = render :partial => 'shared/bookmarks'
+
+
     #disqus_thread
     :javascript
       //CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE

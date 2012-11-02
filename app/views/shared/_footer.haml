@@ -4,7 +4,13 @@
       = link_to root_url do
         = image_tag 'logo_white.png'
       %hr/
-
+      %p
+        %i.icon-info-sign.icon-white
+        = link_to '/info/project' do
+          О проекте
+        &nbsp; | &nbsp;
+        = link_to '/posts/248-kommercheskoe-predlozhenie-po-razmescheniyu-reklamy-na-portale-kursor-org-ua' do
+          Реклама на сайте
       %p= t(:'site.footer.cooperation_html')
       %p
         %b= link_to 'info@kursor.org.ua','mailto:info@kursor.org.ua'

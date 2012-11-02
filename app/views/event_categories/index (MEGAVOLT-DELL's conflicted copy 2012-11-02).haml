@@ -1,0 +1,76 @@
+-#- set_meta_tags :title => t(:'seo.sections.postings'), :description => t(:'seo.sections.postings_description')
+#event-categories
+  #index
+    .row
+      .span8
+
+        = render :partial => 'nav'
+
+        - if Event.all.size > 0
+          %table.table
+            %thead
+              %tr
+                %th{:style=>'width:80px;'}= t(:'events.date')
+                %th= t(:'events.title')
+                %th{:style=>'width:100px;'}= t(:'events.price.cost')
+                %th{:style=>'width:85px;'}= t(:'events.provider')
+            %tbody
+              - Event.upcoming.each do |event|
+                %tr
+                  %td
+                    .date
+                      - unless event.end_datetime.blank?
+                        - unless event.end_datetime.to_date == event.start_datetime.to_date
+                          - if l(event.start_datetime, :format => '%B') == l(event.end_datetime, :format => '%B')
+                            .number
+                              = l event.start_datetime, :format => '%e'
+                              &#8211;
+                              = l(event.end_datetime, :format => '%e')
+                            .month
+                              = l(event.end_datetime, :format => '%e %B').tr("0-9","")
+                          - else
+                            = l event.start_datetime, :format => '%e %B'
+                            &#8211;
+                            = l(event.end_datetime, :format => '%e %B')
+                        - else
+                          .number
+                            = l event.start_datetime, :format => '%e'
+                          .month
+                            = l(event.start_datetime, :format => '%e %B').tr("0-9","")
+                      - unless event.location.city.blank?
+                        .city= event.location.city.name
+
+
+                  %td
+                    %p= link_to event.title, event_path(event), :title => event.title
+                    - if authenticated?
+                      - if event.eventable.user == current_user || authorized?
+                        %p
+                          = link_to [:edit, event.eventable, event], :class => 'btn btn-mini' do
+                            %i.icon-pencil
+                            = t(:'site.actions.edit')
+                          = link_to [event.eventable, event], :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger' do
+                            %i.icon-trash.icon-white
+                  %td
+                    - unless event.min_price.blank?
+                      = t(:'events.price.from').to_s + event.min_price.to_s + t(:'events.price.hrn')
+                    - else
+                      .free= t(:'events.price.free')
+                    -#- unless event.max_price.blank?
+                      %br/
+                      = t(:'events.price.to').to_s + event.max_price.to_s
+                      = t(:'events.price.hrn')
+                  %td
+                    - if event.eventable.is_a? Provider
+                      = link_to provider_path(event.eventable) do
+                        = image_tag event.eventable.logo_url(:thumb).to_s, :title => event.eventable.name, :class => "img-rounded"
+                    - if event.eventable.is_a? Tutor
+                      = link_to tutor_path(event.eventable) do
+                        = image_tag event.eventable.avatar_url(:thumb).to_s, :title => event.eventable.name, :class => "img-rounded"
+
+        - else
+          = t(:'events.no_events')
+      .span4
+        = render :partial => 'shared/advertising/kursor_ads'
+        %hr/
+        = render :partial => 'shared/widgets/widgets'

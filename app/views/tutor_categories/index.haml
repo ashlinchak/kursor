@@ -21,15 +21,9 @@
                         = link_to sub_category do
                           = "#{sub_category} (#{sub_category.tutors_count})"
 
-        -#%hr/
-        -#- if tutors.size > 0
-        -#  %ul.entries
-        -#    - for tut in tutors
-        -#      = render :partial => 'tutor_categories/tutor', :locals => { :tutor => tut }
-        -#  .page_navigation.clear= paginate tutors
-        -#- else
-        -#  Нет зарегистрированных преподавателей в этой категории
-        -#%hr/
+        %hr/
+        #meta-additional
+          = t(:'seo.meta.tutors.additional_text').html_safe
 
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
