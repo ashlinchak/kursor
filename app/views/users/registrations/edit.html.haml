@@ -1,9 +1,6 @@
 .row
   .span8
-<<<<<<< HEAD
-=======
     %legend= t(:'devise.edit.title')
->>>>>>> 83353705fb4d04cd4db75f1a0007d8db17a2ba4d
     = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal'  }, :validate => true do |f|
       = devise_error_messages!
       .control-group
@@ -28,12 +25,8 @@
 
   .span4
 
-
-
-
     %legend= t(:'devise.tools.title')
     = render 'users/shared/links'
-
 
 -#%h3 Cancel my account
 -#%p

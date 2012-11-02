@@ -31,14 +31,11 @@ gem 'inherited_resources'
 gem 'thin'
 gem 'delayed_job_active_record'
 gem 'client_side_validations'
-<<<<<<< HEAD
-=======
 gem 'omniauth'
 gem 'oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
->>>>>>> 83353705fb4d04cd4db75f1a0007d8db17a2ba4d
 gem 'omniauth-google-oauth2'
 
 group :assets do

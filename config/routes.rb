@@ -1,16 +1,10 @@
 Kursor::Application.routes.draw do
 
-<<<<<<< HEAD
-  devise_for :users,
-             :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },
-  :skip => [:sessions] do
-=======
   match '/auth/:provider/callback' => 'authentications#create'
 
   devise_for  :users,
               :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },
               :skip => [:sessions] do
->>>>>>> 83353705fb4d04cd4db75f1a0007d8db17a2ba4d
     get '/login'   => "devise/sessions#new",       :as => :new_user_session
     post '/login'  => 'devise/sessions#create',    :as => :user_session
     delete '/logout'  => 'devise/sessions#destroy',   :as => :destroy_user_session

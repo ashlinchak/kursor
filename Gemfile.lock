@@ -209,14 +209,6 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
-<<<<<<< HEAD
-    omniauth-google-oauth2 (0.1.13)
-      omniauth (~> 1.0)
-      omniauth-oauth2
-    omniauth-oauth2 (1.1.1)
-      oauth2 (~> 0.8.0)
-      omniauth (~> 1.0)
-=======
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
     omniauth-google-oauth2 (0.1.13)
@@ -235,7 +227,6 @@ GEM
       multi_json
       omniauth (~> 1.1.0)
       omniauth-oauth2 (~> 1.0)
->>>>>>> 83353705fb4d04cd4db75f1a0007d8db17a2ba4d
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     pony (1.4)
@@ -370,16 +361,12 @@ DEPENDENCIES
   mysql2
   nifty-generators
   nokogiri
-<<<<<<< HEAD
-  omniauth-google-oauth2
-=======
   oauth2
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
   omniauth-vkontakte
->>>>>>> 83353705fb4d04cd4db75f1a0007d8db17a2ba4d
   rack-test
   rails (= 3.2.6)
   rspec-rails
