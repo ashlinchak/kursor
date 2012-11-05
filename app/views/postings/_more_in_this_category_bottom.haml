@@ -1,13 +1,12 @@
-.more_postings
+.more_postings_bottom
   - for c in posting.posting_categories.roots do
-    - for post in c.postings.approved.limit(3) do
-      .carousel
-        .carusel-inner
-          .active.item
+    .row
+      - for post in c.postings.approved.limit(4) do
+        .span2
+          .img
             = link_to posting_path(post) do
               = image_tag post.images.last.src_url(:medium)
-            .carousel-caption
-              %p= link_to post.title, posting_path(post)
+          %p= link_to post.title.truncate(40), posting_path(post)
     .clear
     -#%p.plus
       = link_to '<span>Еще</span> + '.html_safe + (c.postings.approved.size - 5).to_s, posting_category_path(c)

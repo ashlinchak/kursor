@@ -5,17 +5,18 @@
         = image_tag 'assets/logo.png', "data-original" => p.images.last.src_url(:medium).to_s, :width => '210px', :height => '129px'
     - else
       &nbsp;
+    .user-bar{:style=>'margin-top:5px;'}
+      = l p.created_at, :format => :long
+      %br/
+      = link_to p.user, p.user
+      |
+      = image_tag 'icons/comment-16.png'
+      = link_to '', posting_path(p) + '#disqus_thread'
   .span5
     %h4= link_to p.title, p
     .excerpt
-      = p.excerpt
+      = p.excerpt.truncate(200)
     .read-more{:style=>'margin-top:5px;'}
       = link_to t(:'postings.readmore'), p
-    .user-bar{:style=>'margin-top:5px;'}
-      = link_to p.user, p.user
-      |
-      = l p.created_at, :format => :long
-      |
-      = link_to '', posting_path(p) + '#disqus_thread'
-%hr/
+
 

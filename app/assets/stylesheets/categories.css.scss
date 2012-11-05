@@ -6,8 +6,6 @@
 $silver: #B2B2B2;
 $green: #86A116;
 
-
-
 #categories {
 
   #show {
@@ -22,9 +20,21 @@ $green: #86A116;
 
     }
 
+    #related-posts {
+
+      .carousel {
+        margin: 10px 0px;
+        img { padding: 0px; }
+        .carousel-caption {
+          padding: 5px 15px 5px;
+          a {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+
   }
-
-
 
   ul.entries, ul.regions, ul.categories, ul.categories ul{
     list-style: none;
@@ -57,7 +67,6 @@ $green: #86A116;
 
     }
   }
-
 
   ul.regions{
     border-top: 1px dashed #d6d6d6;

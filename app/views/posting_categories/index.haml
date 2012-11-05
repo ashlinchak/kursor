@@ -37,10 +37,11 @@
             - unless index % 2 == 0
               .row
         %hr/
-        %h2.home-title= t(:'home.titles.featured_posting')
+        %legend= t(:'home.titles.featured_posting')
         - for p in posts_only
           = render :partial => 'posting_categories/posting', :locals => { :p => p }
-        .page_navigation.clear= paginate posts_only
+          %hr/
+        = paginate posts_only
       .span4
         = render :partial => 'shared/advertising/kursor_ads'
         %hr/
