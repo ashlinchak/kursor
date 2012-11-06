@@ -47,4 +47,6 @@
 
   = yield :scripts
   = render :partial => 'shared/disqus/counter'
-  = render :partial => 'shared/widgets/reformal' unless Rails.env.development?
+  - unless Rails.env.development?
+    = render :partial => 'shared/widgets/siteheart'
+    = render :partial => 'shared/widgets/reformal'

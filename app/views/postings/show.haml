@@ -67,12 +67,8 @@
               = link_to posting_path(posting), :method => :delete, :confirm => 'Are you sure?' do
                 %i.icon-remove
                 = t(:'postings.actions.delete')
-      .span4
-        = render :partial => 'shared/advertising/kursor_ads'
-        = render :partial => 'postings/more_in_this_category'
-        = render :partial => 'shared/widgets/widgets'
-    .row
-      .span8
+        %hr/
+        = render :partial => 'postings/more_in_this_category_bottom'
         %hr/
         #disqus_thread
         :javascript
@@ -92,35 +88,7 @@
         %noscript
           Пожалуйста, включите поддержку JavaScript в Вашем браузере.
 
-      -#.span8
-        %legend= t(:'postings.comments.title') + ' (' + posting.comment_threads.size.to_s + ')'
-
-        - if posting.comment_threads.size > 0
-          = render 'comments/comments', :commentable => posting
-        - else
-          = t(:'postings.comments.no_comments')
-        - if authenticated?
-          = form_for [ posting, Comment.build_from( posting, nil, '') ], :html => {:class => 'form-horizontal'} do |f|
-            %fieldset
-              %legend= t(:'postings.comments.leave_comment')
-              .control-group
-                %label.control-label
-                  - unless !current_user.visitor?
-                    - unless current_user.profile.nil?
-                      = image_tag current_user.profile.avatar_url(:thumb).to_s
-                  - unless !current_user.tutor?
-                    - unless current_user.tutor.nil?
-                      = image_tag current_user.tutor.avatar_url(:thumb).to_s
-                  - unless !current_user.school?
-                    - unless current_user.provider.nil?
-                      = image_tag current_user.provider.logo_url(:thumb).to_s
-                .controls
-                  = f.text_area :body, :class => 'span5'
-                  -#= f.text_field :parent_id, :class => 'span1'
-            .form-actions
-              = f.submit t(:'postings.comments.submit'), :class => 'btn btn-large btn-success'
-        - else
-          .alert.alert-danger
-            %p
-              %b= t(:'postings.comments.only_for_registered')
-            %p= t(:'postings.comments.please_register_or_login').html_safe
+      .span4
+        = render :partial => 'shared/advertising/kursor_ads'
+        = render :partial => 'postings/more_in_this_category'
+        = render :partial => 'shared/widgets/widgets'

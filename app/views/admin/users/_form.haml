@@ -1,3 +1,4 @@
+
 = form_for(user, :url => ( user.new_record? ? admin_users_path : admin_user_path(user) ), :multipart => true, :html => { :class => 'form-horizontal' } ) do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => user }
   %fieldset
@@ -23,7 +24,7 @@
         .controls
           - User::ACCOUNT_TYPES.each do |account_type|
             %label.radio
-              = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type), :checked => ( true if account_type == 'school' )
+              = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type), :checked => ( true if account_type == 'school' ), :disabled => ('disabled' unless account_type == 'school')
               = t("activerecord.attributes.user.account_types.#{account_type}")
               = account_type
   = f.fields_for :provider do |p|

@@ -1,7 +1,19 @@
-%div
-  %h2= @tag_name
-  %p
-    всего по критерию нашлось:
-    = @taggables.size()
+.row
+  .span8
+    .row
+      .span5
+        %h4
+          %i.icon-tag
+          = @tag_name
+      .span3
+        %p{:style => 'line-height: 20px; margin: 14px 0px 0px 0px;'}
+          Всего по критерию нашлось:
+          = @taggables.size
+    %hr/
     - @taggables.each do |tagable|
-      %h3= link_to tagable, tagable
+      - if tagable.class.name == 'Posting' && tagable.text_posting?
+        = render :partial => 'posting_categories/posting', :locals => { :p => tagable }
+        %hr/
+  .span4
+    = render :partial => 'shared/advertising/kursor_ads'
+    = render :partial => 'shared/widgets/widgets'

@@ -27,15 +27,15 @@ class PostingCategoriesController < ApplicationController
 
   def postings
     @postings ||= if posting_category.root?
-      Kaminari.paginate_array(posting_category.postings.approved).page(params[:page]).per(30)
+      Kaminari.paginate_array(posting_category.postings.approved).page(params[:page]).per(15)
     else
-      Kaminari.paginate_array(posting_category.sub_postings.approved).page(params[:page]).per(30)
+      Kaminari.paginate_array(posting_category.sub_postings.approved).page(params[:page]).per(15)
     end
   end
   helper_method :postings
 
   def all_postings
-     @all_postings = Kaminari.paginate_array(text_postings.approved).page(params[:page]).per(30)
+     @all_postings = Kaminari.paginate_array(text_postings.approved).page(params[:page]).per(15)
   end
   helper_method :all_postings
 
@@ -50,22 +50,22 @@ class PostingCategoriesController < ApplicationController
   helper_method :text_postings
 
   def posts_only
-    @posts_only = Kaminari.paginate_array(post_cat.postings.approved).page(params[:page]).per(30)
+    @posts_only = Kaminari.paginate_array(post_cat.postings.approved).page(params[:page]).per(15)
   end
   helper_method :posts_only
 
   def blog_only
-    @blog_only = Kaminari.paginate_array(blog_cat.postings.approved).page(params[:page]).per(30)
+    @blog_only = Kaminari.paginate_array(blog_cat.postings.approved).page(params[:page]).per(15)
   end
   helper_method :blog_only
 
   def wiki_only
-    @wiki_only = Kaminari.paginate_array(wiki_cat.postings.approved).page(params[:page]).per(30)
+    @wiki_only = Kaminari.paginate_array(wiki_cat.postings.approved).page(params[:page]).per(15)
   end
   helper_method :wiki_only
 
   def video_only
-    @video_only = Kaminari.paginate_array(video_cat.postings.approved).page(params[:page]).per(30)
+    @video_only = Kaminari.paginate_array(video_cat.postings.approved).page(params[:page]).per(15)
   end
   helper_method :video_only
 

@@ -1,6 +1,12 @@
 // Place all the styles related to the postings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin round($dist) {
+  -webkit-border-radius: $dist;
+  border-radius: $dist;
+}
+
 .home-postings{
   list-style: none;
   //margin: 0;
@@ -43,7 +49,7 @@
       margin: 0px 10px 5px 0px;
       img { padding: 0px; }
       .carousel-caption {
-        padding: 5px 15px 0px;
+        padding: 5px 15px;
       }
     }
 
@@ -106,42 +112,27 @@
     }
 
   .more_postings {
-
-
-
-    p.plus {
-      a {
-        display: block;
-        padding: 5px 0px 5px 0px;
-        background: #F8F8F8;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
-        overflow: hidden;
-        -webkit-transition: all 300ms ease-in-out;
-        -moz-transition: all 300ms ease-in-out;
-        -ms-transition: all 300ms ease-in-out;
-        -o-transition: all 300ms ease-in-out;
-        transition: all 300ms ease-in-out;
-        span {
-          color: #F8F8F8;
-          padding-right: 5px;
+      .carousel {
+        margin: 10px 0px;
+        img { padding: 0px; }
+        .carousel-caption {
+          padding: 5px 15px 5px;
+          a {
+            color: #ffffff;
+          }
         }
       }
-      a:hover {
-        -webkit-transition: all 300ms ease-in-out;
-        -moz-transition: all 300ms ease-in-out;
-        -ms-transition: all 300ms ease-in-out;
-        -o-transition: all 300ms ease-in-out;
-        transition: all 300ms ease-in-out;
-        padding-left: 25px;
-        text-decoration: none;
-        background: #d6d6d6;
-        span {
-          color: #ffffff;
-        }
-      }
+  }
+
+  .more_postings_bottom {
+    text-align: center;
+    font-size: 12px;
+    .img {
+      height: 80px;
+      overflow: hidden;
+      @include round(3px);
     }
+
   }
 
 

@@ -88,15 +88,15 @@
                 = link_to category do
                   = image_tag category.icon_url(:standart), :title => category
               .span3.list
-                %h3= link_to category, category
+                %h4= link_to category, category
                 %ul
                   - for sub_category in category.top_subcategories do
                     %li
+                      %span{:style => 'font-size:1.5em;color:silver;'} &#x2713;
                       = link_to sub_category do
                         = "#{sub_category} (#{sub_category.providers_count})"
     .span4
       = render :partial => 'shared/advertising/kursor_ads'
-      = render :partial => 'shared/advertising/home_right_second'
       -#%hr/
       %br/
       - if home_promotions.exists?

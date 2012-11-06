@@ -21,6 +21,15 @@ class Admin::ProvidersController < Admin::DashboardController
     redirect_to admin_notifications_path
   end
 
+  def destroy_filials
+    if provider.destroy_filials!
+      flash[:success]= "Filials successfully destroyed."
+    else
+      flash[:danger]= "There was an error! Can't destroy filials."
+    end
+    redirect_to admin_filials_path
+  end
+
   def export
     @contacts = Contact.where("contactable_type = ? AND contact_type_id = ?", 'Provider', 1)
     @string = StringIO.new

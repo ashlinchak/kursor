@@ -37,8 +37,9 @@
         .span9
           = link_to admin_path do
             %i.icon-wrench.icon-white
-            Admin
+            Admin Home
         .span3{:style => 'text-align: right;'}
           = link_to root_url do
+            = link_to t(:'site.back_to_site'), root_url, :target => '_blank'
             %i.icon-forward.icon-white
   -#= render :partial => 'shared/google_analytics_code' unless Rails.env.development?

@@ -54,6 +54,9 @@
         %tr
           %td Tags
           %td= @tags
+        %tr
+          %td= link_to 'Filials', admin_filials_path
+          %td= Filial.all.size
 
   .span3
     %p.lead What is today?
