@@ -1,7 +1,9 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
 require "whenever/capistrano"
+require "delayed/recipes"
 
+set :rails_env, "production" #added for delayed job
 set :using_rvm, true
 set :rvm_type, :system
 
@@ -29,11 +31,16 @@ namespace :deploy do
   task :sitemap_refresh do
     run "cd '#{current_path}' && #{rake} sitemap:refresh RAILS_ENV=#{rails_env}"
   end
+
   task :migrate_database do
   run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
   end
 
 end
+
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
 
 # ==============================
 # Uploads

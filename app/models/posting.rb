@@ -17,6 +17,7 @@ class Posting < ActiveRecord::Base
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
 
   #validates :images, :length => { :maximum => 1}
+  validates_presence_of :title, :excerpt
 
   has_many :taggings, :as => :taggable, :dependent => :destroy
   has_many :tags,     :through => :taggings

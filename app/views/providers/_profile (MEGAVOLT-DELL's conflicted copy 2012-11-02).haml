@@ -1,0 +1,206 @@
+- set_meta_tags :title => provider.name, :description => provider.description
+- if current_user
+  - if authorized?
+    = link_to edit_provider_path(provider) do
+      %i.icon.icon-pencil
+      = t(:'providers.edit.edit_profile')
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    = link_to t(:'search.transfer_user').html_safe, edit_admin_user_transfer_path(provider.user_id), :class => ''
+    &nbsp;&nbsp;
+    = link_to 'mailto:'+provider.user.email+'?subject=Образовательный Портал КУРСОР' do
+      %i.icon-envelope
+      Send email
+    %hr/
+  - if current_user == provider.user
+    = render :partial => 'toolbar'
+
+  - if current_user.provider and !current_user.provider.is_approved
+    .alert.alert-info.alert-block
+      %h4.alert-heading= t(:'providers.edit.not_approved.title')
+      %p= t(:'providers.edit.not_approved.desc').html_safe
+.row
+  .span8
+    - unless controller.controller_name == 'users'
+
+      -#.row
+        .span12
+          %ul.breadcrumb
+            %li= link_to( provider.category, category_path(provider.category) ) if provider.category
+            %span.divider
+              \/
+            %li= link_to provider
+    .row
+      .span3
+        - if provider.logo_url
+          -#.thumbnail
+          = image_tag provider.logo_url(:medium).to_s
+      .span5
+        %h1= provider.name
+        %p.silver
+          Последнее изменение:
+          = time_ago_in_words(provider.updated_at)
+          назад
+
+        - if current_user
+          - if current_user.visitor?
+            %p
+              - unless provider.student_users.include?(current_user)
+                = link_to 'Я учусь здесь!', join_provider_students_path(provider), :class => 'btn btn-info'
+              - else
+                = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'btn btn-danger'
+        - elsif provider.user.email.include?("kursor.org.ua")
+          = link_to t(:'provider_request.iam_owner'), provider_provider_requests_path(provider), :class => 'btn btn-info'
+        %p
+          = render :partial => 'shared/rating_stars', :locals => {:rateable => provider}
+    %br/
+    %table.table.table-striped.table-condensed
+      - if provider.custom_fields.size > 0
+        - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
+          %tr
+            %td
+              %span
+                %b= f.name
+            %td
+              = f.value
+    %ul#ProviderTabs.nav.nav-tabs
+      %li.active
+        %a( href = "#description" data-toggle = "tab" )
+          = t(:'providers.main_info')
+      - unless provider.more_info.blank?
+        %li
+          %a( href = "#more_info" data-toggle = "tab" )
+            = t(:'providers.more_info')
+      - unless provider.documents_info.blank?
+        %li
+          %a( href = "#documents_info" data-toggle = "tab" )
+            = t(:'providers.documents_info')
+      - if provider.location
+        - if provider.location.gmaps?
+          %li
+            %a( href = "#on_map" data-toggle = "tab" id = "mapTab" )
+              %i.icon-map-marker
+              = t(:'providers.on_map')
+          -#%li.dropdown
+            %a.dropdown-toggle{"data-toggle"=>"dropdown", :href=>'#'}
+              = t(:'providers.more_tabs')
+              %b.caret
+            %ul.dropdown-menu
+
+    #myTabContent.tab-content
+      #description.tab-pane.fade.active.in
+        - if !provider.description.blank?
+          .description= provider.description.html_safe
+        - else
+          %p= t(:'providers.visit_website_for_more_info')
+      #more_info.tab-pane.fade
+        - if !provider.more_info.blank?
+          .more-info= provider.more_info.html_safe
+      #documents_info.tab-pane.fade
+        - if !provider.documents_info.blank?
+          .documents-info= provider.documents_info.html_safe
+      #on_map.tab-pane.fade
+        - if provider.location
+          - if provider.location.gmaps?
+            = gmaps4rails(provider.location.to_gmaps4rails)
+    - if current_user
+      - if current_user.administrator?
+        %hr/
+        = link_to admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
+          %i.icon.icon-remove
+          = t(:'site.actions.destroy_user')
+
+    %hr/
+    .row
+      .span8
+        %table.bookmarks
+          %tr
+            = render :partial => 'shared/bookmarks'
+
+
+
+    #disqus_thread
+    :javascript
+      //CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE
+      //var disqus_developer = 1;
+      var disqus_category_id = '1541316'
+      var disqus_shortname = 'kursor-ua';
+      //DON'T EDIT BELOW THIS LINE
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    %noscript
+      Пожалуйста, включите поддержку JavaScript в Вашем браузере.
+
+  .span4
+    .categories
+      - if provider.categorizings.size > 0
+        %h2.block-title= t(:'providers.categories')
+        %ul
+          - for categoring in provider.categories do
+            %li= link_to categoring, category_path(categoring)
+
+    - if provider.custom_flag_bindings.size > 0
+      %h2.block-title=t(:'providers.custom_flags.title')
+      %table.table.table-striped.table-condensed
+        - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
+          %tr
+            %td
+              %span= field.custom_flag.name
+            %td
+              - if field.value == true
+                = image_tag 'icons/onebit_true.png', :width => '20'
+              - else
+                = image_tag 'icons/onebit_false.png', :width => '20'
+
+    %h2.block-title=t(:'providers.contacts')
+    %table.table.table-striped.table-condensed
+      - if provider.location
+        %tr
+          %td
+            %span{ :class => "span-icon icon-address" }
+          %td
+            = address_value provider.location
+      - for contact in provider.contacts.by_type do
+        - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+          %tr
+            %td
+              %span{ :class => "span-icon icon-#{contact.contact_type}" }
+            %td
+              = contact_value contact
+    %p
+      - for contact in provider.contacts.by_type
+        - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+          = social_icon contact
+    %br
+
+
+    - if provider.filials.size > 0
+
+      %h2.block-title= t(:'providers.filials')
+
+      - provider.filials.each do |filial|
+        - if filial.name.present?
+          %h4.home-title= filial.name
+        %table.table.table-striped.table-condensed
+          %tr
+            %td
+              %span{ :class => "span-icon icon-address" }
+            %td
+              = address_value filial.location
+
+          - if filial.contacts.size > 0
+            - for contact in filial.contacts.by_type do
+              %tr
+                - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+                  %td
+                    %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                  %td
+                    = contact_value contact
+
+        %p
+          - for contact in filial.contacts.by_type
+            - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+              = social_icon contact
+        %hr/

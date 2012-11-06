@@ -1,27 +1,29 @@
 class User < ActiveRecord::Base
 
-  attr_accessor :password, :password_confirmation, :provider_attributes, :profile_attributes
+  # :token_authenticatable
+  devise :database_authenticatable, :registerable, :confirmable, :timeoutable,
+         :recoverable, :rememberable, :trackable, :validatable, :lockable, :omniauthable
 
+  include Devise::Async::Model # should be below call to `devise`
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id, :provider, :uid,
+                  :confirmed_at, :confirmation_token, :confirmation_sent_at # for rake task users:confirm_all_active
+
+  attr_accessor :provider_attributes, :profile_attributes
+
+  #before_validation :generate_password, :on => :create
+
+  has_many :authentications, :dependent => :destroy
   has_one :administrator, :dependent => :destroy
   has_one :provider, :dependent => :destroy
   has_one :tutor, :dependent => :destroy
   has_one :profile, :dependent => :destroy
-  has_one :user_activation, :dependent => :destroy
   has_many :students
   has_many :schools, :through => :students
   has_many :schedule_events
   has_many :postings
-
   has_many :votes
-
-  before_save :encrypt_password
-  after_create :generate_activation
-
-
-  validates_presence_of     :password, :on => :create
-  validates_confirmation_of :password
-  validates_presence_of   :email
-  validates_uniqueness_of :email
 
   accepts_nested_attributes_for :provider
   accepts_nested_attributes_for :tutor
@@ -55,20 +57,6 @@ class User < ActiveRecord::Base
     super(:only => [:email, :is_active])
   end
 
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    end
-  end
-
   def administrator?
     !!administrator
   end
@@ -89,13 +77,42 @@ class User < ActiveRecord::Base
     @user_type = ACCOUNT_TYPES[self.account_type_id]
   end
 
-  def generate_activation
-    # delete pending activation
-    if user_activation
-      user_activation.destroy
+  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
+
+    user = User.where(:email => auth.info["email"]).first
+
+    unless user
+      user = User.create(email: auth.info["email"],
+                         password: Devise.friendly_token[0,20],
+      )
     end
-    self.create_user_activation
+    user.authentications.find_or_create_by_provider_and_uid(auth.provider, auth.uid)
+    user
   end
 
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:oauth_provider => auth.provider, :uid => auth.uid).first || User.find_by_email(auth.info.email)
+    if user
+      if user.oauth_provider.blank? || user.uid.blank?
+        user.oauth_provider = auth.provider
+        user.uid = auth.uid
+        user.save
+      end
+    else
+      user = User.create(email:auth.info.email,
+                         password:Devise.friendly_token[0,20]
+      )
+    end
+    user.authentications.find_or_create_by_provider_and_uid(auth.provider, auth.uid)
+    user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 
 end

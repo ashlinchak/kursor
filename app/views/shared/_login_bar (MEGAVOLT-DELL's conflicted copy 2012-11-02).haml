@@ -1,0 +1,30 @@
+%ul.login-nav
+  - if authenticated?
+    %li
+      = t(:'sessions.create.logged_in_as')
+      - if current_user.profile.present?
+        = link_to profile_path(current_user.profile) do
+          = current_user.email
+        = image_tag current_user.profile.avatar_url(:icon), :class => 'icon'
+      - elsif current_user.provider.present?
+        = link_to provider_path(current_user.provider) do
+          = current_user.email
+        = image_tag current_user.provider.logo_url(:icon), :class => 'icon'
+      - elsif current_user.tutor.present?
+        = link_to tutor_path(current_user.tutor) do
+          = current_user.email
+        = image_tag current_user.tutor.avatar_url(:icon), :class => 'icon'
+      - else
+        = link_to user_path(current_user) do
+          = current_user.email
+
+    - if authorized?
+      %li= link_to t(:'site.nav.admin-panel'), admin_path
+    %li= link_to t(:'sessions.destroy.title'), logout_url
+  - else
+    %li
+      = link_to t(:'users.create.title'), new_user_path, :class => "btn btn-success", :style => "vertical-align: baseline"
+      &nbsp;
+    %li= link_to t(:'sessions.create.title'), login_url
+-#- unless authenticated?
+  = render 'shared/register_modal'

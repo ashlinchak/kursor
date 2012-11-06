@@ -1,0 +1,20 @@
+%p Добро пожаловать, #{@resource.email}!
+
+%p
+  Мы поздравляем Вас с успешной регистрацией на образовательном портале
+  = link_to 'Kursor.org.ua', root_url
+%p
+  Для подтверждения Вашей учетной записи, пожалуйста, перейдите по указанной ниже ссылке:
+
+%p
+  = link_to 'Подтвердить учетную запись', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+
+%p
+  Если письмо попало к Вам по ошибке, пожалуйста, просто удалите его
+
+%p
+  С уважением, администрация портала Kursor.
+  %br/
+  = link_to 'info@kursor.org.ua', 'mailto:info@kursor.org.ua'
+
+
