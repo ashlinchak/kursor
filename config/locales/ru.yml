@@ -433,6 +433,7 @@ ru:
     title: "Теги"
     tag_list: "Список тегов"
     tag_list_help: "Впишите теги через запятую"
+    posts_with_this_tag: "Все статьи по теме %{category}"
 
   mailers:
     user_activation:
