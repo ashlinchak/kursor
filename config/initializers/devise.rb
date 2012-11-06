@@ -207,7 +207,6 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   require "omniauth-google-oauth2"
-  config.omniauth :google_oauth2, "334150822942-q7gdfd706m2arflmp3al3ja70dcpqk8u.apps.googleusercontent.com", "Wz0EY6GewlG9U4pIkwIcofPo", { access_type: "offline", approval_prompt: "" }
 
   require "omniauth-facebook"
   require 'omniauth-twitter'
