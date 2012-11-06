@@ -1,5 +1,16 @@
 Kursor::Application.routes.draw do
 
+  match '/auth/:provider/callback' => 'authentications#create'
+
+  devise_for  :users,
+              :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },
+              :skip => [:sessions] do
+    get '/login'   => "devise/sessions#new",       :as => :new_user_session
+    post '/login'  => 'devise/sessions#create',    :as => :user_session
+    delete '/logout'  => 'devise/sessions#destroy',   :as => :destroy_user_session
+    get "/register"   => "devise/registrations#new",   :as => :new_user_registration
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :students
@@ -9,23 +20,11 @@ Kursor::Application.routes.draw do
   resources :info
   resources :wiki
   resources :events
+  resources :authentications
 
-  match '/login' => 'sessions#new',      :as => :login
-  match '/logout' => 'sessions#destroy', :as => :logout
-  resources :sessions, :only => :create
-
-  resources :activations, :only => [:new, :create] do
-    get 'perform', :on => :member
-  end
 
   match '/home' => "home#index"
   match '/admin' => "admin/dashboard#index"
-
-  #match 'request' => 'provider_request#new', :as => 'request', :via => :get
-  #match 'request' => 'provider_request#create', :as => 'request', :via => :post
-
-  #resources :provider_request
-
 
   match 'feedback' => 'feedback#new', :as => 'feedback', :via => :get
   match 'feedback' => 'feedback#create', :as => 'feedback', :via => :post
@@ -39,9 +38,8 @@ Kursor::Application.routes.draw do
   resources :users, :path => 'u', :except => [ :destroy] do
     resources :postings
   end
-  match '/signup' => 'users#new', :as => :signup
+
   match '/my_profile' => 'profiles#my_profile', :as => :my_profile
-  #match '/my_profile/edit' => 'profiles#edit',  :as => :edit_profile
 
   resources :profiles
 

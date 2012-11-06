@@ -108,15 +108,11 @@
         = link_to admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
           %i.icon.icon-remove
           = t(:'site.actions.destroy_user')
-
-    %hr/
     .row
       .span8
         %table.bookmarks
           %tr
             = render :partial => 'shared/bookmarks'
-
-
 
     #disqus_thread
     :javascript

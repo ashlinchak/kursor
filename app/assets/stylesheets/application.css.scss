@@ -56,6 +56,27 @@ body {
 
 
 }
+#register {
+
+  span.help-block {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $shadeColor;
+
+  }
+  span.user-type-name {
+    font-size: larger;
+    line-height: 17px;
+  }
+
+}
+
+.field_with_errors .message {
+  color: #ff0000;
+}
+
+
 a, a:hover{
   color: $baseColor;
 

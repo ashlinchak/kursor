@@ -63,35 +63,18 @@ class ApplicationController < ActionController::Base
   end
   helper_method :recent_postings
 
-  def current_user
-    @current_user ||= User.find(session[:user_id])
-  rescue
-    nil
-  end
-  helper_method :current_user
-
-  def current_user= object
-    if object.is_a? User
-      session[:user_id] = object.id
-      @current_user = object
-    else
-      @current_user = session[:user_id] = nil
-    end
-  end
-  helper_method :current_user
-
   def guest
     @guest ||= User.new
   end
   helper_method :guest
 
   def authenticated?
-    !!current_user
+    user_signed_in?
   end
   helper_method :authenticated?
 
   def authorized?
-    authenticated? && current_user.administrator?
+    user_signed_in? && current_user.administrator?
   end
   helper_method :authorized?
 
@@ -107,6 +90,14 @@ class ApplicationController < ActionController::Base
       flash[:error] = 'Admin required'
       redirect_to root_url
     end
+  end
+
+  def after_sign_in_path_for(resource) # Redirect to user path after signing in
+    user_path(current_user)
+  end
+
+  def after_sign_out_path_for(resource_or_scope) # Keeping user on the same page after signing out
+    request.referrer
   end
 
 end
