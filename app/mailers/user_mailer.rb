@@ -1,8 +1,14 @@
 class UserMailer < ActionMailer::Base
+
   default :from => "noreply@kursor.org.ua"
 
-  def registration_confirmation(user)
+  def password_reset(user, password)
     @user = user
-    mail(:to => user.email, :subject => "Registered")
+    @password = password
+    mail(
+        :to => user.email,
+        :subject => t(:'devise.mailer.mass_password_reset.subject').html_safe
+    )
   end
+
 end
