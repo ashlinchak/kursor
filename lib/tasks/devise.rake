@@ -6,14 +6,15 @@ namespace :devise do
       model_mailer = "#{model}Mailer".constantize
       model = model.constantize
 
-      #model.find_each(:conditions => 'id > 70720') do |record|
-      model.find_each do |record|
+      model.find_each(:conditions => 'id > 6700') do |record|
         # Assign a random password
         random_password = User.send(:generate_token, 'encrypted_password').slice(0, 8)
         record.password = random_password
         record.save
         # Send change notification (Ensure you have created #{model}Mailer e.g. UserMailer)
-        model_mailer.password_reset(record, random_password).deliver
+        unless record.email.include?("kursor.org.ua")
+          model_mailer.password_reset(record, random_password).deliver
+        end
       end
     rescue Exception => e
       puts "Error: #{e.message}"
