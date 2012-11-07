@@ -74,7 +74,7 @@
             = link_to 'Заполнить профиль', new_profile_path
         - else
           .alert.alert-block
-            = link_to user.profile.full_name, profile_path(user)
+            = link_to user.profile.full_name, profile_path(user.profile)
       - unless user.profile || user.tutor || user.provider
         .well
           %h5= t(:'devise.register.cancel_account.description')
