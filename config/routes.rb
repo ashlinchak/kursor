@@ -3,9 +3,6 @@ Kursor::Application.routes.draw do
   get '/auth/:provider/callback'   => "authentications#create"
   post '/auth/:provider/callback'  => 'authentications#create'
 
-
-
-
   devise_for  :users,
               :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },
               :skip => [:sessions]

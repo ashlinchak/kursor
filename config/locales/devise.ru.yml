@@ -57,6 +57,8 @@ ru:
         subject: "Инструкции по восстановлению пароля"
       unlock_instructions:
         subject: "Инструкции по разблокировке учётной записи"
+      mass_password_reset:
+        subject: "Уведомление об  изменении пароля на портале КУРСОР"
 
     # MEGAVOLT
 

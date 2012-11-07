@@ -207,7 +207,6 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   require "omniauth-google-oauth2"
-  config.omniauth :google_oauth2, "334150822942-q7gdfd706m2arflmp3al3ja70dcpqk8u.apps.googleusercontent.com", "Wz0EY6GewlG9U4pIkwIcofPo", { access_type: "offline", approval_prompt: "" }
 
   require "omniauth-facebook"
   require 'omniauth-twitter'
@@ -218,7 +217,7 @@ Devise.setup do |config|
     config.omniauth :twitter, "4m2Z3a93LfPOD3bAsBTOw", "lXqLRaFJAqydGcHJi1tLkgamMsaJ3JVwypPN0aBPg"
     config.omniauth :facebook, "383815018325312", "d30d17fed413673a5df33b6d5ea2a52b"
     config.omniauth :google_oauth2, "334150822942.apps.googleusercontent.com", "5hki3Q2PMADGfQ-kdjGOqZCZ", { access_type: "offline", approval_prompt: "" }
-    #config.omniauth :vkontakte, "3207415", "UTv8jecndp7SZEADiKve"
+    config.omniauth :vkontakte, "3207415", "UTv8jecndp7SZEADiKve"
   elsif Rails.env.development?
     config.omniauth :twitter, "4m2Z3a93LfPOD3bAsBTOw", "lXqLRaFJAqydGcHJi1tLkgamMsaJ3JVwypPN0aBPg"
     config.omniauth :facebook, "125936467557274", "5667cbd1fb0e164453821eb6e5b79926"
