@@ -21,14 +21,16 @@
           = link_to u.email, edit_admin_user_path( u )
           = "(#{User::ACCOUNT_TYPES[u.account_type_id]})"
         %td
-          - if u.provider
-            = link_to u.provider, provider_path( u.provider ), :target => "_blank"
+          - if u.providers
+            - u.providers.each do |p|
+              %p= link_to p, provider_path(p), :target => "_blank"
           - else
             = t(:'admin.users.headers.no_provider')
         %td= l u.created_at, :format => :short
         %td
-          - if u.provider
-            = l u.provider.updated_at, :format => :short
+          - if u.providers
+            - u.providers.each do |p|
+              %p= l p.updated_at, :format => :short
           - else
             \-
         %td
@@ -39,13 +41,14 @@
             %span.label
               &nbsp;&nbsp;&nbsp;
         %td
-          - if u.provider
-            - if u.provider.is_approved?
-              %span.label.label-success
-                &nbsp;&nbsp;&nbsp;
-            - else
-              %span.label
-                &nbsp;&nbsp;&nbsp;
+          - if u.providers
+            - u.providers.each do |p|
+              - if p.is_approved?
+                %span.label.label-success
+                  &nbsp;&nbsp;&nbsp;
+              - else
+                %span.label
+                  &nbsp;&nbsp;&nbsp;
 
         %td
           = link_to admin_user_path(u), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do

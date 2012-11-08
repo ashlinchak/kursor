@@ -7,10 +7,10 @@ class User < ActiveRecord::Base
   include Devise::Async::Model # should be below call to `devise`
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id, :provider, :uid,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id, :providers, :uid,
                   :confirmed_at, :confirmation_token, :confirmation_sent_at # for rake task users:confirm_all_active
 
-  attr_accessor :provider_attributes, :profile_attributes
+  attr_accessor :providers_attributes, :profile_attributes
 
   #before_validation :generate_password, :on => :create
 
@@ -35,21 +35,22 @@ class User < ActiveRecord::Base
   paginates_per 50
 
   def to_s
-    if visitor? && profile
-      if profile.full_name && !profile.full_name.blank?
-        profile.full_name
-      else
-        email.split(/@/)[0]
-      end
-    elsif tutor? || school?
-      if provider
-        provider.name
-      else
-        email.split(/@/)[0]
-      end
-    else
-      email.split(/@/)[0]
-    end
+    email
+    #if visitor? && profile
+    #  if profile.full_name && !profile.full_name.blank?
+    #    profile.full_name
+    #  else
+    #    email.split(/@/)[0]
+    #  end
+    #elsif tutor? || school?
+    #  if provider
+    #    provider.name
+    #  else
+    #    email.split(/@/)[0]
+    #  end
+    #else
+    #  email.split(/@/)[0]
+    #end
   end
 
   # overriding default json fields

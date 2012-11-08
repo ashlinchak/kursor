@@ -7,10 +7,6 @@
         = link_to edit_user_registration_path do
           %i.icon-envelope
           = t(:'users.panel.edit_email_password')
-        - if user.school? && user.provider.present?
-          &nbsp;&nbsp;&nbsp;
-          %i.icon-pencil
-          = link_to t(:'users.panel.edit_my_profile'), edit_provider_path(user.provider)
         - if user.tutor? && user.tutor.present?
           &nbsp;&nbsp;&nbsp;
           %i.icon-pencil
@@ -58,7 +54,7 @@
         - else
           = link_to user.tutor.name, tutor_path(user.tutor)
       - elsif user.school?
-        - unless user.provider
+        - unless user.providers
           - if user == current_user
             -#.alert.alert-block
               %h4.alert-heading= t(:'providers.edit.no_provider')
@@ -71,7 +67,8 @@
               %i.icon-ok.icon-white
               = t(:'providers.edit.add_provider')
         - else
-          = link_to user.provider.name, provider_path(user.provider)
+          - user.providers.each do |p|
+            %p= link_to p, provider_path(p)
       - elsif user.visitor?
         - unless user.profile.present?
           -#.alert.alert-block
