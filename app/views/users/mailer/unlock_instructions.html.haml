@@ -1,4 +1,4 @@
 %p Приветствуем, #{@resource.email}!
 %p Ваша учетная запись была заблокирована в связи с неоднократным вводом неправильного пароля.
 %p Для разблокировки перейдите по указанной ниже ссылке:
-%p = link_to 'Разблокировать учетную запись', unlock_url(@resource, :unlock_token => @resource.unlock_token)
+%p #{link_to 'Разблокировать учетную запись', unlock_url(@resource, :unlock_token => @resource.unlock_token)}

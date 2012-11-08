@@ -1,0 +1,35 @@
+- unless user.authentications.empty?
+  %p
+    %strong= t(:'devise.authentications.you_can_sign_in_with')
+  .authentications
+    - for auth in user.authentications
+      .authentication
+        - if auth.provider == 'google_oauth2'
+          = image_tag "icons/google_32.png", :size => "32x32"
+          .provider Google
+        - else
+          = image_tag "icons/#{auth.provider}_32.png", :size => "32x32"
+          .provider= auth.provider.titleize
+        .uid= auth.uid.to_s.truncate(12)
+        = link_to "X", auth, :confirm => t(:'devise.authentications.remove_authentication_confirm', :provider => auth.provider.titleize), :method => :delete, :class => "remove"
+    .clear
+- if user.authentications.size < 4
+  %p
+    %strong= t(:'devise.authentications.add_service_to_sign_in_with')
+  - unless user.authentications.find_by_provider('vkontakte')
+    = link_to omniauth_authorize_path(:user, :vkontakte ), :class => 'auth_provider' do
+      = image_tag "icons/vkontakte_64.png", :size => "64x64", :alt => "Vkontakte"
+      Vkontakte
+  - unless user.authentications.find_by_provider('facebook')
+    = link_to omniauth_authorize_path(:user, :facebook), :class => 'auth_provider' do
+      = image_tag "icons/facebook_64.png", :size => "64x64", :alt => "Facebook"
+      Facebook
+  - unless user.authentications.find_by_provider('twitter')
+    = link_to omniauth_authorize_path(:user, :twitter), :class => 'auth_provider' do
+      = image_tag "icons/twitter_64.png", :size => "64x64", :alt => "Twitter"
+      Twitter
+  - unless user.authentications.find_by_provider('google_oauth2')
+    = link_to omniauth_authorize_path(:user, :google_oauth2), :class => 'auth_provider' do
+      = image_tag "icons/google_64.png", :size => "64x64", :alt => "Google"
+      Google
+.clear

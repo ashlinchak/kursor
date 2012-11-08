@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
   # overriding default json fields
   def as_json options ={}
-    super(:only => [:email, :is_active])
+    super(:only => [:email])
   end
 
   def administrator?
