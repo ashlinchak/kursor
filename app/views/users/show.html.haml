@@ -72,7 +72,6 @@
               = t(:'providers.edit.add_provider')
         - else
           = link_to user.provider.name, provider_path(user.provider)
-
       - elsif user.visitor?
         - unless user.profile.present?
           -#.alert.alert-block

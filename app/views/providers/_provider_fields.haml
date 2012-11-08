@@ -74,17 +74,18 @@
     = f.cktext_area :documents_info_uk, :toolbar => 'Basic'
 %br/
 - unless controller.send(:_layout) == 'admin'
-  .row
-    .span12
-      %fieldset
-        %legend= t(:'admin.users.legends.filials')
-      %br/
-      = f.fields_for :filials do |fi|
-        = render :partial => 'filials/filial_fields', :locals => { :f => fi }
-  .row
-    .span12
-      %fieldset
-        = link_to_add_fields t(:'providers.edit.filials.add'), f, :filials
+  - unless controller.action_name == 'new'
+    .row
+      .span12
+        %fieldset
+          %legend= t(:'admin.users.legends.filials')
+        %br/
+        = f.fields_for :filials do |fi|
+          = render :partial => 'filials/filial_fields', :locals => { :f => fi }
+    -#.row
+      .span12
+        %fieldset
+          = link_to_add_fields t(:'providers.edit.filials.add'), f, :filials
 %hr/
 .row
   .span12
