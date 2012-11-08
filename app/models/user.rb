@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_one :administrator, :dependent => :destroy
-  has_one :provider, :dependent => :destroy
+  has_many :providers, :dependent => :destroy
   has_one :tutor, :dependent => :destroy
   has_one :profile, :dependent => :destroy
   has_many :students
