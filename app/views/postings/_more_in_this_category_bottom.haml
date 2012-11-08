@@ -5,7 +5,8 @@
         .span2
           .img
             = link_to posting_path(post) do
-              = image_tag post.images.last.src_url(:medium)
+              - if post.images.present?
+                = image_tag post.images.last.src_url(:medium)
           %p= link_to post.title.truncate(40), posting_path(post)
     .clear
     -#%p.plus

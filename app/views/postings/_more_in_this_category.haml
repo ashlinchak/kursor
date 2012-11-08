@@ -5,7 +5,8 @@
         .carusel-inner
           .active.item
             = link_to posting_path(post) do
-              = image_tag post.images.last.src_url(:medium)
+              - if post.images.present?
+                = image_tag post.images.last.src_url(:medium)
             .carousel-caption
               %p= link_to post.title, posting_path(post)
     .clear
