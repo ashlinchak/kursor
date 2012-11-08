@@ -69,6 +69,10 @@
         - else
           - user.providers.each do |p|
             %p= link_to p, provider_path(p)
+          = link_to new_provider_path do
+            %i.icon-ok.icon-white
+            Add provider
+
       - elsif user.visitor?
         - unless user.profile.present?
           -#.alert.alert-block
@@ -77,7 +81,7 @@
           .alert.alert-block
             = link_to user.profile.full_name, profile_path(user.profile)
 
-      - unless user.profile || user.tutor || user.provider
+      - unless user.profile || user.tutor || user.providers
         %br/
         .well
           %b= t(:'devise.register.cancel_account.description')
