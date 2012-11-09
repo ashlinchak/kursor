@@ -1,22 +1,43 @@
-.row
-  .span3
-    - unless p.images.empty?
-      = link_to p, :class => 'thumbnail' do
-        = image_tag 'assets/logo.png', "data-original" => p.images.last.src_url(:medium).to_s, :width => '210px', :height => '129px'
-    - else
-      &nbsp;
-    .user-bar{:style=>'margin-top:5px;'}
+.row.post-item
+  .span3.left-block
+    %p
+      - unless p.images.empty?
+        = link_to p, :class => 'thumbnail' do
+          = image_tag 'assets/logo.png', "data-original" => p.images.last.src_url(:medium).to_s, :width => '260px', :height => '180px'
+      - else
+        &nbsp;
+    %p
+      %i.icon-calendar
       = l p.created_at, :format => :long
       %br/
+      %i.icon-user
       = link_to p.user, p.user
       |
-      = image_tag 'icons/comment-16.png'
+      %i.icon-comment
       = link_to '', posting_path(p) + '#disqus_thread'
   .span5
-    %h4= link_to p.title, p
-    .excerpt
+    %h4
+      = link_to p.title, p
+    %p
       = p.excerpt.truncate(200)
-    .read-more{:style=>'margin-top:5px;'}
-      = link_to t(:'postings.readmore'), p
 
+    %p
+      = link_to  p, :class => 'btn btn-small' do
+        %i.icon-circle-arrow-right
+        = t(:'postings.readmore')
+
+      -#|
+      -#%i.icon-share
+      -#%a{:href => "#"} 39 Shares
+      -#|
+      -#%i.icon-tags
+      -#Tags :
+      -#%a{:href => "#"}
+      -#  %span.label.label-info Snipp
+      -#%a{:href => "#"}
+      -#  %span.label.label-info Bootstrap
+      -#%a{:href => "#"}
+      -#  %span.label.label-info UI
+      -#%a{:href => "#"}
+        %span.label.label-info growth
 

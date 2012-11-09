@@ -18,6 +18,15 @@
 
   #index, #show {
 
+    .post-item {
+      .left-block {
+        text-align: center;
+      }
+      h4 {
+        margin-top: 0px;
+      }
+    }
+
     .item {
       img {
         -webkit-border-radius: 3px;
