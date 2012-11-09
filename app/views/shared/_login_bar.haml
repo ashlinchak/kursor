@@ -8,7 +8,7 @@
 
       - if current_user.profile.present?
         = image_tag current_user.profile.avatar_url(:icon), :class => 'icon'
-      - elsif current_user.providers.present?
+      -#- elsif current_user.providers.present?
         = image_tag current_user.providers.last.logo_url(:icon), :class => 'icon'
       - elsif current_user.tutor.present?
         = image_tag current_user.tutor.avatar_url(:icon), :class => 'icon'

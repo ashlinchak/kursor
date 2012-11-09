@@ -1,97 +1,111 @@
-.row
-  .span12
-    - if authenticated?
-      - if user === current_user
-        %i.icon-user
-        = user.email
-        = link_to edit_user_registration_path do
-          %i.icon-envelope
-          = t(:'users.panel.edit_email_password')
-        - if user.tutor? && user.tutor.present?
-          &nbsp;&nbsp;&nbsp;
-          %i.icon-pencil
-          = link_to t(:'users.panel.edit_my_profile'), edit_tutor_path(user.tutor)
-        - if user.visitor? && user.profile.present?
-          &nbsp;&nbsp;&nbsp;
-          %i.icon-pencil
-          = link_to t(:'users.panel.edit_my_profile'), edit_profile_path(user.profile)
-      - else
-        - if user.visitor? && user.profile
-          - if user.profile.full_name && !user.profile.full_name.blank?
-            = user.profile.full_name
-          - else
-            = user.email.split(/@/)[0]
-        - elsif user.tutor? || user.school?
-          - if user.provider
-            = user.provider.name
-          - else
-            = user.email.split(/@/)[0]
-        - else
-          = user.email.split(/@/)[0]
-      - if authorized?
-        = link_to 'mailto:'+user.email+'?subject=Образовательный Портал КУРСОР' do
-          %i.icon-envelope
-          Send email
-
-    %hr/
-
-- if authenticated?
+#user-show
   .row
-    .span7
-      - if user.tutor?
-        - unless user.tutor
-          - if user == current_user
+    .span12
+      - if authenticated?
+        - if user === current_user
+          %i.icon-user
+          = user.email
+          = link_to edit_user_registration_path do
+            %i.icon-envelope
+            = t(:'users.panel.edit_email_password')
+          - if user.tutor? && user.tutor.present?
+            &nbsp;&nbsp;&nbsp;
+            %i.icon-pencil
+            = link_to t(:'users.panel.edit_my_profile'), edit_tutor_path(user.tutor)
+          - if user.visitor? && user.profile.present?
+            &nbsp;&nbsp;&nbsp;
+            %i.icon-pencil
+            = link_to t(:'users.panel.edit_my_profile'), edit_profile_path(user.profile)
+        - else
+          - if user.visitor? && user.profile
+            - if user.profile.full_name && !user.profile.full_name.blank?
+              = user.profile.full_name
+            - else
+              = user.email.split(/@/)[0]
+          - elsif user.tutor? || user.school?
+            - if user.provider
+              = user.provider.name
+            - else
+              = user.email.split(/@/)[0]
+          - else
+            = user.email.split(/@/)[0]
+        - if authorized?
+          = link_to 'mailto:'+user.email+'?subject=Образовательный Портал КУРСОР' do
+            %i.icon-envelope
+            Send email
+
+      %hr/
+
+  - if authenticated?
+    .row
+      .span7
+        - if user.tutor?
+          - unless user.tutor
+            - if user == current_user
+              -#.alert.alert-block
+                %h4.alert-heading= t(:'providers.edit.no_provider')
+                %p= t(:'providers.edit.no_provider_desc')
+                %p
+                  = link_to new_tutor_path, :class => 'btn btn-success' do
+                    %i.icon-ok.icon-white
+                    = t(:'providers.edit.add_provider')
+              = link_to new_tutor_path, :class => 'btn btn-success btn-block btn-large' do
+                %i.icon-ok.icon-white
+                = t(:'providers.edit.add_provider')
+          - else
+            = link_to user.tutor.name, tutor_path(user.tutor)
+        - elsif user.school?
+          - unless user.providers
+            - if user == current_user
+              -#.alert.alert-block
+                %h4.alert-heading= t(:'providers.edit.no_provider')
+                %p= t(:'providers.edit.no_provider_desc')
+                %p
+                  = link_to new_provider_path, :class => 'btn btn-success' do
+                    %i.icon-ok.icon-white
+                    = t(:'providers.edit.add_provider')
+              = link_to new_provider_path, :class => 'btn btn-success btn-block btn-large' do
+                %i.icon-ok.icon-white
+                = t(:'providers.edit.add_provider')
+          - else
+            #provider-list
+              - user.providers.each do |p|
+                .provider-block
+                  .right-corner
+                    = link_to edit_provider_path(p), :class => 'btn-small', :title => t(:'providers.edit.edit_profile') do
+                      %i.icon-pencil
+                      = t(:'most_common_labels.change')
+                  .title= link_to p, provider_path(p)
+                  = link_to provider_path(p) do
+                    = image_tag p.logo_url(:thumb), :class => 'img-rounded provider-logo'
+                  Events: #{p.events.size}
+                  = link_to new_provider_event_path(p) do
+                    %i.icon-plus-sign
+                    New event
+
+            = link_to new_provider_path, :style => 'float: right' do
+              %i.icon-plus-sign
+              Add provider
+
+        - elsif user.visitor?
+          - unless user.profile.present?
             -#.alert.alert-block
-              %h4.alert-heading= t(:'providers.edit.no_provider')
-              %p= t(:'providers.edit.no_provider_desc')
-              %p
-                = link_to new_tutor_path, :class => 'btn btn-success' do
-                  %i.icon-ok.icon-white
-                  = t(:'providers.edit.add_provider')
-            = link_to new_tutor_path, :class => 'btn btn-success btn-block btn-large' do
-              %i.icon-ok.icon-white
-              = t(:'providers.edit.add_provider')
-        - else
-          = link_to user.tutor.name, tutor_path(user.tutor)
-      - elsif user.school?
-        - unless user.providers
-          - if user == current_user
-            -#.alert.alert-block
-              %h4.alert-heading= t(:'providers.edit.no_provider')
-              %p= t(:'providers.edit.no_provider_desc')
-              %p
-                = link_to new_provider_path, :class => 'btn btn-success' do
-                  %i.icon-ok.icon-white
-                  = t(:'providers.edit.add_provider')
-            = link_to new_provider_path, :class => 'btn btn-success btn-block btn-large' do
-              %i.icon-ok.icon-white
-              = t(:'providers.edit.add_provider')
-        - else
-          - user.providers.each do |p|
-            %p= link_to p, provider_path(p)
-          = link_to new_provider_path do
-            %i.icon-ok.icon-white
-            Add provider
+            = link_to 'Заполнить профиль', new_profile_path, :class => 'btn btn-success btn-block btn-large'
+          - else
+            .alert.alert-block
+              = link_to user.profile.full_name, profile_path(user.profile)
 
-      - elsif user.visitor?
-        - unless user.profile.present?
-          -#.alert.alert-block
-          = link_to 'Заполнить профиль', new_profile_path, :class => 'btn btn-success btn-block btn-large'
-        - else
-          .alert.alert-block
-            = link_to user.profile.full_name, profile_path(user.profile)
+        - unless user.profile || user.tutor || user.providers
+          %br/
+          .well
+            %b= t(:'devise.register.cancel_account.description')
+            &nbsp;
+            = link_to registration_path(user), :confirm => t(:'devise.register.cancel_account.confirm'), :method => :delete, :class => 'btn btn-danger' do
+              %i.icon-trash.icon-white
+              = t(:'devise.register.cancel_account.link')
 
-      - unless user.profile || user.tutor || user.providers
-        %br/
-        .well
-          %b= t(:'devise.register.cancel_account.description')
-          &nbsp;
-          = link_to registration_path(user), :confirm => t(:'devise.register.cancel_account.confirm'), :method => :delete, :class => 'btn btn-danger' do
-            %i.icon-trash.icon-white
-            = t(:'devise.register.cancel_account.link')
+      .span5
+        = render :partial => 'users/shared/oauth_links'
 
-    .span5
-      = render :partial => 'users/shared/oauth_links'
-
-- else
-  = t(:'users.must_be_authenticated')
+  - else
+    = t(:'users.must_be_authenticated')
