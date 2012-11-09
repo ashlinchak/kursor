@@ -1,4 +1,5 @@
 class Promotion < ActiveRecord::Base
+
   belongs_to :promotionable, polymorphic: true
   attr_accessor :provider_name
   attr_accessible :end_date, :is_featured, :is_vip, :start_date, :provider_name

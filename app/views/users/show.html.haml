@@ -71,17 +71,33 @@
             #provider-list
               - user.providers.each do |p|
                 .provider-block
-                  .right-corner
-                    = link_to edit_provider_path(p), :class => 'btn-small', :title => t(:'providers.edit.edit_profile') do
-                      %i.icon-pencil
-                      = t(:'most_common_labels.change')
-                  .title= link_to p, provider_path(p)
-                  = link_to provider_path(p) do
-                    = image_tag p.logo_url(:thumb), :class => 'img-rounded provider-logo'
-                  Events: #{p.events.size}
-                  = link_to new_provider_event_path(p) do
-                    %i.icon-plus-sign
-                    New event
+                  .row
+                    .span1
+                      = link_to provider_path(p) do
+                        = image_tag p.logo_url(:thumb), :class => 'img-rounded provider-logo'
+                    .span5
+
+                      .right-corner
+                        = link_to edit_provider_path(p), :class => 'btn-small', :title => t(:'providers.edit.edit_profile') do
+                          %i.icon-pencil
+                          = t(:'most_common_labels.change')
+                      %h5= link_to p, provider_path(p)
+
+                      %p
+                        Events: #{p.events.size}
+                        |
+                        = link_to new_provider_event_path(p) do
+                          add event +
+                          -#%i.icon-plus-sign
+                      %p
+                        Categories:
+                        - p.categories.each do |cat|
+                          -#= link_to category_path(cat) do
+                          %span.label= cat.name.truncate(20)
+                      %p
+                        Promotions:
+                        - if p.promotion.present?
+                          = l p.promotion.end_date, :format => :short
 
             = link_to new_provider_path, :style => 'float: right' do
               %i.icon-plus-sign

@@ -15,6 +15,9 @@ class Provider < ActiveRecord::Base
   has_many :contacts, :as => :contactable, :dependent => :destroy
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |c| c[:value].blank? || c[:contact_type_id].blank? }, :allow_destroy => true
 
+  has_one :promotion, :as => :promotionable, :dependent => :destroy
+  accepts_nested_attributes_for :promotion
+
   has_many :events, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true
 
