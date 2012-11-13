@@ -19,10 +19,17 @@
 
 $(document).ready(function(){
 
+// Expander
+
+    $('#user-show .all-categories').expander({
+        slicePoint: 50,
+        widow: 5,
+        expandEffect: 'show',
+        userCollapseText: "<%= I18n.t(:'most_common_labels.add') %>",
+        expandText: '[Показать]'
+    });
 
 // Registration radio buttons
-
-
 
     $("input[name='user[account_type_id]']").change(function(){
         if ($("input[name='user[account_type_id]']:checked").val() == '0')

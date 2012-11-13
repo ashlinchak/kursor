@@ -6,7 +6,7 @@ class ProvidersController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html
+      #format.html
       format.json { render :json => Provider.order(:name) }
     end
   end
@@ -71,7 +71,6 @@ class ProvidersController < ApplicationController
     @providers ||= Provider.all
   end
   helper_method :providers
-
 
   def require_owner
     unless current_user.administrator?

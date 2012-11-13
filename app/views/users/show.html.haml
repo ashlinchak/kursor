@@ -84,20 +84,32 @@
                       %h5= link_to p, provider_path(p)
 
                       %p
-                        Events: #{p.events.size}
-                        |
-                        = link_to new_provider_event_path(p) do
-                          add event +
-                          -#%i.icon-plus-sign
+                        .all-categories
+                          %b Categories
+                          %br/
+
+                          - p.categories.each do |cat|
+                            |
+                            = link_to category_path(cat) do
+                              = cat.name.truncate(20)
+
                       %p
-                        Categories:
-                        - p.categories.each do |cat|
-                          -#= link_to category_path(cat) do
-                          %span.label= cat.name.truncate(20)
+                        %b Events
+                        %br/
+                        %ul
+                          - p.events.each do |event|
+                            %li= event.title
+                          %li
+                            = link_to new_provider_event_path(p) do
+                              %i.icon-plus-sign
+                              add event
                       %p
-                        Promotions:
+
                         - if p.promotion.present?
+                          %b Promotion:
                           = l p.promotion.end_date, :format => :short
+                        - else
+                          This provider has no promotions at this moment
 
             = link_to new_provider_path, :style => 'float: right' do
               %i.icon-plus-sign

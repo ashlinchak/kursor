@@ -20,7 +20,10 @@ SitemapGenerator::Sitemap.create do
   add '/c', :changefreq => 'daily'
   add '/t', :changefreq => 'daily'
   add '/p', :changefreq => 'daily'
-  add '/info'
+  add '/e', :changefreq => 'daily'
+  add '/info/project'
+  add '/info/contacts'
+
 
   Posting.find_each do |posting|
     add posting_path(posting), :changefreq => 'daily', :lastmod => posting.updated_at
@@ -48,6 +51,14 @@ SitemapGenerator::Sitemap.create do
 
   PostingCategory.find_each do |p|
     add posting_category_path(p), :changefreq => 'daily'
+  end
+
+  Event.find_each do |e|
+    add event_path(e), :changefreq => 'daily'
+  end
+
+  EventCategory.find_each do |ec|
+    add event_category_path(ec), :changefreq => 'daily'
   end
 
 end
