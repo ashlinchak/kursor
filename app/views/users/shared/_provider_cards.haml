@@ -1,0 +1,50 @@
+#provider-list
+  - user.providers.each do |p|
+    .provider-block
+      .row
+        .span1
+          = link_to provider_path(p) do
+            = image_tag p.logo_url(:thumb), :class => 'img-rounded provider-logo'
+        .span5
+
+          .right-corner
+            = link_to edit_provider_path(p), :class => 'btn-small', :title => t(:'providers.edit.edit_profile') do
+              %i.icon-pencil
+              = t(:'most_common_labels.change')
+          %h5= link_to p, provider_path(p)
+
+          %p
+            .all-categories
+              %b= t(:'users.cabinet.provider_card.categories')
+              %br/
+
+              - p.categories.each do |cat|
+                |
+                = link_to category_path(cat) do
+                  = cat.name.truncate(20)
+
+          %p
+            %b= t(:'users.cabinet.provider_card.events')
+            %br/
+            %ul
+              - p.events.each do |event|
+                %li
+                  = link_to event_path(event) do
+                    = event.title
+                  ( #{l event.start_datetime, :format => :short} )
+              %li
+                = link_to new_provider_event_path(p) do
+                  %i.icon-plus-sign
+                  = t(:'users.cabinet.provider_card.add_event')
+          %p
+
+            - if p.promotion.present?
+              %b= t(:'users.cabinet.provider_card.promotion')
+              #{l p.promotion.start_date, :format => :short} - #{l p.promotion.end_date, :format => :short}
+              %br/
+              = t(:'users.cabinet.provider_card.days_left')
+              = (p.promotion.end_date.day - Time.now.day)
+
+            - else
+              .alert.alert-info
+                = t(:'users.cabinet.provider_card.not_promoted')

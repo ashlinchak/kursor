@@ -68,52 +68,11 @@
                 %i.icon-ok.icon-white
                 = t(:'providers.edit.add_provider')
           - else
-            #provider-list
-              - user.providers.each do |p|
-                .provider-block
-                  .row
-                    .span1
-                      = link_to provider_path(p) do
-                        = image_tag p.logo_url(:thumb), :class => 'img-rounded provider-logo'
-                    .span5
-
-                      .right-corner
-                        = link_to edit_provider_path(p), :class => 'btn-small', :title => t(:'providers.edit.edit_profile') do
-                          %i.icon-pencil
-                          = t(:'most_common_labels.change')
-                      %h5= link_to p, provider_path(p)
-
-                      %p
-                        .all-categories
-                          %b Categories
-                          %br/
-
-                          - p.categories.each do |cat|
-                            |
-                            = link_to category_path(cat) do
-                              = cat.name.truncate(20)
-
-                      %p
-                        %b Events
-                        %br/
-                        %ul
-                          - p.events.each do |event|
-                            %li= event.title
-                          %li
-                            = link_to new_provider_event_path(p) do
-                              %i.icon-plus-sign
-                              add event
-                      %p
-
-                        - if p.promotion.present?
-                          %b Promotion:
-                          = l p.promotion.end_date, :format => :short
-                        - else
-                          This provider has no promotions at this moment
-
+            = render :partial => 'users/shared/provider_cards'
             = link_to new_provider_path, :style => 'float: right' do
               %i.icon-plus-sign
               Add provider
+
 
         - elsif user.visitor?
           - unless user.profile.present?

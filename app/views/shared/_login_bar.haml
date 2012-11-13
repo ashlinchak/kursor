@@ -1,25 +1,39 @@
-%ul.login-nav
+.login-nav
   - if authenticated?
-    %li
-      = t(:'sessions.create.logged_in_as')
+    = t(:'sessions.create.logged_in_as')
 
-      = link_to current_user do
+    .btn-group
+      = link_to current_user, :class => 'btn btn-small' do
         = current_user.email
+      %button.btn.btn-small.dropdown-toggle{"data-toggle" => "dropdown"}
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          = link_to user do
+            %i.icon-user
+            = t(:'users.cabinet.title')
+        - if current_user.school? && current_user.providers.present?
+          %li
+            = link_to new_event_path do
+              %i.icon-calendar
+              = t(:'users.cabinet.provider_card.add_event')
+        %li
+          = link_to edit_user_path do
+            %i.icon-wrench
+            = t(:'users.cabinet.edit_user')
 
-      - if current_user.profile.present?
-        = image_tag current_user.profile.avatar_url(:icon), :class => 'icon'
-      -#- elsif current_user.providers.present?
-        = image_tag current_user.providers.last.logo_url(:icon), :class => 'icon'
-      - elsif current_user.tutor.present?
-        = image_tag current_user.tutor.avatar_url(:icon), :class => 'icon'
+    - if current_user.profile.present?
+      = image_tag current_user.profile.avatar_url(:icon), :class => 'icon'
+    -#- elsif current_user.providers.present?
+      = image_tag current_user.providers.last.logo_url(:icon), :class => 'icon'
+    - elsif current_user.tutor.present?
+      = image_tag current_user.tutor.avatar_url(:icon), :class => 'icon'
 
     - if authorized?
-      %li= link_to t(:'site.nav.admin-panel'), admin_path
-    %li= link_to t(:'sessions.destroy.title'), destroy_user_session_path, :method => :delete
+      = link_to t(:'site.nav.admin-panel'), admin_path
+    = link_to t(:'sessions.destroy.title'), destroy_user_session_path, :method => :delete
   - else
-    %li
-      = link_to t(:'users.create.title'), new_user_registration_path, :class => "btn btn-success", :style => "vertical-align: baseline"
-      &nbsp;
-    %li
-      %span{:style => 'color: silver; margin-right:4px;'}= t(:'sessions.create.already_signed_up')
-      = link_to t(:'sessions.create.title'), new_user_session_path
+    = link_to t(:'users.create.title'), new_user_registration_path, :class => "btn btn-success", :style => "vertical-align: baseline"
+    &nbsp;
+    %span{:style => 'color: silver; margin-right:4px;'}= t(:'sessions.create.already_signed_up')
+    = link_to t(:'sessions.create.title'), new_user_session_path

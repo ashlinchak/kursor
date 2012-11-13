@@ -5,8 +5,8 @@ class Event < ActiveRecord::Base
 
   attr_accessible :description,
                   :end_datetime,
-                  #:eventable_id,
-                  #:eventable_type,
+                  :eventable_id,
+                  :eventable_type,
                   :location_id,
                   :max_price,
                   :min_price,

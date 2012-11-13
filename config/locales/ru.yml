@@ -17,6 +17,7 @@ ru:
     delete: "Удалить"
     add: "Добавить"
 
+
     sections:
       events: "Афиша"
       postings: "Статьи"
@@ -211,6 +212,21 @@ ru:
       title: "Выйти"
       success: "Вы успешно вышли!"
   users:
+
+    cabinet:
+      title: "Личный кабинет"
+      edit_user: "Изменить учетную запись"
+      provider_card:
+        categories: "Категории"
+        events: "События"
+        add_event: "Создать событие"
+        promotion: "Продвижение"
+        not_promoted: "Данное учебное заведение не продвигается"
+        days_left: "Осталось:"
+        show: "Показать"
+        hide: "[Спрятать]"
+        create_provider: "Создать учебное заведение"
+
     user_types:
       regular_name: "Я простой пользователь %{user_type_description}"
       tutor_name: "Я частный преподаватель %{user_type_description}"
@@ -345,6 +361,7 @@ ru:
     upcoming_events: "Ближайшие мероприятия"
     title: "Название"
     category: "Выберите категорию"
+    provider: "Учебное заведение"
     description: "Описание"
     start_date: "Начало"
     end_date: "Окончание"
