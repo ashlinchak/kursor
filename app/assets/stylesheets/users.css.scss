@@ -1,0 +1,68 @@
+@mixin rounded($radius){
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+#user-show {
+
+  #provider-list {
+
+    .provider-block {
+
+      padding: 8px;
+      background-color: #F7F7F9;
+      border: 1px solid #E1E1E8;
+      margin-bottom: 20px;
+
+      @include rounded(5px);
+
+      display: block;
+      position: relative;
+
+      dl {
+        dt, dd {
+          min-height: 25px;
+        }
+      }
+
+      h5 {
+
+        margin-top: 0px;
+        width: 95%;
+
+      }
+
+      img.provider-logo {
+
+        margin: 0px 10px 0px 0px;
+        display: inline-block;
+
+      }
+
+      .right-corner {
+        cursor: pointer;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        padding: 5px;
+        margin: 5px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 80px;
+        text-align: center;
+        height: 10px;
+
+        &:hover {
+          opacity: 1.0;
+          filter: alpha(opacity=100);
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+
+    }
+
+  }
+
+}

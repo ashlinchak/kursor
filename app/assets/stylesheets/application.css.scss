@@ -145,6 +145,7 @@ header {
     a.clean {
       background: none;
     }
+
     li.active, a:hover, a.current, a:hover.clean{
       -webkit-transition: background 100ms ease-out;
       -moz-transition: background 100ms ease-out;
@@ -159,26 +160,32 @@ header {
     }
 
   }
-  ul.login-nav{
-    list-style: none;
+  .login-nav{
+
     position: absolute;
     right: 0;
-    text-align: right;
     top: .5em;
     line-height: 32px;
 
-    li{
-      border-left: 1px solid;
-      display: inline;
-      padding-left: .5em;
-      .icon{
-        vertical-align: middle;
-        padding: 0 5px;
-      }
+    i {
+      vertical-align: text-bottom;
     }
-    li:first-child{
-      border-left: none;
-      padding-left: 0;
+
+    img {
+      vertical-align: top;
+    }
+
+    .logout {
+      margin-left: 15px;
+      vertical-align: baseline;
+    }
+
+    .btn-group {
+      display: inline-block;
+      padding: 0px 5px;
+      a, button {
+        vertical-align: baseline;
+      }
     }
   }
   .banner{

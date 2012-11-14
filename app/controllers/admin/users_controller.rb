@@ -10,7 +10,7 @@ class Admin::UsersController < Admin::DashboardController
 
   def create
     if user.save
-      UserMailer.registration_confirmation(user).deliver
+      #UserMailer.registration_confirmation(user).deliver
       redirect_to admin_users_path, :notice => t(:'admin.users.create.success')
     else
       render :new

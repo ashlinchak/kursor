@@ -6,7 +6,7 @@ class UserTransferMailer < ActionMailer::Base
     @user = user
     @email = user.email
     @password = password
-    @provider = user.provider
+    @provider = user.providers.last
     mail(:to => @email, :subject => t(:'mailers.user_transfer.subject') )
   end
 
@@ -14,7 +14,7 @@ class UserTransferMailer < ActionMailer::Base
       @user = user
       @email = user.email
       @password = password
-      @provider = user.provider
+      @provider = user.provider.last
       @add_msg = add_msg
       mail(:to => @email, :subject => t(:'mailers.user_transfer.subject') )
     end

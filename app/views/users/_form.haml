@@ -37,9 +37,6 @@
           = f.label t(:'users.new.pass_confirm'), :class => 'control-label'
           .controls
             = f.password_field :password_confirmation, :class => 'span4'
-        -#- if user.provider
-          -#= fields_for :provider do |p|
-            -#= render :partial => 'providers/provider_fields', :locals => { :f => p }
         - if user.new_record?
           %legend= t(:'users.new.account_type')
           .control-group

@@ -1,7 +1,6 @@
 class TutorsController < ApplicationController
 
-  before_filter :require_authentication, :except => [:index, :show]
-
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
   def index
@@ -11,7 +10,17 @@ class TutorsController < ApplicationController
   end
 
   def new
-    tutor.build_location unless tutor.location
+    if current_user.tutor?
+      if current_user.tutor.present?
+        flash[:error] = "You have already created tutor profile"
+        redirect_to current_user
+      else
+        tutor.build_location unless tutor.location
+      end
+    else
+      flash[:error] = "You cant create tutor. Because your account is not Tutor"
+      redirect_to current_user
+    end
   end
 
   def edit

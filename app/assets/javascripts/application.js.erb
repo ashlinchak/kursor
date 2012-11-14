@@ -19,10 +19,17 @@
 
 $(document).ready(function(){
 
+// Expander
+
+    $('#user-show .all-categories').expander({
+        slicePoint: 0,
+        widow: 0,
+        expandEffect: 'show',
+        userCollapseText: '<%= I18n.t(:'users.cabinet.provider_card.hide') %>',
+        expandText: '<%= I18n.t(:'users.cabinet.provider_card.show') %>'
+    });
 
 // Registration radio buttons
-
-
 
     $("input[name='user[account_type_id]']").change(function(){
         if ($("input[name='user[account_type_id]']:checked").val() == '0')

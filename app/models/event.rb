@@ -5,8 +5,8 @@ class Event < ActiveRecord::Base
 
   attr_accessible :description,
                   :end_datetime,
-                  #:eventable_id,
-                  #:eventable_type,
+                  :eventable_id,
+                  :eventable_type,
                   :location_id,
                   :max_price,
                   :min_price,
@@ -14,7 +14,10 @@ class Event < ActiveRecord::Base
                   :teacher,
                   :title,
                   :location_attributes,
-                  :event_category_ids
+                  :event_category_ids,
+                  :provider_name
+
+  attr_accessor :provider_name
 
   after_initialize :build_nested_resources
 
@@ -67,6 +70,13 @@ class Event < ActiveRecord::Base
       href2 = 'href="'+link['href']+'"'
       self.description = self.description.gsub(href1, href1+' rel="nofollow" target="_blank"')
       self.description = self.description.gsub(href2, href2+' rel="nofollow" target="_blank"')
+    end
+  end
+
+  def provider_name= name
+    if provider = Provider.find_by_name(name)
+      #p "provider: #{provider}"
+      self.eventable = provider
     end
   end
 

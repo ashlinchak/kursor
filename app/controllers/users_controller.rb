@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :require_authentication, :except => [:new, :create, :show]
+  before_filter :authenticate_user!, :except => [:new, :create, :show]
 
   def index
     respond_to do |format|

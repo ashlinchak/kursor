@@ -15,5 +15,5 @@
     -#%li= link_to t(:'site.nav.info'), root_url + 'info', :class => ( "current" if controller_name == 'info' )
     %li.pull-right
       -#  = link_to info_index_path, :title => 'Информация и помощь на портале',  :class =>  "clean #{'current' if controller_name == 'info'}"  do
-      = link_to 'info/contacts', :title => 'Информация и помощь на портале',  :class =>  "clean #{'current' if controller_name == 'info'}"  do
+      = link_to '/info/contacts', :title => 'Информация и помощь на портале',  :class =>  "clean #{'current' if controller_name == 'info'}"  do
         %i.icon-info-sign.icon-white

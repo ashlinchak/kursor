@@ -14,10 +14,10 @@
   - if current_user == provider.user
     = render :partial => 'toolbar'
 
-  - if current_user.provider and !current_user.provider.is_approved
-    .alert.alert-info.alert-block
-      %h4.alert-heading= t(:'providers.edit.not_approved.title')
-      %p= t(:'providers.edit.not_approved.desc').html_safe
+    - unless provider.is_approved
+      .alert.alert-info.alert-block
+        %h4.alert-heading= t(:'providers.edit.not_approved.title')
+        %p= t(:'providers.edit.not_approved.desc').html_safe
 .row
   .span8
     - unless controller.controller_name == 'users'
