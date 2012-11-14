@@ -1,4 +1,6 @@
 class Admin::CitiesController < Admin::DashboardController
+
+
   inherit_resources
   defaults :resource_class => Address::City#, :collection_name => 'cities', :instance_name => 'city'
 
