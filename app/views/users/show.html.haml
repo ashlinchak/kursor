@@ -57,22 +57,24 @@
         - elsif user.school?
           - unless user.providers
             - if user == current_user
-              -#.alert.alert-block
-                %h4.alert-heading= t(:'providers.edit.no_provider')
-                %p= t(:'providers.edit.no_provider_desc')
-                %p
-                  = link_to new_provider_path, :class => 'btn btn-success' do
-                    %i.icon-ok.icon-white
-                    = t(:'providers.edit.add_provider')
               = link_to new_provider_path, :class => 'btn btn-success btn-block btn-large' do
                 %i.icon-ok.icon-white
                 = t(:'providers.edit.add_provider')
           - else
             = render :partial => 'users/shared/provider_cards'
-            = link_to new_provider_path, :style => 'float: right' do
-              %i.icon-plus-sign
-              Add provider
 
+            = link_to "#myModal", "role" => "button", "data-toggle" => "modal", :style => 'float:right;' do
+              %i.icon-plus-sign
+              = t(:'users.cabinet.provider_card.add_provider')
+
+            #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+              .modal-header
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                %h3#myModalLabel Внимание!
+              .modal-body
+                %p= t(:'users.cabinet.provider_card.cant_add_more').html_safe
+              .modal-footer
+                %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"}= t(:'most_common_labels.close')
 
         - elsif user.visitor?
           - unless user.profile.present?

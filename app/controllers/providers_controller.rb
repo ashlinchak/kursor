@@ -1,6 +1,6 @@
 class ProvidersController < ApplicationController
 
-  before_filter :require_authentication, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
@@ -15,9 +15,19 @@ class ProvidersController < ApplicationController
   end
 
   def new
-    provider.build_location unless provider.location
-    #provider.build_filials unless provider.filials
-    #provider.filials.build_location unless provider.filials
+    if current_user.school?
+      if current_user.can_add_provider?
+        provider.build_location unless provider.location
+        #provider.build_filials unless provider.filials
+        #provider.filials.build_location unless provider.filials
+      else
+        flash[:error] = "You cant create more providers. Update your Plan!"
+        redirect_to current_user
+      end
+    else
+      flash[:error] = "You cant create provider. Because your account is not School"
+      redirect_to current_user
+    end
   end
 
   def edit

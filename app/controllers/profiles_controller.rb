@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_filter :require_authentication, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 

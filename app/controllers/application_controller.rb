@@ -78,13 +78,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :authorized?
 
-  def require_authentication
-    unless authenticated?
-      flash[:error] = 'Login required'
-      redirect_to login_url
-    end
-  end
-
   def require_authorization
     unless authorized?
       flash[:error] = 'Admin required'

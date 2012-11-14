@@ -12,39 +12,34 @@
               %i.icon-pencil
               = t(:'most_common_labels.change')
           %h5= link_to p, provider_path(p)
+      .row
+        .span6
+          %dl.dl-horizontal
 
-          %p
-            .all-categories
-              %b= t(:'users.cabinet.provider_card.categories')
-              %br/
-
+            %dt= t(:'users.cabinet.provider_card.categories')
+            %dd.all-categories
               - p.categories.each do |cat|
-                |
+                &nbsp;
                 = link_to category_path(cat) do
                   = cat.name.truncate(20)
 
-          %p
-            %b= t(:'users.cabinet.provider_card.events')
-            %br/
-            %ul
-              - p.events.each do |event|
+            %dt= t(:'users.cabinet.provider_card.events')
+            %dd
+              %ul.unstyled
+                - p.events.each do |event|
+                  %li
+                    = link_to event_path(event) do
+                      = event.title
+                    ( #{l event.start_datetime, :format => :short} )
                 %li
-                  = link_to event_path(event) do
-                    = event.title
-                  ( #{l event.start_datetime, :format => :short} )
-              %li
-                = link_to new_provider_event_path(p) do
-                  %i.icon-plus-sign
-                  = t(:'users.cabinet.provider_card.add_event')
-          %p
+                  = link_to new_provider_event_path(p) do
+                    %i.icon-plus-sign
+                    = t(:'users.cabinet.provider_card.add_event')
 
-            - if p.promotion.present?
-              %b= t(:'users.cabinet.provider_card.promotion')
-              #{l p.promotion.start_date, :format => :short} - #{l p.promotion.end_date, :format => :short}
-              %br/
-              = t(:'users.cabinet.provider_card.days_left')
-              = (p.promotion.end_date.day - Time.now.day)
-
-            - else
-              .alert.alert-info
+            %dt= t(:'users.cabinet.provider_card.promotion')
+            %dd
+              - if p.promotion.present?
+                #{l p.promotion.start_date, :format => :short} - #{l p.promotion.end_date, :format => :short}
+                ( #{t(:'users.cabinet.provider_card.days_left')} #{p.promotion.end_date.day - Time.now.day} #{t(:'users.cabinet.provider_card.days')} )
+              - else
                 = t(:'users.cabinet.provider_card.not_promoted')

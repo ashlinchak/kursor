@@ -78,6 +78,15 @@ class User < ActiveRecord::Base
     @user_type = ACCOUNT_TYPES[self.account_type_id]
   end
 
+  def can_add_provider?
+    self.providers.count < 1
+    #if account.free?
+    #  providers.count < 1
+    #elsif account.standard?
+    #  providers.count < 5
+    #end
+  end
+
   def self.find_for_google_oauth2(auth, signed_in_resource=nil)
 
     user = User.where(:email => auth.info["email"]).first

@@ -9,7 +9,7 @@
         %span.caret
       %ul.dropdown-menu
         %li
-          = link_to user do
+          = link_to current_user do
             %i.icon-user
             = t(:'users.cabinet.title')
         - if current_user.school? && current_user.providers.present?
@@ -18,12 +18,12 @@
               %i.icon-calendar
               = t(:'users.cabinet.provider_card.add_event')
         %li
-          = link_to edit_user_path do
+          = link_to edit_user_registration_path do
             %i.icon-wrench
             = t(:'users.cabinet.edit_user')
 
     - if current_user.profile.present?
-      = image_tag current_user.profile.avatar_url(:icon), :class => 'icon'
+      = image_tag current_user.profile.avatar_url(:icon), :class => 'icon img-rounded'
     -#- elsif current_user.providers.present?
       = image_tag current_user.providers.last.logo_url(:icon), :class => 'icon'
     - elsif current_user.tutor.present?
@@ -31,7 +31,9 @@
 
     - if authorized?
       = link_to t(:'site.nav.admin-panel'), admin_path
-    = link_to t(:'sessions.destroy.title'), destroy_user_session_path, :method => :delete
+    = link_to destroy_user_session_path, :method => :delete, :class => 'btn btn-small btn-danger logout' do
+      = t(:'sessions.destroy.title')
+      %i.icon-off.icon-white
   - else
     = link_to t(:'users.create.title'), new_user_registration_path, :class => "btn btn-success", :style => "vertical-align: baseline"
     &nbsp;

@@ -145,6 +145,7 @@ header {
     a.clean {
       background: none;
     }
+
     li.active, a:hover, a.current, a:hover.clean{
       -webkit-transition: background 100ms ease-out;
       -moz-transition: background 100ms ease-out;
@@ -165,6 +166,19 @@ header {
     right: 0;
     top: .5em;
     line-height: 32px;
+
+    i {
+      vertical-align: text-bottom;
+    }
+
+    img {
+      vertical-align: top;
+    }
+
+    .logout {
+      margin-left: 15px;
+      vertical-align: baseline;
+    }
 
     .btn-group {
       display: inline-block;

@@ -9,8 +9,8 @@ class Promotion < ActiveRecord::Base
   scope :vip, where(:is_vip => true)
 
   def provider_name= name
-    if provider = Provider.find_by_name(name)
-      p "provider: #{provider}"
+    if provider = Provider.find_by_name(name).id
+      #p "provider: #{provider}"
       self.promotionable = provider
     end
   end

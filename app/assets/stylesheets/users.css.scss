@@ -19,6 +19,12 @@
       display: block;
       position: relative;
 
+      dl {
+        dt, dd {
+          min-height: 25px;
+        }
+      }
+
       h5 {
 
         margin-top: 0px;
