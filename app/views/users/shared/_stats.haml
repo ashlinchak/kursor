@@ -38,6 +38,7 @@
       %td
         %b #{t(:'users.cabinet.statistics.current_sign_in_ip')}:
       %td
-        = link_to 'http://speed-tester.info/ip_location.php?ip=' + user.current_sign_in_ip, :target => '_blank' do
-          = user.current_sign_in_ip
-          %i.icon-share
+        - unless user.current_sign_in_ip.blank?
+          = link_to 'http://speed-tester.info/ip_location.php?ip=' + user.current_sign_in_ip, :target => '_blank' do
+            = user.current_sign_in_ip
+            %i.icon-share
