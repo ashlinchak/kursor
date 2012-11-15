@@ -1,0 +1,18 @@
+.well#user-card
+  .row
+    .span1
+      = link_to profile_path(user.profile), :class => 'thumbnail' do
+        = image_tag user.profile.avatar_url(:thumb)
+    .span5
+      .right-corner
+        = link_to edit_profile_path(user.profile), :class => 'btn-small', :title => t(:'providers.edit.edit_profile') do
+          %i.icon-pencil
+          = t(:'most_common_labels.change')
+      -#%p= t(:'users.cabinet.profile_card.title')
+      %p
+        %strong
+          = link_to profile_path(user.profile) do
+            = user.profile.full_name
+      = t(:'users.cabinet.profile_card.postings_count')
+      = link_to user_postings_path(user) do
+        = user.postings.count

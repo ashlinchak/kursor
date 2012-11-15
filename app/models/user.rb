@@ -74,7 +74,13 @@ class User < ActiveRecord::Base
   end
 
   def user_type
-    @user_type = ACCOUNT_TYPES[self.account_type_id]
+    if self.visitor?
+      I18n.t(:'activerecord.attributes.user.account_types.visitor')
+    elsif self.tutor?
+      I18n.t(:'activerecord.attributes.user.account_types.tutor')
+    elsif self.school?
+      I18n.t(:'activerecord.attributes.user.account_types.school')
+    end
   end
 
   def can_add_provider?
@@ -123,5 +129,6 @@ class User < ActiveRecord::Base
   #    end
   #  end
   #end
+
 
 end

@@ -15,11 +15,11 @@
               = link_to user.email, user_path(user), :target => '_blank'
 
             %span.muted.small= time_ago_in_words user.created_at
-            - if user.user_type == 'user'
+            - if user.visitor?
               %span.label{ :style => 'float:right;' } U
-            - if user.user_type == 'tutor'
+            - if user.tutor?
               %span.label.label-warning{ :style => 'float:right;' } T
-            - if user.user_type == 'school'
+            - if user.school?
               %span.label.label-info{ :style => 'float:right;' } P
   .span4
     %p.lead Statistics

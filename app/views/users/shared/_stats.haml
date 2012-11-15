@@ -1,0 +1,32 @@
+.statistics
+  %table.table.table-condensed
+    %tr
+      %td
+        %b #{t(:'users.cabinet.statistics.account_type')}:
+      %td &laquo;#{user.user_type}&raquo;
+    %tr
+      %td
+        %b #{t(:'users.cabinet.statistics.registered_at')}:
+      %td
+        = l user.created_at, :format => "%d %B %Y"
+        ( #{time_ago_in_words user.created_at} #{t(:'most_common_labels.time_ago')} )
+    %tr
+      %td
+        %b #{t(:'users.cabinet.statistics.last_sign_in_at')}:
+      %td
+        = l user.last_sign_in_at, :format => "%d %B %Y"
+        ( #{time_ago_in_words user.last_sign_in_at} #{t(:'most_common_labels.time_ago')} )
+        %br/
+        #{t(:'users.cabinet.statistics.last_sign_in_ip')} #{user.last_sign_in_ip}
+    %tr
+      %td
+        %b #{t(:'users.cabinet.statistics.sign_in_count')}:
+      %td= user.sign_in_count
+    %tr
+      %td
+        %b #{t(:'users.cabinet.statistics.failed_attempts')}:
+      %td= user.failed_attempts
+    %tr
+      %td
+        %b #{t(:'users.cabinet.statistics.current_sign_in_ip')}:
+      %td= user.current_sign_in_ip
