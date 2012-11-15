@@ -1,58 +1,26 @@
 #user-show
-  .row
-    .span12
-      - if authenticated? && user == current_user
-        %i.icon-user
-        = user.email
-        = link_to edit_user_registration_path do
-          %i.icon-envelope
-          = t(:'users.panel.edit_email_password')
-        - if user.tutor? && user.tutor.present?
-          &nbsp;&nbsp;&nbsp;
-          %i.icon-pencil
-          = link_to t(:'users.panel.edit_my_profile'), edit_tutor_path(user.tutor)
-        - if user.visitor? && user.profile.present?
-          &nbsp;&nbsp;&nbsp;
-          %i.icon-pencil
-          = link_to t(:'users.panel.edit_my_profile'), edit_profile_path(user.profile)
-      - else
-        - if user.visitor? && user.profile
-          - if user.profile.full_name && !user.profile.full_name.blank?
-            = user.profile.full_name
-          - else
-            = user.email.split(/@/)[0]
-        - elsif user.tutor? || user.school?
-          - if user.provider
-            = user.provider.name
-          - else
-            = user.email.split(/@/)[0]
-        - else
-          = user.email.split(/@/)[0]
-      - if authorized?
-        = link_to 'mailto:'+user.email+'?subject=Образовательный Портал КУРСОР' do
-          %i.icon-envelope
-          Send email
-
-      %hr/
-
   - if authenticated?
+    .row
+      .span12
+        - if user == current_user
+          - if user.visitor?
+            = render :partial => 'profiles/toolbar'
+          - elsif user.tutor?
+            = render :partial => 'tutors/toolbar'
+          - elsif user.school?
+            = render :partial => 'providers/toolbar'
+
     .row
       .span7
         - if user.tutor?
-          - unless user.tutor
+          - unless user.tutor.present?
             - if user == current_user
-              -#.alert.alert-block
-                %h4.alert-heading= t(:'providers.edit.no_provider')
-                %p= t(:'providers.edit.no_provider_desc')
-                %p
-                  = link_to new_tutor_path, :class => 'btn btn-success' do
-                    %i.icon-ok.icon-white
-                    = t(:'providers.edit.add_provider')
               = link_to new_tutor_path, :class => 'btn btn-success btn-block btn-large' do
                 %i.icon-ok.icon-white
                 = t(:'providers.edit.add_provider')
           - else
-            = link_to user.tutor.name, tutor_path(user.tutor)
+            = render :partial => 'users/shared/tutor_card'
+
         - elsif user.school?
           - unless user.providers.present?
             - if user == current_user
@@ -62,7 +30,7 @@
           - else
             = render :partial => 'users/shared/provider_cards'
 
-            = link_to "#myModal", "role" => "button", "data-toggle" => "modal" do
+            = link_to "#myModal", "role" => "button", "data-toggle" => "modal", :class => 'btn' do
               %i.icon-plus-sign
               = t(:'users.cabinet.provider_card.add_provider')
 
@@ -87,12 +55,19 @@
               %i.icon-trash.icon-white
               = t(:'devise.register.cancel_account.link')
 
-        = render :partial => 'users/shared/stats'
-
 
 
       .span5
-        = render :partial => 'users/shared/oauth_links'
+        - if authorized?
+          = link_to 'mailto:'+user.email+'?subject=Образовательный Портал КУРСОР', :class => 'btn btn-block' do
+            %i.icon-envelope
+            Send email
+          %br/
+
+        - if user == current_user
+          = render :partial => 'users/shared/oauth_links'
+
+        = render :partial => 'users/shared/stats'
 
   - else
     = t(:'users.must_be_authenticated')

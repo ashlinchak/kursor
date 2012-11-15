@@ -12,7 +12,7 @@
           = link_to current_user do
             %i.icon-user
             = t(:'users.cabinet.title')
-        - if current_user.school? && current_user.providers.present?
+        - if (current_user.school? && current_user.providers.present?) || (current_user.tutor? && current_user.tutor.present?)
           %li
             = link_to new_event_path do
               %i.icon-calendar

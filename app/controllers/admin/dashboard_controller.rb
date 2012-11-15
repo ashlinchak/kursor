@@ -15,7 +15,7 @@ class Admin::DashboardController < ApplicationController
     @news = News.all.size
     @posts = Posting.all.size
     @tags = Tag.all.size
-    @users = User.last(20).reverse
+    @users = User.last(30).reverse
   end
 
   def providers_approved

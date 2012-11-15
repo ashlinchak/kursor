@@ -9,15 +9,23 @@
         %b #{t(:'users.cabinet.statistics.registered_at')}:
       %td
         = l user.created_at, :format => "%d %B %Y"
+        %br/
         ( #{time_ago_in_words user.created_at} #{t(:'most_common_labels.time_ago')} )
     %tr
       %td
         %b #{t(:'users.cabinet.statistics.last_sign_in_at')}:
       %td
-        = l user.last_sign_in_at, :format => "%d %B %Y"
-        ( #{time_ago_in_words user.last_sign_in_at} #{t(:'most_common_labels.time_ago')} )
-        %br/
-        #{t(:'users.cabinet.statistics.last_sign_in_ip')} #{user.last_sign_in_ip}
+        - unless user.last_sign_in_at.blank?
+          = l user.last_sign_in_at, :format => "%d %B %Y"
+          %br/
+          #{t(:'users.cabinet.statistics.last_sign_in_ip')}
+          = link_to 'http://speed-tester.info/ip_location.php?ip=' + user.last_sign_in_ip, :target => '_blank' do
+            #{user.last_sign_in_ip}
+            %i.icon-share
+          %br/
+          ( #{time_ago_in_words user.last_sign_in_at} #{t(:'most_common_labels.time_ago')} )
+        - else
+          never
     %tr
       %td
         %b #{t(:'users.cabinet.statistics.sign_in_count')}:
@@ -29,4 +37,7 @@
     %tr
       %td
         %b #{t(:'users.cabinet.statistics.current_sign_in_ip')}:
-      %td= user.current_sign_in_ip
+      %td
+        = link_to 'http://speed-tester.info/ip_location.php?ip=' + user.current_sign_in_ip, :target => '_blank' do
+          = user.current_sign_in_ip
+          %i.icon-share
