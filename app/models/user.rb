@@ -35,22 +35,21 @@ class User < ActiveRecord::Base
   paginates_per 50
 
   def to_s
-    email
-    #if visitor? && profile
-    #  if profile.full_name && !profile.full_name.blank?
-    #    profile.full_name
-    #  else
-    #    email.split(/@/)[0]
-    #  end
-    #elsif tutor? || school?
-    #  if provider
-    #    provider.name
-    #  else
-    #    email.split(/@/)[0]
-    #  end
-    #else
-    #  email.split(/@/)[0]
-    #end
+    if visitor? && profile
+      if profile.full_name && !profile.full_name.blank?
+        profile.full_name
+      else
+        email.split(/@/)[0]
+      end
+    elsif tutor?
+      if tutor.name && !tutor.name.blank?
+        tutor.name
+      else
+        email.split(/@/)[0]
+        end
+    else
+      email.split(/@/)[0]
+    end
   end
 
   # overriding default json fields
