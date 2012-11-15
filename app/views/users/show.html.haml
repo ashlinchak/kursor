@@ -43,7 +43,7 @@
               .modal-footer
                 %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"}= t(:'most_common_labels.close')
 
-        - elsif user.visitor?
+        - elsif user.visitor? && user.profile.present?
           = render :partial => 'users/shared/profile_card'
 
         - unless user.profile || user.tutor || user.providers
