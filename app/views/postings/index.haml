@@ -25,7 +25,7 @@
                   = user.profile.bio
               %p= t(:'visitor.profile.profile_age') + time_ago_in_words(user.created_at)
 
-        = render postings.approved
+        = render postings.published.approved
       .span4
         = render :partial => 'shared/widgets/widgets'
 

@@ -1,95 +1,25 @@
-%h2 Admin panel
-%hr/
+-#%h2 Admin panel
+-#%hr/
 .row
   .span5
-    %p.lead Last registered users
-    %table.table.table-condensed.table-striped.table-bordered.table-hover
-      - for user in @users
-        %tr
-          %td
-            = link_to user.email, user_path(user), :target => '_blank', :style => ('color:red;' unless user.confirmed?)
-            = link_to admin_user_path(user), :method => :delete, :confirm => 'Ты собираешься удалить юзера и все его учебные заведения, профили и т.д. Продолжить?', :style => 'float:right;', :title => 'Удалить юзера полностью' do
-              %i.icon-trash
-          %td
-            %span.muted.small= time_ago_in_words user.created_at
-            - if user.visitor?
-              %span.label{ :style => 'float:right;' } U
-            - if user.tutor?
-              %span.label.label-warning{ :style => 'float:right;' } T
-            - if user.school?
-              %span.label.label-info{ :style => 'float:right;' } P
-  .span4
-    %p.lead Statistics
-    %table.table.table-bordered.table-striped.table-condensed
-      %tbody
-        %tr
-          %td Administrators
-          %td= @admin_users
-        %tr
-          %td
-            = link_to 'Providers', admin_users_path
-            approved
-          %td= providers_approved
-        %tr
-          %td
-            = link_to 'Providers', admin_users_path
-            waiting
-          %td
-            %span.badge.badge-important= providers_waiting
-        %tr
-          %td= link_to 'Locations', admin_cities_path
-          %td= @cities
-        %tr
-          %td= link_to 'Categories', admin_categories_path
-          %td= @categories
-        %tr
-          %td= link_to 'News', admin_news_index_path
-          %td= @news
-        %tr
-          %td= link_to 'Postings', admin_postings_path
-          %td= @posts
-        %tr
-          %td Tags
-          %td= @tags
-        %tr
-          %td= link_to 'Filials', admin_filials_path
-          %td= Filial.all.size
-
-  .span3
-    %p.lead What is today?
-    %table.table.table-bordered.table-striped.table-condensed
-      %tbody
-        %tr
-          %td
-            = link_to 'Providers', admin_users_path
-            registered
-          %td
-            %span.badge.badge-success
-              = today_registered_providers
-        %tr
-          %td
-            = link_to 'Tutors', admin_users_path
-            registered
-          %td
-            %span.badge.badge-success
-              = today_registered_tutors
-        %tr
-          %td
-            = link_to 'News', admin_news_index_path
-            created
-          %td= today_news_created
-        %tr
-          %td
-            = link_to 'Postings', admin_postings_path
-            created
-          %td= today_postings_created
-
-    %p.lead Export emails database
-    %p
-      = link_to export_admin_providers_path(:format => :csv), :class => 'btn' do
-        %i.icon-download-alt
-        Download providers CSV file
-    %p
-      = link_to export_admin_tutors_path(:format => :csv), :class => 'btn' do
-        %i.icon-download-alt
-        Download tutors CSV file
+    %p.lead= t(:'admin.dashboard.last_registered_users')
+    = render :partial => 'admin/dashboard/blocks/last_registered'
+  .span7
+    %p.lead= t(:'admin.dashboard.delayed_publication')
+    = render :partial => 'admin/dashboard/blocks/not_published_postings'
+    .row
+      .span4
+        %p.lead= t(:'admin.dashboard.statistics')
+        = render :partial => 'admin/dashboard/blocks/statistics'
+      .span3
+        %p.lead= t(:'admin.dashboard.what_is_today')
+        = render :partial => 'admin/dashboard/blocks/today'
+        %p.lead= t(:'admin.dashboard.export_emails')
+        %p
+          = link_to export_admin_providers_path(:format => :csv), :class => 'btn btn-block' do
+            %i.icon-download-alt
+            Download providers CSV file
+        %p
+          = link_to export_admin_tutors_path(:format => :csv), :class => 'btn btn-block' do
+            %i.icon-download-alt
+            Download tutors CSV file

@@ -3,7 +3,11 @@
   #show
     .row
       .span8
-
+        - unless posting.published?
+          .alert
+            = t(:'postings.alerts.not_published', :date => (l posting.published_at, :format => "%e %B %R") ).html_safe
+            |
+            = t(:'postings.alerts.will_be_published_in', :time_left => (time_ago_in_words posting.published_at) ).html_safe
         .posting-categories
           = t(:'postings.categories')
           - posting.posting_categories.each do |c|
@@ -27,7 +31,7 @@
                   = link_to tutor_path(posting.user.tutor) do
                     = image_tag posting.user.tutor.avatar_url(:icon).to_s
                   = link_to posting.user.tutor.name, tutor_path(posting.user.tutor)
-                %p.date= l posting.created_at, :format => :long
+                %p.date= l posting.published_at, :format => :long
                 - if authorized? || authenticated? && current_user == posting.user
                   = link_to edit_posting_path(posting), :class => 'btn btn-mini' do
                     %i.icon-pencil
@@ -60,7 +64,7 @@
         .user-bar
           = link_to posting.user, user_postings_path(posting.user)
           |
-          = l posting.created_at, :format => :long
+          = l posting.published_at, :format => :long
           - if authenticated?
             - if posting.user == current_user || authorized?
               |

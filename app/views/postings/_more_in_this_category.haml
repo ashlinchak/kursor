@@ -1,6 +1,6 @@
 .more_postings
   - for c in posting.posting_categories.roots do
-    - for post in c.postings.approved.limit(3) do
+    - for post in c.postings.published.approved.limit(3) do
       .carousel
         .carusel-inner
           .active.item

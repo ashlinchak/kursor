@@ -1,7 +1,7 @@
 .more_postings_bottom
   - for c in posting.posting_categories.roots do
     .row
-      - for post in c.postings.approved.limit(4) do
+      - for post in c.postings.published.approved.limit(4) do
         .span2
           .img
             = link_to posting_path(post) do

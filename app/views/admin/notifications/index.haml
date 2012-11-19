@@ -12,7 +12,7 @@
             %h5= link_to truncate(p.name, length: 35), provider_path(p), :target => '_blank'
             %p
               = link_to p.user.email, user_path(p.user), :target => '_blank'
-              = time_ago_in_words(p.updated_at) + ' назад'
+              #{time_ago_in_words p.created_at} назад
             %p
               = link_to approve_admin_provider_path(p), :confirm => t('providers.actions.approve.confirm', :name => p.name).html_safe do
                 %i.icon.icon-ok-sign
@@ -31,7 +31,7 @@
             %h5= link_to truncate(t.name, length: 35), tutor_path(t), :target => '_blank'
             %p
               = link_to t.user.email, user_path(t.user), :target => '_blank'
-              = time_ago_in_words(t.updated_at) + ' назад'
+              #{time_ago_in_words t.created_at} назад
             %p
               = link_to approve_admin_tutor_path(t), :confirm => t('tutors.actions.approve.confirm', :name => t.name).html_safe do
                 %i.icon.icon-ok-sign
@@ -50,7 +50,7 @@
             %h5= link_to truncate(p.title, length: 35), posting_path(p), :target => '_blank'
             %p
               = link_to p.user.email, user_path(p.user), :target => '_blank'
-              = time_ago_in_words(p.updated_at) + ' назад'
+              #{time_ago_in_words p.created_at} назад
             %p
               = link_to approve_admin_posting_path(p), :confirm => t('postings.actions.approve.confirm', :title => p.title).html_safe do
                 %i.icon.icon-ok-sign

@@ -1,0 +1,26 @@
+%table.table.table-bordered.table-striped.table-condensed
+  %tbody
+    %tr
+      %td
+        = link_to 'Providers', admin_users_path
+        registered
+      %td
+        %span.badge.badge-success
+          = today_registered_providers
+    %tr
+      %td
+        = link_to 'Tutors', admin_users_path
+        registered
+      %td
+        %span.badge.badge-success
+          = today_registered_tutors
+    %tr
+      %td
+        = link_to 'News', admin_news_index_path
+        created
+      %td= today_news_created
+    %tr
+      %td
+        = link_to 'Postings', admin_postings_path
+        created
+      %td= today_postings_created

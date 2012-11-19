@@ -9,8 +9,8 @@
               %h2.category-title
                 = link_to child.name, child
                 - if child.children
-                  = '(' + child.postings.approved.size.to_s + ')'
-              - for sub_post in child.postings.approved.limit(4)
+                  = '(' + child.postings.published.approved.size.to_s + ')'
+              - for sub_post in child.postings.published.approved.limit(4)
                 .item
                   - if sub_post.images.last.present?
                     = link_to sub_post do

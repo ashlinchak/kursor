@@ -20,12 +20,12 @@ class HomeController < ApplicationController
   helper_method :providers
 
   def featured_posting
-    @featured_posting ||= Posting.approved.last
+    @featured_posting ||= Posting.published.approved.last
   end
   helper_method :featured_posting
 
   def recent_postings
-    @recent_postings ||= Posting.approved.recent
+    @recent_postings ||= Posting.published.approved.recent
   end
 
   def posting_categories

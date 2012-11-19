@@ -1,0 +1,8 @@
+%table.table.table-condensed.table-striped.table-bordered.table-hover
+  - for p in Posting.not_published.approved
+    %tr
+      %td
+        = link_to p.title, posting_path(p), :target => '_blank'#, :style => ('color:red;' unless user.confirmed?)
+        .small.muted{:style => 'display:inline-block;'}
+          = t(:'postings.alerts.will_be_published_in', :time_left => time_ago_in_words(p.published_at)).html_safe
+          (#{ l p.published_at, :format => :short})

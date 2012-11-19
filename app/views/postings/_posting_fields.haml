@@ -14,13 +14,14 @@
                 %label.radio
                   = f.radio_button :posting_type_id, Posting::POSTING_TYPES.index('video'), :id => 'video_posting_type'
                   = t("activerecord.attributes.posting.posting_types.video").html_safe
-        .span7
-          %fieldset
-            .control-group
-              = f.label t(:'postings.titles.published_at'), :class => 'control-label'
-              .controls
-                .published-at
-                  = f.datetime_select :published_at
+        - if authorized?
+          .span7
+            %fieldset
+              .control-group
+                = f.label t(:'postings.titles.published_at'), :class => 'control-label'
+                .controls
+                  .published-at
+                    = f.datetime_select :published_at
     %fieldset
       .control-group
         = f.label t(:'postings.titles.title'), :class => 'control-label'
