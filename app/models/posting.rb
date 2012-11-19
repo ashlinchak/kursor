@@ -7,8 +7,6 @@ class Posting < ActiveRecord::Base
 
   before_save :add_nofollow
 
-  #acts_as_commentable
-
   attr_accessor :image_attributes
 
   belongs_to :user

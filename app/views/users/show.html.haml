@@ -17,7 +17,7 @@
             - if user == current_user
               = link_to new_tutor_path, :class => 'btn btn-success btn-block btn-large' do
                 %i.icon-ok.icon-white
-                = t(:'providers.edit.add_provider')
+                = t(:'users.cabinet.tutor_card.add_tutor')
           - else
             = render :partial => 'users/shared/tutor_card'
 

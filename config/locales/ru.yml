@@ -232,6 +232,10 @@ ru:
         title: "Карточка пользователя"
         postings_count: "Cтатей: "
 
+      tutor_card:
+        add_tutor: "Заполнить страничку преподавателя!"
+
+
       provider_card:
         categories: "Категории"
         events: "События"
@@ -436,6 +440,7 @@ ru:
       or: "или"
     titles:
       type: "Тип статьи"
+      published_at: "Дата публикации"
       title: "Заголовок"
       excerpt: "Вступление"
       excerpt_help: "Во вступлении форматирование текста отключено."
