@@ -8,12 +8,23 @@ class ProviderRequestsController < ApplicationController
 
     @provider_request = ProviderRequest.new(params[:provider_request])
 
-    if @provider_request.valid?
+    if @provider_request.valid? && simple_captcha_valid?
       ProviderRequestMailer.new_request(@provider_request).deliver
       flash[:success] = t(:'provider_request.messages.success')
       redirect_to root_path
     else
-      flash[:error] = t(:'provider_request.messages.failed').html_safe
+
+      @error_msg = ''
+
+      unless simple_captcha_valid?
+        @error_msg += t(:'feedback.messages.failed')
+      end
+
+      unless @provider_request.valid?
+        @error_msg += t(:'provider_request.messages.failed')
+      end
+
+      flash[:error] = ('<ul>'+@error_msg+'</ul>').html_safe
       render :index
     end
   end

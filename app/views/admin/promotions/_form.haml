@@ -1,20 +1,34 @@
-= form_for [:admin, promotion] do |f|
+= form_for [:admin, promotion], :html => {:class => 'form-horizontal'} do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => promotion }
-  = f.label :promotionable, 'Provider name'
-  - if promotion.promotionable
-    %h3= promotion.promotionable
-  - else
-    = f.text_field :provider_name, data: { source: Provider.all.map(&:name), provide: 'typeahead' }, class: 'typeahead'
-  = f.label :is_featured
-  = f.check_box :is_featured
-  = f.label :is_vip
-  = f.check_box :is_vip
+  .control-group
+    %label.control-label
+      Provider name
+    .controls
+      - if promotion.promotionable
+        = promotion.promotionable
+      - else
+        = f.text_field :provider_name, data: { source: Provider.all.map(&:name), provide: 'typeahead' }, class: 'typeahead'
+  .control-group
+    .controls
+      %label.checkbox
+        = f.check_box :is_featured
+        = t(:'activerecord.attributes.promotion.is_featured')
+  .control-group
+    .controls
+      %label.checkbox
+        = f.check_box :is_vip
+        = t(:'activerecord.attributes.promotion.is_vip')
 
-  = f.label :start_date
-  = f.date_select :start_date
-  = f.label :end_date
-  = f.date_select :end_date
-  .actions
+  .control-group
+    = f.label :start_date, :class => 'control-label'
+    .controls
+      = f.date_select :start_date
+
+  .control-group
+    = f.label :end_date, :class => 'control-label'
+    .controls
+      = f.date_select :end_date
+  .form-actions
     = f.submit class: 'btn '
     = t :'or'
     = link_to t(:'cancel'), :back

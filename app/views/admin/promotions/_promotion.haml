@@ -3,6 +3,17 @@
   = l(promotion.start_date, format: :short)
   \&mdash;
   = l(promotion.end_date, format: :short)
+  - if promotion.is_vip? || promotion.is_featured?
+    - if promotion.is_vip?
+      %span.small.muted home
+    - if promotion.is_featured?
+      |
+      %span.small.muted cat
+  - else
+    %span.label.label-important
+      = t(:'admin.promotions.not_configured')
+
   = link_to [:admin, promotion], :method => :delete, :confirm => 'Are you CRAZY? :P' do
     %i.icon.icon-trash
+
 

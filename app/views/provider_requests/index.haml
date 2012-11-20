@@ -36,6 +36,7 @@
           = form.label t(:'provider_request.form.info'), :class => 'control-label'
           .controls
             = form.text_area :body, :class => 'span5', :value => provider_url(provider)
+        = show_simple_captcha
       .form-actions
         = form.submit t(:'provider_request.form.submit'), :class => 'btn btn-success btn-large'
     %p= t(:'provider_request.form.add_help_html')

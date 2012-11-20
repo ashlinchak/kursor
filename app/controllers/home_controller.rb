@@ -37,7 +37,7 @@ class HomeController < ApplicationController
   helper_method :posting_categories
 
   def home_promotions
-    @home_promotions ||= Promotion.vip.by_position
+    @home_promotions ||= Promotion.current.vip.by_position
   end
   helper_method :home_promotions
 
