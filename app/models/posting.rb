@@ -7,8 +7,6 @@ class Posting < ActiveRecord::Base
 
   before_save :add_nofollow
 
-  #acts_as_commentable
-
   attr_accessor :image_attributes
 
   belongs_to :user
@@ -30,14 +28,21 @@ class Posting < ActiveRecord::Base
 
   POSTING_TYPES = %w( text video )
 
-  default_scope order('created_at desc')
+  default_scope order('published_at desc')
 
   scope :recent, lambda { where('created_at >= ?', Time.now - 32.weeks).limit(4) }
 
   scope :approved, where(:is_approved => true)
 
+  scope :published, lambda { where('published_at <= ?', Time.now) }
+  scope :not_published, lambda { where('published_at > ?', Time.now) }
+
   scope :text_postings, where(:posting_type_id => POSTING_TYPES.index('text'))
   scope :video_postings, where(:posting_type_id => POSTING_TYPES.index('video'))
+
+  def published?
+    published_at <= Time.now
+  end
 
   def posting_category_ids=(ids)
     self.posting_categories = PostingCategory.find(ids)
@@ -61,6 +66,9 @@ class Posting < ActiveRecord::Base
 
   def approve!
     self.is_approved = true
+    if self.published_at == self.created_at
+      self.published_at = Time.now
+    end
     save
   end
 

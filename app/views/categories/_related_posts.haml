@@ -2,7 +2,7 @@
   - if Tag.find_by_name(category.name).taggings
     #related-posts
       - for p in Tag.find_by_name(category.name).taggings.last(5)
-        - if p.taggable_type == 'Posting' && p.taggable.is_approved == true
+        - if p.taggable_type == 'Posting' && p.taggable.is_approved? && p.taggable.published?
           .carousel
             .carusel-inner
               .active.item

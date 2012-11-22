@@ -172,7 +172,7 @@ en:
         password_confirmation: 'Password confirm'
         account_type: 'Sign up as'
         account_types:
-          user: 'User'
+          visitor: 'User'
           tutor: 'Tutor'
           school: 'School'
       provider:

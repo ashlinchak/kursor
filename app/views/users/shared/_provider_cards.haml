@@ -1,6 +1,9 @@
 #provider-list
   - user.providers.each do |p|
-    .provider-block
+    .well.provider-block
+      .row
+        .span6
+          %legend= t(:'users.cabinet.provider_card.title')
       .row
         .span1
           = link_to provider_path(p) do
@@ -8,6 +11,9 @@
         .span5
 
           .right-corner
+            = link_to provider_path(p), :class => 'btn-small', :title => t(:'most_common_labels.open') do
+              %i.icon-file
+              = t(:'most_common_labels.open')
             = link_to edit_provider_path(p), :class => 'btn-small', :title => t(:'providers.edit.edit_profile') do
               %i.icon-pencil
               = t(:'most_common_labels.change')

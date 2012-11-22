@@ -55,7 +55,7 @@ class PostingsController < ApplicationController
     @postings ||= if user.present?
       user.postings
     else
-    Posting.approved
+    Posting.published.approved
     end
   end
   helper_method :postings

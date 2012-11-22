@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   helper_method :category
 
   def promoted_providers
-    promotions_by_provider = Promotion.where(:promotionable_type => 'Provider')
+    promotions_by_provider = Promotion.where(:promotionable_type => 'Provider').current.featured
     @selected_providers ||= if category.root?
        category.providers.where(id: promotions_by_provider.map(&:promotionable_id))
     else

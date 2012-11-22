@@ -1,0 +1,15 @@
+%table.table.table-condensed.table-striped.table-bordered.table-hover
+  - for user in @users
+    %tr
+      %td
+        = link_to user.email, user_path(user), :target => '_blank', :style => ('color:red;' unless user.confirmed?)
+        = link_to admin_user_path(user), :method => :delete, :confirm => 'Ты собираешься удалить юзера и все его учебные заведения, профили и т.д. Продолжить?', :style => 'float:right;', :title => 'Удалить юзера полностью' do
+          %i.icon-trash
+      %td
+        %span.muted.small= time_ago_in_words user.created_at
+        - if user.visitor?
+          %span.label{ :style => 'float:right;' } U
+        - if user.tutor?
+          %span.label.label-warning{ :style => 'float:right;' } T
+        - if user.school?
+          %span.label.label-info{ :style => 'float:right;' } P

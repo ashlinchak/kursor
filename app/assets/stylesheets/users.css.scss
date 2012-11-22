@@ -5,11 +5,20 @@
 
 #user-show {
 
+  #user-card {
+
+    margin-bottom: 20px;
+    display: block;
+    position: relative;
+    padding-top: 5px;
+
+  }
+
   #provider-list {
 
     .provider-block {
 
-      padding: 8px;
+      padding-top: 5px;
       background-color: #F7F7F9;
       border: 1px solid #E1E1E8;
       margin-bottom: 20px;
@@ -39,28 +48,70 @@
 
       }
 
-      .right-corner {
-        cursor: pointer;
-        opacity: 0.6;
-        filter: alpha(opacity=60);
-        padding: 5px;
-        margin: 5px;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-        width: 80px;
-        text-align: center;
-        height: 10px;
+    }
 
-        &:hover {
-          opacity: 1.0;
-          filter: alpha(opacity=100);
-          a {
-            text-decoration: none;
-          }
-        }
+  }
+
+  .right-corner {
+
+    padding-top: 13px;
+    margin: 5px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 170px;
+    text-align: center;
+    height: 10px;
+    a {
+      filter: alpha(opacity=60);
+      opacity: 0.6;
+      cursor: pointer;
+      &:hover {
+        opacity: 1.0;
+        filter: alpha(opacity=100);
+        text-decoration: none;
       }
+    }
 
+
+  }
+
+  .statistics {
+
+    position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    background-color: #D9EDF7;
+    color: #3A87AD;
+    border: 1px solid #BCE8F1;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+    &:after {
+      //content: image_url("icons/statistics.png");
+      content: "Статистика";
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      padding: 3px 7px;
+      font-size: 12px;
+      background-color: #3A87AD;
+      border: 1px solid #3A87AD;
+      font-weight: bold;
+      color: #ffffff;
+      -webkit-border-radius: 4px 0 4px 0;
+      -moz-border-radius: 4px 0 4px 0;
+      border-radius: 4px 0 4px 0;
+    }
+
+    table {
+      th, td {
+        border: 0px none;
+      }
+      td:first-child {
+        text-align: right;
+      }
     }
 
   }

@@ -29,6 +29,8 @@ $(document).ready(function(){
         expandText: '<%= I18n.t(:'users.cabinet.provider_card.show') %>'
     });
 
+
+
 // Registration radio buttons
 
     $("input[name='user[account_type_id]']").change(function(){
@@ -131,6 +133,9 @@ $(document).ready(function(){
 
 // Gmaps show in tab fix
     $('#mapTab').on('shown', function (e) { google.maps.event.trigger(map, 'resize');})
+
+
+
 
 // UI
     $('.datepicker').datepicker({

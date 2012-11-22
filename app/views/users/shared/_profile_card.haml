@@ -1,0 +1,25 @@
+.well#user-card
+  .row
+    .span6
+      %legend= t(:'users.cabinet.profile_card.title')
+  .row
+    .span1
+
+      = link_to profile_path(user.profile), :class => 'thumbnail' do
+        = image_tag user.profile.avatar_url(:thumb)
+    .span5
+      .right-corner
+        = link_to profile_path(user.profile), :class => 'btn-small', :title => t(:'most_common_labels.show') do
+          %i.icon-user
+          = t(:'most_common_labels.show')
+        = link_to edit_profile_path(user.profile), :class => 'btn-small', :title => t(:'most_common_labels.change') do
+          %i.icon-pencil
+          = t(:'most_common_labels.change')
+      %p
+        %strong
+          = link_to profile_path(user.profile) do
+            = user.profile.full_name
+      %p.muted= user.profile.bio
+      = t(:'users.cabinet.profile_card.postings_count')
+      = link_to user_postings_path(user) do
+        = user.postings.count

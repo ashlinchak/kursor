@@ -1,8 +1,26 @@
-= link_to [:new, :admin, :promotion] do
+= link_to [:new, :admin, :promotion], :style => 'float:right;', :class => 'btn' do
   %i.icon-plus
-  Add
-%hr/
+  = t(:'most_common_labels.add')
+%legend= t(:'admin.promotions.current')
 %ul
-  = render promotions
+  = render promotions.current
+
+%legend= t(:'admin.promotions.future')
+%ul
+  = render promotions.future
+
+%legend= t(:'admin.promotions.expired')
+
+.alert.alert-error
+
+  %ul
+    = render promotions.expired
+
+= link_to [:new, :admin, :promotion], :style => 'float:right;', :class => 'btn' do
+  %i.icon-plus
+  = t(:'most_common_labels.add')
+
+
+
 
 

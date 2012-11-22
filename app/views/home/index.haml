@@ -7,7 +7,7 @@
           .flexslider
             %ul.slides
               - if PostingCategory.post_cat
-                - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(6) do
+                - for posting in PostingCategory.post_cat.postings.published.approved.limit(6) do
                   - unless posting.images.empty?
                     %li
                       = image_tag posting.images.last.src_url(:slider).to_s
@@ -32,7 +32,7 @@
                   = t(:'home.titles.all_postings')
               %ul.last-postings
                 - if PostingCategory.post_cat
-                  - for posting in PostingCategory.post_cat.postings.order("created_at ASC").approved.limit(5) do
+                  - for posting in PostingCategory.post_cat.postings.published.approved.limit(5) do
                     %li= link_to posting.title, posting_path(posting)
 
       .row
@@ -44,7 +44,7 @@
                 %i.icon-list.icon-white
                 = t(:'home.titles.all_blog_posts')
             .blog
-              - PostingCategory.blog_cat.postings.approved.limit(4).each_with_index do |blog_post,index|
+              - PostingCategory.blog_cat.postings.published.approved.limit(4).each_with_index do |blog_post,index|
                 - if ((index % 2) == 0)
                   .clear
                 = render :partial => 'home/blog_post', :locals => {:blog_post => blog_post}
@@ -54,7 +54,7 @@
             .wiki-block
               .wiki-title
                 %h3= t(:'home.titles.wiki')
-              - for wiki_post in PostingCategory.wiki_cat.postings.approved.limit(4)
+              - for wiki_post in PostingCategory.wiki_cat.postings.published.approved.limit(4)
                 .wiki-post
                   = link_to posting_path(wiki_post) do
                     = image_tag wiki_post.images.last.src_url(:small), :alt => wiki_post
@@ -68,7 +68,7 @@
             .video-block
               .video-title
                 %h3= t(:'home.titles.video')
-              - for video_post in PostingCategory.video_cat.postings.approved.limit(4)
+              - for video_post in PostingCategory.video_cat.postings.published.approved.limit(4)
                 .video-post
                   = link_to posting_path(video_post) do
                     = image_tag video_post.images.last.src_url(:small), :alt => video_post

@@ -44,11 +44,13 @@
     - if profile.user.postings.present?
       %p.lead= t(:'seo.users.user_postings')
       %ul
-        - for posting in profile.user.postings.limit(5)
+        - for posting in profile.user.postings.published.approved.limit(5)
           %li= link_to posting.title, posting_path(posting)
         %li
           %b
-            = link_to t(:'postings.all_postings') + ' +' + (profile.user.postings.size - 5).to_s, user_postings_path(profile.user)
+            = link_to user_postings_path(profile.user) do
+              = t(:'postings.all_postings')
+              (#{profile.user.postings.published.approved.size})
     - if profile.user.students.present?
       %p.lead= t(:'students.studying_in')
       %ul

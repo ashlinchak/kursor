@@ -1,9 +1,8 @@
--#- if controller.send(:_layout) == 'admin'
 - flash.each do |name, msg|
   %div{ :class => "alert alert-#{name} fade in" }
     %a.close{ 'data-dismiss' => 'alert'}
       x
-    = msg#.html_safe
+    = msg
 
 
 

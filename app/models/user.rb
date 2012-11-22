@@ -35,22 +35,21 @@ class User < ActiveRecord::Base
   paginates_per 50
 
   def to_s
-    email
-    #if visitor? && profile
-    #  if profile.full_name && !profile.full_name.blank?
-    #    profile.full_name
-    #  else
-    #    email.split(/@/)[0]
-    #  end
-    #elsif tutor? || school?
-    #  if provider
-    #    provider.name
-    #  else
-    #    email.split(/@/)[0]
-    #  end
-    #else
-    #  email.split(/@/)[0]
-    #end
+    if visitor? && profile
+      if profile.full_name && !profile.full_name.blank?
+        profile.full_name
+      else
+        email.split(/@/)[0]
+      end
+    elsif tutor?
+      if tutor.name && !tutor.name.blank?
+        tutor.name
+      else
+        email.split(/@/)[0]
+        end
+    else
+      email.split(/@/)[0]
+    end
   end
 
   # overriding default json fields
@@ -75,7 +74,13 @@ class User < ActiveRecord::Base
   end
 
   def user_type
-    @user_type = ACCOUNT_TYPES[self.account_type_id]
+    if self.visitor?
+      I18n.t(:'activerecord.attributes.user.account_types.visitor')
+    elsif self.tutor?
+      I18n.t(:'activerecord.attributes.user.account_types.tutor')
+    elsif self.school?
+      I18n.t(:'activerecord.attributes.user.account_types.school')
+    end
   end
 
   def can_add_provider?
@@ -124,5 +129,6 @@ class User < ActiveRecord::Base
   #    end
   #  end
   #end
+
 
 end
