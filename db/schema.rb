@@ -276,7 +276,8 @@ ActiveRecord::Schema.define(:version => 20121029124353) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.string   "permalink"
-    t.integer  "position",    :default => 0, :null => false
+    t.boolean  "is_public",   :default => false
+    t.integer  "position",    :default => 0,     :null => false
   end
 
   add_index "posting_categories", ["parent_id"], :name => "index_posting_categories_on_parent_id"
