@@ -11,10 +11,10 @@
     .login-bar
       = render :partial => 'shared/login_bar'
     .banner
-      -#= link_to 'http://www.facebook.com/pages/Kursororgua/300466546696921', :target => '_blank' do
-      -#  = image_tag 'facebook-header.jpg'
-      = link_to 'http://navigator-1c.com.ua', :target => '_blank' do
-        = image_tag 'navigator.jpg'
+      -#HEADER_468_60
+      #div-gpt-ad-1353586145771-0{ :style=>'width:468px; height:60px;'}
+      :javascript
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1353586145771-0'); });
 .row
   .span12
     = render :partial => 'shared/top_nav'
