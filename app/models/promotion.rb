@@ -14,9 +14,10 @@ class Promotion < ActiveRecord::Base
   scope :future, lambda {where("start_date > ?", Time.now)}
 
   def provider_name= name
-    if provider == Provider.find_by_name(name).id
+    if provider = Provider.find_by_name(name).id
       #p "provider: #{provider}"
       self.promotionable = provider
     end
   end
+
 end
