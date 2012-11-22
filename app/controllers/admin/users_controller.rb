@@ -4,8 +4,8 @@ class Admin::UsersController < Admin::DashboardController
   end
 
   def new
-    user.build_provider
-    user.provider.build_location
+    user.providers.build
+    user.providers.each{|p| p.build_location }
   end
 
   def create
