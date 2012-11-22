@@ -37,6 +37,9 @@
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 %body
+  .sidebar-register-fixed
+    = link_to '/register' do
+      = image_tag 'register.png'
   #page
     %header.container
       = render :partial => 'shared/header'
@@ -47,6 +50,8 @@
 
   = yield :scripts
   = render :partial => 'shared/disqus/counter'
+  = render :partial => 'shared/welcome_colorbox'
   - unless Rails.env.development?
     = render :partial => 'shared/widgets/siteheart'
     -#= render :partial => 'shared/widgets/reformal'
+

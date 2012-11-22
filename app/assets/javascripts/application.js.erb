@@ -29,7 +29,17 @@ $(document).ready(function(){
         expandText: '<%= I18n.t(:'users.cabinet.provider_card.show') %>'
     });
 
+// Automatic jQuery welcome lightbox
+// Once the page loads we check to see if the cookie exists and hasn’t expired. If it’s expired or doesn’t exist we set the cookie to expire in 15 days, and we show the lightbox.
 
+    if (document.cookie.indexOf('visited=true') == -1) {
+        var fifteenDays = 1000*60*60*24*15;
+        var expires = new Date((new Date()).valueOf() + fifteenDays);
+        document.cookie = "visited=true;expires=" + expires.toUTCString();
+        $.colorbox({width:"580px", inline:true, href:"#subscribe_popup"});
+    }
+
+    $(".open_popup").colorbox({width:"580px", inline:true, href:"#subscribe_popup"});
 
 // Registration radio buttons
 
@@ -39,6 +49,8 @@ $(document).ready(function(){
         else
         { $("#oauth").animate({height: "hide", opacity: 0}, 500, "easeInOutQuad"); }
     });
+
+
 
 //  IPhone
     $('.iphone_check_box').iphoneStyle({

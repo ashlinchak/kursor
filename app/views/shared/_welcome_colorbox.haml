@@ -1,0 +1,15 @@
+%div{:style => 'display:none'}
+  #subscribe_popup{:style => 'padding:10px;'}
+    -#%h2.box-title Вам нравится наш портал?
+    -#%h3.box-tagline
+    -#  Присоединяйтесь к нам на
+    -#  = link_to 'Facebook', 'http://www.facebook.com/kursororgua', :target => "_blank"
+    -#  и
+    -#  = link_to 'Вконтакте', 'http://www.facebook.com/kursororgua', :target => "_blank"
+    = image_tag 'popup-header.png'#, :size => '540x150'
+    #subs-container{:class => "clearfix"}
+      -#= render :partial => 'shared/widgets/fb_group'
+      .fb-like-box{"data-href"=>"http://www.facebook.com/kursororgua", "data-width"=>"513", "data-show-faces"=>"true", "data-border-color"=>"#ffffff", "data-stream"=>"false", "data-header"=>"false"}
+      -##vk_groups
+        :javascript
+          VK.Widgets.Group("vk_groups", {mode: 0, width: "514", height: "180"}, 38232542);
