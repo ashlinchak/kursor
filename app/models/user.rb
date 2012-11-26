@@ -34,6 +34,12 @@ class User < ActiveRecord::Base
 
   paginates_per 50
 
+  scope :online, lambda{ where("current_sign_in_at > ?", 30.minutes.ago) }
+
+  def online?
+    current_sign_in_at > 30.minutes.ago
+  end
+
   def to_s
     if visitor? && profile
       if profile.full_name && !profile.full_name.blank?

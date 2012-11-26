@@ -641,6 +641,8 @@ ru:
       what_is_today: "На сегодня"
       export_emails: "Эскпорт имейлов"
       statistics: "Статистика"
+      who_is_online: "Авторизованные"
+      period: "за последние 30 минут"
     users:
       headers:
         title: "Пользователи / Провайдеры"

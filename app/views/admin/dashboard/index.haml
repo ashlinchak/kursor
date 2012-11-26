@@ -9,6 +9,10 @@
     = render :partial => 'admin/dashboard/blocks/not_published_postings'
     .row
       .span4
+        %p.lead
+          = t(:'admin.dashboard.who_is_online')
+          %span.small.muted= t(:'admin.dashboard.period')
+        = render :partial => 'admin/dashboard/blocks/online'
         %p.lead= t(:'admin.dashboard.statistics')
         = render :partial => 'admin/dashboard/blocks/statistics'
       .span3
