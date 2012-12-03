@@ -55,7 +55,7 @@
     %br/
     %table.table.table-striped.table-condensed
       - if provider.custom_fields.size > 0 && provider.custom_field_bindings.size > 0
-        - for f in provider.custom_field_bindings.sort_by{|i| i.position} do
+        - for f in provider.custom_field_bindings.compact.sort_by{|i| i.position} do
           %tr
             %td
               %span
