@@ -7,4 +7,9 @@ class CustomField < ActiveRecord::Base
   def to_s
     name
   end
+
+  def value_for_provider(provider)
+    custom_field_bindings.where(:provider_id => provider.id).first.value
+  end
+
 end

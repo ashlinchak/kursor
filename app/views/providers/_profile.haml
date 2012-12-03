@@ -55,13 +55,13 @@
     %br/
     %table.table.table-striped.table-condensed
       - if provider.custom_fields.size > 0 && provider.custom_field_bindings.size > 0
-        - for f in provider.custom_field_bindings.compact.sort_by{|i| i.position} do
+        - for f in provider.custom_fields.sort_by{|i| i.position} do
           %tr
             %td
               %span
                 %b= f.name
             %td
-              = f.value
+              = f.value_for_provider(provider)
     %ul#ProviderTabs.nav.nav-tabs
       %li.active
         %a( href = "#description" data-toggle = "tab" )
