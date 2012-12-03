@@ -34,10 +34,10 @@ class User < ActiveRecord::Base
 
   paginates_per 50
 
-  scope :online, lambda{ where("current_sign_in_at > ?", 30.minutes.ago) }
+  scope :online, lambda{ where("updated_at > ?", 30.minutes.ago) }
 
   def online?
-    current_sign_in_at > 30.minutes.ago
+    updated_at > 30.minutes.ago
   end
 
   def to_s

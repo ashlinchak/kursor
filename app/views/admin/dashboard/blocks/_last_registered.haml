@@ -3,6 +3,8 @@
     %tr
       %td
         = link_to user.email, user_path(user), :target => '_blank', :style => ('color:red;' unless user.confirmed?)
+        - if user.online?
+          = image_tag 'icons/online.png', :alt => 'Online', :title => 'Online'
         = link_to admin_user_path(user), :method => :delete, :confirm => 'Ты собираешься удалить юзера и все его учебные заведения, профили и т.д. Продолжить?', :style => 'float:right;', :title => 'Удалить юзера полностью' do
           %i.icon-trash
       %td
