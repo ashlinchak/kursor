@@ -3,6 +3,13 @@
   #show
     .row
       .span8
+
+        // DFP Provider Category Top Banner
+        #provider-category-top-468x60
+          :javascript
+            googletag.cmd.push(function() { googletag.display('provider-category-top-468x60'); });
+
+
         -#%ul.breadcrumb
           = breadcrumbs_for_category category
         .header

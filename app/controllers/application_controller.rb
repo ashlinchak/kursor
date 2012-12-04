@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   include SimpleCaptcha::ControllerHelpers
 
+  before_filter :set_adv_name
+
   #unless  Rails.env.development?
   #  rescue_from ActionController::RedirectBackError,  :with => :render_500
   #  rescue_from ActionController::RoutingError,       :with => :render_404
@@ -92,6 +94,23 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope) # Keeping user on the same page after signing out
       home_path
       #request.referrer
+  end
+
+  def set_adv_name
+    @adv_group_name = controller_name.singularize
+    @adv_sub_name = if action_name == 'index'
+                      'root'
+                    elsif defined? category
+                      category.permalink
+                    elsif defined? tutor_category
+                      tutor_category.permalink
+                    elsif defined? posting_category
+                      posting_category.permalink
+                    elsif defined? event_category
+                      event_category.permalink
+                    else
+                      'default'
+                    end
   end
 
 end

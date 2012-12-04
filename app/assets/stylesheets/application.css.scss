@@ -11,6 +11,20 @@ $baseColor: #005C99;
 $shadeColor: #ebebeb;
 
 
+#debug-top-panel {
+  color: #ffffff;
+  width:100%;
+  height:20px;
+  display:block;
+  position:fixed;
+  top:0;
+  left:0;
+  text-align: center;
+  z-index: 99999;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
 body {
   background: #fff;
   font-family: Ubuntu;

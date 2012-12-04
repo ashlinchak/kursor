@@ -1,6 +1,8 @@
 class CustomFieldBinding < ActiveRecord::Base
-  belongs_to :custom_field
+  belongs_to :custom_field, :dependent => :destroy
   belongs_to :provider
+
+
 
   def name
     custom_field.name
