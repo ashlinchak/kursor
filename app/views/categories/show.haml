@@ -3,13 +3,6 @@
   #show
     .row
       .span8
-
-        // DFP Provider Category Top Banner
-        #provider-category-top-468x60
-          :javascript
-            googletag.cmd.push(function() { googletag.display('provider-category-top-468x60'); });
-
-
         -#%ul.breadcrumb
           = breadcrumbs_for_category category
         .header
@@ -17,7 +10,6 @@
           .row
             .span1
               = image_tag category.icon_url(:standart), :class => 'rounded_4'
-
             .span6
               %h3= category.name
               %p= category.description
@@ -35,6 +27,10 @@
                       = link_to (ch.name + ' <sup>' +ch.providers_count.to_s + '</sup>').html_safe, ch
                   - if child.children.size > 5
                     %li.bullet_down= link_to t(:'categories.more'), child, :title => t(:'categories.more_title')
+        // DFP Provider Category Top Banner
+        #provider-category-top-468x60{:style => 'text-align:center'}
+          :javascript
+            googletag.cmd.push(function() { googletag.display('provider-category-top-468x60'); });
 
         - if promoted_providers.size > 0
           = render :partial => 'promoted'
