@@ -97,7 +97,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_adv_name
-    @adv_group_name = controller_name.singularize
+    @adv_group_name = controller_name.singularize[0..9]
     @adv_sub_name = if action_name == 'index'
                       'root'
                     elsif defined? category
@@ -112,5 +112,4 @@ class ApplicationController < ActionController::Base
                       'default'
                     end
   end
-
 end

@@ -13,20 +13,21 @@
             .span6
               %h3= category.name
               %p= category.description
-        %ul.categories.clearfix
-          - for child in category.children
-            %li
-              -#= link_to child do
-                = image_tag child.icon_url(:small), :title => child, :class => 'rounded_2'
-              = link_to child do
-                %h3= child
-              -#- if child.children
-                %ul.children-categories
-                  - for ch in child.top_subcategories
-                    %li
-                      = link_to (ch.name + ' <sup>' +ch.providers_count.to_s + '</sup>').html_safe, ch
-                  - if child.children.size > 5
-                    %li.bullet_down= link_to t(:'categories.more'), child, :title => t(:'categories.more_title')
+        - if category.children.present?
+          %ul.categories.clearfix
+            - for child in category.children
+              %li
+                -#= link_to child do
+                  = image_tag child.icon_url(:small), :title => child, :class => 'rounded_2'
+                = link_to child do
+                  %h3= child
+                -#- if child.children
+                  %ul.children-categories
+                    - for ch in child.top_subcategories
+                      %li
+                        = link_to (ch.name + ' <sup>' +ch.providers_count.to_s + '</sup>').html_safe, ch
+                    - if child.children.size > 5
+                      %li.bullet_down= link_to t(:'categories.more'), child, :title => t(:'categories.more_title')
         // DFP Provider Category Top Banner
         #provider-category-top-468x60{:style => 'text-align:center'}
           :javascript
