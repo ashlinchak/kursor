@@ -228,54 +228,31 @@ body.admin nav ul li {
 
 /* Bookmarks */
 
-table.bookmarks {
+#bookmarks {
 
   width: 100%;
   margin-bottom: 8px;
   padding: 0px;
-  height: 19px;
+  max-height: 24px;
   //background: #FAFAFA;
   overflow: hidden;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 
-    td.facebook {
-      padding-left: 10px;
-      //width: 200px !important;
-      div.fb-like  {
-        width: 200px;
-        span {
-          width: 200px;
-          iframe {
-            width: 200px !important;
-          }
-        }
-      }
-    }
+  .facebook {
+    display: inline-block;
+  }
 
-    td.vkontakte {
-      padding-left: 10px;
+  .vkontakte {
+    display: inline-block;
+  }
 
-      //width: 150px !important;
-      table tbody td {
-        padding: 0px;
-        margin: 0px;
-      }
-
-    }
-    td.twitter {
-      //width: 100px !important;
-
-    }
-    td.plusone {
-      #___plusone_0 {
-        //width: 60px !important;
-      }
-    }
-
-  td {
-    padding: 5px 5px 2px 6px;
+  .twitter {
+    display: inline-block;
+  }
+  .plusone {
+    display: inline-block;
   }
 
 }

@@ -94,11 +94,7 @@
 
     %hr/
     - unless controller.controller_name == 'users'
-      .row
-        .span8
-          %table.bookmarks
-            %tr
-              = render :partial => 'shared/bookmarks'
+      = render :partial => 'shared/bookmarks'
 
 
     #disqus_thread

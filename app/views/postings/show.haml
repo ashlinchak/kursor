@@ -53,9 +53,7 @@
         - elsif posting.video_posting?
           = render :partial => 'postings/posting_types/video_post', :locales => {:posting => posting}
 
-        %table.bookmarks
-          %tr
-            = render :partial => 'shared/bookmarks'
+        = render :partial => 'shared/bookmarks'
 
         %hr/
         .tags-list

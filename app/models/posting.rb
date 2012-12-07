@@ -41,7 +41,8 @@ class Posting < ActiveRecord::Base
   scope :video_postings, where(:posting_type_id => POSTING_TYPES.index('video'))
 
   def published?
-    published_at <= Time.now
+    #published_at <= Time.now
+    published_at.past?
   end
 
   def posting_category_ids=(ids)

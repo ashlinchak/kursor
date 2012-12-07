@@ -9,7 +9,9 @@
           &#8211;
           %span.date
             = l(@event.end_datetime, :format => '%e %B')
+
         %h1= @event.title
+        = render :partial => 'shared/bookmarks'
         .well.pull-right.info
           .info-label= t(:'events.provider') + ':'
           = link_to @event.eventable, provider_path(@event.eventable)
@@ -47,3 +49,4 @@
               %icon.icon-trash.icon-white
               = t(:'events.actions.destroy')
       .span4
+        = render :partial => 'shared/advertising/kursor_ads'
