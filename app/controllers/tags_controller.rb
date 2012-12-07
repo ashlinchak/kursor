@@ -11,10 +11,12 @@ class TagsController < ApplicationController
   # accepts name
   def show
     @tag_name = params[:id]
-    @tag = Tag.find_by_name @tag_name
-    @taggings = @tag.taggings
-
-    @taggables = @taggings.collect{|tagging| tagging.taggable_type.classify.constantize.find(tagging.taggable_id) }
-
+    @tag = Tag.find_by_name(@tag_name)
+    if @tag.present?
+      @taggings = @tag.taggings
+      @taggables = @taggings.collect{|tagging| tagging.taggable_type.classify.constantize.find(tagging.taggable_id) }
+    else
+      @taggables = []
+    end
   end
 end
