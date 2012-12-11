@@ -1,6 +1,7 @@
 %table.table.table-condensed.table-striped.table-bordered.table-hover
   - for u in User.online
-    %tr
-      %td
-        = link_to u.email, user_path(u), :target => '_blank'#, :style => ('color:red;' unless user.confirmed?)
-        %span.muted.small (#{time_ago_in_words u.current_sign_in_at} #{t(:'most_common_labels.time_ago')})
+    - unless u.current_sign_in_at.nil?
+      %tr
+        %td
+          = link_to u.email, user_path(u), :target => '_blank'#, :style => ('color:red;' unless user.confirmed?)
+          %span.muted.small (#{time_ago_in_words u.current_sign_in_at} #{t(:'most_common_labels.time_ago')})

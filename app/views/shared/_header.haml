@@ -7,6 +7,10 @@
         = text_field_tag '', params[:q], :class => 'ajax-typeahead', "data-link" => '/search/auto_complete_search', :placeholder => 'название школы, курсов и т.д.', :style => 'width: 230px;'
         = button_tag :class => 'btn' do
           %i.icon-search
+    -#= form_tag search_path, :method => :get do
+      .field
+        = text_field_tag :search, params[:search]
+        = submit_tag 'Search', name: nil, class: 'btn'
   .span7
     .login-bar
       = render :partial => 'shared/login_bar'

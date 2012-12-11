@@ -11,9 +11,12 @@
     %li= link_to t(:'site.nav.trainings'), root_url + 'c/treninhy-i-semynary', :class => ( "current" if request.fullpath.include?("/c/treninhy-i-semynary") )
     %li= link_to t(:'site.nav.business-schools'), root_url + 'c/biznes-shkoly', :class => ( "current" if request.fullpath.include?("/c/biznes-shkoly") )
     %li= link_to t(:'events.events_html'), event_categories_path, :class => ( "current" if controller_name == 'event_categories')
-    %li= link_to t(:'postings.title_html'), posting_categories_path, :class => ( "current" if controller_name == 'posting_categories')
-    -#%li= link_to t(:'site.nav.info'), root_url + 'info', :class => ( "current" if controller_name == 'info' )
-    %li.pull-right
+    -#%li= link_to t(:'postings.title_html'), posting_categories_path, :class => ( "current" if controller_name == 'posting_categories')
+
+    %li= link_to 'Реклама на сайте', '/posts/248-kommercheskoe-predlozhenie-po-razmescheniyu-reklamy-na-portale-kursor-org-ua'
+
+
+    -#%li.pull-right
       -#  = link_to info_index_path, :title => 'Информация и помощь на портале',  :class =>  "clean #{'current' if controller_name == 'info'}"  do
       = link_to '/info/contacts', :title => 'Информация и помощь на портале',  :class =>  "clean #{'current' if controller_name == 'info'}"  do
         %i.icon-info-sign.icon-white

@@ -5,7 +5,7 @@ class SearchController < ApplicationController
   end
 
   def show
-    @providers = Provider.search params[:search][:q]
+    @providers = Provider.search params[:search]
   end
 
   def auto_complete_search

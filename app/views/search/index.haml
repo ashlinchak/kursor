@@ -1,11 +1,11 @@
 .row
   .span8
     %legend=t(:'search.title')
-
-    %form{ :class=>"form-inline", :action => '/search', :method => :get }
+    Поиск временно не работает.
+    -#%form{ :class=>"form-inline", :action => '/search', :method => :get }
       = text_field_tag 'q', params[:q], :class => 'span5', :placeholder => t(:'search.placeholder'), :id => 'home-search-typehead', "data-provide" => "typeahead"
       = submit_tag t(:'search.submit'), :class => 'btn'
-    - unless params[:q].blank?
+    -#- unless params[:q].blank?
       -if !search_results.empty?
         = t :'search.results_found', :num => search_results.size
         %hr/
