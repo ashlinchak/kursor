@@ -2,7 +2,7 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 require "whenever/capistrano"
 require "delayed/recipes"
-require 'thinking_sphinx/deploy/capistrano'
+#require 'thinking_sphinx/deploy/capistrano'
 
 set :rails_env, "production" #added for delayed job
 set :using_rvm, true
