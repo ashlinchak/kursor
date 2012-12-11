@@ -41,6 +41,10 @@ $(document).ready(function(){
 //
 //    $(".open_popup").colorbox({width:"580px", inline:true, href:"#subscribe_popup"});
 
+
+
+
+
 // Registration radio buttons
 
     $("input[name='user[account_type_id]']").change(function(){
@@ -50,6 +54,47 @@ $(document).ready(function(){
         { $("#oauth").animate({height: "hide", opacity: 0}, 500, "easeInOutQuad"); }
     });
 
+//  Sign in with provider
+
+    $(".sign_in_with_provider").popover({
+        trigger: 'hover',
+                placement: 'top',
+                delay: 500
+    });
+
+// Wider search input on focus
+    var inputWidthFocus = '300px';
+    var inputWidthBlur = '230px';
+    $('.ajax-typeahead').focus(function(){
+        $(this).val(function() {
+        //$(this).val('');
+        });
+        $(this).animate({
+            width: inputWidthFocus
+        }, 400 )
+    });
+    $('.ajax-typeahead').blur(function(){
+        //$(this).val('Enter info...');
+        $(this).animate({
+            width: inputWidthBlur
+        }, 400 )
+    });
+
+// Ajax Typeahead
+
+    $('.ajax-typeahead').typeahead({
+        source: function(query, process) {
+            return $.ajax({
+                url: $(this)[0].$element[0].dataset.link,
+                type: 'get',
+                data: {query: query},
+                dataType: 'json',
+                success: function(json) {
+                    return typeof json.options == 'undefined' ? false : process(json.options);
+                }
+            });
+        }
+    });
 
 
 //  IPhone

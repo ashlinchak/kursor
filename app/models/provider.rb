@@ -73,11 +73,17 @@ class Provider < ActiveRecord::Base
     self.categories = Category.find(ids)
   end
 
-
   def generate_permalink
     #unless permalink
       # make simple util to parametrize/slugify permalink
       self.permalink = Russian.translit(name).parameterize
     #end
   end
+
+  define_index do
+    indexes :name, sortable: true
+    set_property :star => 1
+    set_property :min_infix_len => 3
+  end
+
 end

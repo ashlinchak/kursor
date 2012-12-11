@@ -1,0 +1,7 @@
+.row
+  .span8
+    %legend Results
+    = @providers.total_entries
+    results found
+    - @providers.each do |p|
+      = p.name

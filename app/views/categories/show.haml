@@ -3,6 +3,12 @@
   #show
     .row
       .span8
+
+        = form_tag search_path, :method => :get do
+          .field
+            = text_field_tag :search, params[:search]
+            = submit_tag 'Search', name: nil, class: 'btn'
+
         -#%ul.breadcrumb
           = breadcrumbs_for_category category
         .header

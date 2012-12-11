@@ -46,7 +46,7 @@
         - elsif user.visitor? && user.profile.present?
           = render :partial => 'users/shared/profile_card'
 
-        - unless user.profile || user.tutor || user.providers
+        - unless user.profile.present? || user.tutor.present? || user.providers.present?
           %br/
           .well
             %b= t(:'devise.register.cancel_account.description')

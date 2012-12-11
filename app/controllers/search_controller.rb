@@ -1,18 +1,15 @@
 class SearchController < ApplicationController
 
   def index
+
   end
 
-  def search_results
-    @search_results ||=( [] << if params[:q] && !params[:q].blank?
-      Provider.search(params[:q])
-    end ).flatten.compact
+  def show
+    @providers = Provider.search params[:search][:q]
   end
-  helper_method :search_results
 
-  def provider_user (provider)
-    @provider_user = Provider.find(provider.id).user.id
+  def auto_complete_search
+    Provider.search(params[:q]).to_json
   end
-  helper_method :provider_user
 
 end

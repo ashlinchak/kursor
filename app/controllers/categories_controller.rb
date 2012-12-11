@@ -44,6 +44,7 @@ class CategoriesController < ApplicationController
       else
         Kaminari.paginate_array(category.sub_providers.approved).page(params[:page]).per(30)
       end
+
     else
       # Providers filtering by City and Region in current category
       if filter[:city_id].blank?
@@ -72,6 +73,7 @@ class CategoriesController < ApplicationController
           )
           providers << provider
         end
+
       end
 
       providers = providers.compact.uniq

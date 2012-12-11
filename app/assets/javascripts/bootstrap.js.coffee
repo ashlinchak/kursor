@@ -19,12 +19,8 @@ jQuery ->
 
   $('.nav-tabs').button()
 
-  #$('.typeahead').typeahead()
+  $('.typeahead').typeahead()
 
-  $(".sign_in_with_provider").popover({
-    trigger: 'hover',
-    placement: 'top',
-    delay: 500
-  })
+
 
 

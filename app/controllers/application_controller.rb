@@ -96,6 +96,8 @@ class ApplicationController < ActionController::Base
       #request.referrer
   end
 
+
+
   def set_adv_name
     @adv_group_name = controller_name.singularize[0..9]
     @adv_sub_name = if action_name == 'index'

@@ -120,6 +120,8 @@ header {
     margin-bottom: 10px;
   }
 
+
+
   nav{
     //background: $shadeColor;
     height: 36px;
@@ -222,6 +224,12 @@ body.admin nav ul li {
   img{
     max-width: 100%;
   }
+}
+
+.header-search-form {
+  padding: 0px 5px 5px 20px;
+  margin: 0px 0px 10px 0px;
+  width: 288px;
 }
 
 
