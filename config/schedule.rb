@@ -6,6 +6,6 @@ every 1.day, :at => '6:00 pm' do
   rake "-s sitemap:refresh"
 end
 
-every 1.hour do
-  rake "thinking_sphinx:index"
-end
+#every 1.hour do
+#  rake "thinking_sphinx:index"
+#end

@@ -34,7 +34,7 @@ namespace :deploy do
   end
 
   task :migrate_database do
-  run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
+    run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
   end
 
 end
@@ -85,14 +85,14 @@ end
 # Thinking Sphinx
 # ==============================
 
-before 'deploy:update_code', 'thinking_sphinx:stop'
-after 'deploy:update_code', 'thinking_sphinx:start'
-
-namespace :sphinx do
-  desc "Symlink Sphinx indexes"
-  task :symlink_indexes, :roles => [:app] do
-    run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
-  end
-end
-
-after 'deploy:finalize_update', 'sphinx:symlink_indexes'
+#before 'deploy:update_code', 'thinking_sphinx:stop'
+#after 'deploy:update_code', 'thinking_sphinx:start'
+#
+#namespace :sphinx do
+#  desc "Symlink Sphinx indexes"
+#  task :symlink_indexes, :roles => [:app] do
+#    run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
+#  end
+#end
+#
+#after 'deploy:finalize_update', 'sphinx:symlink_indexes'
