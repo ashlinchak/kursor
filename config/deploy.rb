@@ -2,7 +2,6 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 require "whenever/capistrano"
 require "delayed/recipes"
-#require 'thinking_sphinx/deploy/capistrano'
 
 set :rails_env, "production" #added for delayed job
 set :using_rvm, true
@@ -80,19 +79,3 @@ namespace :uploads do
   on :start,  "uploads:register_dirs"
 
 end
-
-# ==============================
-# Thinking Sphinx
-# ==============================
-
-#before 'deploy:update_code', 'thinking_sphinx:stop'
-#after 'deploy:update_code', 'thinking_sphinx:start'
-#
-#namespace :sphinx do
-#  desc "Symlink Sphinx indexes"
-#  task :symlink_indexes, :roles => [:app] do
-#    run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
-#  end
-#end
-#
-#after 'deploy:finalize_update', 'sphinx:symlink_indexes'
