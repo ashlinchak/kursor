@@ -2,21 +2,29 @@
   = render :partial => 'shared/form_errors', :locals => { :object => event }
 
   - unless params[:provider_id]
+
     - if current_user.school? && current_user.providers.exists?
       = f.hidden_field :eventable_type, :value => 'Provider'
       .control-group
         = f.label :title, t(:'events.provider'), :class => 'control-label'
         .controls
           = f.select :eventable_id, options_from_collection_for_select(current_user.providers, :id, :name), {}, {:class => 'span6'}
+
+    - elsif current_user.tutor? && current_user.tutor.present?
+      = f.hidden_field :eventable_type, :value => 'Tutor'
+      = f.hidden_field :eventable_id, :value => current_user.tutor.id
+
     - elsif authorized?
       .control-group
         = f.label :title, t(:'events.provider'), :class => 'control-label'
         .controls
           = f.text_field :provider_name, data: { source: Provider.all.map(&:name), provide: 'typeahead' }, class: 'typeahead span6'
+
   .control-group
     = f.label :title, t(:'events.title'), :class => 'control-label'
     .controls
       = f.text_field :title, :class => 'span6'
+
   .control-group
     = f.label :title, t(:'events.category'), :class => 'control-label'
     .controls

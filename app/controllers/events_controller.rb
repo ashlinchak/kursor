@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
-private
+  private
 
   def events
     collection

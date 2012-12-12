@@ -14,7 +14,7 @@
         = render :partial => 'shared/bookmarks'
         .well.pull-right.info
           .info-label= t(:'events.provider') + ':'
-          = link_to @event.eventable, provider_path(@event.eventable)
+          = link_to @event.eventable, @event.eventable
           .info-label= t(:'events.price.cost') + ':'
           - unless @event.min_price.blank?
             = @event.min_price
