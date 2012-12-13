@@ -105,7 +105,7 @@
     - if current_user
       - if current_user.administrator?
         %hr/
-        = link_to admin_user_path(provider.user), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
+        = link_to admin_provider_path(provider), :method => :delete, :confirm => t(:'admin.users.confirms.user_destroy') do
           %i.icon.icon-remove
           = t(:'site.actions.destroy_user')
 
