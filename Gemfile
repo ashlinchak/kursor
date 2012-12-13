@@ -17,7 +17,6 @@ gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'ckeditor', "3.7.1"
 gem 'acts_as_commentable_with_threading'
@@ -44,6 +43,7 @@ gem 'omniauth-google-oauth2'
 
 group :assets do
   gem 'sass-rails'
+  gem 'less-rails'
   gem 'coffee-rails'
   gem 'haml-rails'
   gem 'uglifier'
