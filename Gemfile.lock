@@ -281,7 +281,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.9)
+    twitter-bootstrap-rails (2.1.6)
       actionpack (>= 3.1)
       execjs
       railties (>= 3.1)
@@ -355,7 +355,7 @@ DEPENDENCIES
   therubyracer
   thin
   thinking-sphinx
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (= 2.1.6)
   uglifier
   url_to_media_tag
   whenever
