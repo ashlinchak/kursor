@@ -71,6 +71,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    commonjs (0.2.6)
     daemons (1.1.9)
     database_cleaner (0.9.1)
     delayed_job (3.0.4)
@@ -137,6 +138,11 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.1.2)
       addressable (~> 2.3)
+    less (2.2.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.2.5)
+      actionpack (>= 3.1)
+      less (~> 2.2.0)
     letter_opener (1.0.0)
       launchy (>= 2.0.4)
     libv8 (3.11.8.4)
@@ -323,6 +329,7 @@ DEPENDENCIES
   jquery-ui-rails
   json
   kaminari
+  less-rails
   letter_opener
   libv8
   mail

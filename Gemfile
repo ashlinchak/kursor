@@ -43,6 +43,7 @@ gem 'omniauth-google-oauth2'
 
 group :assets do
   gem 'sass-rails'
+  gem 'less-rails'
   gem 'coffee-rails'
   gem 'haml-rails'
   gem 'uglifier'
