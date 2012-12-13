@@ -32,6 +32,6 @@
       = p.label t(:'admin.users.headers.is_approved'), :class => 'control-label'
       .controls
         = p.check_box :is_approved, :checked => true
-    = render :partial => '/providers/provider_fields', :locals => { :f => p, :provider => user.provider }
+    = render :partial => '/providers/provider_fields', :locals => { :f => p}
   .form-actions
     = f.submit :class => 'btn btn-large btn-primary'
