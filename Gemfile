@@ -17,9 +17,9 @@ gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
-gem 'twitter-bootstrap-rails', '2.1.6'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+#gem 'twitter-bootstrap-rails', '2.1.8'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'ckeditor', "3.7.1"
-gem 'acts_as_commentable_with_threading'
+#gem 'acts_as_commentable_with_threading'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem 'meta-tags', :require => 'meta_tags'
 gem 'sitemap_generator'
@@ -43,7 +43,8 @@ gem 'omniauth-google-oauth2'
 
 group :assets do
   gem 'sass-rails'
-  gem 'less-rails'
+  #gem 'less-rails'
+  gem 'less-rails-bootstrap'#, '~> 1.3.0'
   gem 'coffee-rails'
   gem 'haml-rails'
   gem 'uglifier'

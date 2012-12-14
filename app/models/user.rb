@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
 
   # :token_authenticatable
   devise :database_authenticatable, :registerable, :confirmable, :timeoutable,
-         :recoverable, :rememberable, :trackable, :validatable, :lockable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :lockable, :omniauthable, :async
 
-  include Devise::Async::Model # should be below call to `devise`
+  #include Devise::Async::Model # should be below call to `devise`
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id, :providers, :uid,
