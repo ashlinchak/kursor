@@ -1,0 +1,3 @@
+production:
+  pid_file: /var/www/kursor/shared/tmp/searchd.pid
+  searchd_file_path: /var/www/kursor/shared/db/sphinx
