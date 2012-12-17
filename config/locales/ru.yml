@@ -195,10 +195,11 @@ ru:
     contacts: "Контакты"
     add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
   search:
-    title: "Поиск учебного заведения"
+    title: "Поиск на портале"
     placeholder: "Введите название или его фрагмент"
-    submit: "Вперед!"
-    nothing_found: "По вашему запросу ничего не найдено"
+    submit: "Искать"
+    nothing_found_html: "По вашему запросу ничего не найдено.<br/> Уточните свой запрос или попробуйте другие критерии поиска"
+    search_query_cannot_be_blank: "Запрос не может быть пустым."
     results_found: "Найдено результатов: %{num}"
     transfer_user: "<i class=\'icon icon-user\'></i> Передать права"
   sessions:

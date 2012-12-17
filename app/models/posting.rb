@@ -98,5 +98,10 @@ class Posting < ActiveRecord::Base
     end
   end
 
+  define_index do
+    indexes :title, sortable: true
+    set_property :star => 1
+    set_property :min_infix_len => 3
+  end
 
 end
