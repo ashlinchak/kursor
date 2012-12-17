@@ -1,4 +1,5 @@
 class CustomField < ActiveRecord::Base
+
   has_many :custom_field_bindings, :dependent => :destroy
   has_many :providers, :through => :custom_field_bindings
 
