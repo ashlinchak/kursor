@@ -57,6 +57,9 @@ class ProviderLogoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
+
   def filename
      "#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end

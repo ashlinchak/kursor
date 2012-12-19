@@ -17,7 +17,9 @@ Kursor::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :students
-  resources :search, :only => [:index]
+  resources :search, :only => [:index] do
+    get :auto_complete_search, :on => :collection
+  end
   resources :feedback
   resources :tags
   resources :info

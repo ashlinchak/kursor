@@ -14,6 +14,8 @@ class Profile < ActiveRecord::Base
 
   mount_uploader :avatar, ProfileAvatarUploader
 
+  validates :avatar, :file_size => { :maximum => 1.megabytes.to_i }
+
   after_update :crop_avatar
 
   def crop_avatar

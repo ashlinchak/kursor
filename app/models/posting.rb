@@ -15,6 +15,9 @@ class Posting < ActiveRecord::Base
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
 
   #validates :images, :length => { :maximum => 1}
+
+
+
   validates_presence_of :title, :excerpt, :body, :images
 
   has_many :taggings, :as => :taggable, :dependent => :destroy
@@ -41,7 +44,6 @@ class Posting < ActiveRecord::Base
   scope :video_postings, where(:posting_type_id => POSTING_TYPES.index('video'))
 
   def published?
-    #published_at <= Time.now
     published_at.past?
   end
 

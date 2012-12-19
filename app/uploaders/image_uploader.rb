@@ -10,6 +10,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
+
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -21,7 +23,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg)
   end
 
   # Process files as they are uploaded:
@@ -63,12 +65,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
 
-
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
   def filename
      "#{secure_token(10)}.#{file.extension}" if original_filename.present?

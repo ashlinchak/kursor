@@ -10,13 +10,11 @@ class SearchController < ApplicationController
     else
       @search_results = ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting]
     end
-
-
   end
   helper_method :search_results
 
   def auto_complete_search
-    Provider.search(params[:q]).to_json
+    render :json => ( ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting] )
   end
 
 end

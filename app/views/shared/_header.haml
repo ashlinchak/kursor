@@ -5,7 +5,7 @@
 
     %form.form-search.header-search-form{ :action => '/search', :method => :get }
       .input-append
-        = text_field_tag :q, '', :class => 'ajax-typeahead', "data-link" => '/search/auto_complete_search', :placeholder => 'название школы, курсов и т.д.', :style => 'width: 230px;'
+        = text_field_tag :q, '', :class => 'ajax-typeahead'#, "data-link" => '/search/auto_complete_search', :placeholder => 'название школы, курсов и т.д.', :style => 'width: 230px;'
         = button_tag :class => 'btn' do
           %i.icon-search
 

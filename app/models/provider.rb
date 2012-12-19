@@ -40,6 +40,8 @@ class Provider < ActiveRecord::Base
 
   mount_uploader :logo, ProviderLogoUploader
 
+  validates :logo, :file_size => { :maximum => 1.megabytes.to_i }
+
   searchable_by :name
   paginates_per 30
 

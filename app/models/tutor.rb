@@ -28,6 +28,8 @@ class Tutor < ActiveRecord::Base
 
   mount_uploader :avatar, TutorAvatarUploader
 
+  validates :avatar, :file_size => { :maximum => 1.megabytes.to_i }
+
   searchable_by :name
   paginates_per 30
 

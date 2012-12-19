@@ -33,10 +33,14 @@ class Admin::UsersController < Admin::DashboardController
   end
 
   def destroy
-    if user.destroy
-      flash[:notice] = t(:'admin.users.destroy.success')
-    else
-      flash[:notice] = 'Error...'
+    if user.postings.present?
+      flash[:danger] = t(:'admin.users.destroy.has_postings', :count => user.postings.size, :path => user_postings_path(user) ).html_safe
+    elsif
+      if user.destroy
+        flash[:notice] = t(:'admin.users.destroy.success')
+      else
+        flash[:notice] = 'Error...'
+      end
     end
     redirect_to admin_path
   end

@@ -60,8 +60,10 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg)
   end
+
+  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
   #def filename
      #"#{secure_token(10)}.#{file.extension}" if original_filename.present?
@@ -73,7 +75,5 @@ class ProfileAvatarUploader < CarrierWave::Uploader::Base
     #var = :"@#{mounted_as}_secure_token"
     #model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
   #end
-
-
 
 end

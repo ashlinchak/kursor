@@ -17,6 +17,7 @@ class PostingsController < ApplicationController
 
   def create
     posting.user = current_user
+    posting.published_at = Time.now if posting.published_at.blank?
     if posting.save
       unless authorized?
         posting.posting_categories << PostingCategory.find_by_permalink('blog')
@@ -31,7 +32,7 @@ class PostingsController < ApplicationController
 
   def edit
     #@posting = current_user.postings.find(params[:posting])
-    posting.images.build unless posting.images.size > 0
+    posting.images.build if posting.new_record?
     posting.build_metatag unless posting.metatag
   end
 
