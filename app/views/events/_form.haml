@@ -1,3 +1,5 @@
+.alert
+  = t(:'events.rules_html')
 = form_for [event_parent, event], :html => { :class => 'form-horizontal' } do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => event }
 
@@ -8,7 +10,7 @@
       .control-group
         = f.label :title, t(:'events.provider'), :class => 'control-label'
         .controls
-          = f.select :eventable_id, options_from_collection_for_select(current_user.providers, :id, :name), {}, {:class => 'span6'}
+          = f.select :eventable_id, options_from_collection_for_select(current_user.providers, :id, :name), {}, {:class => 'span5'}
 
     - elsif current_user.tutor? && current_user.tutor.present?
       = f.hidden_field :eventable_type, :value => 'Tutor'
@@ -18,12 +20,12 @@
       .control-group
         = f.label :title, t(:'events.provider'), :class => 'control-label'
         .controls
-          = f.text_field :provider_name, data: { source: Provider.all.map(&:name), provide: 'typeahead' }, class: 'typeahead span6'
+          = f.text_field :provider_name, data: { source: Provider.all.map(&:name), provide: 'typeahead' }, class: 'typeahead span5'
 
   .control-group
     = f.label :title, t(:'events.title'), :class => 'control-label'
     .controls
-      = f.text_field :title, :class => 'span6'
+      = f.text_field :title, :class => 'span5'
 
   .control-group
     = f.label :title, t(:'events.category'), :class => 'control-label'
@@ -59,7 +61,7 @@
   .control-group
     = f.label :teacher, t(:'events.teacher'), :class => 'control-label'
     .controls
-      = f.text_field :teacher, :class => 'span6'
+      = f.text_field :teacher, :class => 'span5'
   = f.fields_for :location do |l|
     %legend= t(:'events.location')
     = render :partial => 'addresses/location_fields', :locals => { :f => l }

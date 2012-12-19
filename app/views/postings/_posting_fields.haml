@@ -1,3 +1,5 @@
+.alert= t(:'postings.titles.rules_html')
+
 .row
   .span12
     = render :partial => 'shared/form_errors', :locals => { :object => posting }
@@ -26,12 +28,12 @@
       .control-group
         = f.label t(:'postings.titles.title'), :class => 'control-label'
         .controls
-          = f.text_field :title, :class => 'span10'
+          = f.text_field :title, :class => 'span9'
     %fieldset
       .control-group
         = f.label t(:'postings.titles.excerpt'), :class => 'control-label'
         .controls
-          = f.text_area :excerpt, :class => 'span10'
+          = f.text_area :excerpt, :class => 'span9'
     %fieldset
       .control-group
         = f.label t(:'postings.titles.body'), :class => 'control-label'

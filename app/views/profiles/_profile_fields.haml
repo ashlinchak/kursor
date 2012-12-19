@@ -18,6 +18,12 @@
       .control-group
         = image_tag profile.avatar_url(:medium), :class => 'control-label'
         .controls
+          .alert
+            Допустимый формат изображения:
+            %b JPG (JPEG)
+            %br/
+            Максимальный объем:
+            %b 1 Мб.
           = f.file_field :avatar
           = f.hidden_field :avatar_cache
           %label.checkbox

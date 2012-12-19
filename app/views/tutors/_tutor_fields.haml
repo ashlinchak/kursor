@@ -16,6 +16,12 @@
   .span6
     %fieldset
       .control-group
+        .alert
+          Допустимый формат изображения:
+          %b JPG (JPEG)
+          %br/
+          Максимальный объем:
+          %b 1 Мб.
         = f.file_field :avatar
         = f.hidden_field :avatar_cache
       - if tutor.avatar_url.present?

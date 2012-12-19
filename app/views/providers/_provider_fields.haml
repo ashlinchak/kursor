@@ -9,8 +9,17 @@
       .control-group
         = f.label :logo, :class => 'control-label'
         .controls
-          = f.file_field :logo
-          = f.hidden_field :logo_cache
+          .row
+            .span3
+              = f.file_field :logo
+              = f.hidden_field :logo_cache
+            .span5
+              .alert
+                Допустимый формат изображения:
+                %b JPG (JPEG), PNG, GIF
+                %br/
+                Максимальный объем:
+                %b 1 Мб.
       - if provider.logo?
         .control-group
           %label.control-label
