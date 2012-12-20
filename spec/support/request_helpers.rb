@@ -20,7 +20,7 @@ end
 
 RSpec.configure do |c|
   c.include RequestHelpers::Helpers, :type => :integration, :example_group => {
-    :file_path => c.escaped_path(%w[spec integration])
+    :file_path => c.escaped_path(%w[spec features])
   }
 end
 
