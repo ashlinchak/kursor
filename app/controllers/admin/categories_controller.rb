@@ -1,5 +1,7 @@
 class Admin::CategoriesController < Admin::DashboardController
 
+  require 'csv'
+
   def index
   end
 
@@ -49,6 +51,33 @@ class Admin::CategoriesController < Admin::DashboardController
     render :nothing => true
   end
 
+  def export
+
+    @contacts = []
+
+    providers.each do |provider|
+      @contacts << provider.contacts.find_by_contact_type_id(1) unless provider.contacts.find_by_contact_type_id(1).nil?
+    end
+
+    p @contacts.to_s + ' //// contacts'
+    p providers.to_s + ' //// providers'
+
+    @string = StringIO.new
+
+    @string = CSV.generate do |csv|
+      @contacts.each do |contact|
+        prov = Provider.find(contact.contactable_id)
+        csv << [contact.value, prov.name, provider_url(prov)]
+      end
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @string }
+    end
+
+  end
+
   private
 
   def categories
@@ -68,5 +97,8 @@ class Admin::CategoriesController < Admin::DashboardController
   end
   helper_method :category
 
+  def providers
+    category.providers
+  end
 
 end

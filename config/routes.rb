@@ -90,6 +90,7 @@ Kursor::Application.routes.draw do
     resources :user_transfers
     resources :categories do
       post 'sort', :on => :collection
+      get 'export', :on => :member
     end
     resources :tutor_categories do
       post 'sort', :on => :collection

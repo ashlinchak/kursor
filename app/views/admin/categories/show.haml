@@ -4,6 +4,10 @@
   .span7
     %p.lead= category.name
     %p.silver= category.description
+    = link_to export_admin_category_path(:format => :csv) do
+      %i.icon-download-alt
+      Export emails from
+      %b #{category.name}
   .span1
     = link_to edit_admin_category_path( category ) do
       %i.icon-pencil

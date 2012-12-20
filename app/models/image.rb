@@ -5,7 +5,6 @@ class Image < ActiveRecord::Base
 
   mount_uploader :src, ImageUploader
 
-  #validates :src, :presence => true, :on => :create
-  validates :src,:presence => true, :file_size => { :maximum => 1.megabytes.to_i }
+  validates :src,:presence => true, :file_size => { :maximum => 1.megabytes.to_i }, :on => :create
 
 end
