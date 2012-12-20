@@ -90,4 +90,5 @@ class CategoriesController < ApplicationController
     @filter ||= params[:filter] || {}
   end
   helper_method :filter
+
 end

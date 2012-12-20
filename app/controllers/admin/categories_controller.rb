@@ -59,9 +59,6 @@ class Admin::CategoriesController < Admin::DashboardController
       @contacts << provider.contacts.find_by_contact_type_id(1) unless provider.contacts.find_by_contact_type_id(1).nil?
     end
 
-    p @contacts.to_s + ' //// contacts'
-    p providers.to_s + ' //// providers'
-
     @string = StringIO.new
 
     @string = CSV.generate do |csv|
@@ -98,7 +95,12 @@ class Admin::CategoriesController < Admin::DashboardController
   helper_method :category
 
   def providers
-    category.providers
+    if category.root?
+      category.providers
+    else
+      category.sub_providers
+    end
   end
+  helper_method :providers
 
 end
