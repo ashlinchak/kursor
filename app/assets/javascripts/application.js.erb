@@ -76,22 +76,44 @@ $(document).ready(function(){
 //        }, 400 )
 //    });
 
-// Ajax Typeahead
+// JQuery Token Input Search
 
-    $('.ajax-typeahead').typeahead({
-        minLength: 3,
-        source: function (query, process) {
-            return $.getJSON(
-                    '/search/auto_complete_search',
-                    { query: query },
-                    function (data) {
-                        var newData = [];
-                        $.each(data, function(){
-                            if (this.name) newData.push(this.name);
-                            else if (this.title) newData.push(this.title);
-                        });
-                        return process(newData);
-                    });
+//    $('.ajax-typeahead').typeahead({
+//        minLength: 3,
+//        source: function (query, process) {
+//            return $.getJSON(
+//                    '/search/auto_complete_search',
+//                    { query: query },
+//                    function (data) {
+//                        var newData = [];
+//                        $.each(data, function(){
+//                            if (this.name) newData.push(this.name);
+//                            else if (this.title) newData.push(this.title);
+//                        });
+//                        return process(newData);
+//                    });
+//        }
+//    });
+
+    $(".ajax-typeahead").tokenInput("/search/auto_complete_search", {
+
+        minChars: 3,
+        tokenLimit: 1,
+        deleteText: "<i class='icon-remove'>",
+        hintText: '<%= I18n.t(:'search.toke_input.hint') %>',
+        noResultsText: '<%= I18n.t(:'search.toke_input.no_results') %>',
+        searchingText: '<%= I18n.t(:'search.toke_input.searching') %>',
+        theme: 'facebook',
+        propertyToSearch: 'name',
+        tokenValue: 'name',
+        resultsFormatter: function(item){
+            return "<li>" + item.name + "</li>"
+        },
+        tokenFormatter: function(item) {
+            return "<li>" + item.name + "</li>"
+        },
+        onAdd: function() {
+            $(".btn").click()
         }
     });
 

@@ -54,6 +54,8 @@ end
 
 group :development do
   gem 'letter_opener'
+  gem 'populator'
+  gem 'faker'
 end
 
 group :production do

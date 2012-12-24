@@ -14,7 +14,11 @@ class SearchController < ApplicationController
   helper_method :search_results
 
   def auto_complete_search
-    render :json => ( ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting] )
+
+    #    render :json => City.order(:name).tokens(params[:q]).as_json(:only => [:id, :name], :include => {:region => {:only => :name}})
+
+    render :json => ThinkingSphinx.search(params[:q], :classes => [Provider, Tutor]).as_json( :only => [:name] )
+
   end
 
 end
