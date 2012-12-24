@@ -3,7 +3,7 @@
     %h1#logo.ir
       = link_to 'КУРСОР - образовательный портал', root_url
 
-    %form.form-search.header-search-form{ :action => '/search', :method => :get }
+    %form.form-search.header-search-form{ :action => '/search/redirect_to_result', :method => :get }
       .input-append
         = text_field_tag :q, '', :class => 'ajax-typeahead'
         = button_tag :class => 'btn' do

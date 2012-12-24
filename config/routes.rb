@@ -19,6 +19,7 @@ Kursor::Application.routes.draw do
   resources :students
   resources :search, :only => [:index] do
     get :auto_complete_search, :on => :collection
+    get :redirect_to_result, :on => :collection
   end
   resources :feedback
   resources :tags

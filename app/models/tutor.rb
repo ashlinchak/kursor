@@ -66,6 +66,10 @@ class Tutor < ActiveRecord::Base
     #end
   end
 
+  def composed_id
+    "#{id}-#{self.class.to_s.downcase}"
+  end
+
   define_index do
     indexes :name, sortable: true
     set_property :star => 1
