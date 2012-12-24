@@ -5,8 +5,8 @@
 
     %form.form-search.header-search-form{ :action => '/search/redirect_to_result', :method => :get }
       .input-append
-        = text_field_tag :q, '', :class => 'ajax-typeahead'
-        = button_tag :class => 'btn' do
+        = text_field_tag :q, '', :class => 'token-input'
+        = button_tag :class => 'btn token-input-submit' do
           %i.icon-search
 
 

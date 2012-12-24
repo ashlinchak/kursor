@@ -95,8 +95,7 @@ $(document).ready(function(){
 //        }
 //    });
 
-    $(".ajax-typeahead").tokenInput("/search/auto_complete_search", {
-
+    $(".token-input").tokenInput("/search/auto_complete_search", {
         minChars: 3,
         tokenLimit: 1,
         deleteText: "<i class='icon-remove'>",
@@ -113,7 +112,7 @@ $(document).ready(function(){
             return "<li>" + item.name + "</li>"
         },
         onAdd: function() {
-            $(".btn").click()
+            $(".token-input-submit").click()
         }
     });
 
