@@ -5,19 +5,19 @@ class SearchController < ApplicationController
 
   def redirect_to_result
     if params[:q]
-
-      @id, @class = params[:q].split('-')
-
-      if @class == 'provider'
-        redirect_to provider_path(@id)
-      elsif 'tutor'
-        redirect_to tutor_path(@id)
+      if params[:q].blank?
+        redirect_to search_index_path
+      else
+        @id, @class = params[:q].split('-')
+        if @class == 'provider'
+          redirect_to provider_path(@id)
+        elsif 'tutor'
+          redirect_to tutor_path(@id)
+        end
       end
-
     else
       flash[:error] = "Can't redirect without parameter!"
       redirect_to :root
-
     end
   end
 

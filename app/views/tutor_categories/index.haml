@@ -14,8 +14,8 @@
                   = link_to category do
                     = image_tag category.icon_url(:standart), :title => category, :class => 'rounded_2'
                 .span3.list
-                  %h3= link_to category, category
-                  %ul
+                  %h4= link_to category, category
+                  -#%ul
                     - for sub_category in category.top_tutor_subcategories do
                       %li
                         = link_to sub_category do
