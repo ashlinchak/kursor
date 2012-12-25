@@ -8,9 +8,7 @@
               - if post.images.present?
                 = image_tag post.images.last.src_url(:medium)
             .carousel-caption
-              %p
-                = post.id
-                = link_to post.title, posting_path(post)
+              %p= link_to post.title, posting_path(post)
     .clear
     -#%p.plus
       = link_to '<span>Еще</span> + '.html_safe + (c.postings.approved.size - 5).to_s, posting_category_path(c)
