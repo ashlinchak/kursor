@@ -25,7 +25,7 @@ class SearchController < ApplicationController
     if params[:q].blank?
       @search_results = []
     else
-      if params[:t].blank?
+      if params[:t] == 'all'
         @search_results = ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting]
       elsif params[:t] == 'prov'
         @search_results = Provider.search params[:q]
