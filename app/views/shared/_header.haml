@@ -4,10 +4,13 @@
       = link_to 'КУРСОР - образовательный портал', root_url
 
     %form.form-search.header-search-form{ :action => '/search/redirect_to_result', :method => :get }
-      .input-append
+      .input-append{:style => "margin-bottom:0px; line-height:0px;"}
         = text_field_tag :q, '', :class => 'token-input'
         = button_tag :class => 'btn token-input-submit' do
           %i.icon-search
+      .clear{:style => "font-size:10px; color: silver;"}
+        Учебное заведение, преподаватель.
+        = link_to 'Расширенный поиск', search_index_path
 
 
   .span7

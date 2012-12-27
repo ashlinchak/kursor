@@ -40,6 +40,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
+gem 'cells'
 
 group :assets do
   gem 'sass-rails'
