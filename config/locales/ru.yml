@@ -204,8 +204,8 @@ ru:
     transfer_user: "<i class=\'icon icon-user\'></i> Передать права"
     token_input:
       searching: "Ищем..."
-      hint: "Начните вводить текст"
-      no_results: "Ничего не найдено"
+      hint: "Начните вводить название или имя"
+      noresults: "Учебное зведение или преподаватель не найден"
   sessions:
     create:
       logged_in_as: "Вы вошли как"
