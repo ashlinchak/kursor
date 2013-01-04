@@ -28,49 +28,47 @@
                 %option{:value => 'post', :selected => ('selected' if params[:t] == 'post')}
                   Статья
 
+      - if params[:q]
+
+        - if search_results.size > 0
+          -#%p
+            = t :'search.results_found', :num => search_results.total_entries
+          -#%hr/
+
+          .search-results-filter
+            = link_to 'Все результаты', {:t => 'all', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'all')
+            %span.count &nbsp;
+
+            - unless @provider_search_count == 0
+              = link_to 'Учебные заведения', {:t => 'prov', :q => params[:q] }, :class => ('filter-current' if params[:t] == 'prov')
+              %span.count= @provider_search_count
+
+            - unless @tutor_search_count == 0
+              = link_to 'Преподаватели', {:t => 'tut', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tut')
+              %span.count= @tutor_search_count
+
+            - unless @posting_search_count == 0
+              = link_to 'Статьи', {:t => 'post', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'post')
+              %span.count= @posting_search_count
+
+            - unless @event_search_count == 0
+              = link_to 'События', {:t => 'event', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'event')
+              %span.count= @event_search_count
+
+            - unless @tag_search_count == 0
+              = link_to 'Теги', {:t => 'tag', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tag')
+              %span.count= @tag_search_count
 
 
-      - if search_results.size > 0
-        -#%p
-          = t :'search.results_found', :num => search_results.total_entries
-        -#%hr/
 
-        .search-results-filter
-          = link_to 'Все результаты', {:t => 'all', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'all')
-          %span.count
+          = render :partial => 'search/search_results', :locals => {:search_results => search_results}
 
-          - unless @provider_search_count == 0
-            = link_to 'Учебные заведения', {:t => 'prov', :q => params[:q] }, :class => ('filter-current' if params[:t] == 'prov')
-            %span.count= @provider_search_count
+          = paginate search_results
 
-          - unless @tutor_search_count == 0
-            = link_to 'Преподаватели', {:t => 'tut', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tut')
-            %span.count= @tutor_search_count
+        - else
+          .alert.alert-info
+            = t :'search.nothing_found_html'
 
-          - unless @posting_search_count == 0
-            = link_to 'Статьи', {:t => 'post', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'post')
-            %span.count= @posting_search_count
-
-          - unless @event_search_count == 0
-            = link_to 'События', {:t => 'event', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'event')
-            %span.count= @event_search_count
-
-          - unless @tag_search_count == 0
-            = link_to 'Теги', {:t => 'tag', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tag')
-            %span.count= @tag_search_count
-
-
-
-        = render :partial => 'search/search_results', :locals => {:search_results => search_results}
-
-        = paginate search_results
-
-      - else
-        .alert.alert-info
-          = t :'search.nothing_found_html'
-      -#- else
-        .alert.alert-danger
-          = t :'search.search_query_cannot_be_blank'
 
     .span4
       = render :partial => 'shared/advertising/kursor_ads'
