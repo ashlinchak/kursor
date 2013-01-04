@@ -21,6 +21,7 @@ class Tag < ActiveRecord::Base
     indexes :name
     set_property :enable_star => 1
     set_property :min_infix_len => 3
+    set_property :html_strip => 1
   end
 
 end
