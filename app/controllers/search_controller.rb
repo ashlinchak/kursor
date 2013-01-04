@@ -32,7 +32,7 @@ class SearchController < ApplicationController
     else
       if params[:t]
         if params[:t] == 'all'
-          @search_results = ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting], :star => true, :page => params[:page], :per_page => 15, :match_mode => :phrase
+          @search_results = ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting, Event, Tag], :star => true, :page => params[:page], :per_page => 15, :match_mode => :phrase
         elsif params[:t] == 'prov'
           @search_results = Provider.search params[:q], :star => true, :page => params[:page], :per_page => 15, :match_mode => :phrase
         elsif params[:t] == 'tut'
@@ -45,7 +45,7 @@ class SearchController < ApplicationController
           @search_results = Tag.search params[:q], :star => true, :page => params[:page], :per_page => 100, :match_mode => :phrase
         end
       else
-        @search_results = ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting], :star => true, :page => params[:page], :per_page => 15, :match_mode => :phrase
+        @search_results = ThinkingSphinx.search params[:q], :classes => [Provider, Tutor, Posting, Event, Tag], :star => true, :page => params[:page], :per_page => 15, :match_mode => :phrase
       end
     end
   end
