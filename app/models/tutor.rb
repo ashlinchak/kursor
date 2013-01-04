@@ -71,8 +71,10 @@ class Tutor < ActiveRecord::Base
   end
 
   define_index do
-    indexes :name, sortable: true
-    set_property :star => 1
+    indexes :name
+    indexes :description
+    set_property :field_weights => { :name => 10, :description => 6 }
+    set_property :enable_star => 1
     set_property :min_infix_len => 3
   end
 

@@ -48,6 +48,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [400, 250]
   end
 
+  def default_url
+    "" + [version_name, "default_posting_image.jpg"].compact.join('_')
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')

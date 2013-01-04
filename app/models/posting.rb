@@ -18,7 +18,7 @@ class Posting < ActiveRecord::Base
 
 
 
-  validates_presence_of :title, :excerpt, :body, :images
+  validates_presence_of :title, :excerpt, :body#, :images
 
   has_many :taggings, :as => :taggable, :dependent => :destroy
   has_many :tags,     :through => :taggings
@@ -101,8 +101,11 @@ class Posting < ActiveRecord::Base
   end
 
   define_index do
-    indexes :title, sortable: true
-    set_property :star => 1
+    indexes :title
+    indexes :excerpt
+    indexes :body
+    set_property :field_weights => { :title => 10, :excerpt => 6, :body => 3 }
+    set_property :enable_star => 1
     set_property :min_infix_len => 3
   end
 

@@ -57,7 +57,10 @@
               - for wiki_post in PostingCategory.wiki_cat.postings.published.approved.limit(4)
                 .wiki-post
                   = link_to posting_path(wiki_post) do
-                    = image_tag wiki_post.images.last.src_url(:small), :alt => wiki_post
+                    - unless wiki_post.images.last.nil?
+                      = image_tag wiki_post.images.last.src_url(:small), :alt => wiki_post
+                    - else
+                      = image_tag 'small_default_posting_image.jpg', :alt => wiki_post
                   %p= link_to wiki_post.title.truncate(45), posting_path(wiki_post), :title => wiki_post
 
               = link_to posting_category_path(PostingCategory.wiki_cat), :class => 'all-wiki' do
@@ -71,7 +74,10 @@
               - for video_post in PostingCategory.video_cat.postings.published.approved.limit(4)
                 .video-post
                   = link_to posting_path(video_post) do
-                    = image_tag video_post.images.last.src_url(:small), :alt => video_post
+                    - unless video_post.images.last.nil?
+                      = image_tag video_post.images.last.src_url(:small), :alt => video_post
+                    - else
+                      = image_tag 'small_default_posting_image.jpg', :alt => wiki_post
                   %p= link_to video_post.title.truncate(45), posting_path(video_post), :title => video_post
 
               = link_to posting_category_path(PostingCategory.video_cat), :class => 'all-video' do

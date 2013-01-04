@@ -2,18 +2,15 @@
   .span5
     %h1#logo.ir
       = link_to 'КУРСОР - образовательный портал', root_url
-
     %form.form-search.header-search-form{ :action => '/search/redirect_to_result', :method => :get }
       .clear{:style => "font-size:10px; color: silver;"}
-        Быстрый поиск учебного заведения или преподавателя
+        Быстрый поиск учебного заведения по названию
       .input-append{:style => "margin-bottom:0px; line-height:0px;"}
         = text_field_tag :q, '', :class => 'token-input'
         = button_tag :class => 'btn token-input-submit' do
           %i.icon-search
       .clear{:style => "font-size:10px; color: silver;"}
         = link_to 'Расширенный поиск', search_index_path
-
-
   .span7
     .login-bar
       = render :partial => 'shared/login_bar'

@@ -2,13 +2,19 @@
   .row
     .span8
       %legend=t(:'search.title')
-      -#Поиск временно не работает.
-      %form{ :class=>"form-horizontal search-form", :action => '/search', :method => :get }
+
+      %a{:name => 'search'}
+
+      %form{ :class=>"form-inline search-form", :action => '/search', :method => :get }
         %fieldset
-          .control-group
-            .controls{:style => 'margin-left: 85px;'}
-              = text_field_tag 'q', params[:q], :class => 'span6', :placeholder => t(:'search.placeholder')
-          .control-group
+          = text_field_tag 'q', params[:q], :class => 'span6', :placeholder => t(:'search.placeholder')
+          - if params[:t]
+            = hidden_field_tag 't', params[:t]
+          - else
+            = hidden_field_tag 't', 'all'
+          = submit_tag t(:'search.submit'), :class => 'btn btn-success', :name => nil
+
+          -#.control-group
             %label.control-label{:style => 'width: 65px'}
               Искать
             .controls{:style => 'margin-left: 85px;'}
@@ -21,34 +27,47 @@
                   Преподаватель
                 %option{:value => 'post', :selected => ('selected' if params[:t] == 'post')}
                   Статья
-          .control-group
-            .controls{:style => 'margin-left: 85px;'}
-              = submit_tag t(:'search.submit'), :class => 'btn btn-success', :name => nil
 
-      - unless params[:t].blank?
-        - if search_results.size > 0
 
-          %p
-            = t :'search.results_found', :num => search_results.total_entries
-          - search_results.each do |result_item|
-            %p
-              - if result_item.is_a? Provider
-                %span.label Учебное заведение
-              - elsif result_item.is_a? Tutor
-                %span.label Преподаватель
-              - elsif result_item.is_a? Posting
-                %span.label.label-info Статья
-              = link_to result_item, result_item
 
-              -#- if authenticated? && current_user.administrator? && (result_item.is_a? Provider)
-                = link_to edit_admin_user_transfer_path(result_item.user(result_item)) do
-                  -#= t(:'search.transfer_user').html_safe
-                  %i.icon-user
-                  %i.icon-arrow-right
-                  %i.icon-user
-        - else
-          .alert.alert-info
-            = t :'search.nothing_found_html'
+      - if search_results.size > 0
+        -#%p
+          = t :'search.results_found', :num => search_results.total_entries
+        -#%hr/
+
+        .search-results-filter
+          = link_to 'Все результаты', {:t => 'all', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'all')
+          %span.count
+
+          - unless @provider_search_count == 0
+            = link_to 'Учебные заведения', {:t => 'prov', :q => params[:q] }, :class => ('filter-current' if params[:t] == 'prov')
+            %span.count= @provider_search_count
+
+          - unless @tutor_search_count == 0
+            = link_to 'Преподаватели', {:t => 'tut', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tut')
+            %span.count= @tutor_search_count
+
+          - unless @posting_search_count == 0
+            = link_to 'Статьи', {:t => 'post', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'post')
+            %span.count= @posting_search_count
+
+          - unless @event_search_count == 0
+            = link_to 'События', {:t => 'event', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'event')
+            %span.count= @event_search_count
+
+          - unless @tag_search_count == 0
+            = link_to 'Теги', {:t => 'tag', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tag')
+            %span.count= @tag_search_count
+
+
+
+        = render :partial => 'search/search_results', :locals => {:search_results => search_results}
+
+        = paginate search_results
+
+      - else
+        .alert.alert-info
+          = t :'search.nothing_found_html'
       -#- else
         .alert.alert-danger
           = t :'search.search_query_cannot_be_blank'
