@@ -3,16 +3,19 @@
     .span8
       %legend=t(:'search.title')
 
-      %a{:name => 'search'}
+      -#%a{:name => 'results'}
 
-      %form{ :class=>"form-inline search-form", :action => '/search', :method => :get }
+      %form{ :class=>"form-inline search-form", :action => '/search#search', :method => :get }
         %fieldset
+          .clear{:style => "font-size:10px; color: silver;"}
+            Минимальное количество символов: 3
           = text_field_tag 'q', params[:q], :class => 'span6', :placeholder => t(:'search.placeholder')
           - if params[:t]
             = hidden_field_tag 't', params[:t]
           - else
             = hidden_field_tag 't', 'all'
           = submit_tag t(:'search.submit'), :class => 'btn btn-success', :name => nil
+
 
           -#.control-group
             %label.control-label{:style => 'width: 65px'}
@@ -30,44 +33,52 @@
 
       - if params[:q]
 
-        - if search_results.size > 0
-          -#%p
-            = t :'search.results_found', :num => search_results.total_entries
-          -#%hr/
+        - unless params[:q].size < 3
 
-          .search-results-filter
-            = link_to 'Все результаты', {:t => 'all', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'all')
-            %span.count &nbsp;
+          - if search_results.size > 0
+            -#%p
+              = t :'search.results_found', :num => search_results.total_entries
+            -#%hr/
 
-            - unless @provider_search_count == 0
-              = link_to 'Учебные заведения', {:t => 'prov', :q => params[:q] }, :class => ('filter-current' if params[:t] == 'prov')
-              %span.count= @provider_search_count
+            .search-results-filter
+              = link_to 'Все результаты', "/search?q=#{params[:q]}&t=all#search", :class => ('filter-current' if params[:t] == 'all')
+              %span.count &nbsp;
 
-            - unless @tutor_search_count == 0
-              = link_to 'Преподаватели', {:t => 'tut', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tut')
-              %span.count= @tutor_search_count
+              - unless @provider_search_count == 0
+                -#= link_to 'Учебные заведения', {:t => 'prov', :q => params[:q] }, :class => ('filter-current' if params[:t] == 'prov')
+                = link_to 'Учебные заведения', "/search?q=#{params[:q]}&t=prov#search", :class => ('filter-current' if params[:t] == 'prov')
+                %span.count= @provider_search_count
 
-            - unless @posting_search_count == 0
-              = link_to 'Статьи', {:t => 'post', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'post')
-              %span.count= @posting_search_count
+              - unless @tutor_search_count == 0
+                = link_to 'Преподаватели', "/search?q=#{params[:q]}&t=tut#search", :class => ('filter-current' if params[:t] == 'tut')
+                %span.count= @tutor_search_count
 
-            - unless @event_search_count == 0
-              = link_to 'События', {:t => 'event', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'event')
-              %span.count= @event_search_count
+              - unless @posting_search_count == 0
+                = link_to 'Статьи', "/search?q=#{params[:q]}&t=post#search", :class => ('filter-current' if params[:t] == 'post')
+                %span.count= @posting_search_count
 
-            - unless @tag_search_count == 0
-              = link_to 'Теги', {:t => 'tag', :q => params[:q]}, :class => ('filter-current' if params[:t] == 'tag')
-              %span.count= @tag_search_count
+              - unless @event_search_count == 0
+                = link_to 'События', "/search?q=#{params[:q]}&t=event#search", :class => ('filter-current' if params[:t] == 'event')
+                %span.count= @event_search_count
+
+              - unless @tag_search_count == 0
+                = link_to 'Теги', "/search?q=#{params[:q]}&t=tag#search", :class => ('filter-current' if params[:t] == 'tag')
+                %span.count= @tag_search_count
 
 
 
-          = render :partial => 'search/search_results', :locals => {:search_results => search_results}
+            = render :partial => 'search/search_results', :locals => {:search_results => search_results}
 
-          = paginate search_results
+            = paginate search_results
+
+          - else
+            .alert.alert-info
+              = t :'search.nothing_found_html'
 
         - else
-          .alert.alert-info
-            = t :'search.nothing_found_html'
+          .alert.alert-danger
+            Введено недостаточно символов для поиска, минимальное количество:
+            %b  3
 
 
     .span4

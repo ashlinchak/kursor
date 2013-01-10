@@ -2,7 +2,27 @@
   .span5
     %h1#logo.ir
       = link_to 'КУРСОР - образовательный портал', root_url
-    %form.form-search.header-search-form{ :action => '/search/redirect_to_result', :method => :get }
+
+    -#%form{ :class=>"form-inline search-form", :action => '/search#search', :method => :get }
+      %fieldset
+        = text_field_tag 'q', params[:q], :class => 'span6', :placeholder => t(:'search.placeholder')
+        - if params[:t]
+          = hidden_field_tag 't', params[:t]
+        - else
+          = hidden_field_tag 't', 'all'
+        = submit_tag t(:'search.submit'), :class => 'btn btn-success', :name => nil
+
+    %form.form-search.header-search-form{ :action => '/search#search', :method => :get }
+      .clear{:style => "font-size:10px; color: silver;"}
+        Учебное заведение, преводаватель, статья
+      .input-append{:style => "margin-bottom:0px; line-height:0px;"}
+        = text_field_tag :q, ''
+        = hidden_field_tag 't', 'all'
+        = button_tag :class => 'btn token-input-submit' do
+          %i.icon-search
+
+    -# Form for tokeninput search
+    -#%form.form-search.header-search-form{ :action => '/search/redirect_to_result', :method => :get }
       .clear{:style => "font-size:10px; color: silver;"}
         Быстрый поиск учебного заведения по названию
       .input-append{:style => "margin-bottom:0px; line-height:0px;"}
@@ -11,6 +31,7 @@
           %i.icon-search
       .clear{:style => "font-size:10px; color: silver;"}
         = link_to 'Расширенный поиск', search_index_path
+
   .span7
     .login-bar
       = render :partial => 'shared/login_bar'

@@ -650,6 +650,9 @@ ru:
       statistics: "Статистика"
       who_is_online: "Авторизованные"
       period: "за последние 30 минут"
+    providers:
+      destroy:
+        success: "Провайдер успешно удален"
     users:
       headers:
         title: "Пользователи / Провайдеры"

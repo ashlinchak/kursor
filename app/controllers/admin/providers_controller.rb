@@ -21,6 +21,15 @@ class Admin::ProvidersController < Admin::DashboardController
     redirect_to admin_notifications_path
   end
 
+  def destroy
+    if provider.destroy
+      flash[:notice] = t(:'admin.providers.destroy.success')
+    else
+      flash[:notice] = 'Error...'
+    end
+    redirect_to admin_path
+  end
+
   def destroy_filials
     if provider.destroy_filials!
       flash[:success]= "Filials successfully destroyed."
