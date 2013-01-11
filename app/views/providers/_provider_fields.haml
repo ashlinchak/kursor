@@ -39,6 +39,10 @@
   .span6
     %fieldset
       %legend= t(:'admin.custom_flags.headers.title')
+      .alert.alert-danger.fade.in
+        = t(:'providers.custom_flags.only_for_highschool')
+        %a.close{"data-dismiss"=>"alert"}
+          x
       = f.fields_for :custom_flag_bindings do |b|
         = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
       .fields= link_to_add_fields t(:'providers.custom_flags.add').html_safe, f, :custom_flag_bindings
@@ -60,34 +64,33 @@
 .row
   .span10
     = f.label :description
-    = f.cktext_area :description, :toolbar => 'Basic'
-  -#.span6
-    = f.label :description_uk
-    = f.cktext_area :description_uk, :toolbar => 'Basic'
+    - if authorized?
+      = f.cktext_area :description, :toolbar => ('Advanced')
+    - else
+      = f.cktext_area :description, :toolbar => ('Basic')
 .row
   .span10
     %br/
     = f.label :more_info
-    = f.cktext_area :more_info, :toolbar => 'Basic'
-  -#.span6
-    = f.label :more_info_uk
-    = f.cktext_area :more_info_uk, :toolbar => 'Basic'
+    - if authorized?
+      = f.cktext_area :more_info, :toolbar => 'Advanced'
+    - else
+      = f.cktext_area :more_info, :toolbar => 'Basic'
 .row
   .span10
     %br/
-    = f.label :documents_info
-    = f.cktext_area :documents_info, :toolbar => 'Basic'
-  -#.span6
-    = f.label :documents_info_uk
-    = f.cktext_area :documents_info_uk, :toolbar => 'Basic'
+    - if authorized?
+      = f.cktext_area :documents_info, :toolbar => 'Advanced'
+    - else
+      = f.cktext_area :documents_info, :toolbar => 'Basic'
 %br/
 - unless controller.send(:_layout) == 'admin'
   - unless controller.action_name == 'new'
     .row
       .span12
-        %fieldset
+        -#%fieldset
           %legend= t(:'admin.users.legends.filials')
-        %br/
+        -#%br/
         = f.fields_for :filials do |fi|
           = render :partial => 'filials/filial_fields', :locals => { :f => fi }
     -#.row

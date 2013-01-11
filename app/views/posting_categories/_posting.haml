@@ -3,7 +3,7 @@
     %p
       - unless p.images.empty?
         = link_to p, :class => 'thumbnail' do
-          = image_tag 'assets/logo.png', "data-original" => p.images.last.src_url(:medium).to_s, :width => '260px', :height => '180px'
+          = image_tag p.images.last.src_url(:medium).to_s, "data-original" => p.images.last.src_url(:medium).to_s, :width => '260px', :height => '180px'
       - else
         &nbsp;
     %p

@@ -25,29 +25,19 @@
         .span3
           - if PostingCategory.post_cat
             .last-postings-block
-              .last-postings-title
-                = t(:'home.titles.featured_posting')
+              .last-postings-legend
+                %span.title= t(:'home.titles.featured_posting')
                 = link_to posting_category_path(PostingCategory.post_cat), :style => 'float:right;' do
-                  %i.icon-file.icon-white
+                  -#%i.icon-file.icon-white
                   = t(:'home.titles.all_postings')
               %ul.last-postings
                 - if PostingCategory.post_cat
                   - for posting in PostingCategory.post_cat.postings.published.approved.limit(5) do
                     %li= link_to posting.title, posting_path(posting)
 
-      .row
-        - if PostingCategory.post_cat
-          .span8
-            .blog-title
-              = t(:'home.titles.blog')
-              = link_to posting_category_path(PostingCategory.blog_cat), :style => 'float:right;' do
-                %i.icon-list.icon-white
-                = t(:'home.titles.all_blog_posts')
-            .blog
-              - PostingCategory.blog_cat.postings.published.approved.limit(4).each_with_index do |blog_post,index|
-                - if ((index % 2) == 0)
-                  .clear
-                = render :partial => 'home/blog_post', :locals => {:blog_post => blog_post}
+      - if PostingCategory.post_cat
+        = render :partial => 'home/modules/blogs'
+
       .row
         - if PostingCategory.wiki_cat
           .span8

@@ -185,6 +185,7 @@ ru:
       add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
       true_value: "Есть"
       false_value: "Нет"
+      only_for_highschool: "Функция особенностей предназначена только для ВУЗов!"
     categories: "Категории"
     filials: "Филиалы"
     main_info: "Основная информация"

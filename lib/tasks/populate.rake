@@ -77,7 +77,7 @@ namespace :db do
 
     # Postings
     Posting.populate 200 do |p|
-      p.title = Populator.words(3..5).titleize
+      p.title = Populator.words(7..9).titleize
       p.excerpt = Populator.sentences(4..6)
       p.body = Populator.paragraphs(5..15)
       p.user_id = Administrator.first.user_id

@@ -1,4 +1,6 @@
-.alert
+.alert.fade.in
+  %a.close{"data-dismiss"=>"alert"}
+    x
   = t(:'events.rules_html')
 = form_for [event_parent, event], :html => { :class => 'form-horizontal' } do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => event }
@@ -38,7 +40,10 @@
   .control-group
     = f.label :description, t(:'events.description'), :class => 'control-label'
     .controls
-      = f.cktext_area :description, :class => 'text_area', :toolbar => 'Basic'
+      - if authorized?
+        = f.cktext_area :description, :class => 'text_area', :toolbar => 'Advanced'
+      - else
+        = f.cktext_area :description, :class => 'text_area', :toolbar => 'Basic'
   .control-group
     = f.label :start_datetime, t(:'events.start_date'),:class => 'control-label'
     .controls

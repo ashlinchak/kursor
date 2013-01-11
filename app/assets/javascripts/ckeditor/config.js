@@ -69,6 +69,8 @@ CKEDITOR.editorConfig = function( config )
     /* Toolbars */
     config.toolbar = 'Easy';
 
+    config.toolbar = 'Advanced';
+
     config.toolbar_Easy =
         [
             ['Undo','Redo','-','RemoveFormat'],
@@ -79,4 +81,20 @@ CKEDITOR.editorConfig = function( config )
             ['Source','-','Preview'],
             ['Maximize']
         ];
+
+    config.toolbar_Advanced =
+        [
+            { name: 'clipboard', items : [ 'Undo','Redo' ] },
+            { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Subscript','Superscript','-','RemoveFormat' ] },
+            { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
+                '-','JustifyLeft','JustifyCenter','JustifyRight'] },
+            { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+            { name: 'insert', items : [ 'Image','HorizontalRule'] },
+//            '/',
+            { name: 'document', items : [ 'Source','-'] },
+            { name: 'tools', items : [ 'Maximize', 'ShowBlocks','-','About' ] }
+
+        ];
+
+
 };

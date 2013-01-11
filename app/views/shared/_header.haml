@@ -13,7 +13,7 @@
         = submit_tag t(:'search.submit'), :class => 'btn btn-success', :name => nil
 
     %form.form-search.header-search-form{ :action => '/search#search', :method => :get }
-      .clear{:style => "font-size:10px; color: silver;"}
+      -#.clear{:style => "font-size:10px; color: silver;"}
         Учебное заведение, преводаватель, статья
       .input-append{:style => "margin-bottom:0px; line-height:0px;"}
         = text_field_tag :q, ''
