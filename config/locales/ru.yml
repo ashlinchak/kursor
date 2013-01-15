@@ -171,6 +171,7 @@ ru:
         ap_short: "оф."
       contacts:
         add: "Добавить контакт"
+        prompt: "Выберите тип"
       filials:
         add: "Добавить филиал"
         remove: "Удалить филиал"
@@ -194,7 +195,7 @@ ru:
     more_tabs: "Еще"
     on_map: "На карте"
     contacts: "Контакты"
-    add_contact: "<i class=\'icon-plus-sign\'></i> Добавить контакт"
+    add_contact: "<i class=\'icon-plus-sign\'></i> Добавить телефон, email и др."
   search:
     title: "Поиск на портале"
     placeholder: "Введите слово или его фрагмент"

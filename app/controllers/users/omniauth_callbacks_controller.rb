@@ -34,7 +34,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         flash[:success] =  t(:'devise.authentications.flash.successfully_added_authentication', :provider => omniauth['provider'].titleize)
         redirect_to user_path(current_user)
       else
-        flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize)
+        flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize).html_safe
         redirect_to :home
       end
 
@@ -74,7 +74,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         flash[:success] =  t(:'devise.authentications.flash.successfully_added_authentication', :provider => omniauth['provider'].titleize)
         redirect_to user_path(current_user)
       else
-        flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize)
+        flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize).html_safe
         redirect_to :home
       end
 
@@ -99,7 +99,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:success] = t(:'devise.authentications.flash.successfully_added_authentication', :provider => omniauth['provider'].titleize)
       redirect_to user_path(current_user)
     else
-      flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize)
+      flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize).html_safe
       redirect_to :home
     end
   end
@@ -121,7 +121,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:success] = t(:'devise.authentications.flash.successfully_added_authentication', :provider => omniauth['provider'].titleize)
       redirect_to user_path(current_user)
     else
-      flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize)
+      flash[:error] = t(:'devise.authentications.flash.this_oauth_not_linked_with_any_users', :provider => omniauth['provider'].titleize).html_safe
       redirect_to :home
     end
   end

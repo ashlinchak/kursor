@@ -21,6 +21,8 @@
   .span4
     %legend= t(:'devise.links.sign_in_with')
 
+    %p Вы можете войти с помощью данных сервисов, если они подключены к Вашему профилю.
+
     = authenticate_with_button :vkontakte, 'vkontakte_64.png', '64x64'
     = authenticate_with_button :facebook, 'facebook_64.png', '64x64'
     = authenticate_with_button :twitter, 'twitter_64.png', '64x64'

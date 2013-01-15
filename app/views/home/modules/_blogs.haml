@@ -2,11 +2,14 @@
   .span8
     .blog-legend
       %span.title= t(:'home.titles.blog')
-      = link_to posting_category_path(PostingCategory.blog_cat), :style => 'float:right;' do
-        -#%i.icon-list.icon-white
+      %span.muted
+        |
+      -#%span.muted &#8212;
+      = link_to posting_category_path(PostingCategory.blog_cat)  do
+        -#%i.icon-list
         = t(:'home.titles.all_blog_posts')
     .blog
       - PostingCategory.blog_cat.postings.published.approved.limit(4).each_with_index do |blog_post,index|
         - if ((index % 2) == 0)
           .clear
-        = render :partial => 'home/modules/blog', :locals => {:blog_post => blog_post}
+        = render :partial => 'home/modules/blog_item', :locals => {:blog_post => blog_post}

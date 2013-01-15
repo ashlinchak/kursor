@@ -40,14 +40,14 @@
           = time_ago_in_words(provider.updated_at)
           назад
 
-        - if current_user
+        -#- if current_user
           - if current_user.visitor?
             %p
               - unless provider.student_users.include?(current_user)
                 = link_to 'Я учусь здесь!', join_provider_students_path(provider), :class => 'btn btn-info'
               - else
                 = link_to 'Я больше не учусь здесь!', leave_provider_students_path(provider), :class => 'btn btn-danger'
-        - elsif provider.user.email.include?("kursor.org.ua")
+        - if provider.user.email.include?("kursor.org.ua")
           = link_to t(:'provider_request.iam_owner'), provider_provider_requests_path(provider), :class => 'btn btn-info'
         %p
           = render :partial => 'shared/rating_stars', :locals => {:rateable => provider}
@@ -73,12 +73,6 @@
         %li
           %a( href = "#documents_info" data-toggle = "tab" )
             = t(:'providers.documents_info')
-      - if provider.location
-        - if provider.location.gmaps?
-          %li
-            %a( href = "#on_map" data-toggle = "tab" id = "mapTab" )
-              %i.icon-map-marker
-              = t(:'providers.on_map')
           -#%li.dropdown
             %a.dropdown-toggle{"data-toggle"=>"dropdown", :href=>'#'}
               = t(:'providers.more_tabs')
@@ -97,10 +91,6 @@
       #documents_info.tab-pane.fade
         - if !provider.documents_info.blank?
           .documents-info= provider.documents_info.html_safe
-      #on_map.tab-pane.fade
-        - if provider.location
-          - if provider.location.gmaps?
-            = gmaps4rails(provider.location.to_gmaps4rails)
     - if current_user
       - if current_user.administrator?
         %hr/
@@ -165,7 +155,11 @@
       - for contact in provider.contacts.by_type
         - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
           = social_icon contact
-    %br
+    -#%br
+
+    - if provider.location
+      - if provider.location.gmaps?
+        = gmaps4rails(provider.location.to_gmaps4rails)
 
 
     - if provider.filials.size > 0

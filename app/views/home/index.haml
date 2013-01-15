@@ -27,7 +27,10 @@
             .last-postings-block
               .last-postings-legend
                 %span.title= t(:'home.titles.featured_posting')
-                = link_to posting_category_path(PostingCategory.post_cat), :style => 'float:right;' do
+                %span.muted
+                  |
+                -#%span.muted &#8212;
+                = link_to posting_category_path(PostingCategory.post_cat) do
                   -#%i.icon-file.icon-white
                   = t(:'home.titles.all_postings')
               %ul.last-postings

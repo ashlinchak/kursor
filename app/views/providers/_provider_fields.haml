@@ -14,7 +14,7 @@
               = f.file_field :logo
               = f.hidden_field :logo_cache
             .span5
-              .alert
+              .alert.alert-success
                 Допустимый формат изображения:
                 %b JPG (JPEG), PNG, GIF
                 %br/
@@ -38,8 +38,10 @@
       .fields= link_to_add_fields t(:'providers.custom_fields.add').html_safe, f, :custom_field_bindings
   .span6
     %fieldset
-      %legend= t(:'admin.custom_flags.headers.title')
-      .alert.alert-danger.fade.in
+      %legend
+        = t(:'admin.custom_flags.headers.title')
+        %code эта функция только для ВУЗов!
+      -#.alert.alert-success.fade.in
         = t(:'providers.custom_flags.only_for_highschool')
         %a.close{"data-dismiss"=>"alert"}
           x
@@ -47,15 +49,14 @@
         = render :partial => 'custom_flag_bindings/custom_flag_binding_fields', :locals => { :f => b }
       .fields= link_to_add_fields t(:'providers.custom_flags.add').html_safe, f, :custom_flag_bindings
 %br
+%legend= t(:'admin.users.legends.address')
 .row
   .span6
     %fieldset
-      %legend= t(:'admin.users.legends.address')
       = f.fields_for :location do |l|
         = render :partial => 'addresses/location_fields', :locals => { :f => l}
   .span6
     %fieldset
-      %legend= t(:'admin.users.legends.contacts')
       = f.fields_for :contacts do |c|
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
       .fields= link_to_add_fields t(:'providers.add_contact').html_safe, f, :contacts

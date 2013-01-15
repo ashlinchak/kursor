@@ -80,6 +80,10 @@ ru:
     password_recover:
       title: "Восстановление пароля"
       submit: "Выслать инструкцию по восстановлению"
+      change: "Изменить мой пароль"
+      new_password: "Новый пароль"
+      confirm_new_password: "Подтвердите новый пароль"
+
     resend_confirmation:
       title: "Повторная активация учетной записи"
       submit: "Выслать инструкцию по активации"
@@ -109,7 +113,7 @@ ru:
       flash:
         successfully_destroyed_authentication: "Учетная запись из %{provider} была успешно отключена."
         successfully_added_authentication: "Учетная запись из %{provider} была успешно подключена."
-        this_oauth_not_linked_with_any_users: "Эта учетная запись из %{provider} не привязана ни к одному зарегистрированному пользователю на портале."
+        this_oauth_not_linked_with_any_users: "Эта учетная запись из %{provider} не привязана ни к одному зарегистрированному пользователю на портале.<br /> Пожалуйста, подключите ее в личном кабинете или зарегистрируйтесь."
       providers:
         vkontakte: "Вконтакте"
       authenticate_with_buttons:
