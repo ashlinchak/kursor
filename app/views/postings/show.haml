@@ -38,14 +38,16 @@
                     = t(:'postings.actions.edit')
 
           - if posting.images.last.present?
-            .carousel
+            .carousel.slide
               .carousel-inner
-                -#%link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:medium).to_s }
-                = image_tag posting.images.last.src_url(:medium).to_s
-                .carousel-caption
-                  %p
-                    %b= posting.images.last.title
-                    = posting.images.last.description
+                .active.item
+                  -#%link{ :rel => "image_src", :type => "image/jpeg", :href => posting.images.last.src_url(:medium).to_s }
+                  = image_tag posting.images.last.src_url(:medium).to_s
+                  - unless posting.images.last.title.blank? && posting.images.last.description.blank?
+                    .carousel-caption
+                      %p
+                        %b= posting.images.last.title
+                        = posting.images.last.description
           - else
             %hr/
           .body

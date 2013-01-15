@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.6'
-gem 'mysql2'
+gem 'mysql2', '0.3.12b4'
 gem 'json'
 gem 'jquery-rails'
 gem 'haml'
@@ -18,7 +18,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
 #gem 'twitter-bootstrap-rails', '2.1.8'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'ckeditor', "3.7.1"
+gem 'ckeditor', "3.7.3"
 gem 'acts_as_commentable_with_threading'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem 'meta-tags', :require => 'meta_tags'

@@ -12,7 +12,7 @@ class Posting < ActiveRecord::Base
   belongs_to :user
 
   has_many :images, :as => :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |i| i[:src].blank? }
+  accepts_nested_attributes_for :images, :allow_destroy => true#, :reject_if => lambda { |i| i[:src].blank? }
 
   #validates :images, :length => { :maximum => 1}
 
@@ -98,16 +98,6 @@ class Posting < ActiveRecord::Base
       self.body = self.body.gsub(href1, href1+' rel="nofollow" target="_blank"')
       self.body = self.body.gsub(href2, href2+' rel="nofollow" target="_blank"')
     end
-  end
-
-  define_index do
-    indexes :title
-    indexes :excerpt
-    indexes :body
-    set_property :field_weights => { :title => 10, :excerpt => 6, :body => 3 }
-    set_property :enable_star => 1
-    set_property :min_infix_len => 3
-    set_property :html_strip => 1
   end
 
 end

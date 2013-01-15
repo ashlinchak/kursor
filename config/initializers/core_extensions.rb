@@ -1,1 +1,1 @@
-ActiveRecord::Base.extend Searchable
+

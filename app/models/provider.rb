@@ -42,7 +42,6 @@ class Provider < ActiveRecord::Base
 
   validates :logo, :file_size => { :maximum => 1.megabytes.to_i }
 
-  searchable_by :name
   paginates_per 30
 
   scope :approved, where( :is_approved => true )
@@ -86,13 +85,5 @@ class Provider < ActiveRecord::Base
     "#{id}-#{self.class.to_s.downcase}"
   end
 
-  define_index do
-    indexes :name
-    indexes :description
-    set_property :field_weights => { :name => 10, :description => 6 }
-    set_property :enable_star => 1
-    set_property :min_infix_len => 3
-    set_property :html_strip => 1
-  end
 
 end
