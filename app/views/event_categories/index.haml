@@ -4,9 +4,12 @@
     .row
       .span8
 
+        -#= calendar Event.upcoming, :start_day => :monday do |event|
+          = link_to event.title, event
+
         = render :partial => 'nav'
 
-        - if Event.all.size > 0
+        - if events.size > 0
           %table.table
             %thead
               %tr
@@ -15,7 +18,7 @@
                 %th{:style=>'width:100px;'}= t(:'events.price.cost')
                 %th{:style=>'width:85px;'}= t(:'events.provider')
             %tbody
-              - Event.upcoming.each do |event|
+              - events.each do |event|
                 %tr
                   %td
                     .date
@@ -67,6 +70,10 @@
                     - if event.eventable.is_a? Tutor
                       = link_to tutor_path(event.eventable) do
                         = image_tag event.eventable.avatar_url(:thumb).to_s, :title => event.eventable.name, :class => "img-rounded"
+
+
+          = paginate events
+
 
         - else
           = t(:'events.no_events')

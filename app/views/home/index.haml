@@ -7,7 +7,7 @@
           .flexslider
             %ul.slides
               - if PostingCategory.post_cat
-                - for posting in PostingCategory.post_cat.postings.published.approved.limit(6) do
+                - for posting in PostingCategory.post_cat.postings.published.approved.limit(4) do
                   - unless posting.images.empty?
                     %li
                       = image_tag posting.images.last.src_url(:slider).to_s
@@ -35,46 +35,19 @@
                   = t(:'home.titles.all_postings')
               %ul.last-postings
                 - if PostingCategory.post_cat
-                  - for posting in PostingCategory.post_cat.postings.published.approved.limit(5) do
+                  - for posting in PostingCategory.post_cat.postings.published.approved.limit(4) do
                     %li= link_to posting.title, posting_path(posting)
 
       - if PostingCategory.post_cat
         = render :partial => 'home/modules/blogs'
 
-      .row
-        - if PostingCategory.wiki_cat
-          .span8
-            .wiki-block
-              .wiki-title
-                %h3= t(:'home.titles.wiki')
-              - for wiki_post in PostingCategory.wiki_cat.postings.published.approved.limit(4)
-                .wiki-post
-                  = link_to posting_path(wiki_post) do
-                    - unless wiki_post.images.last.nil?
-                      = image_tag wiki_post.images.last.src_url(:small), :alt => wiki_post
-                    - else
-                      = image_tag 'small_default_posting_image.jpg', :alt => wiki_post
-                  %p= link_to wiki_post.title.truncate(45), posting_path(wiki_post), :title => wiki_post
+      - if PostingCategory.wiki_cat
+        = render :partial => 'home/modules/wiki'
 
-              = link_to posting_category_path(PostingCategory.wiki_cat), :class => 'all-wiki' do
-                %i.icon-circle-arrow-right.icon-white
-      .row
-        - if PostingCategory.video_cat
-          .span8
-            .video-block
-              .video-title
-                %h3= t(:'home.titles.video')
-              - for video_post in PostingCategory.video_cat.postings.published.approved.limit(4)
-                .video-post
-                  = link_to posting_path(video_post) do
-                    - unless video_post.images.last.nil?
-                      = image_tag video_post.images.last.src_url(:small), :alt => video_post
-                    - else
-                      = image_tag 'small_default_posting_image.jpg', :alt => wiki_post
-                  %p= link_to video_post.title.truncate(45), posting_path(video_post), :title => video_post
+      - if PostingCategory.video_cat
+        = render :partial => 'home/modules/video'
 
-              = link_to posting_category_path(PostingCategory.video_cat), :class => 'all-video' do
-                %i.icon-circle-arrow-right.icon-white
+      %hr/
 
       -#%h2.home-title= t(:'home.titles.categories')
       .row

@@ -3,19 +3,7 @@ class Event < ActiveRecord::Base
   require 'nokogiri'
   require 'open-uri'
 
-  attr_accessible :description,
-                  :end_datetime,
-                  :eventable_id,
-                  :eventable_type,
-                  :location_id,
-                  :max_price,
-                  :min_price,
-                  :start_datetime,
-                  :teacher,
-                  :title,
-                  :location_attributes,
-                  :event_category_ids,
-                  :provider_name
+  attr_accessible :description, :end_datetime, :eventable_id, :eventable_type, :location_id, :max_price, :start_datetime, :title, :location_attributes, :event_category_ids, :provider_name
 
   attr_accessor :provider_name
 
@@ -34,6 +22,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :start_datetime, :title, :description
 
   default_scope order('start_datetime ASC')
+
+  paginates_per 30
 
   scope :upcoming, where('end_datetime > ?', DateTime.now)
 
@@ -78,6 +68,11 @@ class Event < ActiveRecord::Base
       #p "provider: #{provider}"
       self.eventable = provider
     end
+  end
+
+  # for calendar
+  def start_time
+    start_datetime
   end
 
 end

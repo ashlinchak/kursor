@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+  source 'http://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'mysql2', '0.3.12b4'
@@ -7,8 +7,8 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'nifty-generators'
 gem 'mini_magick'
-gem 'therubyracer'
-gem 'libv8'
+gem "therubyracer"
+gem 'libv8', '~> 3.11.8'
 gem 'thinking-sphinx'
 gem 'carrierwave'
 gem 'russian'
@@ -17,7 +17,6 @@ gem 'kaminari'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
-#gem 'twitter-bootstrap-rails', '2.1.8'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'ckeditor', "3.7.3"
 gem 'acts_as_commentable_with_threading'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
@@ -41,6 +40,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
 gem 'cells'
+gem "simple_calendar", "~> 0.1.1"
 
 group :assets do
   gem 'sass-rails'

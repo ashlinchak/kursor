@@ -1,0 +1,25 @@
+.row
+  .span8
+    .wiki-legend
+      %span.title= t(:'home.titles.wiki')
+      %span.muted
+        |
+      -#%span.muted &#8212;
+      = link_to posting_category_path(PostingCategory.wiki_cat)  do
+        -#%i.icon-list
+        = t(:'home.titles.all_wiki')
+        (#{PostingCategory.wiki_cat.postings.size})
+    .row
+      .wiki-block
+        - for wiki_post in PostingCategory.wiki_cat.postings.published.approved.limit(4)
+          .span2
+            .wiki-post
+              = link_to posting_path(wiki_post) do
+                - unless wiki_post.images.last.nil?
+                  = image_tag wiki_post.images.last.src_url(:small), :alt => wiki_post
+                - else
+                  = image_tag 'small_default_posting_image.jpg', :alt => wiki_post
+              %p= link_to wiki_post.title.truncate(45), posting_path(wiki_post), :title => wiki_post
+
+      -#= link_to posting_category_path(PostingCategory.wiki_cat), :class => 'all-wiki' do
+        %i.icon-circle-arrow-right.icon-white

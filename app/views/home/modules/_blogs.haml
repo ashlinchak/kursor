@@ -8,6 +8,7 @@
       = link_to posting_category_path(PostingCategory.blog_cat)  do
         -#%i.icon-list
         = t(:'home.titles.all_blog_posts')
+        (#{PostingCategory.blog_cat.postings.size})
     .blog
       - PostingCategory.blog_cat.postings.published.approved.limit(4).each_with_index do |blog_post,index|
         - if ((index % 2) == 0)

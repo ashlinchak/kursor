@@ -27,9 +27,9 @@ class EventCategoriesController < ApplicationController
 
   def events
     @events ||= if event_category.root?
-      Kaminari.paginate_array(event_category.events.approved).page(params[:page]).per(30)
+      Kaminari.paginate_array(Event.upcoming).page(params[:page])
     else
-      Kaminari.paginate_array(event_category.sub_events.approved).page(params[:page]).per(30)
+      Kaminari.paginate_array(event_category.sub_events.upcoming).page(params[:page])
     end
   end
   helper_method :events

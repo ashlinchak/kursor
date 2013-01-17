@@ -5,7 +5,7 @@
       .span8
         = render :partial => 'nav'
 
-        - if event_category.events.size > 0
+        - if events.size > 0
           %table.table
             %thead
               %tr
@@ -14,7 +14,7 @@
                 %th{:style=>'width:100px;'}= t(:'events.price.cost')
                 %th{:style=>'width:85px;'}= t(:'events.provider')
             %tbody
-              - event_category.events.upcoming.each do |event|
+              - events.each do |event|
                 %tr
                   %td
                     .date
@@ -72,7 +72,7 @@
 
 
 
-        -#.page_navigation.clear= paginate event_category.events
+        .page_navigation.clear= paginate events
 
       .span4
         = render :partial => 'shared/advertising/kursor_ads'

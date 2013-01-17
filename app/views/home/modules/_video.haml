@@ -1,0 +1,27 @@
+.row
+  .span8
+    .video-legend
+      %span.title= t(:'home.titles.video')
+      %span.muted
+        |
+      -#%span.muted &#8212;
+      = link_to posting_category_path(PostingCategory.wiki_cat)  do
+        -#%i.icon-list
+        = t(:'home.titles.all_video')
+        (#{PostingCategory.video_cat.postings.size})
+.row
+  .video-block
+    -#.video-title
+      %h3= t(:'home.titles.video')
+    - for video_post in PostingCategory.video_cat.postings.published.approved.limit(4)
+      .span2
+        .video-post
+          = link_to posting_path(video_post) do
+            - unless video_post.images.last.nil?
+              = image_tag video_post.images.last.src_url(:small), :alt => video_post
+            - else
+              = image_tag 'small_default_posting_image.jpg', :alt => wiki_post
+          %p= link_to video_post.title.truncate(45), posting_path(video_post), :title => video_post
+
+    -#= link_to posting_category_path(PostingCategory.video_cat), :class => 'all-video' do
+      %i.icon-circle-arrow-right.icon-white
