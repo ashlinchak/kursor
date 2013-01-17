@@ -51,6 +51,8 @@ module Kursor
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.encoding = "utf-8"
+
     config.action_mailer.default_url_options = { :host => "kursor.org.ua" }
   end
 end

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/pat/riddle.git
+  revision: c1f8824ae9eafd3172bf35e70657e748bd690993
+  ref: c1f8824ae9
+  specs:
+    riddle (1.5.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -242,7 +249,6 @@ GEM
     ref (1.0.2)
     responders (0.9.3)
       railties (~> 3.1)
-    riddle (1.5.4)
     rspec-core (2.12.2)
     rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
@@ -361,6 +367,7 @@ DEPENDENCIES
   populator
   rack-test
   rails (= 3.2.6)
+  riddle!
   rspec-rails
   russian
   rvm-capistrano
