@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
 
-  ThinkingSphinx::Configuration::Defaults::PANES << ThinkingSphinx::Panes::ExcerptsPane
+  #ThinkingSphinx::Configuration::Defaults::PANES << ThinkingSphinx::Panes::ExcerptsPane
 
   def index
 

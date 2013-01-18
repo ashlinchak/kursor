@@ -100,4 +100,13 @@ class Posting < ActiveRecord::Base
     end
   end
 
+  define_index do
+    indexes :title
+    indexes :excerpt
+    indexes :body
+    set_property :field_weights => { :title => 10, :excerpt => 6, :body => 3 }
+    set_property :star => 1
+    set_property :min_infix_len => 3
+  end
+
 end

@@ -17,5 +17,10 @@ class Tag < ActiveRecord::Base
     name
   end
 
+  define_index do
+    indexes :name
+    set_property :star => 1
+    set_property :min_infix_len => 3
+  end
 
 end

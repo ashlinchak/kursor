@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/pat/riddle.git
-  revision: c1f8824ae9eafd3172bf35e70657e748bd690993
-  ref: c1f8824ae9
-  specs:
-    riddle (1.5.4)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -128,7 +121,6 @@ GEM
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
-    innertube (1.0.2)
     ios-checkboxes (0.2.1)
       rails (~> 3.1)
       sass-rails
@@ -171,7 +163,6 @@ GEM
     meta-tags (1.2.6)
       actionpack
     metaclass (0.0.1)
-    middleware (0.1.0)
     mime-types (1.19)
     mini_magick (3.4)
       subexec (~> 0.2.1)
@@ -249,6 +240,7 @@ GEM
     ref (1.0.2)
     responders (0.9.3)
       railties (~> 3.1)
+    riddle (1.5.4)
     rspec-core (2.12.2)
     rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
@@ -291,12 +283,10 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thinking-sphinx (3.0.0)
-      activerecord (>= 3.1.0)
+    thinking-sphinx (2.0.14)
+      activerecord (>= 3.0.3)
       builder (>= 2.1.2)
-      innertube (>= 1.0.2)
-      middleware (>= 0.1.0)
-      riddle (>= 1.5.4)
+      riddle (>= 1.5.3)
     thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.12)
@@ -367,7 +357,7 @@ DEPENDENCIES
   populator
   rack-test
   rails (= 3.2.6)
-  riddle!
+  riddle
   rspec-rails
   russian
   rvm-capistrano
@@ -376,7 +366,7 @@ DEPENDENCIES
   sitemap_generator
   therubyracer
   thin
-  thinking-sphinx
+  thinking-sphinx (= 2.0.14)
   uglifier
   url_to_media_tag
   whenever
