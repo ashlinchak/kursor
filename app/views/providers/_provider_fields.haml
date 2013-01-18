@@ -60,31 +60,31 @@
       = f.fields_for :contacts do |c|
         = render :partial => 'contacts/contact_fields', :locals => { :f => c }
       .fields= link_to_add_fields t(:'providers.add_contact').html_safe, f, :contacts
-%br
-%legend= t(:'providers.edit.description')
+%br/
+%legend= t(:'providers.main_info')
 .row
   .span10
-    = f.label :description
     - if authorized?
       = f.cktext_area :description, :toolbar => ('Advanced')
     - else
       = f.cktext_area :description, :toolbar => ('Basic')
+%br/
+%legend= t(:'providers.more_info')
 .row
   .span10
-    %br/
-    = f.label :more_info
     - if authorized?
       = f.cktext_area :more_info, :toolbar => 'Advanced'
     - else
       = f.cktext_area :more_info, :toolbar => 'Basic'
+%br/
+%legend= t(:'providers.documents_info')
 .row
   .span10
-    %br/
     - if authorized?
       = f.cktext_area :documents_info, :toolbar => 'Advanced'
     - else
       = f.cktext_area :documents_info, :toolbar => 'Basic'
-%br/
+-#%br/
 - unless controller.send(:_layout) == 'admin'
   - unless controller.action_name == 'new'
     .row
@@ -98,7 +98,8 @@
       .span12
         %fieldset
           = link_to_add_fields t(:'providers.edit.filials.add'), f, :filials
-%hr/
+-#%hr/
+%br/
 .row
   .span12
     %fieldset
