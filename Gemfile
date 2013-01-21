@@ -7,7 +7,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'nifty-generators'
 gem 'mini_magick'
-gem "therubyracer"
+gem 'therubyracer'
 gem 'libv8', '~> 3.11.8'
 gem 'thinking-sphinx', '2.0.14'
 gem 'riddle'
@@ -20,7 +20,7 @@ gem 'capistrano', '2.12.0'
 gem 'rvm-capistrano'
 gem 'ckeditor', "3.7.3"
 gem 'acts_as_commentable_with_threading'
-gem "galetahub-simple_captcha", :require => "simple_captcha"
+gem 'galetahub-simple_captcha', :require => "simple_captcha"
 gem 'meta-tags', :require => 'meta_tags'
 gem 'sitemap_generator'
 gem 'nokogiri'
@@ -41,7 +41,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
 gem 'cells'
-gem "simple_calendar", "~> 0.1.1"
+gem 'simple_calendar', '~> 0.1.1'
 
 group :assets do
   gem 'sass-rails'
@@ -73,4 +73,4 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-gem "mocha", :group => :test
+gem 'mocha', :group => :test
