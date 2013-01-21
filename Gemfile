@@ -1,4 +1,4 @@
-  source 'http://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'mysql2', '0.3.12b4'
@@ -29,7 +29,7 @@ gem 'url_to_media_tag'
 gem 'jqcloud-rails' # Jquery TagCloud Plugin
 gem 'ios-checkboxes'
 gem 'devise'
-gem "devise-async"
+gem 'devise-async'
 gem 'inherited_resources'
 gem 'thin'
 gem 'delayed_job_active_record'

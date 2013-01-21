@@ -56,3 +56,5 @@ module Kursor
     config.action_mailer.default_url_options = { :host => "kursor.org.ua" }
   end
 end
+
+ThinkingSphinx.remote_sphinx = Rails.environment.production?

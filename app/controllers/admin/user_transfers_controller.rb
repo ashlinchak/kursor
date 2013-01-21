@@ -14,7 +14,7 @@ class Admin::UserTransfersController < Admin::DashboardController
   def update
     transfer_user.confirm!
     transfer_user.unlock_access!
-    if transfer_user.update_attributes params[:user]
+    if transfer_user.update_attributes(params[:user])
       unless params[:send_email] != 'yes'
         if !params[:additional_message].blank?
           if UserTransferMailer.transfer_email_with_add_msg(transfer_user, transfer_user.password, params[:additional_message]).deliver
