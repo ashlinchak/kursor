@@ -8,11 +8,13 @@
   - for category in categories
     %tr
       %td
-        = category.name
-        = link_to 'Add child', new_admin_adv_category_path(:parent => category)
+        = link_to category.name, admin_adv_category_path(category)
+        = link_to '+', new_admin_adv_category_path(:parent => category)
+        - if category.children.exists?
+          = render :partial => 'children', :locals => { :category => category}
       %td= category.permalink
       %td= link_to 'Show', admin_adv_category_path(category)
       %td= link_to 'Edit', edit_admin_adv_category_path(category)
       %td= link_to 'Destroy', admin_adv_category_path(category), :confirm => 'Are you sure?', :method => :delete
 
-%p= link_to "New Admin/Adv/Category", new_admin_adv_category_path
+%p= link_to "New root category", new_admin_adv_category_path

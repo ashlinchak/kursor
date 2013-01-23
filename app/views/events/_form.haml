@@ -47,13 +47,13 @@
   .control-group
     = f.label :start_datetime, t(:'events.start_date'),:class => 'control-label'
     .controls
-      = f.text_field :start_datetime, :class => 'datetime-picker span3'
-
+      -#= f.text_field :start_datetime, :class => 'datetime-picker span3'
+      = f.datetime_select :start_datetime
   .control-group
     = f.label :end_datetime, t(:'events.end_date'), :class => 'control-label'
     .controls
-      = f.text_field :end_datetime, :class => 'datetime-picker span3'
-
+      -#= f.text_field :end_datetime, :class => 'datetime-picker span3'
+      = f.datetime_select :end_datetime
   .control-group
     = f.label :min_price, t(:'events.min_price'),:class => 'control-label'
     .controls
