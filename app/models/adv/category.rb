@@ -4,7 +4,7 @@ class Adv::Category < ActiveRecord::Base
 
   has_ancestry
 
-  attr_accessible :name, :permalink, :description, :parent
+  attr_accessible :name, :permalink, :description, :parent_id
 
   before_save :generate_adv_cat_permalink
 

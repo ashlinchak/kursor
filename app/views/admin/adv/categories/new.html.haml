@@ -1,4 +1,8 @@
-- title "New Admin/Adv/Category"
+
+- if params[:parent]
+  %legend
+    Creating subcategory for
+    %b= Adv::Category.find_by_permalink(params[:parent])
 
 = render 'form'
 

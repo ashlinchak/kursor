@@ -1,0 +1,25 @@
+.row
+  .span12
+    %table.table.table-condensed
+      - for category in categories
+        %tr
+          %td
+            = link_to category.name, admin_adv_category_path(category)
+            - if category.children.exists?
+              = render :partial => 'children', :locals => { :category => category}
+          %td
+            = link_to new_admin_adv_category_path(:parent => category) do
+              %i.icon-plus-sign
+          %td
+            - if category.description.present?
+              %a{"data-content" => category.description , :title => category.name + ' (' + category.permalink + ')', :href => '#', :rel => "popover", :placement => 'left'}
+                %span.badge.badge-success
+                  %i.icon-ok.icon-white
+            - else
+              %a{ :title => 'No Description!', :href => '#', :rel => "tooltip", :placement => 'left'}
+                .badge
+                  %i.icon-exclamation-sign.icon-white
+
+          %td= link_to 'Show', admin_adv_category_path(category)
+          %td= link_to 'Edit', edit_admin_adv_category_path(category)
+          %td= link_to 'Destroy', admin_adv_category_path(category), :confirm => 'Are you sure?', :method => :delete

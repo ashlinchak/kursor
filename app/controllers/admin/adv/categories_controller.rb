@@ -13,14 +13,22 @@ class Admin::Adv::CategoriesController < Admin::DashboardController
 
   def create
 
-    if category.save
-      flash[:success] = 'Adv category was successfully created.'
-      redirect_to admin_adv_categories_path
-    else
-      render :action => "new"
-    end
-    #@category = Category.new(params[:category])
-    #redirect_to [:admin, :adv, @category], :notice => "Successfully created category."
+    #if params[:parent]
+    #  if category.save :parent => Adv::Category.find_by_permalink(params[:parent])
+    #    flash[:success] = 'Adv category was successfully created.'
+    #    redirect_to admin_adv_categories_path
+    #  else
+    #    render :action => "new"
+    #  end
+    #else
+      if category.save
+        flash[:success] = 'Adv category was successfully created.'
+        redirect_to admin_adv_categories_path
+      else
+        render :action => "new"
+      end
+    #end
+
   end
 
   def edit
@@ -37,7 +45,7 @@ class Admin::Adv::CategoriesController < Admin::DashboardController
   end
 
   def destroy
-    unless category.children #|| category.postings.exist?
+    unless category.children.exists? #|| category.postings.exist?
       category.destroy
     else
       flash[:error] = 'Can\'t delete non-empty category'
@@ -61,6 +69,5 @@ class Admin::Adv::CategoriesController < Admin::DashboardController
     end
   end
   helper_method :category
-
 
 end

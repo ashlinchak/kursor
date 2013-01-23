@@ -1,3 +1,10 @@
 %ul
   - category.children.each do |child|
-    %li= link_to child.name, admin_adv_category_path(child)
+    %li
+      = link_to child.name, admin_adv_category_path(child)
+      &nbsp;
+      = link_to new_admin_adv_category_path(:parent => child) do
+        %i.icon-plus-sign
+
+      - if child.children.exists?
+        = render :partial => 'children', :locals => { :category => child}

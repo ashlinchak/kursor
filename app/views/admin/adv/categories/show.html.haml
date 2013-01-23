@@ -1,10 +1,51 @@
-%p
-  %strong Name:
-  = category.name
+.row
+  .span1
+    -#= image_tag category.icon_url(:standart).to_s, :class => 'rounded_2'
+    = image_tag 'thumb_default_cat_icon.png', :class => 'rounded_2'
+  .span6
+    %p.lead= category.name
+    %p.silver
+      - unless category.description.blank?
+        = category.description
+      - else
+        No description
+    -#%span.muted
+      = postings.size
+      postings
+    -#|
+    -#= link_to export_admin_category_path(:format => :csv) do
+      %i.icon-download-alt
+      Export emails
+  .span5
+    %span
+      = link_to edit_admin_adv_category_path( category ) do
+        %i.icon-pencil
+        Edit
 
-%p
-  = link_to "Edit", edit_admin_adv_category_path(category)
-  |
-  = link_to "Destroy", admin_adv_category_path(category), :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", admin_adv_categories_path
+    %span{:style => 'margin-left: 20px'}
+      = link_to admin_adv_category_path(category), :confirm => 'Are you sure?', :method => :delete do
+        %i.icon-remove
+        Destroy
+
+    %span{:style => 'margin-left: 20px'}
+      - unless category.is_root?
+        = link_to admin_adv_category_path(category.parent) do
+          %i.icon-chevron-up
+          Up
+      - else
+        = link_to admin_adv_categories_path do
+          %i.icon-chevron-up
+          Up
+
+    %span{:style => 'margin-left: 20px'}
+      = link_to admin_adv_categories_path do
+        %i.icon-home
+        Home
+
+    %span{:style => 'margin-left: 20px'}
+      = link_to new_admin_adv_category_path(:parent => category) do
+        %i.icon-plus-sign
+        Add child
+
+- if category.children.exists?
+  = render :partial => 'tree', :locals => { :categories => category.children }

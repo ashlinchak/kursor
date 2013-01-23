@@ -1,8 +1,8 @@
 %span.badge.badge-info
-  = link_to admin_adv_category_path(category) do
+  = link_to admin_category_path(category) do
     = category.name
-    - if category.children
-      %span.badge= category.descendants.count
+    - if category.children.present?
+      %span.badge= category.children.size
 -#- if category.children.present?
   %ul
     - for category in category.children

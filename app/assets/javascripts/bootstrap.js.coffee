@@ -2,7 +2,9 @@ jQuery ->
 
   $(".collapse").collapse()
 
-  $("a[rel=popover]").popover()
+  $("a[rel=popover]").popover({
+    trigger: 'hover'
+  })
 
   $("#popover").popover()
 

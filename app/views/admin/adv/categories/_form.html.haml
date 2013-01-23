@@ -13,8 +13,8 @@
     %br
     = f.text_area :description
 
-
-  -#= f.hidden_field :parent, params[:parent]
+  - if params[:parent]
+    = f.hidden_field :parent_id, :value => Adv::Category.find_by_permalink(params[:parent]).id
 
   -#%fieldset
     .control-group

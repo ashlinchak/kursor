@@ -63,7 +63,7 @@
   ])
 
   PostingCategory.create!([
-    #{:name => 'Posts', :description => 'Aaa', :permalink => 'posts', :position => 0},
+    {:name => 'Posts', :description => 'Aaa', :permalink => 'posts', :position => 0},
     {:name => 'Blog',  :description => 'Aaa', :permalink => 'blog', :position => 0},
     {:name => 'Wiki',  :description => 'Aaa', :permalink => 'wiki', :position => 0},
     {:name => 'Video', :description => 'Aaa', :permalink => 'video', :position => 0}
