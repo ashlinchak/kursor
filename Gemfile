@@ -42,6 +42,7 @@ gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
 gem 'cells'
 gem 'simple_calendar', '~> 0.1.1'
+gem 'ancestry'
 
 group :assets do
   gem 'sass-rails'

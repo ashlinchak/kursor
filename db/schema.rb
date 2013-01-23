@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225153749) do
+ActiveRecord::Schema.define(:version => 20130122132440) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(:version => 20121225153749) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "adv_categories", :force => true do |t|
+    t.string   "name"
+    t.string   "permalink"
+    t.text     "description"
+    t.string   "ancestry"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "adv_categories", ["ancestry"], :name => "index_adv_categories_on_ancestry"
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"

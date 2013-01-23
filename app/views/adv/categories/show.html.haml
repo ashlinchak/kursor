@@ -1,0 +1,17 @@
+- title "Adv/Category"
+
+%p
+  %strong Name:
+  = @adv_category.name
+%p
+  %strong Permalink:
+  = @adv_category.permalink
+%p
+  %strong Description:
+  = @adv_category.description
+%p
+  %strong Ancestry:
+  = @adv_category.ancestry
+
+%p
+  = link_to "View All", adv_categories_path

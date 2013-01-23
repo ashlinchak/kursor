@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   include SimpleCaptcha::ControllerHelpers
 
-  before_filter :set_adv_name
+  before_filter :set_ads_name
 
   #unless  Rails.env.development?
   #  rescue_from ActionController::RedirectBackError,  :with => :render_500
@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
 
 
 
-  def set_adv_name
+  def set_ads_name
     @adv_group_name = controller_name.singularize[0..9]
     @adv_sub_name = if action_name == 'index'
                       'root'

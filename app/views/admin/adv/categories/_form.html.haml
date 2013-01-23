@@ -1,0 +1,26 @@
+= form_for category, :url => ( category.new_record? ? admin_adv_categories_path : admin_adv_category_path(category) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => category }
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :permalink
+    %br
+    = f.text_field :permalink
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+
+
+  -#= f.hidden_field :parent, params[:parent]
+
+  -#%fieldset
+    .control-group
+      = f.label :parent, :class => 'control-label'
+      .controls
+        = f.select :parent, Adv::Category.all.collect{|c| [c.name, c.id]}, { :prompt => 'Root category' }
+
+  %p
+    = f.submit

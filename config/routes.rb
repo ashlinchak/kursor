@@ -145,6 +145,13 @@ Kursor::Application.routes.draw do
     end
     resources :cities
     resources :promotions
+    namespace :adv do
+      resources :categories
+    end
+  end
+
+  namespace :adv do
+    resources :categories, :path => 'c'
   end
 
   root :to => 'home#index'

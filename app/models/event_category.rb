@@ -29,10 +29,6 @@ class EventCategory < ActiveRecord::Base
     name
   end
 
-  def root?
-    parent_id.nil?
-  end
-
   def generate_permalink
       # make simple util to parametrize/slugify permalink
       self.permalink = Russian.translit(name).parameterize if permalink.blank?

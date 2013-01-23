@@ -1,0 +1,10 @@
+%p
+  %strong Name:
+  = category.name
+
+%p
+  = link_to "Edit", edit_admin_adv_category_path(category)
+  |
+  = link_to "Destroy", admin_adv_category_path(category), :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", admin_adv_categories_path

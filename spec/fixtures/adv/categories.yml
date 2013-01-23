@@ -1,0 +1,11 @@
+one:
+  name: MyString
+  permalink: MyString
+  description: MyText
+  ancestry: MyString
+
+two:
+  name: MyString
+  permalink: MyString
+  description: MyText
+  ancestry: MyString
