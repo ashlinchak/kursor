@@ -53,7 +53,7 @@ group :assets do
   gem 'uglifier'
   gem 'jquery-ui-rails'
   gem 'jquery-star-rating-rails'
-  gem "font-awesome-rails"
+  #gem "font-awesome-rails"
 end
 
 group :development do
