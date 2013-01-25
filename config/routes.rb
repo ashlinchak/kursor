@@ -146,7 +146,9 @@ Kursor::Application.routes.draw do
     resources :cities
     resources :promotions
     namespace :adv do
-      resources :categories
+      resources :categories do
+        post 'sort', :on => :collection
+      end
     end
   end
 

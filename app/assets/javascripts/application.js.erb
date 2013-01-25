@@ -333,6 +333,7 @@ $(document).ready(function(){
       console.log(sortedItems);
       $.ajax({
         url : '/admin/'+ $(ui.item).attr('class') +'s/sort',
+//          /admin/categories/sort
         type: 'post',
         dataType: 'script',
         data : sortedItems

@@ -6,10 +6,13 @@
         = f.label :email, :class => 'control-label'
         .controls
           = f.email_field :email
-      .control-group
+      .control-group{:style => 'margin-bottom: 10px;'}
         = f.label :password, :class => 'control-label'
         .controls
           = f.password_field :password
+          - if devise_mapping.recoverable? && controller_name != 'passwords'
+            %span.help-block.small{:style => 'padding-left: 100px;'}
+              = link_to t(:'devise.links.forgot_password'), new_password_path(resource_name)
       - if devise_mapping.rememberable?
         .control-group
           .controls

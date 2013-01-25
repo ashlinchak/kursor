@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122132440) do
+ActiveRecord::Schema.define(:version => 20130124130504) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -57,8 +57,9 @@ ActiveRecord::Schema.define(:version => 20130122132440) do
     t.string   "permalink"
     t.text     "description"
     t.string   "ancestry"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "position",    :default => 0, :null => false
   end
 
   add_index "adv_categories", ["ancestry"], :name => "index_adv_categories_on_ancestry"

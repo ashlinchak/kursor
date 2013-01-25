@@ -20,7 +20,7 @@ module VotesHelper
       else
         checked = ""
       end
-      result << "<input name=\'star1\' value=\'" + value.to_s + "\'" + checked + " class=\'" + css_class + "\'/>"
+      result << "<input name=\'star1\' value=\'" + value.to_s + "\'" + checked + " class=\'" + css_class + "\' type=\'image\'/>"
     end
 
     result.html_safe

@@ -3,8 +3,8 @@
     %li
       = link_to child.name, admin_adv_category_path(child)
       &nbsp;
-      = link_to new_admin_adv_category_path(:parent => child) do
-        %i.icon-plus-sign
+      = link_to new_admin_adv_category_path(:parent => child), :class => 'add', :title => 'Add child category' do
+        %i.icon-plus-sign-alt.muted
 
       - if child.children.exists?
         = render :partial => 'children', :locals => { :category => child}

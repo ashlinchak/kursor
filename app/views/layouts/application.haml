@@ -18,6 +18,8 @@
   %link{ :href => "http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin", :rel => "stylesheet", :type => "text/css"}/
   /[if IE]
     %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
+  /[if lt IE 8]
+    = stylesheet_link_tag "font-awesome-ie7.min.css", :media => "all"
   %script{ :type => "text/javascript", :src => "http://vk.com/js/api/share.js?11" }
   %script{ :type => "text/javascript", :src => "http://userapi.com/js/api/openapi.js?52" }
   = render :partial => 'shared/google_analytics_code' unless Rails.env.development?

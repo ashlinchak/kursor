@@ -1,0 +1,30 @@
+#adv-categories {
+  #index {
+    #tree {
+      table {
+        tbody.sortable {
+          td {
+
+            &.drag-handle {
+              width: 30px;
+            }
+            &.tree {
+              width: 400px;
+            }
+            &.status  {
+              width: 50px;
+            }
+            a.action {
+              margin-left: 20px;
+              width: 20px ;
+            }
+            a.add {
+              margin-left: 10px;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
