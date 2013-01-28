@@ -45,9 +45,11 @@ gem 'simple_calendar', '~> 0.1.1'
 gem 'ancestry'
 
 group :assets do
-  gem 'sass-rails'
+  gem 'sass-rails', '~> 3.2'
+  gem 'bootstrap-sass', '~> 2.2.2.0'
+  #gem 'sass-rails'
   #gem 'less-rails'
-  gem 'less-rails-bootstrap'#, '~> 1.3.0'
+  #gem 'less-rails-bootstrap'#, '~> 1.3.0'
   gem 'coffee-rails'
   gem 'haml-rails'
   gem 'uglifier'
