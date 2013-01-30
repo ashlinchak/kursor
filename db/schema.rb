@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124130504) do
+ActiveRecord::Schema.define(:version => 20130128175015) do
 
   create_table "address_cities", :force => true do |t|
     t.string  "name"
@@ -63,6 +63,22 @@ ActiveRecord::Schema.define(:version => 20130124130504) do
   end
 
   add_index "adv_categories", ["ancestry"], :name => "index_adv_categories_on_ancestry"
+
+  create_table "adv_postings", :force => true do |t|
+    t.string   "title"
+    t.integer  "adv_category_id"
+    t.integer  "posting_type_id"
+    t.integer  "owner_type_id"
+    t.text     "body"
+    t.integer  "location_id"
+    t.string   "contact_person"
+    t.string   "email"
+    t.integer  "price"
+    t.datetime "published_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
+  end
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"

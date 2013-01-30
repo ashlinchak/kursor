@@ -1,0 +1,51 @@
+.row
+  .span8
+
+
+
+    %p
+      %strong Title:
+      = posting.title
+    %p
+      %strong Adv Category:
+      = posting.adv_category_id
+    %p
+      %strong Posting Type:
+      = posting.posting_type_id
+    %p
+      %strong Owner Type:
+      = posting.owner_type_id
+    %p
+      %strong Body:
+      = posting.body
+    %p
+      %strong Location:
+      = posting.location_id
+    %p
+      %strong Contact Person:
+      = posting.contact_person
+    %p
+      %strong Price:
+      = posting.price
+    %p
+      %strong Publisher:
+      = link_to posting.user, posting.user
+    %p
+      %strong Published:
+      - if posting.published_at
+        = time_ago_in_words posting.published_at
+      - else
+        Not published
+    - if (authenticated? && posting.user == current_user) || authorized?
+      .btn-group
+        = link_to posting do
+          %i.icon-pencil
+          Edit
+        = link_to posting, :confirm => 'Are you sure?', :method => :delete do
+          %i.icon-trash
+          Delete
+    - if authorized?
+      = link_to posting, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-success' do
+        %i.icon-magic
+        Approve
+  .span4

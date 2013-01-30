@@ -1,6 +1,6 @@
 .subnav
   %ul.nav.nav-pills
-    .brand= t(:'toolbar.title')
+    -#.brand= t(:'toolbar.title')
     %li= link_to t(:'toolbar.edit_user_html'), edit_user_registration_path
     - if current_user.providers.present?
       %li= link_to t(:'toolbar.new_event_html'), new_event_path

@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :schools, :through => :students
   has_many :schedule_events
   has_many :postings, :dependent => :destroy
+  has_many :adv_postings, :class_name => 'Adv::Posting', :dependent => :destroy
   has_many :votes
 
   accepts_nested_attributes_for :providers

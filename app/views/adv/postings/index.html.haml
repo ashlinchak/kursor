@@ -1,0 +1,32 @@
+.row
+  .span8
+    %legend Ad Postings
+    %table
+      %tr
+        %th Title
+        %th Adv category
+        %th Posting type
+        %th Owner type
+        %th Body
+        %th Location
+        %th Contact person
+        %th Email
+        %th Price
+      - for adv_posting in postings
+        %tr
+          %td= adv_posting.title
+          %td= adv_posting.adv_category_id
+          %td= adv_posting.posting_type_id
+          %td= adv_posting.owner_type
+          %td= adv_posting.body
+          %td= adv_posting.location_id
+          %td= adv_posting.contact_person
+          %td= adv_posting.email
+          %td= adv_posting.price
+          %td= link_to 'Show', adv_posting
+          %td= link_to 'Edit', edit_adv_posting_path(adv_posting)
+          %td= link_to 'Destroy', adv_posting, :confirm => 'Are you sure?', :method => :delete
+
+    %p= link_to "New Adv/Posting", new_adv_posting_path
+  .span4
+    Right column

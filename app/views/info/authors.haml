@@ -1,0 +1,27 @@
+- set_meta_tags :title => t(:'seo.sections.info.authors')#, :description => info_page.body
+.row
+  .span8
+    %legend
+      %h1 Главные авторы
+    .row
+      - 5.times do
+        - @authors.each do |author|
+          - if author.user.profile.present?
+            .span4
+              .row
+                .span1
+                  = link_to author.user.profile, :class => 'thumbnail' do
+                    = image_tag author.user.profile.avatar_url(:thumb)
+                .span3
+                  %p= author.user.profile.full_name
+                  %p
+                    = t(:'visitor.profile.profile_age')
+                    = time_ago_in_words author.user.created_at
+                  %p
+                    = link_to user_postings_path(author.user), :class => '' do
+                      Статьи автора
+                      (#{author.user.postings.size})
+              %hr/
+  .span4
+    = render :partial => 'shared/advertising/kursor_ads'
+

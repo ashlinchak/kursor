@@ -1,6 +1,6 @@
 class PostingsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :feed]
 
   before_filter :require_owner, :only => [ :edit, :update, :destroy ]
 
@@ -48,6 +48,24 @@ class PostingsController < ApplicationController
   def destroy
     posting.destroy
     redirect_to user_postings_path(current_user)
+  end
+
+  def feed
+    # this will be the name of the feed displayed on the feed reader
+    @title = t(:'feed.postings.title').html_safe
+
+    # the news items
+    @posting_items = PostingCategory.post_cat.postings.published.approved
+
+    # this will be our Feed's update timestamp
+    @updated = @posting_items.first.updated_at unless @posting_items.empty?
+
+    respond_to do |format|
+      format.atom { render :layout => false }
+
+      # we want the RSS feed to redirect permanently to the ATOM feed
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    end
   end
 
   private

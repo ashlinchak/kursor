@@ -1,0 +1,65 @@
+= form_for posting, :url => ( posting.new_record? ? adv_postings_path : adv_posting_path(posting) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => posting }
+  .control-group
+    = f.label :title, :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'span5'
+  .control-group
+    = f.label :posting_type_id, :class => 'control-label'
+    .controls
+      %label.radio
+        = f.radio_button :posting_type_id, Adv::Posting::POSTING_TYPES.index('supply'), :checked => true
+        Supply
+      %label.radio
+        = f.radio_button :posting_type_id, Adv::Posting::POSTING_TYPES.index('demand')
+        Demand
+  .control-group
+    = f.label :owner_type_id, :class => 'control-label'
+    .controls
+      %label.radio
+        = f.radio_button :owner_type_id, Adv::Posting::OWNER_TYPES.index('private'), :checked => true
+        Private
+      %label.radio
+        = f.radio_button :owner_type_id, Adv::Posting::OWNER_TYPES.index('corporate')
+        Corporate
+  .control-group
+    = f.label :adv_category_id, :class => 'control-label'
+    .controls
+      -#= f.grouped_collection_select :adv_category_id, Adv::Category.all, :children, :name, :id, :name, :class => 'select-adv-category', :prompt => 'Choose category'
+      = f.select :adv_category_id, Adv::Category.roots, :prompt => 'Choose category'
+  .control-group
+    = f.label :body, :class => 'control-label'
+    .controls
+      = f.text_area :body, :class => 'span5'
+
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      .input-prepend
+        %span.add-on
+          %i.icon-envelope
+        = f.text_field :email, :class => 'span3', :value => current_user.email
+      %span.help-block
+        Will be hidden from visitors
+
+  .control-group
+    = f.label :contact_person, :class => 'control-label'
+    .controls
+      .input-prepend
+        %span.add-on
+          %i.icon-user
+        = f.text_field :contact_person, :class => 'span3'
+
+  .control-group.form-inline
+    = f.label :price, :class => 'control-label'
+    .controls
+      .input-prepend
+        %span.add-on
+          %i.icon-money
+        = f.text_field :price, :class => 'span2'
+      UAH
+      %span.help-block
+        For free if zero price
+
+  .form-actions
+    = f.submit 'Save posting', :class => 'btn btn-success btn-large'

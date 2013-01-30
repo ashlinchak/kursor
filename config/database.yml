@@ -22,12 +22,16 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
+
   database: kursor_production
-#  database: kursor_development
+#  database: kursor_development #local
+
   pool: 5
-#  username: root
+  username: root
+
   password: "123456"
-  password: root
-  socket: /var/run/mysqld/mysqld.sock
-#  socket: /var/lib/mysql/mysql.sock
+#  password: root #local
+
+#  socket: /var/run/mysqld/mysqld.sock #local
+  socket: /var/lib/mysql/mysql.sock
 

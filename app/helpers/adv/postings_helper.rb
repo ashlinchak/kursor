@@ -1,0 +1,2 @@
+module Adv::PostingsHelper
+end

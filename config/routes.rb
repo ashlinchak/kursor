@@ -1,5 +1,7 @@
 Kursor::Application.routes.draw do
 
+
+
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
@@ -29,7 +31,10 @@ Kursor::Application.routes.draw do
   end
   resources :feedback
   resources :tags
+
+  match '/info/authors' => 'info#authors'
   resources :info
+
   resources :wiki
   resources :events
   resources :authentications
@@ -46,10 +51,13 @@ Kursor::Application.routes.draw do
   resources :news, :only => [:index, :show]
 
   resources :postings, :path => 'posts'
+  match '/feed' => 'postings#feed', :as => :feed, :defaults => { :format => 'atom' }
 
   resources :users, :path => 'u', :except => [ :destroy] do
     resources :postings
   end
+
+
 
   match '/my_profile' => 'profiles#my_profile', :as => :my_profile
 
@@ -90,6 +98,8 @@ Kursor::Application.routes.draw do
   resources :categories, :path => 'c', :only => [:index, :show]
   resources :tutor_categories, :path => 't', :only => [:index, :show]
   resources :posting_categories, :path => 'p', :only => [:index, :show]
+
+
   resources :event_categories, :path => 'e', :only => [:index, :show]
 
   namespace :admin do
@@ -154,6 +164,7 @@ Kursor::Application.routes.draw do
 
   namespace :adv do
     resources :categories, :path => 'c'
+    resources :postings, :path => 'p'
   end
 
   root :to => 'home#index'

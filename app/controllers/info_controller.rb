@@ -6,6 +6,10 @@ class InfoController < ApplicationController
   def show
   end
 
+  def authors
+    @authors = Administrator.all
+  end
+
   def info_pages
     @info_pages ||= Info.all
   end

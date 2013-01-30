@@ -1,0 +1,21 @@
+one:
+  title: MyString
+  adv_category_id: 1
+  posting_type_id: 1
+  owner_type: 1
+  body: MyText
+  location_id: 1
+  contact_person: MyString
+  email: MyString
+  price: 1
+
+two:
+  title: MyString
+  adv_category_id: 1
+  posting_type_id: 1
+  owner_type: 1
+  body: MyText
+  location_id: 1
+  contact_person: MyString
+  email: MyString
+  price: 1

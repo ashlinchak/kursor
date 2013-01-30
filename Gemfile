@@ -5,7 +5,6 @@ gem 'mysql2', '0.3.12b4'
 gem 'json'
 gem 'jquery-rails', '2.0.1'
 gem 'haml'
-gem 'nifty-generators'
 gem 'mini_magick'
 gem 'therubyracer'
 gem 'libv8', '~> 3.11.8'
@@ -45,23 +44,21 @@ gem 'simple_calendar', '~> 0.1.1'
 gem 'ancestry'
 
 group :assets do
-  gem 'sass-rails', '~> 3.2'
-  gem 'bootstrap-sass', '~> 2.2.2.0'
-  #gem 'sass-rails'
-  #gem 'less-rails'
-  #gem 'less-rails-bootstrap'#, '~> 1.3.0'
-  gem 'coffee-rails'
+  gem 'sass-rails', '~> 3.2.3'
+  gem 'bootstrap-sass'
+  gem 'font-awesome-sass-rails'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'haml-rails'
-  gem 'uglifier'
+  gem 'uglifier', '>= 1.0.3'
   gem 'jquery-ui-rails'
   gem 'jquery-star-rating-rails'
-  #gem "font-awesome-rails"
 end
 
 group :development do
   gem 'letter_opener'
   gem 'populator'
   gem 'faker'
+  gem 'nifty-generators'
 end
 
 group :production do

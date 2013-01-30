@@ -50,6 +50,8 @@ class UsersController < ApplicationController
     redirect_to root
   end
 
+
+
   def users
     @users ||= User.all
   end
