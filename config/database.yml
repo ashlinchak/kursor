@@ -32,6 +32,6 @@ production:
   password: "123456"
 #  password: root
 
-  socket: /var/lib/mysql/mysql.sock
-#  socket: /var/run/mysqld/mysqld.sock
+  socket: /var/run/mysqld/mysqld.sock
+#  socket: /var/lib/mysql/mysql.sock
 
