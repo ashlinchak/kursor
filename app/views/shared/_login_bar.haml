@@ -4,10 +4,17 @@
 
     .btn-group
       = link_to current_user, :class => 'btn btn-small' do
+        - if authorized?
+          %i.icon-heart
         = current_user.email
       %button.btn.btn-small.dropdown-toggle{"data-toggle" => "dropdown"}
         %span.caret
       %ul.dropdown-menu
+        - if authorized?
+          %li
+            = link_to  admin_path do
+              %i.icon-coffee
+              = t(:'site.nav.admin-panel')
         %li
           = link_to current_user do
             %i.icon-user
@@ -34,11 +41,11 @@
     - elsif current_user.tutor.present?
       = image_tag current_user.tutor.avatar_url(:icon), :class => 'icon'
 
-    - if authorized?
+    -#- if authorized?
       = link_to t(:'site.nav.admin-panel'), admin_path
     = link_to destroy_user_session_path, :method => :delete, :class => 'btn btn-small btn-danger logout' do
-      = t(:'sessions.destroy.title')
       %i.icon-off.icon-white
+      = t(:'sessions.destroy.title')
   - else
     = link_to t(:'users.create.title'), new_user_registration_path, :class => "btn btn-success", :style => "vertical-align: baseline"
     &nbsp;

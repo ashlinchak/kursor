@@ -55,7 +55,7 @@ class PostingsController < ApplicationController
     @title = t(:'feed.postings.title').html_safe
 
     # the news items
-    @posting_items = PostingCategory.post_cat.postings.published.approved
+    @posting_items = PostingCategory.post_cat.postings.published.approved.limit(100)
 
     # this will be our Feed's update timestamp
     @updated = @posting_items.first.updated_at unless @posting_items.empty?

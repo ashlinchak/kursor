@@ -121,16 +121,32 @@
 
 
     %h2.block-title=t(:'providers.contacts')
-    - if tutor.location
-      -#%b= t(:'providers.custom_fields.address')
-      %p
-        %i.icon-home
-        = address_value tutor.location
-    - for contact in tutor.contacts.by_type do
-      %p
+
+    %table.table.table-striped.table-condensed
+
+      - if tutor.location
+        %tr
+          %td{:style=>'text-align:center;'}
+            %i.icon-map-marker
+          %td
+            = address_value tutor.location
+
+      - for contact in tutor.contacts.by_type do
         - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
-          %span{ :class => "span-icon icon-#{contact.contact_type}" }
-          = contact_value contact
+          %tr
+            %td{:style=>'text-align:center;'}
+              - if contact.contact_type == 'phone'
+                %i.icon-phone-sign
+              - if contact.contact_type == 'email'
+                %i.icon-envelope-alt
+              - if contact.contact_type == 'url'
+                %i.icon-globe
+              - if contact.contact_type == 'skype'
+                = image_tag 'icons/skype_16.png'
+              - if contact.contact_type == 'icq'
+                = image_tag 'icons/icq.png'
+            %td
+              = contact_value contact
     %hr/
     %p
       - for contact in tutor.contacts.by_type

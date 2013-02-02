@@ -4,8 +4,8 @@
     %legend
       %h1 Авторы
     .row
-      - @authors.sort_by{|a| a[:postings_counter]}.each do |author|
-        - if author.profile.present?
+      - @authors.each do |author|
+        - if author.profile.present? && author.postings.present?
           .span4
             .row
               .span1

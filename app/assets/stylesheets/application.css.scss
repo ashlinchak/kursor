@@ -188,25 +188,21 @@ header {
     top: .5em;
     line-height: 32px;
 
-    i {
-      vertical-align: text-bottom;
-    }
-
     img {
       vertical-align: top;
-    }
-
-    .logout {
-      margin-left: 15px;
-      vertical-align: baseline;
+      padding: 0px 5px;
     }
 
     .btn-group {
       display: inline-block;
       padding: 0px 5px;
-      a, button {
-        vertical-align: baseline;
-      }
+      //a, button {
+      //  vertical-align: baseline;
+      //}
+    }
+    .logout {
+      margin-left: 5px;
+
     }
   }
   .banner{

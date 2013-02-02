@@ -140,15 +140,24 @@
     %table.table.table-striped.table-condensed
       - if provider.location
         %tr
-          %td
-            %span{ :class => "span-icon icon-address" }
+          %td{:style=>'text-align:center;'}
+            %i.icon-map-marker
           %td
             = address_value provider.location
       - for contact in provider.contacts.by_type do
         - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
           %tr
-            %td
-              %span{ :class => "span-icon icon-#{contact.contact_type}" }
+            %td{:style=>'text-align:center;'}
+              - if contact.contact_type == 'phone'
+                %i.icon-phone-sign
+              - if contact.contact_type == 'email'
+                %i.icon-envelope-alt
+              - if contact.contact_type == 'url'
+                %i.icon-globe
+              - if contact.contact_type == 'skype'
+                = image_tag 'icons/skype_16.png'
+              - if contact.contact_type == 'icq'
+                = image_tag 'icons/icq.png'
             %td
               = contact_value contact
     %p
