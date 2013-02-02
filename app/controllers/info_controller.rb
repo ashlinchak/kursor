@@ -7,7 +7,8 @@ class InfoController < ApplicationController
   end
 
   def authors
-    @authors = Administrator.all
+    @admins = Administrator.all
+    @authors = @admins.collect{|a| a.user}
   end
 
   def info_pages

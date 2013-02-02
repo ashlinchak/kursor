@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   #include Devise::Async::Model # should be below call to `devise`
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_type_id, :providers, :uid,
+  attr_accessible :email, :password, :postings_count, :password_confirmation, :remember_me, :account_type_id, :providers, :uid,
                   :confirmed_at, :confirmation_token, :confirmation_sent_at # for rake task users:confirm_all_active
 
   attr_accessor :providers_attributes, :profile_attributes

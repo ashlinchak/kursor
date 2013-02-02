@@ -2,24 +2,26 @@
 .row
   .span8
     %legend
-      %h1 Главные авторы
+      %h1 Авторы
     .row
-      - @authors.each do |author|
-        - if author.user.profile.present?
+      - @authors.sort_by{|a| a[:postings_counter]}.each do |author|
+        - if author.profile.present?
           .span4
             .row
               .span1
-                = link_to author.user.profile, :class => 'thumbnail' do
-                  = image_tag author.user.profile.avatar_url(:thumb)
+                = link_to author.profile, :class => 'thumbnail' do
+                  = image_tag author.profile.avatar_url(:thumb)
               .span3
-                %p= author.user.profile.full_name
+                %p
+                  = link_to profile_path(author.profile) do
+                    = author.profile.full_name
                 %p
                   = t(:'visitor.profile.profile_age')
-                  = time_ago_in_words author.user.created_at
+                  = time_ago_in_words author.created_at
                 %p
-                  = link_to user_postings_path(author.user), :class => '' do
+                  = link_to user_postings_path(author), :class => '' do
                     Статьи автора
-                    (#{author.user.postings.size})
+                    (#{author.postings.size})
             %hr/
   .span4
     = render :partial => 'shared/advertising/kursor_ads'

@@ -1,10 +1,10 @@
-- if user_signed_in?
+- if authenticated?
   - if current_user == profile.user
     .row
       .span12
         = render :partial => 'toolbar'
         %hr/
 
-  = render :partial => '/profiles/profile', :locals => { :profile => profile }
-- else
+= render :partial => 'profile', :locals => { :profile => profile }
+-#- else
   = t(:'users.must_be_authenticated')

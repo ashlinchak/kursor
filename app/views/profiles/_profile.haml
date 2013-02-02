@@ -55,5 +55,6 @@
       %p.lead= t(:'students.studying_in')
       %ul
         - for student in profile.user.students
-          %li= link_to student.provider, provider_path(student.provider)
+          - if student.provider.present?
+            %li= link_to student.provider, provider_path(student.provider)
 

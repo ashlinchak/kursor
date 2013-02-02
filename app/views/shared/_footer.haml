@@ -24,7 +24,8 @@
       = render :partial => 'shared/yandex_metrika_code' unless Rails.env.development?
     .span2
 
-
+      %i.icon-rss
+      = link_to 'RSS: Свежие статьи', '/feed'
 
       -#%h4= t(:'site.footer.tags')
 
