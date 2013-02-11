@@ -164,7 +164,12 @@ Kursor::Application.routes.draw do
 
   namespace :adv do
     resources :categories, :path => 'c'
-    resources :postings, :path => 'p'
+    resources :postings, :path => 'p' do
+      member do
+        get :publish
+        get :unpublish
+      end
+    end
   end
 
   root :to => 'home#index'

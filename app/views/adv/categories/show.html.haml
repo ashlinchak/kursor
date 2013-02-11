@@ -1,17 +1,20 @@
-- title "Adv/Category"
+#adv-cetegories
+  #show
+    .row
+      .span8
+        %p
+          %strong Name:
+          = adv_category.name
+        %p
+          %strong Description:
+          = adv_category.description
+        %p
+          = link_to "Root Categories", adv_categories_path
+        
+        %legend Postings (#{adv_category.postings_count})
+        - for posting in adv_category.postings
+          = posting.title
+          %hr/
+    .span4
 
-%p
-  %strong Name:
-  = @adv_category.name
-%p
-  %strong Permalink:
-  = @adv_category.permalink
-%p
-  %strong Description:
-  = @adv_category.description
-%p
-  %strong Ancestry:
-  = @adv_category.ancestry
-
-%p
-  = link_to "View All", adv_categories_path
+      

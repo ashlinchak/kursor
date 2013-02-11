@@ -14,7 +14,7 @@
       = posting.posting_type_id
     %p
       %strong Owner Type:
-      = posting.owner_type_id
+      = Adv::Posting::OWNER_TYPES[posting.posting_type_id]
     %p
       %strong Body:
       = posting.body
@@ -45,7 +45,7 @@
           %i.icon-trash
           Delete
     - if authorized?
-      = link_to posting, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-success' do
+      = link_to publish_adv_posting_path(posting), :confirm => 'You are going to publish this post.', :method => :delete, :class => 'btn btn-success' do
         %i.icon-magic
         Approve
   .span4

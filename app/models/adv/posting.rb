@@ -6,6 +6,8 @@ class Adv::Posting < ActiveRecord::Base
 
   belongs_to :user
 
+  belongs_to :category, :class_name => 'Adv::Category', :dependent => :destroy, :counter_cache => :postings_count
+
   POSTING_TYPES = %w( supply demand )
 
   OWNER_TYPES = %w( private corporate )

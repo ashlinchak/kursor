@@ -1,16 +1,14 @@
-- title "Adv/Categories"
-
-%table
-  %tr
-    %th Name
-    %th Permalink
-    %th Description
-    %th Ancestry
-  - for adv_category in @adv_categories
-    %tr
-      %td= adv_category.name
-      %td= adv_category.permalink
-      %td= adv_category.description
-      %td= adv_category.ancestry
-      %td= link_to 'Show', adv_category
+#adv-categories
+  #index
+    .row
+      .span8
+        %legend Choose category below
+        .row
+          - for adv_category in adv_categories
+            .span2.cat_block
+              = link_to adv_category do
+                = image_tag 'standart_default_cat_icon.png', :alt => adv_category
+                .title= adv_category.name
+      .span4
+        %legend Right column
 

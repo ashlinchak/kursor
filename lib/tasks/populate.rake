@@ -5,7 +5,7 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [PostingCategory, PostingCategorizing, Posting, Event, EventCategory, EventCategorizing, Tag, Tagging, Image].each(&:delete_all)
+    [PostingCategory, PostingCategorizing, Posting, Event, EventCategory, EventCategorizing, Tag, Tagging, Image, Adv::Posting, Adv::Category].each(&:delete_all)
 
     ActiveRecord::Base.connection.execute("ALTER TABLE posting_categories AUTO_INCREMENT = 1;")
     ActiveRecord::Base.connection.execute("ALTER TABLE posting_categorizings AUTO_INCREMENT = 1;")
@@ -16,6 +16,8 @@ namespace :db do
     ActiveRecord::Base.connection.execute("ALTER TABLE taggings AUTO_INCREMENT = 1;")
     ActiveRecord::Base.connection.execute("ALTER TABLE tags AUTO_INCREMENT = 1;")
     ActiveRecord::Base.connection.execute("ALTER TABLE images AUTO_INCREMENT = 1;")
+    ActiveRecord::Base.connection.execute("ALTER TABLE adv_categories AUTO_INCREMENT = 1;")
+    ActiveRecord::Base.connection.execute("ALTER TABLE adv_postings AUTO_INCREMENT = 1;")
 
     # Posting categories
 
@@ -112,6 +114,31 @@ namespace :db do
           tagging.created_at = p.created_at
         end
       end
+    end
+
+    
+    # Adv::Category
+    Adv::Category.populate 12 do |cat|
+      cat.permalink = Populator.words(1)
+      cat.name = cat.permalink.titleize
+      cat.description = Populator.paragraphs(1)
+    end
+    # Adv::Posting
+    Adv::Posting.populate 100 do |adv_posting|
+      adv_posting.category_id = 1..12
+      adv_posting.title = Populator.words(3..5).titleize
+      adv_posting.posting_type_id = 0..1
+      adv_posting.owner_type_id = 0..1
+      adv_posting.body = ''
+      1..2.times do
+        adv_posting.body = adv_posting.body + '<p>' + Populator.paragraphs(1) + '</p>'
+      end
+      adv_posting.location_id = Address::Location.first.id
+      adv_posting.contact_person = Faker::Name.name
+      adv_posting.email = Faker::Internet.email
+      adv_posting.price = 40..1000
+      adv_posting.published_at = 6.months.ago..Time.now
+      adv_posting.user_id = Administrator.first.id
     end
 
     # Event Categories and Events

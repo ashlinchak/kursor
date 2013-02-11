@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(:version => 20130131135732) do
     t.string   "permalink"
     t.text     "description"
     t.string   "ancestry"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "position",    :default => 0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "position",       :default => 0, :null => false
+    t.integer  "postings_count", :default => 0
   end
 
   add_index "adv_categories", ["ancestry"], :name => "index_adv_categories_on_ancestry"

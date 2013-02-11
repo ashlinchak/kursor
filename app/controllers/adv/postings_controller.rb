@@ -39,6 +39,14 @@ class Adv::PostingsController < ApplicationController
     redirect_to adv_postings_url, :notice => "Successfully destroyed adv/posting."
   end
 
+  def publish
+    posting.published_at = Time.now
+    if posting.save
+      redirect_to adv_posting_path(posting), :notice => "Successfully published!"
+    else
+      redirect_to adv_posting_path(posting), :danger => "Fails to publish!"
+    end
+  end
 
   def postings
     @postings ||= if params[:id]

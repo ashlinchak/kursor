@@ -17,7 +17,7 @@
           %td= adv_posting.title
           %td= adv_posting.adv_category_id
           %td= adv_posting.posting_type_id
-          %td= adv_posting.owner_type
+          %td= Adv::Posting::OWNER_TYPES[adv_posting.posting_type_id]
           %td= adv_posting.body
           %td= adv_posting.location_id
           %td= adv_posting.contact_person

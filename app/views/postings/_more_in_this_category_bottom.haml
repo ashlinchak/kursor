@@ -6,7 +6,7 @@
           .img
             = link_to posting_path(post) do
               - if post.images.present?
-                = image_tag post.images.last.src_url(:medium)
+                = image_tag post.images.last.src_url(:medium), :width => '120px'
           %p= link_to post.title.truncate(40), posting_path(post)
     .clear
     -#%p.plus
