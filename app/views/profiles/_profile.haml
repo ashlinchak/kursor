@@ -31,8 +31,21 @@
     - for contact in profile.contacts.by_type do
       %p
         - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
-          %span{ :class => "span-icon icon-#{contact.contact_type}" }
-          = contact_value contact
+          %table
+            %tr
+              %td{:style=>'text-align:center; width:50px;'}
+                - if contact.contact_type == 'phone'
+                  %i.icon-phone-sign
+                - if contact.contact_type == 'email'
+                  %i.icon-envelope-alt
+                - if contact.contact_type == 'url'
+                  %i.icon-globe
+                - if contact.contact_type == 'skype'
+                  = image_tag 'icons/skype_16.png'
+                - if contact.contact_type == 'icq'
+                  = image_tag 'icons/icq.png'
+              %td
+                = contact_value contact
     %hr/
     %p
       - for contact in profile.contacts.by_type
