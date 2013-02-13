@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+
+
   # :token_authenticatable
   devise :database_authenticatable, :registerable, :confirmable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable, :omniauthable, :async
@@ -9,6 +11,17 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :postings_count, :password_confirmation, :remember_me, :account_type_id, :providers, :uid,
                   :confirmed_at, :confirmation_token, :confirmation_sent_at # for rake task users:confirm_all_active
+
+  def password_required?
+      super if confirmed?
+    end
+
+  def password_match?
+    self.errors[:password] << "can't be blank" if password.blank?
+    self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
+    self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
+    password == password_confirmation && !password.blank?
+  end
 
   attr_accessor :providers_attributes, :profile_attributes
 

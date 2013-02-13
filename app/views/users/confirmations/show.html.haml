@@ -1,0 +1,39 @@
+#register-confirm
+  .row
+    .span8
+      .hero-unit
+        %p= t(:'users.registration_steps.confirm.title')
+      = form_for resource, :as => resource_name, :url => confirm_path, :html => {:class => 'form-horizontal'}, :validate => true do |f|
+        = devise_error_messages!
+        .control-group
+          .controls
+            - User::ACCOUNT_TYPES.each_with_index do |account_type, index|
+              %label.radio
+                = f.radio_button :account_type_id, User::ACCOUNT_TYPES.index(account_type)
+                - if index == 0
+                  %span.user-type-name= t(:'users.user_types.regular_name', :user_type_description => t(:'users.user_types.regular_help')).html_safe
+                - elsif index == 1
+                  %span.user-type-name= t(:'users.user_types.tutor_name', :user_type_description => t(:'users.user_types.tutor_help')).html_safe
+                - elsif index == 2
+                  %span.user-type-name= t(:'users.user_types.provider_name', :user_type_description => t(:'users.user_types.provider_help')).html_safe
+        .control-group
+          = f.label :password, :class => 'control-label'
+          .controls
+            = f.password_field :password
+        .control-group
+          = f.label :password_confirmation, :class => 'control-label'
+          .controls
+            = f.password_field :password_confirmation
+            = f.hidden_field :confirmation_token
+
+
+
+        .form-actions= f.submit t(:'users.registration_steps.confirm.submit'), :class => 'btn btn-success btn-large'
+
+    .span4
+      -# %legend= t(:'devise.tools.title')
+      = render "users/shared/links"
+      %hr/
+      -#%legend= t(:'devise.register.oauth_registration.title').html_safe
+      %p
+

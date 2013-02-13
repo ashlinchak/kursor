@@ -59,6 +59,7 @@ group :development do
   gem 'populator'
   gem 'faker'
   gem 'nifty-generators'
+  gem 'better_errors'
 end
 
 group :production do

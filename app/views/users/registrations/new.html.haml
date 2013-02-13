@@ -16,7 +16,7 @@
         %h1= t(:'users.register_modal.title_html')
         -#%legend= t(:'users.new.account_type')
         %legend
-        .control-group
+        -#.control-group
           .controls
             - User::ACCOUNT_TYPES.each_with_index do |account_type, index|
               %label.radio
@@ -27,7 +27,23 @@
                   %span.user-type-name= t(:'users.user_types.tutor_name', :user_type_description => t(:'users.user_types.tutor_help')).html_safe
                 - elsif index == 2
                   %span.user-type-name= t(:'users.user_types.provider_name', :user_type_description => t(:'users.user_types.provider_help')).html_safe
-        #oauth
+
+
+        -#%legend= t(:'devise.register.title')
+        .control-group
+          = f.label :email, :class => 'control-label'
+          .controls
+            = f.email_field :email, :autofocus => true
+        -#.control-group
+          = f.label :password, :class => 'control-label'
+          .controls
+            = f.password_field :password
+        -#.control-group
+          = f.label :password_confirmation, :class => 'control-label'
+          .controls
+            = f.password_field :password_confirmation
+
+        -##oauth
           .control-group
             %label.control-label= t(:'devise.register.oauth_registration.sign_up_with')
             .controls
@@ -39,19 +55,6 @@
             .controls{:style=>'margin-top:12px;'}
               = t(:'devise.register.oauth_registration.or_go_regural_way')
 
-        -#%legend= t(:'devise.register.title')
-        .control-group
-          = f.label :email, :class => 'control-label'
-          .controls
-            = f.email_field :email
-        .control-group
-          = f.label :password, :class => 'control-label'
-          .controls
-            = f.password_field :password
-        .control-group
-          = f.label :password_confirmation, :class => 'control-label'
-          .controls
-            = f.password_field :password_confirmation
 
 
 

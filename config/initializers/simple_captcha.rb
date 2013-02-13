@@ -1,4 +1,4 @@
-SimpleCaptcha.setup do |sc|
+ SimpleCaptcha.setup do |sc|
   # default: 100x28
   sc.image_size = '120x40'
 
@@ -16,7 +16,7 @@ SimpleCaptcha.setup do |sc|
   # 'charcoal_grey',
   # 'almost_invisible'
   # 'random'
-  # sc.image_style = 'almost_invisible'
+  sc.image_style = 'random'
 
   # default: low
   # possible values: 'low', 'medium', 'high', 'random'
