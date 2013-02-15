@@ -1,12 +1,12 @@
 class Adv::CategoriesController < ApplicationController
-  
+
 
   def index
   end
 
-  
+
   def show
-    
+
   end
 
 
@@ -24,7 +24,14 @@ class Adv::CategoriesController < ApplicationController
 
 
   def postings
-    @adv_postings = category.postings
+
+    if params[:t] == 'demand'
+      @postings = adv_category.postings.demand.published
+    elsif params[:t] == 'supply'
+      @postings = adv_category.postings.supply.published
+    else
+      @postings = adv_category.postings.published
+    end
   end
   helper_method :postings
 

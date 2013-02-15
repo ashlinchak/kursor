@@ -37,18 +37,18 @@
       = render :partial => 'shared/login_bar'
     .banner
       -# Google Adsense
-      :javascript
+      -#:javascript
         google_ad_client = "ca-pub-5014675864548036";
         google_ad_slot = "6800416620";
         google_ad_width = 468;
         google_ad_height = 60;
-      %script{ :type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js" }
-      -# # # # # # # # # # # # # # #
+      -#%script{ :type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js" }
+      -# = = = = = = =
 
       -#HEADER_468_60
-      -##div-gpt-ad-1353586145771-0{ :style=>'width:468px; height:60px;'}
-      -#:javascript
-        / googletag.cmd.push(function() { googletag.display('div-gpt-ad-1353586145771-0'); });
+      #div-gpt-ad-1353586145771-0{ :style=>'width:468px; height:60px;'}
+      :javascript
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1353586145771-0'); });
 .row
   .span12
     = render :partial => 'shared/top_nav'

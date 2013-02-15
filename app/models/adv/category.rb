@@ -4,8 +4,8 @@ class Adv::Category < ActiveRecord::Base
 
   has_ancestry
 
-  has_many :postings, :class_name => 'Adv::Posting'
-  
+  has_many :postings, :class_name => 'Adv::Posting', :dependent => :destroy
+
   attr_accessible :name, :permalink, :description, :parent_id, :postings_count
 
   before_save :generate_adv_cat_permalink

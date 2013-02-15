@@ -116,7 +116,7 @@ namespace :db do
       end
     end
 
-    
+
     # Adv::Category
     Adv::Category.populate 12 do |cat|
       cat.permalink = Populator.words(1)
@@ -130,7 +130,7 @@ namespace :db do
       adv_posting.posting_type_id = 0..1
       adv_posting.owner_type_id = 0..1
       adv_posting.body = ''
-      1..2.times do
+      1.times do
         adv_posting.body = adv_posting.body + '<p>' + Populator.paragraphs(1) + '</p>'
       end
       adv_posting.location_id = Address::Location.first.id
@@ -140,6 +140,9 @@ namespace :db do
       adv_posting.published_at = 6.months.ago..Time.now
       adv_posting.user_id = Administrator.first.id
     end
+
+
+    ###########
 
     # Event Categories and Events
     EventCategory.populate 6 do |event_cat|

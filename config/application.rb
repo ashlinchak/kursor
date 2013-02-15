@@ -56,7 +56,6 @@ module Kursor
   end
 
 
-
 end
 
 

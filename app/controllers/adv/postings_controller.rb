@@ -36,15 +36,24 @@ class Adv::PostingsController < ApplicationController
 
   def destroy
     posting.destroy
-    redirect_to adv_postings_url, :notice => "Successfully destroyed adv/posting."
+    redirect_to adv_category_path(posting.category), :notice => "Successfully destroyed adv/posting."
   end
 
   def publish
     posting.published_at = Time.now
     if posting.save
-      redirect_to adv_posting_path(posting), :notice => "Successfully published!"
+      redirect_to adv_category_path(posting.category), :notice => "Successfully published!"
     else
-      redirect_to adv_posting_path(posting), :danger => "Fails to publish!"
+      redirect_to adv_category_path(posting.category), :danger => "Fails to publish!"
+    end
+  end
+
+  def unpublish
+    posting.published_at = nil
+    if posting.save
+      redirect_to adv_category_path(posting.category), :notice => "Successfully UN_published!"
+    else
+      redirect_to adv_category_path(posting.category), :danger => "Fails to unpublish!"
     end
   end
 

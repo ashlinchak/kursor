@@ -15,7 +15,7 @@
       - for adv_posting in postings
         %tr
           %td= adv_posting.title
-          %td= adv_posting.adv_category_id
+          %td= adv_posting.category_id
           %td= adv_posting.posting_type_id
           %td= Adv::Posting::OWNER_TYPES[adv_posting.posting_type_id]
           %td= adv_posting.body

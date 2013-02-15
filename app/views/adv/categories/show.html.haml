@@ -2,19 +2,55 @@
   #show
     .row
       .span8
-        %p
-          %strong Name:
-          = adv_category.name
-        %p
-          %strong Description:
+        %ul.breadcrumb
+          %li
+            = link_to adv_categories_path do
+              %i.icon-home
+          = breadcrumbs_for_adv_category adv_category
+
+        %p.muted
           = adv_category.description
         %p
-          = link_to "Root Categories", adv_categories_path
-        
-        %legend Postings (#{adv_category.postings_count})
-        - for posting in adv_category.postings
-          = posting.title
+          = link_to 'All', adv_category_path(adv_category), :style => ('text-decoration:underline;' unless params[:t])
+          |
+          = link_to 'Demand ' + adv_category.postings.demand.count.to_s, adv_category_path(adv_category, :t => 'demand'), :style => ('text-decoration:underline;' if params[:t] == 'demand')
+          |
+          = link_to 'Supply ' + adv_category.postings.supply.count.to_s, adv_category_path(adv_category, :t => 'supply'), :style => ('text-decoration:underline;' if params[:t] == 'supply')
+
+        %hr/
+        - for posting in postings
+          %p.muted
+            %b ##{posting.id}
+            -#&mdash;
+            = posting.email
+            |
+            = posting.contact_person
+            |
+            = posting.price
+            UAH
+            - if authorized?
+              %div{:style => 'float:right;'}
+                = link_to unpublish_adv_posting_path(posting), :confirm => 'Unpublish this?', :class => 'confirm' do
+                  %i.icon-eye-close
+                  Unpublish
+                |
+                = link_to adv_posting_path(posting), :method => :delete, :confirm => 'Are you shure want to delete this?' do
+                  %i.icon-trash
+                  Delete
+          %h4
+            = link_to posting.title, adv_posting_path(posting)
+            - if posting.demand?
+              %span.label.label-info= posting.type.titleize
+            - if posting.supply?
+              %span.label.label-success= posting.type.titleize
+            %small
+              = time_ago_in_words posting.published_at
+              назад
+
+          %p
+            = posting.body.html_safe
+
           %hr/
     .span4
 
-      
+

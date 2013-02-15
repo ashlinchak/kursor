@@ -6,7 +6,7 @@ class Adv::Posting < ActiveRecord::Base
 
   belongs_to :user
 
-  belongs_to :category, :class_name => 'Adv::Category', :dependent => :destroy, :counter_cache => :postings_count
+  belongs_to :category, :class_name => 'Adv::Category', :counter_cache => :postings_count
 
   POSTING_TYPES = %w( supply demand )
 
@@ -22,6 +22,8 @@ class Adv::Posting < ActiveRecord::Base
   scope :private, where(:owner_type_id => OWNER_TYPES.index('private'))
   scope :corporate, where(:owner_type_id => OWNER_TYPES.index('corporate'))
 
+  scope :published, where("published_at <> ''")
+
   def supply?
     POSTING_TYPES[posting_type_id] == 'supply'
   end
@@ -36,6 +38,14 @@ class Adv::Posting < ActiveRecord::Base
 
   def corporate?
     OWNER_TYPES[posting_type_id] == 'corporate'
+  end
+
+  def type
+    POSTING_TYPES[self.posting_type_id]
+  end
+
+  def owner
+    OWNER_TYPES[self.posting_type_id]
   end
 
 end

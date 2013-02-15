@@ -1,23 +1,28 @@
 .row
   .span8
-
-
-
+    %ul.breadcrumb
+      %li
+        = link_to adv_categories_path do
+          %i.icon-home
+      = breadcrumbs_for_adv_category posting.category
+      %li.active
+        %span.divider /
+        = link_to adv_categories_path do
+          = posting.title
     %p
       %strong Title:
       = posting.title
     %p
       %strong Adv Category:
-      = posting.adv_category_id
+      = posting.category
     %p
       %strong Posting Type:
-      = posting.posting_type_id
+      = posting.type
     %p
       %strong Owner Type:
-      = Adv::Posting::OWNER_TYPES[posting.posting_type_id]
+      = posting.owner
     %p
-      %strong Body:
-      = posting.body
+      = posting.body.html_safe
     %p
       %strong Location:
       = posting.location_id
