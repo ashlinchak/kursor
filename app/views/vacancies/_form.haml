@@ -1,0 +1,6 @@
+= form_for([@provider, @vacancy], :html => { :class => 'form-horizontal' }) do |f|
+  = render :partial => "shared/form_errors", :locals => { :object => @vacancy }
+  = render :partial => 'vacancies/vacancy_fields', :locals => { :f => f, :vacancy => @vacancy }
+  .form-actions
+    = submit_tag t(:'most_common_labels.save'), :class => 'btn btn-large btn-primary'
+    = link_to t(:'most_common_labels.cancel'), [@provider, @vacancy], :class => 'btn btn-large btn-warning'

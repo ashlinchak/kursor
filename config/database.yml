@@ -4,7 +4,7 @@ development:
   database: kursor_development
   pool: 5
   username: root
-  password: root
+  password: qwerty
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -16,22 +16,18 @@ test:
   database: kursor_test
   pool: 5
   username: root
-  password: root
+  password: qwerty
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
   encoding: utf8
-
   database: kursor_production
 #  database: kursor_development
-
   pool: 5
   username: root
-
-  password: "123456"
 #  password: root
-
+  password: "123456"
   socket: /var/run/mysqld/mysqld.sock
-#  socket: /var/lib/mysql/mysql.sock
+  #socket: /var/lib/mysql/mysql.sock
 

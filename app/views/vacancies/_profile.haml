@@ -1,0 +1,82 @@
+- set_meta_tags :title => @vacancy.title + " - " + @provider.name
+
+=link_to t(:'vacancies.show.back_to_provider'), @provider
+.row
+  .span8
+    %h1= @vacancy.title
+    %p.silver= @provider.name
+    %h5= t(:'activerecord.attributes.vacancy.requirements')
+    %p= simple_format(@vacancy.requirements)
+    %h5= t(:'activerecord.attributes.vacancy.responsibility')
+    %p= simple_format(@vacancy.responsibility)
+    %h5= t(:'activerecord.attributes.vacancy.conditions')
+    %p= simple_format(@vacancy.conditions)
+    %h5= t(:'activerecord.attributes.vacancy.salary')
+    %p= @vacancy.salary
+  .span4
+    .categories
+      - if provider.categorizings.size > 0
+        %h2.block-title= t(:'providers.categories')
+        %ul
+          - for categoring in provider.categories do
+            %li= link_to categoring, category_path(categoring)
+    - if provider.custom_flag_bindings.size > 0
+      %h2.block-title=t(:'providers.custom_flags.title')
+      %table.table.table-striped.table-condensed
+        - for field in provider.custom_flag_bindings.sort_by{|i| i.position} do
+          %tr
+            %td
+              %span= field.custom_flag.name
+            %td
+              - if field.value == true
+                = image_tag 'icons/onebit_true.png', :width => '20'
+              - else
+                = image_tag 'icons/onebit_false.png', :width => '20'
+    %h2.block-title=t(:'providers.contacts')
+    %table.table.table-striped.table-condensed
+      - if provider.location
+        %tr
+          %td
+            %span{ :class => "span-icon icon-address" }
+          %td
+            = address_value provider.location
+      - for contact in provider.contacts.by_type do
+        - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+          %tr
+            %td
+              %span{ :class => "span-icon icon-#{contact.contact_type}" }
+            %td
+              = contact_value contact
+    %p
+      - for contact in provider.contacts.by_type
+        - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+          = social_icon contact
+    -#%br
+    - if provider.filials.size > 0
+      %h2.block-title= t(:'providers.filials')
+      - provider.filials.each do |filial|
+        - if filial.name.present?
+          %h4.home-title= filial.name
+        %table.table.table-striped.table-condensed
+          %tr
+            %td
+              %span{ :class => "span-icon icon-address" }
+            %td
+              = address_value filial.location
+          - if filial.contacts.size > 0
+            - for contact in filial.contacts.by_type do
+              %tr
+                - unless contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+                  %td
+                    %span{ :class => "span-icon icon-#{contact.contact_type}" }
+                  %td
+                    = contact_value contact
+        %p
+          - for contact in filial.contacts.by_type
+            - if contact.contact_type =~ /facebook|twitter|vkontakte|odnoklasniki|livejournal|blogger|google|youtube|vimeo/
+              = social_icon contact
+        %hr/
+- if current_user == provider.user
+  .form-actions.action-by-center
+    = link_to 'Редактировать', edit_provider_vacancy_path(@provider, @vacancy), :class => 'btn btn-large btn-primary'
+    = link_to t(:'most_common_labels.delete'), [@provider, @vacancy], method: :delete, data: { confirm: t(:'vacancies.delete.confirm') }, :class => 'btn btn-large btn-danger'

@@ -38,6 +38,8 @@ class Provider < ActiveRecord::Base
 
   before_save :generate_permalink
 
+  has_many :vacancies, :as => :vacancyable, :dependent => :destroy
+
   mount_uploader :logo, ProviderLogoUploader
 
   validates :logo, :file_size => { :maximum => 1.megabytes.to_i }

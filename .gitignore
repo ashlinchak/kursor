@@ -15,3 +15,5 @@ public/assets/
 public/ckeditor_assets/
 config/deploy.rb
 *~
+/DB diagram.mwb
+/DB diagram.mwb.bak

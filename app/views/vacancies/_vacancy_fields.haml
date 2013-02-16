@@ -1,0 +1,53 @@
+.row
+  .span12
+    %fieldset
+      %legend= @vacancy_title
+%br/
+.row
+  .span12
+    %fieldset
+      .control-group
+        = f.label :title, :class => 'control-label'
+        .controls
+          = f.text_field :title, :class => 'span7'
+%br/
+.row
+  .span12
+    %fieldset
+      .control-group
+        = f.label :requirements, :class => 'control-label'
+        .controls
+          = f.text_area :requirements, :class => 'span7'
+%br/
+.row
+  .span12
+    %fieldset
+      .control-group
+        = f.label :responsibility, :class => 'control-label'
+        .controls
+          = f.text_area :responsibility, :class => 'span7'
+%br/
+.row
+  .span12
+    %fieldset
+      .control-group
+        = f.label :conditions, :class => 'control-label'
+        .controls
+          = f.text_area :conditions, :class => 'span7'
+%br/
+.row
+  .span12
+    %fieldset
+      .control-group
+        = f.label :salary, :class => 'control-label'
+        .controls
+          = f.text_field :salary, :class => 'span3'
+%br/
+.row
+  .span12
+    %fieldset
+      .control-group
+        .controls
+          %label.checkbox
+            = f.check_box :active
+            = t(:'vacancies.publish_vacancy')

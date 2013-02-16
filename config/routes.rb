@@ -73,6 +73,7 @@ Kursor::Application.routes.draw do
     end
     resources :provider_requests
     resources :events
+    resources :vacancies, :except => [ :index]
   end
 
   resources :tutors, :path => 'tutors' do

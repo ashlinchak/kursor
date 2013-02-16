@@ -659,6 +659,19 @@ ActiveRecord::Schema.define(:version => 20130131135732) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
+  create_table "vacancies", :force => true do |t|
+    t.string   "title"
+    t.text     "requirements"
+    t.text     "responsibility"
+    t.text     "conditions"
+    t.string   "salary"
+    t.boolean  "active"
+    t.integer  "vacancyable_id"
+    t.string   "vacancyable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "votes", :force => true do |t|
     t.integer  "value"
     t.integer  "user_id"

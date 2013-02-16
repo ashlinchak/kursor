@@ -78,6 +78,10 @@
               = t(:'providers.more_tabs')
               %b.caret
             %ul.dropdown-menu
+      - unless provider.vacancies.blank?
+        %li
+          %a( href = "#vacancies" data-toggle = "tab" )
+            = t(:'providers.vacancies')
 
     #myTabContent.tab-content
       #description.tab-pane.fade.active.in
@@ -91,6 +95,32 @@
       #documents_info.tab-pane.fade
         - if !provider.documents_info.blank?
           .documents-info= provider.documents_info.html_safe
+      #vacancies.tab-pane.fade
+        - if current_user == provider.user
+          .row
+            .pull-right
+              = link_to t(:'vacancies.add_vacancy'), new_provider_vacancy_path(provider)
+        - if !provider.vacancies.blank?
+          %ul.vacancies
+            - provider.vacancies.active.each do |vacancy|
+              %li
+                = link_to vacancy.title, provider_vacancy_path(provider, vacancy)
+                %span
+                  &nbsp;
+                  (
+                  = vacancy.salary
+                  )
+        - if current_user == provider.user && !provider.vacancies.not_active.blank?
+          %h5= t(:'vacancies.not_active')
+          %ul.vacancies
+            - provider.vacancies.not_active.each do |vacancy|
+              %li
+                = link_to vacancy.title, provider_vacancy_path(provider, vacancy)
+                %span
+                  &nbsp;
+                  (
+                  = vacancy.salary
+                  )
     - if current_user
       - if current_user.administrator?
         %hr/

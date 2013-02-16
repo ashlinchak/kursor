@@ -37,6 +37,8 @@ ru:
     add: "Добавить"
     close: "Закрыть"
     time_ago: "назад"
+    cancel: "Отмена"
+    save: "Сохранить"
 
   site:
     errors:
@@ -184,6 +186,7 @@ ru:
         add: "Добавить филиал"
         remove: "Удалить филиал"
         name: "Название"
+    vacancies: "Вакансии"
     visit_website_for_more_info: "Подробную информацию уточняйте, пожалуйста, по контактным телефонам или на сайте."
     custom_fields:
       add: "<i class=\'icon-plus-sign\'></i> Добавить поле"
@@ -204,6 +207,21 @@ ru:
     on_map: "На карте"
     contacts: "Контакты"
     add_contact: "<i class=\'icon-plus-sign\'></i> Добавить телефон, email и др."
+  vacancies:
+    new:
+      new_vacancy: "Добавление вакансии"
+      vacancy_added: "Вакансия добавлена"
+    add_vacancy: "+ Добавить вакансию"
+    publish_vacancy: "Опубликовать вакансию"
+    not_active: "Не активные вакансии"
+    show:
+      back_to_provider: "<< Назад к странице учебного заведения"
+    edit:
+      edit_vacancy: "Редактирование вакансии"
+      success: "Вакансия была успешно изменена"
+    delete:
+      confirm: "Удалить эту вакансию?"
+      success: "Вакансия удалена"
   search:
     title: "Поиск на портале"
     placeholder: "Введите слово или его фрагмент"
@@ -794,6 +812,14 @@ ru:
         documents_info_uk: "Информация для поступления (на украинском)"
         category: "Категория"
         location: "Местоположение"
+      vacancy:
+        title: "Название вакансии"
+        new_vacancy: "Добавление вакансии учебного заведения"
+        requirements: "Требования"
+        responsibility: "Обязанности"
+        conditions: "Условия работы"
+        salary: "Зарплата"
+        active: "Опубликовать вакансию"
       provider_request:
         provider_name: "Название заведения"
       promotion:
